@@ -14,7 +14,7 @@ function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string>
 }
 
 function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'game.md', 'index.md'])
+  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md'])
   const items = readdirSync(process.cwd())
     .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
     .map(f => {
@@ -51,7 +51,11 @@ const config = defineConfig({
     'home.md': 'index.md',
     'game.md': 'game.md',
     '每日视野简报/README.md': '每日视野简报/index.md',
-    '软件使用/codex使用/codex-learning/README.md': '软件使用/codex使用/codex-learning/index.md'
+    '软件使用/codex使用/codex-learning/README.md': '软件使用/codex使用/codex-learning/index.md',
+    '嵌入式体系/README.md': '嵌入式体系/index.md',
+    'STM32工作流/README.md': 'STM32工作流/index.md',
+    'AI学习/README.md': 'AI学习/index.md',
+    '求职研究/README.md': '求职研究/index.md'
   },
 
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
@@ -83,6 +87,17 @@ const config = defineConfig({
         ]
       },
       { text: '视野简报', link: '/每日视野简报/' },
+      {
+        text: '🗂 知识库',
+        items: [
+          { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
+          { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
+          { text: '🤖 AI 学习', link: '/AI学习/' },
+          { text: '🎯 求职研究', link: '/求职研究/' }
+        ]
+      },
+      { text: '✅ 每日任务', link: '/tasks' },
+      { text: '📒 错题本', link: '/wrongbook' },
       { text: '🎮 知识闯关', link: '/game' }
     ],
 
@@ -113,6 +128,75 @@ const config = defineConfig({
           ]
         },
         {
+          text: '🔬 嵌入式体系',
+          collapsed: false,
+          items: [
+            { text: '栏目导览', link: '/嵌入式体系/' },
+            { text: '能力地图与离开条件', link: '/嵌入式体系/嵌入式能力地图' },
+            { text: '资源索引', link: '/嵌入式体系/嵌入式资源索引' },
+            {
+              text: '能力课程（按依赖顺序）',
+              collapsed: true,
+              items: [
+                { text: '01 C 工程化', link: '/嵌入式体系/C工程化' },
+                { text: 'C 工程化 · 实习专项练习', link: '/嵌入式体系/C工程化实习专项练习' },
+                { text: '02 STM32 与调试', link: '/嵌入式体系/STM32与调试' },
+                { text: '03 通信与协议', link: '/嵌入式体系/通信与协议' },
+                { text: '04 实时系统与 FreeRTOS', link: '/嵌入式体系/实时系统与FreeRTOS' },
+                { text: '05 Linux 与 C++', link: '/嵌入式体系/Linux与C++' },
+                { text: '06 ROS2 与机器人基础', link: '/嵌入式体系/ROS2与机器人基础' },
+                { text: '07 AI 与强化学习基础', link: '/嵌入式体系/AI与强化学习基础' }
+              ]
+            },
+            {
+              text: '工程方法',
+              collapsed: true,
+              items: [
+                { text: 'AI 协作请求模板', link: '/嵌入式体系/AI协作请求模板' },
+                { text: '实习指标与故障注入', link: '/嵌入式体系/实习指标与故障注入' },
+                { text: '技术取舍记录', link: '/嵌入式体系/技术取舍记录' },
+                { text: '作品集发布标准', link: '/嵌入式体系/作品集发布标准' },
+                { text: '简历与面试证据', link: '/嵌入式体系/简历与面试证据' }
+              ]
+            }
+          ]
+        },
+        {
+          text: '⚙️ STM32 工作流',
+          collapsed: true,
+          items: [
+            { text: '栏目导览', link: '/STM32工作流/' },
+            { text: 'STM32 学习路径', link: '/STM32工作流/STM32学习路径' },
+            { text: '中断模型知识卡', link: '/STM32工作流/中断模型知识卡' },
+            { text: 'UART 常见坑检查单', link: '/STM32工作流/UART常见坑检查单' },
+            { text: '启动流程与 main 函数', link: '/STM32工作流/启动流程与main函数' },
+            { text: '工具链检查清单', link: '/STM32工作流/工具链检查清单' },
+            { text: '嵌入式 AI 提示词五件套', link: '/STM32工作流/嵌入式AI提示词五件套' }
+          ]
+        },
+        {
+          text: '🤖 AI 学习',
+          collapsed: false,
+          items: [
+            { text: '栏目导览（入门路线）', link: '/AI学习/' },
+            { text: '大模型基础速读', link: '/AI学习/大模型基础速读' },
+            { text: '强化学习基础速读', link: '/AI学习/强化学习基础速读' },
+            { text: '多智能体强化学习速读', link: '/AI学习/多智能体强化学习速读' },
+            { text: 'LLM 与 RL 代码实践指南', link: '/AI学习/LLM与RL代码实践指南' },
+            { text: '第一小时视频清单（7 天）', link: '/AI学习/第一小时视频清单' },
+            { text: 'PPO CartPole 逐行讲解', link: '/AI学习/PPO_CartPole逐行讲解' },
+            {
+              text: '巩固与实战',
+              collapsed: true,
+              items: [
+                { text: 'MLP 手搓达标自测', link: '/AI学习/MLP手搓达标自测' },
+                { text: '两模型辩论项目实录', link: '/AI学习/两模型辩论项目实录' },
+                { text: '嵌入式 AI 转型路线图', link: '/AI学习/嵌入式AI转型路线图' }
+              ]
+            }
+          ]
+        },
+        {
           text: '🧭 成长规划',
           collapsed: false,
           items: [
@@ -127,11 +211,57 @@ const config = defineConfig({
           ]
         },
         {
+          text: '🎯 求职研究',
+          collapsed: true,
+          items: [
+            { text: '栏目导览', link: '/求职研究/' },
+            {
+              text: '方向选择',
+              collapsed: true,
+              items: [
+                { text: '岗位地图', link: '/求职研究/岗位地图' },
+                { text: '岗位可得性与竞争矩阵', link: '/求职研究/岗位可得性与竞争矩阵' },
+                { text: '能力矩阵（三级证据标准）', link: '/求职研究/能力矩阵' },
+                { text: '大学整体实习规划', link: '/求职研究/大学整体实习规划' },
+                { text: '技术栈优先级', link: '/求职研究/技术栈优先级' },
+                { text: '规划优先级与冲突处理', link: '/求职研究/规划优先级与冲突处理' }
+              ]
+            },
+            {
+              text: '申请执行',
+              collapsed: true,
+              items: [
+                { text: '简历项目写法', link: '/求职研究/简历项目写法' },
+                { text: '申请与避坑', link: '/求职研究/申请与避坑' },
+                { text: '官方资料清单', link: '/求职研究/官方资料清单' }
+              ]
+            },
+            {
+              text: '岗位运营',
+              collapsed: true,
+              items: [
+                { text: '岗位评分规则', link: '/求职研究/岗位评分规则' },
+                { text: '岗位检索异常处理', link: '/求职研究/岗位检索异常处理' },
+                { text: '岗位搜索源与查询词', link: '/求职研究/岗位搜索源与查询词' }
+              ]
+            }
+          ]
+        },
+        {
           text: '🏃 生活与健康',
           collapsed: false,
           items: [
             { text: '健身指导手册 · 从入门到进阶', link: '/健身指导手册_从入门到进阶' },
             { text: '联想拯救者电脑保养手册', link: '/联想拯救者电脑保养手册' }
+          ]
+        },
+        {
+          text: '🧰 学习工具',
+          collapsed: false,
+          items: [
+            { text: '✅ 每日任务 · 执行台（贴任务/打卡/复盘草稿）', link: '/tasks' },
+            { text: '📒 错题本（闯关答错自动收录）', link: '/wrongbook' },
+            { text: '🎮 知识闯关（每日挑战/全景闯关）', link: '/game' }
           ]
         },
         {

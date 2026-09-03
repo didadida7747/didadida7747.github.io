@@ -14,7 +14,19 @@ export const PAGE = {
   hack: '/黑客松与可交付项目增收行动指南',
   fit: '/健身指导手册_从入门到进阶',
   pc: '/联想拯救者电脑保养手册',
-  interview: '/求职面试高频题手册_大二实习版'
+  interview: '/求职面试高频题手册_大二实习版',
+  // —— 2026-09 扩充栏目 ——
+  emb: '/嵌入式体系/C工程化',
+  embmap: '/嵌入式体系/嵌入式能力地图',
+  embmetric: '/嵌入式体系/实习指标与故障注入',
+  stm: '/STM32工作流/中断模型知识卡',
+  uart: '/STM32工作流/UART常见坑检查单',
+  ai: '/AI学习/大模型基础速读',
+  rl: '/AI学习/强化学习基础速读',
+  marl: '/AI学习/多智能体强化学习速读',
+  career: '/求职研究/能力矩阵',
+  resume: '/求职研究/简历项目写法',
+  score: '/求职研究/岗位评分规则'
 }
 
 export const KNOWLEDGE = [
@@ -207,6 +219,82 @@ export const KNOWLEDGE = [
   {
     text: '一次训练的正确顺序：热身 → 正式训练 → 放松整理',
     from: '健身手册 · 顺序', link: PAGE.fit, anchor: '#_3-一次训练的正确顺序'
+  },
+
+  // ============ 嵌入式体系（2026-09 扩充） ============
+  {
+    text: '嵌入式课程按依赖排序：C 工程化 → STM32 → 通信协议 → FreeRTOS → Linux/C++ → ROS2，每单元以"离开条件"验收',
+    from: '嵌入式 · 能力体系', link: PAGE.embmap, anchor: '#条件能力',
+    quiz: { q: '嵌入式课程体系用什么标准判断"学完一单元"？', options: ['看完视频', '满足离开条件（能独立交付的验收标准）', '做完所有习题', '考试及格'], answer: 1 }
+  },
+  {
+    text: 'C 工程化要跨越的是"会语法"到"会拆模块"：driver/service/app 分层，题目代码和项目代码差在工程组织',
+    from: '嵌入式 · C 工程化', link: PAGE.emb, anchor: '#这一单元解决什么',
+    quiz: { q: 'C 工程化单元要解决的核心跨越是？', options: ['背熟语法', '从会语法到会拆模块', '刷够题量', '换更好的 IDE'], answer: 1 }
+  },
+  {
+    text: '嵌入式项目交付要量化：周期抖动、丢失率、吞吐、RAM/CPU 占用、恢复时间——说得出数才算数',
+    from: '嵌入式 · 项目指标', link: PAGE.embmetric, anchor: '#性能指标',
+    quiz: { q: '嵌入式项目"做完了"的判断依据是？', options: ['功能能跑就行', '代码量足够大', '量化指标达标（抖动/丢失率/吞吐等）', '界面好看'], answer: 2 }
+  },
+  {
+    text: '中断五步核心理解：外设提出请求 → NVIC 仲裁优先级 → CPU 进 ISR → ISR 尽量短 → 复杂处理下放主循环',
+    from: 'STM32 · 中断模型', link: PAGE.stm, anchor: '#你要建立的核心理解',
+    quiz: { q: '中断服务函数（ISR）的编写原则是？', options: ['越复杂越好，一次做完', '尽量短，复杂处理下放主循环或任务', '必须包含 printf 打印', '和普通函数没有区别'], answer: 1 }
+  },
+  {
+    text: '中断四大常见误区：只开外设中断没开 NVIC、清标志位顺序不对、ISR 里做耗时打印、忘记 volatile',
+    from: 'STM32 · 中断误区', link: PAGE.stm, anchor: '#常见误区',
+    quiz: { q: '"中断进了但一次都不触发"，最常见的原因是？', options: ['波特率配错', '只开了外设中断，没开 NVIC 使能', '堆栈太小', '主循环太长'], answer: 1 }
+  },
+  {
+    text: '串口不出字先查六项：引脚复用、外设时钟、波特率基准时钟、NVIC 使能、缓冲区生命周期、printf 重定向',
+    from: 'STM32 · UART 排查', link: PAGE.uart, anchor: '#快速检查项',
+    quiz: { q: 'UART 没有输出，第一个不该忽略的检查项是？', options: ['换根串口线', '外设时钟是否开启', '重装系统', '降低波特率'], answer: 1 }
+  },
+
+  // ============ AI 学习（2026-09 扩充） ============
+  {
+    text: '模型不直接理解汉字或单词：文本先切成最小处理单元 token，编号化后再变成向量（embedding）',
+    from: 'AI · 大模型', link: PAGE.ai, anchor: '#_1-token',
+    quiz: { q: '大模型处理文本的第一步是？', options: ['直接理解句子含义', '切成最小处理单元 token 并向量化', '翻译成英文', '压缩成摘要'], answer: 1 }
+  },
+  {
+    text: '注意力的 Q/K/V 直觉：Q 是我想找什么，K 是我这里有什么可匹配，V 是真正传递的内容',
+    from: 'AI · 大模型', link: PAGE.ai, anchor: '#_4-q-k-v',
+    quiz: { q: '注意力机制中"真正被传递的内容"是？', options: ['Q', 'K', 'V', 'softmax 分数'], answer: 2 }
+  },
+  {
+    text: 'reward 不直接给正确答案，只告诉你当前行为是更好还是更差',
+    from: 'AI · 强化学习', link: PAGE.rl, anchor: '#_5-reward',
+    quiz: { q: '强化学习中 reward 的作用是？', options: ['给出标准答案', '告诉智能体当前行为更好还是更差', '代替损失函数', '随机扰动'], answer: 1 }
+  },
+  {
+    text: 'policy 是"看到什么情况倾向做什么"的规则；return 是一段时间累计总回报，不是单步奖励',
+    from: 'AI · 强化学习', link: PAGE.rl, anchor: '#_6-policy',
+    quiz: { q: '强化学习里"return"指的是？', options: ['单步奖励', '一段时间内累计总回报', '函数返回值', '奖励的方差'], answer: 1 }
+  },
+  {
+    text: 'MARL 的 CTDE 范式：训练时集中化（Centralized），执行时分散化（Decentralized）',
+    from: 'AI · 多智能体', link: PAGE.marl, anchor: '#ctde',
+    quiz: { q: 'CTDE 缩写的含义是？', options: ['训练集中、执行分散', '训练分散、执行集中', '训练执行都集中', '训练执行都分散'], answer: 0 }
+  },
+
+  // ============ 求职研究（2026-09 扩充） ============
+  {
+    text: '能力分三级证据：只算接触 / 可写进项目 / 可投实习——达到投递线要看证据等级，不看"学过"',
+    from: '求职 · 能力标准', link: PAGE.career, anchor: '#公共底座',
+    quiz: { q: '"会 Python"要达到可投实习线，公共底座的要求是？', options: ['看过基础语法视频', '能处理 JSON/CSV/日志、管环境、调试 traceback', '会 print 就行', '背过八股'], answer: 1 }
+  },
+  {
+    text: '简历项目写法核心是"弱表达→强表达"：把"参与了/学习了"换成"实现了什么、指标如何"',
+    from: '求职 · 简历', link: PAGE.resume, anchor: '#弱表达与强表达',
+    quiz: { q: '下列哪种写法属于"强表达"？', options: ['参与了 STM32 项目', '学习了 FreeRTOS', '实现了采集控制器，周期抖动 <5%，丢失率 <1%', '熟悉 C 语言'], answer: 2 }
+  },
+  {
+    text: '岗位六维评分：真实性/时效性/匹配度/差距/可行性/质量，加权得 P 值再分 P0-P3 优先级',
+    from: '求职 · 岗位运营', link: PAGE.score, anchor: '#六项评分',
+    quiz: { q: '岗位评分体系中"P0"代表？', options: ['必须放弃', '最低优先级', '最高优先级，尽快复核投递', '已过期岗位'], answer: 2 }
   }
 ]
 

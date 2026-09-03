@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 日常与规划
   text: 把看过的视频，长成自己的知识树
-  tagline: 一名大二学生的知识站 —— 学习笔记 · 成长规划 · 每日视野简报，还藏了一场知识闯关
+  tagline: 一名大二学生的知识站 —— 学习笔记 · 成长规划 · 知识库扩展 · 每日视野简报，还藏了一场知识闯关
   actions:
     - theme: brand
       text: 📖 进入学习笔记
@@ -17,6 +17,11 @@ hero:
       link: /每日视野简报/
 
 features:
+  - icon: ✅
+    title: 每日任务 · 执行台
+    details: 早上贴任务、白天打勾、晚上一键生成复盘草稿给 AI——连续天数和断档自动记录，任务闭环不靠自觉。
+    link: /tasks
+    linkText: 打开执行台
   - icon: 🧠
     title: 计算机组成原理 · 全景导学
     details: 从"什么是指令"到 CPU 数据通路，一条主线 + 四条暗线，把 408 最难的课讲成逻辑故事。
@@ -27,24 +32,39 @@ features:
     details: 18 集拆成知识课与经验分享两卷，再编成大二上、大二下、全年贯穿三条行动线。
     link: /SI100+ 2026夏合集_大二学生学习文档
     linkText: 查看手册
+  - icon: 🔬
+    title: 嵌入式体系 · 能力课程
+    details: 从 C 工程化到 ROS2 的七门能力课，每单元有离开条件；配套 STM32 AI 工作流与故障排查知识卡。
+    link: /嵌入式体系/
+    linkText: 进入体系
+  - icon: 🤖
+    title: AI 学习 · 大模型与强化学习
+    details: 三篇速读建立语言体系，PPO CartPole 逐行讲解落到实现，外加一份多智能体辩论项目实录。
+    link: /AI学习/
+    linkText: 从零入门
   - icon: 🚀
     title: 实习速成方法论
     details: 找实习是期末考不是高考；用数量对抗概率；简历 = 学习清单。思路篇 × 实践篇一次打通。
     link: /实习速成方法论_思路篇与实践篇整合笔记
     linkText: 速成一下
+  - icon: 🎯
+    title: 求职研究 · 方法论与决策框架
+    details: 岗位地图、六维评分规则、简历强表达写法——把求职拆成可执行的检查表。
+    link: /求职研究/
+    linkText: 看方法论
   - icon: 🧭
     title: 大学四年自我提升全景手册
     details: 把四年摊成一张地图：学业、实践、认知三条路径上的里程碑与检查点。
     link: /大学四年自我提升全景手册
     linkText: 领取地图
+  - icon: 🎮
+    title: 知识闯关 + 错题本
+    details: 三关十五题，题目全部出自站内笔记；答错自动进错题本，附原文链接，重做答对自动移出。
+    link: /game
+    linkText: 马上开玩
   - icon: 🗞️
     title: 每日视野简报
     details: 每日一批精选资讯沉淀成日报与周报，站内即归档，随时回溯"那天我在看什么"。
     link: /每日视野简报/
     linkText: 翻阅归档
-  - icon: 🎮
-    title: 知识闯关小游戏
-    details: 三关十五题，题目全部出自站内笔记——答错不要紧，解析里附了笔记出处。
-    link: /game
-    linkText: 马上开玩
 ---

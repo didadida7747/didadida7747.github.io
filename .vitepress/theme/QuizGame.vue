@@ -37,6 +37,29 @@ function record(topic, correct) {
   persist()
 }
 
+// ---------- 错题本（localStorage，与错题本页面 /wrongbook 共享同一份数据） ----------
+const WRONG_KEY = 'quiz-wrong-book'
+function loadWrongBook() {
+  try { return JSON.parse(localStorage.getItem(WRONG_KEY))?.items || {} } catch (e) { return {} }
+}
+function saveWrong(q) {
+  try {
+    const book = loadWrongBook()
+    const prev = book[q.q]
+    book[q.q] = { q: q.q, options: q.options, answer: q.answer, topic: q.topic, source: q.source, wrongCount: (prev?.wrongCount || 0) + 1, lastTs: Date.now() }
+    localStorage.setItem(WRONG_KEY, JSON.stringify({ items: book }))
+  } catch (e) { /* 存储不可用时静默降级 */ }
+}
+function clearWrong(q) {
+  try {
+    const book = loadWrongBook()
+    if (book[q.q]) {
+      delete book[q.q]
+      localStorage.setItem(WRONG_KEY, JSON.stringify({ items: book }))
+    }
+  } catch (e) { /* 忽略 */ }
+}
+
 // 学情分析：按主题正确率给建议
 const analysis = computed(() => {
   const rows = []
@@ -113,6 +136,9 @@ function pick(i) {
   showing.value = true
   const ok = i === question.value.answer
   record(question.value.topic, ok)
+  // 错题本联动：答错入本（累计错次），答对自动移出
+  if (ok) clearWrong(question.value)
+  else saveWrong(question.value)
   answeredLog.value.push({ ok, q: question.value })
   if (ok) {
     combo.value += 1

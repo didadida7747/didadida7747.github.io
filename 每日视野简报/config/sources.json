@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-15",
+  "sources": [
+    {
+      "id": "china-gov-policy",
+      "name": "中国政府网 - 最新政策",
+      "url": "https://www.gov.cn/zhengce/zuixin/ZUIXINZHENGCE.json",
+      "kind": "json",
+      "category": "国内政策与经济",
+      "region": "中国",
+      "tier": 1,
+      "max_items": 12,
+      "enabled": true
+    },
+    {
+      "id": "china-nbs-release",
+      "name": "国家统计局 - 最新发布",
+      "url": "https://www.stats.gov.cn/sj/zxfb/",
+      "kind": "html",
+      "category": "国内政策与经济",
+      "region": "中国",
+      "tier": 1,
+      "max_items": 12,
+      "enabled": true
+    },
+    {
+      "id": "china-pboc-news",
+      "name": "中国人民银行 - 沟通交流",
+      "url": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.html",
+      "kind": "html",
+      "category": "金融与市场",
+      "region": "中国",
+      "tier": 1,
+      "max_items": 12,
+      "include_url_pattern": "/goutongjiaoliu/113456/113469/20\\d+/index\\.html$",
+      "enabled": true
+    },
+    {
+      "id": "china-ndrc-news",
+      "name": "国家发展和改革委员会 - 新闻发布",
+      "url": "https://www.ndrc.gov.cn/xwdt/xwfb/",
+      "kind": "html",
+      "category": "国内政策与经济",
+      "region": "中国",
+      "tier": 1,
+      "max_items": 12,
+      "include_url_pattern": "/xwdt/xwfb/20\\d{4}/t20\\d{6}_\\d+\\.html$",
+      "enabled": true
+    },
+    {
+      "id": "china-csrc-news",
+      "name": "中国证监会 - 新闻发布",
+      "url": "https://www.csrc.gov.cn/csrc/c100028/common_list.shtml",
+      "kind": "html",
+      "category": "金融与市场",
+      "region": "中国",
+      "tier": 1,
+      "max_items": 10,
+      "include_url_pattern": "/csrc/c100028/c\\d+/content\\.shtml$",
+      "enabled": true
+    },
+    {
+      "id": "fed-press-all",
+      "name": "Federal Reserve - All Press Releases",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "kind": "feed",
+      "category": "金融与市场",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 12,
+      "enabled": true
+    },
+    {
+      "id": "ecb-press",
+      "name": "European Central Bank - Press Releases",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "kind": "feed",
+      "category": "金融与市场",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 12,
+      "enabled": true
+    },
+    {
+      "id": "bis-press",
+      "name": "Bank for International Settlements - Press Releases",
+      "url": "https://www.bis.org/doclist/all_pressrels.rss",
+      "kind": "feed",
+      "category": "金融与市场",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 10,
+      "enabled": true
+    },
+    {
+      "id": "world-bank-news",
+      "name": "World Bank - News and Statements",
+      "url": "https://www.worldbank.org/ext/en/news",
+      "kind": "html",
+      "category": "国际局势与经济",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 12,
+      "include_url_pattern": "/en/news/(press-release|statement)/20\\d{2}/\\d{2}/\\d{2}/",
+      "enabled": true
+    },
+    {
+      "id": "un-news",
+      "name": "United Nations News",
+      "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+      "kind": "feed",
+      "category": "国际局势与经济",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 15,
+      "enabled": true
+    },
+    {
+      "id": "who-news",
+      "name": "World Health Organization - News Releases",
+      "url": "https://www.who.int/rss-feeds/news-english.xml",
+      "kind": "feed",
+      "category": "科学能源与安全",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 10,
+      "enabled": true
+    },
+    {
+      "id": "cisa-advisories",
+      "name": "CISA - Cybersecurity Advisories",
+      "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+      "kind": "feed",
+      "category": "科学能源与安全",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 10,
+      "enabled": true
+    },
+    {
+      "id": "arxiv-ai",
+      "name": "arXiv - Artificial Intelligence",
+      "url": "https://export.arxiv.org/rss/cs.AI",
+      "kind": "feed",
+      "category": "科技与产业",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 15,
+      "enabled": true
+    },
+    {
+      "id": "arxiv-robotics",
+      "name": "arXiv - Robotics",
+      "url": "https://export.arxiv.org/rss/cs.RO",
+      "kind": "feed",
+      "category": "科技与产业",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 15,
+      "enabled": true
+    },
+    {
+      "id": "nasa-news",
+      "name": "NASA - News Releases",
+      "url": "https://www.nasa.gov/news-release/feed/",
+      "kind": "feed",
+      "category": "科学能源与安全",
+      "region": "国际",
+      "tier": 1,
+      "max_items": 10,
+      "enabled": true
+    },
+    {
+      "id": "github-blog",
+      "name": "GitHub Blog",
+      "url": "https://github.blog/feed/",
+      "kind": "feed",
+      "category": "科技与产业",
+      "region": "国际",
+      "tier": 2,
+      "max_items": 10,
+      "enabled": true
+    }
+  ]
+}

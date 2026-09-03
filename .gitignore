@@ -1,0 +1,13 @@
+# 站点工程文件
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
+
+# B 站抓取临时转写
+.bili_tmp/
+
+# grok 克隆的仓库
+软件使用/grok使用/
+
+# 简报原始素材（公开仓库不带原始抓取料）
+每日视野简报/data/

@@ -24,6 +24,15 @@
 
 > 注意：`preview` 不感知文件变化——构建后必须重跑才生效。这就是 `rebuild` 存在的原因。
 
+### 公众号精选流水线（2026-09-03 新增）
+
+| 命令 | 什么时候用 | 行为 |
+|---|---|---|
+| `npm run wx:sync` | wewe-rss 开着时（日常） | 拉新文章 → 全文存 `公众号精选/articles/`（git 忽略）→ 更新 `公众号精选/导读/<号名>.md`（上站） |
+| `npm run wx:sync -- --backfill` | 新加订阅时（一次性） | 历史文章全部入导读目录，不抓全文 |
+
+接入步骤（wewe-rss 下载/扫码/加订阅/填 feeds.json）见站点页面 `公众号精选/README.md`（即 `/公众号精选/` 页）。新号的导读页生成后，在 `config.mts` 侧边栏「📮 公众号精选」组补一行链接。**版权红线：全文只在本地，导读（标题/摘要/链接）才上站。**
+
 ## 3. 加内容的标准流程
 
 1. 把 `.md` 文件放进工作区（根目录或已有子目录），保存。
@@ -55,6 +64,11 @@
 | 知识点数据库（知识点+题目+原文锚点） | `.vitepress/theme/knowledge.js`（被 DailyKnowledge 和 QuizGame 共享） |
 | 错题本（列表/重做/清空） | `.vitepress/theme/WrongBook.vue` + `wrongbook.md`（数据 key `quiz-wrong-book` 由 QuizGame 写入） |
 | 每日任务执行台（打卡/复盘草稿） | `.vitepress/theme/TaskBoard.vue` + `tasks.md`（数据 key `daily-task-v1`；灵感任务池在 `tasks.js`） |
+| 术语图鉴（分类/搜索/弹层/收藏） | `.vitepress/theme/TermsPage.vue` + `terms.js`（收藏 key `term-favs`） |
+| 情境练习（方向筛选/解锁/讲评） | `.vitepress/theme/PracticePage.vue` + `practice.js`（记录 key `practice-rec-v1`） |
+| **文档课（2026-09-05 新增：系列章节/已读进度）** | `.vitepress/theme/DocsPage.vue` + `docs.md`（数据在 `docs.js`，加新文档课在此登记一个系列对象；进度 key `docs-read-v1`） |
+| **主题色切换器（导航右侧色点，2026-09-05 新增）** | `.vitepress/theme/ThemePicker.vue`（选择 key `theme-accent-v1`；全站主色走 CSS 变量 `--vh-accent`，定义在 `custom.css`） |
+| **UI 风格（2026-09-05 改版：vibe-hub 式浅色扁平）** | `.vitepress/theme/custom.css`（主色 `#2f4fe0`；首访默认浅色，深色模式保留星空；改主色只需换 `--vh-accent` 一处） |
 | 阅读进度环 | `.vitepress/theme/ReadingProgress.vue` |
 | 布局层（星空挂载/转场/滚动行为/导航淡化） | `.vitepress/theme/MyLayout.vue` |
 | 首页内容 | `home.md`（rewrites 成 `/`）；游戏页 `game.md`；任务页 `tasks.md`；错题本 `wrongbook.md` |

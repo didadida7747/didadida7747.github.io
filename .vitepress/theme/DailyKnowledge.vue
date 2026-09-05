@@ -54,9 +54,9 @@ const expanded = ref(false)
 .quiz-entry {
   margin-left: auto;
   font-size: 0.85rem;
-  color: #a78bfa;
+  color: var(--vh-accent, #2f4fe0);
   text-decoration: none;
-  border-bottom: 1px dashed rgba(167, 139, 250, 0.4);
+  border-bottom: 1px dashed var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
 }
 .quiz-entry:hover { color: #c4b5fd; }
 
@@ -68,8 +68,8 @@ const expanded = ref(false)
   grid-template-columns: 1fr 1fr;
   gap: 0.55rem 2rem;
   border-radius: 14px;
-  border: 1px solid rgba(167, 139, 250, 0.18);
-  background: rgba(10, 13, 34, 0.55);
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
+  background: var(--vp-c-bg);
   backdrop-filter: blur(8px);
 }
 @media (max-width: 768px) {
@@ -87,8 +87,8 @@ const expanded = ref(false)
   text-align: center;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #a78bfa;
-  border: 1px solid rgba(167, 139, 250, 0.35);
+  color: var(--vh-accent, #2f4fe0);
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
   border-radius: 6px;
   padding: 0.05rem 0;
 }
@@ -99,9 +99,9 @@ const expanded = ref(false)
 .src {
   flex: none;
   font-size: 0.75rem;
-  color: #a78bfa;
+  color: var(--vh-accent, #2f4fe0);
   text-decoration: none;
-  border-bottom: 1px dashed rgba(167, 139, 250, 0.4);
+  border-bottom: 1px dashed var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
   white-space: nowrap;
 }
 .src:hover { color: #c4b5fd; }
@@ -115,5 +115,5 @@ const expanded = ref(false)
   font-size: 0.8rem;
   cursor: pointer;
 }
-.toggle:hover { color: #a78bfa; }
+.toggle:hover { color: var(--vh-accent, #2f4fe0); }
 </style>

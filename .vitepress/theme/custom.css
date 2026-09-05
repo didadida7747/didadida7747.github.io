@@ -1,39 +1,73 @@
-/* ===== 品牌：靛紫青渐变 + 舒适阅读体验 ===== */
+/* ===== 品牌：vibe-hub 风格 · 靛蓝主色 + 白底扁平 + 小圆角细边框 ===== */
+/* 主色走 --vh-accent 单一变量：ThemePicker 换主题色时只改它，全站跟着变 */
 :root {
-  --vp-c-brand-1: #7c3aed;
-  --vp-c-brand-2: #8b5cf6;
-  --vp-c-brand-3: #a78bfa;
-  --vp-c-brand-soft: rgba(124, 58, 237, 0.14);
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #6366f1 20%, #a855f7 50%, #06b6d4 90%);
+  /* vibe-hub 设计 token（与主题色切换器共用） */
+  --vh-accent: #2f4fe0;
+  --vh-accent-weak: rgba(47, 79, 224, 0.09);
+  --vh-radius: 8px;
+  --vh-radius-lg: 12px;
+
+  /* VitePress 品牌变量接主色 */
+  --vp-c-brand-1: var(--vh-accent);
+  --vp-c-brand-2: var(--vh-accent);
+  --vp-c-brand-3: var(--vh-accent);
+  --vp-c-brand-soft: var(--vh-accent-weak);
+  --vp-home-hero-name-color: var(--vh-accent);
+
+  /* vibe-hub 灰阶（zinc 系） */
+  --vh-text-1: #18181b;
+  --vh-text-2: #52525b;
+  --vh-text-3: #a1a1aa;
+  --vh-border: #e4e4e7;
+  --vh-bg-soft: #f4f4f5;
 }
 
+/* 深色模式：vibe-hub 式中性深灰黑 + 同款主色（提亮保证对比度） */
 .dark {
-  --vp-c-brand-1: #a78bfa;
-  --vp-c-brand-2: #8b5cf6;
-  --vp-c-brand-3: #7c3aed;
-  --vp-c-brand-soft: rgba(167, 139, 250, 0.16);
-  /* 星空深色底：调亮一档的蓝紫夜空 */
-  --vp-c-bg: #131735;
-  --vp-c-bg-alt: #171b40;
-  --vp-c-bg-soft: rgba(30, 35, 72, 0.55);
-  --vp-c-divider: rgba(170, 180, 210, 0.22);
-  --vp-c-text-1: #f0f2fc;
-  --vp-c-text-2: #ccd3ec;
-  --vp-c-text-3: #a2abcd;
+  --vh-accent-weak: rgba(99, 128, 255, 0.14);
+  --vh-text-1: #f4f4f5;
+  --vh-text-2: #c9c9d1;
+  --vh-text-3: #8b8b94;
+  --vh-border: #2e2e33;
+  --vh-bg-soft: #1c1c21;
+
+  --vp-c-bg: #101014;
+  --vp-c-bg-alt: #17171c;
+  --vp-c-bg-soft: #1c1c21;
+  --vp-c-divider: #2e2e33;
+  --vp-c-text-1: #f4f4f5;
+  --vp-c-text-2: #c9c9d1;
+  --vp-c-text-3: #8b8b94;
 }
 
-/* 首页特性卡片：悬停上浮 + 渐变描边 */
+/* 浅色模式：vitepress 变量对齐 zinc 灰阶 */
+html:not(.dark) {
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #fafafa;
+  --vp-c-bg-soft: #f4f4f5;
+  --vp-c-divider: #e4e4e7;
+  --vp-c-text-1: #18181b;
+  --vp-c-text-2: #52525b;
+  --vp-c-text-3: #a1a1aa;
+}
+
+/* ===== 全局手感：细边框 + 小圆角 ===== */
+.VPNavBar .divider-line,
+.VPNavBar .divider { display: none; }
+
+/* ===== 首页特性卡片：白卡细边框，悬停轻浮起 ===== */
 .VPFeature {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border-radius: var(--vh-radius-lg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .VPFeature:hover {
-  transform: translateY(-4px);
-  border-color: var(--vp-c-brand-2);
-  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.18);
+  transform: translateY(-3px);
+  border-color: var(--vh-accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
+.dark .VPFeature:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
 
-/* 正文阅读体验微调 */
+/* ===== 正文排版 ===== */
 .vp-doc h2 {
   padding-top: 1.6rem;
   border-top: none;
@@ -44,77 +78,79 @@
   width: 0.55em;
   height: 0.55em;
   margin-right: 0.5em;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #a855f7, #06b6d4);
+  border-radius: 3px;
+  background: var(--vh-accent);
   vertical-align: 0.08em;
 }
 
 blockquote {
-  border-left: 3px solid var(--vp-c-brand-2) !important;
-  background: var(--vp-c-brand-soft);
+  border-left: 3px solid var(--vh-accent) !important;
+  background: var(--vh-accent-weak);
   border-radius: 0 8px 8px 0;
   padding: 0.5rem 1rem;
 }
 
 /* 表格隔行更柔和 */
-.vp-doc tr:nth-child(2n) { background-color: var(--vp-c-bg-soft-up, var(--vp-c-bg-soft)); }
+.vp-doc tr:nth-child(2n) { background-color: var(--vh-bg-soft); }
 
-/* ===== 深色文档排版：层次化字体色（整体调亮一档） ===== */
+/* ===== 浅色正文（默认模式）：vibe-hub 黑字白底 ===== */
+html:not(.dark) .vp-doc { color: #3f3f46; line-height: 1.85; }
+html:not(.dark) .vp-doc h1,
+html:not(.dark) .vp-doc h2,
+html:not(.dark) .vp-doc h3,
+html:not(.dark) .vp-doc h4 { color: #18181b; font-weight: 700; }
+html:not(.dark) .vp-doc strong { color: var(--vh-accent); font-weight: 650; }
+html:not(.dark) .vp-doc em { color: var(--vh-accent); }
+html:not(.dark) .vp-doc a { color: var(--vh-accent); text-decoration: none; }
+html:not(.dark) .vp-doc a:hover { color: color-mix(in srgb, var(--vh-accent) 80%, #000); }
+html:not(.dark) .vp-doc li::marker { color: var(--vh-accent); }
+html:not(.dark) .vp-doc mark {
+  background: var(--vh-accent-weak);
+  color: var(--vh-accent);
+  border-radius: 4px;
+  padding: 0.05rem 0.35rem;
+}
+
+/* ===== 深色正文：亮字深灰底 ===== */
 .dark .vp-doc {
-  --vp-c-text-1: #f0edff;             /* 标题：亮紫白 */
-  color: #d5daf0;                      /* 正文：明亮的蓝灰白 */
+  --vp-c-text-1: #f4f4f5;
+  color: #d4d4d8;
   font-weight: 400;
-  letter-spacing: 0.01em;
   line-height: 1.85;
 }
 .dark .vp-doc h1,
 .dark .vp-doc h2,
 .dark .vp-doc h3,
 .dark .vp-doc h4 {
-  color: #ffffff;
+  color: #fafafa;
   font-weight: 650;
-  text-shadow: 0 0 18px rgba(139, 122, 255, 0.35);
 }
-.dark .vp-doc strong {
-  color: #f7b8ff;                      /* 重点：亮品红紫 */
-  font-weight: 650;
-  text-shadow: 0 0 14px rgba(247, 184, 255, 0.35);
-}
-.dark .vp-doc em { color: #a8cbff; }   /* 强调：亮蓝 */
+.dark .vp-doc strong { color: #93a5f5; font-weight: 650; }
+.dark .vp-doc em { color: #93a5f5; }
+.dark .vp-doc li::marker { color: #7c8cf0; }
 
-/* 行内代码：紫调玻璃片 */
+/* 行内代码：浅色浅灰片 / 深色玻璃片 */
+html:not(.dark) .vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
+  color: var(--vh-accent);
+  background: var(--vh-bg-soft);
+  border: 1px solid var(--vh-border);
+  border-radius: 6px;
+  padding: 0.12rem 0.45rem;
+}
 .dark .vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
-  color: #c4b5fd;
-  background: rgba(124, 58, 237, 0.14);
-  border: 1px solid rgba(167, 139, 250, 0.22);
+  color: #a5b4fc;
+  background: rgba(99, 128, 255, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.25);
   border-radius: 6px;
   padding: 0.12rem 0.45rem;
 }
 
-/* 链接：渐变下划线，悬停点亮 */
-.dark .vp-doc a {
-  color: #a5b4fc;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(165, 180, 252, 0.35);
-  transition: color 0.18s ease, border-color 0.18s ease;
-}
-.dark .vp-doc a:hover {
-  color: #c7d2fe;
-  border-bottom-color: #c7d2fe;
-}
-
-/* 高亮标记 ==text==：荧光笔效果 */
+/* 链接（深色） */
+.dark .vp-doc a { color: #93a5f5; text-decoration: none; }
+.dark .vp-doc a:hover { color: #b3c0fa; }
 .dark .vp-doc mark {
-  background: linear-gradient(120deg, rgba(240, 171, 252, 0.25), rgba(167, 139, 250, 0.3));
-  color: #f5d0fe;
+  background: rgba(99, 128, 255, 0.18);
+  color: #b3c0fa;
   border-radius: 4px;
   padding: 0.05rem 0.35rem;
 }
-
-/* 列表 / 段落次级层次 */
-.dark .vp-doc li { margin: 0.3rem 0; }
-.dark .vp-doc li::marker { color: #8b5cf6; }
-
-/* 浅色模式正文统一为舒适墨色（仅浅色模式生效，避免覆盖深色规则） */
-html:not(.dark) .vp-doc { color: #37415c; }
-html:not(.dark) .vp-doc strong { color: #7c3aed; }

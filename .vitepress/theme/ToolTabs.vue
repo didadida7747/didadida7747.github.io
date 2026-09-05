@@ -7,6 +7,7 @@ import { useRoute, withBase } from 'vitepress'
 const route = useRoute()
 
 const tabs = [
+  { text: '📚 文档课', link: '/docs', match: '/docs' },
   { text: '🗂 术语', link: '/terms', match: '/terms' },
   { text: '🎯 练习', link: '/practice', match: '/practice' },
   { text: '🎮 闯关', link: '/game', match: '/game' },
@@ -36,22 +37,22 @@ const current = computed(() => {
   gap: 0.4rem;
   margin: 0 0 1.2rem;
   padding: 0.35rem;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid var(--vh-border, #e4e4e7);
   border-radius: 12px;
-  background: var(--vp-c-bg-soft);
+  background: var(--vp-c-bg);
 }
 .tt-tab {
   padding: 0.4rem 0.95rem;
   border-radius: 9px;
   font-size: 0.88rem;
-  color: var(--vp-c-text-2, #b8c0d9);
+  color: var(--vh-text-2, #52525b);
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.tt-tab:hover { color: var(--vp-c-text-1, #e6e9f5); background: rgba(148, 163, 184, 0.12); }
+.tt-tab:hover { color: var(--vh-accent, #2f4fe0); background: var(--vh-accent-weak, rgba(47, 79, 224, 0.09)); }
 .tt-tab.on {
   color: #fff;
-  background: linear-gradient(120deg, #6366f1, #a855f7);
+  background: var(--vh-accent, #2f4fe0);
   font-weight: 600;
 }
 </style>

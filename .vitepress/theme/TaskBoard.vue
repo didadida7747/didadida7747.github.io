@@ -250,7 +250,7 @@ const gapDays = computed(() => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 16px;
   padding: 1.4rem 1.6rem;
-  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.08);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
 }
 h3 { margin: 0 0 0.6rem; }
 
@@ -259,7 +259,7 @@ h3 { margin: 0 0 0.6rem; }
 .sub { font-size: 0.78rem; color: var(--vp-c-text-3, #8b93b8); margin-top: 0.25rem; }
 .stats { display: flex; gap: 1.6rem; }
 .stat { text-align: center; }
-.stat b { font-size: 1.5rem; color: var(--vp-c-brand-1, #a78bfa); font-variant-numeric: tabular-nums; }
+.stat b { font-size: 1.5rem; color: var(--vp-c-brand-1, var(--vh-accent, #2f4fe0)); font-variant-numeric: tabular-nums; }
 .stat span { color: var(--vp-c-text-3, #8b93b8); }
 .stat i { display: block; font-style: normal; font-size: 0.72rem; color: var(--vp-c-text-3, #8b93b8); margin-top: 0.15rem; }
 .stat.streak b { color: #f59e0b; }
@@ -287,9 +287,9 @@ h3 { margin: 0 0 0.6rem; }
 .check input { position: absolute; opacity: 0; pointer-events: none; }
 .box {
   width: 18px; height: 18px; flex: none; border-radius: 6px;
-  border: 2px solid var(--vp-c-brand-1, #a78bfa); position: relative; transition: background 0.15s ease;
+  border: 2px solid var(--vp-c-brand-1, var(--vh-accent, #2f4fe0)); position: relative; transition: background 0.15s ease;
 }
-.check input:checked + .box { background: linear-gradient(120deg, #6366f1, #a855f7); }
+.check input:checked + .box { background: var(--vh-accent, #2f4fe0); }
 .check input:checked + .box::after {
   content: '✓'; position: absolute; inset: 0; display: grid; place-items: center;
   color: #fff; font-size: 12px; font-weight: 700;
@@ -306,8 +306,8 @@ h3 { margin: 0 0 0.6rem; }
 .sparks { margin: 0.8rem 0; display: grid; gap: 0.4rem; }
 .sparks-title { font-size: 0.82rem; color: var(--vp-c-text-2, #b8c0d9); margin: 0 0 0.2rem; }
 .spark {
-  font-size: 0.86rem; color: var(--vp-c-brand-1, #a78bfa); text-decoration: none;
-  padding: 0.5rem 0.8rem; border: 1px dashed rgba(167, 139, 250, 0.4); border-radius: 10px;
+  font-size: 0.86rem; color: var(--vp-c-brand-1, var(--vh-accent, #2f4fe0)); text-decoration: none;
+  padding: 0.5rem 0.8rem; border: 1px dashed var(--vh-accent-weak, rgba(47, 79, 224, 0.09)); border-radius: 10px;
 }
 .spark:hover { border-style: solid; }
 
@@ -325,12 +325,12 @@ textarea, input[type="text"], .custom-row input, .form input, .form textarea {
 
 .btn {
   margin-top: 0.8rem; padding: 0.55rem 1.4rem; font-size: 0.9rem; font-weight: 600;
-  color: #fff; background: linear-gradient(120deg, #6366f1, #a855f7);
+  color: #fff; background: var(--vh-accent, #2f4fe0);
   border: none; border-radius: 10px; cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35); }
-.btn.ghost { background: transparent; border: 1px solid var(--vp-c-brand-1, #a78bfa); color: var(--vp-c-brand-1, #a78bfa); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); }
+.btn.ghost { background: transparent; border: 1px solid var(--vp-c-brand-1, var(--vh-accent, #2f4fe0)); color: var(--vp-c-brand-1, var(--vh-accent, #2f4fe0)); }
 
 .hint { font-size: 0.82rem; color: var(--vp-c-text-3, #8b93b8); margin: 0 0 0.8rem; }
 .form { display: grid; gap: 0.7rem; margin-bottom: 0.4rem; }

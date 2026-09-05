@@ -80,9 +80,9 @@ function toTop() {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(10, 13, 34, 0.72);
+  background: var(--vp-c-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(167, 139, 250, 0.25);
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
@@ -96,8 +96,8 @@ function toTop() {
 .track { stroke: rgba(148, 163, 184, 0.18); }
 .fill {
   stroke: url(#none);
-  stroke: #a78bfa;
-  filter: drop-shadow(0 0 4px rgba(167, 139, 250, 0.6));
+  stroke: var(--vh-accent, #2f4fe0);
+  filter: drop-shadow(0 0 4px var(--vh-accent-weak, rgba(47, 79, 224, 0.09)));
   transition: stroke-dashoffset 0.15s linear;
 }
 .num {
@@ -113,9 +113,9 @@ function toTop() {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1px solid rgba(167, 139, 250, 0.35);
-  background: rgba(10, 13, 34, 0.9);
-  color: #a78bfa;
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
+  background: var(--vp-c-bg);
+  color: var(--vh-accent, #2f4fe0);
   font-size: 0.7rem;
   cursor: pointer;
   display: flex;
@@ -125,7 +125,7 @@ function toTop() {
 }
 .top-btn:hover {
   transform: translateY(-2px);
-  background: rgba(124, 58, 237, 0.5);
+  background: var(--vh-accent-weak, rgba(47, 79, 224, 0.3));
   color: #fff;
 }
 

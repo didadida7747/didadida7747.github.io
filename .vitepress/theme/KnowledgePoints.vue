@@ -94,7 +94,7 @@ function href(item) {
   gap: 0.8rem;
 }
 .pt-card {
-  --pc: #a78bfa;
+  --pc: var(--vh-accent, #2f4fe0);
   display: flex;
   align-items: flex-start;
   gap: 0.7rem;
@@ -128,7 +128,7 @@ function href(item) {
 /* ===== 详情列表页 ===== */
 .pt-list { display: grid; gap: 0.9rem; }
 .pt-section {
-  --pc: #a78bfa;
+  --pc: var(--vh-accent, #2f4fe0);
   border: 1px solid color-mix(in srgb, var(--pc) 30%, transparent);
   border-radius: 14px;
   background: var(--vp-c-bg-soft);
@@ -180,7 +180,7 @@ function href(item) {
   padding: 1.2rem;
 }
 .pt-modal {
-  --pc: #a78bfa;
+  --pc: var(--vh-accent, #2f4fe0);
   width: min(680px, 100%);
   max-height: 84vh;
   overflow-y: auto;

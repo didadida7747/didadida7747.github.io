@@ -107,15 +107,15 @@ function openSearch(word) {
   margin: 0 auto;
   padding: 0.8rem 1.2rem;
   border-radius: 999px;
-  border: 1px solid rgba(167, 139, 250, 0.35);
-  background: rgba(15, 17, 40, 0.75);
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
+  background: var(--vp-c-bg);
   backdrop-filter: blur(8px);
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .searchbox:hover {
   border-color: var(--vp-c-brand-2);
-  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), 0 8px 28px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), 0 8px 28px rgba(0, 0, 0, 0.1);
   transform: translateY(-1px);
 }
 .icon { font-size: 1.05rem; }
@@ -138,8 +138,8 @@ function openSearch(word) {
 .chip {
   font-size: 0.82rem;
   color: var(--vp-c-text-2, #cbd5e1);
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
   border-radius: 999px;
   padding: 0.25rem 0.85rem;
   cursor: pointer;
@@ -147,7 +147,7 @@ function openSearch(word) {
 }
 .chip:hover {
   color: #fff;
-  background: rgba(139, 92, 246, 0.4);
+  background: var(--vh-accent-weak, rgba(47, 79, 224, 0.25));
   transform: translateY(-1px);
 }
 
@@ -175,7 +175,7 @@ function openSearch(word) {
   transition: background 0.18s ease, transform 0.18s ease;
 }
 .pick:hover {
-  background: rgba(139, 92, 246, 0.12);
+  background: var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
   transform: translateX(4px);
 }
 .pick-icon { font-size: 1.4rem; line-height: 1.2; }
@@ -192,7 +192,7 @@ function openSearch(word) {
   text-decoration: none !important;
   transition: background 0.18s ease;
 }
-.trend:hover { background: rgba(139, 92, 246, 0.12); }
+.trend:hover { background: var(--vh-accent-weak, rgba(47, 79, 224, 0.09)); }
 .rank {
   width: 1.35rem;
   text-align: center;
@@ -211,8 +211,8 @@ function openSearch(word) {
 }
 .tag {
   font-size: 0.72rem;
-  color: var(--vp-c-brand-3, #a78bfa);
-  border: 1px solid rgba(167, 139, 250, 0.4);
+  color: var(--vp-c-brand-3, var(--vh-accent, #2f4fe0));
+  border: 1px solid var(--vh-accent-weak, rgba(47, 79, 224, 0.09));
   border-radius: 999px;
   padding: 0.05rem 0.5rem;
   white-space: nowrap;

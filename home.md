@@ -4,22 +4,42 @@ layout: home
 hero:
   name: 日常与规划
   text: 把看过的视频，长成自己的知识树
-  tagline: 一名大二学生的知识站 —— 学习笔记 · 成长规划 · 知识库扩展 · 每日视野简报，还藏了一场知识闯关
+  tagline: 学习笔记 · 文档课程 · 术语图鉴 · 情境练习 —— 一个人的知识站
   actions:
     - theme: brand
-      text: 📖 进入学习笔记
-      link: /计算机组成原理_全景导学笔记
+      text: 📚 浏览文档课
+      link: /docs
     - theme: alt
-      text: 🎮 来一把知识闯关
-      link: /game
+      text: 🗂 术语图鉴
+      link: /terms
     - theme: alt
-      text: 🗞️ 看看最新简报
-      link: /每日视野简报/
+      text: 🎯 情境练习
+      link: /practice
 
 features:
+  - icon: 📚
+    title: 文档课 · 系列化学习路线
+    details: SI100+ 逐集详注、嵌入式能力课程、AI 学习路线——按章推进、记录进度，像刷课一样刷自己的笔记。
+    link: /docs
+    linkText: 进入文档
+  - icon: 🗂
+    title: 术语图鉴
+    details: 用一句大白话讲清每个术语，点开看定义、站内原文和联想栏，星星收藏正在啃的词。
+    link: /terms
+    linkText: 查术语
+  - icon: 🎯
+    title: 情境练习
+    details: 一题一个真实处境，四选一；答对解锁讲评与深链，像 vibe-hub 一样"答对后看完整详情"。
+    link: /practice
+    linkText: 开始练习
+  - icon: 🎮
+    title: 知识闯关 + 错题本
+    details: 三关十五题，题目全部出自站内笔记；答错自动进错题本，重做答对自动移出。
+    link: /game
+    linkText: 马上开玩
   - icon: ✅
     title: 每日任务 · 执行台
-    details: 早上贴任务、白天打勾、晚上一键生成复盘草稿给 AI——连续天数和断档自动记录，任务闭环不靠自觉。
+    details: 早上贴任务、白天打勾、晚上一键生成复盘草稿给 AI——连续天数和断档自动记录。
     link: /tasks
     linkText: 打开执行台
   - icon: 🧠
@@ -27,44 +47,4 @@ features:
     details: 从"什么是指令"到 CPU 数据通路，一条主线 + 四条暗线，把 408 最难的课讲成逻辑故事。
     link: /计算机组成原理_全景导学笔记
     linkText: 开始导学
-  - icon: 🐍
-    title: SI100+ 夏合集 · 大二学习手册
-    details: 18 集拆成知识课与经验分享两卷，再编成大二上、大二下、全年贯穿三条行动线。
-    link: /SI100+ 2026夏合集_大二学生学习文档
-    linkText: 查看手册
-  - icon: 🔬
-    title: 嵌入式体系 · 能力课程
-    details: 从 C 工程化到 ROS2 的七门能力课，每单元有离开条件；配套 STM32 AI 工作流与故障排查知识卡。
-    link: /嵌入式体系/
-    linkText: 进入体系
-  - icon: 🤖
-    title: AI 学习 · 大模型与强化学习
-    details: 三篇速读建立语言体系，PPO CartPole 逐行讲解落到实现，外加一份多智能体辩论项目实录。
-    link: /AI学习/
-    linkText: 从零入门
-  - icon: 🚀
-    title: 实习速成方法论
-    details: 找实习是期末考不是高考；用数量对抗概率；简历 = 学习清单。思路篇 × 实践篇一次打通。
-    link: /实习速成方法论_思路篇与实践篇整合笔记
-    linkText: 速成一下
-  - icon: 🎯
-    title: 求职研究 · 方法论与决策框架
-    details: 岗位地图、六维评分规则、简历强表达写法——把求职拆成可执行的检查表。
-    link: /求职研究/
-    linkText: 看方法论
-  - icon: 🧭
-    title: 大学四年自我提升全景手册
-    details: 把四年摊成一张地图：学业、实践、认知三条路径上的里程碑与检查点。
-    link: /大学四年自我提升全景手册
-    linkText: 领取地图
-  - icon: 🎮
-    title: 知识闯关 + 错题本
-    details: 三关十五题，题目全部出自站内笔记；答错自动进错题本，附原文链接，重做答对自动移出。
-    link: /game
-    linkText: 马上开玩
-  - icon: 🗞️
-    title: 每日视野简报
-    details: 每日一批精选资讯沉淀成日报与周报，站内即归档，随时回溯"那天我在看什么"。
-    link: /每日视野简报/
-    linkText: 翻阅归档
 ---

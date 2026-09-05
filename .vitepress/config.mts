@@ -14,7 +14,7 @@ function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string>
 }
 
 function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md', 'points.md', 'terms.md', 'practice.md'])
+  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md', 'points.md', 'terms.md', 'practice.md', 'docs.md'])
   const items = readdirSync(process.cwd())
     .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
     .map(f => {
@@ -59,7 +59,17 @@ const config = defineConfig({
     '自学资源/README.md': '自学资源/index.md'
   },
 
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    // 首访默认浅色（vibe-hub 式白底）；用户手动切过深色后尊重其选择（存 vitepress-theme-appearance）
+    ['script', {}, `
+      try {
+        if (!localStorage.getItem('vitepress-theme-appearance')) {
+          localStorage.setItem('vitepress-theme-appearance', 'light')
+        }
+      } catch (e) {}
+    `]
+  ],
   // 笔记是手工语料，个别相对链接可能指向被排除的原始素材，不因死链中断构建
   ignoreDeadLinks: true,
 
@@ -69,8 +79,8 @@ const config = defineConfig({
 
     nav: [
       {
-        // 顶栏收敛：无首页项（点 logo 回首页），所有内容入口收进「文档」下拉
-        text: '📚 文档',
+        // 顶栏收敛：无首页项（点 logo 回首页），所有内容入口收进「内容」下拉
+        text: '📚 内容',
         items: [
           { text: '📝 学习笔记', items: [
             { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
@@ -101,11 +111,13 @@ const config = defineConfig({
         ]
       },
       { text: '🗂 术语', link: '/terms' },
-      { text: '🎯 练习', link: '/practice' }
+      { text: '🎯 练习', link: '/practice' },
+      { text: '📚 文档课', link: '/docs' }
     ],
 
     sidebar: {
-      // —— 功能页（术语/练习/闯关/任务/错题/卡片）：独立页面，无文档侧栏，顶部用 ToolTabs 切换 ——
+      // —— 功能页（文档/术语/练习/闯关/任务/错题/卡片）：独立页面，无文档侧栏，顶部用 ToolTabs 切换 ——
+      '/docs/': [],
       '/terms/': [],
       '/practice/': [],
       '/points/': [],

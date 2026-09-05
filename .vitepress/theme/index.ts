@@ -6,6 +6,8 @@ import KnowledgePoints from './KnowledgePoints.vue'
 import TermsPage from './TermsPage.vue'
 import PracticePage from './PracticePage.vue'
 import ToolTabs from './ToolTabs.vue'
+import DocsPage from './DocsPage.vue'
+import ThemePicker from './ThemePicker.vue'
 import MyLayout from './MyLayout.vue'
 import './custom.css'
 
@@ -20,5 +22,7 @@ export default {
     app.component('TermsPage', TermsPage)
     app.component('PracticePage', PracticePage)
     app.component('ToolTabs', ToolTabs)
+    app.component('DocsPage', DocsPage)
+    app.component('ThemePicker', ThemePicker)
   }
 }

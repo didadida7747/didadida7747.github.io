@@ -14,7 +14,7 @@ function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string>
 }
 
 function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md'])
+  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md', 'points.md'])
   const items = readdirSync(process.cwd())
     .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
     .map(f => {
@@ -55,7 +55,8 @@ const config = defineConfig({
     '嵌入式体系/README.md': '嵌入式体系/index.md',
     'STM32工作流/README.md': 'STM32工作流/index.md',
     'AI学习/README.md': 'AI学习/index.md',
-    '求职研究/README.md': '求职研究/index.md'
+    '求职研究/README.md': '求职研究/index.md',
+    '自学资源/README.md': '自学资源/index.md'
   },
 
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
@@ -93,7 +94,8 @@ const config = defineConfig({
           { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
           { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
           { text: '🤖 AI 学习', link: '/AI学习/' },
-          { text: '🎯 求职研究', link: '/求职研究/' }
+          { text: '🎯 求职研究', link: '/求职研究/' },
+          { text: '🧠 自学资源', link: '/自学资源/' }
         ]
       },
       { text: '✅ 每日任务', link: '/tasks' },
@@ -197,6 +199,17 @@ const config = defineConfig({
           ]
         },
         {
+          text: '🧠 自学资源',
+          collapsed: false,
+          items: [
+            { text: '栏目导览（大学不教的四件事）', link: '/自学资源/' },
+            { text: 'MIT Missing Semester（缺失的一课）', link: '/自学资源/MIT-Missing-Semester' },
+            { text: 'CS 自学指南（csdiy.wiki）', link: '/自学资源/CS自学指南_csdiy' },
+            { text: '《提问的智慧》', link: '/自学资源/提问的智慧' },
+            { text: 'University of NotTaught（待考证）', link: '/自学资源/University of NotTaught_拟缺即刻' }
+          ]
+        },
+        {
           text: '🧭 成长规划',
           collapsed: false,
           items: [
@@ -270,6 +283,7 @@ const config = defineConfig({
           text: '🧰 学习工具',
           collapsed: false,
           items: [
+            { text: '🧩 知识点卡片（一个点串全站）', link: '/points' },
             { text: '✅ 每日任务 · 执行台（贴任务/打卡/复盘草稿）', link: '/tasks' },
             { text: '📒 错题本（闯关答错自动收录）', link: '/wrongbook' },
             { text: '🎮 知识闯关（每日挑战/全景闯关）', link: '/game' }

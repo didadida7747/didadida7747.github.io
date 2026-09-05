@@ -1,3 +1,14 @@
+---
+layout: doc
+sidebar: false
+aside: false
+outline: false
+title: 每日任务 · 执行台
+description: 贴任务、打卡、生成复盘草稿——任务闭环不靠自觉
+---
+
+<ToolTabs />
+
 # 每日任务 · 执行台
 
 把「贴任务 → 打勾执行 → 晚间复盘」的闭环搬进网站。它和 [知识闯关](/game)、[错题本](/wrongbook) 一样，数据全部存在你自己的浏览器里。

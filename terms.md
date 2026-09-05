@@ -1,8 +1,13 @@
 ---
 layout: doc
+sidebar: false
+aside: false
+outline: false
 title: 术语图鉴
 description: 用大白话讲清站内术语——一张卡一个点，串起计组、嵌入式、AI、网络、求职与生活
 ---
+
+<ToolTabs />
 
 # 🗂 术语图鉴
 

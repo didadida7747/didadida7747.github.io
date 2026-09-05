@@ -1,8 +1,13 @@
 ---
 layout: doc
+sidebar: false
+aside: false
+outline: false
 title: 情境练习
 description: 一题一个真实处境——用站内方法论做判断题，答对解锁讲评与深链
 ---
+
+<ToolTabs />
 
 # 🎯 情境练习
 

@@ -1,3 +1,14 @@
+---
+layout: doc
+sidebar: false
+aside: false
+outline: false
+title: 错题本
+description: 闯关答错自动收录，重做答对自动移出
+---
+
+<ToolTabs />
+
 # 错题本
 
 闯关游戏答错的题会自动收进这里，附知识点原文链接；重做答对（在游戏里或本页的重做模式里）自动移出。数据存在你自己的浏览器 localStorage，换浏览器/清缓存会清空。

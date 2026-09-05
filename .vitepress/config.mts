@@ -68,9 +68,8 @@ const config = defineConfig({
     siteTitle: '日常与规划',
 
     nav: [
-      { text: '首页', link: '/' },
       {
-        // 顶栏收敛：所有内容入口收进「文档」一个下拉，给术语/练习让位
+        // 顶栏收敛：无首页项（点 logo 回首页），所有内容入口收进「文档」下拉
         text: '📚 文档',
         items: [
           { text: '📝 学习笔记', items: [
@@ -106,6 +105,13 @@ const config = defineConfig({
     ],
 
     sidebar: {
+      // —— 功能页（术语/练习/闯关/任务/错题/卡片）：独立页面，无文档侧栏，顶部用 ToolTabs 切换 ——
+      '/terms/': [],
+      '/practice/': [],
+      '/points/': [],
+      '/tasks/': [],
+      '/wrongbook/': [],
+      '/game/': [],
       '/': [
         {
           text: '📚 学习笔记',

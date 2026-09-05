@@ -14,7 +14,7 @@ function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string>
 }
 
 function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md', 'points.md'])
+  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md', 'points.md', 'terms.md', 'practice.md'])
   const items = readdirSync(process.cwd())
     .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
     .map(f => {
@@ -70,37 +70,39 @@ const config = defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '学习笔记',
+        // 顶栏收敛：所有内容入口收进「文档」一个下拉，给术语/练习让位
+        text: '📚 文档',
         items: [
-          { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
-          { text: '计算机组成原理 · 全景导学', link: '/计算机组成原理_全景导学笔记' },
-          { text: '科协暑培 2026 · 大二学习文档', link: '/科协暑培2026合集_大二学生学习文档' },
-          { text: '生成式软工 2026 秋 · 导览', link: '/生成式软件工程2026秋合集_大二学生学习文档' }
+          { text: '📝 学习笔记', items: [
+            { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
+            { text: '计算机组成原理 · 全景导学', link: '/计算机组成原理_全景导学笔记' },
+            { text: '科协暑培 2026 · 大二学习文档', link: '/科协暑培2026合集_大二学生学习文档' },
+            { text: '生成式软工 2026 秋 · 导览', link: '/生成式软件工程2026秋合集_大二学生学习文档' }
+          ]},
+          { text: '🧭 成长规划', items: [
+            { text: '大学四年自我提升全景手册', link: '/大学四年自我提升全景手册' },
+            { text: '实习速成方法论', link: '/实习速成方法论_思路篇与实践篇整合笔记' },
+            { text: '💼 求职面试高频题手册', link: '/求职面试高频题手册_大二实习版' },
+            { text: '向上社交行动手册', link: '/大学生向上社交行动手册' }
+          ]},
+          { text: '🗞️ 视野简报', link: '/每日视野简报/' },
+          { text: '🗂 知识库', items: [
+            { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
+            { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
+            { text: '🤖 AI 学习', link: '/AI学习/' },
+            { text: '🎯 求职研究', link: '/求职研究/' },
+            { text: '🧠 自学资源', link: '/自学资源/' }
+          ]},
+          { text: '🧰 学习工具', items: [
+            { text: '✅ 每日任务 · 执行台', link: '/tasks' },
+            { text: '📒 错题本', link: '/wrongbook' },
+            { text: '🎮 知识闯关', link: '/game' },
+            { text: '🧩 知识点卡片', link: '/points' }
+          ]}
         ]
       },
-      {
-        text: '成长规划',
-        items: [
-          { text: '大学四年自我提升全景手册', link: '/大学四年自我提升全景手册' },
-          { text: '实习速成方法论', link: '/实习速成方法论_思路篇与实践篇整合笔记' },
-          { text: '💼 求职面试高频题手册', link: '/求职面试高频题手册_大二实习版' },
-          { text: '向上社交行动手册', link: '/大学生向上社交行动手册' }
-        ]
-      },
-      { text: '视野简报', link: '/每日视野简报/' },
-      {
-        text: '🗂 知识库',
-        items: [
-          { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
-          { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
-          { text: '🤖 AI 学习', link: '/AI学习/' },
-          { text: '🎯 求职研究', link: '/求职研究/' },
-          { text: '🧠 自学资源', link: '/自学资源/' }
-        ]
-      },
-      { text: '✅ 每日任务', link: '/tasks' },
-      { text: '📒 错题本', link: '/wrongbook' },
-      { text: '🎮 知识闯关', link: '/game' }
+      { text: '🗂 术语', link: '/terms' },
+      { text: '🎯 练习', link: '/practice' }
     ],
 
     sidebar: {

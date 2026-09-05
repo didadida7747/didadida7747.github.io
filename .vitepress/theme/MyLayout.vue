@@ -6,7 +6,6 @@ import Starfield from './Starfield.vue'
 import DiscoverPanel from './DiscoverPanel.vue'
 import ReadingProgress from './ReadingProgress.vue'
 import DailyKnowledge from './DailyKnowledge.vue'
-import KnowledgePoints from './KnowledgePoints.vue'
 
 const { Layout } = DefaultTheme
 const { isDark, frontmatter } = useData()
@@ -105,13 +104,6 @@ onBeforeUnmount(() => {
   <Layout>
     <template #home-hero-after>
       <DiscoverPanel v-if="frontmatter.layout === 'home'" />
-      <div v-if="frontmatter.layout === 'home'" class="home-points">
-        <div class="home-points-inner">
-          <h2 class="home-points-title">🧩 一个点，串起全站</h2>
-          <p class="home-points-sub">每张卡片是一个知识点：点开看它串起的主内容，再顺着发散联想跨领域漫游。全部卡片在 <a href="/points" style="color: inherit; text-decoration: underline;">知识点卡片页</a>。</p>
-          <KnowledgePoints mode="grid" />
-        </div>
-      </div>
       <DailyKnowledge v-if="frontmatter.layout === 'home'" />
     </template>
 
@@ -259,16 +251,4 @@ onBeforeUnmount(() => {
     radial-gradient(ellipse 50% 100% at 75% 0%, rgba(6, 182, 212, 0.08), transparent 70%);
 }
 
-/* ===== 首页知识点卡片墙区块 ===== */
-.home-points { max-width: 1152px; margin: 0 auto; padding: 0 24px 48px; }
-@media (min-width: 960px) { .home-points { padding: 0 48px 56px; } }
-.home-points-inner {
-  background: rgba(10, 13, 34, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 18px;
-  padding: 1.4rem 1.5rem 1.5rem;
-  backdrop-filter: blur(6px);
-}
-.home-points-title { margin: 0 0 0.3rem; font-size: 1.25rem; border-top: none; padding-top: 0; }
-.home-points-sub { margin: 0 0 1.1rem; font-size: 0.86rem; color: var(--vp-c-text-2, #b8c0d9); }
 </style>

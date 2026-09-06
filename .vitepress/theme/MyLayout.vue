@@ -175,11 +175,11 @@ onBeforeUnmount(() => {
   opacity: 1 !important;
 }
 
-/* ===== 侧边栏：半透明悬浮 ===== */
+/* ===== 侧边栏：全透明融入星空（与导航栏同款） ===== */
 .dark .VPSidebar {
-  background: rgba(19, 23, 53, 0.6) !important;
-  backdrop-filter: blur(12px);
-  border-right: 1px solid rgba(170, 180, 210, 0.1);
+  background: transparent !important;
+  backdrop-filter: none;
+  border-right: 1px solid rgba(170, 180, 210, 0.08);
 }
 .dark .VPContent.has-sidebar {
   background: transparent !important;

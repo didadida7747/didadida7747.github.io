@@ -14,7 +14,7 @@ function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string>
 }
 
 function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'game.md', 'index.md', 'wrongbook.md'])
+  const skip = new Set(['home.md', 'index.md'])
   const items = readdirSync(process.cwd())
     .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
     .map(f => {
@@ -33,7 +33,7 @@ function buildAutoSidebarGroup(links: Set<string>) {
 const config = defineConfig({
   lang: 'zh-CN',
   title: '日常与规划',
-  description: '一名大二学生的知识站：学习笔记、成长规划、每日视野简报，外加一场知识闯关',
+  description: '一名大二学生的个人资料储藏室：学习笔记、成长规划、知识库与每日视野简报',
 
   // 排除不想成为页面的内容（B 站抓取的临时转写、grok 克隆仓库、简报原始素材等）
   srcExclude: [
@@ -96,8 +96,6 @@ const config = defineConfig({
           { text: '🎯 求职研究', link: '/求职研究/' }
         ]
       },
-      { text: '📒 错题本', link: '/wrongbook' },
-      { text: '🎮 知识闯关', link: '/game' }
     ],
 
     sidebar: {
@@ -263,14 +261,6 @@ const config = defineConfig({
           items: [
             { text: '健身指导手册 · 从入门到进阶', link: '/健身指导手册_从入门到进阶' },
             { text: '联想拯救者电脑保养手册', link: '/联想拯救者电脑保养手册' }
-          ]
-        },
-        {
-          text: '🧰 学习工具',
-          collapsed: false,
-          items: [
-            { text: '📒 错题本（闯关答错自动收录）', link: '/wrongbook' },
-            { text: '🎮 知识闯关（每日挑战/全景闯关）', link: '/game' }
           ]
         },
         {

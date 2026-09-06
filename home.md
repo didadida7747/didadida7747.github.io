@@ -4,14 +4,11 @@ layout: home
 hero:
   name: 日常与规划
   text: 把看过的视频，长成自己的知识树
-  tagline: 一名大二学生的知识站 —— 学习笔记 · 成长规划 · 知识库扩展 · 每日视野简报，还藏了一场知识闯关
+  tagline: 一名大二学生的个人资料储藏室 —— 学习笔记 · 成长规划 · 知识库 · 每日视野简报
   actions:
     - theme: brand
       text: 📖 进入学习笔记
       link: /计算机组成原理_全景导学笔记
-    - theme: alt
-      text: 🎮 来一把知识闯关
-      link: /game
     - theme: alt
       text: 🗞️ 看看最新简报
       link: /每日视野简报/
@@ -52,11 +49,6 @@ features:
     details: 把四年摊成一张地图：学业、实践、认知三条路径上的里程碑与检查点。
     link: /大学四年自我提升全景手册
     linkText: 领取地图
-  - icon: 🎮
-    title: 知识闯关 + 错题本
-    details: 三关十五题，题目全部出自站内笔记；答错自动进错题本，附原文链接，重做答对自动移出。
-    link: /game
-    linkText: 马上开玩
   - icon: 🗞️
     title: 每日视野简报
     details: 每日一批精选资讯沉淀成日报与周报，站内即归档，随时回溯"那天我在看什么"。

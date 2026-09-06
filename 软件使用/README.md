@@ -61,7 +61,7 @@ OMP 的特色更集中在多模型路由、LSP/DAP、子代理和可扩展运行
 ## 本目录入口
 
 - [Codex 学习资料](./codex使用/codex-learning/README.md)
-- [Grok Build 学习资料](./grok使用/README.md)
+- Grok Build 学习资料（本地仓库，不上站）
 - [OMP 学习资料](./omp使用/README.md)
 
 ## 外部来源

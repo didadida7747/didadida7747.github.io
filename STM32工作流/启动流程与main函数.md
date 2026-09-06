@@ -422,7 +422,7 @@ STM32F103C8Tx_FLASH.ld
 
 里面一般会定义：
 
-```ld
+```txt
 FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 64K
 RAM (xrw)   : ORIGIN = 0x20000000, LENGTH = 20K
 ```

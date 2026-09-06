@@ -49,7 +49,6 @@ const config = defineConfig({
   ],
   rewrites: {
     'home.md': 'index.md',
-    'game.md': 'game.md',
     '每日视野简报/README.md': '每日视野简报/index.md',
     '软件使用/codex使用/codex-learning/README.md': '软件使用/codex使用/codex-learning/index.md',
     '嵌入式体系/README.md': '嵌入式体系/index.md',
@@ -59,8 +58,7 @@ const config = defineConfig({
   },
 
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
-  // 笔记是手工语料，个别相对链接可能指向被排除的原始素材，不因死链中断构建
-  ignoreDeadLinks: true,
+  // 死链体检清零后关闭豁免（2026-09-06）：让构建替我们把关，新死链当场暴露而非带上线
 
   themeConfig: {
     logo: '/logo.svg',

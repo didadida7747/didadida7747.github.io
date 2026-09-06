@@ -123,6 +123,13 @@ function toTop() {
   justify-content: center;
   transition: transform 0.15s ease, background 0.15s ease;
 }
+/* 视觉保持 22px 小圆点，触控热区外扩到 46px（移动端点击不落空） */
+.top-btn::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+}
 .top-btn:hover {
   transform: translateY(-2px);
   background: rgba(124, 58, 237, 0.5);

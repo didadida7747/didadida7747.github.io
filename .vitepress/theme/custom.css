@@ -118,3 +118,40 @@ blockquote {
 /* 浅色模式正文统一为舒适墨色（仅浅色模式生效，避免覆盖深色规则） */
 html:not(.dark) .vp-doc { color: #37415c; }
 html:not(.dark) .vp-doc strong { color: #7c3aed; }
+
+/* ===== 移动端 / 平板适配（<960px 为抽屉模式，桌面端不受影响） ===== */
+
+/* 1) 侧栏抽屉实底：桌面端侧栏全透明融入星空，但窄屏抽屉悬浮在正文之上，
+      透明会让菜单文字与变暗的正文文字重叠不可读 */
+@media (max-width: 959px) {
+  .dark .VPSidebar {
+    background: rgba(15, 19, 46, 0.97) !important;
+    backdrop-filter: blur(18px);
+  }
+  html:not(.dark) .VPSidebar {
+    background: rgba(248, 249, 255, 0.98) !important;
+  }
+}
+
+/* 2) 窄屏表格：表头列名保持横排——CJK 在被均分的窄列里会逐字竖排成"一字一行"，
+      表头撑开列宽后表格整体横向滚动，各列恢复可读 */
+@media (max-width: 767px) {
+  .vp-doc th { white-space: nowrap; }
+}
+
+/* 3) 移动端"本页目录"折叠条按钮加高（默认 24px，低于 44px 触控目标下限） */
+@media (max-width: 959px) {
+  .VPLocalNavOutlineDropdown button { padding: 10px 12px; }
+}
+
+/* 3.5) 平板窄窗（768–959）提前切汉堡导航：VitePress 默认 768px 以上仍显示完整
+      nav 菜单，本项目菜单项多（搜索框+5 组导航+更多按钮），768 视口装不下会横向
+      溢出 50px+；与侧栏抽屉断点(960)对齐，窄窗统一用汉堡模式 */
+@media (max-width: 959px) {
+  .VPNavBarMenu,
+  .VPNavBarSearch { display: none !important; }
+  .VPNavBarHamburger { display: flex !important; }
+}
+
+/* 4) 深色首页 hero 副标题提亮一档（默认 text-2 在移动小屏上偏暗） */
+.dark .VPHome .tagline { color: #d5daf0; }

@@ -150,29 +150,25 @@ onBeforeUnmount(() => {
   backdrop-filter: blur(10px);
 }
 
-/* 滚动离顶后：导航整体（含字体与搜索框）淡化到 35%，悬停恢复 */
+/* 滚动离顶后：导航条加毛玻璃实底，正文从底下滚过不再透字重叠（原"淡化到35%"方案会让正文透出来） */
 .dark .VPNavBar:not(.top) {
-  opacity: 0.35;
-  background: transparent !important;
-  backdrop-filter: none;
+  opacity: 1;
+  background: rgba(15, 19, 46, 0.78) !important;
+  backdrop-filter: blur(14px);
 }
 .dark .VPNavBar:not(.top):hover,
 .dark .VPNavBar:not(.top):focus-within {
-  opacity: 1;
-  background: rgba(19, 23, 53, 0.75) !important;
-  backdrop-filter: blur(12px);
+  background: rgba(19, 23, 53, 0.88) !important;
+  backdrop-filter: blur(16px);
 }
 
-/* 滚动离顶后：右侧"本页目录"同步虚化，悬停恢复（scrolled class 由布局脚本维护） */
+/* 右侧"本页目录"：毛玻璃卡片面板，与正文明确分区（原为无底色浮字，视觉上与正文纠缠） */
 .dark .VPDocAsideOutline {
-  transition: opacity 0.35s ease;
-}
-.dark body.scrolled .VPDocAsideOutline {
-  opacity: 0.3;
-}
-.dark .VPDocAsideOutline:hover,
-.dark .VPDocAsideOutline:focus-within {
-  opacity: 1 !important;
+  background: rgba(22, 27, 62, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(170, 180, 210, 0.1);
+  border-radius: 12px;
+  padding: 12px 14px;
 }
 
 /* ===== 侧边栏：全透明融入星空（与导航栏同款） ===== */

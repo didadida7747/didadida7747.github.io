@@ -3,9 +3,7 @@ import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useData, useRoute } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Starfield from './Starfield.vue'
-import DiscoverPanel from './DiscoverPanel.vue'
 import ReadingProgress from './ReadingProgress.vue'
-import DailyKnowledge from './DailyKnowledge.vue'
 
 const { Layout } = DefaultTheme
 const { isDark, frontmatter } = useData()
@@ -102,11 +100,6 @@ onBeforeUnmount(() => {
   </div>
 
   <Layout>
-    <template #home-hero-after>
-      <DiscoverPanel v-if="frontmatter.layout === 'home'" />
-      <DailyKnowledge v-if="frontmatter.layout === 'home'" />
-    </template>
-
     <template #page-top>
       <div class="page-glow" aria-hidden="true" />
     </template>

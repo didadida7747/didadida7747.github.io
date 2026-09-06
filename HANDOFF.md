@@ -7,7 +7,7 @@
 ## 1. 一分钟现状（2026-09-03 二次开发后）
 
 - 一个**已建成并验收**的 VitePress 知识站：工作区根目录 = 站点内容源，`.vitepress/` 是工程目录。
-- 功能：深色星空 Canvas 背景、首页搜索发现面板、每日知识点（日期种子随机）、闯关游戏（每日挑战/全景闯关双模式 + 学情分析）、**错题本**（答错自动入本/重做移出）、阅读进度环、导航/目录滚动虚化、目录平滑滚动、全文搜索（Ctrl K）。
+- 功能：深色星空 Canvas 背景、闯关游戏（每日挑战/全景闯关双模式 + 学情分析）、**错题本**（答错自动入本/重做移出）、阅读进度环、导航/目录滚动虚化、目录平滑滚动、全文搜索（Ctrl K）。站点定位是**资料储藏室**：无首页搜索发现面板、无每日知识点（2026-09-06 用户指令移除，组件在 git 历史 backup-full-features 标签里）。
 - 内容：学习笔记、成长规划、面试题手册、每日视野简报（日报即博客流），外加 2026-09-03 扩充的 4 个知识库栏目：**嵌入式体系/**（16 页）、**STM32工作流/**（7 页）、**AI学习/**（10 页）、**求职研究/**（13 页）——均从 `D:\ai资料` 兄弟目录精选拷贝并**脱敏**（删校名/成绩/个人排期，原文件不动）。
 - 健康 status：所有已知 bug 已修复（含 SSR 空壳回归，见 LEARNING.md 坑 13）；扩充内容已通过脱敏扫描（无裸 HTML/`{{}}`/隐私词）与构建期锚点真值校验。
 - 版本控制：git main 分支基线 `0b3172e`；二次开发在 `feature/content-expansion` 分支进行。
@@ -49,10 +49,8 @@
 | 导航栏 / 侧边栏分组 / 搜索配置 | `.vitepress/config.mts` |
 | 品牌色 / 正文字体 / 排版 | `.vitepress/theme/custom.css` |
 | 星空背景 | `.vitepress/theme/Starfield.vue` |
-| 首页搜索发现面板（快捷词/猜你想看/热点榜） | `.vitepress/theme/DiscoverPanel.vue` |
-| 每日知识点栏目 | `.vitepress/theme/DailyKnowledge.vue` |
 | 闯关游戏（题目/模式/学情） | `.vitepress/theme/QuizGame.vue` + `knowledge.js` |
-| 知识点数据库（知识点+题目+原文锚点） | `.vitepress/theme/knowledge.js`（被 DailyKnowledge 和 QuizGame 共享） |
+| 知识点数据库（知识点+题目+原文锚点） | `.vitepress/theme/knowledge.js`（QuizGame 的题库来源） |
 | 错题本（列表/重做/清空） | `.vitepress/theme/WrongBook.vue` + `wrongbook.md`（数据 key `quiz-wrong-book` 由 QuizGame 写入） |
 | 阅读进度环 | `.vitepress/theme/ReadingProgress.vue` |
 | 布局层（星空挂载/转场/滚动行为/导航淡化） | `.vitepress/theme/MyLayout.vue` |

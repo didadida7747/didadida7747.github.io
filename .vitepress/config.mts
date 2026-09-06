@@ -61,9 +61,25 @@ const config = defineConfig({
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   // 死链体检清零后关闭豁免（2026-09-06）：让构建替我们把关，新死链当场暴露而非带上线
 
+  // 站点地图：给搜索引擎收录用（借鉴 mkdocs-material/docusaurus 惯例）
+  sitemap: { hostname: 'https://didadida7747.github.io' },
+
+  // 文章底部显示"最后更新于"（取 git 提交时间）：资料储藏室一眼看出笔记新旧
+  lastUpdated: true,
+
+  markdown: {
+    // 代码块行号：笔记里"对照第 N 行"的场景多（学习笔记属性）
+    lineNumbers: true
+  },
+
   themeConfig: {
     logo: '/logo.svg',
     siteTitle: '日常与规划',
+
+    lastUpdated: {
+      text: '最后更新于',
+      formatOptions: { dateStyle: 'short', timeStyle: 'short' }
+    },
 
     nav: [
       { text: '首页', link: '/' },
@@ -348,6 +364,10 @@ const config = defineConfig({
             footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' }
           }
         }
+        // 注：曾尝试自定义 miniSearch.tokenize（中文双字切词）优化整句搜索，实测
+        // 索引侧生效但客户端查询侧失效（VitePress 对 theme 配置的序列化/打包链路
+        // 会丢函数、强行注入又引发水合异常），短词搜索反而挂掉，已回退默认分词。
+        // 默认分词下短词可用（官方走 Intl.Segmenter），整句搜索是框架级限制，暂缓。
       }
     },
 

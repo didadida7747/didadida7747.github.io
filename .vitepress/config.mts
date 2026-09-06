@@ -49,6 +49,7 @@ const config = defineConfig({
   ],
   rewrites: {
     'home.md': 'index.md',
+    '大观/00-总导读_先读我.md': '大观/index.md',
     '每日视野简报/README.md': '每日视野简报/index.md',
     '软件使用/codex使用/codex-learning/README.md': '软件使用/codex使用/codex-learning/index.md',
     '嵌入式体系/README.md': '嵌入式体系/index.md',
@@ -88,6 +89,7 @@ const config = defineConfig({
       {
         text: '🗂 知识库',
         items: [
+          { text: '🗺️ 大观 · 全站导读', link: '/大观/' },
           { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
           { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
           { text: '🤖 AI 学习', link: '/AI学习/' },
@@ -98,6 +100,18 @@ const config = defineConfig({
 
     sidebar: {
       '/': [
+        {
+          text: '🗺️ 大观 · 全站导读',
+          collapsed: false,
+          items: [
+            { text: '总导读 · 先读我', link: '/大观/' },
+            { text: '01 求职体系', link: '/大观/01-求职体系导读' },
+            { text: '02 课程学习', link: '/大观/02-课程学习导读' },
+            { text: '03 技术成长', link: '/大观/03-技术成长导读' },
+            { text: '04 生活与自我管理', link: '/大观/04-生活与自我管理导读' },
+            { text: '05 工具与信息流', link: '/大观/05-工具与信息流导读' }
+          ]
+        },
         {
           text: '📚 学习笔记',
           items: [

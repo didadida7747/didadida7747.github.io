@@ -14,7 +14,7 @@ function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string>
 }
 
 function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'game.md', 'index.md', 'tasks.md', 'wrongbook.md', 'points.md', 'terms.md', 'practice.md', 'docs.md'])
+  const skip = new Set(['home.md', 'game.md', 'index.md', 'wrongbook.md'])
   const items = readdirSync(process.cwd())
     .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
     .map(f => {
@@ -55,21 +55,10 @@ const config = defineConfig({
     '嵌入式体系/README.md': '嵌入式体系/index.md',
     'STM32工作流/README.md': 'STM32工作流/index.md',
     'AI学习/README.md': 'AI学习/index.md',
-    '求职研究/README.md': '求职研究/index.md',
-    '自学资源/README.md': '自学资源/index.md'
+    '求职研究/README.md': '求职研究/index.md'
   },
 
-  head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    // 首访默认浅色（vibe-hub 式白底）；用户手动切过深色后尊重其选择（存 vitepress-theme-appearance）
-    ['script', {}, `
-      try {
-        if (!localStorage.getItem('vitepress-theme-appearance')) {
-          localStorage.setItem('vitepress-theme-appearance', 'light')
-        }
-      } catch (e) {}
-    `]
-  ],
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   // 笔记是手工语料，个别相对链接可能指向被排除的原始素材，不因死链中断构建
   ignoreDeadLinks: true,
 
@@ -78,52 +67,40 @@ const config = defineConfig({
     siteTitle: '日常与规划',
 
     nav: [
+      { text: '首页', link: '/' },
       {
-        // 顶栏收敛：无首页项（点 logo 回首页），所有内容入口收进「内容」下拉
-        text: '📚 内容',
+        text: '学习笔记',
         items: [
-          { text: '📝 学习笔记', items: [
-            { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
-            { text: '计算机组成原理 · 全景导学', link: '/计算机组成原理_全景导学笔记' },
-            { text: '科协暑培 2026 · 大二学习文档', link: '/科协暑培2026合集_大二学生学习文档' },
-            { text: '生成式软工 2026 秋 · 导览', link: '/生成式软件工程2026秋合集_大二学生学习文档' }
-          ]},
-          { text: '🧭 成长规划', items: [
-            { text: '大学四年自我提升全景手册', link: '/大学四年自我提升全景手册' },
-            { text: '实习速成方法论', link: '/实习速成方法论_思路篇与实践篇整合笔记' },
-            { text: '💼 求职面试高频题手册', link: '/求职面试高频题手册_大二实习版' },
-            { text: '向上社交行动手册', link: '/大学生向上社交行动手册' }
-          ]},
-          { text: '🗞️ 视野简报', link: '/每日视野简报/' },
-          { text: '🗂 知识库', items: [
-            { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
-            { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
-            { text: '🤖 AI 学习', link: '/AI学习/' },
-            { text: '🎯 求职研究', link: '/求职研究/' },
-            { text: '🧠 自学资源', link: '/自学资源/' }
-          ]},
-          { text: '🧰 学习工具', items: [
-            { text: '✅ 每日任务 · 执行台', link: '/tasks' },
-            { text: '📒 错题本', link: '/wrongbook' },
-            { text: '🎮 知识闯关', link: '/game' },
-            { text: '🧩 知识点卡片', link: '/points' }
-          ]}
+          { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
+          { text: '计算机组成原理 · 全景导学', link: '/计算机组成原理_全景导学笔记' },
+          { text: '科协暑培 2026 · 大二学习文档', link: '/科协暑培2026合集_大二学生学习文档' },
+          { text: '生成式软工 2026 秋 · 导览', link: '/生成式软件工程2026秋合集_大二学生学习文档' }
         ]
       },
-      { text: '🗂 术语', link: '/terms' },
-      { text: '🎯 练习', link: '/practice' },
-      { text: '📚 文档课', link: '/docs' }
+      {
+        text: '成长规划',
+        items: [
+          { text: '大学四年自我提升全景手册', link: '/大学四年自我提升全景手册' },
+          { text: '实习速成方法论', link: '/实习速成方法论_思路篇与实践篇整合笔记' },
+          { text: '💼 求职面试高频题手册', link: '/求职面试高频题手册_大二实习版' },
+          { text: '向上社交行动手册', link: '/大学生向上社交行动手册' }
+        ]
+      },
+      { text: '视野简报', link: '/每日视野简报/' },
+      {
+        text: '🗂 知识库',
+        items: [
+          { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
+          { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
+          { text: '🤖 AI 学习', link: '/AI学习/' },
+          { text: '🎯 求职研究', link: '/求职研究/' }
+        ]
+      },
+      { text: '📒 错题本', link: '/wrongbook' },
+      { text: '🎮 知识闯关', link: '/game' }
     ],
 
     sidebar: {
-      // —— 功能页（文档/术语/练习/闯关/任务/错题/卡片）：独立页面，无文档侧栏，顶部用 ToolTabs 切换 ——
-      '/docs/': [],
-      '/terms/': [],
-      '/practice/': [],
-      '/points/': [],
-      '/tasks/': [],
-      '/wrongbook/': [],
-      '/game/': [],
       '/': [
         {
           text: '📚 学习笔记',
@@ -219,17 +196,6 @@ const config = defineConfig({
           ]
         },
         {
-          text: '🧠 自学资源',
-          collapsed: false,
-          items: [
-            { text: '栏目导览（大学不教的四件事）', link: '/自学资源/' },
-            { text: 'MIT Missing Semester（缺失的一课）', link: '/自学资源/MIT-Missing-Semester' },
-            { text: 'CS 自学指南（csdiy.wiki）', link: '/自学资源/CS自学指南_csdiy' },
-            { text: '《提问的智慧》', link: '/自学资源/提问的智慧' },
-            { text: 'University of NotTaught（待考证）', link: '/自学资源/University of NotTaught_拟缺即刻' }
-          ]
-        },
-        {
           text: '🧭 成长规划',
           collapsed: false,
           items: [
@@ -303,8 +269,6 @@ const config = defineConfig({
           text: '🧰 学习工具',
           collapsed: false,
           items: [
-            { text: '🧩 知识点卡片（一个点串全站）', link: '/points' },
-            { text: '✅ 每日任务 · 执行台（贴任务/打卡/复盘草稿）', link: '/tasks' },
             { text: '📒 错题本（闯关答错自动收录）', link: '/wrongbook' },
             { text: '🎮 知识闯关（每日挑战/全景闯关）', link: '/game' }
           ]

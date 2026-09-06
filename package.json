@@ -7,9 +7,12 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "rebuild": "node scripts/rebuild.mjs"
+    "rebuild": "node scripts/rebuild.mjs",
+    "wx:sync": "node 公众号精选/scripts/wx_sync.mjs"
   },
   "devDependencies": {
+    "rss-parser": "^3.13.0",
+    "turndown": "^7.2.4",
     "vitepress": "^1.6.3"
   }
 }

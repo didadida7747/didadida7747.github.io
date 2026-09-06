@@ -1,13 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import QuizGame from './QuizGame.vue'
 import WrongBook from './WrongBook.vue'
-import TaskBoard from './TaskBoard.vue'
-import KnowledgePoints from './KnowledgePoints.vue'
-import TermsPage from './TermsPage.vue'
-import PracticePage from './PracticePage.vue'
-import ToolTabs from './ToolTabs.vue'
-import DocsPage from './DocsPage.vue'
-import ThemePicker from './ThemePicker.vue'
 import MyLayout from './MyLayout.vue'
 import './custom.css'
 
@@ -17,12 +10,5 @@ export default {
   enhanceApp({ app }) {
     app.component('QuizGame', QuizGame)
     app.component('WrongBook', WrongBook)
-    app.component('TaskBoard', TaskBoard)
-    app.component('KnowledgePoints', KnowledgePoints)
-    app.component('TermsPage', TermsPage)
-    app.component('PracticePage', PracticePage)
-    app.component('ToolTabs', ToolTabs)
-    app.component('DocsPage', DocsPage)
-    app.component('ThemePicker', ThemePicker)
   }
 }

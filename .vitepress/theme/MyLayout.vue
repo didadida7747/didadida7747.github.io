@@ -6,7 +6,6 @@ import Starfield from './Starfield.vue'
 import DiscoverPanel from './DiscoverPanel.vue'
 import ReadingProgress from './ReadingProgress.vue'
 import DailyKnowledge from './DailyKnowledge.vue'
-import ThemePicker from './ThemePicker.vue'
 
 const { Layout } = DefaultTheme
 const { isDark, frontmatter } = useData()
@@ -103,10 +102,6 @@ onBeforeUnmount(() => {
   </div>
 
   <Layout>
-    <template #nav-bar-content-after>
-      <div class="nav-themepicker"><ThemePicker /></div>
-    </template>
-
     <template #home-hero-after>
       <DiscoverPanel v-if="frontmatter.layout === 'home'" />
       <DailyKnowledge v-if="frontmatter.layout === 'home'" />
@@ -122,17 +117,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style>
-/* 主题色切换器在导航栏中的落位（search 框之后） */
-.nav-themepicker {
-  display: flex;
-  align-items: center;
-  margin-left: 0.4rem;
-  padding-right: 0.6rem;
-}
-@media (max-width: 719px) {
-  .nav-themepicker { display: none; }
-}
-
 .starfield-holder {
   position: fixed;
   inset: 0;
@@ -146,75 +130,74 @@ onBeforeUnmount(() => {
   z-index: 1;
 }
 
-/* ===== 导航栏：vibe-hub 式白底 + 1px 底线（深色模式为深底同款线） ===== */
-.VPNavBar {
-  background: var(--vp-c-bg) !important;
-  border-bottom: 1px solid var(--vh-border, #e4e4e7);
-  transition: background 0.25s ease;
+/* ===== 导航栏：融入星空，无任何边框线；滚动后整条淡化防与正文重合 ===== */
+.dark .VPNavBar {
+  background: transparent !important;
+  border-bottom: none !important;
+  transition: opacity 0.35s ease;
 }
-.VPNavBar .content-body {
+.dark .VPNavBar .content-body {
   background: transparent !important;
   border-bottom: none !important;
   box-shadow: none !important;
 }
-.VPNavBar .content-body::after,
-.VPNavBar .divider,
-.divider-line {
+/* 屏幕边缘细线（content-body::after 是那条黑线的来源）彻底移除 */
+.dark .VPNavBar .content-body::after,
+.dark .VPNavBar .divider,
+.dark .divider-line {
   display: none !important;
   background: transparent !important;
   border: none !important;
   height: 0 !important;
 }
-.divider { background: transparent !important; }
+.dark .divider { background: transparent !important; }
 
-.VPNavBar:not(.home) {
-  background: var(--vp-c-bg) !important;
-  backdrop-filter: none;
+.dark .VPNavBar:not(.home) {
+  background: rgba(19, 23, 53, 0.5) !important;
+  backdrop-filter: blur(10px);
 }
 
-/* 滚动离顶后：导航保持白底细线（vibe-hub 不做淡化） */
-.VPNavBar:not(.top) {
+/* 滚动离顶后：导航整体（含字体与搜索框）淡化到 35%，悬停恢复 */
+.dark .VPNavBar:not(.top) {
+  opacity: 0.35;
+  background: transparent !important;
+  backdrop-filter: none;
+}
+.dark .VPNavBar:not(.top):hover,
+.dark .VPNavBar:not(.top):focus-within {
   opacity: 1;
-  background: var(--vp-c-bg) !important;
-  backdrop-filter: none;
-  border-bottom: 1px solid var(--vh-border, #e4e4e7);
+  background: rgba(19, 23, 53, 0.75) !important;
+  backdrop-filter: blur(12px);
 }
 
-/* 滚动离顶后：右侧"本页目录"淡化，悬停恢复（scrolled class 由布局脚本维护） */
-.VPDocAsideOutline {
+/* 滚动离顶后：右侧"本页目录"同步虚化，悬停恢复（scrolled class 由布局脚本维护） */
+.dark .VPDocAsideOutline {
   transition: opacity 0.35s ease;
 }
-body.scrolled .VPDocAsideOutline {
+.dark body.scrolled .VPDocAsideOutline {
   opacity: 0.3;
 }
-.VPDocAsideOutline:hover,
-.VPDocAsideOutline:focus-within {
+.dark .VPDocAsideOutline:hover,
+.dark .VPDocAsideOutline:focus-within {
   opacity: 1 !important;
 }
 
-/* ===== 侧边栏 ===== */
-.VPSidebar {
-  background: var(--vp-c-bg) !important;
-  border-right: 1px solid var(--vh-border, #e4e4e7);
+/* ===== 侧边栏：半透明悬浮 ===== */
+.dark .VPSidebar {
+  background: rgba(19, 23, 53, 0.6) !important;
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(170, 180, 210, 0.1);
 }
-.VPContent.has-sidebar {
+.dark .VPContent.has-sidebar {
   background: transparent !important;
 }
 
-/* ===== 文档正文区 ===== */
-.VPDoc {
+/* ===== 文档正文：磨砂卡片保证可读性 ===== */
+.dark .VPDoc {
   background: transparent;
 }
-/* 浅色模式正文直接铺在白底上（vibe-hub 无卡片包裹） */
-html:not(.dark) .vp-doc .container > .content {
-  background: transparent;
-  backdrop-filter: none;
-  border-radius: 0;
-  padding: 1.4rem 2rem;
-}
-/* 深色模式正文保持磨砂卡片保证可读性 */
 .dark .vp-doc .container > .content {
-  background: rgba(23, 23, 28, 0.72);
+  background: rgba(22, 27, 62, 0.55);
   backdrop-filter: blur(10px);
   border-radius: 14px;
   padding: 1.4rem 2rem;
@@ -241,12 +224,9 @@ html:not(.dark) .vp-doc .container > .content {
   inset: 0;
   z-index: 60;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.85));
+  background: linear-gradient(180deg, rgba(7, 9, 23, 0.5), rgba(7, 9, 23, 0.85));
   opacity: 0;
   transition: opacity 0.22s ease;
-}
-.dark .page-veil {
-  background: linear-gradient(180deg, rgba(10, 10, 14, 0.5), rgba(10, 10, 14, 0.85));
 }
 .page-veil.on {
   opacity: 1;
@@ -258,7 +238,7 @@ html:not(.dark) .vp-doc .container > .content {
   .page-veil { display: none; }
 }
 
-/* ===== 页面顶部光带（浅色仅极淡主色晕，深色保留原氛围） ===== */
+/* ===== 文档页顶部光带 ===== */
 .page-glow {
   position: absolute;
   top: 0;
@@ -267,8 +247,7 @@ html:not(.dark) .vp-doc .container > .content {
   height: 180px;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 100% at 30% 0%, var(--vh-accent-weak), transparent 70%),
-    radial-gradient(ellipse 50% 100% at 75% 0%, rgba(47, 79, 224, 0.05), transparent 70%);
+    radial-gradient(ellipse 60% 100% at 30% 0%, rgba(124, 58, 237, 0.10), transparent 70%),
+    radial-gradient(ellipse 50% 100% at 75% 0%, rgba(6, 182, 212, 0.08), transparent 70%);
 }
-
 </style>

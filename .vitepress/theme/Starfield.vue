@@ -5,6 +5,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 const canvasRef = ref(null)
 let rafId = 0
 let onResize = null
+let onVisChange = null
 
 function starColor(r, g, b, alpha) {
   return `rgba(${r},${g},${b},${alpha})`
@@ -97,17 +98,31 @@ onMounted(() => {
       m.life -= 0.018
     }
 
-    rafId = requestAnimationFrame(draw)
+    if (running) rafId = requestAnimationFrame(draw)
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  // 后台标签页暂停逐帧绘制省 CPU，回前台续上；running 标志保证 stop 后残留帧不再续命
+  let running = false
+  function startLoop() {
+    if (running) return
+    running = true
+    rafId = requestAnimationFrame(draw)
+  }
+  function stopLoop() {
+    running = false
+    cancelAnimationFrame(rafId)
+  }
   buildStars()
   if (reduceMotion) {
     draw(0)
     cancelAnimationFrame(rafId)
   } else {
-    rafId = requestAnimationFrame(draw)
+    startLoop()
   }
+
+  onVisChange = () => (document.hidden ? stopLoop() : startLoop())
+  document.addEventListener('visibilitychange', onVisChange)
 
   onResize = () => {
     buildStars()
@@ -122,6 +137,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   cancelAnimationFrame(rafId)
   if (onResize) window.removeEventListener('resize', onResize)
+  if (onVisChange) document.removeEventListener('visibilitychange', onVisChange)
 })
 </script>
 

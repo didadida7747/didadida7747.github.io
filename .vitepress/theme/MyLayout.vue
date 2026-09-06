@@ -29,6 +29,12 @@ let onScroll = null
 // 用 setInterval 而非 requestAnimationFrame：后台/被节流的标签页里 rAF 会挂起导致滚动卡死
 let scrollTimer = null
 function smoothScrollTo(targetY) {
+  // 系统开了"减少动态效果"时直接落位，不播缓动（matchMedia 只在点击回调里跑，不碰 SSR）
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (scrollTimer) clearInterval(scrollTimer)
+    window.scrollTo(0, targetY)
+    return
+  }
   if (scrollTimer) clearInterval(scrollTimer)
   const startY = window.scrollY
   const dist = targetY - startY

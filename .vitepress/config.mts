@@ -176,6 +176,25 @@ const config = defineConfig({
                 { text: '18 科研入门', link: '/科协暑培2025_逐集详注/18_科研入门_BV1zPegzFELs' },
                 { text: '19 OMOR 分享', link: '/科协暑培2025_逐集详注/19_OMOR分享_BV1R2b8zeEfc' }
               ]
+            },
+            {
+              text: '科协暑培 2026 逐集详注（查阅：按讲次顺序）',
+              collapsed: true,
+              items: [
+                { text: '01 CS 生存指南', link: '/科协暑培2026_逐集详注/01_CS生存指南_BV1CFK26nErF' },
+                { text: '02 Coding Agent', link: '/科协暑培2026_逐集详注/02_CodingAgent_BV135Kh6dERa' },
+                { text: '03 前端入门', link: '/科协暑培2026_逐集详注/03_前端入门_BV1Rt3K6qEjE' },
+                { text: '04 后端入门', link: '/科协暑培2026_逐集详注/04_后端入门_BV137gZ6VE2j' },
+                { text: '05 AI Overview', link: '/科协暑培2026_逐集详注/05_AIOverview_BV1oH346AEwU' },
+                { text: '06 MLSys', link: '/科协暑培2026_逐集详注/06_MLsys_BV1KwMQ6GEcp' },
+                { text: '07 LLM 训练原理', link: '/科协暑培2026_逐集详注/07_LLM训练原理_BV1MpMC6dEVn' },
+                { text: '08 Agent Harness', link: '/科协暑培2026_逐集详注/08_AgentHarness_BV18Uu36rEbu' },
+                { text: '09 扩散模型', link: '/科协暑培2026_逐集详注/09_扩散模型_BV1Eiui6oE9d' },
+                { text: '10 具身智能', link: '/科协暑培2026_逐集详注/10_具身智能_BV137gW6LEUU' },
+                { text: '11 网络安全', link: '/科协暑培2026_逐集详注/11_网络安全_BV1pS8g6yEsv' },
+                { text: '12 科研一', link: '/科协暑培2026_逐集详注/12_科研一_BV18D8r65E9c' },
+                { text: '13 科研二', link: '/科协暑培2026_逐集详注/13_科研二_BV13m886mELr' }
+              ]
             }
           ]
         },

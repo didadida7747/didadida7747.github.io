@@ -16,3 +16,7 @@ node_modules/
 公众号精选/articles/
 公众号精选/data/
 公众号精选/logs/
+
+# 视频转写素材库：版权原因不上站，只留本地（video-notes 流水线）
+素材库/
+2025科协暑期培训/

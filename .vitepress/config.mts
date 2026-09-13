@@ -89,6 +89,7 @@ const config = defineConfig({
           { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
           { text: '计算机组成原理 · 全景导学', link: '/计算机组成原理_全景导学笔记' },
           { text: '科协暑培 2026 · 大二学习文档', link: '/科协暑培2026合集_大二学生学习文档' },
+          { text: '科协暑培 2025 · 学习导览', link: '/科协暑培2025合集_大二学生学习文档' },
           { text: '生成式软工 2026 秋 · 导览', link: '/生成式软件工程2026秋合集_大二学生学习文档' }
         ]
       },
@@ -134,6 +135,7 @@ const config = defineConfig({
             // 排序逻辑：先读合集手册建立全景 → 再看单科导学 → 最后逐集详注（跟着课程进度走）
             { text: 'SI100+ 夏合集 · 大二学习手册（先看：建立全景）', link: '/SI100+ 2026夏合集_大二学生学习文档' },
             { text: '科协暑培 2026 · 大二学习文档（先看：杂谈热身）', link: '/科协暑培2026合集_大二学生学习文档' },
+            { text: '科协暑培 2025 · 学习导览（语言/AI/工程全景 + 19 集详注）', link: '/科协暑培2025合集_大二学生学习文档' },
             { text: '计算机组成原理 · 全景导学（本学期硬课：优先吃透）', link: '/计算机组成原理_全景导学笔记' },
             { text: '生成式软工 2026 秋 · 开学前导览（新学期课程）', link: '/生成式软件工程2026秋合集_大二学生学习文档' },
             {
@@ -148,6 +150,31 @@ const config = defineConfig({
                 { text: '06 Lec06 控制流', link: '/SI100+ 2026夏_逐集详注/06_Lec06控制流_BV1xCgp6BEkj' },
                 { text: '07 CSEE 培养方案解读', link: '/SI100+ 2026夏_逐集详注/07_CSEE培养方案解读_BV17z8F6rEn4' },
                 { text: '08 从零开始的荣誉班', link: '/SI100+ 2026夏_逐集详注/08_从零开始的荣誉班_BV1N8g56LE8c' }
+              ]
+            },
+            {
+              text: '科协暑培 2025 逐集详注（查阅：按讲次顺序）',
+              collapsed: true,
+              items: [
+                { text: '01 Python', link: '/科协暑培2025_逐集详注/01_python_BV1TfhbzsEVQ' },
+                { text: '02 web 基础', link: '/科协暑培2025_逐集详注/02_web基础_BV1UmhszLEey' },
+                { text: '03 爬虫', link: '/科协暑培2025_逐集详注/03_爬虫_BV1ubeWznEoL' },
+                { text: '04 JS', link: '/科协暑培2025_逐集详注/04_JS_BV1zoezzjEiX' },
+                { text: '05 TS', link: '/科协暑培2025_逐集详注/05_TS_BV1vKe6zgEHd' },
+                { text: '06 Java', link: '/科协暑培2025_逐集详注/06_java_BV1gXbzzHE97' },
+                { text: '07 Linux 与 Git', link: '/科协暑培2025_逐集详注/07_Linux与Git_BV1Hh81z9EM5' },
+                { text: '08 Docker', link: '/科协暑培2025_逐集详注/08_Docker_BV1eSb8zaEAf' },
+                { text: '09 数据库与 SQL', link: '/科协暑培2025_逐集详注/09_数据库与SQL_BV1FgtnzVEXF' },
+                { text: '10 大模型基础', link: '/科协暑培2025_逐集详注/10_大模型基础_BV1gs8hzaEoL' },
+                { text: '11 NLP 与主流 LLM 架构', link: '/科协暑培2025_逐集详注/11_NLP与主流LLM架构_BV1jDbCzuE3c' },
+                { text: '12 LLM reasoning', link: '/科协暑培2025_逐集详注/12_LLM推理从非形式到形式_BV1vr8FzJEcV' },
+                { text: '13 神经网络与 PyTorch', link: '/科协暑培2025_逐集详注/13_神经网络与pytorch入门_BV1M6gVzfE1M' },
+                { text: '14 图神经网络', link: '/科协暑培2025_逐集详注/14_图神经网络_BV1UY8gzvErS' },
+                { text: '15 Rust', link: '/科协暑培2025_逐集详注/15_Rust_BV1uitpzNE5L' },
+                { text: '16 Unity', link: '/科协暑培2025_逐集详注/16_Unity_BV1L9YmztEEm' },
+                { text: '17 django', link: '/科协暑培2025_逐集详注/17_django_BV1R3tAzSE35' },
+                { text: '18 科研入门', link: '/科协暑培2025_逐集详注/18_科研入门_BV1zPegzFELs' },
+                { text: '19 OMOR 分享', link: '/科协暑培2025_逐集详注/19_OMOR分享_BV1R2b8zeEfc' }
               ]
             }
           ]

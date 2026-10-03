@@ -1,74 +1,88 @@
 import { defineConfig } from 'vitepress'
-import { readdirSync, readFileSync } from 'node:fs'
+import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs'
+import { join } from 'node:path'
 
-// 工作区根目录即站点根：新增 md 文件即自动成为新页面。
-// site/ 子目录已弃用，站点工程文件都在 .vitepress/ 与根目录。
+// 工作区根目录即站点根：内容镜像自本地资料库 01–10 编号板块（2026-10-03 整理）。
+// 侧边栏按板块目录自动扫描生成：md 文件取第一个 # 大标题做显示名，子目录折叠为分组。
 
-// —— 自动收录：根目录下未登记进侧边栏的笔记，自动归入「未归类笔记」组 ——
-function collectSidebarLinks(items: any[], set = new Set<string>()): Set<string> {
-  for (const it of items) {
-    if (it.link) set.add(it.link)
-    if (it.items) collectSidebarLinks(it.items, set)
-  }
-  return set
+// —— 从 md 文件读第一个 # 大标题（退化用文件名）——
+function mdTitle(absPath: string, fallback: string): string {
+  try {
+    const m = readFileSync(absPath, 'utf8').match(/^#\s+(.+)$/m)
+    if (m) return m[1].replace(/[*`]/g, '').trim()
+  } catch { /* 读不出标题就用文件名 */ }
+  return fallback
 }
 
-function buildAutoSidebarGroup(links: Set<string>) {
-  const skip = new Set(['home.md', 'index.md'])
-  const items = readdirSync(process.cwd())
-    .filter(f => f.endsWith('.md') && !skip.has(f) && !links.has('/' + f.replace(/\.md$/, '')))
-    .map(f => {
-      let title = f.replace(/\.md$/, '')
-      try {
-        const m = readFileSync(f, 'utf8').match(/^#\s+(.+)$/m)
-        if (m) title = m[1].replace(/[*`]/g, '').trim()
-      } catch { /* 读不出标题就用文件名 */ }
-      return { text: '🆕 ' + title, link: '/' + f.replace(/\.md$/, '') }
-    })
-  return items.length
-    ? [{ text: '🗂 未归类笔记（新文件自动收录）', collapsed: false, items }]
-    : []
+// —— 递归扫描一个内容目录，生成侧边栏 items ——
+// index.md / README.md 命名为「栏目导览」并排在首位；子目录折叠为分组。
+function scanDir(relDir: string): any[] {
+  const abs = join(process.cwd(), relDir)
+  const base = '/' + relDir
+  const files: any[] = []
+  const dirs: any[] = []
+  let indexItem: any = null
+
+  for (const name of readdirSync(abs)) {
+    if (!name.endsWith('.md')) continue
+    const full = join(abs, name)
+    if (name === 'index.md' || name === 'README.md') {
+      indexItem = { text: '栏目导览', link: base + '/' }
+      continue
+    }
+    files.push({ text: mdTitle(full, name.replace(/\.md$/, '')), link: `${base}/${name.replace(/\.md$/, '')}` })
+  }
+
+  for (const name of readdirSync(abs)) {
+    const full = join(abs, name)
+    if (!statSync(full).isDirectory()) continue
+    const sub = scanDir(join(relDir, name))
+    if (!sub.length) continue
+    let groupText = name
+    if (sub[0]?.text === '栏目导览') {
+      const idxFile = ['index.md', 'README.md'].map(n => join(full, n)).find(p => existsSync(p))
+      if (idxFile) groupText = mdTitle(idxFile, name)
+    }
+    dirs.push({ text: groupText, collapsed: true, items: sub })
+  }
+
+  const natural = (a: any, b: any) => String(a.text).localeCompare(String(b.text), 'zh-Hans-CN', { numeric: true })
+  files.sort(natural)
+  dirs.sort((a, b) => String(a.text).localeCompare(String(b.text), 'zh-Hans-CN', { numeric: true }))
+  return indexItem ? [indexItem, ...files, ...dirs] : [...files, ...dirs]
 }
 
 const config = defineConfig({
   lang: 'zh-CN',
   title: '日常与规划',
-  description: '一名大二学生的个人资料储藏室：学习笔记、成长规划、知识库与每日视野简报',
+  description: '一名大二学生的个人资料储藏室：学习笔记、求职研究、技能知识库与每日视野简报',
 
-  // 排除不想成为页面的内容（B 站抓取的临时转写、grok 克隆仓库、简报原始素材等）
+  // 排除不想成为页面的内容
   srcExclude: [
     '.bili_tmp/**',
     'node_modules/**',
     '.vitepress/**',
-    'public/**',
-    // grok 目录里整仓克隆的 openai-codex 仓库（200+ md、含裸 HTML），属工具产物非笔记
-    '软件使用/grok使用/**',
-    '每日视野简报/data/**',
-    '每日视野简报/prompts/**',
-    '每日视野简报/templates/**'
+    'public/**'
   ],
   rewrites: {
     'home.md': 'index.md',
-    '大观/00-总导读_先读我.md': '大观/index.md',
-    '每日视野简报/README.md': '每日视野简报/index.md',
-    '软件使用/codex使用/codex-learning/README.md': '软件使用/codex使用/codex-learning/index.md',
-    '嵌入式体系/README.md': '嵌入式体系/index.md',
-    'STM32工作流/README.md': 'STM32工作流/index.md',
-    'AI学习/README.md': 'AI学习/index.md',
-    '求职研究/README.md': '求职研究/index.md'
+    '大观导读_脱敏版/00-总导读_先读我.md': '大观/index.md',
+    '大观导读_脱敏版/01-求职与就业导读.md': '大观/01-求职与就业导读.md',
+    '大观导读_脱敏版/02-课程学习导读.md': '大观/02-课程学习导读.md',
+    '大观导读_脱敏版/03-技术成长导读.md': '大观/03-技术成长导读.md',
+    '大观导读_脱敏版/04-生活与自我管理导读.md': '大观/04-生活与自我管理导读.md',
+    '大观导读_脱敏版/05-工具与信息流导读.md': '大观/05-工具与信息流导读.md'
   },
 
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
-  // 死链体检清零后关闭豁免（2026-09-06）：让构建替我们把关，新死链当场暴露而非带上线
+  // 死链体检保持开启：新死链当场暴露而非带上线（2026-09-06 起）。
+  // 仅豁免教程里的 localhost 示例地址（如 Docker 测试页），它们本就不是站内链接。
+  ignoreDeadLinks: [/^https?:\/\/localhost/],
 
-  // 站点地图：给搜索引擎收录用（借鉴 mkdocs-material/docusaurus 惯例）
   sitemap: { hostname: 'https://didadida7747.github.io' },
-
-  // 文章底部显示"最后更新于"（取 git 提交时间）：资料储藏室一眼看出笔记新旧
   lastUpdated: true,
 
   markdown: {
-    // 代码块行号：笔记里"对照第 N 行"的场景多（学习笔记属性）
     lineNumbers: true
   },
 
@@ -83,36 +97,27 @@ const config = defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
+      { text: '🗺️ 大观', link: '/大观/' },
       {
-        text: '学习笔记',
+        text: '📚 课程笔记',
         items: [
-          { text: 'SI100+ 夏合集 · 学习手册', link: '/SI100+ 2026夏合集_大二学生学习文档' },
-          { text: '计算机组成原理 · 全景导学', link: '/计算机组成原理_全景导学笔记' },
-          { text: '科协暑培 2026 · 大二学习文档', link: '/科协暑培2026合集_大二学生学习文档' },
-          { text: '科协暑培 2025 · 学习导览', link: '/科协暑培2025合集_大二学生学习文档' },
-          { text: '生成式软工 2026 秋 · 导览', link: '/生成式软件工程2026秋合集_大二学生学习文档' }
+          { text: 'SI100+ 夏合集 · 学习手册', link: '/07-学业与深造/课程视频笔记/SI100+计算机导论2026夏/SI100+ 2026夏合集_大二学生学习文档' },
+          { text: '计算机组成原理 · 全景导学', link: '/07-学业与深造/课程视频笔记/408核心课导学/计算机组成原理_全景导学笔记' },
+          { text: '科协暑培 2026 · 大二学习文档', link: '/07-学业与深造/课程视频笔记/科协暑培2026/科协暑培2026合集_大二学生学习文档' },
+          { text: '科协暑培 2025 · 学习导览', link: '/07-学业与深造/课程视频笔记/科协暑培2025/科协暑培2025合集_大二学生学习文档' },
+          { text: '生成式软工 2026 秋 · 导览', link: '/07-学业与深造/课程视频笔记/生成式软件工程2026秋/生成式软件工程2026秋合集_大二学生学习文档' }
         ]
       },
       {
-        text: '成长规划',
+        text: '🎯 求职就业',
         items: [
-          { text: '大学四年自我提升全景手册', link: '/大学四年自我提升全景手册' },
-          { text: '实习速成方法论', link: '/实习速成方法论_思路篇与实践篇整合笔记' },
-          { text: '💼 求职面试高频题手册', link: '/求职面试高频题手册_大二实习版' },
-          { text: '向上社交行动手册', link: '/大学生向上社交行动手册' }
+          { text: '求职研究 · 方法论导航', link: '/02-职业方向规划/求职研究/' },
+          { text: '实习速成方法论', link: '/03-竞赛与就业/实习速成方法论_思路篇与实践篇整合笔记' },
+          { text: '求职面试高频题手册', link: '/03-竞赛与就业/求职面试高频题手册_大二实习版' },
+          { text: '职业战略校准（决策范例）', link: '/02-职业方向规划/求职研究/职业战略校准_2026-09' }
         ]
       },
-      { text: '视野简报', link: '/每日视野简报/' },
-      {
-        text: '🗂 知识库',
-        items: [
-          { text: '🗺️ 大观 · 全站导读', link: '/大观/' },
-          { text: '🔬 嵌入式体系', link: '/嵌入式体系/' },
-          { text: '⚙️ STM32 工作流', link: '/STM32工作流/' },
-          { text: '🤖 AI 学习', link: '/AI学习/' },
-          { text: '🎯 求职研究', link: '/求职研究/' }
-        ]
-      },
+      { text: '🗞️ 简报', link: '/04-视野简报/' }
     ],
 
     sidebar: {
@@ -122,7 +127,7 @@ const config = defineConfig({
           collapsed: false,
           items: [
             { text: '总导读 · 先读我', link: '/大观/' },
-            { text: '01 求职体系', link: '/大观/01-求职体系导读' },
+            { text: '01 求职与就业', link: '/大观/01-求职与就业导读' },
             { text: '02 课程学习', link: '/大观/02-课程学习导读' },
             { text: '03 技术成长', link: '/大观/03-技术成长导读' },
             { text: '04 生活与自我管理', link: '/大观/04-生活与自我管理导读' },
@@ -130,270 +135,62 @@ const config = defineConfig({
           ]
         },
         {
-          text: '📚 学习笔记',
-          items: [
-            // 排序逻辑：先读合集手册建立全景 → 再看单科导学 → 最后逐集详注（跟着课程进度走）
-            { text: 'SI100+ 夏合集 · 大二学习手册（先看：建立全景）', link: '/SI100+ 2026夏合集_大二学生学习文档' },
-            { text: '科协暑培 2026 · 大二学习文档（先看：杂谈热身）', link: '/科协暑培2026合集_大二学生学习文档' },
-            { text: '科协暑培 2025 · 学习导览（语言/AI/工程全景 + 19 集详注）', link: '/科协暑培2025合集_大二学生学习文档' },
-            { text: '计算机组成原理 · 全景导学（本学期硬课：优先吃透）', link: '/计算机组成原理_全景导学笔记' },
-            { text: '生成式软工 2026 秋 · 开学前导览（新学期课程）', link: '/生成式软件工程2026秋合集_大二学生学习文档' },
-            {
-              text: 'SI100+ 逐集详注（查漏：按讲次顺序）',
-              collapsed: true,
-              items: [
-                { text: '01 Intro 与上科大生存指南', link: '/SI100+ 2026夏_逐集详注/01_Intro与上科大生存指南_BV1XJuH63EWr' },
-                { text: '02 Lec00 环境配置微课', link: '/SI100+ 2026夏_逐集详注/02_Lec00环境配置微课_BV1HauP6gET8_P1' },
-                { text: '03 Lec00 环境介绍正课', link: '/SI100+ 2026夏_逐集详注/03_Lec00环境介绍正课_BV1HauP6gET8_P2' },
-                { text: '04 Lec04 变量运算符和表达式', link: '/SI100+ 2026夏_逐集详注/04_Lec04变量运算符和表达式_BV1PCuZ6aE3L' },
-                { text: '05 Lec05 函数', link: '/SI100+ 2026夏_逐集详注/05_Lec05函数_BV1KCgp6BEAd' },
-                { text: '06 Lec06 控制流', link: '/SI100+ 2026夏_逐集详注/06_Lec06控制流_BV1xCgp6BEkj' },
-                { text: '07 CSEE 培养方案解读', link: '/SI100+ 2026夏_逐集详注/07_CSEE培养方案解读_BV17z8F6rEn4' },
-                { text: '08 从零开始的荣誉班', link: '/SI100+ 2026夏_逐集详注/08_从零开始的荣誉班_BV1N8g56LE8c' }
-              ]
-            },
-            {
-              text: '科协暑培 2025 逐集详注（查阅：按讲次顺序）',
-              collapsed: true,
-              items: [
-                { text: '01 Python', link: '/科协暑培2025_逐集详注/01_python_BV1TfhbzsEVQ' },
-                { text: '02 web 基础', link: '/科协暑培2025_逐集详注/02_web基础_BV1UmhszLEey' },
-                { text: '03 爬虫', link: '/科协暑培2025_逐集详注/03_爬虫_BV1ubeWznEoL' },
-                { text: '04 JS', link: '/科协暑培2025_逐集详注/04_JS_BV1zoezzjEiX' },
-                { text: '05 TS', link: '/科协暑培2025_逐集详注/05_TS_BV1vKe6zgEHd' },
-                { text: '06 Java', link: '/科协暑培2025_逐集详注/06_java_BV1gXbzzHE97' },
-                { text: '07 Linux 与 Git', link: '/科协暑培2025_逐集详注/07_Linux与Git_BV1Hh81z9EM5' },
-                { text: '08 Docker', link: '/科协暑培2025_逐集详注/08_Docker_BV1eSb8zaEAf' },
-                { text: '09 数据库与 SQL', link: '/科协暑培2025_逐集详注/09_数据库与SQL_BV1FgtnzVEXF' },
-                { text: '10 大模型基础', link: '/科协暑培2025_逐集详注/10_大模型基础_BV1gs8hzaEoL' },
-                { text: '11 NLP 与主流 LLM 架构', link: '/科协暑培2025_逐集详注/11_NLP与主流LLM架构_BV1jDbCzuE3c' },
-                { text: '12 LLM reasoning', link: '/科协暑培2025_逐集详注/12_LLM推理从非形式到形式_BV1vr8FzJEcV' },
-                { text: '13 神经网络与 PyTorch', link: '/科协暑培2025_逐集详注/13_神经网络与pytorch入门_BV1M6gVzfE1M' },
-                { text: '14 图神经网络', link: '/科协暑培2025_逐集详注/14_图神经网络_BV1UY8gzvErS' },
-                { text: '15 Rust', link: '/科协暑培2025_逐集详注/15_Rust_BV1uitpzNE5L' },
-                { text: '16 Unity', link: '/科协暑培2025_逐集详注/16_Unity_BV1L9YmztEEm' },
-                { text: '17 django', link: '/科协暑培2025_逐集详注/17_django_BV1R3tAzSE35' },
-                { text: '18 科研入门', link: '/科协暑培2025_逐集详注/18_科研入门_BV1zPegzFELs' },
-                { text: '19 OMOR 分享', link: '/科协暑培2025_逐集详注/19_OMOR分享_BV1R2b8zeEfc' }
-              ]
-            },
-            {
-              text: '科协暑培 2026 逐集详注（查阅：按讲次顺序）',
-              collapsed: true,
-              items: [
-                { text: '01 CS 生存指南', link: '/科协暑培2026_逐集详注/01_CS生存指南_BV1CFK26nErF' },
-                { text: '02 Coding Agent', link: '/科协暑培2026_逐集详注/02_CodingAgent_BV135Kh6dERa' },
-                { text: '03 前端入门', link: '/科协暑培2026_逐集详注/03_前端入门_BV1Rt3K6qEjE' },
-                { text: '04 后端入门', link: '/科协暑培2026_逐集详注/04_后端入门_BV137gZ6VE2j' },
-                { text: '05 AI Overview', link: '/科协暑培2026_逐集详注/05_AIOverview_BV1oH346AEwU' },
-                { text: '06 MLSys', link: '/科协暑培2026_逐集详注/06_MLsys_BV1KwMQ6GEcp' },
-                { text: '07 LLM 训练原理', link: '/科协暑培2026_逐集详注/07_LLM训练原理_BV1MpMC6dEVn' },
-                { text: '08 Agent Harness', link: '/科协暑培2026_逐集详注/08_AgentHarness_BV18Uu36rEbu' },
-                { text: '09 扩散模型', link: '/科协暑培2026_逐集详注/09_扩散模型_BV1Eiui6oE9d' },
-                { text: '10 具身智能', link: '/科协暑培2026_逐集详注/10_具身智能_BV137gW6LEUU' },
-                { text: '11 网络安全', link: '/科协暑培2026_逐集详注/11_网络安全_BV1pS8g6yEsv' },
-                { text: '12 科研一', link: '/科协暑培2026_逐集详注/12_科研一_BV18D8r65E9c' },
-                { text: '13 科研二', link: '/科协暑培2026_逐集详注/13_科研二_BV13m886mELr' }
-              ]
-            }
-          ]
-        },
-        {
-          text: '🔬 嵌入式体系',
-          collapsed: false,
-          items: [
-            { text: '栏目导览', link: '/嵌入式体系/' },
-            { text: '能力地图与离开条件', link: '/嵌入式体系/嵌入式能力地图' },
-            { text: '资源索引', link: '/嵌入式体系/嵌入式资源索引' },
-            {
-              text: '能力课程（按依赖顺序）',
-              collapsed: true,
-              items: [
-                { text: '01 C 工程化', link: '/嵌入式体系/C工程化' },
-                { text: 'C 工程化 · 实习专项练习', link: '/嵌入式体系/C工程化实习专项练习' },
-                { text: '02 STM32 与调试', link: '/嵌入式体系/STM32与调试' },
-                { text: '03 通信与协议', link: '/嵌入式体系/通信与协议' },
-                { text: '04 实时系统与 FreeRTOS', link: '/嵌入式体系/实时系统与FreeRTOS' },
-                { text: '05 Linux 与 C++', link: '/嵌入式体系/Linux与C++' },
-                { text: '06 ROS2 与机器人基础', link: '/嵌入式体系/ROS2与机器人基础' },
-                { text: '07 AI 与强化学习基础', link: '/嵌入式体系/AI与强化学习基础' }
-              ]
-            },
-            {
-              text: '工程方法',
-              collapsed: true,
-              items: [
-                { text: 'AI 协作请求模板', link: '/嵌入式体系/AI协作请求模板' },
-                { text: '实习指标与故障注入', link: '/嵌入式体系/实习指标与故障注入' },
-                { text: '技术取舍记录', link: '/嵌入式体系/技术取舍记录' },
-                { text: '作品集发布标准', link: '/嵌入式体系/作品集发布标准' },
-                { text: '简历与面试证据', link: '/嵌入式体系/简历与面试证据' }
-              ]
-            }
-          ]
-        },
-        {
-          text: '⚙️ STM32 工作流',
+          text: '💻 电脑与工具链',
           collapsed: true,
-          items: [
-            { text: '栏目导览', link: '/STM32工作流/' },
-            { text: 'STM32 学习路径', link: '/STM32工作流/STM32学习路径' },
-            { text: '中断模型知识卡', link: '/STM32工作流/中断模型知识卡' },
-            { text: 'UART 常见坑检查单', link: '/STM32工作流/UART常见坑检查单' },
-            { text: '启动流程与 main 函数', link: '/STM32工作流/启动流程与main函数' },
-            { text: '工具链检查清单', link: '/STM32工作流/工具链检查清单' },
-            { text: '嵌入式 AI 提示词五件套', link: '/STM32工作流/嵌入式AI提示词五件套' }
-          ]
+          items: scanDir('01-电脑与工具链')
         },
         {
-          text: '🤖 AI 学习',
+          text: '🎯 职业方向与求职',
+          collapsed: false,
+          items: [...scanDir('02-职业方向规划'), ...scanDir('03-竞赛与就业')]
+        },
+        {
+          text: '📚 课程与学业',
           collapsed: false,
           items: [
-            { text: '栏目导览（入门路线）', link: '/AI学习/' },
-            { text: '大模型基础速读', link: '/AI学习/大模型基础速读' },
-            { text: '强化学习基础速读', link: '/AI学习/强化学习基础速读' },
-            { text: '多智能体强化学习速读', link: '/AI学习/多智能体强化学习速读' },
-            { text: 'LLM 与 RL 代码实践指南', link: '/AI学习/LLM与RL代码实践指南' },
-            { text: '第一小时视频清单（7 天）', link: '/AI学习/第一小时视频清单' },
-            { text: 'PPO CartPole 逐行讲解', link: '/AI学习/PPO_CartPole逐行讲解' },
-            {
-              text: '巩固与实战',
-              collapsed: true,
-              items: [
-                { text: 'MLP 手搓达标自测', link: '/AI学习/MLP手搓达标自测' },
-                { text: '两模型辩论项目实录', link: '/AI学习/两模型辩论项目实录' },
-                { text: '嵌入式 AI 转型路线图', link: '/AI学习/嵌入式AI转型路线图' }
-              ]
-            }
+            { text: '01-电子信息核心课程学习地图', link: '/07-学业与深造/01-电子信息核心课程学习地图' },
+            { text: '02-保研考研留学深造预案', link: '/07-学业与深造/02-保研考研留学深造预案' },
+            ...scanDir('07-学业与深造/课程视频笔记'),
+            ...scanDir('07-学业与深造/自学资源')
           ]
         },
         {
-          text: '🧭 成长规划',
-          collapsed: false,
-          items: [
-            // 排序逻辑：紧急且当下就要用的在前（实习>面试题>四年框架>社交>语言>金融>副业）
-            { text: '实习速成方法论（🔥 大二下就要用：最紧急）', link: '/实习速成方法论_思路篇与实践篇整合笔记' },
-            { text: '求职面试高频题手册（💼 含面试模拟题）', link: '/求职面试高频题手册_大二实习版' },
-            { text: '大学四年自我提升全景手册（总框架：先立地图）', link: '/大学四年自我提升全景手册' },
-            { text: '大学生向上社交行动手册（本学期就能练）', link: '/大学生向上社交行动手册' },
-            { text: '英语听说能力 12 周提升计划（长期Daily，任选时机启动）', link: '/英语听说能力12周提升计划' },
-            { text: '黑客松与可交付项目增收指南（有机会再启用）', link: '/黑客松与可交付项目增收行动指南' },
-            { text: '投资与金融素养入门（低紧急度：打好钱包观即可）', link: '/投资与金融素养入门计划' }
-          ]
-        },
-        {
-          text: '🎯 求职研究',
+          text: '🤖 技能与兴趣',
           collapsed: true,
-          items: [
-            { text: '栏目导览', link: '/求职研究/' },
-            {
-              text: '战略与实验（2026-09 新增）',
-              collapsed: false,
-              items: [
-                { text: '职业战略校准（方向决策范例）', link: '/求职研究/职业战略校准_2026-09' },
-                { text: '四周验证计划（三方向对比）', link: '/求职研究/四周验证计划_2026-09' },
-                { text: '方向实验一 · 可靠任务服务', link: '/求职研究/方向实验/方向实验一_可靠任务服务' },
-                { text: '方向实验二 · 媒体处理管线', link: '/求职研究/方向实验/方向实验二_媒体处理管线' },
-                { text: '方向实验统一记录模板', link: '/求职研究/方向实验/方向实验统一记录模板' }
-              ]
-            },
-            {
-              text: '方向选择',
-              collapsed: true,
-              items: [
-                { text: '岗位地图', link: '/求职研究/岗位地图' },
-                { text: '岗位可得性与竞争矩阵', link: '/求职研究/岗位可得性与竞争矩阵' },
-                { text: '能力矩阵（三级证据标准）', link: '/求职研究/能力矩阵' },
-                { text: '大学整体实习规划', link: '/求职研究/大学整体实习规划' },
-                { text: '技术栈优先级', link: '/求职研究/技术栈优先级' },
-                { text: '规划优先级与冲突处理', link: '/求职研究/规划优先级与冲突处理' }
-              ]
-            },
-            {
-              text: '申请执行',
-              collapsed: true,
-              items: [
-                { text: '简历项目写法', link: '/求职研究/简历项目写法' },
-                { text: '申请与避坑', link: '/求职研究/申请与避坑' },
-                { text: '官方资料清单', link: '/求职研究/官方资料清单' }
-              ]
-            },
-            {
-              text: '岗位运营',
-              collapsed: true,
-              items: [
-                { text: '岗位评分规则', link: '/求职研究/岗位评分规则' },
-                { text: '岗位检索异常处理', link: '/求职研究/岗位检索异常处理' },
-                { text: '岗位搜索源与查询词', link: '/求职研究/岗位搜索源与查询词' }
-              ]
-            }
-          ]
+          items: scanDir('09-课外技能')
         },
         {
-          text: '🏃 生活与健康',
-          collapsed: false,
-          items: [
-            { text: '健身指导手册 · 从入门到进阶', link: '/健身指导手册_从入门到进阶' },
-            { text: '联想拯救者电脑保养手册', link: '/联想拯救者电脑保养手册' }
-          ]
+          text: '🧭 成长与生活',
+          collapsed: true,
+          items: scanDir('05-大学生活')
+        },
+        {
+          text: '💰 学生优惠大全',
+          collapsed: true,
+          items: scanDir('08-学生优惠大全')
+        },
+        {
+          text: '🧠 脑力赚钱调研',
+          collapsed: true,
+          items: scanDir('10-脑力赚钱')
         },
         {
           text: '🗞️ 视野简报',
           collapsed: true,
-          items: [
-            { text: '简报说明', link: '/每日视野简报/' },
-            {
-              text: '日报归档',
-              collapsed: true,
-              items: [
-                { text: '2026-08-15', link: '/每日视野简报/reports/daily/2026-08-15' },
-                { text: '2026-08-16', link: '/每日视野简报/reports/daily/2026-08-16' },
-                { text: '2026-08-18', link: '/每日视野简报/reports/daily/2026-08-18' },
-                { text: '2026-08-19', link: '/每日视野简报/reports/daily/2026-08-19' },
-                { text: '2026-08-20', link: '/每日视野简报/reports/daily/2026-08-20' },
-                { text: '2026-08-22', link: '/每日视野简报/reports/daily/2026-08-22' },
-                { text: '2026-08-31', link: '/每日视野简报/reports/daily/2026-08-31' }
-              ]
-            },
-            { text: '2026-W33 周报', link: '/每日视野简报/reports/weekly/2026-W33' }
-          ]
+          items: scanDir('04-视野简报')
         },
         {
-          text: '🛠️ 工具与资源',
+          text: '🕳️ 闲翻杂读',
+          collapsed: true,
+          items: scanDir('06-闲翻杂读')
+        },
+        {
+          text: '🛠️ 站点工程',
           collapsed: true,
           items: [
-            { text: '软件使用 · 总览', link: '/软件使用/README' },
-            { text: 'Codex 学习路线 · 总览', link: '/软件使用/codex使用/codex-learning/' },
-            {
-              text: 'Codex 学习路线 · 分册',
-              collapsed: true,
-              items: [
-                { text: '30 分钟上手', link: '/软件使用/codex使用/codex-learning/01-quick-start/00-30min-onboarding' },
-                { text: '第一周路线', link: '/软件使用/codex使用/codex-learning/01-quick-start/01-first-week-route' },
-                { text: '任务操作系统', link: '/软件使用/codex使用/codex-learning/02-daily-workflow/01-task-operating-system' },
-                { text: '提示词模板', link: '/软件使用/codex使用/codex-learning/02-daily-workflow/02-prompt-templates' },
-                { text: '命令速查', link: '/软件使用/codex使用/codex-learning/03-cli/01-command-cheatsheet' },
-                { text: '进阶地图', link: '/软件使用/codex使用/codex-learning/04-advanced/01-advanced-map' },
-                { text: '练习阶梯', link: '/软件使用/codex使用/codex-learning/05-practice/01-practice-ladder' },
-                { text: 'Windows 与安全', link: '/软件使用/codex使用/codex-learning/06-troubleshooting/01-windows-and-safety' },
-                { text: '资料来源索引', link: '/软件使用/codex使用/codex-learning/reference/00-source-index' },
-                { text: '本地环境快照', link: '/软件使用/codex使用/codex-learning/reference/01-local-environment-snapshot' },
-                { text: '橙皮书提取笔记', link: '/软件使用/codex使用/codex-learning/reference/02-orange-book-extraction-notes' }
-              ]
-            },
-            {
-              text: 'OMP 学习路线',
-              collapsed: true,
-              items: [
-                { text: '从这里开始', link: '/软件使用/omp使用/omp-learning/00-start-here' },
-                { text: '快速上手', link: '/软件使用/omp使用/omp-learning/01-quickstart' },
-                { text: '命令速查', link: '/软件使用/omp使用/omp-learning/02-command-cheatsheet' },
-                { text: '进阶地图', link: '/软件使用/omp使用/omp-learning/03-advanced-map' },
-                { text: '资料来源索引', link: '/软件使用/omp使用/omp-learning/reference/source-index' }
-              ]
-            },
-            { text: 'ZCode 使用指南 · 大二学生版', link: '/软件使用/zcode使用/ZCode使用指南-大二学生版' },
-            { text: '提示词模板 · 视频合集学习文档', link: '/提示词模板_视频合集学习文档' }
+            { text: 'HANDOFF · 交接与二次开发指南', link: '/HANDOFF' },
+            { text: 'LEARNING · 开发原理与踩坑', link: '/LEARNING' },
+            { text: 'LEARNING-3 · 三轮复盘', link: '/LEARNING-3' }
           ]
         }
       ]
@@ -410,10 +207,8 @@ const config = defineConfig({
             footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' }
           }
         }
-        // 注：曾尝试自定义 miniSearch.tokenize（中文双字切词）优化整句搜索，实测
-        // 索引侧生效但客户端查询侧失效（VitePress 对 theme 配置的序列化/打包链路
-        // 会丢函数、强行注入又引发水合异常），短词搜索反而挂掉，已回退默认分词。
-        // 默认分词下短词可用（官方走 Intl.Segmenter），整句搜索是框架级限制，暂缓。
+        // 注：曾尝试自定义中文分词优化整句搜索，实测与 VitePress 打包/水合机制冲突，
+        // 短词搜索反而挂掉，已回退默认分词（详见 LEARNING.md）。
       }
     },
 
@@ -427,15 +222,11 @@ const config = defineConfig({
 
     notFound: {
       title: '页面走丢了',
-      quote: '这条链接还没点亮，先回首页逛逛吧。',
+      quote: '这条链接还没点亮（内容已随资料库整理迁移），先回首页逛逛吧。',
       linkLabel: '回首页',
       linkText: '返回首页'
     }
   }
 })
-
-// 新文件零登记：根目录新增而未归类的笔记，自动进「未归类」组
-const autoGroup = buildAutoSidebarGroup(collectSidebarLinks(config.themeConfig.sidebar['/']))
-if (autoGroup.length) config.themeConfig.sidebar['/'].push(...autoGroup)
 
 export default defineConfig(config)

@@ -8,7 +8,7 @@
     "build": "vitepress build",
     "preview": "vitepress preview",
     "rebuild": "node scripts/rebuild.mjs",
-    "wx:sync": "node 公众号精选/scripts/wx_sync.mjs"
+    "wx:sync": "npm --prefix ../04_前沿科技雷达/公众号精选 run wx:sync"
   },
   "devDependencies": {
     "rss-parser": "^3.13.0",

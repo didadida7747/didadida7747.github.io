@@ -19,7 +19,7 @@ title: "自动化与 NFC:让三台设备自己动起来"
 
 1. **"到家自动唤醒电脑"**:一加连上家里 Wi-Fi(Tasker 触发)→ 发 WoL 魔术包(任务)→ 延时 30 秒 → 打开 Moonlight,坐下就能玩。
 2. **"一键出门模式"**:iPad 快捷指令(桌面图标)→ 一键开 Tailscale → 打开 Windows App/Moonlight → 直连家里拯救者。
-3. **"下载完成推送到 iPad"**:qBittorrent/脚本完成 → 任务计划触发 PowerShell 调 Bark API → iPad 弹通知(命令见 [03-2](#/doc/d372))。
+3. **"下载完成推送到 iPad"**:qBittorrent/脚本完成 → 任务计划触发 PowerShell 调 Bark API → iPad 弹通知(命令见 [03-2](/三设备联动指南/03-三端协同/02-剪贴板-通知-浏览器接力))。
 4. **"电脑网页/文件随手给手机"**:Edge"发送到设备"推链接;LocalSend 三端互发;均可做进快捷指令。
 5. **"NFC 碰一下进游戏"**(见下节):一加碰桌贴 → 开 Tailscale → 启动 Moonlight → 连家里主机。
 

@@ -86,4 +86,4 @@ title: "00 · 四大开源 Agent 横向对比：同一道题的四种答案"
 
 ---
 
-下一篇：[01-GeminiCLI源码精读](#/doc/d438)
+下一篇：[01-GeminiCLI源码精读](/16-AI源码与AI交互研习库/02_同类Agent源码对比/01-GeminiCLI源码精读-开源版Claude-Code)

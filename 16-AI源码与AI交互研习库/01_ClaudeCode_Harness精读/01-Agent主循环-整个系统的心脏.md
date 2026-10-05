@@ -116,4 +116,4 @@ python toy_agent_harness.py --trace  # 输出每一轮的消息结构
 
 ---
 
-下一篇：[02-工具系统](#/doc/d427)
+下一篇：[02-工具系统](/16-AI源码与AI交互研习库/01_ClaudeCode_Harness精读/02-工具系统-决定模型能做什么)

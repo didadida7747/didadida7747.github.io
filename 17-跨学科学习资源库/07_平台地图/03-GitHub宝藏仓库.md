@@ -23,7 +23,7 @@ title: "GitHub·宝藏仓库地图（面向电信工程人）"
 - **krahets/hello-algo** — 《Hello 算法》中文图解数据结构与算法，动画化讲解，开源免费，中文首选。
 - **TheAlgorithms/Python**（及 C/C++ 等各语言分支） — 算法的多语言参考实现库。
 - **CyC2018/CS-Notes** — 中文 CS 基础知识汇总（注意：偏面试向，学习时可当"复习提纲"，别当教材）。
-- **库内配套**：[`07_学业与深造/自学资源/`](#/doc/d143) — csdiy 与 MIT Missing Semester 的中文精读笔记已就位，与本图互补。
+- **库内配套**：[`07_学业与深造/自学资源/`](/07-学业与深造/自学资源/) — csdiy 与 MIT Missing Semester 的中文精读笔记已就位，与本图互补。
 
 ### 人工智能与数据科学
 - **microsoft/ML-For-Beginners** — 微软出品，26 课的机器学习入门课程， quizzes + 项目。

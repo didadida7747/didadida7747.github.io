@@ -104,4 +104,4 @@ Claude Code 里几乎没有隐藏的 API。工具的输入输出是文本，子�
 
 ---
 
-下一篇：[01-Agent主循环](#/doc/d426)——所有 Agent 共享的那颗心脏。
+下一篇：[01-Agent主循环](/16-AI源码与AI交互研习库/01_ClaudeCode_Harness精读/01-Agent主循环-整个系统的心脏)——所有 Agent 共享的那颗心脏。

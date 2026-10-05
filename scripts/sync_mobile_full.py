@@ -3,7 +3,7 @@
 全量迁移：《资料库手机版.html》背后 content.json（20 板块 499 篇）→ VitePress 站点。
 - 20 板块 ↔ 站点目录一一映射；README→index；文件名脱敏（校名/学号）
 - 每篇正文：脱敏（校名→本校、姓名/学号打码、xidian 摘链）+ 手机版路由 #/doc/dXXX 还原为站内链接
-- md 原样上站；html 作静态页；txt/code/docx 转围栏文本页；xlsx/csv 转 md 表格
+- md 原样上站；html 作静态页（同时镜像进 public/ 供死链体检与部署）；txt/code/docx 转围栏文本页；xlsx/csv 转 md 表格
 - 日报等按日归档文件（手机版未收录）从库目录补齐到 04-前沿科技雷达
 - 清理板块目录下未被新集合覆盖的陈旧文件；旧 04-视野简报 目录整体退役
 - 对站内原生 md（home/HANDOFF/LEARNING*/大观导读）做死链修复（按新文件集合重写/摘链）
@@ -187,7 +187,7 @@ def rewrite_routes(t):
         r = m.group(1)
         if r == "#" or r == "#/":
             return m.group(0).replace("(#/)", "(/)")
-        did = r[5:].split("#")[0].strip()
+        did = r[len("#/doc/"):].split("#")[0].strip()
         u = url_by_id.get(did)
         return "(%s)" % u if u else m.group(0)
     return re.sub(r"\((#/doc/[^)]+|#/)\)", repl, t)
@@ -298,6 +298,19 @@ for rel, x in targets.items():
     io.open(dst, "w", encoding="utf-8", newline="\n").write(content)
     written += 1
 print("写入页面数:", written)
+
+# 4.5) 自包含 .html 资料页镜像进 public/（URL 不变）：
+#      VitePress 死链体检对内容里的 /xxx.html 链接会查 public/<resolved>.html，
+#      命中即放行；public/ 随构建原样拷入 dist 完成部署。源目录里的同名文件仅用于侧边栏扫描。
+mirrored = 0
+for rel, x in targets.items():
+    if x is not None and x["type"] == "html":
+        src_f = os.path.join(REPO, rel.replace("/", os.sep))
+        dst_f = os.path.join(REPO, "public", rel.replace("/", os.sep))
+        os.makedirs(os.path.dirname(dst_f), exist_ok=True)
+        shutil.copyfile(src_f, dst_f)
+        mirrored += 1
+print("镜像 HTML 资料页到 public/:", mirrored)
 
 # 5) 站内原生 md 死链修复
 site_urls = {site_url(r) for r in targets}

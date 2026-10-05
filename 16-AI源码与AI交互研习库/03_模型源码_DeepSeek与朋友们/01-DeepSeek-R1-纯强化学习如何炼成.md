@@ -98,4 +98,4 @@ R1 式推理模型对 Agent 设计产生了实质影响：
 
 ---
 
-下一篇：[02-开源基建四大件](#/doc/d446)
+下一篇：[02-开源基建四大件](/16-AI源码与AI交互研习库/03_模型源码_DeepSeek与朋友们/02-开源基建四大件-FlashMLA-DeepEP-DeepGEMM-DualPipe)

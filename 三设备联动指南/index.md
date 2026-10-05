@@ -15,33 +15,33 @@ title: "iPad · 一加 · 拯救者 三设备联动指南"
 
 | 你想要 | 首选方案 | 免费开源替代 | 详见 |
 |---|---|---|---|
-| iPad 当电脑扩展副屏 | spacedesk(免费)/ Duet Display(付费更稳) | Sunshine+Moonlight+虚拟屏 | [01-1 副屏](#/doc/d366) |
-| iPad 当数位板(压感手绘) | EasyCanvas | Weylus | [01-2 手绘](#/doc/d367) |
-| iPad 远程控制电脑 | Windows App(RDP) | RustDesk / Chrome RD | [01-3 远程桌面](#/doc/d368) |
-| iPad 当电脑摄像头 | Camo(免费版可用) | — | [01-2 手绘](#/doc/d367) |
-| 电脑大屏反控手机 | scrcpy | Phone Link / O+互联 | [02-1 互联](#/doc/d369) |
-| 电脑收发短信/通知/接打电话 | Phone Link(一加官方支持) | KDE Connect | [02-1 互联](#/doc/d369) |
-| 手机当电脑摄像头 | DroidCam / Iriun | Camo | [02-2 实用玩法](#/doc/d370) |
-| 三端文件互传 | LocalSend | PairDrop(网页) | [03-1 文件](#/doc/d371) |
-| 三端持续同步/照片备份 | Syncthing + iCloud for Windows | OneDrive / 坚果云 | [03-1 文件](#/doc/d371) |
-| 剪贴板三端同步 | KDE Connect(一加↔电脑) | SyncClipboard(iPad 参与) | [03-2 接力](#/doc/d372) |
-| 通知/短信接力到电脑 | Phone Link | KDE Connect / Bark(推 iPad) | [03-2 接力](#/doc/d372) |
-| 浏览器标签接力 | Edge"发送到设备" | Vivaldi | [03-2 接力](#/doc/d372) |
-| 笔记 / 密码三端 | Obsidian / Bitwarden | Vaultwarden(自建) | [03-3 笔记密码](#/doc/d373) |
-| 拯救者游戏串流到 iPad/一加 | **Sunshine + Moonlight** | Steam Link | [04-1 串流](#/doc/d374) |
-| 影音媒体库 | Jellyfin + Infuse(iPad) | Plex / Emby | [04-2 媒体与投屏](#/doc/d375) |
-| 手机/iPad 反向投到电脑 | scrcpy(一加)/ AirPlay 接收端(iPad) | AirDroid Cast | [04-2 媒体与投屏](#/doc/d375) |
-| 出门在外用家里的拯救者 | Tailscale 三端组网 | ZeroTier / frp | [05-1 组网](#/doc/d376) |
-| 远程开机 | WoL + UpSnap 常驻面板 | 智能插座+BIOS 来电开机 | [05-2 开机与远程](#/doc/d377) |
-| 拯救者变家庭服务器 | Jellyfin+Syncthing+qBittorrent | WSL2 / Docker | [05-3 服务器](#/doc/d378) |
-| 自动化联动 | 快捷指令 + Tasker + 任务计划 | MacroDroid / Power Automate | [05-4 自动化](#/doc/d379) |
-| 一套键鼠/耳机控制三设备 | 罗技 MX 系列 Easy-Switch | KVM 显示器 | [05-5 外设](#/doc/d380) |
+| iPad 当电脑扩展副屏 | spacedesk(免费)/ Duet Display(付费更稳) | Sunshine+Moonlight+虚拟屏 | [01-1 副屏](/三设备联动指南/01-iPad×拯救者/01-iPad当副屏) |
+| iPad 当数位板(压感手绘) | EasyCanvas | Weylus | [01-2 手绘](/三设备联动指南/01-iPad×拯救者/02-手绘板与摄像头) |
+| iPad 远程控制电脑 | Windows App(RDP) | RustDesk / Chrome RD | [01-3 远程桌面](/三设备联动指南/01-iPad×拯救者/03-远程桌面) |
+| iPad 当电脑摄像头 | Camo(免费版可用) | — | [01-2 手绘](/三设备联动指南/01-iPad×拯救者/02-手绘板与摄像头) |
+| 电脑大屏反控手机 | scrcpy | Phone Link / O+互联 | [02-1 互联](/三设备联动指南/02-一加×拯救者/01-互联方案) |
+| 电脑收发短信/通知/接打电话 | Phone Link(一加官方支持) | KDE Connect | [02-1 互联](/三设备联动指南/02-一加×拯救者/01-互联方案) |
+| 手机当电脑摄像头 | DroidCam / Iriun | Camo | [02-2 实用玩法](/三设备联动指南/02-一加×拯救者/02-文件与实用玩法) |
+| 三端文件互传 | LocalSend | PairDrop(网页) | [03-1 文件](/三设备联动指南/03-三端协同/01-文件互传与同步) |
+| 三端持续同步/照片备份 | Syncthing + iCloud for Windows | OneDrive / 坚果云 | [03-1 文件](/三设备联动指南/03-三端协同/01-文件互传与同步) |
+| 剪贴板三端同步 | KDE Connect(一加↔电脑) | SyncClipboard(iPad 参与) | [03-2 接力](/三设备联动指南/03-三端协同/02-剪贴板-通知-浏览器接力) |
+| 通知/短信接力到电脑 | Phone Link | KDE Connect / Bark(推 iPad) | [03-2 接力](/三设备联动指南/03-三端协同/02-剪贴板-通知-浏览器接力) |
+| 浏览器标签接力 | Edge"发送到设备" | Vivaldi | [03-2 接力](/三设备联动指南/03-三端协同/02-剪贴板-通知-浏览器接力) |
+| 笔记 / 密码三端 | Obsidian / Bitwarden | Vaultwarden(自建) | [03-3 笔记密码](/三设备联动指南/03-三端协同/03-笔记与密码) |
+| 拯救者游戏串流到 iPad/一加 | **Sunshine + Moonlight** | Steam Link | [04-1 串流](/三设备联动指南/04-游戏与媒体/01-Sunshine与Moonlight游戏串流) |
+| 影音媒体库 | Jellyfin + Infuse(iPad) | Plex / Emby | [04-2 媒体与投屏](/三设备联动指南/04-游戏与媒体/02-媒体库与反向投屏) |
+| 手机/iPad 反向投到电脑 | scrcpy(一加)/ AirPlay 接收端(iPad) | AirDroid Cast | [04-2 媒体与投屏](/三设备联动指南/04-游戏与媒体/02-媒体库与反向投屏) |
+| 出门在外用家里的拯救者 | Tailscale 三端组网 | ZeroTier / frp | [05-1 组网](/三设备联动指南/05-进阶玩法/01-Tailscale三端组网) |
+| 远程开机 | WoL + UpSnap 常驻面板 | 智能插座+BIOS 来电开机 | [05-2 开机与远程](/三设备联动指南/05-进阶玩法/02-远程开机与远程桌面) |
+| 拯救者变家庭服务器 | Jellyfin+Syncthing+qBittorrent | WSL2 / Docker | [05-3 服务器](/三设备联动指南/05-进阶玩法/03-拯救者变家庭服务器) |
+| 自动化联动 | 快捷指令 + Tasker + 任务计划 | MacroDroid / Power Automate | [05-4 自动化](/三设备联动指南/05-进阶玩法/04-自动化与NFC玩法) |
+| 一套键鼠/耳机控制三设备 | 罗技 MX 系列 Easy-Switch | KVM 显示器 | [05-5 外设](/三设备联动指南/05-进阶玩法/05-外设与桌面组合) |
 
 ## 30 分钟"最小可用组合"(先跑通这三件事)
 
 1. **(10 分钟)三端装 [LocalSend](https://github.com/localsend/localsend)** — 同一 Wi-Fi 下即装即用,免费开源,解决 80% 的传文件需求。
-2. **(15 分钟)拯救者装 Sunshine,iPad/一加装 Moonlight** — 局域网内低延迟把电脑游戏串到 iPad(接手柄=掌机)或一加,还能当高刷无线副屏。见 [04-1](#/doc/d374)。
-3. **(5 分钟)拯救者打开"手机连接(Phone Link)"绑定一加** — 电脑上直接收发短信、看通知、传照片,一加是官方支持屏幕镜像的品牌。见 [02-1](#/doc/d369)。
+2. **(15 分钟)拯救者装 Sunshine,iPad/一加装 Moonlight** — 局域网内低延迟把电脑游戏串到 iPad(接手柄=掌机)或一加,还能当高刷无线副屏。见 [04-1](/三设备联动指南/04-游戏与媒体/01-Sunshine与Moonlight游戏串流)。
+3. **(5 分钟)拯救者打开"手机连接(Phone Link)"绑定一加** — 电脑上直接收发短信、看通知、传照片,一加是官方支持屏幕镜像的品牌。见 [02-1](/三设备联动指南/02-一加×拯救者/01-互联方案)。
 
 跑通之后再按需求逐个解锁:手绘(EasyCanvas)、组网出门也能用(Tailscale)、家庭服务器(Jellyfin)、自动化(快捷指令+Tasker)。
 
@@ -93,4 +93,4 @@ title: "iPad · 一加 · 拯救者 三设备联动指南"
 
 - 每份文档开头都有"结论表",赶时间只看表格即可;动手时再看"上手步骤"。
 - 带"★"的方案是调研中社区公认体验最好的,带"避坑"标注的请务必先读再装。
-- 价格、免费额度会变动,安装前以官网/App Store 当期页面为准;不确定的点集中在 [06/来源索引与待验证清单.md](#/doc/d383)。
+- 价格、免费额度会变动,安装前以官网/App Store 当期页面为准;不确定的点集中在 [06/来源索引与待验证清单.md](/三设备联动指南/06-速查表/来源索引与待验证清单)。

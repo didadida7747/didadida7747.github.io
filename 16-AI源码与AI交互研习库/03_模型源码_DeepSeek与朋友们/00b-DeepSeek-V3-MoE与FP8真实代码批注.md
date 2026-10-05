@@ -4,7 +4,7 @@ title: "00b · DeepSeek-V3 真实代码批注：MoE 分发与 FP8 分块量化"
 
 # 00b · DeepSeek-V3 真实代码批注：MoE 分发与 FP8 分块量化
 
-> 素材：本库 clone 的 `DeepSeek-V3/inference/model.py`（808 行，行号为实测）。前置：[00 篇（MLA 与 Gate）](#/doc/d443)。
+> 素材：本库 clone 的 `DeepSeek-V3/inference/model.py`（808 行，行号为实测）。前置：[00 篇（MLA 与 Gate）](/16-AI源码与AI交互研习库/03_模型源码_DeepSeek与朋友们/00-DeepSeek-V3架构逐块批注)。
 > 00 篇讲了"数学思想"，本篇讲"代码现实"——两段代码会颠覆你对"模型代码"的想象：**模型文件里写满了集群假设**。
 
 ## 1. MoE 类（636-695 行）：一段"写着写着就变成分布式系统"的模型代码
@@ -104,4 +104,4 @@ wkv_b = self.wkv_b.weight if self.wkv_b.scale is None \
 
 ---
 
-回 [00 篇](#/doc/d443) ｜ 下一篇可读 [01-R1](#/doc/d445)
+回 [00 篇](/16-AI源码与AI交互研习库/03_模型源码_DeepSeek与朋友们/00-DeepSeek-V3架构逐块批注) ｜ 下一篇可读 [01-R1](/16-AI源码与AI交互研习库/03_模型源码_DeepSeek与朋友们/01-DeepSeek-R1-纯强化学习如何炼成)

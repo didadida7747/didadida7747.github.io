@@ -6,7 +6,7 @@
 
 ## 1. 一分钟现状（2026-10-05 全量重构后）
 
-> **2026-10-05 第二次更新（内容全量重构）**：站点内容已整体重构为《资料库手机版.html》背后 content.json 的 **20 板块全量镜像**（525 页 = 499 篇文档 + 26 篇视野日报）。重建由 `scripts/sync_mobile_full.py` 一键完成：校名→本校、姓名/学号打码、xidian 摘链（沿用脱敏红线）；手机版 `#/doc/dXXX` 路由还原为站内链接；txt/xlsx/csv/docx/code 转 md 页；14 个自包含 .html 资料页由 `scripts/copy-html-assets.mjs` 在 `vitepress build` 之后拷入 dist（已挂进 package.json 的 build 脚本，Actions 同样生效）。侧边栏改为 **21 分组自动扫描**（scanDir 已支持 frontmatter title 与 .html 条目）；导航栏新增「板块·工具与学业」「板块·生活与百科」两个下拉。旧 `04-视野简报/` 退役为 `04-前沿科技雷达/`（日报仍在）；10-03 镜像中被全库去重淘汰的旧页随之移除（git 历史可回溯）。原始工作文件（data/raw、tech-radar 中间产物、16 号库 clone 的第三方源码仓库）与手机版保持一致，不上站。要重新同步：`python scripts/sync_mobile_full.py` → `npm run build` → 提交推送。
+> **2026-10-05 第二次更新（内容全量重构）**：站点内容已整体重构为《资料库手机版.html》背后 content.json 的 **20 板块全量镜像**（525 页 = 499 篇文档 + 26 篇视野日报）。重建由 `scripts/sync_mobile_full.py` 一键完成：校名→本校、姓名/学号打码、xidian 摘链（沿用脱敏红线）；手机版 `#/doc/dXXX` 路由还原为站内链接；txt/xlsx/csv/docx/code 转 md 页；14 个自包含 .html 资料页由脚本同步镜像进 `public/`（URL 不变，死链体检据此放行、构建时随 public 原样拷入 dist）。侧边栏改为 **21 分组自动扫描**（scanDir 已支持 frontmatter title 与 .html 条目）；导航栏新增「板块·工具与学业」「板块·生活与百科」两个下拉。旧 `04-视野简报/` 退役为 `04-前沿科技雷达/`（日报仍在）；10-03 镜像中被全库去重淘汰的旧页随之移除（git 历史可回溯）。原始工作文件（data/raw、tech-radar 中间产物、16 号库 clone 的第三方源码仓库）与手机版保持一致，不上站。要重新同步：`python scripts/sync_mobile_full.py` → `npm run build` → 提交推送。
 
 > **2026-10-03 更新**：内容源已从旧库（`D:\ai资料` 双库结构）整体切换为《ai资料(豆包)》资料库 **01–10 编号板块**的镜像（259 篇 md，脱敏后上站）。大观导读 6 篇按新结构重写；首页与侧边栏改为**板块目录自动扫描**（`config.mts` 的 `scanDir`，新增内容放进板块目录即自动出现在侧边栏，根目录散文件不再有"未归类"组）。镜像与脱敏由 `scripts/sync_from_library.py` 完成（清单制：链接重写、README→index、校名→"本校"、xidian 域名摘链）。
 

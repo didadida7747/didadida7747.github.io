@@ -27,9 +27,9 @@ title: "Tailscale 三端组网:联动的\"地基\" ★"
 
 | 能力 | 用法 | 详见 |
 |---|---|---|
-| 外网远程桌面 | Windows App/RustDesk 里连拯救者的 100.x IP | [01-3](#/doc/d368) / [05-2](#/doc/d377) |
-| 外网游戏串流 | Moonlight 手动添加 100.x 主机 | [04-1](#/doc/d374) |
-| 外网访问文件 | SMB/Jellyfin/qBittorrent WebUI 全部用 100.x IP 直达 | [05-3](#/doc/d378) |
+| 外网远程桌面 | Windows App/RustDesk 里连拯救者的 100.x IP | [01-3](/三设备联动指南/01-iPad×拯救者/03-远程桌面) / [05-2](/三设备联动指南/05-进阶玩法/02-远程开机与远程桌面) |
+| 外网游戏串流 | Moonlight 手动添加 100.x 主机 | [04-1](/三设备联动指南/04-游戏与媒体/01-Sunshine与Moonlight游戏串流) |
+| 外网访问文件 | SMB/Jellyfin/qBittorrent WebUI 全部用 100.x IP 直达 | [05-3](/三设备联动指南/05-进阶玩法/03-拯救者变家庭服务器) |
 | 子网路由(进阶) | 拯救者开着 Tailscale 的 subnet router,把路由器管理页、打印机等整个家里网段带进虚拟网 | 官方文档 |
 
 ## 国内网络表现与优化

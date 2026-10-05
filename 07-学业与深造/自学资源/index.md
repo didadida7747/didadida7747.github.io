@@ -10,9 +10,9 @@ SI100+ Lec.01 末尾，老师给了四年间最值得带走的一句心法——
 
 | 顺序 | 页面 | 一句话定位 | 官方入口 |
 |---|---|---|---|
-| ① | [MIT Missing Semester](#/doc/d145) | 计算机教育中缺失的一课：命令行、Git、调试等工具能力 | [missing.csail.mit.edu](https://missing.csail.mit.edu/) |
-| ② | [CS 自学指南 csdiy.wiki](#/doc/d144) | 北大学长三年自学经验沉淀的课程地图 | [csdiy.wiki](https://csdiy.wiki/) |
-| ③ | [《提问的智慧》](#/doc/d146) | 35k+ star 的提问方法论：怎么问才有人答、答得好 | [GitHub 中文版](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way) |
+| ① | [MIT Missing Semester](/07-学业与深造/自学资源/MIT-Missing-Semester) | 计算机教育中缺失的一课：命令行、Git、调试等工具能力 | [missing.csail.mit.edu](https://missing.csail.mit.edu/) |
+| ② | [CS 自学指南 csdiy.wiki](/07-学业与深造/自学资源/CS自学指南_csdiy) | 北大学长三年自学经验沉淀的课程地图 | [csdiy.wiki](https://csdiy.wiki/) |
+| ③ | [《提问的智慧》](/07-学业与深造/自学资源/提问的智慧) | 35k+ star 的提问方法论：怎么问才有人答、答得好 | [GitHub 中文版](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way) |
 | ④ | [University of NotTaught（拟缺即刻）](./University of NotTaught_拟缺即刻.md) | 老师口头推荐、暂未定位到原站的资源（附考证记录） | 待查证 |
 
 ## 建议的使用顺序
@@ -30,8 +30,8 @@ SI100+ Lec.01 末尾，老师给了四年间最值得带走的一句心法——
 
 - 出处原文见 [SI100+ 夏合集 · 大二学习手册](../课程视频笔记/SI100+计算机导论2026夏/SI100+ 2026夏合集_大二学生学习文档.md) Lec.01「自学心法」一节；
 - Lec.02「如何用搜索解决问题」与本栏目互为表里：那讲管「怎么找答案」，这里管「怎么问人」；
-- 选课与方向决策落点见 [求职研究](#/doc/d045) 栏目；
-- 想把"自学"从计算机扩展到经济 / 心理 / 法律等学科视野 → [17_跨学科学习资源库](#/doc/d461)（其 GitHub / MOOC 平台地图与本栏目 csdiy、Missing Semester 互补）。
+- 选课与方向决策落点见 [求职研究](/02-职业方向规划/求职研究/) 栏目；
+- 想把"自学"从计算机扩展到经济 / 心理 / 法律等学科视野 → [17_跨学科学习资源库](/17-跨学科学习资源库/)（其 GitHub / MOOC 平台地图与本栏目 csdiy、Missing Semester 互补）。
 
 ---
 建档：2026-09-04。

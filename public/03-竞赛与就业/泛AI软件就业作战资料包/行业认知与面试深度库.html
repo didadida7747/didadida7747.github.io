@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业认知与面试深度库 - 泛AI软件就业作战资料包</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f8ef7'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EAI%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #0f1117;
+  --bg-card: #181b24;
+  --bg-card-hover: #1e2230;
+  --border: #2a2e3d;
+  --text: #e4e6ed;
+  --text-dim: #9ca0b0;
+  --accent: #4f8ef7;
+  --accent-dim: #2d5bb8;
+  --green: #34d399;
+  --red: #f87171;
+  --orange: #fbbf24;
+  --purple: #a78bfa;
+  --tag-bg: #1e2a4a;
+  --tag-text: #7eb0ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 30px;
+}
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.header .subtitle { color: var(--text-dim); font-size: 14px; }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1;
+  padding: 16px 24px;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+.tab-btn:hover { background: var(--bg-card-hover); color: var(--text); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+
+/* Tab content */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Section cards */
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.section-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-card h2 .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-dim);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.section-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 18px 0 10px;
+  color: var(--accent);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  background: var(--bg-card-hover);
+  font-weight: 600;
+  color: var(--text-dim);
+  font-size: 13px;
+  white-space: nowrap;
+}
+tr:hover td { background: rgba(79,142,247,0.05); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin: 2px 4px 2px 0;
+}
+.tag.green { background: #0d3b2e; color: var(--green); }
+.tag.red { background: #3b0d0d; color: var(--red); }
+.tag.orange { background: #3b2e0d; color: var(--orange); }
+.tag.purple { background: #2a1a4a; color: var(--purple); }
+
+/* Source citation */
+.source {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  line-height: 1.8;
+}
+.source a { color: var(--accent); text-decoration: none; }
+.source a:hover { text-decoration: underline; }
+
+/* Collapsible */
+.collapsible {
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.collapsible-header {
+  padding: 14px 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 15px;
+  user-select: none;
+}
+.collapsible-header:hover { background: rgba(79,142,247,0.08); }
+.collapsible-header .arrow {
+  transition: transform 0.2s;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.collapsible.open .collapsible-header .arrow { transform: rotate(90deg); }
+.collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.collapsible.open .collapsible-body { max-height: 5000px; }
+.collapsible-inner { padding: 16px 18px; border-top: 1px solid var(--border); }
+
+/* Chain layer cards */
+.chain-layer {
+  border-left: 4px solid;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  background: var(--bg-card-hover);
+  border-radius: 0 8px 8px 0;
+}
+.chain-layer.compute { border-color: var(--orange); }
+.chain-layer.model { border-color: var(--purple); }
+.chain-layer.app { border-color: var(--green); }
+.chain-layer h4 { font-size: 16px; margin-bottom: 8px; }
+.chain-layer .layer-desc { color: var(--text-dim); font-size: 13px; margin-bottom: 10px; }
+
+/* Risk signal box */
+.risk-box {
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 10px 0;
+}
+.risk-box .risk-title { color: var(--red); font-weight: 600; margin-bottom: 6px; }
+
+/* Highlight box */
+.highlight-box {
+  background: rgba(79,142,247,0.08);
+  border: 1px solid rgba(79,142,247,0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 10px 0;
+}
+
+/* Profile card */
+.profile-card {
+  background: var(--bg-card-hover);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.profile-card .profile-name { font-weight: 600; margin-bottom: 6px; }
+
+/* Interview timeline */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 16px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+
+/* Q&A block */
+.qa-block { margin-bottom: 14px; }
+.qa-q {
+  font-weight: 600;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+.qa-a { color: var(--text); padding-left: 12px; border-left: 2px solid var(--border); }
+
+/* Salary bar */
+.salary-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+.salary-bar .bar-bg {
+  flex: 1;
+  height: 8px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.salary-bar .bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-dim);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 12px; }
+  .header h1 { font-size: 22px; }
+  .tabs { flex-direction: column; }
+  .tab-btn { padding: 12px; }
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+  .source { line-height: 2; }
+  .source a { display: inline-block; margin: 2px 0; }
+}
+
+/* Print-friendly */
+@media print {
+  body { background: #fff; color: #000; }
+  .tab-content { display: block !important; }
+  .tabs { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>行业认知与面试深度库</h1>
+  <div class="subtitle">泛AI软件就业作战资料包 · 本校电信硬件转AI应用方向 · 数据截至 2026年9月</div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('industry')">板块一：行业认知</button>
+  <button class="tab-btn" onclick="switchTab('interview')">板块二：面试深度库</button>
+</div>
+
+<!-- ==================== 板块一：行业认知 ==================== -->
+<div id="tab-industry" class="tab-content active">
+
+<!-- 1. AI产业链三层全景 -->
+<div class="section-card">
+  <h2><span class="num">1</span> AI产业链三层全景</h2>
+  <p style="color:var(--text-dim);margin-bottom:16px;">从底层算力到上层应用，每层岗位类型、薪资区间、进入门槛差异极大。以下按层拆解。</p>
+
+  <!-- 算力层 -->
+  <div class="chain-layer compute">
+    <h4>第一层：算力层（基础设施）</h4>
+    <div class="layer-desc">GPU/AI芯片/云计算/数据中心。卖铲子的人，技术壁垒最高，门槛最高。</div>
+    <table>
+      <colgroup><col style="width:18%"><col style="width:25%"><col style="width:22%"><col style="width:35%"></colgroup>
+      <tr><th>代表公司</th><th>核心岗位</th><th>应届薪资区间</th><th>进入门槛</th></tr>
+      <tr>
+        <td>英伟达 / AMD</td>
+        <td>GPU架构、驱动、CUDA算子</td>
+        <td>博士40-80K×14~16薪<br>硕士25-45K</td>
+        <td>极强CS/微电子背景，顶会论文优先，海外岗为主</td>
+      </tr>
+      <tr>
+        <td>华为昇腾 / 海光 / 寒武纪</td>
+        <td>AI芯片设计、编译器、算子库、集群调度</td>
+        <td>硕士20-35K×14~16薪<br>博士35-60K</td>
+        <td>微电子/计算机/体系结构背景，985硕起步，对口实习加分</td>
+      </tr>
+      <tr>
+        <td>阿里云 / 腾讯云 / 火山引擎</td>
+        <td>云原生、分布式存储、RDMA、虚拟化</td>
+        <td>硕士18-30K×15~16薪<br>本科12-20K</td>
+        <td>CS科班，扎实分布式/操作系统基础，大厂实习优先</td>
+      </tr>
+    </table>
+    <div class="source">数据综合自猎聘2025年9月AI算法岗报价、职友集2026年9月薪资统计、华为2025校招公开信息。<br>来源：<a href="https://www.liepin.com/s/aisfgcfzrdm5v9gz/" target="_blank">猎聘AI算法应届岗</a> | <a href="https://m.jobui.com/salary/quanguo-damoxingyingyonggongchengshi/edu2/" target="_blank">职友集大模型应用工程师薪资</a></div>
+  </div>
+
+  <!-- 模型层 -->
+  <div class="chain-layer model">
+    <h4>第二层：模型层（大模型公司）</h4>
+    <div class="layer-desc">训练/微调基座大模型。算法密集型，学历内卷最严重，硕博占比极高。</div>
+    <table>
+      <colgroup><col style="width:18%"><col style="width:25%"><col style="width:22%"><col style="width:35%"></colgroup>
+      <tr><th>代表公司</th><th>核心岗位</th><th>应届薪资区间</th><th>进入门槛</th></tr>
+      <tr>
+        <td>DeepSeek / OpenAI</td>
+        <td>预训练、后训练(RLHF/DPO)、推理优化、对齐</td>
+        <td>DeepSeek硕士30-50K×14~16薪<br>博士另议（上不封顶）</td>
+        <td>极强数学/ML功底，顶会论文优先，开源项目贡献加分；DeepSeek极看重编码能力</td>
+      </tr>
+      <tr>
+        <td>智谱AI / 月之暗面(Moonshot)</td>
+        <td>大模型预训练、SFT、对齐、推理加速</td>
+        <td>硕士25-40K×14~15薪</td>
+        <td>985硕博为主，大模型相关项目经验，复现过论文加分</td>
+      </tr>
+      <tr>
+        <td>字节豆包 / 阿里通义 / 腾讯混元</td>
+        <td>大模型训练、算法优化、模型部署</td>
+        <td>硕士25-45K×15~16薪</td>
+        <td>大厂AI Lab实习优先，八股+手撕+项目深挖三位一体</td>
+      </tr>
+    </table>
+    <div class="highlight-box">
+      <strong>对你的定位提示：</strong>模型层算法岗对本科极不友好（猎聘数据显示约47%的AI岗位要求硕博），不建议作为主攻方向。你的优势在应用层。<br>
+      <span class="source" style="border:none;padding:0;margin-top:4px;display:block;">来源：<a href="http://pcepaper.cjxww.cn/resfile/2025-03-28/06B/cjrbf2025032806B.pdf" target="_blank">猎聘《2025AI技术人才供需洞察报告》</a>，昌吉日报2025-03-28转载</span>
+    </div>
+  </div>
+
+  <!-- 应用层 -->
+  <div class="chain-layer app">
+    <h4>第三层：应用层（AI应用/工具/平台）—— 你的主战场</h4>
+    <div class="layer-desc">基于大模型API/开源模型做产品落地。工程能力 > 算法能力，本科可入，岗位量最大。</div>
+    <table>
+      <colgroup><col style="width:20%"><col style="width:28%"><col style="width:22%"><col style="width:30%"></colgroup>
+      <tr><th>方向</th><th>代表公司/产品</th><th>应届薪资区间</th><th>进入门槛</th></tr>
+      <tr>
+        <td>AI应用后端/Agent开发</td>
+        <td>字节(豆包/扣子)、阿里(通义/夸克)、百度(文心)、美团(AI客服)、创业公司</td>
+        <td>本科15-25K×14~16薪<br>硕士20-35K×15~16薪</td>
+        <td>Python/Go扎实，RAG/Agent实战项目，LeetCode中等以上，八股能聊</td>
+      </tr>
+      <tr>
+        <td>AI产品经理/解决方案</td>
+        <td>各大厂AI产品线、AI创业公司ToB团队</td>
+        <td>本科12-20K×14~15薪</td>
+        <td>技术理解力+业务sense，不需要写代码但要懂技术边界</td>
+      </tr>
+      <tr>
+        <td>AI Infra/MLOps</td>
+        <td>各云厂商、大模型公司、AI基础设施创业公司</td>
+        <td>硕士20-35K×15薪</td>
+        <td>分布式+Linux+模型部署经验，偏SRE/后端方向</td>
+      </tr>
+      <tr>
+        <td>数据标注/AI训练师</td>
+        <td>数据服务商、各大厂外包团队</td>
+        <td>6-12K/月</td>
+        <td>门槛低，可替代性强，不建议长期发展</td>
+      </tr>
+    </table>
+    <div class="source">薪资数据综合：职友集2026-09、BOSS直聘2026-09校招岗位、彩讯股份2026校招AI Agent岗(25-40万/年)。<br>来源：<a href="https://m.jobui.com/salary/quanguo-damoxingyingyonggongchengshi/edu2/" target="_blank">职友集</a> | <a href="https://www.richinfo.cn/jobs/campus/101" target="_blank">彩讯股份校招</a></div>
+  </div>
+</div>
+
+<!-- 2. 招聘大盘趋势 -->
+<div class="section-card">
+  <h2><span class="num">2</span> 2024-2026 AI岗招聘大盘趋势</h2>
+
+  <h3>2.1 真实数据：爆发与分化并存</h3>
+  <table>
+    <colgroup><col style="width:30%"><col style="width:35%"><col style="width:35%"></colgroup>
+    <tr><th>指标</th><th>数据</th><th>来源</th></tr>
+    <tr>
+      <td>AI岗位量同比增长</td>
+      <td>2025年1-10月新发AI岗位量同比攀升<strong>543%</strong>，单月最高同比增幅超11倍（2025年9月峰值）</td>
+      <td>脉脉高聘《2025年度人才迁徙报告》，界面新闻2026-01-14</td>
+    </tr>
+    <tr>
+      <td>AI人才供需比</td>
+      <td>2025年AI人才供需比首次超过1，进入<strong>供大于求</strong>状态（求职人数增速39% vs 职位增速3%）</td>
+      <td>智联招聘数据，财新网2025-10-29</td>
+    </tr>
+    <tr>
+      <td>AI岗位薪资溢价</td>
+      <td>2025年Q2 AI岗位溢价达79%（非AI岗位薪酬下滑导致被动拉大）</td>
+      <td>腾讯研究院&劳动经济学会《2026年AI职业新趋势报告》，新浪财经2026-05-29</td>
+    </tr>
+    <tr>
+      <td>学历要求</td>
+      <td>约47%的AI岗位要求硕博学历</td>
+      <td>猎聘《2025AI技术人才供需洞察报告》</td>
+    </tr>
+    <tr>
+      <td>大厂AI实习日薪</td>
+      <td>普通AI实习500-1000元/天，博士核心岗5000-6000元/天</td>
+      <td>36氪2026-09-12报道</td>
+    </tr>
+  </table>
+  <div class="source">来源：<a href="https://m.jiemian.com/article/13880624.html" target="_blank">界面新闻·脉脉报告解读(2026-01-14)</a> | <a href="https://www.caixin.com/2025-10-29/102376709.html" target="_blank">财新网(2025-10-29)</a> | <a href="https://cloud.tencent.com/developer/article/2674207" target="_blank">腾讯云开发者社区(2026-05-26)</a> | <a href="https://36kr.com/p/3980179218699912" target="_blank">36氪(2026-09-12)</a></div>
+
+  <h3>2.2 爆发方向 vs 内卷方向</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0;">
+    <div class="highlight-box">
+      <strong style="color:var(--green);">爆发方向（需求旺盛）</strong>
+      <ul style="margin:8px 0 0 18px;">
+        <li><strong>Agent开发</strong>：多智能体协作、工具调用、工作流编排</li>
+        <li><strong>AI编程/Copilot</strong>：代码大模型、DevOps自动化</li>
+        <li><strong>多模态</strong>：图文/视频理解与生成、CLIP/LLaVA方向</li>
+        <li><strong>RAG工程化</strong>：企业知识库、GraphRAG、权限对齐</li>
+        <li><strong>具身智能</strong>：机器人+大模型（长期方向，当前岗位少）</li>
+        <li><strong>AI Infra</strong>：推理优化、模型部署、向量数据库</li>
+      </ul>
+    </div>
+    <div class="risk-box">
+      <strong style="color:var(--red);">内卷/泡沫方向（谨慎）</strong>
+      <ul style="margin:8px 0 0 18px;">
+        <li><strong>纯算法岗（非核心）</strong>：学历内卷严重，本科几乎无机会</li>
+        <li><strong>提示工程师</strong>：已被产品化工具替代，岗位极少</li>
+        <li><strong>套壳ChatGPT类ToC应用</strong>：同质化严重，无壁垒</li>
+        <li><strong>数据标注/AI训练师</strong>：门槛低，可替代性强</li>
+        <li><strong>中小AI创业公司ToC应用</strong>：烧钱快，倒闭风险高</li>
+      </ul>
+    </div>
+  </div>
+  <div class="source">判断依据：牛客2025-2026 AI应用开发面试高频考点统计（RAG相关合计出现175次），结合猎聘/BOSS直聘岗位结构变化。<br>来源：<a href="https://www.nowcoder.com/discuss/927907662107246592" target="_blank">牛客·AI应用开发面试高频知识点(2026-09)</a></div>
+</div>
+
+<!-- 3. 商业模式 -->
+<div class="section-card">
+  <h2><span class="num">3</span> 大模型应用层商业模式拆解</h2>
+  <table>
+    <colgroup><col style="width:12%"><col style="width:22%"><col style="width:25%"><col style="width:20%"><col style="width:21%"></colgroup>
+    <tr><th>模式</th><th>代表公司/产品</th><th>盈利方式</th><th>盈利现状</th><th>稳定性判断</th></tr>
+    <tr>
+      <td><span class="tag">ToB</span></td>
+      <td>企业服务：字节火山引擎、阿里通义企业版、百度智能云；私有化部署：各大模型公司ToB团队</td>
+      <td>按调用量计费/私有化License/年服务费</td>
+      <td>头部已盈利或接近盈亏平衡；中小集成商微利</td>
+      <td><span class="tag green">较高</span> 企业付费意愿强，复购率高</td>
+    </tr>
+    <tr>
+      <td><span class="tag">ToC</span></td>
+      <td>字节豆包、Kimi、智谱清言、DeepSeek App、Manus</td>
+      <td>订阅制(会员)/广告/增值功能</td>
+      <td>除头部外多数亏损；流量大战烧钱严重</td>
+      <td><span class="tag orange">中等</span> 赢家通吃，尾部公司危险</td>
+    </tr>
+    <tr>
+      <td><span class="tag">ToD</span></td>
+      <td>OpenAI API、DeepSeek API、阿里百炼、火山方舟、硅基流动</td>
+      <td>API调用量计费（按token）</td>
+      <td>价格战激烈（DeepSeek把价格打下来后行业利润压缩）</td>
+      <td><span class="tag green">较高</span> 开发者生态绑定深，迁移成本高</td>
+    </tr>
+  </table>
+  <div class="source">来源：综合公开财报、36氪/界面新闻报道、各公司官网定价页。价格战参考DeepSeek 2025年初降价事件及行业跟进报道。</div>
+</div>
+
+<!-- 4. 创业公司风险识别 -->
+<div class="section-card">
+  <h2><span class="num">4</span> 创业公司风险识别清单</h2>
+  <p style="color:var(--text-dim);margin-bottom:14px;">AI创业公司死亡率极高，入职前务必做尽职调查。以下是真实倒闭/裁员案例与风险信号。</p>
+
+  <h3>4.1 已暴雷的AI公司案例（2024-2026）</h3>
+  <table>
+    <colgroup><col style="width:18%"><col style="width:15%"><col style="width:42%"><col style="width:25%"></colgroup>
+    <tr><th>公司</th><th>赛道</th><th>暴雷情况</th><th>来源</th></tr>
+    <tr>
+      <td>澜码科技</td>
+      <td>AI Agent</td>
+      <td>2024年10月起停薪停社保超3个月，欠薪超800万，裁员66%仅剩约20人；创始人周健称借钱卖房补偿</td>
+      <td>36氪2025-02-28；澎湃新闻2025-02-26</td>
+    </tr>
+    <tr>
+      <td>毫末智行</td>
+      <td>自动驾驶</td>
+      <td>2025年11月24日通知全员停工，融资超20亿、估值超10亿美元独角兽最终解散；此前已欠薪2个月、高管离职</td>
+      <td>投资界2025-11-25；新浪财经2025-11-24</td>
+    </tr>
+    <tr>
+      <td>达闼机器人</td>
+      <td>具身智能/机器人</td>
+      <td>2024年分批裁员超70%，拖欠员工薪资；盘子铺太大过于烧钱</td>
+      <td>雷峰网2025-09-29</td>
+    </tr>
+    <tr>
+      <td>云从科技</td>
+      <td>AI四小龙/CV</td>
+      <td>2024年营收3.98亿同比降36.69%，归母净利润-6.96亿亏损扩大；持续裁员高管降薪</td>
+      <td>36氪/今日头条2025-05-07</td>
+    </tr>
+  </table>
+  <div class="source">来源：<a href="https://www.36kr.com/p/3185699454099591" target="_blank">36氪·澜码科技(2025-02-28)</a> | <a href="https://news.pedaily.cn/202511/557762.shtml" target="_blank">投资界·毫末智行(2025-11-25)</a> | <a href="https://m.leiphone.com/category/robot/Gya0eP56FU40RQeb.html" target="_blank">雷峰网·达闼(2025-09-29)</a></div>
+
+  <h3>4.2 倒闭风险信号清单（面试/入职前自查）</h3>
+  <div class="risk-box">
+    <div class="risk-title">红色警报（出现任意一条，谨慎入职）</div>
+    <ul style="margin:6px 0 0 18px;">
+      <li>融资轮次在A轮以前且超过12个月未宣布新融资</li>
+      <li>薪资发放延迟、社保公积金断缴（脉脉/看准网搜员工评价）</li>
+      <li>核心高管/技术负责人近期密集离职（查LinkedIn/脉脉）</li>
+      <li>公司员工数半年内缩减超30%</li>
+      <li>业务方向频繁跳转（从做ToC突然转ToB，或换赛道）</li>
+      <li>创始人公开融资失败/裁员消息</li>
+    </ul>
+  </div>
+  <div class="highlight-box">
+    <div style="color:var(--green);font-weight:600;margin-bottom:6px;">相对安全的信号</div>
+    <ul style="margin:6px 0 0 18px;">
+      <li>C轮以后或被大厂收购/战略投资</li>
+      <li>有明确付费客户和可持续收入（非纯靠融资烧钱）</li>
+      <li>核心团队稳定，招聘节奏平稳</li>
+      <li>赛道有真实落地场景（而非纯demo阶段）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 5. 竞争者画像 -->
+<div class="section-card">
+  <h2><span class="num">5</span> 竞争者画像与你的差异化定位</h2>
+
+  <h3>5.1 四类竞争者优劣势对比</h3>
+  <table>
+    <colgroup><col style="width:18%"><col style="width:30%"><col style="width:30%"><col style="width:22%"></colgroup>
+    <tr><th>类型</th><th>优势</th><th>劣势</th><th>竞争烈度</th></tr>
+    <tr>
+      <td>985科班硕士</td>
+      <td>学历硬、算法基础扎实、顶会论文/大厂实习多</td>
+      <td>应用工程能力不一定强；部分人偏理论</td>
+      <td><span class="tag red">极高</span> 算法岗主力竞争者</td>
+    </tr>
+    <tr>
+      <td>海归硕士</td>
+      <td>英语好、视野广、海外实习经历</td>
+      <td>国内人脉少、对国内生态不熟、薪资预期偏高</td>
+      <td><span class="tag orange">中高</span> 外企/出海方向有优势</td>
+    </tr>
+    <tr>
+      <td>培训班出身</td>
+      <td>工程能力速成、项目模板熟练、刷题量大</td>
+      <td>基础不牢、项目同质化严重、学历短板</td>
+      <td><span class="tag orange">中高</span> 应用层后端岗大量竞争者</td>
+    </tr>
+    <tr>
+      <td>跨专业（你的同类）</td>
+      <td>有交叉领域知识、学习能力证明</td>
+      <td>缺CS系统训练、简历需要补项目证明</td>
+      <td><span class="tag green">中等</span> 差异化定位是关键</td>
+    </tr>
+  </table>
+
+  <h3>5.2 你的差异化定位分析</h3>
+  <div class="highlight-box">
+    <strong>画像：</strong>本校211 + 电子信息工程（硬件背景）+ Python/Go + 大模型应用开发方向 + 本科就业（2025级大二，2028届）
+  </div>
+  <table>
+    <colgroup><col style="width:25%"><col style="width:37%"><col style="width:38%"></colgroup>
+    <tr><th>维度</th><th>你的现状</th><th>策略建议</th></tr>
+    <tr>
+      <td>学历</td>
+      <td>211本科（本校电子信息）</td>
+      <td>不卷纯算法岗（硕博为主），主攻应用层工程岗；本科可投字节/阿里/美团应用后端</td>
+    </tr>
+    <tr>
+      <td>专业背景</td>
+      <td>电子信息工程（硬件/信号/电路）</td>
+      <td>差异化：可投AI+硬件交叉岗（边缘计算/端侧AI/AI芯片软件栈），比纯CS多一层硬件理解</td>
+    </tr>
+    <tr>
+      <td>技术栈</td>
+      <td>Python + Go，大模型应用开发</td>
+      <td>Go在后端稀缺度高于Python，大厂后端Go岗多；Python做AI胶水层，组合有优势</td>
+    </tr>
+    <tr>
+      <td>时间窗口</td>
+      <td>大二（2025级），2028届毕业</td>
+      <td>还有2年准备：大二下-大三上刷LeetCode+做项目，大三暑期实习是关键跳板</td>
+    </tr>
+    <tr>
+      <td>核心短板</td>
+      <td>缺大厂实习经历、缺正式AI项目</td>
+      <td>大三必须拿到至少一段大厂AI相关实习（日常实习即可），这是本科进大厂的最大门槛</td>
+    </tr>
+  </table>
+</div>
+
+</div><!-- end tab-industry -->
+
+<!-- ==================== 板块二：面试深度库 ==================== -->
+<div id="tab-interview" class="tab-content">
+
+<!-- 1. 各目标公司完整招聘流程 -->
+<div class="section-card">
+  <h2><span class="num">1</span> 各目标公司完整招聘流程</h2>
+  <p style="color:var(--text-dim);margin-bottom:14px;">以下流程基于2025-2026秋招真实面经整理，具体轮数因部门/岗位而异。</p>
+
+  <div class="collapsible open">
+    <div class="collapsible-header">
+      <span>字节跳动（ByteDance）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+        <tr><th>环节</th><th>说明</th></tr>
+        <tr><td>网申/内推</td><td>官网投递或内推码；内推不占用简历筛选名额，优先处理</td></tr>
+        <tr><td>笔试</td><td>部分岗位需要，牛客平台，2-3道算法题（中等难度），限时90分钟</td></tr>
+        <tr><td>一面（Mentor/+1面）</td><td>40-60分钟：自我介绍→项目深挖→1-2道算法→技术八股；考察编码能力和项目理解</td></tr>
+        <tr><td>二面（Leader/+2面）</td><td>45-60分钟：项目深挖更深、系统设计初步、算法题；考察技术深度和思考方式</td></tr>
+        <tr><td>三面/交叉面</td><td>部分部门有：跨团队面试官，更综合的考察，可能问行为问题和技术广度</td></tr>
+        <tr><td>HR面</td><td>30分钟：薪资期望、稳定性、职业规划、反问；不刷人但影响评级</td></tr>
+        <tr><td>审批/OC</td><td>HR面后1-2周内部审批，通过后OC（口头offer），随后发书面offer</td></tr>
+      </table>
+      <div class="source">真实时间线参考：某26秋招数开岗——一面9.22→二面9.24→三面9.26→HR面10.10→加面10.16→OC 10.22→意向10.28。<br>来源：<a href="https://www.nowcoder.com/feed/main/detail/90d580f2c5244934a2121ccd3ea34db1" target="_blank">牛客·字节秋招意向帖(2025-10-28)</a> | <a href="https://jobs.bytedance.com/en/mobile/functions/trends?index=3" target="_blank">字节官方招聘FAQ</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>阿里巴巴（含淘天/阿里云/CBU等）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+        <tr><th>环节</th><th>说明</th></tr>
+        <tr><td>网申/内推</td><td>官网投递，内推码优先；注意选择具体事业部（淘天/云CBU/本地生活等）</td></tr>
+        <tr><td>笔试</td><td>牛客/赛码平台，3-4道算法题，120分钟；部分部门免笔试</td></tr>
+        <tr><td>一面</td><td>50-60分钟：项目+算法+八股；AI应用岗会重点问RAG/Agent相关</td></tr>
+        <tr><td>二面</td><td>技术leader面：项目深挖+系统设计+算法；考察解决问题思路</td></tr>
+        <tr><td>三面</td><td>部门总监/交叉面：更看重潜力和匹配度，可能有开放题</td></tr>
+        <tr><td>HR面</td><td>30分钟：综合评估，薪资谈判</td></tr>
+        <tr><td>审批</td><td>阿里审批流程较长（2-4周），涉及HRG/事业部审批</td></tr>
+      </table>
+      <div class="source">淘天AI Agent岗真实面经参考：一面/二面深挖RAG全流程、多模态RAG、GraphRAG、RAG评估体系。<br>来源：<a href="https://www.nowcoder.com/feed/main/detail/d037bc61e2cf48d986c84e6cf8ed5870" target="_blank">牛客·淘天AI Agent应用开发二面(2025-11-14)</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>腾讯（Tencent）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+        <tr><th>环节</th><th>说明</th></tr>
+        <tr><td>网申/内推</td><td>官网投递，分BG（CSIG/PCG/WXG/IEG等）</td></tr>
+        <tr><td>笔试</td><td>牛客平台，算法+选择题（计算机基础），120分钟</td></tr>
+        <tr><td>技术一面</td><td>Senior engineer面：Live coding + OS/计网/数据库基础 + 项目</td></tr>
+        <tr><td>技术二面</td><td>系统设计 + 并发/性能 + 项目深挖；考察工程思维</td></tr>
+        <tr><td>三面/总监面</td><td>部门总监：综合考察，技术广度+潜力+文化匹配</td></tr>
+        <tr><td>HR面</td><td>薪酬沟通、稳定性、职业规划</td></tr>
+      </table>
+      <div class="source">流程参考TechPrep 2026年腾讯面试流程整理。<br>来源：<a href="https://www.techprep.app/companies/tencent" target="_blank">TechPrep·Tencent Interview Process 2026</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>百度 / 美团 / 快手</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:15%"><col style="width:85%"></colgroup>
+        <tr><th>公司</th><th>流程要点</th></tr>
+        <tr><td>百度</td><td>笔试（赛码）→技术一面→技术二面→HR面，通常3轮技术+1轮HR；文心一言相关岗会问大模型原理</td></tr>
+        <tr><td>美团</td><td>笔试（牛客，算法题偏中等偏难）→技术一面（项目+算法）→技术二面（系统设计+深挖）→HR面；美团以算法题难著称</td></tr>
+        <tr><td>快手</td><td>笔试→技术一面→技术二面→HR面；算法岗和后端岗分开面试流程</td></tr>
+      </table>
+      <div class="source">参考牛客秋招面经汇总帖。<br>来源：<a href="https://www.nowcoder.com/discuss/226779" target="_blank">牛客·秋招大厂面经汇总(头条/百度/美团)</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>DeepSeek（深度求索）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+        <tr><th>环节</th><th>说明</th></tr>
+        <tr><td>特点</td><td>团队小、流程快、极看重编码能力和数学基础；面试轮数少但每轮密度高</td></tr>
+        <tr><td>面试重点</td><td>算法/数据结构/数学推导 + 大模型原理（训练/推理/对齐）+ 编码手撕</td></tr>
+        <tr><td>注意</td><td>DeepSeek招聘信息较少，主要靠内推；对本科非常不友好，基本只要硕博</td></tr>
+      </table>
+      <div class="source">说明：DeepSeek官方公开面试流程信息有限，以上为牛客/社交媒体面经综合整理。建议本科阶段不作为主攻目标，可作为长期目标。</div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>华为（正编 vs OD）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+        <tr><th>环节</th><th>说明</th></tr>
+        <tr><td>简历筛选</td><td>学历门槛：正编本科需985/211/本校等目标校；OD门槛略低但也有要求</td></tr>
+        <tr><td>笔试</td><td>牛客平台，3道算法题（难度中等），机考；OD和正编笔试同一标准</td></tr>
+        <tr><td>技术一面</td><td>项目+算法+计算机基础；华为特点是手撕代码题多</td></tr>
+        <tr><td>技术二面</td><td>部门主管面：项目深挖+综合素质</td></tr>
+        <tr><td>综合面/HR面</td><td>华为特色：性格测试（务必如实作答，前后一致）+ 薪资沟通</td></tr>
+        <tr><td>审批</td><td>华为审批流程较长，约2-4周；有"泡池子"现象（简历池等待匹配部门）</td></tr>
+      </table>
+      <div class="source">来源：<a href="https://www.nowcoder.com/feed/main/detail/af3a2e9fb119488d97032e2a55897654" target="_blank">牛客·华为正编OD外包区别(2026-09)</a></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- 2. 真实面经高频考点 -->
+<div class="section-card">
+  <h2><span class="num">2</span> 真实面经高频考点（按类别）</h2>
+  <p style="color:var(--text-dim);margin-bottom:14px;">以下考点来自牛客2025-2026年AI应用开发/Agent岗公开面经统计，标注来源。</p>
+
+  <div class="highlight-box" style="margin-bottom:16px;">
+    <strong>考点频率排名（牛客统计）：</strong>
+    RAG相关合计175次（检索增强生成107+RAG 40+信息检索26+RAG评估2）> Agent架构 > Python/Go基础 > 操作系统/计网 > MySQL/Redis > 大模型原理 > 项目深挖
+  </div>
+
+  <div class="collapsible open">
+    <div class="collapsible-header">
+      <span>RAG / 检索增强生成（第一考点）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <div class="qa-block">
+        <div class="qa-q">Q: 详细解释RAG从索引、召回到生成的完整过程</div>
+        <div class="qa-a">标准链路：文档加载→分块(chunking)→Embedding向量化→存入向量库→查询时query向量化→相似度检索→取Top-K相关chunk→拼入prompt→LLM生成回答</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: RAG有哪些分类？</div>
+        <div class="qa-a">Naive RAG（基础版）/ Advanced RAG（预处理+后处理优化）/ Modular RAG（模块化可插拔）；按模态分：纯文本RAG vs 多模态RAG</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: 多模态RAG怎么实现？伪多模态和真多模态区别？</div>
+        <div class="qa-a">伪多模态：图片转文字描述(用BLIP等)后走文本RAG；真多模态：直接用CLIP等跨模态Embedding做图文联合检索。CLIP用于真多模态RAG，因为它对齐了图文语义空间。</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: RAG怎么评估？最重要的指标是什么？</div>
+        <div class="qa-a">检索指标：召回率(Recall@K)、精确率、MRR、NDCG；生成指标：Faithfulness（忠实度，是否基于检索内容）、Answer Relevancy。最重要的是Faithfulness——防止幻觉。</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: RAG怎么评估？RAGAS和DeepEval有什么区别？【2026新增高频】</div>
+        <div class="qa-a">RAG评测分两层：<br><b>① 检索层：</b>Recall@K（召回率）、Precision@K、MRR、NDCG——用标注好的"问题-相关文档"对测。<br><b>② 生成层：</b>Faithfulness（忠实度，回答是否基于检索内容，防幻觉）、Answer Relevancy（回答与问题的相关度）、Context Precision/Recall。<br><b>工具：</b><a href="https://github.com/confident-ai/deepeval" target="_blank" style="color:var(--accent);">DeepEval</a>（18k+ stars）——类似pytest的LLM评测框架，可写单元测试测RAG/Agent，支持幻觉/忠实度/准确率指标，CI/CD集成。<a href="https://github.com/explodinggradients/ragas" target="_blank" style="color:var(--accent);">RAGAS</a>——专做RAG评测的框架，自动生成faithfulness/answer_relevancy/context_precision/context_recall四个指标。<br><b>面试加分：</b>说得出"我用DeepEval写了X条评测用例，faithfulness从70%提升到88%"比只说"我测了效果"强10倍。
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: 传统RAG有什么痛点？GraphRAG怎么做？</div>
+        <div class="qa-a">痛点：chunk语义割裂、长距离依赖丢失、无法处理多跳推理。GraphRAG：先从文档抽取实体关系构建知识图谱，查询时不仅检索chunk还检索图结构上下文，适合全局摘要和多跳问题。</div>
+      </div>
+      <div class="source">来源：<a href="https://www.nowcoder.com/discuss/927907189061087232" target="_blank">牛客·2025-2026 AI应用开发与Agent大厂面试高频问题(2026-09-25)</a> | <a href="https://www.nowcoder.com/feed/main/detail/d037bc61e2cf48d986c84e6cf8ed5870" target="_blank">牛客·淘天AI Agent二面(2025-11-14)</a> | <a href="https://www.nowcoder.com/discuss/927907662107246592" target="_blank">牛客·AI应用开发面试高频知识点(2026-09-26)</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>Agent / 智能体</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <div class="qa-block">
+        <div class="qa-q">Q: Agent的核心组成是什么？</div>
+        <div class="qa-a">Planning（规划/分解任务）+ Memory（短期对话记忆+长期知识）+ Tools（工具调用）+ Action（执行）</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: ReAct模式是什么？</div>
+        <div class="qa-a">Reasoning + Acting交替进行：Thought（思考下一步）→ Action（调用工具）→ Observation（观察结果）→ 循环直到得出答案</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: 多智能体协作有哪些模式？什么时候需要多Agent？</div>
+        <div class="qa-a">三种场景：①任务可拆成独立专业模块（前端/后端/测试各一个Agent）；②需要独立验证（一个生成方案另一个审查，避免自评偏差）；③可并行执行（同时查多个数据源再合并）。关键不是角色名，而是分工是否真的解耦。</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: 多轮对话Agent怎么解决状态爆炸/上下文溢出？</div>
+        <div class="qa-a">方案：摘要压缩历史对话；滑动窗口只保留最近N轮；外部存储历史（向量库/数据库），需要时检索；分层记忆（短期working memory + 长期episodic memory）</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: Agent怎么调试？【2026新增高频】</div>
+        <div class="qa-a">Agent最难的不是写出来，是跑不对时怎么定位问题。<br><b>工具：</b>① <b>LangSmith</b>（LangChain官方）——可视化追踪Agent每一步的输入/输出/token消耗/延迟，哪一步选错工具一目了然；② <b>Langfuse</b>（开源自托管替代）；③ <b>Photon</b>——Agent专项调试，可回放失败轨迹。<br><b>调试思路：</b>先开详细日志打印每一步Thought→Action→Observation，再用LangSmith定位是哪一步：是工具调用参数错了？还是LLM选错了工具？还是观察结果解析失败？<br><b>面试答题框架：</b>"Agent出问题通常三类：①工具调用层（参数/超时/解析失败）→加重试和降级；②推理层（LLM选错工具/死循环）→加最大步数限制和反思；③状态层（上下文溢出/状态不一致）→用LangGraph的checkpoint持久化。"
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: LangGraph的状态管理怎么做？【2026新增高频】</div>
+        <div class="qa-a"><a href="https://github.com/langchain-ai/langgraph" target="_blank" style="color:var(--accent);">LangGraph</a>（42k+ stars）用"状态图"(State Graph)编排Agent：定义一个State对象（字典/Pydantic模型）作为全局共享状态，节点(node)是函数接收State返回更新，边(edge)决定下一步走哪个节点。<br><b>核心概念：</b>①State——跨节点共享的数据结构（对话历史、中间结果、工具返回）；②节点——执行一个动作（调LLM/调工具/做判断）；③条件边——根据State内容动态路由（if/else分支）；④Checkpoint——每步自动保存状态，支持中断后恢复、人机交互打断。<br><b>vs裸LangChain：</b>LangChain Chain是线性的，LangGraph支持循环/分支/并发/持久化，做ReAct Agent和多步任务的工程化首选。面试能说出"用LangGraph的StateGraph+条件边+checkpoint"就是加分项。
+      </div>
+      <div class="source">来源：<a href="https://www.nowcoder.com/discuss/927907189061087232" target="_blank">牛客·AI应用开发面试高频问题(2026-09)</a> | <a href="https://www.iesdouyin.com/share/video/7676435250116840739" target="_blank">抖音·20个大厂Agent岗面试(2026-08-21)</a> | <a href="https://github.com/confident-ai/deepeval" target="_blank">DeepEval GitHub</a> | <a href="https://github.com/langchain-ai/langgraph" target="_blank">LangGraph GitHub</a></div>
+    </div></div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:16px;">
+    <strong>📚 八股学习策略（2026-09重构）：</strong>以下CS基础八股（Python/Go/操作系统/计网/MySQL/Redis）已有大量优质开源教程覆盖，本库不再重复编写八股正文。<br>
+    你只需要：①对照下方<b>高频考点清单</b>自查哪些不会 → ②点开对应外部教程链接，按推荐章节精读 → ③面试前用清单快速过一遍。<br>
+    <span style="color:var(--text-dim);font-size:12px;">外部资源均为开源/免费教程，只链接原文，不搬运内容。</span>
+  </div>
+
+  <div class="collapsible open">
+    <div class="collapsible-header">
+      <span>🐍 Python / Go 语言八股（考点清单 + 去哪学）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <h3>📋 面试高频考点清单（自查用）</h3>
+      <table>
+        <colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>Python 高频考点</th><th>Go 高频考点</th></tr>
+        <tr>
+          <td>GIL全局解释器锁原理 / 多线程vs多进程vs协程选择</td>
+          <td>GMP调度模型 / Work Stealing / M:N调度</td>
+        </tr>
+        <tr><td>装饰器（带参数/类装饰器/wraps）</td><td>channel原理 / select底层 / 有缓冲vs无缓冲</td></tr>
+        <tr><td>生成器/yield/惰性求值</td><td>sync包：Mutex/RWMutex/Once/Map/Pool</td></tr>
+        <tr><td>asyncio事件循环 / async-await / aiohttp</td><td>内存逃逸分析 / 堆vs栈分配</td></tr>
+        <tr><td>引用计数+分代回收 / 循环引用</td><td>GC三色标记法 / 写屏障 / STW时机</td></tr>
+        <tr><td>dict哈希表底层 / list动态数组 / 深浅拷贝</td><td>context树级取消 / happens-before</td></tr>
+        <tr><td>可变vs不可变对象 / tuple为什么可哈希</td><td>内存对齐 / 接口底层 / 反射</td></tr>
+      </table>
+      <h3>🔗 去哪学（外部优质教程）</h3>
+      <table>
+        <colgroup><col style="width:22%"><col style="width:48%"><col style="width:30%"></colgroup>
+        <tr><th>资源</th><th>看哪些章节</th><th>链接</th></tr>
+        <tr>
+          <td><b>golangFamily</b><br><span class="tag orange">Go专属</span></td>
+          <td>Go面试题合集 + 知识图谱。重点看：GMP调度、channel底层、GC原理、sync包、内存逃逸——这5个是Go面试必问</td>
+          <td><a href="https://github.com/xiaobaiTech/golangFamily" target="_blank">github.com/xiaobaiTech/golangFamily</a></td>
+        </tr>
+        <tr>
+          <td><b>CS-Notes (cyc2018)</b><br><span class="tag">通用</span></td>
+          <td>「语言编程」章节：Python基础语法要点、C++/Java基础概念对照阅读。虽以C++/Java为主，但数据结构与面向对象概念通用</td>
+          <td><a href="https://github.com/CyC2018/CS-Notes" target="_blank">github.com/CyC2018/CS-Notes</a></td>
+        </tr>
+        <tr>
+          <td><b>JavaGuide</b><br><span class="tag">后端通用</span></td>
+          <td>虽以Java为主，但「Java并发」「JVM」章节的并发概念（线程池/锁/内存模型）对Go的GMP/channel理解有迁移价值；Python方向挑并发章节读</td>
+          <td><a href="https://github.com/Snailclimb/JavaGuide" target="_blank">github.com/Snailclimb/JavaGuide</a></td>
+        </tr>
+      </table>
+      <div class="source">说明：Python八股外部成体系教程较少，建议以上面清单为主线，遇到具体问题搜「Python面试题+关键词」查牛客/掘金。Go方向golangFamily已覆盖90%高频题。</div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>🖥 操作系统 / 计网 / MySQL / Redis（考点清单 + 去哪学）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <h3>📋 面试高频考点清单（自查用）</h3>
+      <table>
+        <colgroup><col style="width:25%"><col style="width:75%"></colgroup>
+        <tr><th>类别</th><th>高频考点</th></tr>
+        <tr><td><b>操作系统</b></td><td>进程vs线程vs协程 / 上下文切换 / 用户态内核态切换 / 虚拟内存与分页 / 页面置换算法(LRU/Clock) / IO多路复用(select/poll/epoll) / 零拷贝 / 死锁四条件 / 进程间通信(管道/共享内存/信号量)</td></tr>
+        <tr><td><b>计算机网络</b></td><td>TCP三次握手四次挥手 / 滑动窗口 / 拥塞控制(慢启动/拥塞避免) / TIME_WAIT / HTTPS TLS握手 / HTTP缓存(强缓存/协商缓存) / 状态码 / DNS解析 / CDN原理 / WebSocket vs HTTP / 从输入URL到页面展示</td></tr>
+        <tr><td><b>MySQL</b></td><td>B+树索引原理 / 聚簇索引vs非聚簇 / 回表 / 最左匹配 / 事务ACID / MVCC(undo log+ReadView) / RR vs RC隔离级别 / 行锁间隙锁next-key lock / explain执行计划 / 慢查询优化 / 主从复制binlog</td></tr>
+        <tr><td><b>Redis</b></td><td>5种数据结构底层编码(embstr/ziplist/skiplist) / RDB vs AOF持久化 / 缓存穿透击穿雪崩 / 分布式锁(SETNX/Redlock) / Cluster哈希槽 / 过期策略(惰性+定期) / 内存淘汰(LRU/LFU)</td></tr>
+      </table>
+      <h3>🔗 去哪学（外部优质教程）</h3>
+      <table>
+        <colgroup><col style="width:22%"><col style="width:48%"><col style="width:30%"></colgroup>
+        <tr><th>资源</th><th>看哪些章节</th><th>链接</th></tr>
+        <tr>
+          <td><b>小林coding</b><br><span class="tag green">首选图解</span></td>
+          <td><b>操作系统专栏</b>：进程/线程、内存管理、IO多路复用、死锁——图解极直观，免费章节已够面试入门<br><b>计算机网络专栏</b>：TCP/IP、HTTP/HTTPS、浏览器输入URL全过程<br><b>MySQL教程</b>：索引、事务、MVCC、锁——B+树图解清晰</td>
+          <td><a href="https://xiaolincoding.com/" target="_blank">xiaolincoding.com</a></td>
+        </tr>
+        <tr>
+          <td><b>CS-Notes (cyc2018)</b><br><span class="tag">系统化提纲</span></td>
+          <td>「操作系统」「网络」「数据库」「面向对象」四大章节作为复习提纲，八股核心稳定。适合考前用来自查：每个章节标题就是考点清单</td>
+          <td><a href="https://github.com/CyC2018/CS-Notes" target="_blank">github.com/CyC2018/CS-Notes</a></td>
+        </tr>
+        <tr>
+          <td><b>JavaGuide</b><br><span class="tag">后端深挖</span></td>
+          <td>「MySQL面试篇」：索引优化、事务、锁——比小林coding更深；「Redis面试篇」：数据结构、持久化、集群。虽Java向，但数据库章节语言无关</td>
+          <td><a href="https://github.com/Snailclimb/JavaGuide" target="_blank">github.com/Snailclimb/JavaGuide</a></td>
+        </tr>
+        <tr>
+          <td><b>advanced-java (doocs)</b><br><span class="tag purple">系统设计选读</span></td>
+          <td>高并发、消息队列、分布式缓存章节——理解后端架构概念用。Go/Python方向挑架构概念读，不看Java代码细节</td>
+          <td><a href="https://github.com/doocs/advanced-java" target="_blank">github.com/doocs/advanced-java</a></td>
+        </tr>
+      </table>
+      <div class="source">学习顺序建议：小林coding建立图解直觉 → CS-Notes提纲自查查漏 → JavaGuide深挖MySQL/Redis具体考点。三者互补，不必全读。</div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>🧮 算法刷题（考点清单 + 去哪刷）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <h3>📋 面试高频题型清单</h3>
+      <table>
+        <colgroup><col style="width:25%"><col style="width:75%"></colgroup>
+        <tr><th>类别</th><th>必刷题型</th></tr>
+        <tr><td>数组/哈希</td><td>两数之和、三数之和、最长无重复子串、合并区间</td></tr>
+        <tr><td>链表</td><td>反转链表、环形链表、合并K个有序链表</td></tr>
+        <tr><td>二叉树</td><td>层序遍历、最近公共祖先、最大深度、锯齿遍历（递归+迭代都要会）</td></tr>
+        <tr><td>动态规划</td><td>爬楼梯、最大子数组和、零钱兑换、分割等和子集(416)、编辑距离</td></tr>
+        <tr><td>双指针/滑动窗口</td><td>接雨水、最小覆盖子串、长度最小子数组</td></tr>
+        <tr><td>二分/搜索</td><td>搜索旋转排序数组、寻找峰值</td></tr>
+      </table>
+      <h3>🔗 去哪刷</h3>
+      <table>
+        <colgroup><col style="width:22%"><col style="width:48%"><col style="width:30%"></colgroup>
+        <tr><th>资源</th><th>怎么用</th><th>链接</th></tr>
+        <tr>
+          <td><b>代码随想录</b><br><span class="tag green">刷题主线</span></td>
+          <td>严格按其顺序刷：<b>数组→链表→哈希表→字符串→栈/队列→二叉树→回溯→贪心→动态规划→图论</b>。200题图解，支持Python/Go题解。B站配套视频看二叉树/DP难点</td>
+          <td><a href="https://github.com/youngyangyang04/leetcode-master" target="_blank">github.com/youngyangyang04/leetcode-master</a><br><a href="https://programmercarl.com/" target="_blank">programmercarl.com（在线版）</a></td>
+        </tr>
+        <tr>
+          <td><b>labuladong算法小抄</b><br><span class="tag">思维套路</span></td>
+          <td>与随想录互补：随想录重刷题顺序，本仓库重<b>框架思维</b>（回溯框架、DP定义套路、滑动窗口模板）。二刷时配合使用</td>
+          <td><a href="https://github.com/labuladong/fucking-algorithm" target="_blank">github.com/labuladong/fucking-algorithm</a></td>
+        </tr>
+        <tr>
+          <td><b>system-design-primer</b><br><span class="tag purple">系统设计</span></td>
+          <td>实习/转正面试可能遇到系统设计题。短链、限流、Feed流等经典题方案拆解。本科生初面较少，学有余力再看</td>
+          <td><a href="https://github.com/donnemartin/system-design-primer" target="_blank">github.com/donnemartin/system-design-primer</a></td>
+        </tr>
+      </table>
+      <div class="source">416分割等和子集来自2026年字节三面真题。<br>来源：<a href="https://blog.csdn.net/weixin_44151034/article/details/161729146" target="_blank">CSDN·2026大厂大模型面试题(2026-06-24)</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>🧪 微调效果判断与推理优化（2026新增高频考点）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <div class="qa-block">
+        <div class="qa-q">Q: 怎么判断微调效果好不好？【2026新增高频】</div>
+        <div class="qa-a">不能只看loss曲线！三层判断：<br><b>① 训练侧：</b>loss曲线是否收敛（train loss下降但eval loss不降=过拟合）、学习率warmup是否合理、LoRA rank/alpha是否合适。<br><b>② 自动评测：</b>用<a href="https://github.com/open-compass/opencompass" target="_blank" style="color:var(--accent);">OpenCompass</a>（司南评测平台）或<a href="https://github.com/EleutherAI/lm-evaluation-harness" target="_blank" style="color:var(--accent);">lm-evaluation-harness</a>测MMLU/CMMLU/HumanEval等benchmark，对比微调前后分数变化。业务场景自建测试集（50-200条标注数据）。<br><b>③ 人工评测：</b>找业务方标注100条典型case，按准确性/有用性/安全性打分。自动指标涨了但人工觉得变差=说明benchmark和真实业务脱节。<br><b>面试加分：</b>能说出"我微调后MMLU涨了X分，但人工评测发现业务场景效果下降，原因是测试集和业务分布不一致"——这说明你真做过。
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: vLLM推理优化做了什么？为什么快？【2026新增高频】</div>
+        <div class="qa-a"><a href="https://github.com/vllm-project/vllm" target="_blank" style="color:var(--accent);">vLLM</a>（92k+ stars）核心优化：<br>① <b>PagedAttention</b>——像操作系统管理虚拟内存页一样管理KV Cache，消除显存碎片，显存利用率从20-40%提升到90%+；<br>② <b>Continuous Batching（连续批处理）</b>——请求不等凑齐一批才处理，新请求随时插入正在运行的batch，GPU利用率拉满；<br>③ <b>Prefix Caching</b>——相同system prompt的KV Cache复用；<br>④ <b>张量并行/流水线并行</b>——多卡跑大模型。<br><b>对比：</b>HuggingFace Transformers原生推理是静态batch+无KV Cache优化，vLLM吞吐高10-20倍。应用开发方向了解原理即可，推理岗需深入到PagedAttention实现。
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: LLaMA-Factory和ms-swift怎么选？</div>
+        <div class="qa-a"><a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank" style="color:var(--accent);">LLaMA-Factory</a>（75k+ stars）——带WebUI，一行命令启动，支持100+模型，中文文档友好，适合快速上手做SFT/LoRA。<a href="https://github.com/modelscope/ms-swift" target="_blank" style="color:var(--accent);">ms-swift</a>——阿里ModelScope出品，GRPO/RLHF链路更全，做对齐方向选它。本科就业做应用项目选LLaMA-Factory即可。
+      </div>
+      <div class="source">来源：<a href="https://github.com/vllm-project/vllm" target="_blank">vLLM GitHub</a> | <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMA-Factory GitHub</a> | <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass GitHub</a> | 牛客2026届大模型岗面经综合</div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>大模型原理</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <div class="qa-block">
+        <div class="qa-q">Q: Transformer的自注意力机制原理？</div>
+        <div class="qa-a">Q/K/V三个矩阵，Attention(Q,K,V) = softmax(QK^T/√d_k)V。缩放因子√d_k防止点积过大导致梯度消失。</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: SFT / RLHF / DPO分别是什么？</div>
+        <div class="qa-a">SFT：监督微调，用标注数据教模型遵循指令；RLHF：人类反馈强化学习，训练奖励模型+PPO优化；DPO：直接偏好优化，跳过奖励模型直接用偏好数据优化，更简单稳定。</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: 大模型的灾难性遗忘怎么解决？</div>
+        <div class="qa-a">方案：混合训练（新数据+旧数据）、LoRA/QLoRA（只微调少量参数）、正则化（EWC等）、回放机制</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">Q: 为什么需要温度(temperature)？top-p和top-k区别？</div>
+        <div class="qa-a">温度控制随机性：低温度更确定，高温度更多样。top-k只从概率最高的k个token采样；top-p从累计概率达到p的token集合采样（动态截断）。</div>
+      </div>
+      <div class="source">来源：<a href="https://blog.csdn.net/weixin_44151034/article/details/161729146" target="_blank">CSDN·2026大厂大模型/Agent面试题(2026-06-24)</a></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- 3. LLM系统设计题 -->
+<div class="section-card">
+  <h2><span class="num">3</span> LLM系统设计题（答题框架）</h2>
+  <p style="color:var(--text-dim);margin-bottom:14px;">以下是方法论框架，不是标准答案。面试时按框架展开，结合具体场景填充细节。</p>
+
+  <div class="collapsible open">
+    <div class="collapsible-header">
+      <span>设计题一：企业级RAG系统</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <h3>答题框架（六步法）</h3>
+      <table>
+        <colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+        <tr><th>步骤</th><th>要回答的问题</th></tr>
+        <tr>
+          <td><strong>1. 需求分析</strong></td>
+          <td>用户是谁？（内部员工/外部客户）知识库规模？（几千篇/几百万篇）实时性要求？（静态文档/实时更新）并发量？（100 QPS/1000 QPS）SLA要求？（P99延迟<2s？）</td>
+        </tr>
+        <tr>
+          <td><strong>2. 架构设计</strong></td>
+          <td>数据摄入层（文档解析/分块策略）→ Embedding层（选什么模型）→ 向量存储层（选什么向量库）→ 检索层（向量检索+BM25混合）→ 重排序层（Rerank模型）→ 生成层（LLM调用）→ 监控层</td>
+        </tr>
+        <tr>
+          <td><strong>3. 关键技术决策</strong></td>
+          <td>分块策略：固定长度vs语义分块vs递归分块？向量库选型：Faiss(本地) vs Milvus(分布式) vs Pinecone(托管)？混合检索：向量召回+关键词召回怎么融合？Rerank：用Cross-Encoder还是LLM Rerank？</td>
+        </tr>
+        <tr>
+          <td><strong>4. 扩展性</strong></td>
+          <td>知识库增长到千万级chunk怎么办？（分库分表/分片）多租户怎么隔离？（权限过滤在检索层做）多语言怎么支持？（多语言Embedding模型）增量更新怎么处理？</td>
+        </tr>
+        <tr>
+          <td><strong>5. 评测体系</strong></td>
+          <td>离线评测：构建测试集，测Recall@K、Faithfulness、Answer Relevancy；在线评测：用户反馈点赞/点踩、人工抽检；A/B测试对比不同策略</td>
+        </tr>
+        <tr>
+          <td><strong>6. 成本与优化</strong></td>
+          <td>Embedding成本：批量预计算vs实时计算；LLM调用成本：缓存高频问答、小模型处理简单问题；延迟优化：流式输出、预加载Embedding、并行检索</td>
+        </tr>
+      </table>
+      <div class="source">框架参考ITOHI LLM Interview Hard Level及牛客面经综合。<br>来源：<a href="https://itohi.com/snippets/interview/ai/llm-interview-hard/" target="_blank">ITOHI·LLM Interview Hard(2025-12-13)</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>设计题二：Agent平台</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <h3>答题框架</h3>
+      <table>
+        <colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+        <tr><th>步骤</th><th>要回答的问题</th></tr>
+        <tr>
+          <td><strong>1. 需求分析</strong></td>
+          <td>平台目标：是给开发者搭Agent的低代码平台？还是垂直业务Agent？支持哪些工具类型？（API/数据库/代码执行）并发和状态管理要求？</td>
+        </tr>
+        <tr>
+          <td><strong>2. 架构设计</strong></td>
+          <td>用户层（Agent编排界面）→ 编排引擎（工作流DAG/ReAct循环）→ 工具执行层（函数调用沙箱）→ 记忆层（短期对话+长期向量记忆）→ LLM路由层（不同任务选不同模型）→ 观测层（Trace/日志/评测）</td>
+        </tr>
+        <tr>
+          <td><strong>3. 关键技术</strong></td>
+          <td>工具调用可靠性：超时/重试/降级；状态管理：会话存储（Redis）+ 检查点(checkpoint)；错误恢复：失败重试/人工介入；安全：工具权限隔离、代码沙箱执行</td>
+        </tr>
+        <tr>
+          <td><strong>4. 扩展性</strong></td>
+          <td>插件机制：开发者怎么注册新工具？多Agent协作：支持编排还是自主协作？水平扩展：无状态设计+外部状态存储</td>
+        </tr>
+        <tr>
+          <td><strong>5. 评测</strong></td>
+          <td>任务成功率、工具调用正确率、端到端延迟、成本（每任务token消耗）；线上灰度+人工review</td>
+        </tr>
+        <tr>
+          <td><strong>6. 成本</strong></td>
+          <td>模型路由：简单任务用小模型，复杂任务用大模型；缓存：重复工具调用结果缓存；Token优化：精简prompt、上下文压缩</td>
+        </tr>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>设计题三：AI客服系统</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <h3>答题框架</h3>
+      <table>
+        <colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+        <tr><th>步骤</th><th>要回答的问题</th></tr>
+        <tr>
+          <td><strong>1. 需求分析</strong></td>
+          <td>业务场景（电商/金融/SaaS）？日咨询量？高峰期并发？人工接管率要求？（目标：AI解决70%，转人工30%）满意度KPI？</td>
+        </tr>
+        <tr>
+          <td><strong>2. 架构设计</strong></td>
+          <td>接入层（Web/APP/电话）→ 意图识别 → 路由（FAQ直接回答/RAG查知识库/转人工）→ 对话管理（多轮状态机）→ RAG知识库 → LLM生成 → 质检与监控</td>
+        </tr>
+        <tr>
+          <td><strong>3. 关键技术</strong></td>
+          <td>意图分类：小模型快速判断用户意图；多轮对话：上下文管理+对话状态跟踪；转人工触发条件：用户情绪识别/多轮未解决/敏感问题；知识库：产品文档+历史工单+FAQ</td>
+        </tr>
+        <tr>
+          <td><strong>4. 扩展性</strong></td>
+          <td>多业务线：知识库隔离+统一平台；多渠道接入：统一对话核心；灰度发布：新策略先对5%流量</td>
+        </tr>
+        <tr>
+          <td><strong>5. 评测</strong></td>
+          <td>解决率（AI独立解决比例）、转人工率、满意度评分、首响时间、会话时长；离线评测+在线A/B</td>
+        </tr>
+        <tr>
+          <td><strong>6. 成本</strong></td>
+          <td>FAQ匹配优先走规则（零成本）；RAG用便宜Embedding；简单问题用小模型；高峰期降级策略（限流/排队）</td>
+        </tr>
+      </table>
+    </div></div>
+  </div>
+</div>
+
+<!-- 4. 项目深挖问题库 -->
+<div class="section-card">
+  <h2><span class="num">4</span> 项目深挖问题库</h2>
+  <p style="color:var(--text-dim);margin-bottom:14px;">针对大模型应用项目，面试官必问的追问。提前准备好每个问题的答案。</p>
+
+  <table>
+    <colgroup><col style="width:30%"><col style="width:70%"></colgroup>
+    <tr><th>追问方向</th><th>典型问题</th></tr>
+    <tr><td rowspan="3"><strong>技术选型</strong></td><td>为什么选这个向量库（Milvus/FAISS/Chroma）？对比过其他方案吗？</td></tr>
+    <tr><td>Embedding模型为什么选这个？维度多大？怎么评估Embedding质量？</td></tr>
+    <tr><td>为什么用LangChain/LlamaIndex而不是自己写？底层怎么实现的？</td></tr>
+    <tr><td rowspan="3"><strong>效果评估</strong></td><td>RAG效果怎么评测的？有测试集吗？Recall@K是多少？</td></tr>
+    <tr><td>怎么判断生成结果好不好？人工评估还是自动指标？</td></tr>
+    <tr><td>上线后效果下降了怎么排查？（数据更新？Embedding漂移？用户query变化？）</td></tr>
+    <tr><td rowspan="3"><strong>工程问题</strong></td><td>并发怎么处理？QPS多少？有没有做限流？</td></tr>
+    <tr><td>延迟多少？P99是多少？怎么优化的？</td></tr>
+    <tr><td>流式输出怎么实现的？SSE/WebSocket选哪个？</td></tr>
+    <tr><td rowspan="3"><strong>成本优化</strong></td><td>每次调用LLM花多少钱？一个月API费用多少？</td></tr>
+    <tr><td>怎么做成本优化的？（缓存/小模型降级/批量处理/Prompt压缩）</td></tr>
+    <tr><td>Embedding成本怎么控制？增量更新还是全量重建？</td></tr>
+    <tr><td rowspan="2"><strong>边界case</strong></td><td>用户问了知识库没有的内容怎么处理？（拒答策略/转人工）</td></tr>
+    <tr><td>多用户权限怎么控制？不同角色看到不同数据怎么办？（检索层权限过滤）</td></tr>
+  </table>
+  <div class="source">追问清单综合牛客面经中项目深挖高频问题整理。<br>来源：<a href="https://www.nowcoder.com/discuss/927907189061087232" target="_blank">牛客·AI应用开发面试高频问题</a></div>
+</div>
+
+<!-- 5. 手撕题型 -->
+<div class="section-card">
+  <h2><span class="num">5</span> 手撕题型清单</h2>
+
+  <div class="collapsible open">
+    <div class="collapsible-header">
+      <span>算法题（LeetCode中等高频）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <table>
+        <colgroup><col style="width:15%"><col style="width:50%"><col style="width:35%"></colgroup>
+        <tr><th>类型</th><th>高频题</th><th>备注</th></tr>
+        <tr><td>数组/哈希</td><td>两数之和、三数之和、最长无重复子串、合并区间</td><td>必考基础</td></tr>
+        <tr><td>链表</td><td>反转链表、环形链表、合并K个有序链表</td><td>手写频率极高</td></tr>
+        <tr><td>二叉树</td><td>层序遍历、最近公共祖先、最大深度、锯齿遍历</td><td>递归vs迭代都要会</td></tr>
+        <tr><td>DP</td><td>爬楼梯、最大子数组和、零钱兑换、分割等和子集(LeetCode 416)</td><td>字节2026秋招考过416</td></tr>
+        <tr><td>双指针/滑动窗口</td><td>接雨水、最小覆盖子串、长度最小子数组</td><td>面试高频</td></tr>
+        <tr><td>二分/搜索</td><td>搜索旋转排序数组、寻找峰值</td><td>边界处理要注意</td></tr>
+      </table>
+      <div class="source">416分割等和子集来自2026年字节三面真题。<br>来源：<a href="https://blog.csdn.net/weixin_44151034/article/details/161729146" target="_blank">CSDN·2026大厂大模型面试题(2026-06-24)</a></div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>业务代码手撕（AI应用方向）</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <div class="qa-block">
+        <div class="qa-q">手撕：实现一个简单RAG检索流程（Python）</div>
+        <div class="qa-a">
+          要点：文档分块 → Embedding → 存入向量库 → query检索 → 拼接prompt → 调用LLM。<br>
+          考察：是否能写出来完整链路，边界case怎么处理（空文档、检索结果为空、超时）
+        </div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">手撕：用LangGraph实现ReAct Agent【2026新增】</div>
+        <div class="qa-a">
+          要点：①定义State（messages列表）；②创建LLM节点（调LLM决定下一步）；③创建工具节点（执行function call）；④用条件边判断"是否需要调工具"还是"直接回答"；⑤循环直到LLM输出FINISH。<br>
+          骨架：<code style="background:var(--bg);padding:2px 6px;border-radius:4px;">graph = StateGraph(State); graph.add_node("llm", call_llm); graph.add_node("tools", call_tools); graph.add_conditional_edges("llm", should_continue, {"continue":"tools","end":END}); graph.add_edge("tools","llm")</code><br>
+          考察：是否理解ReAct循环结构、State怎么在节点间传递、条件边怎么路由。参考<a href="https://github.com/langchain-ai/langgraph" target="_blank" style="color:var(--accent);">LangGraph官方ReAct示例</a>。
+        </div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">手撕：调用vLLM API做流式输出【2026新增】</div>
+        <div class="qa-a">
+          要点：vLLM启动后兼容OpenAI API格式，用<code style="background:var(--bg);padding:2px 6px;border-radius:4px;">stream=True</code>参数即可流式返回。<br>
+          Python骨架：<code style="background:var(--bg);padding:2px 6px;border-radius:4px;">from openai import OpenAI; client = OpenAI(base_url="http://localhost:8000/v1"); stream = client.chat.completions.create(model="Qwen/Qwen2.5-7B", messages=[...], stream=True); for chunk in stream: print(chunk.choices[0].delta.content, end="")</code><br>
+          考察：是否知道vLLM兼容OpenAI接口格式、stream参数怎么用、FastAPI层怎么把流式转发给前端（SSE）。
+        </div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">手撕：实现一个流式API接口（FastAPI/Flask）</div>
+        <div class="qa-a">
+          要点：SSE(Server-Sent Events)或WebSocket；逐token返回；错误处理；客户端断开检测。<br>
+          考察：对流式输出的理解，async/await使用
+        </div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">手撕：调用大模型API的重试/降级逻辑</div>
+        <div class="qa-a">
+          要点：指数退避重试、超时控制、降级到小模型/缓存结果。<br>
+          考察：工程可靠性思维
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header">
+      <span>SQL / 模型调用代码</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="collapsible-body"><div class="collapsible-inner">
+      <div class="qa-block">
+        <div class="qa-q">SQL高频：窗口函数、JOIN、GROUP BY、慢查询优化</div>
+        <div class="qa-a">常见题：查每个部门工资第二高的员工、连续登录N天的用户、TopN问题</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">模型调用代码：用OpenAI SDK/阿里云SDK写一个function calling示例</div>
+        <div class="qa-a">要点：定义tools schema → 调用chat completion → 解析tool_calls → 执行函数 → 把结果传回模型 → 得到最终回答</div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- 6. 评分标准/反问/谈薪 -->
+<div class="section-card">
+  <h2><span class="num">6</span> 面试评分、反问清单与谈薪策略</h2>
+
+  <h3>6.1 大厂面试评分维度（通用）</h3>
+  <table>
+    <colgroup><col style="width:25%"><col style="width:50%"><col style="width:25%"></colgroup>
+    <tr><th>维度</th><th>考察内容</th><th>权重参考</th></tr>
+    <tr><td> coding能力</td><td>算法题正确率、代码规范、边界处理</td><td>30-40%</td></tr>
+    <tr><td>项目深度</td><td>项目理解程度、技术决策理由、解决问题思路</td><td>25-30%</td></tr>
+    <tr><td>计算机基础</td><td>OS/计网/数据库/语言基础</td><td>15-20%</td></tr>
+    <tr><td>学习能力/潜力</td><td>对新技术的理解、思考深度、求知欲</td><td>10-15%</td></tr>
+    <tr><td>文化匹配</td><td>沟通表达、团队合作、价值观</td><td>5-10%</td></tr>
+  </table>
+
+  <h3>6.2 反问清单（面试最后必问）</h3>
+  <div class="highlight-box">
+    <strong>问团队：</strong>团队多少人？分工是怎样的？最近在做什么项目？<br>
+    <strong>问技术栈：</strong>团队用什么技术栈？大模型用的是自研还是API？基础设施怎么搭的？<br>
+    <strong>问业务：</strong>这个岗位的业务目标是什么？成功的标准是什么？<br>
+    <strong>问成长：</strong>新人入职前三个月的培养路径是怎样的？有没有mentor？<br>
+    <strong>问挑战：</strong>团队目前面临的最大技术挑战是什么？
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin-top:8px;">注意：不要问薪资福利（HR面再谈）、不要说"没问题了"（显得没兴趣）。</p>
+
+  <h3>6.3 泡池子/排序/OC/谈薪策略</h3>
+  <table>
+    <colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+    <tr><th>术语</th><th>说明与策略</th></tr>
+    <tr><td>泡池子</td><td>面试通过后简历进入人才池等待分配部门。策略：主动联系HR表达意向部门；同时继续面其他公司不要干等</td></tr>
+    <tr><td>排序</td><td>面试官对你的评级（如S/A/B/C），S级最快offer且薪资最高。策略：每轮面试都当最后一轮全力表现</td></tr>
+    <tr><td>OC（Offer Call）</td><td>HR电话口头通知offer和薪资。此时是谈薪关键窗口。策略：不要当场答应，说"我考虑一下"，手里有多个offer再谈</td></tr>
+    <tr><td>谈薪策略</td><td>①报高10-20%的预期薪资 ②用其他offer做筹码 ③总包（base+股票+签字费+年终奖）一起算 ④不要只看月薪</td></tr>
+  </table>
+</div>
+
+<!-- 7. 华为OD与外包 -->
+<div class="section-card">
+  <h2><span class="num">7</span> 华为OD与正编区别、外包识别方法</h2>
+
+  <h3>7.1 华为三种用工方式对比</h3>
+  <table>
+    <colgroup><col style="width:16%"><col style="width:28%"><col style="width:28%"><col style="width:28%"></colgroup>
+    <tr><th></th><th>华为正编</th><th>华为OD（外包派遣）</th><th>普通外包</th></tr>
+    <tr><td>签约方</td><td>华为技术有限公司</td><td>外企德科/科锐国际（第三方人力）</td><td>中软/软通等乙方公司</td></tr>
+    <tr><td>工号</td><td>00开头</td><td>300开头</td><td>wx/kf/600开头</td></tr>
+    <tr><td>工牌</td><td>红绳ID卡</td><td>不同颜色（区分正编）</td><td>明显区分</td></tr>
+    <tr><td>薪资</td><td>13级起，本科应届13级</td><td>与正编基本同薪（同工同酬说法）</td><td>明显低于正编/OD</td></tr>
+    <tr><td>股票/分红</td><td>有（TUP/虚拟受限股）</td><td>无</td><td>无</td></tr>
+    <tr><td>工作内容</td><td>核心技术岗都可接触</td><td>研发岗为主，核心技术有限制</td><td>项目制配合工作，非核心</td></tr>
+    <tr><td>转正正编</td><td>—</td><td>有通道但比例低，通常需1-2年+绩效优秀</td><td>几乎不可能</td></tr>
+    <tr><td>公积金</td><td>5%（华为标准）</td><td>12%（略高）</td><td>按最低标准</td></tr>
+  </table>
+  <div class="source">来源：<a href="https://m.36kr.com/p/3215742861314947" target="_blank">36氪·外包招聘变形(2025-03-21)</a> | <a href="https://www.javastack.cn/huawei-od-levels-salaries/" target="_blank">Java技术栈·华为OD职级薪资</a> | <a href="http://www.eeo.com.cn/2025/0311/715878.shtml" target="_blank">经济观察网·华为OD(2025-03-11)</a></div>
+
+  <h3>7.2 如何识别外包/劳务派遣（通用方法）</h3>
+  <div class="risk-box">
+    <div class="risk-title">面试时一定要确认的问题</div>
+    <ul style="margin:6px 0 0 18px;">
+      <li><strong>劳动合同跟谁签？</strong>——如果不是和目标公司直签，就是派遣/外包</li>
+      <li><strong>五险一金谁缴纳？按什么基数？</strong>——第三方缴纳=派遣/外包</li>
+      <li><strong>工号/工牌是什么样的？</strong>——入职前问清楚</li>
+      <li><strong>岗位描述里有没有"驻场""项目制""乙方"？</strong>——有则大概率外包</li>
+      <li><strong>招聘方是HR还是猎头？</strong>——猎头招的研发岗很多是外包岗</li>
+    </ul>
+  </div>
+  <div class="highlight-box">
+    <strong>判断口诀：</strong>正式工 = 跟公司签合同 + 公司交社保 + 纳入公司管理体系；劳务派遣 = 跟第三方签合同 + 派到某公司工作；外包 = 乙方公司招聘 + 驻场甲方做项目。
+  </div>
+</div>
+
+</div><!-- end tab-interview -->
+
+</div><!-- end container -->
+
+<script>
+function switchTab(tabName) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tabName).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.collapsible-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+});
+</script>
+
+<div class="footer">
+  行业认知与面试深度库 · 泛AI软件就业作战资料包 · 数据截至2026年9月<br>
+  所有行业数据均标注来源，面经来自牛客等公开社区，不虚构不编造
+</div>
+
+</body>
+</html>

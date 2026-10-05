@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工作后深造指南 · 港新授课型硕士 · 泛AI软件就业作战</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;background:#f1f5f9;color:#1e293b;padding:20px;line-height:1.7}
+.container{max-width:1300px;margin:0 auto}
+h1{text-align:center;font-size:26px;color:#0f172a;margin-bottom:6px}
+.subtitle{text-align:center;color:#64748b;font-size:14px;margin-bottom:8px}
+.tags{text-align:center;margin-bottom:24px}
+.tag{display:inline-block;padding:4px 14px;border-radius:14px;font-size:13px;margin:3px;font-weight:600}
+.tag-blue{background:#dbeafe;color:#1e40af}
+.tag-purple{background:#ede9fe;color:#5b21b6}
+.tag-green{background:#dcfce7;color:#166534}
+.tag-orange{background:#ffedd5;color:#9a3412}
+.nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.nav a{padding:8px 16px;background:#fff;border:2px solid #e2e8f0;border-radius:20px;text-decoration:none;color:#475569;font-size:13px;font-weight:600;transition:all .2s}
+.nav a:hover{border-color:#2563eb;color:#2563eb}
+.section{background:#fff;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.section h2{font-size:20px;color:#0f172a;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+.section h3{font-size:17px;color:#1e40af;margin:20px 0 12px}
+/* 路径定位 */
+.purpose-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.purpose-card{background:#f8fafc;border-radius:10px;padding:16px;border-left:4px solid #2563eb}
+.purpose-title{font-weight:700;color:#1e40af;margin-bottom:6px}
+.purpose-desc{font-size:13px;color:#475569;margin-bottom:6px}
+.purpose-suit{font-size:12px;color:#64748b}
+/* 院校库 */
+.uni-block{margin-bottom:20px}
+.uni-header{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#f8fafc;border-radius:8px;margin-bottom:10px}
+.uni-name{font-weight:700;font-size:16px}
+.uni-tier{color:#fff;padding:2px 10px;border-radius:10px;font-size:12px}
+.prog-card{background:#fafafa;border-radius:8px;padding:14px 18px;margin-bottom:10px;border:1px solid #e2e8f0}
+.prog-name{font-weight:700;font-size:15px;margin-bottom:8px}
+.prog-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;color:#475569;margin-bottom:8px}
+.prog-meta span{background:#eff6ff;padding:2px 8px;border-radius:6px}
+.tag-rolling{background:#fef3c7!important;color:#92400e!important}
+.prog-detail{font-size:13px;color:#334155}
+.prog-detail div{margin-bottom:4px}
+.prog-note{color:#b45309;background:#fffbeb;padding:6px 10px;border-radius:6px;margin-top:6px;font-size:12px}
+/* 表格 */
+.matrix-table,.cost-table{width:100%;border-collapse:collapse;font-size:13px}
+.matrix-table th,.cost-table th{background:#2563eb;color:#fff;padding:10px 8px;text-align:left;position:sticky;top:0}
+.matrix-table td,.cost-table td{padding:10px 8px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+.matrix-table tr:nth-child(even){background:#f8fafc}
+/* 申请准备 */
+.prep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.prep-card{background:#f8fafc;border-radius:10px;padding:16px}
+.prep-card h4{margin-bottom:8px;color:#1e40af}
+.prep-card p{font-size:13px;margin-bottom:6px}
+.prep-gpa{border-left:4px solid #dc2626}
+.prep-lang{border-left:4px solid #16a34a}
+/* 时间线 */
+.tl-compare{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tl-column{background:#f8fafc;border-radius:10px;padding:16px}
+.tl-column h4{text-align:center;margin-bottom:12px;color:#1e40af}
+.tl-note{font-size:12px;color:#b45309;background:#fffbeb;padding:6px 10px;border-radius:6px;margin-bottom:10px}
+.tl-flow{display:flex;flex-direction:column;gap:8px}
+.tl-node{display:flex;gap:10px;align-items:flex-start}
+.tl-time{min-width:80px;font-weight:700;color:#2563eb;font-size:13px}
+.tl-event{font-size:13px;color:#334155;flex:1}
+/* 毕业后出路 */
+.after-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.after-card{border-radius:10px;padding:18px}
+.after-card h4{margin-bottom:10px}
+.after-card p{font-size:13px;margin-bottom:6px}
+.after-hk{background:#fef2f2;border-left:4px solid #dc2626}
+.after-sg{background:#f0fdf4;border-left:4px solid #16a34a}
+.after-cn{background:#eff6ff;border-left:4px solid #2563eb}
+/* 费用 */
+.cost-note{margin-top:12px;font-size:13px;color:#475569;background:#fef3c7;padding:10px 14px;border-radius:8px}
+/* 避坑 */
+.pit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.pit-card{background:#fef2f2;border-radius:10px;padding:16px;border-left:4px solid #dc2626}
+.pit-cat{display:inline-block;background:#dc2626;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;margin-bottom:6px}
+.pit-title{font-weight:700;color:#991b1b;margin-bottom:6px;font-size:14px}
+.pit-content{font-size:13px;color:#475569;margin-bottom:8px}
+.pit-action{font-size:13px;color:#166534;background:#f0fdf4;padding:8px 10px;border-radius:6px}
+.disclaimer{text-align:center;color:#94a3b8;font-size:12px;margin-top:20px;padding:16px}
+a{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎓 工作后深造指南</h1>
+<div class="subtitle">工作1-2年申请港新1年制授课型硕士 · CS/AI/DS方向 · 本校电信2025级</div>
+<div class="tags">
+  <span class="tag tag-blue">本科就业为主</span>
+  <span class="tag tag-purple">深造为Plan B</span>
+  <span class="tag tag-green">GPA 80+保底冲85+</span>
+  <span class="tag tag-orange">2026政策已核实</span>
+</div>
+
+<div class="nav">
+  <a href="#purpose">路径定位</a>
+  <a href="#universities">港新院校库</a>
+  <a href="#matrix">地区决策矩阵</a>
+  <a href="#prep">申请准备</a>
+  <a href="#timeline">两条时间线</a>
+  <a href="#after">毕业后出路</a>
+  <a href="#cost">费用ROI</a>
+  <a href="#pitfalls">避坑指南</a>
+</div>
+
+<div class="section" id="purpose">
+  <h2>一、读硕目的与路径定位</h2>
+  <p style="margin-bottom:14px;color:#475569;font-size:14px;">1年制港新授课型硕适合有明确职业目标的工作党，不是逃避就业的选择。先想清楚为什么读，再决定是否读。</p>
+  <div class="purpose-grid"><div class="purpose-card">
+      <div class="purpose-title">学历升级冲更好公司/岗位</div>
+      <div class="purpose-desc">用1-2年硕士把本科双非/211背景替换为QS前50/前100硕士，突破大厂算法岗、核心研发岗的简历筛选门槛，或在内部晋升/跳槽时跨过学历坎。</div>
+      <div class="purpose-suit">适合：已工作1-3年、技术能力尚可但本科院校/学位限制了简历通过率，目标是跳大厂SP/SSP或转岗核心方向的工程师。</div>
+    </div><div class="purpose-card">
+      <div class="purpose-title">开发转算法或研究方向</div>
+      <div class="purpose-desc">授课型硕士（CS/AI/DS）补系统理论+论文/项目经历，把工程岗简历改写成算法/研究岗简历；研究型MSc/MPhil则直接走RA-PhD路径。</div>
+      <div class="purpose-suit">适合：本科做后端/客户端/前端，想转算法、机器学习、NLP、CV或AI Infra，但缺乏系统课程和论文产出的工程师。</div>
+    </div><div class="purpose-card">
+      <div class="purpose-title">拿二次应届身份重走校招</div>
+      <div class="purpose-desc">毕业2年内可按应届身份参加校招（部分企业卡毕业时间窗），用校招通道重新进大厂/国企/研究所，避开社招要求3-5年经验的内卷。</div>
+      <div class="purpose-suit">适合：对第一份工作不满意、社招跳槽空间小，想通过校招批量投递拿到更好offer的人。</div>
+    </div><div class="purpose-card">
+      <div class="purpose-title">留学生落户</div>
+      <div class="purpose-desc">利用留学生落户政策（上海QS Top50直接落、Top51-100缴6个月社保；深圳本科以上可落；北京有指标）解决一线城市户口问题。</div>
+      <div class="purpose-suit">适合：目标长期在上海/深圳/北京定居、子女教育和购房刚需，且本科院校难以走常规落户通道的人。</div>
+    </div><div class="purpose-card">
+      <div class="purpose-title">留港/留新工作与身份</div>
+      <div class="purpose-desc">读完硕直接在当地拿工签工作（香港IANG 2年可续签、7年永居；新加坡EP→PR），积累海外工作经验和身份，回国时也带海外光环。</div>
+      <div class="purpose-suit">适合：想跳出国内内卷、适应粤语/英语环境、能接受中长期在大湾区或东南亚工作的工程师。</div>
+    </div></div>
+</div>
+
+<div class="section" id="universities">
+  <h2>二、港新院校项目库（10港 + 5新 = 15个项目）</h2>
+  <p style="margin-bottom:14px;color:#b45309;font-size:13px;background:#fffbeb;padding:10px 14px;border-radius:8px;">
+    ⚠ 部分项目学费/截止时间为参考近年数据，标注"待官网确认"的项请在申请季（9月）到官网核实最新信息。周一更新脚本会自动检查目标项目页面变化。
+  </p>
+  <h3 class="region-title">🇭🇰 香港</h3><div class="uni-block"><div class="uni-header" style="border-left:4px solid #dc2626"><span class="uni-name">香港大学（HKU）</span><span class="uni-tier" style="background:#dc2626">港三</span></div><div class="prog-card">
+              <div class="prog-name">计算机科学 <span style="color:#64748b;font-size:13px;">MSc(CompSc)</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约16.6万</span>
+                <span>📊 均分：211参考80+，热门85+（官网无明确门槛，参考录取数据）</span>
+                <span>🗣️ 雅思6.0（单项5.5）/托福80</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年1月（滚动） 截止</div>
+                <div><strong>课程方向：</strong>通用计算机/AI/金融计算/安全四个方向</div>
+                <div><strong>毕业去向：</strong>回大陆大厂/留港金融科技</div>
+                <div><strong>官网：</strong><a href="https://www.msc-compsci.hku.hk" target="_blank">https://www.msc-compsci.hku.hk</a></div>
+                <div class="prog-note">⚠ 港三计算机，竞争激烈，建议早申</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">数据科学 <span style="color:#64748b;font-size:13px;">MSc in Data Science</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约18.4万</span>
+                <span>📊 均分：211参考82+</span>
+                <span>🗣️ 雅思6.0（单项5.5）/托福80</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>统计+机器学习+数据工程</div>
+                <div><strong>毕业去向：</strong>数据分析师/算法工程师</div>
+                <div><strong>官网：</strong><a href="https://www.datascience.hku.hk" target="_blank">https://www.datascience.hku.hk</a></div>
+                <div class="prog-note">⚠ 跨学科项目，数学基础好有优势</div>
+              </div>
+            </div></div><div class="uni-block"><div class="uni-header" style="border-left:4px solid #dc2626"><span class="uni-name">香港中文大学（CUHK）</span><span class="uni-tier" style="background:#dc2626">港三</span></div><div class="prog-card">
+              <div class="prog-name">计算机科学 <span style="color:#64748b;font-size:13px;">MSc in Computer Science</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约21.2万</span>
+                <span>📊 均分：211参考82+，实际录取85+</span>
+                <span>🗣️ 雅思6.5/托福79</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>AI/计算机视觉/系统/金融科技</div>
+                <div><strong>毕业去向：</strong>大厂算法/开发岗</div>
+                <div><strong>官网：</strong><a href="https://www.cse.cuhk.edu.hk/admission/msc/" target="_blank">https://www.cse.cuhk.edu.hk/admission/msc/</a></div>
+                <div class="prog-note">⚠ 港三CS热门，均分要求高</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">信息工程 <span style="color:#64748b;font-size:13px;">MSc in Information Engineering</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约19.3万</span>
+                <span>📊 均分：211参考80+</span>
+                <span>🗣️ 雅思6.5/托福79</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>通信/网络/信号处理/AI</div>
+                <div><strong>毕业去向：</strong>通信/IT/AI岗</div>
+                <div><strong>官网：</strong><a href="https://www.ie.cuhk.edu.hk" target="_blank">https://www.ie.cuhk.edu.hk</a></div>
+                <div class="prog-note">⚠ 与电子信息工程专业对口</div>
+              </div>
+            </div></div><div class="uni-block"><div class="uni-header" style="border-left:4px solid #dc2626"><span class="uni-name">香港科技大学（HKUST）</span><span class="uni-tier" style="background:#dc2626">港三</span></div><div class="prog-card">
+              <div class="prog-name">大数据技术 <span style="color:#64748b;font-size:13px;">MSc in Big Data Technology</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约23万</span>
+                <span>📊 均分：211参考85+（热门项目）</span>
+                <span>🗣️ 雅思6.5（单项5.5）/托福80</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>大数据系统+机器学习+数据挖掘</div>
+                <div><strong>毕业去向：</strong>数据工程师/AI工程师</div>
+                <div><strong>官网：</strong><a href="https://bdt.hkust.edu.hk" target="_blank">https://bdt.hkust.edu.hk</a></div>
+                <div class="prog-note">⚠ 港科最热门项目之一，录取均分高</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">信息技术 <span style="color:#64748b;font-size:13px;">MSc in Information Technology</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约19.3万</span>
+                <span>📊 均分：211参考82+</span>
+                <span>🗣️ 雅思6.5（单项5.5）/托福80</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>通用IT/软件/网络</div>
+                <div><strong>毕业去向：</strong>软件开发/IT岗</div>
+                <div><strong>官网：</strong><a href="https://www.cse.ust.hk/msc-it/" target="_blank">https://www.cse.ust.hk/msc-it/</a></div>
+                <div class="prog-note">⚠ 比BDT竞争稍低</div>
+              </div>
+            </div></div><div class="uni-block"><div class="uni-header" style="border-left:4px solid #2563eb"><span class="uni-name">香港城市大学（CityU）</span><span class="uni-tier" style="background:#2563eb">城大理工</span></div><div class="prog-card">
+              <div class="prog-name">计算机科学 <span style="color:#64748b;font-size:13px;">MSc in Computer Science</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约15.6万</span>
+                <span>📊 均分：211参考78+</span>
+                <span>🗣️ 雅思6.5/托福79</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年2月 截止</div>
+                <div><strong>课程方向：</strong>AI/数据科学/信息安全/软件工程</div>
+                <div><strong>毕业去向：</strong>开发/测试/运维岗</div>
+                <div><strong>官网：</strong><a href="https://www.cityu.edu.hk/pg/programme/p64" target="_blank">https://www.cityu.edu.hk/pg/programme/p64</a></div>
+                <div class="prog-note">⚠ 性价比高，保底选择</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">数据科学 <span style="color:#64748b;font-size:13px;">MSc in Data Science</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约16.6万</span>
+                <span>📊 均分：211参考78+</span>
+                <span>🗣️ 雅思6.5/托福79</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年2月 截止</div>
+                <div><strong>课程方向：</strong>统计+机器学习+大数据</div>
+                <div><strong>毕业去向：</strong>数据分析/开发岗</div>
+                <div><strong>官网：</strong><a href="https://www.cityu.edu.hk/pg/programme/p71" target="_blank">https://www.cityu.edu.hk/pg/programme/p71</a></div>
+                <div class="prog-note">⚠ </div>
+              </div>
+            </div></div><div class="uni-block"><div class="uni-header" style="border-left:4px solid #2563eb"><span class="uni-name">香港理工大学（PolyU）</span><span class="uni-tier" style="background:#2563eb">城大理工</span></div><div class="prog-card">
+              <div class="prog-name">信息技术 <span style="color:#64748b;font-size:13px;">MSc in Information Technology</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约26.2万（9500港币/学分×30）</span>
+                <span>📊 均分：211参考78+，有工作经验可放宽</span>
+                <span>🗣️ 雅思6.0/托福80</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年2月 截止</div>
+                <div><strong>课程方向：</strong>NLP/视觉计算/AI/大数据/金融科技，有两个stream</div>
+                <div><strong>毕业去向：</strong>IT/AI开发岗</div>
+                <div><strong>官网：</strong><a href="https://www.polyu.edu.hk/comp" target="_blank">https://www.polyu.edu.hk/comp</a></div>
+                <div class="prog-note">⚠ 2026年官网已确认学费9500港币/学分；接受5年IT工作经验者转专业申请</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">人工智能与大数据计算 <span style="color:#64748b;font-size:13px;">MSc in AI &amp; Big Data Computing</span></div>
+              <div class="prog-meta">
+                <span>📅 1年全日制</span>
+                <span>💰 约16.6万（待官网确认）</span>
+                <span>📊 均分：211参考78+</span>
+                <span>🗣️ 雅思6.0/托福80</span>
+                <span>📝 GRE：不需要</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年9月 开放，参考2027年2月 截止</div>
+                <div><strong>课程方向：</strong>AI+大数据工程化</div>
+                <div><strong>毕业去向：</strong>AI工程师/数据工程师</div>
+                <div><strong>官网：</strong><a href="https://www.polyu.edu.hk/comp" target="_blank">https://www.polyu.edu.hk/comp</a></div>
+                <div class="prog-note">⚠ 学费待2026/2027官网确认</div>
+              </div>
+            </div></div><h3 class="region-title">🇸🇬 新加坡</h3><div class="uni-block"><div class="uni-header" style="border-left:4px solid #7c3aed"><span class="uni-name">新加坡国立大学（NUS）</span><span class="uni-tier" style="background:#7c3aed">新二</span></div><div class="prog-card">
+              <div class="prog-name">计算机硕士-人工智能方向 <span style="color:#64748b;font-size:13px;">Master of Computing (AI Track)</span></div>
+              <div class="prog-meta">
+                <span>📅 1.5年（可1年完成）</span>
+                <span>💰 约24-27万人民币（待官网确认）</span>
+                <span>📊 均分：211参考85+，竞争激烈</span>
+                <span>🗣️ 雅思6.0/托福90</span>
+                <span>📝 GRE：推荐（非必须）</span>
+                
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年10月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>AI/ML/NLP/CV，可能有技术笔试</div>
+                <div><strong>毕业去向：</strong>大厂算法/AI岗</div>
+                <div><strong>官网：</strong><a href="https://www.comp.nus.edu.sg/programmes/mcomp/" target="_blank">https://www.comp.nus.edu.sg/programmes/mcomp/</a></div>
+                <div class="prog-note">⚠ 新加坡最热门CS项目，部分track有笔试；学费待确认</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">数据科学与机器学习 <span style="color:#64748b;font-size:13px;">MSc in Data Science and Machine Learning</span></div>
+              <div class="prog-meta">
+                <span>📅 1年</span>
+                <span>💰 约22-25万人民币（待官网确认）</span>
+                <span>📊 均分：211参考85+</span>
+                <span>🗣️ 雅思6.0/托福85</span>
+                <span>📝 GRE：不需要</span>
+                
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年10月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>统计+ML+数据科学</div>
+                <div><strong>毕业去向：</strong>数据科学家/分析师</div>
+                <div><strong>官网：</strong><a href="https://www.dsml.nus.edu.sg" target="_blank">https://www.dsml.nus.edu.sg</a></div>
+                <div class="prog-note">⚠ 数学/统计背景偏好</div>
+              </div>
+            </div></div><div class="uni-block"><div class="uni-header" style="border-left:4px solid #7c3aed"><span class="uni-name">南洋理工大学（NTU）</span><span class="uni-tier" style="background:#7c3aed">新二</span></div><div class="prog-card">
+              <div class="prog-name">人工智能 <span style="color:#64748b;font-size:13px;">MSc in Artificial Intelligence</span></div>
+              <div class="prog-meta">
+                <span>📅 1年</span>
+                <span>💰 约20-24万人民币（待官网确认）</span>
+                <span>📊 均分：211参考85+</span>
+                <span>🗣️ 雅思6.5/托福100</span>
+                <span>📝 GRE：不需要</span>
+                
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年10月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>AI/ML/深度学习/计算机视觉</div>
+                <div><strong>毕业去向：</strong>AI工程师/算法岗</div>
+                <div><strong>官网：</strong><a href="https://www.ntu.edu.sg/education/graduate-programme/master-of-science-in-artificial-intelligence" target="_blank">https://www.ntu.edu.sg/education/graduate-programme/master-of-science-in-artificial-intelligence</a></div>
+                <div class="prog-note">⚠ 托福要求较高（100），学费待确认</div>
+              </div>
+            </div><div class="prog-card">
+              <div class="prog-name">数据科学 <span style="color:#64748b;font-size:13px;">MSc in Data Science</span></div>
+              <div class="prog-meta">
+                <span>📅 1年</span>
+                <span>💰 约20-24万人民币（待官网确认）</span>
+                <span>📊 均分：211参考82+</span>
+                <span>🗣️ 雅思6.5/托福100</span>
+                <span>📝 GRE：不需要</span>
+                
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年10月 开放，参考2027年1月 截止</div>
+                <div><strong>课程方向：</strong>数据科学+统计+机器学习</div>
+                <div><strong>毕业去向：</strong>数据岗</div>
+                <div><strong>官网：</strong><a href="https://www.ntu.edu.sg" target="_blank">https://www.ntu.edu.sg</a></div>
+                <div class="prog-note">⚠ 学费待确认</div>
+              </div>
+            </div></div><div class="uni-block"><div class="uni-header" style="border-left:4px solid #2563eb"><span class="uni-name">新加坡管理大学（SMU）</span><span class="uni-tier" style="background:#2563eb">补充</span></div><div class="prog-card">
+              <div class="prog-name">IT商业硕士-AI与数据科学方向 <span style="color:#64748b;font-size:13px;">MITB (AI &amp; Data Science Track)</span></div>
+              <div class="prog-meta">
+                <span>📅 1年</span>
+                <span>💰 约20-25万人民币（待官网确认）</span>
+                <span>📊 均分：211参考80+</span>
+                <span>🗣️ 雅思7.0/托福100</span>
+                <span>📝 GRE：推荐</span>
+                <span class="tag-rolling">滚动录取</span>
+              </div>
+              <div class="prog-detail">
+                <div><strong>申请时间：</strong>参考2026年10月 开放，参考2027年3月 截止</div>
+                <div><strong>课程方向：</strong>AI+商业应用，偏实践</div>
+                <div><strong>毕业去向：</strong>AI产品/解决方案/数据岗</div>
+                <div><strong>官网：</strong><a href="https://www.smu.edu.sg" target="_blank">https://www.smu.edu.sg</a></div>
+                <div class="prog-note">⚠ 雅思要求7.0较高，偏商业+技术结合</div>
+              </div>
+            </div></div>
+</div>
+
+<div class="section" id="matrix">
+  <h2>三、备选地区横向决策矩阵（10地区）</h2>
+  <div style="overflow-x:auto;"><table class="matrix-table"><thead><tr><th>地区</th><th>学制</th><th>总花费</th><th>申请难度</th><th>均分要求</th><th>留下工作/移民</th><th>回国认可度</th><th>适合人群</th></tr></thead><tbody><tr>
+      <td><strong>香港</strong></td>
+      <td>1年（部分1.5-2年）</td>
+      <td>约25-42万（估算，含学费+生活费）</td>
+      <td>中高（港三85+，城理80+；本校211背景有优势）</td>
+      <td>211：港三80+/城理75+；双非85+有机会</td>
+      <td>IANG签证：毕业6个月内申请首次获24个月逗留（2023年12月起由1年延长为2年，2026年现行），无需先拿offer；续签3+3模式</td>
+      <td>极高（港大/港中文/港科QS前50，城大理工QS前100）</td>
+      <td>想留港金融科技/回大陆大厂/落户上海深圳、预算有限不想飞太远的人</td>
+    </tr><tr>
+      <td><strong>新加坡</strong></td>
+      <td>1-1.5年</td>
+      <td>约24-41万（估算，学费16-27万+生活费8-14万）</td>
+      <td>高（NUS/NTU CS/AI偏好985/211高GPA+强项目）</td>
+      <td>985/211建议85+，热门AI/ML track 88+更稳</td>
+      <td>毕业后申请EP（就业准证）：2026年现行月薪门槛5600新币起（金融业更高），按年龄递增；2027年1月起新申请门槛升至6000新币；须通过COMPASS评分（40分及格，月薪≥22500新币豁免）；EP首签最长2年，tech紧缺岗位可5年</td>
+      <td>极高（NUS/NTU常年QS前20，回国认可度对标清北复交）</td>
+      <td>想留新东南亚区域总部（Shopee/Grab/字节/英伟达）、英语环境、回国镀金</td>
+    </tr><tr>
+      <td><strong>英国</strong></td>
+      <td>1年（授课型MSc主流）</td>
+      <td>约35-55万（估算，学费25-40万+生活费12-18万；伦敦更高）</td>
+      <td>中（QS前100校list内院校80-85+即可冲；G5需高GPA+强背景）</td>
+      <td>211/985：QS前50建议85+，QS 50-100建议80+</td>
+      <td>Graduate route（PSW）：2026年12月31日前申请仍给2年；2027年1月1日起本科/硕士统一缩短为18个月，博士仍3年；无需offer，可任意工作</td>
+      <td>高（G5/王曼爱华回国认可度高；但一年制硕士在部分大厂算法岗略有争议）</td>
+      <td>预算充足、想快速拿QS前100学位、体验海外生活、主要回国就业的人</td>
+    </tr><tr>
+      <td><strong>澳洲</strong></td>
+      <td>1.5-2年</td>
+      <td>约40-60万（估算，学费20-30万/年×1.5-2年+生活费15-20万/年）</td>
+      <td>中低（八大CS/IT对双非相对友好，75-80+即可）</td>
+      <td>211/985建议75+，双非80+；墨大/USyd CS热门85+</td>
+      <td>485临时毕业生签证：硕士coursework/research通常给3年；香港特区/BNO护照给5年；select degree（部分STEM）可5年</td>
+      <td>中高（八大回国认QS前100，但国内大厂认可度低于港新同档）</td>
+      <td>想移民、慢节奏、预算充足、不介意毕业工签期间找工作的人</td>
+    </tr><tr>
+      <td><strong>加拿大</strong></td>
+      <td>1.5-2年</td>
+      <td>约30-50万（估算，学费15-25万/年+生活费10-15万/年）</td>
+      <td>中（Top3校UofT/UBC/McGill CS高要求；其他校80+可申）</td>
+      <td>985/211建议80+，Top3热门项目85+；带GRE更稳</td>
+      <td>PGWP毕业工签：自2024.2.15起硕士项目无论时长（≥8个月）一律最长给3年开放式工签；需在DLI指定院校就读</td>
+      <td>中（国内大厂认Top3；其他校知名度一般；移民导向远大于镀金导向）</td>
+      <td>目标移民、不排斥冷气候、想拿北美身份再回国或留加的人</td>
+    </tr><tr>
+      <td><strong>欧洲（ETH/EPFL/TUM/Delft等）</strong></td>
+      <td>2年（英语授课MSc）</td>
+      <td>低学费区（德/法/北欧）约15-25万总花费；瑞士ETH/EPFL约30-45万（估算）</td>
+      <td>高（ETH/EPFL/TUM CS录取标准对标Top美校，课程密度大，淘汰率高）</td>
+      <td>985/211建议85+；TUM/Delft对211相对友好</td>
+      <td>德国：毕业后18个月找工作签证，转蓝卡后21-33个月可永居；荷兰：orientation year 1年找工作；瑞士：毕业后6个月找工作</td>
+      <td>中（ETH/EPFL/TUM/Delft在工程界口碑硬，但大众知名度低于港新；回国走技术岗吃香）</td>
+      <td>预算有限、想省钱读硬核技术、接受2年制、目标留欧或进欧洲大厂（SAP/ASML/DeepL）</td>
+    </tr><tr>
+      <td><strong>澳门</strong></td>
+      <td>2年（授课型MSc）</td>
+      <td>约15-25万（估算，学费8-15万+生活费6-10万/年）</td>
+      <td>低-中（澳大/澳科大对双非友好，75+可申）</td>
+      <td>建议75+，211背景有优势</td>
+      <td>非本地毕业生可申请留澳逗留，工作后转非本地毕业生留澳安排；7年可申请澳门永居</td>
+      <td>中（澳大/澳科大留服认证有效，但国内大厂认可度一般；主要价值在落户/考公/进体制）</td>
+      <td>预算极低、想拿个留服可认证硕士考公/考编/落户、不介意2年制的人</td>
+    </tr><tr>
+      <td><strong>中外合办（港中深/港科广/宁诺/西浦）</strong></td>
+      <td>1-2年</td>
+      <td>约15-30万（估算，学费12-25万全程，国内生活成本）</td>
+      <td>中（港中深/港科深竞争激烈对标港三；宁诺/西浦相对友好）</td>
+      <td>港中深/港科广CS建议85+；宁诺/西浦75-80+</td>
+      <td>拿境外大学学位证（如港中大发港中文学位），留服走中外合作办学认证通道；不享受留学生回国落户全部政策（部分城市认可，需逐个核实）</td>
+      <td>中高（港中深/港科广在大湾区认可度高，进腾讯/华为/字节深圳有优势；但部分落户政策与纯境外学位有差异）</td>
+      <td>不想出国、预算有限、想拿境外学位证+留服认证、目标大湾区就业的人</td>
+    </tr><tr>
+      <td><strong>日本SGU（英文授课项目）</strong></td>
+      <td>2年（硕士）</td>
+      <td>约20-35万（估算，国公立学费约5万/年×2+生活费8-12万/年）</td>
+      <td>中高（东京大/京大/东工大SGU英文项目需高GPA+英语成绩；G30项目竞争逐年激烈）</td>
+      <td>建议80+，Top校85+；托福90+/雅思6.5+</td>
+      <td>毕业后可申请特定活动签证（1年找工作），正式工作转技术·人文知识·国际业务工签；就劳签证期间10年可申永住（高度人才积分制最快1年）</td>
+      <td>中（东大/京大回国认；其他SGU校知名度一般；留日工作机会多但日语是隐性门槛）</td>
+      <td>预算中等、对日本文化感兴趣、愿意学日语、目标留日或进日企海外岗的人</td>
+    </tr><tr>
+      <td><strong>美国</strong></td>
+      <td>1.5-2年（授课型MSc）</td>
+      <td>约60-120万（估算，学费40-80万+生活费20-35万；私立CS硕士尤贵）</td>
+      <td>高（Top30 CS需高GPA+GRE+强项目；UIUC/UCSD/NEU CS Align等性价比项目竞争激烈）</td>
+      <td>Top30建议85+；Top50-80建议80+</td>
+      <td>OPT普通12个月；CS/工程属STEM，可延24个月共36个月工作期；期间需抽H-1B（每年85000名额，含2万USC硕士豁免），中签率约20-30%</td>
+      <td>极高（Top校回国进大厂/AI Lab竞争力最强；但花费最高、签证敏感专业审查趋严）</td>
+      <td>预算充足、目标进硅谷/AI Lab、能接受H1B抽签不确定性、敏感专业需自查签证风险的人</td>
+    </tr></tbody></table></div>
+</div>
+
+<div class="section" id="prep">
+  <h2>四、申请准备清单</h2>
+  
+<div class="prep-grid">
+  <div class="prep-card prep-gpa">
+    <h4>📊 GPA（硬指标，工作后无法弥补）</h4>
+    <p><strong>重要性：</strong>极高，工作后无法弥补的硬指标。工作后再提升GPA几乎不可能，申请时只认本科成绩单。</p>
+    <p><strong>目标：</strong>80+保底（城理/宁诺/西浦/澳大），85+冲港三/NUS/NTU/英国QS前50热门项目</p>
+    <p><strong>本校说明：</strong>本校（211）成绩单口径：核心课（数据结构/操作系统/计网/算法/数据库/机器学习）分数权重高；重修成绩覆盖规则需查本校教务处最新规定，部分学校成绩单会同时显示原始分和重修分，申请前务必向教务处确认出具口径</p>
+    <p><strong>行动：</strong>大二大三重点刷分，核心课不能低于85；大四下申请前出中英文成绩单（盖章）</p>
+  </div>
+  <div class="prep-card prep-lang">
+    <h4>🗣️ 语言成绩</h4>
+    <p><strong>雅思目标：</strong>总分6.5（单项不低于5.5-6.0）；港三/NUS/NTU热门AI track建议7.0（单项6.5）更稳</p>
+    <p><strong>托福目标：</strong>iBT 80-90起步，热门项目建议100+；2026年起部分校接受家考和新版托福</p>
+    <p><strong>有效期：</strong>成绩有效期2年</p>
+    <p><strong>最佳考试时间：</strong>申请季前半年考出（如目标2031秋入学，2030年3-6月考出）</p>
+    <p><strong>本科阶段安排：</strong>大二过六级打基础，大三保持英语阅读，大四上（2029年9-12月）可考一次雅思备用，工作后继续刷分</p>
+  </div>
+  <div class="prep-card">
+    <h4>📝 GRE/GMAT</h4>
+    <p>港新授课型CS/AI/DS项目大部分不强制要GRE；NUS MComp部分track推荐提交（有竞争力分数加分）；美国Top30 CS基本要GRE；金融工程/商科可能要GMAT。工作后申请美国建议考GRE（325+）。</p>
+  </div>
+  <div class="prep-card">
+    <h4>📄 申请材料</h4>
+    <p><strong>PS：</strong>个人陈述500-1000字，必须结合工作中的真实项目和量化成果，讲清楚为什么现在读、为什么选这个项目、毕业后职业规划；避免空话套话</p>
+    <p><strong>CV：</strong>学术+工作混合简历1页，突出项目量化成果（延迟降低、QPS提升、用户规模），不要罗列任务</p>
+    <p><strong>推荐信：</strong>2封：1封本科学术推荐（大二大三起主动跟核心课教授做毕设/项目，提前维护关系）+1封工作直属主管推荐（入职后主动争取核心项目产出，让主管有据可写）</p>
+    <p><strong>成绩单：</strong>本科成绩单中英文版，教务处盖章；本校通常在图书馆/教务处办理</p>
+    <p><strong>作品集：</strong>GitHub链接（需有星标/可运行项目）、技术博客（知乎/掘金/个人站）、工作项目脱敏文档（注意保密协议）</p>
+  </div>
+  <div class="prep-card">
+    <h4>💼 工作成果保留</h4>
+    <p>工作项目必须保留可量化成果：如'AI推理延迟优化60%''支撑日活10万的推荐系统''QPS从5k提升到2万'。这些数字是PS/CV面试素材的核心，入职起就该按月记录OKR和数据。</p>
+  </div>
+  <div class="prep-card">
+    <h4>🤝 中介 vs DIY</h4>
+    <p>港新/英国授课型项目信息透明、网申系统友好，强烈建议DIY或半DIY（仅找文书润色）；中介适合时间紧张、英语写作弱或背景复杂的人。警惕：任何声称'保录取港三/NUS/NYUSH'的都是诈骗，正规录取无内部通道；收费超过5万的全套中介需谨慎比价。</p>
+  </div>
+</div>
+</div>
+
+<div class="section" id="timeline">
+  <h2>五、两条申请时间线</h2>
+  <div class="tl-compare"><div class="tl-column"><h4>推荐·工作2年线（2029本科毕业→2031秋入学）</h4><div class="tl-flow"><div class="tl-node"><div class="tl-time">2029.7</div><div class="tl-event">本科毕业入职大厂/中厂，开始积累可量化项目成果</div></div><div class="tl-node"><div class="tl-time">2029.9-2030.6</div><div class="tl-event">边工作边维护推荐人关系，确定申请方向（港新/英国/混合）</div></div><div class="tl-node"><div class="tl-time">2030.3-6</div><div class="tl-event">考出雅思6.5-7.0，开始写PS/CV初稿</div></div><div class="tl-node"><div class="tl-time">2030.9-12</div><div class="tl-event">港新9-12月陆续开放申请，滚动录取，尽早递交；英国9月开放</div></div><div class="tl-node"><div class="tl-time">2031.1-4</div><div class="tl-event">收offer+面试（NUS MComp可能有技术面）+确认入读+交留位费</div></div><div class="tl-node"><div class="tl-time">2031.5-7</div><div class="tl-event">办签证+租房+辞职+换汇</div></div><div class="tl-node"><div class="tl-time">2031.8-9</div><div class="tl-event">赴港/赴新/赴英入学</div></div><div class="tl-node"><div class="tl-time">2032.下半年</div><div class="tl-event">毕业（1年制），申请IANG/EP/Graduate route</div></div></div></div><div class="tl-column"><h4>紧凑·工作1年线（2029本科毕业→2030秋入学）</h4><p class="tl-note">紧凑线需要在本科阶段（大四上）就考出雅思并完成文书，工作第一年9-12月边工作边申请；风险是工作经验不足1年，PS中工作素材单薄，且可能来不及攒钱。</p><div class="tl-flow"><div class="tl-node"><div class="tl-time">2028.9-2029.6（大四）</div><div class="tl-event">提前考出雅思+准备文书+联系好本科推荐人</div></div><div class="tl-node"><div class="tl-time">2029.7</div><div class="tl-event">本科毕业入职（如确定要读研，可先不签长约）</div></div><div class="tl-node"><div class="tl-time">2029.9-12</div><div class="tl-event">边工作边递交申请（须已有全部材料）</div></div><div class="tl-node"><div class="tl-time">2030.1-4</div><div class="tl-event">收offer+确认</div></div><div class="tl-node"><div class="tl-time">2030.8-9</div><div class="tl-event">入学（工作仅1年，简历上工作经验较薄）</div></div><div class="tl-node"><div class="tl-time">2031.下半年</div><div class="tl-event">毕业</div></div></div></div></div>
+</div>
+
+<div class="section" id="after">
+  <h2>六、毕业后三条出路</h2>
+  
+<div class="after-grid">
+  <div class="after-card after-hk">
+    <h4>🇭🇰 留港发展</h4>
+    <p><strong>签证：</strong>IANG签证：2023年12月起，非本地毕业生毕业6个月内申请首次直接给24个月逗留（无需先拿offer）；超6个月申请归为'Recent graduate'外类别，仍可获24个月但需有雇主聘用（2026年现行，ID(E)991 04/2026版）</p>
+    <p><strong>续签：</strong>首次24个月到期前3个月内，凭真实雇佣合同+强积金记录按3+3模式续签；短期合同（几个月）也可获24个月逗留</p>
+    <p><strong>永居：</strong>通常连续居住满7年可申请香港永久居民（IANG期间在港居住计入）</p>
+    <p><strong>就业市场：</strong>金融科技、银行IT（汇丰/渣打/中金香港）、互联网（字节/腾讯阿里香港）、AI初创；2026年CS硕士起薪约2.5-4万港币/月（约2.3-3.7万人民币，估算）</p>
+  </div>
+  <div class="after-card after-sg">
+    <h4>🇸🇬 留新发展</h4>
+    <p><strong>EP门槛：</strong>EP月薪门槛：2026年现行5600新币起（金融业更高，约6200新币），按年龄递增至40多岁约10700-11500新币；2027年1月起新申请统一升至6000新币，续签2028年起同步。COMPASS评分制：4个基础项（薪资/学历/本地员工多元化/紧缺技能）+2个奖励项，满分40及格；月薪≥22500新币豁免COMPASS</p>
+    <p><strong>PR路径：</strong>持EP工作2-3年后可自行提交PR申请，通过率不保证；学历/薪资/行业/在新年限都是变量，无承诺</p>
+    <p><strong>就业市场：</strong>区域总部：Shopee/Grab/字节TikTok/英伟达/谷歌/Meta新加坡；2026年CS硕士起薪约5000-7000新币/月（约2.7-3.8万人民币，估算）；tech紧缺岗EP可签5年</p>
+  </div>
+  <div class="after-card after-cn">
+    <h4>🇨🇳 回国发展</h4>
+    <p><strong>应届身份：</strong>留学生毕业2年内可按应届身份参加校招（部分企业要求毕业时间窗，需逐个看JD）；大厂校招一般给毕业1-2年内留学生应届身份</p>
+    <p><strong>上海落户：</strong>QS世界大学排名Top50院校毕业：全职来沪工作后直接落户，无社保基数要求；Top51-100：连续6个月在同一单位社保基数不低于上年度社平工资（2026年约1.14万/月）；2026年新政取消'首份工作必须在上海'，改为'毕业回国2年内来沪工作并持续在沪发展'</p>
+    <p><strong>北京/深圳：</strong>北京：留学生落户有单位指标（落户神器指标紧张，名额有限），且需硕士+境外学位+在京单位接收；深圳：本科及以上留学生年龄内可直接落户（深圳对留学生最宽松）</p>
+    <p><strong>留服认证：</strong>中国留学服务中心（CSCSE）学历认证：2026年新规——一年制硕士境外实际学习时长不少于6个月（部分专业建议8个月），系统自动比对近10年出入境记录，旅游签凑天数/纯网课不被认证；中外合作办学项目境外学习累计不少于180天，否则认证标注'学习经历异常'；认证是落户/考公/进国企的前置条件</p>
+  </div>
+</div>
+</div>
+
+<div class="section" id="cost">
+  <h2>七、费用与ROI（估算）</h2>
+  <div style="overflow-x:auto;"><table class="cost-table"><thead><tr><th>地区</th><th>学费</th><th>生活费/年</th><th>总预算</th><th>毕业后薪资</th><th>回本周期（估算）</th></tr></thead><tbody><tr>
+      <td><strong>香港</strong></td>
+      <td>15-30万港币（约14-28万人民币，不同专业差异大；CS/AI授课型约20-28万港币）</td>
+      <td>10-15万港币/年（约9-14万人民币；租房占大头）</td>
+      <td>约25-42万人民币（估算）</td>
+      <td>留港2.5-4万港币/月（约2.3-3.7万人民币）；回国硕士档比本科高2-5k/月（估算）</td>
+      <td>留港约1.5-2年回本；回国约3-4年（估算，视落户溢价和薪资涨幅）</td>
+    </tr><tr>
+      <td><strong>新加坡</strong></td>
+      <td>3-5万新币（约16-27万人民币；NUS/NTU CS MSc约4.5-5.5万新币）</td>
+      <td>1.5-2.5万新币/年（约8-14万人民币）</td>
+      <td>约24-41万人民币（估算）</td>
+      <td>留新5000-7000新币/月（约2.7-3.8万人民币）；回国对标港三</td>
+      <td>留新约1.5-2年回本；回国约3-4年（估算）</td>
+    </tr></tbody></table><p class="cost-note">💡 大厂工作1-2年省吃俭用可存15-30万（一线，估算），基本可覆盖港新学费；生活费需额外准备，或靠奖学金（港新授课型硕士奖学金少，研究型才有）/校内RA-TA补贴。</p></div>
+</div>
+
+<div class="section" id="pitfalls">
+  <h2>八、避坑指南（10条）</h2>
+  <div class="pit-grid"><div class="pit-card">
+      <div class="pit-cat">项目识别</div>
+      <div class="pit-title">⚠ 港大SPACE等继续教育≠正式MSc</div>
+      <div class="pit-content">香港大学SPACE学院、各院校持续教育学院（SCS/SPACE）的课程不属于研究生院正式学位，留服认证可能不通过；部分授课型硕士项目挂靠在继续教育学院下需特别警惕</div>
+      <div class="pit-action">✅ 应对：只在各校研究生院（Graduate School）官网列出来的正式学位项目中申请；报名前核对项目代码和毕业证书样本</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">申请骗局</div>
+      <div class="pit-title">⚠ 保录取/付费内推</div>
+      <div class="pit-content">任何声称'保录取港三/NUS/NTU/NYU Shanghai'的中介都是诈骗；正规录取由招生委员会综合评审，无内部通道</div>
+      <div class="pit-action">✅ 应对：DIY或仅购买文书润色服务（5k-2万人民币合理区间），绝不交5万以上的'保录取费'</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">认证风险</div>
+      <div class="pit-title">⚠ 留服认证失败</div>
+      <div class="pit-content">2026年新规：一年制硕士境外实际学习不足6个月、中外合作办学境外不足180天、网课比例过高、旅游签凑天数，都会导致认证不通过或标注'学习经历异常'，直接影响落户/考公/进国企</div>
+      <div class="pit-action">✅ 应对：选全日制项目，确保人在境外就读；保留好出入境章、学生证、考勤记录；合办项目提前确认是否有强制出境学期</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">申请策略</div>
+      <div class="pit-title">⚠ 滚动录取晚申无位</div>
+      <div class="pit-content">港新英国大部分项目滚动录取（rolling），招满即止；热门CS/AI项目12月前可能已招满，等到3-4月截止日再递=陪跑</div>
+      <div class="pit-action">✅ 应对：9-10月开放后1个月内递交，第一批录取概率最大；不要等雅思出来才准备其他材料</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">新加坡特殊</div>
+      <div class="pit-title">⚠ 部分项目有笔试面试</div>
+      <div class="pit-content">NUS MComp的AI/Intelligent Systems track、NTU部分CS项目可能有技术笔试或面试，考算法/ML基础</div>
+      <div class="pit-action">✅ 应对：提前刷LeetCode Hot 100 + 复习ML基础（吴恩达课程级别）</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">专业选择</div>
+      <div class="pit-title">⚠ 过泛文科/MBA对技术职业无加成</div>
+      <div class="pit-content">MBA、泛管理、泛商科类硕士对AI/软件工程师职业发展帮助有限，学费却不低于技术项目；跨专业申纯文科转码反而缺乏技术深度</div>
+      <div class="pit-action">✅ 应对：坚持CS/AI/DS/IT/ECE/MIS等带技术含量的专业；MBA需5年以上管理经验才划算</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">身份规划</div>
+      <div class="pit-title">⚠ IANG续签需真实工作</div>
+      <div class="pit-content">IANG续签必须有真实雇佣合同+强积金MPF记录，挂靠/空壳公司续签会被入境处查；短期合同也可获24个月但下次续签仍需真实工作</div>
+      <div class="pit-action">✅ 应对：毕业后6个月内入职真实岗位；不要为了续签找挂靠，罚款+留案底</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">汇率与成本</div>
+      <div class="pit-title">⚠ 港币/新币/英镑汇率波动</div>
+      <div class="pit-content">2026年汇率波动可能让总支出浮动5-10%；学费按外币交、生活费按当地货币花</div>
+      <div class="pit-action">✅ 应对：拿到offer后分3-6批换汇，不要一次性all-in；预留10%缓冲资金</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">英国政策</div>
+      <div class="pit-title">⚠ PSW签证2027年缩短</div>
+      <div class="pit-content">2025年10月UKVI公告：2027年1月1日起申请Graduate route的本科/硕士只给18个月（原2年），博士仍3年；计划留英找工作的窗口缩短半年</div>
+      <div class="pit-action">✅ 应对：若目标留英，提前在入学期间就找实习、建立本地network，毕业前拿面试</div>
+    </div><div class="pit-card">
+      <div class="pit-cat">美国风险</div>
+      <div class="pit-title">⚠ H1B抽签+敏感专业审查</div>
+      <div class="pit-content">CS/EE属STEM有36个月OPT但H1B中签率约20-30%；AI/ML/机器人等敏感方向check签证可能被拒或延迟</div>
+      <div class="pit-action">✅ 应对：申请前自查专业是否在敏感清单；做好抽不到就回国或转加拿大的Plan B</div>
+    </div></div>
+</div>
+
+<div class="disclaimer">
+  数据更新：2026年9月 | 政策来源：香港入境处、新加坡MOM/ICA、上海人社局、各校官网 | 费用/薪资为估算，实际以官网为准<br>
+  本指南与"泛AI软件就业作战地图"联动，深造为Plan B，本科就业为主线
+</div>
+</div>
+</body>
+</html>

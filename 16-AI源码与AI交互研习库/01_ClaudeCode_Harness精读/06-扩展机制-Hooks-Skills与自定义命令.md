@@ -97,4 +97,4 @@ allowed-tools: Bash(gh issue view:*), Bash(gh issue comment:*)
 
 ---
 
-下一篇：[07-系统提示词全文批注](#/doc/d432)——直接看它的"出厂设置"（配合调研到的原文）。
+下一篇：[07-系统提示词全文批注](/16-AI源码与AI交互研习库/01_ClaudeCode_Harness精读/07-系统提示词全文批注)——直接看它的"出厂设置"（配合调研到的原文）。

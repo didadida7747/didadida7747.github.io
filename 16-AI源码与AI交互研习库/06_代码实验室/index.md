@@ -56,5 +56,5 @@ python toy_agent_harness.py --api \
 
 ## 四、做完实验去哪
 
-- [练习题.md](#/doc/d459)：4 道进阶改造题（加工具/加权限规则/实现真压缩/写 MCP）
+- [练习题.md](/16-AI源码与AI交互研习库/06_代码实验室/练习题)：4 道进阶改造题（加工具/加权限规则/实现真压缩/写 MCP）
 - 想看更工业的实现：去 clone Gemini CLI 对照（07_源码仓库/clone_repos.sh）

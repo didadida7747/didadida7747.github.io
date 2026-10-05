@@ -80,4 +80,4 @@ open-infra-index README 原文（已验证）：
 
 ---
 
-下一篇：[03-开源模型群像](#/doc/d447)
+下一篇：[03-开源模型群像](/16-AI源码与AI交互研习库/03_模型源码_DeepSeek与朋友们/03-开源模型群像-Kimi-K2-Qwen3-GLM-MiniMax)

@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电子信息工程职业方向全景指南 — 本校电信·2029届</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;background:#f0f2f5;color:#1e293b;line-height:1.7}
+a{color:#2563eb;text-decoration:none}
+a:hover{text-decoration:underline}
+a[target="_blank"]::after{content:" ↗";font-size:10px}
+.sidebar{position:fixed;left:0;top:0;width:260px;height:100vh;background:#fff;box-shadow:2px 0 8px rgba(0,0,0,.08);overflow-y:auto;z-index:100;padding:16px 0}
+.sidebar h3{font-size:14px;color:#0f172a;padding:8px 16px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.sidebar a{display:block;padding:5px 16px;font-size:12px;color:#475569;border-left:3px solid transparent;transition:all .15s;text-decoration:none}
+.sidebar a:hover{background:#eff6ff;color:#2563eb;text-decoration:none}
+.sidebar a.active{border-left-color:#2563eb;background:#dbeafe;color:#1e40af;font-weight:600}
+.sidebar .nav-group{font-size:10px;color:#94a3b8;padding:8px 16px 4px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+.main{margin-left:280px;max-width:1100px;padding:24px 32px 60px}
+.page-header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;padding:32px;margin-bottom:20px}
+.page-header h1{font-size:28px;margin-bottom:8px}
+.page-header .subtitle{font-size:15px;opacity:.9;margin-bottom:14px}
+.profile-tags{display:flex;flex-wrap:wrap;gap:8px}
+.profile-tags span{padding:4px 12px;border-radius:12px;font-size:12px;background:rgba(255,255,255,.2)}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:22px;color:#0f172a;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+.card h3{font-size:16px;color:#1e40af;margin:20px 0 8px;padding-left:10px;border-left:4px solid #2563eb}
+.card h4{font-size:14px;color:#0f172a;margin:12px 0 6px}
+.card p{margin-bottom:8px;font-size:13.5px}
+.card ul,.card ol{margin:6px 0 10px 20px;font-size:13.5px}
+.card li{margin-bottom:3px}
+.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700;color:#fff;margin-right:6px}
+.b-green{background:#16a34a}.b-blue{background:#2563eb}.b-orange{background:#ea580c}.b-red{background:#dc2626}.b-purple{background:#9333ea}.b-gray{background:#6b7280}.b-light{background:#f1f5f9;color:#475569}
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.ov-card{border-radius:10px;padding:14px;border-top:4px solid;transition:all .2s;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ov-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.ov-card.high{border-color:#16a34a}.ov-card.mid{border-color:#2563eb}.ov-card.low{border-color:#ea580c}.ov-card.rare{border-color:#6b7280}
+.ov-name{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.ov-salary{font-family:monospace;font-size:12px;font-weight:700;color:#2563eb;margin:4px 0}
+.ov-desc{font-size:11px;color:#64748b;line-height:1.5}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
+th{background:#1e3a8a;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:7px 10px;border-bottom:1px solid #e2e8f0}
+tr:nth-child(even) td{background:#f8fafc}
+tr:hover td{background:#eff6ff}
+.salary-num{font-family:monospace;font-weight:700;color:#dc2626}
+.alert{padding:12px 16px;border-radius:8px;margin:10px 0;font-size:13px}
+.alert-green{background:#f0fdf4;border-left:4px solid #16a34a}
+.alert-blue{background:#eff6ff;border-left:4px solid #2563eb}
+.alert-orange{background:#fff7ed;border-left:4px solid #ea580c}
+.alert-red{background:#fef2f2;border-left:4px solid #dc2626}
+.alert-purple{background:#faf5ff;border-left:4px solid #9333ea}
+.day-timeline{border-left:3px solid #2563eb;margin:10px 0 10px 10px;padding-left:16px}
+.day-item{margin-bottom:10px;position:relative}
+.day-item::before{content:'';position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;background:#2563eb;border:2px solid #fff;box-shadow:0 0 0 2px #2563eb}
+.day-time{font-weight:700;color:#1e40af;font-size:13px}
+.day-content{font-size:13px;color:#334155}
+.bar-wrap{margin:6px 0}
+.bar-label{font-size:12px;color:#475569;display:flex;justify-content:space-between}
+.bar-track{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-top:2px}
+.bar-fill{height:100%;border-radius:4px}
+.skill-cloud{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.skill-tag{padding:4px 10px;border-radius:6px;font-size:12px;background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}
+.skill-tag.hard{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.skill-tag.tool{background:#d1fae5;border-color:#6ee7b7;color:#065f46}
+.skill-tag.know{background:#fef3c7;border-color:#fcd34d;color:#92400e}
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
+.comp-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;font-size:12.5px}
+.comp-item strong{color:#0f172a}
+.sem-timeline{position:relative;padding-left:28px;margin:14px 0}
+.sem-timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#2563eb,#9333ea);border-radius:2px}
+.sem-node{position:relative;margin-bottom:14px;background:#f8fafc;border-radius:10px;padding:14px 16px;border:1px solid #e2e8f0}
+.sem-node::before{content:'';position:absolute;left:-24px;top:14px;width:12px;height:12px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 0 2px #2563eb}
+.sem-node.key::before{background:#dc2626;box-shadow:0 0 0 2px #dc2626;width:16px;height:16px;left:-26px}
+.sem-title{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.sem-phase{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;background:#dbeafe;color:#1e40af;margin-left:6px}
+.hbar-row{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.hbar-label{width:150px;text-align:right;padding-right:10px;color:#334155;flex-shrink:0;font-size:11.5px}
+.hbar-track{flex:1;background:#f1f5f9;border-radius:4px;height:22px;position:relative}
+.hbar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:6px;color:#fff;font-size:11px;font-family:monospace;font-weight:700;min-width:40px}
+.score-input{width:50px;padding:4px;border:1px solid #cbd5e1;border-radius:4px;text-align:center;font-size:13px}
+.score-total{font-weight:700;color:#dc2626;font-size:16px;font-family:monospace}
+.ref-list{font-size:12px;color:#475569;padding-left:0;list-style:none}
+.ref-list li{margin-bottom:3px;word-break:break-all}
+.ref-list li::before{content:"🔗 ";}
+.footer{text-align:center;padding:24px;font-size:12px;color:#94a3b8;line-height:1.8}
+.dir-section{scroll-margin-top:20px}
+.dir-header{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.dir-header h2{border:none;padding:0;margin:0}
+.fact-tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;background:#dbeafe;color:#1e40af}
+.net-tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;background:#fef3c7;color:#92400e}
+.city-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0}
+.city-card{border-radius:10px;padding:16px;border:1px solid #e2e8f0;background:#fff}
+.city-card h4{color:#1e40af;font-size:15px;margin-bottom:6px}
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.persona-card{border-radius:10px;padding:16px;background:#f8fafc;border-top:4px solid}
+.persona-card.p1{border-color:#dc2626}.persona-card.p2{border-color:#16a34a}.persona-card.p3{border-color:#9333ea}
+.decision-tree{font-family:monospace;font-size:12px;line-height:1.9;background:#f8fafc;padding:16px;border-radius:8px;border-left:4px solid #2563eb;white-space:pre-wrap;overflow-x:auto}
+.trend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0}
+.trend-card{border-radius:10px;padding:16px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid #e2e8f0}
+.trend-card h4{color:#7c3aed;margin-bottom:6px}
+@media(max-width:1400px){.overview-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<!--SIDEBAR-->
+<div class="sidebar">
+<h3>📚 目录导航</h3>
+<div class="nav-group">总览</div>
+<a href="#ch0" class="active">第0章：全景速览</a>
+<div class="nav-group">16个职业方向</div>
+<a href="#ch1">1.嵌入式软件/固件</a>
+<a href="#ch2">2.硬件开发/PCB</a>
+<a href="#ch3">3.数字IC设计/验证</a>
+<a href="#ch4">4.模拟/射频IC</a>
+<a href="#ch5">5.FPGA工程师</a>
+<a href="#ch6">6.射频/天线/微波</a>
+<a href="#ch7">7.通信算法/协议</a>
+<a href="#ch8">8.信号处理/雷达</a>
+<a href="#ch9">9.AI应用开发</a>
+<a href="#ch10">10.算法工程师</a>
+<a href="#ch11">11.FAE/技术支持</a>
+<a href="#ch12">12.测试/测量仪器</a>
+<a href="#ch13">13.汽车电子/新能源</a>
+<a href="#ch14">14.技术销售/产品</a>
+<a href="#ch15">15.机器人/IoT</a>
+<a href="#ch16">16.运维/云/运营商</a>
+<div class="nav-group">横向决策模块</div>
+<a href="#ch17">第17章：决策框架</a>
+<a href="#ch18">第18章：本科vs读研</a>
+<a href="#ch19">第19章：行业大趋势</a>
+<a href="#ch20">第20章：四类雇主</a>
+<a href="#ch21">第21章：城市选择</a>
+<a href="#ch22">第22章：准备时间轴</a>
+<a href="#ch23">第23章：参考来源总索引</a>
+</div>
+
+<div class="main">
+<div class="page-header">
+<h1>电子信息工程职业方向全景指南</h1>
+<div class="subtitle">本校电信·2029届本科就业版</div>
+<div class="profile-tags">
+<span>🎓 本科就业导向</span>
+<span>📍 西安/一线均可</span>
+<span>🔧 硬件+软件+通信全覆盖</span>
+<span>📊 数据截至2026年9月</span>
+<span>🏢 本校2025届基准：华为807人/电科238人/比亚迪218人</span>
+</div>
+</div>
+
+<div class="card dir-section" id="ch0">
+<h2>第0章：全景速览</h2>
+<p style="color:#64748b;font-size:13px;">16个职业方向总览。<span class="badge b-green">绿=本科友好</span><span class="badge b-blue">蓝=中等</span><span class="badge b-orange">橙=需读研</span><span class="badge b-gray">灰=几乎不招本科</span></p>
+<div class="overview-grid">
+<div class="ov-card high"><div class="ov-name">1.嵌入式软件/固件</div><div class="ov-salary">8-15K×13-15</div><div class="ov-desc">贴着硬件写代码，本科最友好技术岗</div></div>
+<div class="ov-card high"><div class="ov-name">2.硬件开发/PCB</div><div class="ov-salary">10-15K×13</div><div class="ov-desc">画板子调硬件，越老越吃香</div></div>
+<div class="ov-card low"><div class="ov-name">3.数字IC设计/验证</div><div class="ov-salary">12-18K(验证)</div><div class="ov-desc">流片前抓bug，设计岗几乎要硕士</div></div>
+<div class="ov-card low"><div class="ov-name">4.模拟/射频IC/版图</div><div class="ov-salary">9-15K(版图)</div><div class="ov-desc">晶体管级艺术，设计岗必须读研</div></div>
+<div class="ov-card high"><div class="ov-name">5.FPGA工程师</div><div class="ov-salary">12-25万/年</div><div class="ov-desc">把逻辑跑在芯片上，本科友好</div></div>
+<div class="ov-card mid"><div class="ov-name">6.射频/天线/微波</div><div class="ov-salary">12-20万/年</div><div class="ov-desc">本校A+学科，出差多越老越值钱</div></div>
+<div class="ov-card low"><div class="ov-name">7.通信算法/协议</div><div class="ov-salary">18-35万(协议)</div><div class="ov-desc">算法要硕士，协议栈本科可投</div></div>
+<div class="ov-card low"><div class="ov-name">8.信号处理/雷达</div><div class="ov-salary">12-22万(助理)</div><div class="ov-desc">研究所核心岗硕士起步，极稳定</div></div>
+<div class="ov-card high"><div class="ov-name">9.AI应用开发</div><div class="ov-salary">20-35万/年</div><div class="ov-desc">用大模型而非造模型，Python+Go</div></div>
+<div class="ov-card rare"><div class="ov-name">10.算法工程师</div><div class="ov-salary">22-30万(应用)</div><div class="ov-desc">本科门槛最高，核心岗要硕博</div></div>
+<div class="ov-card high"><div class="ov-name">11.FAE/技术支持</div><div class="ov-salary">18-25万/年</div><div class="ov-desc">技术+客户复合，出差多越老越吃香</div></div>
+<div class="ov-card high"><div class="ov-name">12.测试/测量仪器</div><div class="ov-salary">12-25万/年</div><div class="ov-desc">本科最易上岸，硬件测试不卷</div></div>
+<div class="ov-card high"><div class="ov-name">13.汽车电子/新能源</div><div class="ov-salary">14-25万/年</div><div class="ov-desc">本校本科就业大户(比亚迪218人)</div></div>
+<div class="ov-card high"><div class="ov-name">14.技术销售/产品</div><div class="ov-salary">15-22万/年</div><div class="ov-desc">技术背景做商业，35岁危机最轻</div></div>
+<div class="ov-card mid"><div class="ov-name">15.机器人/IoT</div><div class="ov-salary">15-32万/年</div><div class="ov-desc">2026最热赛道，本科切嵌入式</div></div>
+<div class="ov-card high"><div class="ov-name">16.运维/云/运营商</div><div class="ov-salary">11-18万(西安)</div><div class="ov-desc">西安本地性价比之王，极稳定</div></div>
+</div>
+
+<h3>本科可投性矩阵（横轴=学历门槛，纵轴=竞争激烈度）</h3>
+<table style="min-width:600px">
+<tr><th></th><th>本科即可</th><th>本科有窗口</th><th>硕士起步</th><th>硕博必备</th></tr>
+<tr><td><strong>竞争激烈(高)</strong></td>
+<td style="background:#d1fae5">AI应用开发<br>汽车电子</td>
+<td style="background:#dbeafe">FPGA<br>机器人嵌入式</td>
+<td style="background:#fef3c7">数字IC验证<br>通信协议</td>
+<td style="background:#fee2e2">算法工程师<br>通信算法</td></tr>
+<tr><td><strong>竞争中等</strong></td>
+<td style="background:#d1fae5">嵌入式软件/硬件PCB<br>FAE/测试/技术销售<br>运维/运营商</td>
+<td style="background:#dbeafe">射频调试岗<br>汽车测试</td>
+<td style="background:#fef3c7">模拟版图<br>数字IC设计</td>
+<td style="background:#fee2e2">模拟设计<br>射频设计</td></tr>
+<tr><td><strong>竞争较低(缺人)</strong></td>
+<td style="background:#d1fae5">硬件测试<br>普通PCB Layout<br>运营商运维</td>
+<td style="background:#dbeafe">研究所助理<br>ATE测试</td>
+<td style="background:#fef3c7">研究所工艺岗</td>
+<td style="background:#fee2e2">雷达核心算法<br>电子对抗</td></tr>
+</table>
+
+<h3>应届本科起薪对比（年薪总包中位数，万元）</h3>
+<div>
+<div class="hbar-row"><div class="hbar-label">运维/运营商(西安)</div><div class="hbar-track"><div class="hbar-fill" style="width:22%;background:#6b7280">12万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">技术销售/售前</div><div class="hbar-track"><div class="hbar-fill" style="width:30%;background:#16a34a">16万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">模拟版图(本)</div><div class="hbar-track"><div class="hbar-fill" style="width:28%;background:#ea580c">15万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">测试/测量仪器</div><div class="hbar-track"><div class="hbar-fill" style="width:34%;background:#16a34a">18万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">嵌入式软件</div><div class="hbar-track"><div class="hbar-fill" style="width:34%;background:#16a34a">18万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">硬件开发/PCB</div><div class="hbar-track"><div class="hbar-fill" style="width:34%;background:#16a34a">18万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">汽车电子</div><div class="hbar-track"><div class="hbar-fill" style="width:36%;background:#16a34a">19万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">FAE/技术支持</div><div class="hbar-track"><div class="hbar-fill" style="width:38%;background:#16a34a">20万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">数字IC验证(本)</div><div class="hbar-track"><div class="hbar-fill" style="width:38%;background:#ea580c">20万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">FPGA工程师</div><div class="hbar-track"><div class="hbar-fill" style="width:42%;background:#2563eb">22万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">射频/天线</div><div class="hbar-track"><div class="hbar-fill" style="width:30%;background:#2563eb">16万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">机器人/IoT(嵌入式)</div><div class="hbar-track"><div class="hbar-fill" style="width:46%;background:#2563eb">24万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">通信协议栈(华为/中兴)</div><div class="hbar-track"><div class="hbar-fill" style="width:48%;background:#2563eb">25万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">AI应用开发(一线)</div><div class="hbar-track"><div class="hbar-fill" style="width:54%;background:#2563eb">28万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">算法工程师(应用层)</div><div class="hbar-track"><div class="hbar-fill" style="width:48%;background:#dc2626">25万</div></div></div>
+<div class="hbar-row"><div class="hbar-label">算法工程师(核心/硕)</div><div class="hbar-track"><div class="hbar-fill" style="width:95%;background:#dc2626">50万+</div></div></div>
+</div>
+<p style="font-size:11px;color:#94a3b8;margin-top:8px;">注：以上为典型区间中位数估算，城市差异大（一线比西安高30-50%）。红色=核心算法岗(硕士为主)。数据来自5份研究报告各方向薪资口径。</p>
+</div>
+
+<div class="card dir-section" id="ch1">
+<div class="dir-header">
+<h2>1. 嵌入式软件 / 固件开发</h2>
+<span class="badge b-green">本科友好度：高</span>
+<span class="badge b-blue">行业热度：高</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>STM32、Linux嵌入式、RTOS、驱动开发。"贴着硬件写代码"的岗位，日常既写C/C++固件，又要和示波器、逻辑分析仪打交道。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">9:30–12:00</div><div class="day-content">站会后梳理任务。看芯片手册(TRM/Datasheet)，定位前一天复现的bug——接EVB评估板，用示波器、逻辑分析仪抓SDIO/I2C/SPI波形，判断驱动问题还是硬件bug；单步跟踪代码对照参考手册排查寄存器配置。</div></div>
+<div class="day-item"><div class="day-time">14:00–18:00</div><div class="day-content">写/移植代码。单片机方向：写外设驱动、业务逻辑、状态机；Linux BSP方向：改U-Boot、Linux Kernel设备树(DTS)、写字符设备驱动、用Yocto构建rootfs、调内核panic/Oops/内存泄漏。</div></div>
+<div class="day-item"><div class="day-time">晚上</div><div class="day-content">跟硬件工程师联调板子，跑单元测试，写设计文档；项目节点期留到9-10点。工作产物="一系列函数接口+能稳定跑在板子上的固件"。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>这是对本科最友好的技术方向之一。本科能投，但岗位分层明显。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：应届生嵌入式开发本科岗位<strong>64.6%落在10-20K/月</strong>，2025年较2024年增长39%。</li>
+<li><span class="fact-tag">事实</span>西安图为电气2025/2026校招：嵌入式软件<strong>10-20K×15薪，本科及以上</strong>。</li>
+<li><span class="fact-tag">事实</span>海康威视26届校招嵌入式<strong>16-22K，但明确要求硕士</strong>；BOSS上大量STM32/Linux BSP岗(软通动力华为项目8-13K，东莞)接受本科。</li>
+<li><span class="net-tag">网友</span>普通省属理工2025届本科，做过STM32小车+传感器项目，秋招投40多份，进汽车电子供应商做嵌入式<strong>8.5K×13薪</strong>。</li>
+</ul>
+<p><strong>结论：</strong>消费电子/汽车电子Tier2、工控厂、小家电公司大量收本科；海康/大华/大疆/华为大厂嵌入式核心岗普遍要硕士或强项目。</p>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届本科</th><th>3-5年后</th><th>口径</th></tr>
+<tr><td>小厂/汽车电子Tier2(二三线)</td><td class="salary-num">6-9K×12-13薪</td><td>12-20K</td><td><span class="net-tag">网友</span>成都/东莞鱼泡直聘5-7K</td></tr>
+<tr><td>中型公司/工控/新能源(一线)</td><td class="salary-num">10-15K×13-15薪</td><td>20-30K</td><td><span class="fact-tag">事实</span>西安图为10-20K×15；汇川26校招15-25K</td></tr>
+<tr><td>大厂(海康/华为/大疆，硕士为主)</td><td>本科较少</td><td>30-40K+</td><td><span class="fact-tag">事实</span>海康26届16-22K(硕士)</td></tr>
+<tr><td>研究所/国企</td><td class="salary-num">本科8-12K，总包15-20万</td><td>20-30万总包</td><td><span class="net-tag">网友</span>西安航天/中电科所</td></tr>
+</table>
+<p style="font-size:11px;color:#94a3b8">不含股票。城市集中在深圳、上海、杭州、西安、成都、东莞。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>行业趋势：</strong>汽车电子(智能座舱/ADAS/三电)、人形机器人(宇树/智元)、工业自动化、储能/光伏、AI终端带动需求。</li>
+<li><strong>AI替代风险：低。</strong>嵌入式对接物理硬件世界，AI能辅助写驱动代码，但示波器探头往哪戳、时序怎么调、EMC怎么过必须靠人摸。</li>
+<li><strong>35岁问题：</strong>工控/车载方向因行业知识壁垒(CAN总线、功能安全ISO 26262)，中年危机相对小。天花板：技术专家/架构师年薪50万+，车载/Linux资深可达50-100万。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>996程度</span><span>中等偏高</span></div><div class="bar-track"><div class="bar-fill" style="width:60%;background:#ea580c"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>研发岗少</span></div><div class="bar-track"><div class="bar-fill" style="width:20%;background:#16a34a"></div></div></div>
+<p><span class="fact-tag">事实</span>职友集车载嵌入式加班投票：55%经常加班。<span class="net-tag">网友</span>小米汽车嵌入式常加班到8-10点无加班费；德赛西威月加班80小时。工控龙头(汇川/施耐德)项目稳定、中年危机最少。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">C/C++(指针要熟)</span>
+<span class="skill-tag hard">STM32(HAL/标准库)</span>
+<span class="skill-tag hard">ESP32/NXP/RK3588</span>
+<span class="skill-tag hard">FreeRTOS/RT-Thread</span>
+<span class="skill-tag hard">U-Boot/Linux Kernel移植</span>
+<span class="skill-tag hard">设备树DTS/驱动开发</span>
+<span class="skill-tag tool">Keil MDK/IAR/VS Code</span>
+<span class="skill-tag tool">Git/J-Link/DAP</span>
+<span class="skill-tag tool">Yocto/buildroot</span>
+<span class="skill-tag know">示波器/逻辑分析仪</span>
+<span class="skill-tag know">UART/I2C/SPI/CAN</span>
+<span class="skill-tag know">Modbus/EtherCAT/MQTT</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>动手能力强、喜欢"把代码烧进板子看灯亮"；有耐心跟示波器波形死磕半天；不追求互联网高薪但希望技术越老越稳；性格偏沉稳钻研型。不适合坐不住、只想写纯软件的人。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为</strong>（本校2025届入职807人，嵌入式/BSP/车规大量）</div>
+<div class="comp-item"><strong>比亚迪</strong>（218人，车载嵌入式/三电/BMS）</div>
+<div class="comp-item"><strong>汇川技术</strong>（工控嵌入式15-25K）</div>
+<div class="comp-item"><strong>海康威视/大华</strong>（嵌入式/BSP，杭州）</div>
+<div class="comp-item"><strong>大疆创新</strong>（不唯学历，本科强项目可进）</div>
+<div class="comp-item"><strong>宇树/智元机器人</strong>（人形机器人BSP，新热点）</div>
+<div class="comp-item"><strong>中兴/TCL/TP-Link</strong>（本校9-129人不等）</div>
+<div class="comp-item"><strong>研究所</strong>：中国电科238人/航天科技110人</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>死磕C语言(指针/内存)，学51单片机+STM32标准库/HAL，点亮LED、跑通串口。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>做第一个完整STM32项目(平衡车/示波器/环境监测站)；报名电赛省赛。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>学FreeRTOS，做多任务项目；刷韦东山/正点原子Linux驱动入门。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>参加全国大学生嵌入式芯片与系统设计竞赛；投第一份嵌入式实习。</div>
+<div class="sem-node"><div class="sem-title">大三下</div>转Linux BSP——移植U-Boot/Linux到RK3588；冲大厂暑期实习(海康/大华/大疆/汇川提前批)。</div>
+<div class="sem-node key"><div class="sem-title">大三暑假</div>实习转正，这是本科进大厂的最佳通道。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接对口：C语言、微机原理与接口技术、单片机原理、数字电路、模拟电路、操作系统、信号与系统。自学补强：Linux、FreeRTOS、CAN总线。本校"微机原理+单片机"传统训练是敲门砖。</p>
+
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-qianrushikaifagongchengshi/edu2/exp0/" target="_blank">职友集-应届生嵌入式本科薪资</a></li>
+<li><a href="https://www.eet-china.com/mp/a463208.html" target="_blank">电子工程专辑-嵌入式工程师薪资真相</a></li>
+<li><a href="https://www.zhipin.com/zhaopin/b2be2dad6d724ce71H193NS6Eg~~/" target="_blank">BOSS-海康威视26届嵌入式16-22K</a></li>
+<li><a href="https://m.eefocus.com/article/2046089.html" target="_blank">与非网-芯片公司嵌入式软件的一天</a></li>
+<li><a href="https://agirobot.jobs.feishu.cn/socialrecruitment/m/position/detail/7649692371315722505" target="_blank">智元机器人-BSP工程师JD</a></li>
+<li><a href="https://m.nowcoder.com/feed/main/detail/17a82cd4541c4346b0efc0a167d06f01" target="_blank">牛客-经纬恒润嵌入式武汉</a></li>
+<li>本校就业网-汇川26届宣讲</li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch2">
+<div class="dir-header">
+<h2>2. 硬件开发 / PCB设计</h2>
+<span class="badge b-green">本科友好度：高</span>
+<span class="badge b-blue">行业热度：中高</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>硬件工程师负责"把产品从需求变成能跑的板子"。画原理图+PCB只占约30%时间，其余在调试、对接、改板。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">上午</div><div class="day-content">开方案评审会(跟系统/软件/结构/采购/可靠性对齐)；用Altium/OrCAD画原理图、建元件库；选MCU/电源芯片/接口器件，查datasheet比价。</div></div>
+<div class="day-item"><div class="day-time">下午</div><div class="day-content">PCB Layout(布局布线/叠层设计/电源地处理)；板子打样回来后焊接、上电——"上电前的忐忑只有硬件工程师懂"；用示波器测电源纹波、逻辑分析仪抓DDR/高速信号。</div></div>
+<div class="day-item"><div class="day-time">其余</div><div class="day-content">跟Layout工程师review、跟软件联调、过EMC/ESD/高低温可靠性测试、输出BOM/Gerber给工厂、处理生产良率问题。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>本科主力岗位，比IC方向友好得多。本科可投，但纯Layout起薪偏低(9-12K)，能独立做方案+电源+调试的硬件工程师才有溢价。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>深圳新威尔硬件应届<strong>1-1.5万，本科</strong>；广州邦普2025届<strong>1-1.6万，本科</strong>；华勤技术硬件应届本科最多10-15K。</li>
+<li><span class="fact-tag">事实</span>职友集：应届生电子厂硬件本科<strong>59.5%拿10-20K，平均14.5K</strong>。</li>
+<li><span class="net-tag">网友</span>牛客："本科+硬件，除了大疆这种不看学历能开20K+的，基本都不超16K"。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届本科</th><th>3-5年后</th><th>口径</th></tr>
+<tr><td>纯Layout/画板厂</td><td class="salary-num">8-12K×13薪</td><td>15-25K</td><td><span class="fact-tag">事实</span>职友集PCB Layout本科52.4%拿15-30K(含经验)</td></tr>
+<tr><td>中型硬件公司(深圳/上海)</td><td class="salary-num">10-15K×13薪</td><td>20-35K</td><td><span class="fact-tag">事实</span>新威尔/邦普/华勤</td></tr>
+<tr><td>大厂(大疆/华为/TP-Link)</td><td class="salary-num">本科15-20K×14-16薪</td><td>30-50K</td><td><span class="net-tag">网友</span>大疆本科硬件可20K+</td></tr>
+<tr><td>研究所/国企</td><td class="salary-num">本科10-14K，总包15-22万</td><td>25-35万</td><td>中电科/航天所</td></tr>
+</table>
+<p style="font-size:11px;color:#94a3b8">5-8年资深硬件(电源/SI/PI)年薪25-40万，专家级40-60万。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>AI服务器电源、新能源汽车三电、人形机器人、第三代半导体(SiC/GaN)把电源硬件重新定价；DDR5/SerDes 112Gbps时代SI/PI人才稀缺。</li>
+<li><strong>AI替代：</strong>初级画板会被AI辅助削弱；但"亲手调过的板子、踩过的EMC坑"AI替代不了。</li>
+<li><strong>35岁问题：</strong>硬件是少数越老越吃香的方向——"师父62岁返聘月薪比我高"。前提是从"画板工"升级到"系统方案/电源/SI专家"。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>节点性高</span></div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#ea580c"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>中等(跟产线/EMC整改)</span></div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#f59e0b"></div></div></div>
+<p>画图本身不加班，但等板/调板/赶认证节点时压力集中；车企/服务器厂项目期996常见。稳定性：硬件资产重，公司不会随便裁老硬件。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag tool">Altium Designer(入门主流)</span>
+<span class="skill-tag tool">Cadence Allegro/OrCAD(大厂高速板)</span>
+<span class="skill-tag tool">PADS/KiCad/立创EDA</span>
+<span class="skill-tag tool">LTspice/PSpice电路仿真</span>
+<span class="skill-tag know">电源(LDO/Buck/Boost/PDN)</span>
+<span class="skill-tag know">EMC/EMI/ESD</span>
+<span class="skill-tag know">信号完整性/电源完整性</span>
+<span class="skill-tag know">示波器/频谱仪/热成像仪</span>
+<span class="skill-tag know">HyperLynx/Sigrity/HFSS(进阶)</span>
+<span class="skill-tag know">车规ISO 26262加分</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>动手狂魔、享受焊板子和仪器调试；耐心细致(Layout错一个过孔整板报废)；能承受"上电冒烟"的心理压力；愿意用5-8年积累硬件经验。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为</strong>（硬件/电源/SI，本校807人主入口）</div>
+<div class="comp-item"><strong>比亚迪</strong>（218人，车载硬件/三电/BMS）</div>
+<div class="comp-item"><strong>大疆</strong>（不唯学历，本科强项目20K+）</div>
+<div class="comp-item"><strong>TP-Link</strong>（129人本校，网络设备硬件）</div>
+<div class="comp-item"><strong>海康/大华</strong>（硬件/PCB/EMC/热设计）</div>
+<div class="comp-item"><strong>立讯/华勤/闻泰</strong>（ODM龙头，本科10-15K）</div>
+<div class="comp-item"><strong>汇川/阳光电源/宁德时代</strong>（工控/储能硬件）</div>
+<div class="comp-item"><strong>研究所</strong>：中国电科/航天/中航工业(159人)</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>模电/数电路学扎实；学Altium Designer画单片机最小系统板。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>嘉立创打样第一块自己画的STM32板，自己焊接调试；参加电赛(硬件题)。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>画一块带电源(Buck+LDO)/USB/串口的稍复杂板子；学示波器调电源纹波。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>学Cadence Allegro(为大厂准备)；做电源项目(DC-DC/锂电池充电)。</div>
+<div class="sem-node key"><div class="sem-title">大三下-暑假</div>投硬件实习(立讯/华勤/TP-Link/大疆)；学SI/PI、EMC基础。实习是本科进大厂关键。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接对口：电路分析基础、模拟电子技术、数字电子技术、信号与系统、微机原理。本校模电数电功底是硬件岗硬通货。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-pcb+layout/" target="_blank">职友集-PCB Layout薪资</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-yingjiangongcheng/exp0/ind-dianzi/" target="_blank">职友集-应届生电子厂硬件本科</a></li>
+<li><a href="https://m.eeworld.com.cn/news_mp/liangxulinux/a410312.jspx" target="_blank">EEWorld-硬件工程师时间分配</a></li>
+<li><a href="https://www.eet-china.com/mp/a478556.html" target="_blank">EET-我为什么不担心AI取代硬件</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch3">
+<div class="dir-header">
+<h2>3. 数字IC设计 / 验证</h2>
+<span class="badge b-orange">本科友好度：低(验证有窗口)</span>
+<span class="badge b-red">行业热度：极高</span>
+<span class="badge b-red">薪资水平：极高</span>
+</div>
+<p>芯片是"流片一次几百万"的行业，验证岗存在的意义就是"流片前把bug全抓出来"。设计岗几乎清一色硕士；验证岗本科有窗口但集中在中小公司。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">上午(验证岗)</div><div class="day-content">站会+看昨天回归测试日志、Verdi波形，定位失败用例。</div></div>
+<div class="day-item"><div class="day-time">下午(验证岗)</div><div class="day-content">用SystemVerilog/UVM写验证用例、搭Testbench、跑功能覆盖率收敛；跟设计工程师对spec，讨论corner case。</div></div>
+<div class="day-item"><div class="day-time">设计岗</div><div class="day-content">写RTL(Verilog/SystemVerilog)、做模块设计；综合后跑时序收敛(为修hold违例插几百个buffer)；RTL freeze前和验证天天对着波形debug。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-orange"><strong>学历门槛最高的方向之一。设计岗(RTL设计)几乎清一色硕士；验证岗本科有窗口但集中在中小公司/验证工程师助理/FPGA岗。强烈建议读研。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：应届生数字IC验证<strong>硕士占57.6%、本科占33.3%</strong>。</li>
+<li><span class="fact-tag">事实</span>本校校招宣讲：某IC公司明确"模拟设计/数字设计/数字验证要硕士；版图/产品验证/测试开发/MCU应用/FAE要本科及以上"。</li>
+<li><span class="fact-tag">事实</span>思朗科技2027校招SOC/CPU验证写"本科、硕士应届生"；中软国际西安数字IC验证招本科。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届</th><th>3-5年后</th><th>口径</th></tr>
+<tr><td>本科验证/测试(中小IC公司)</td><td class="salary-num">12-18K×13-14薪，总包18-25万</td><td>25-40万</td><td><span class="fact-tag">事实</span>职友集应届生验证本科19.7K</td></tr>
+<tr><td>硕士大厂IC设计/验证白菜</td><td class="salary-num">25-33K×14-16薪，总包36-50万</td><td>50-80万</td><td><span class="net-tag">网友</span>海思26K×14-16=39万(成都验证)</td></tr>
+<tr><td>硕士SP/顶尖</td><td class="salary-num">34-35K×16薪+签字费6-8万+股票，总包60-65万</td><td>80-150万</td><td><span class="net-tag">网友</span>平头哥≈63万</td></tr>
+<tr><td>研究所/国企</td><td>硕士20-25万总包</td><td>35-50万</td><td>中电科24所/58所等西安所</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>国产替代+AI芯片(GPU/NPU/DPU)+汽车电子MCU/功率芯片。验证是需求量最大方向("应届25-35万，3年破50万")。</li>
+<li><strong>AI替代：低。</strong>芯片验证需要理解spec、搭环境、判断corner case。</li>
+<li><strong>35岁问题：</strong>IC经验密集型，流片次数=身价，越老越吃香；但行业周期波动大(2022-2023裁员潮刚过)。天花板：验证专家/架构师年薪百万级。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>流片前996</span></div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#dc2626"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>极少</span></div><div class="bar-track"><div class="bar-fill" style="width:5%;background:#16a34a"></div></div></div>
+<p><span class="net-tag">网友</span>芯片公司995/996常态，临近流片一两个月凌晨下班。兆易创新官方9:00-18:00双休，但项目节点周中晚八九点普遍。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">Verilog/SystemVerilog(必须熟)</span>
+<span class="skill-tag hard">C/C++</span>
+<span class="skill-tag hard">UVM验证方法学(验证核心)</span>
+<span class="skill-tag hard">SVA断言/CDV覆盖率驱动</span>
+<span class="skill-tag tool">VCS/Verdi/ModelSim/Questa</span>
+<span class="skill-tag tool">SpyGlass(lint)/Design Compiler</span>
+<span class="skill-tag tool">Vivado/Quartus(FPGA)</span>
+<span class="skill-tag know">数字电路/计算机组成原理</span>
+<span class="skill-tag know">CPU/SoC架构/时序逻辑/状态机</span>
+<span class="skill-tag tool">Linux/Vim/Makefile/Git</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>逻辑思维极强、写代码像写软件一样顺；细心(一个corner case漏掉流片损失几百万)；耐得住长时间跑仿真看波形；不排斥读研(这条线硕士是主流门票)。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为海思</strong>（本校大客户，成都/上海/西安）</div>
+<div class="comp-item"><strong>阿里平头哥</strong>（上海/杭州，SP总包60万+）</div>
+<div class="comp-item"><strong>兆易创新</strong>（北京/上海，硕士总包18-51万）</div>
+<div class="comp-item"><strong>长鑫/长江存储</strong>（合肥/武汉，存储芯片）</div>
+<div class="comp-item"><strong>地平线/黑芝麻</strong>（车载芯片）</div>
+<div class="comp-item"><strong>紫光展锐</strong>（上海，通信基带）</div>
+<div class="comp-item"><strong>中软国际</strong>（西安，数字验证/FPGA，本科可投）</div>
+<div class="comp-item"><strong>外企</strong>：英伟达上海/AMD/Synopsys/Cadence</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>把数字电路学透(组合逻辑/时序/状态机)；学Verilog HDL语法。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>买FPGA开发板(Xilinx Artix-7/Altera Cyclone)，用Vivado/Quartus写呼吸灯/UART/VGA；报名FPGA创新设计竞赛。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>做FPGA小项目(数字示波器/图像采集/HDMI显示)；学ModelSim仿真。</div>
+<div class="sem-node key"><div class="sem-title">大三上</div>参加电赛FPGA题；开始学SystemVerilog+UVM；<strong>确定要读研</strong>(设计岗本科几乎没门票)。</div>
+<div class="sem-node"><div class="sem-title">大三下</div>进学校实验室跟导师做流片/FPGA项目；投IC验证实习(本科可先做验证助理)。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接对口：数字电子技术、计算机组成原理、信号与系统、集成电路概论。本校微电子/集成电路学部强势，跨考/保研IC方向很顺。但本科课程不够，必须读研补UVM/流片经验。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-shuziicyanzhenggongchengshi/exp0/" target="_blank">职友集-应届生数字IC验证学历</a></li>
+<li>本校就业网-某IC公司学历要求</li>
+<li><a href="https://www.eet-china.com/mp/a498941.html" target="_blank">EET-兆易创新校招薪资</a></li>
+<li><a href="http://fpgachina.cn/" target="_blank">全国大学生FPGA创新设计竞赛官网</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch4">
+<div class="dir-header">
+<h2>4. 模拟 / 射频IC设计、版图</h2>
+<span class="badge b-orange">本科友好度：低(版图可进)</span>
+<span class="badge b-red">行业热度：极高(卡脖子)</span>
+<span class="badge b-red">薪资水平：高</span>
+</div>
+<p>模拟IC是"晶体管级"艺术，跟数字IC的"搭积木"完全不同。模拟/射频设计岗基本硕士起步；版图工程师是本科可进IC行业的少数口子。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">模拟设计岗</div><div class="day-content">看spec(LDO/ADC/PLL/PA指标)；全天泡在Cadence Virtuoso里画电路图、调参数；用Spectre/HSPICE跑DC/AC/瞬态/噪声/蒙特卡洛仿真；跟版图工程师review；流片回来上测试台对标仿真结果。</div></div>
+<div class="day-item"><div class="day-time">版图岗</div><div class="day-content">根据原理图和PDK规则画版图——Floorplan、器件匹配、对称布局、电源地规划；用Calibre跑DRC/LVS/ERC，一条条修违规。"一个月画一个LDO版图"是常态。</div></div>
+<div class="day-item"><div class="day-time">射频设计岗</div><div class="day-content">用ADS/Cadence做LNA/PA/Switch/Mixer原理图+电磁仿真(EMX/HFSS)，画RF版图，上网络分析仪测S参数。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-orange"><strong>本科生进模拟IC行业=优先投版图工程师/测试工程师/FAE；想做模拟/射频设计必须读研(本校微电子是强项)。版图岗本科9-15K起。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：模拟芯片公司IC版图<strong>本科占76.2%</strong>，应届生平均12.5K。</li>
+<li><span class="fact-tag">事实</span>敦泰科技模拟版图校招：2027届应届<strong>9K-1.5万×13薪，本科，深圳南山</strong>。</li>
+<li><span class="fact-tag">事实</span>华为南京模拟后端设计(应届)<strong>20-25K，本科</strong>。</li>
+<li><span class="fact-tag">事实</span>卓胜微射频设计、唯捷创芯射频电路、希荻微模拟设计——<strong>全部要求硕士及以上</strong>。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届</th><th>3-5年后</th><th>口径</th></tr>
+<tr><td>本科版图工程师</td><td class="salary-num">9-15K×13薪，总包12-20万</td><td>20-35K，总包30-50万</td><td><span class="fact-tag">事实</span>敦泰9-15K×13</td></tr>
+<tr><td>硕士模拟设计</td><td class="salary-num">20-30K×14-16薪，总包30-45万</td><td>40-70万</td><td><span class="net-tag">网友</span>模拟IC应届25-35万</td></tr>
+<tr><td>硕士射频设计</td><td class="salary-num">25-35K×15薪，总包35-55万</td><td>60-100万</td><td><span class="net-tag">网友</span>射频应届30-40万</td></tr>
+<tr><td>研究所</td><td>硕士18-25万总包</td><td>30-45万</td><td>中电科24所(射频/微波，西安)</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>模拟/射频是国产替代最难啃、最"卡脖子"环节；5G/6G、WiFi7、卫星互联网、车载雷达、AI电源管理(PMIC)持续缺人。</li>
+<li><strong>AI替代：极低。</strong>模拟设计靠经验直觉调管子，"AI连仿真都跑不明白匹配"。</li>
+<li><strong>35岁问题：</strong>典型越老越吃香——资深模拟设计师要10年+流片经验。天花板：模拟专家/技术总监百万年薪常见。代价：成长慢，前3年主要画版图/改仿真。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>流片前996</span></div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#ea580c"></div></div></div>
+<p><span class="fact-tag">事实</span>职友集模拟版图加班投票：80%反馈经常加班。出差极少，实验室+办公室。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag tool">Cadence Virtuoso(画电路+版图)</span>
+<span class="skill-tag tool">Spectre/HSPICE仿真</span>
+<span class="skill-tag tool">Calibre(DRC/LVS/PEX)</span>
+<span class="skill-tag tool">ADS(射频)/HFSS/EMX(电磁)</span>
+<span class="skill-tag know">半导体物理/CMOS器件特性</span>
+<span class="skill-tag know">负反馈/稳定性/噪声</span>
+<span class="skill-tag know">Bandgap/LDO/OPA/ADC/DAC/PLL</span>
+<span class="skill-tag know">射频LNA/PA/Mixer/Switch/Smith圆图</span>
+<span class="skill-tag know">CMOS/BCDMOS/SiGe/GaAs/GaN工艺</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>数理基础极强、坐得住(一天8小时对着仿真波形)；耐心极致(版图一个匹配对画错整芯片废)；不追求快速暴富，愿意用5-10年成为专家。适合"能跟晶体管交朋友"的人。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为海思</strong>（模拟/射频/版图，西安/上海/深圳）</div>
+<div class="comp-item"><strong>卓胜微</strong>（无锡/成都，射频开关/LNA，硕士）</div>
+<div class="comp-item"><strong>唯捷创芯</strong>（上海，射频PA/模组）</div>
+<div class="comp-item"><strong>圣邦/思瑞浦/纳芯微/希荻微</strong>（模拟链）</div>
+<div class="comp-item"><strong>敦泰科技</strong>（深圳/合肥，版图本科可投）</div>
+<div class="comp-item"><strong>中电科24所</strong>（西安，射频微波/电源）</div>
+<div class="comp-item"><strong>豪威/地平线</strong>（车载模拟）</div>
+<div class="comp-item"><strong>外企</strong>：ADI/TI/NXP/Qorvo</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>把模拟电子技术、半导体物理/器件物理学扎实(这是模拟IC的命)。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>学Cadence Virtuoso，从反相器、电流镜画起；做Bandgap/LDO仿真练习。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>进学校模拟IC实验室，从画版图实习生做起。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>参加集智杯/全国大学生集成电路创新创业大赛(ChipCon)。</div>
+<div class="sem-node key"><div class="sem-title">大三下-暑假</div>投版图实习(敦泰/圣邦/希荻微本科可)；<strong>确定考研/保研</strong>——设计岗本科没门票。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高(偏微电子)</span> 直接对口：模拟电子技术、半导体物理与器件、集成电路设计原理、射频电路、通信原理。本校电子科学与技术/微电子是国家重点。本科课程只够入门版图，设计能力必须读研积累流片经验。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-icbantushejigongchengshi/ind-monixinpian/" target="_blank">职友集-IC版图薪资学历</a></li>
+<li><a href="https://www.maxscend.com/details/140.html" target="_blank">卓胜微-射频设计JD</a></li>
+<li><a href="https://www.halomicro.cn/Career_Detail/27.html" target="_blank">希荻微-模拟设计应届JD</a></li>
+<li><a href="https://www.eecourse.com/article/399" target="_blank">E课网-芯片设计工资与加班</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch5">
+<div class="dir-header">
+<h2>5. FPGA工程师</h2>
+<span class="badge b-green">本科友好度：高</span>
+<span class="badge b-blue">行业热度：高</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>把数字逻辑"画"进芯片：从需求拆解、架构划分、RTL编码，到仿真验证、综合实现、时序收敛(STA)、上板调试。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">9:00-10:00</div><div class="day-content">站会同步进度，梳理当天要解决的问题(可能是SPI/I2C时序不对、高速收发器眼图不达标)。</div></div>
+<div class="day-item"><div class="day-time">10:00-12:00</div><div class="day-content">打开Vivado/Quartus写RTL代码，或写Testbench跑ModelSim仿真；信号处理方向先用MATLAB跑FFT/DDC/DUC/FIR浮点模型，再定点化翻译成Verilog。</div></div>
+<div class="day-item"><div class="day-time">14:00-17:00</div><div class="day-content">跑综合与布局布线，看时序报告，改约束(SDC)，解决setup/hold违例；高速接口岗调Xilinx GTH/GTY收发器(25G/100G线速)。</div></div>
+<div class="day-item"><div class="day-time">17:00-19:00</div><div class="day-content">上板调试，用ILA(在线逻辑分析仪)抓波形，和硬件工程师一起看示波器；或写TCL/Python自动化脚本跑回归。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>FPGA是对本科最友好的方向之一。中小厂、板卡厂、仪器厂、特种电源/光电公司本科能拿offer；但华为/大疆核心岗或研究所高端逻辑硕士仍是主流。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：半导体行业应届FPGA岗<strong>本科占57.1%，硕士42.9%</strong>，本科反而略多。</li>
+<li><span class="fact-tag">事实</span>猎聘：西安华为服务器单板逻辑岗<strong>18-26K×16薪(本科应届)</strong>；上海柏飞电子8-12K×15薪(本科)。</li>
+<li><span class="fact-tag">事实</span>普源精电2027届校招明确招FPGA工程师(本科可投)。</li>
+<li><span class="net-tag">网友</span>本校集成电路硕士2025届：特变电工嵌入式FPGA 2.4万×14+绩效≈35万；华航高科雷达FPGA(成都)≈35.8万。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类别</th><th>应届本科起薪</th><th>3-5年后</th></tr>
+<tr><td>大厂(华为/中兴/大疆)</td><td class="salary-num">西安华为18-26K×16薪(约29-42万)</td><td>35-60万</td></tr>
+<tr><td>中小板卡厂/仪器厂</td><td class="salary-num">上海柏飞8-12K×15薪；成都12-20K×13-14薪</td><td>25-40万</td></tr>
+<tr><td>研究所/国企</td><td class="salary-num">西安中电科星河北斗11-20K；某军工所本科转正16-22万/年</td><td>25-35万</td></tr>
+<tr><td>上海联眺(特种电源)</td><td class="salary-num">23-45万/年(本科应届JD直写)</td><td>—</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>AI边缘推理加速、数据中心FPGA云化、国产替代(紫光同创/安路/高云)、5G/6G基站、自动驾驶传感器实时处理、卫星载荷。</li>
+<li><strong>AI替代：低。</strong>FPGA做的是"极端低延迟/高确定性"场景，GPU/ASIC替代不了；但AI辅助编程正在改变工作方式。</li>
+<li><strong>35岁问题：</strong>相对温和，职业生命周期较长。但成都/西安3-5年纯FPGA逻辑难破50万，要涨薪需转架构或去一线。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>中-高</span></div><div class="bar-track"><div class="bar-fill" style="width:55%;background:#ea580c"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>板卡调试时有</span></div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#f59e0b"></div></div></div>
+<p>大厂(华为/大疆)项目期接近995/大小周；研究所相对规律(月加班40-50h常见)；中小板卡厂交付节点忙。稳定性高——国产替代+军工订单支撑。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">Verilog/SystemVerilog(主流)或VHDL</span>
+<span class="skill-tag hard">数字电路时序分析(建立/保持时间/亚稳态/CDC)</span>
+<span class="skill-tag hard">FPGA架构(LUT/BRAM/DSP/SERDES)</span>
+<span class="skill-tag tool">Xilinx Vivado/Intel Quartus</span>
+<span class="skill-tag tool">ModelSim/QuestaSim/Synplify</span>
+<span class="skill-tag know">PCIe/SRIO/以太网/Aurora/DDR3/4</span>
+<span class="skill-tag know">数字信号处理(FFT/FIR/DDC/DUC)</span>
+<span class="skill-tag know">MATLAB/Python/TCL脚本自动化</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>喜欢"把逻辑跑在真实硬件上"、享受抓波形debug；性格沉稳耐心，能坐住冷板凳调时序；数电/模电基础扎实；不追求短平快暴富，愿意靠经验积累建立壁垒。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为</strong>（西安/东莞/深圳，服务器/基站FPGA逻辑）</div>
+<div class="comp-item"><strong>大疆</strong>（深圳，FPGA原型验证/云台图传逻辑）</div>
+<div class="comp-item"><strong>紫光同创/安路/高云</strong>（国产FPGA原厂）</div>
+<div class="comp-item"><strong>普源精电RIGOL</strong>（苏州，测试测量仪器FPGA）</div>
+<div class="comp-item"><strong>银河航天</strong>（北京/南通，卫星载荷FPGA）</div>
+<div class="comp-item"><strong>成都华微/中电科星河北斗</strong>（特种IC/北斗基带）</div>
+<div class="comp-item"><strong>中电科32所</strong>（上海，军用计算机/嵌入式）</div>
+<div class="comp-item"><strong>中航富士达/联眺/柏飞</strong>（西安/上海，射频互连/特种电源）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>学好数字电路/模拟电子技术/信号与系统；学C语言。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>开始学Verilog(正点原子/野火教程)，买Xilinx Artix-7或Intel Cyclone开发板；参加校内FPGA兴趣小组。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>做第一个项目——UART/呼吸灯/VGA显示/简单FFT；报名嵌入式芯片与系统设计竞赛(FPGA赛道)。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>参加电赛(奇数年)选FPGA类题；学数字信号处理；刷牛客FPGA面经。</div>
+<div class="sem-node key"><div class="sem-title">大三下-暑假</div>找实习(华为/紫光同创/成都华微/研究所提前批)，做一个能写进简历的完整项目(实时频谱仪/图像采集HDMI/高速数据回传)。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 高关联：数字电路与逻辑设计、信号与系统、数字信号处理、通信原理、单片机/嵌入式、EDA技术。中关联：模拟电子技术、微机原理、计算机组成原理。本校FPGA数字系统设计、DSP均为核心选修。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-FPGAgongchengshi/edu2/" target="_blank">职友集-FPGA本科薪资</a></li>
+<li><a href="https://rigolportal.jobs.feishu.cn/campus/m/position/detail/7647748405393967402" target="_blank">普源精电2027届FPGA校招</a></li>
+<li>本校曾志斌老师团队就业去向</li>
+<li><a href="https://ask.zol.com.cn/x/33880503.html" target="_blank">ZOL-FPGA中年危机讨论</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch6">
+<div class="dir-header">
+<h2>6. 射频 / 天线 / 微波工程师</h2>
+<span class="badge b-blue">本科友好度：中(核心研发多硕士)</span>
+<span class="badge b-blue">行业热度：高(本校传统强项)</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>围绕"电磁波收发链路"工作：从天线单元设计、馈电网络、功放/低噪放/混频器/滤波器，到整机组装后的OTA测试与问题定位。本校电磁场与微波技术是A+学科。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">上午</div><div class="day-content">打开HFSS/CST/ADS做电磁仿真——画天线模型、扫参数(谐振频率/增益/驻波比S11/方向图)，或在ADS里做放大器偏置稳定性、匹配电路。</div></div>
+<div class="day-item"><div class="day-time">下午</div><div class="day-content">画PCB(高速板材如Rogers/PTFE)，跟layout工程师叠层；去实验室用矢量网络分析仪、频谱仪、信号源、暗室实测天线方向图，对比仿真与实测差异，反复调匹配枝节。</div></div>
+<div class="day-item"><div class="day-time">调试期</div><div class="day-content">板子回来后拿热风枪、焊锡笔调匹配，或在暗室架转台测方向图；项目交付前可能去客户现场或外场测试。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-blue"><strong>本科可投，但好岗位(华为/大疆/头部研究所天线研发)硕士占多数。本科主要去向是研究所工艺/测试/调试岗、中小射频公司、天线调试岗。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>本校就业网某军工所：射频工程师<strong>本科9-15万/年，硕士15-25万/年</strong>，明确招本科。</li>
+<li><span class="fact-tag">事实</span>西安华为射频/天线工程师8-13K(本科)；中电科芯片技术集团(成都)微波工程师15-20K(本科)。</li>
+<li><span class="fact-tag">事实</span>大疆射频岗JD明确要求"硕士及以上，4年以上射频电路经验"。</li>
+<li><span class="net-tag">网友</span>中电十所射频工程师总包约22万，但月加班40-50h、年出差3-4个月。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类别</th><th>应届本科起薪</th><th>3-5年后</th></tr>
+<tr><td>大厂(华为西安)</td><td class="salary-num">8-13K×14-16薪(约12-20万)</td><td>25-40万</td></tr>
+<tr><td>头部研究所(14/20/38/54所)</td><td class="salary-num">某所本科9-15万/年；硕士15-25万/年</td><td>25-35万</td></tr>
+<tr><td>中小射频/天线公司</td><td class="salary-num">西安6-15K；成都中电科芯片15-20K本科</td><td>20-35万</td></tr>
+<tr><td>一线大厂深圳/上海</td><td>—</td><td>高级射频15-25K×14-16薪，35-60万</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>5G/6G宏基站、毫米波车载雷达、卫星互联网(星链/国网)、相控阵天线、军工电子对抗，都是扩岗方向。</li>
+<li><strong>AI替代：极低。</strong>射频/天线是"仿真+实测+经验"高度耦合，板子一回来才知道仿真对不对。</li>
+<li><strong>35岁问题：</strong>越老越吃香的典型方向。天花板：资深射频/天线专家50-80万，转相控阵总体/毫米波系统架构后上限打开。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>78%经常加班</span></div><div class="bar-track"><div class="bar-fill" style="width:65%;background:#ea580c"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>四个方向里最高</span></div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#dc2626"></div></div></div>
+<p><span class="fact-tag">事实</span>职友集投票：78%射频工程师反馈"经常加班"。出差频率在相关方向里最高——天线调试、外场测试、客户驻场常见；某西安天线岗JD直写"能配合出差派驻全国各地，单次2-4个月"。隐性健康成本：长期暗室/大功率射频环境。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag know">电磁场理论/微波网络/阻抗匹配/S参数/Smith圆图</span>
+<span class="skill-tag know">收发链路架构(PA/LNA/Mixer/Filter)/相控阵原理</span>
+<span class="skill-tag tool">HFSS(三维电磁仿真)/CST/ADS/FEKO</span>
+<span class="skill-tag tool">MATLAB/Python参数扫描</span>
+<span class="skill-tag tool">Allegro/Altium PCB</span>
+<span class="skill-tag know">矢量网络分析仪(VNA)/频谱仪/信号源/暗室转台</span>
+<span class="skill-tag know">热设计(大功率PA)/EMC整改</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>数学/物理功底好，不排斥推公式(麦克斯韦方程/传输线理论)；动手能力强，喜欢焊板子用仪器实测；能接受"仿真-实测-调参"多轮迭代；能接受出差(天线外场测试)。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为</strong>（西安/深圳/东莞，基站天线/终端OTA/射频前端）</div>
+<div class="comp-item"><strong>大疆</strong>（深圳，无人机图传/毫米波雷达射频）</div>
+<div class="comp-item"><strong>中电科14所</strong>（南京，"雷达之王"）</div>
+<div class="comp-item"><strong>中电科20所</strong>（西安，天线与射频专业部）</div>
+<div class="comp-item"><strong>中电科38所</strong>（合肥，雷达/微波）</div>
+<div class="comp-item"><strong>中电科54所</strong>（石家庄，卫星通信/测控天线）</div>
+<div class="comp-item"><strong>航天五院航天恒星</strong>（北京/西安，卫星天线/相控阵）</div>
+<div class="comp-item"><strong>华峰测控/雪豹高科/中航富士达</strong>（北京/西安）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>学好《电磁场与电磁波》《微波技术基础》——这是吃饭的家伙，本校这两门是王牌课。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>自学HFSS(B站教程+官方example)，先仿真半波振子、微带贴片天线；学《天线原理》。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>做简单天线项目(PCB倒F天线/喇叭天线)，拿到学校暗室实测方向图。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>学ADS，做低噪放或滤波器设计；进本校天线与微波技术重点实验室做助研。</div>
+<div class="sem-node key"><div class="sem-title">大三下-暑假</div>找实习(华为西安所/中电科20所/54所提前批/大疆)；准备英文文献阅读。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">极高</span> 高关联：电磁场与电磁波、微波技术基础、天线原理、高频电子线路、通信原理、信号与系统。本校电磁场类课时占比高，与中电科各所招聘要求完全对口。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-shepingongchengshi/edu2/" target="_blank">职友集-射频本科薪资</a></li>
+<li>本校就业网-某所射频本科9-15万</li>
+<li><a href="https://campus.51job.com/cetc20/recruiment.html" target="_blank">中电20所校招</a></li>
+<li><a href="https://www.nowcoder.com/enterprise/6870/salary" target="_blank">牛客-中电十所射频爆料</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch7">
+<div class="dir-header">
+<h2>7. 通信算法 / 协议 / 无线通信</h2>
+<span class="badge b-orange">本科友好度：低(算法要硕，协议栈可本)</span>
+<span class="badge b-blue">行业热度：中高</span>
+<span class="badge b-blue">薪资水平：高</span>
+</div>
+<p>内部分三档：通信算法(物理层，基本硕士起步)、协议栈开发(本科可投)、通信系统/基站开发。本校通信学科是A+。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">协议栈方向·上午</div><div class="day-content">看3GPP最新R18/R19会议文稿，定位某个feature(NR Sidelink/NTN卫星接入)要在代码里加哪个IE；写C代码实现状态机。</div></div>
+<div class="day-item"><div class="day-time">协议栈方向·下午</div><div class="day-content">在UE模拟器或基站整机上跑用例，抓日志(Wireshark/串口)，定位信令流程失败原因；和射频/硬件联调。</div></div>
+<div class="day-item"><div class="day-time">算法方向</div><div class="day-content">全天泡在MATLAB里跑BER曲线，研究信道编码(LDPC/Polar)、MIMO检测、信道估计、波束管理，和标准专利对比。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-orange"><strong>纯通信算法岗(物理层/MIMO/编解码)本科几乎无门，必须硕士；协议栈软件开发、基站产品开发、测试、网优岗本科可投。本校本科去华为/中兴做通信软件/协议/测试是主流路径。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>华为2026届校招：通信研发工程师(本科)<strong>22-30K×17薪(成都)</strong>；26届实习通信算法200-350元/天，本科可投但留用极少。</li>
+<li><span class="fact-tag">事实</span>中兴通讯硬件岗本科平均23.6K，硕士25.0K。</li>
+<li><span class="fact-tag">事实</span>中电科50所(上海)移动通信算法岗：<strong>硕士15-20K，明确硕士起步</strong>。</li>
+<li><span class="net-tag">网友</span>成电通信硕士华为无线算法base深圳2.8万×14-16薪+SP签字费≈37万；中兴6G基站成都2万×14-15薪≈30万。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类别</th><th>应届本科</th><th>应届硕士</th><th>3-5年后</th></tr>
+<tr><td>华为(通信研发/协议)</td><td class="salary-num">22-30K×16-17薪(约35-50万)</td><td>算法岗28K×14-16薪+SP≈37-45万</td><td>50-80万</td></tr>
+<tr><td>中兴通讯</td><td>本科约18-25万</td><td>2.5万×15薪≈35-42万(6G协议栈)</td><td>35-55万</td></tr>
+<tr><td>研究所(50/14所等)</td><td>本科12-18万(测试/技服)</td><td>硕士15-20K×12-14薪≈22-28万</td><td>30-40万</td></tr>
+<tr><td>中小芯片/Modem公司</td><td>本科较少</td><td>应届硕士20-35K×14-15薪</td><td>40-70万</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>5G-A规模商用、6G预研(2030年左右商用)、卫星互联网(NTN)、车联网V2X、AI空口是新增长点。但传统4G/5G基站建设高峰期已过。</li>
+<li><strong>AI替代：</strong>算法研究本身被AI辅助加速，但做算法研究的人不会被替代；纯调参/仿真工程师可能被压缩。</li>
+<li><strong>天花板：</strong>通信算法专家/系统架构师80-150万，但坑少；转产品、转标准组织(3GPP)、转海外售前是常见出路。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>华为高/中兴中</span></div><div class="bar-track"><div class="bar-fill" style="width:60%;background:#ea580c"></div></div></div>
+<p>华为项目期加班明显，弹性工作制但交付节点忙；中兴强度适中。海外技术支持/网优岗出差极多(常驻海外)但补贴高。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag know">通信原理(调制解调/OFDM/MIMO)</span>
+<span class="skill-tag know">3GPP协议栈(NR/LTE物理层/MAC/RLC/RRC)</span>
+<span class="skill-tag know">信息论与信道编码(LDPC/Polar)</span>
+<span class="skill-tag hard">C/C++(协议栈开发必备)</span>
+<span class="skill-tag tool">MATLAB/Simulink(算法仿真)</span>
+<span class="skill-tag tool">Wireshark/Python/Keil</span>
+<span class="skill-tag know">Vienna 5G/Matlab 5G Toolbox(算法岗)</span>
+<span class="skill-tag know">3GPP标准英文阅读能力</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>数学/概率论好，能啃标准协议；喜欢"按规范写代码、按流程调试信令"适合协议栈；喜欢做理论研究发论文适合算法(必须读研读博)。本校通信学科A+，本校在通信设备商认可度极高。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为</strong>（西安/成都/深圳，无线算法/协议栈/基站）</div>
+<div class="comp-item"><strong>中兴通讯</strong>（西安/南京/深圳，5G/6G协议栈）</div>
+<div class="comp-item"><strong>中信科移动(烽火/大唐)</strong>（武汉，5G/6G基站）</div>
+<div class="comp-item"><strong>翱捷科技ASR</strong>（上海/西安，蜂窝Modem协议栈）</div>
+<div class="comp-item"><strong>创芯慧联</strong>（西安/南京，5G小站/基带芯片）</div>
+<div class="comp-item"><strong>中电科50所/14所</strong>（上海/南京，通信算法/协议）</div>
+<div class="comp-item"><strong>新华三/TP-Link</strong>（通信设备商）</div>
+<div class="comp-item"><strong>三大运营商</strong>（核心网运维/网优，本科可投18-24万）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>死磕《信号与系统》《概率论与随机过程》——通信算法的数学基础。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>学好《通信原理》，用MATLAB自己实现QPSK/OFDM调制解调，画BER曲线。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>学《信息论与编码》《移动通信》；开始读3GPP R15/R16协议(TS 36.211/38.211)；学C++。</div>
+<div class="sem-node"><div class="sem-title">大三下</div>进课题组做无线通信项目；参加全国大学生通信算法竞赛；找华为/中兴实习。</div>
+<div class="sem-node key"><div class="关键决策"></div>如果目标通信算法岗，<strong>必须准备考研/保研</strong>(本校本校通信工程学院硕士最佳)；本科就业走协议栈/测试/产品路线。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">极高</span> 高关联：通信原理、信号与系统、数字信号处理、信息论与编码、移动通信、随机信号分析。几乎是本校电信培养方案的主线。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.zhipin.com/zhaopin/7b6d28cccb4f932d03F50t-8EA~~/" target="_blank">BOSS-华为成都通信研发22-30K×17薪</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-wuxiantongxinsuanfagongchengshi/ind-5g/" target="_blank">职友集-5G无线通信算法薪资</a></li>
+<li><a href="https://24365.ah.smartedu.cn/Job.html?cid=25347&jid=324502" target="_blank">中电科50所移动通信算法硕士15-20K</a></li>
+<li><a href="https://www.iesdouyin.com/share/video/7632590437391387919" target="_blank">抖音-成电通信硕士华为/中兴offer</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch8">
+<div class="dir-header">
+<h2>8. 信号处理 / 雷达 / 电子对抗</h2>
+<span class="badge b-red">本科友好度：低(核心岗硕士起步)</span>
+<span class="badge b-blue">行业热度：高(军工稳定)</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>本校传统强项——雷达与信息对抗。分两块：雷达信号处理(脉冲压缩/MTD/CFAR/DOA/卡尔曼滤波)和电子对抗(信号侦察/分选识别/干扰样式)。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">上午(研究所算法岗)</div><div class="day-content">用MATLAB/Python搭建雷达回波仿真模型，注入杂波/干扰，跑CFAR/STAP算法，画检测概率曲线；看项目指标达标没。</div></div>
+<div class="day-item"><div class="day-time">下午</div><div class="day-content">和FPGA工程师对接，把浮点算法定点化，用C写在TI C6000 DSP或ARM上；写设计文档、参加方案评审。</div></div>
+<div class="day-item"><div class="day-time">外场试验期</div><div class="day-content">扛设备去试验场/海边/山区实测，调试雷达跟踪效果，强度大但有差旅补助。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-red"><strong>雷达/电子对抗核心算法岗是本科门槛最高的，14/38/29所基本只要硕士。本科生主要去向：①车载毫米波雷达民企的测试/工程实现岗；②研究所工艺/测试/技术支持岗；③本校本科进研究所做"助理工程师"后续在职读研。强烈建议读研。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>中电科14所(南京)：校招硕士90%岗位拿20-50K；本科仅少量科研行政助理8-9K。</li>
+<li><span class="fact-tag">事实</span>中电科38所(合肥)：2027届校招明确"硕士/博士"，工资2万以上。</li>
+<li><span class="fact-tag">事实</span>中电科29所(成都)：2027届秋招硕士20-30K；管培生100人硕士为主。</li>
+<li><span class="fact-tag">事实</span>民营企业(车载毫米波雷达)本科可投：成都源泰感等信号处理岗本科1.2-2.4万。</li>
+<li><span class="net-tag">网友</span>本校校招某所：试用期本科6000/月、硕士8000/月；转正后研发类本科16-22万、硕士22-28万。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类别</th><th>应届本科</th><th>应届硕士</th><th>3-5年后</th></tr>
+<tr><td>中电科14所(南京，雷达)</td><td>本科极少，测试/助理约8-10K</td><td class="salary-num">硕士20-30K×12-14薪，总包25-35万</td><td>35-50万</td></tr>
+<tr><td>中电科38所(合肥)</td><td>本科岗位少</td><td class="salary-num">硕士15-25K，总包20-30万</td><td>30-45万</td></tr>
+<tr><td>中电科29所(成都，电子对抗)</td><td>本科16-22万/年(研发助理)</td><td class="salary-num">硕士20-30K，总包25-35万</td><td>35-50万</td></tr>
+<tr><td>车载雷达民企(禾赛/大疆/源泰感)</td><td class="salary-num">本科10-18K，应届约15-22万</td><td>硕士20-35万</td><td>35-60万</td></tr>
+<tr><td>航天科技/科工各所</td><td>本科12-18万</td><td>硕士20-30万</td><td>30-45万</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>国防信息化、相控阵雷达、低慢小无人机反制、车载毫米波雷达、SAR卫星成像、电子战装备更新——国家持续投入，订单稳定。本校是雷达/信息对抗黄埔军校。</li>
+<li><strong>AI替代：低。</strong>雷达信号处理需要物理建模、实测数据验证，AI深度学习辅助目标识别是增量而非替代。</li>
+<li><strong>35岁问题：</strong>研究所最稳定，几乎不存在35岁优化；民企车载雷达受自动驾驶行业周期影响。天花板：研究所职称晋升(工程师-高工-研究员)；民企算法专家60-100万。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>研究所项目节点忙</span></div><div class="bar-track"><div class="bar-fill" style="width:45%;background:#f59e0b"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>外场试验多(年3-4月)</span></div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#ea580c"></div></div></div>
+<p>研究所稳定福利好(七险二金/安家费/购房补贴/高温假)，但项目节点加班、外场试验出差多。保密性：军工岗有脱密期，出国受限。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag know">数字信号处理(FFT/FIR/滤波器)</span>
+<span class="skill-tag know">雷达原理(脉冲/连续波/FMCW/相控阵)</span>
+<span class="skill-tag know">自适应信号处理(CFAR/STAP)</span>
+<span class="skill-tag know">估计与跟踪(卡尔曼滤波)</span>
+<span class="skill-tag know">阵列信号处理(DBF/DOA/MUSIC)</span>
+<span class="skill-tag tool">MATLAB/Simulink(主力)/Python</span>
+<span class="skill-tag hard">C/C++(实时实现)/TI C6000 DSP</span>
+<span class="skill-tag tool">Xilinx Vivado(算法硬件化)</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>对国防军工有热情，能接受保密约束和相对不那么光鲜的城市(南京/合肥/成都/西安/石家庄)；数学好、耐得住寂寞做仿真和算法验证；能接受外场试验出差；追求稳定大于高薪。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>中电科14所</strong>（南京，"雷达之王"）</div>
+<div class="comp-item"><strong>中电科38所</strong>（合肥，预警雷达/反隐身）</div>
+<div class="comp-item"><strong>中电科29所</strong>（成都，电子对抗龙头）</div>
+<div class="comp-item"><strong>中电科54所</strong>（石家庄，卫星测控/雷达）</div>
+<div class="comp-item"><strong>中电科10所</strong>（成都，通信/雷达信号处理）</div>
+<div class="comp-item"><strong>航天科技8院/科工206所</strong>（上海/西安，雷达导引头）</div>
+<div class="comp-item"><strong>大疆车载/禾赛/源泰感</strong>（车载毫米波/激光雷达）</div>
+<div class="comp-item"><strong>华诺星空</strong>（长沙，安防雷达/反无/电子对抗民品）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>死磕《信号与系统》《数字信号处理》——这是雷达方向的命根子。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>学MATLAB高级编程，用MATLAB实现FFT频谱分析、FIR滤波器；学好《概率论与随机过程》。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>学《雷达原理》《信息对抗技术》《阵列信号处理》；进本校雷达信号处理国防科技重点实验室做助研。</div>
+<div class="sem-node"><div class="sem-title">大三下</div>参加电赛(选信号源/放大器/频谱类题)；做FMCW雷达DIY项目(TI IWR6843开发板)；找研究所实习。</div>
+<div class="sem-node key"><div class="关键决策"></div><strong>必须考研/保研</strong>。本科进14/29/38所核心算法岗几乎不可能，本校本校雷达/信号处理硕士是最优路径(信号与信息处理A+)。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">极高</span> 高关联：信号与系统、数字信号处理、雷达原理(选修)、信息对抗技术、随机信号分析、电磁场与电磁波、MATLAB仿真。本校课程体系与中电科各所招聘要求几乎完全对应。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/company/44726/salary/edu3/" target="_blank">职友集-中电科14所硕士薪资</a></li>
+<li><a href="https://career.nankai.edu.cn/correcruit/content/id/116723.html" target="_blank">中电科38所2027校招(硕士2万+)</a></li>
+<li>本校就业网-29所管培生100人</li>
+<li><a href="https://www.nowcoder.com/enterprise/2481/salary" target="_blank">牛客-中国电科薪资爆料</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch9">
+<div class="dir-header">
+<h2>9. AI应用开发 / 大模型工程</h2>
+<span class="badge b-green">本科友好度：高</span>
+<span class="badge b-red">行业热度：极高</span>
+<span class="badge b-blue">薪资水平：高</span>
+</div>
+<p>做<strong>用大模型</strong>(而非造大模型)：RAG检索增强、Agent工作流、Prompt工程、API集成、微服务后端。技术栈主线Python+Go。</p>
+<div class="alert alert-blue"><strong>⚠️ 注意区分：</strong>"大模型算法开发是造模型的(要求985硕博)，大模型应用开发是用模型的(本科可投)"——本科应瞄准后者。详见已有资料《泛AI软件就业作战地图.html》。</div>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">上午站会</div><div class="day-content">站会同步进度→写业务代码/Prompt调试。</div></div>
+<div class="day-item"><div class="day-time">下午</div><div class="day-content">联调测试→迭代优化。框架涉及LangChain/LlamaIndex、FastAPI、Docker、K8s。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>本科可投，不强制硕士。</strong>已有资料明确标注此方向为本校电信本科强烈推荐主投方向。</div>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届本科</th><th>口径</th></tr>
+<tr><td>一线城市</td><td class="salary-num">20-35万/年</td><td>已有资料数据</td></tr>
+<tr><td>西安华为西研所</td><td class="salary-num">15-25万/年</td><td>已有资料数据</td></tr>
+<tr><td>抖音爆料</td><td class="salary-num">本科总包22-30万</td><td><span class="net-tag">网友</span>2026.7</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<p>AI时代护城河=工程能力(系统设计/性能优化)+业务理解+AI工具链深度使用。纯CRUD会被AI替代，复杂系统设计和业务落地不会。天花板取决于能否从"调API"走向"架构设计+业务ownership"。</p>
+<p><strong>与电信专业结合点：</strong>①端侧AI(On-device AI)——在嵌入式设备上部署轻量化大模型(量化/剪枝/TensorRT-LLM)，需要C/C+++嵌入式+AI交叉能力；②AI+嵌入式(AIoT/机器人感知/边缘计算)；③芯片+AI(昇腾/地平线应用层工具链)。</p>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<p>接近互联网开发节奏，996/大小周常见。详见泛AI软件作战地图。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">Python/Go(主线)</span>
+<span class="skill-tag tool">LangChain/LlamaIndex</span>
+<span class="skill-tag tool">FastAPI/Docker/K8s</span>
+<span class="skill-tag know">RAG/Agent/Prompt工程</span>
+<span class="skill-tag know">端侧AI部署(TensorRT-LLM/ONNX Runtime)</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>编程能力强，对AI有热情，愿意持续学习新框架。电信专业学生可结合嵌入式背景走"端侧AI"差异化路线。</p>
+
+<h3>⑧ 大二大三准备路径</h3>
+<p>大二过六级+Python/Go+数据结构；大三上做RAG/Agent项目+投递日常实习；大三下暑期实习(一线)；大四秋招主战场。详见《泛AI软件就业作战地图》。</p>
+
+<h3>⑨ 与专业课程关联度</h3>
+<p><span class="badge b-light">中</span> 数学基础(高数/线代/概率)+编程能力直接可用；端侧AI方向需要嵌入式/硬件知识。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://www.iesdouyin.com/share/video/7630070415659073659" target="_blank">抖音-大模型算法vs应用开发区别</a></li>
+<li>已有资料：<code>E:\ai资料(豆包)\泛AI软件就业作战资料包\泛AI软件就业作战地图.html</code></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch10">
+<div class="dir-header">
+<h2>10. 算法工程师(CV/NLP/推荐)</h2>
+<span class="badge b-red">本科友好度：极低(核心岗要硕博)</span>
+<span class="badge b-red">行业热度：极高(内卷)</span>
+<span class="badge b-red">薪资水平：极高</span>
+</div>
+<p>分两类：研究型(发论文/训模型/调架构)和工程型(模型落地/特征工程/线上AB实验)。<strong>这是本科门槛最高的方向，没有之一。</strong></p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">9:30-10:30</div><div class="day-content">站会同步指标(点击率/转化率/召回率)，看线上监控看板。</div></div>
+<div class="day-item"><div class="day-time">10:30-12:00</div><div class="day-content">跑离线实验，读特征重要性报告，分析bad case。</div></div>
+<div class="day-item"><div class="day-time">14:00-18:00</div><div class="day-content">写PyTorch/TensorFlow训练代码，调参，和工程团队联调上线。</div></div>
+<div class="day-item"><div class="day-time">19:00-21:00(常态)</div><div class="day-content">跟进实验结果，准备第二天汇报，读最新arXiv论文。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-red"><strong>大厂核心算法岗(字节/腾讯/阿里/百度的推荐/NLP/CV)：基本只要硕士及以上，本科简历关大概率被刷。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：软件公司算法岗，<strong>本科仅占17.9%，硕士48.7%</strong>。</li>
+<li><span class="fact-tag">事实</span>CSDN报告：AI岗位学历要求博士15%、硕士50%、本科32%；本科平均36.2万 vs 硕士48.5万 vs 博士65.8万。</li>
+<li><span class="fact-tag">事实</span>36氪：月薪5万以上300个AI岗位中，仅42个放本科要求。</li>
+<li><span class="net-tag">网友</span>抖音："大厂面试官标准：本科算法没入门，硕士刚入门，博士才算真正做研究"。</li>
+</ul>
+<p><strong>例外：</strong>极少数明星AI公司(DeepSeek/MiniMax/Momenta)和中小厂会放本科，但要求极强项目/竞赛/开源背景。如果坚持本科走算法路线，现实路径是：先进公司做"AI应用开发/算法工程化/算法测试"，工作1-2年后内部转岗或读硕再冲。</p>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>学历</th><th>应届总包</th></tr>
+<tr><td>大厂算法SP/SSP</td><td>985硕博</td><td class="salary-num">60-70万+</td></tr>
+<tr><td>大厂算法普通offer</td><td>211/985硕</td><td class="salary-num">40-60万</td></tr>
+<tr><td>百度算法(硕士)</td><td>985硕</td><td class="salary-num">≈65万首年</td></tr>
+<tr><td>本科能拿的"算法相关岗"</td><td>本科</td><td class="salary-num">22-30万(实为AI应用/工程化)</td></tr>
+<tr><td>中小厂算法岗</td><td>本科/硕</td><td class="salary-num">15-25万</td></tr>
+</table>
+<p>3-5年后：硕士算法岗在大厂可到60-100万；本科停留应用层涨幅有限约30-50万。城市：北上深杭为主，西安算法岗极少。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>大模型仍在高速发展，但底层算法研究岗位收缩——预训练基座模型被头部大厂垄断。</li>
+<li><strong>AI替代：</strong>纯调参/跑实验的初级算法岗有被自动化工具替代风险；深刻理解业务+能做模型架构创新的人不会被替代。</li>
+<li><strong>35岁问题：</strong>比开发岗更严重——技术迭代快，年轻人学新模型更快。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<p>大厂算法岗普遍996/大小周，加班比开发岗更重(实验跑起来不能停)。出差极少。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">Python(必须精通)/C++(性能优化)</span>
+<span class="skill-tag hard">PyTorch/TensorFlow</span>
+<span class="skill-tag know">机器学习/深度学习理论</span>
+<span class="skill-tag know">线性代数/概率统计/数值优化</span>
+<span class="skill-tag know">LeetCode中等以上</span>
+<span class="skill-tag tool">OpenCV/MMDetection(CV方向)</span>
+<span class="skill-tag tool">HuggingFace/Transformers(NLP方向)</span>
+<span class="skill-tag know">顶会论文(CVPR/NeurIPS/ACL/KDD)或Kaggle奖牌加分</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>数学基础极强(高数/线代/概率90+)，享受推导和优化；能坐住冷板凳读英文论文跑实验；<strong>有读研打算(这是前提)</strong>；性格内向专注。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为(2012实验室)</strong>——本校807人</div>
+<div class="comp-item"><strong>腾讯/阿里/字节/百度</strong>——本校签约57-107人不等</div>
+<div class="comp-item"><strong>DeepSeek深度求索</strong>——2025明星公司，放宽本科</div>
+<div class="comp-item"><strong>商汤/旷视/科大讯飞</strong>——CV头部</div>
+<div class="comp-item"><strong>地平线/黑芝麻</strong>——车载算法，与电信结合</div>
+<div class="comp-item"><strong>中国电科</strong>——军工算法岗，稳定</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二全年</div>高数/线代/概率冲到90+；学Python+机器学习基础(吴恩达课程)；刷LeetCode 200题。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>选方向(CV或NLP)，跟做完整项目(复现经典论文)；参加天池/Kaggle竞赛冲奖牌。</div>
+<div class="sem-node key"><div class="sem-title">大三暑假</div><strong>必须</strong>拿到一段大厂算法实习(硬通货)；无论是否读研，这段实习决定秋招成败。</div>
+<div class="sem-node key"><div class="关键决策"></div>如果大三结束没有顶级竞赛奖牌+大厂实习，建议<strong>考研(考本校或成电)</strong>再走算法路线，否则本科直接投算法岗性价比极低。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-light">中</span> 直接相关：高数/线代/概率统计/信号与系统/DSP(CV/NLP数学基础)。电信专业算法岗课程训练远不如计算机/AI专业系统，需自学数据结构/操作系统/机器学习系统课。模电/数电/电磁场用不上。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-suanfakaifa/exp0/ind-ruanjian/" target="_blank">职友集-算法开发学历分布</a></li>
+<li><a href="https://blog.csdn.net/jrckkyy/article/details/149803213" target="_blank">CSDN-2025 AI工程师供需报告</a></li>
+<li><a href="https://m.36kr.com/p/3249891388875014" target="_blank">36氪-AI人才三条铁律</a></li>
+<li><a href="https://www.iesdouyin.com/share/video/7641582989902723433" target="_blank">抖音-大厂算法学历真相</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch11">
+<div class="dir-header">
+<h2>11. 芯片应用工程师 / FAE / 技术支持</h2>
+<span class="badge b-green">本科友好度：高</span>
+<span class="badge b-blue">行业热度：高(国产替代)</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>FAE(Field Application Engineer)是芯片原厂/方案商对接客户的技术桥梁。<strong>FAE≠AE(应用工程师，坐办公室写参考设计)</strong>，FAE要跑客户现场。70%时间在客户现场/出差路上。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">周一上午</div><div class="day-content">回办公室整理上周出差报告，和销售/产品经理开会同步客户需求。</div></div>
+<div class="day-item"><div class="day-time">周一中午</div><div class="day-content">拎行李箱去机场，飞往下一个客户现场。</div></div>
+<div class="day-item"><div class="day-time">周二全天</div><div class="day-content">在客户实验室/产线调板子——用示波器看电源纹波、万用表测通路、逻辑分析仪抓总线信号，解决客户用自家芯片的问题。</div></div>
+<div class="day-item"><div class="day-time">周三</div><div class="day-content">客户技术评审会，给客户硬件团队讲新芯片参考设计方案。</div></div>
+<div class="day-item"><div class="day-time">周四</div><div class="day-content">回酒店写技术报告，整理bug list发回原厂研发团队。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>这是对本科最友好的方向之一。芯片原厂FAE校招明确招本科，门槛比IC设计低很多。本校是华为/中兴/紫光展锐等芯片公司的target school。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：芯片公司FAE应届<strong>本科平均16.0K/月</strong>，61.3%岗位10-20K。</li>
+<li><span class="fact-tag">事实</span>猎聘：上海磐芯半导体PMIC原厂FAE校招<strong>本科8-12K，硕士10-15K，13薪+项目奖金</strong>。</li>
+<li><span class="fact-tag">事实</span>中兴微电子IC应用工程师：15-20K，西安高新区，<strong>统招本科1-3年</strong>。</li>
+<li><span class="fact-tag">事实</span>普源精电现场应用工程师校招1.5-2.5万/月(苏州)。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届本科</th><th>3-5年后</th></tr>
+<tr><td>芯片原厂FAE(外企TI/ADI)</td><td class="salary-num">15-20K×14-15薪≈22-30万</td><td>30-50万</td></tr>
+<tr><td>芯片原厂FAE(国内海思/展锐/地平线)</td><td class="salary-num">12-18K×13-14薪≈18-25万</td><td>25-40万</td></tr>
+<tr><td>方案商/代理商FAE(利尔达/文晔)</td><td class="salary-num">8-12K×13-15薪≈12-18万</td><td>18-30万</td></tr>
+<tr><td>端侧AI芯片FAE(热门)</td><td>校招较少，社招3-5年30-55K×14</td><td>40-80万</td></tr>
+<tr><td>西安本地(中兴微电子)</td><td class="salary-num">15-20K×13-14薪≈20-27万</td><td>25-35万</td></tr>
+</table>
+<p>出差补贴通常额外100-200元/天，年出差200天就是2-4万补贴。城市：上海/深圳/北京/苏州/杭州为主，西安有中兴/华为少量岗。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>国产替代大背景下，国内芯片公司疯狂扩张，FAE需求旺盛。</li>
+<li><strong>35岁问题：</strong>比纯研发小——核心资产是客户关系+行业经验，越老越吃香。"40多岁依然还在做FAE的也不少，这是常态。"</li>
+<li><strong>转岗路径：</strong>①技术专家路线(Senior FAE→Principal FAE→产品架构师)；②转销售(FAE→区域销售经理→销售总监)；③转产品经理；④少数人转回研发。</li>
+<li><strong>AI替代：极低。</strong>需要面对面见客户、现场调硬件、处理非标问题。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>出差频率</span><span>年100-200天</span></div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#dc2626"></div></div></div>
+<p><span class="net-tag">网友</span>"一个FAE一年出差200天是常态。今天在北京调bug，明天去上海做demo。"加班不固定——客户出问题半夜也要响应，但平时没有996。女生优先考虑外企原厂FAE(出差频率低)、测量仪器FAE(偏演示培训)、办公室AE。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">模拟/数字电路基础(看原理图算参数)</span>
+<span class="skill-tag hard">C语言/STM32开发(写demo验证芯片)</span>
+<span class="skill-tag know">示波器/万用表/逻辑分析仪/电子负载/频谱仪</span>
+<span class="skill-tag know">至少一类芯片(PMIC/RF/MCU/接口芯片)</span>
+<span class="skill-tag tool">Altium/KiCad/Keil/STM32CubeIDE</span>
+<span class="skill-tag tool">MATLAB/Python自动化测试</span>
+<span class="skill-tag know">沟通表达/抗压/快速学习能力(FAE特别看重)</span>
+<span class="skill-tag know">英语(外企FAE读datasheet/海外沟通)</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>动手能力强，喜欢调板子焊电路而不是纯写代码；性格外向喜欢和人打交道，不排斥出差旅行；能接受"乙方心态"；英语不错。不适合：极度内向、不想出差、想深耕底层技术做研究的人。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为海思</strong>——本校807人，大量FAE岗</div>
+<div class="comp-item"><strong>中兴/中兴微电子</strong>——西安本地IC应用15-20K</div>
+<div class="comp-item"><strong>紫光展锐</strong>——上海，手机芯片原厂</div>
+<div class="comp-item"><strong>TI/ADI/ST/NXP</strong>——外企FAE标杆，培训体系好</div>
+<div class="comp-item"><strong>地平线/黑芝麻</strong>——车载AI芯片FAE，热门</div>
+<div class="comp-item"><strong>比亚迪半导体</strong>——本校218人，车规模拟芯片</div>
+<div class="comp-item"><strong>是德/普源精电</strong>——测量仪器方向</div>
+<div class="comp-item"><strong>利尔达/文晔/大联大</strong>——方案商，入行跳板</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二全年</div>学好模电数电；学STM32做完整项目；熟练用示波器/万用表。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>学一门芯片细分方向(PMIC/射频/MCU)；参加电赛(FAE面试官非常看重)；自学Altium画PCB。</div>
+<div class="sem-node key"><div class="sem-title">大三暑假</div>争取去芯片原厂或方案商实习FAE岗；跟着老FAE出差见客户。</div>
+<div class="sem-node"><div class="sem-title">大四秋招</div>优先投外企原厂(TI/ADI)→国内大厂(海思/展锐/地平线)→方案商。面试准备：准备一个自己焊的板子+能讲清楚每部分电路原理。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接相关：模拟电子技术、数字电子技术、电路分析、微机原理与嵌入式、信号与系统。这是电信本科最对口的硬件类方向之一——专业课学的模电数电直接就是FAE的工作工具。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-faexianchangyingyonggongchengshi/exp0/ind-xinpian/" target="_blank">职友集-芯片FAE应届薪资</a></li>
+<li><a href="https://www.liepin.com/job/1980155389.shtml" target="_blank">猎聘-PMIC原厂FAE校招</a></li>
+<li><a href="http://m.toutiao.com/group/7623774336264061480/" target="_blank">今日头条-FAE出差200天</a></li>
+<li><a href="https://www.elecfans.com/d/6568469.html" target="_blank">电子发烧友-FAE职业规划</a></li>
+<li><a href="https://m.liepin.com/company-jobs/8730292/city-270020/" target="_blank">猎聘-中兴微电子西安</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch12">
+<div class="dir-header">
+<h2>12. 测试开发 / 硬件测试 / 测量仪器</h2>
+<span class="badge b-green">本科友好度：最高</span>
+<span class="badge b-blue">行业热度：中高</span>
+<span class="badge b-blue">薪资水平：中</span>
+</div>
+<p>内部差异大：A.软件测试开发(SDET) B.硬件测试工程师 C.ATE芯片测试 D.测量仪器应用工程师。<strong>这是本科可投性最好的方向。</strong></p>
+
+<h3>① 工作内容与典型一天(硬件测试)</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">09:00</div><div class="day-content">确认今日测试计划和样机版本，列待测项目。</div></div>
+<div class="day-item"><div class="day-time">09:30</div><div class="day-content">电源测试：万用表测电压、示波器测纹波和上电时序。</div></div>
+<div class="day-item"><div class="day-time">10:30</div><div class="day-content">信号测试：逻辑分析仪抓I2C/SPI/UART通信信号，看波形是否畸变。</div></div>
+<div class="day-item"><div class="day-time">14:00</div><div class="day-content">异常复现：早上测出来的通信丢包问题，反复复现，记录测试条件。</div></div>
+<div class="day-item"><div class="day-time">15:30</div><div class="day-content">和硬件研发/固件工程师开会，带波形截图和日志分析问题根因。</div></div>
+<div class="day-item"><div class="day-time">17:00</div><div class="day-content">写测试报告，跟进bug修改，安排第二天复测。可靠性测试时把板子放进高低温箱设-40℃~65℃循环。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>测开/硬件测试/ATE测试都招本科，本校是target school。门槛从低到高：普通硬件测试(7K起)＜ATE测试/测开(12-18K起)＜大厂测开(20K+)。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：软件公司测开本科岗<strong>应届平均16.7K</strong>；半导体ATE本科<strong>应届17.5K</strong>。</li>
+<li><span class="fact-tag">事实</span>前程无忧西安：赛英特半导体ATE测试<strong>12-15万/年，本科</strong>。</li>
+<li><span class="fact-tag">事实</span>BOSS：华为杭州软件开发/测试(应届)<strong>15-30K×14薪，本科</strong>。</li>
+<li><span class="net-tag">网友</span>普源精电测试工程师13K×16薪，本科985。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>档位</th><th>应届本科</th><th>3-5年后</th></tr>
+<tr><td>互联网大厂测开(字节/阿里/腾讯)</td><td class="salary-num">20-28K×15-16薪≈30-45万</td><td>40-70万</td></tr>
+<tr><td>华为/中兴测试</td><td class="salary-num">华为15-30K×14薪≈22-42万</td><td>30-50万</td></tr>
+<tr><td>ATE芯片测试(上海/深圳)</td><td class="salary-num">12-18K×13-14薪≈18-25万</td><td>25-45万</td></tr>
+<tr><td>ATE芯片测试(西安)</td><td class="salary-num">10-13K×13薪≈13-17万</td><td>18-30万</td></tr>
+<tr><td>普通硬件测试</td><td class="salary-num">7-12K×12-13薪≈9-15万</td><td>15-25万</td></tr>
+<tr><td>测量仪器(是德/普源)</td><td class="salary-num">普源15-35万/年；是德15-25K×13-15</td><td>25-50万</td></tr>
+<tr><td>研究所/国企测试</td><td class="salary-num">10-15万/年(西安)，稳定</td><td>20-30万</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>国产芯片→ATE测试需求爆发；AI芯片→测试复杂度指数级上升；互联网测开从"点点点"转向"自动化+平台开发"。</li>
+<li><strong>AI替代：</strong>纯手工功能测试(点点点)高风险；自动化测试开发/测试架构师低风险；硬件测试/ATE低风险(需操作真实仪器机台)。</li>
+<li><strong>35岁问题：</strong>硬件测试/ATE经验越老越值钱；软件测开35岁有压力但比纯业务开发稍好。</li>
+<li><strong>转岗：</strong>硬件测试→硬件研发(最常见)；测开→开发工程师；ATE→IC设计/验证；测量仪器→产品经理/销售。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<p>互联网测开接近开发岗996/大小周；硬件测试一般不加班朝九晚六；ATE测试可能倒班(早期)后期转白班；测量仪器偶尔出差给客户演示。稳定性：硬件测试/ATE/测量仪器>互联网测开。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">Python/Java/Go(测开方向)</span>
+<span class="skill-tag tool">Selenium/Appium/Pytest/TestNG</span>
+<span class="skill-tag tool">Jenkins/GitLab CI</span>
+<span class="skill-tag know">示波器/万用表/逻辑分析仪/频谱仪/高低温箱</span>
+<span class="skill-tag know">看原理图和PCB图/测试用例设计方法</span>
+<span class="skill-tag hard">C语言/VB脚本(ATE测试程序)</span>
+<span class="skill-tag know">爱德万93K/泰瑞达J750/华峰STS8200</span>
+<span class="skill-tag know">LabVIEW/Python自动化(测量仪器)</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>性格细心有责任心(测试漏了bug要背锅)；硬件测试方向动手能力强耐心细致；测开方向编程中等偏上喜欢找bug；不介意"为开发兜底"的角色定位。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为(西研所/上研所)</strong>——807人，测开大量招本科</div>
+<div class="comp-item"><strong>中兴(西安)</strong>——96人，硬件测试/ATE</div>
+<div class="comp-item"><strong>比亚迪</strong>——218人，车规测试</div>
+<div class="comp-item"><strong>长川科技/华峰测控</strong>——国产ATE设备龙头</div>
+<div class="comp-item"><strong>是德科技Keysight</strong>——测量仪器外企</div>
+<div class="comp-item"><strong>普源精电RIGOL</strong>——示波器国产龙头，15-35万</div>
+<div class="comp-item"><strong>NI国家仪器</strong>——LabVIEW生态外企</div>
+<div class="comp-item"><strong>中国电科(20/39所等)</strong>——西安军工研究所测试岗</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二全年</div>模电数电、C语言学扎实；熟练用示波器/万用表/信号源；学Python(测开必须)。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>选方向：测开→刷LeetCode+学自动化框架；硬件测试→参加电赛；ATE→学Verilog数字电路。</div>
+<div class="sem-node key"><div class="sem-title">大三暑假</div>测开必须拿互联网/大厂测开实习；硬件测试/ATE去华为/中兴/芯片公司实习；测量仪器去是德/普源/NI实习。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接相关：模电/数电/电路分析/微机原理/信号与系统。这是电信本科最容易上岸的方向之一——专业课知识直接用得上，不强制硕士。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://www.jobui.com/salary/quanguo-ceshikaifa/edu2/ind-ruanjian/" target="_blank">职友集-测开本科薪资</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-xinpianateceshigongchengshi/edu2/ind-bandaoti/" target="_blank">职友集-ATE本科应届</a></li>
+<li><a href="https://m.zhipin.com/zhaopin/be890d01438a4a1a0nZ-3tm9Eg~~/" target="_blank">BOSS-华为测试15-30K本科</a></li>
+<li><a href="https://www.iesdouyin.com/share/video/7682591178223879552" target="_blank">抖音-硬件测试一天vlog</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch13">
+<div class="dir-header">
+<h2>13. 汽车电子 / 新能源</h2>
+<span class="badge b-green">本科友好度：高</span>
+<span class="badge b-red">行业热度：极高</span>
+<span class="badge b-blue">薪资水平：中高</span>
+</div>
+<p>车载嵌入式软件、BMS(电池管理)、电机控制、智能座舱、自动驾驶感知测试。纯算法岗(BEV/Transformer)基本只要硕士及以上。<strong>这是本校本科签约人数最多的方向(比亚迪218人)。</strong></p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">9:00-9:30</div><div class="day-content">站会同步昨天改了哪个Bug、今天做什么；测试组抛出新问题单。</div></div>
+<div class="day-item"><div class="day-time">9:30-12:00</div><div class="day-content">对着CANoe抓的CAN总线报文调试；在Keil/IAR里改C代码刷到ECU板子；用CANape做信号标定。BMS方向看SOC估算精度、均衡策略。</div></div>
+<div class="day-item"><div class="day-time">13:30-18:00</div><div class="day-content">对接硬件调板子(SPI/UART/CAN不通)；写AUTOSAR配置(ARXML工具链)；跟供应商/整车厂对接需求变更；下午测试回来一轮问题单开始改Bug。</div></div>
+<div class="day-item"><div class="day-time">19:00-22:00</div><div class="day-content">多数新势力与头部Tier1实际节奏——白天开会晚上写代码。SOP量产节点前要通宵台架测试。智能座舱方向接近互联网节奏。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>本科友好度：高。这是本组本科岗位最多、本校本科签约人数最多的方向。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>本校2025届<strong>比亚迪签约218人</strong>，比亚迪+上汽合计256人进入汽车制造业。</li>
+<li><span class="fact-tag">事实</span>比亚迪2026届校招本校岗位<strong>10500-14999元/月</strong>，需求专业明确含本科信息工程/通信工程/电子信息类。</li>
+<li><strong>学历分层：</strong>嵌入式软件/BMS软件/测试/标定/座舱应用层→大量招本科；电机控制算法/自动驾驶感知规划/功能安全专家→硕士起步。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类型</th><th>月薪</th><th>年薪总包</th><th>城市</th></tr>
+<tr><td>比亚迪(本科嵌入式/BMS/电控)</td><td class="salary-num">10.5-15K</td><td>约14-20万</td><td>西安/深圳/长沙/常州</td></tr>
+<tr><td>蔚来(本科)</td><td>上海约9.8K/合肥约12.6K</td><td>约13-18万</td><td>合肥/上海</td></tr>
+<tr><td>华为车BU(本科)</td><td class="salary-num">约22.3K/月</td><td>约28-35万×14-16薪</td><td>西安/深圳(名额极少)</td></tr>
+<tr><td>传统车企/研究所(上汽/广汽/长安)</td><td class="salary-num">8-12K</td><td>约12-18万</td><td>上海/广州/重庆/西安</td></tr>
+</table>
+<p>3-5年后：比亚迪嵌入式软件社招15-50K(87.1%拿20-30K)；电机控制算法20-50K(77.7%拿30-50K)。华为车BU 3-5年平均约31.6K。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>新能源渗透率超50%，行业从"电动化"转向"智能化"(智驾/智能座舱/800V高压/固态电池)。本校背靠西安(比亚迪基地/隆基/陕汽/奕斯伟)本地容量大。</li>
+<li><strong>AI替代：</strong>底层嵌入式/CAN总线/硬件联调/车规认证短期难替代。护城河是车规经验(ASPICE/ISO 26262)+系统级调试能力。</li>
+<li><strong>35岁问题：</strong>比互联网温和。传统车企职级体系稳定；新势力节奏快业务波动大(2025年多家裁员)，需向系统工程师/功能安全专家/项目经理转型。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>新势力996</span></div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#dc2626"></div></div></div>
+<p><span class="net-tag">网友</span>比亚迪："晚上十点下班算早，项目节点凌晨一两点出来是常事"；小米汽车嵌入式"正常10点上班6点半下班，实际经常加到8-10点，无加班费"。标定/测试岗出差多(试验场/供应商现场)。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">C/C++(必须精通)/RTOS(FreeRTOS/RT-Thread)</span>
+<span class="skill-tag know">CAN/LIN/Ethernet总线/CANoe/CANape</span>
+<span class="skill-tag know">AUTOSAR架构/UDS诊断/ISO 26262/ASPICE</span>
+<span class="skill-tag know">BMS方向：SOC/SOH估算(卡尔曼滤波)/均衡策略</span>
+<span class="skill-tag know">电机控制：FOC矢量控制/SVPWM/Matlab/Simulink</span>
+<span class="skill-tag know">智能座舱：Android Framework/Linux/Qt</span>
+<span class="skill-tag tool">Keil/IAR/ARM Cortex-M/A</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>喜欢动手调板子解决具体硬件问题，不排斥车规文档和测试流程；性格踏实耐心，能接受长期项目周期(汽车开发2-3年一个车型)；不排斥制造业城市(西安/合肥/常州/长沙)；想拿"比互联网稳、比制造高"的本科起薪。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>比亚迪</strong>（本校218人，本科就业大户）</div>
+<div class="comp-item"><strong>上汽集团</strong>（本校约38人）</div>
+<div class="comp-item"><strong>华为智能汽车BU/引望</strong>（西安/深圳）</div>
+<div class="comp-item"><strong>蔚来/宁德时代/小鹏/理想</strong>（合肥/宁德/广州/北京）</div>
+<div class="comp-item"><strong>吉利/极氪/长城</strong>（宁波/保定）</div>
+<div class="comp-item"><strong>韦尔/地平线/卓驭</strong>（车规芯片/智驾）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>夯实C语言、模电数电；学STM32做点灯/OLED/电机驱动。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>学RT-Thread/FreeRTOS；参加电赛、智能车竞赛(恩智浦杯)——汽车电子/嵌入式岗硬通货。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>主攻CAN总线，做"STM32+CAN+电机FOC"小项目；自学Matlab/Simulink；投比亚迪/蔚来/宁德时代日常实习。</div>
+<div class="sem-node key"><div class="sem-title">大三下-暑假</div>争取暑期实习(比亚迪转正率高)；学AUTOSAR/ISO 26262基础。实习留用是进头部车企最稳路径。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接相关：模电/数电、信号与系统、微机原理/单片机、嵌入式系统、自动控制原理、通信原理(CAN部分)。车规专用知识(AUTOSAR/功能安全)课堂不教需自学。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li>本校就业网-比亚迪2026届校招</li>
+<li><a href="https://m.jobui.com/company/7377/salary/j/qianrushiruanjian/" target="_blank">职友集-比亚迪嵌入式软件薪资</a></li>
+<li><a href="https://m.zhipin.com/zhaopin/add89c593b9ee9291HB93dq9EQ~~/" target="_blank">BOSS-比亚迪西安电机控制软件</a></li>
+<li><a href="https://m.nowcoder.com/discuss/534023554023555072" target="_blank">牛客-小米汽车嵌入式加班</a></li>
+<li><a href="http://auto.cnr.cn/2015xc/20260416/t20260416_527586611.shtml" target="_blank">央广网-比亚迪2023-2025招录5万应届生</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch14">
+<div class="dir-header">
+<h2>14. 技术销售 / 解决方案 / 产品经理</h2>
+<span class="badge b-green">本科友好度：很高</span>
+<span class="badge b-blue">行业热度：中高</span>
+<span class="badge b-green">薪资弹性大(上不封顶)</span>
+</div>
+<p>"用技术背景做商业"。电子信息工程背景的优势：能听懂客户技术痛点、能跟研发对话、能把产品讲清楚。</p>
+
+<h3>① 工作内容与典型一天</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">9:00-10:00</div><div class="day-content">内部晨会，销售同步本周客户；售前根据客户行业(政企/运营商/制造)准备方案。</div></div>
+<div class="day-item"><div class="day-time">10:00-12:00</div><div class="day-content">写方案——用Word/PPT/Visio画系统拓扑图、做技术应答表、写标书技术部分。约40%写标书/做PPT，30%现场见客户，30%内部跟研发拉扯需求。</div></div>
+<div class="day-item"><div class="day-time">13:30-17:00</div><div class="day-content">跟销售去客户现场，在投影仪前讲方案答疑；或回来跟研发对需求。投标前夜经常加班做标书。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>本科友好度：很高。售前技术支持应届生本科占80.6%。技术销售岗永远缺人——既要懂技术又要会说话的人少。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>职友集：售前技术支持应届生<strong>本科占80.6%，硕士仅8.3%</strong>。</li>
+<li><span class="fact-tag">事实</span>本校就业网：解决方案经理(售前)<strong>10500-14999元/月</strong>，销售经理15000+，需求专业含电子信息工程。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类型</th><th>月薪/年薪</th><th>城市</th></tr>
+<tr><td>中小厂售前/技术支持</td><td class="salary-num">6-10K，年薪8-12万</td><td>二线/广州/珠海</td></tr>
+<tr><td>头部厂商售前(华为/中兴/大华/海康)</td><td class="salary-num">10-15K×13-14薪，年薪15-22万</td><td>西安/杭州/深圳</td></tr>
+<tr><td>大客户销售(底薪+提成)</td><td class="salary-num">底薪8-12K，提成上不封顶</td><td>一线/省会</td></tr>
+<tr><td>技术型产品经理(应届)</td><td class="salary-num">12-18K×14-16薪</td><td>深圳/杭州/上海</td></tr>
+</table>
+<p>3-5年后：售前15-30K，做到解决方案总监/销售总监后年薪40-80万(提成制)。关键差异：销售岗收入弹性大上不封顶但波动也大；售前/PM更稳定。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>国产替代+政企数字化+汽车智能化，都需要"能讲清楚技术"的人。AI/云计算时代云厂商售前岗需求旺盛。</li>
+<li><strong>35岁问题：</strong>这是35岁焦虑最轻的方向——靠客户关系和行业积累，越老越吃香。"售前是能一直干到退休的岗位"。</li>
+<li><strong>转岗：</strong>售前→产品经理→解决方案总监→销售VP。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<p>售前不打卡坐班，一半时间在客户现场/出差。投标期加班多但平时比研发自由。应酬中等——政企客户可能有晚餐应酬但不像纯销售天天喝酒。大客户销售出差频繁(每周2-4天在外)。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag know">吃透自家产品(通信设备/IoT/云/汽车电子任选一)</span>
+<span class="skill-tag tool">Visio/PPT/Excel/Axure/XMind</span>
+<span class="skill-tag know">TCP/IP/网络架构/云基础(IaaS/PaaS)</span>
+<span class="skill-tag know">沟通表达/演讲/客户关系/需求翻译</span>
+<span class="skill-tag know">英语好(海外售前薪资高30-50%)</span>
+<span class="skill-tag know">PMP/HCIE认证加分</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>性格外向爱与人打交道，但又不想完全放弃技术——这是最核心画像。喜欢"搞定一个单子"的成就感而非"调通一个Bug"。抗压能力强能接受业绩波动。电信背景优势：跟客户聊技术不怵、跟研发对需求能听懂、面试比商科学生有专业可信度。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>华为</strong>（企业BG/终端BG产品经理/售前）</div>
+<div class="comp-item"><strong>中兴/海康/大华/新华三/锐捷</strong>（售前解决方案）</div>
+<div class="comp-item"><strong>阿里云/华为云/腾讯云</strong>（云售前）</div>
+<div class="comp-item"><strong>比亚迪/蔚来/宁德时代</strong>（技术销售/PM）</div>
+<div class="comp-item"><strong>联洲国际(TP-Link系)</strong>——本校80人，海外销售薪资高</div>
+<div class="comp-item"><strong>大疆/石头/安克</strong>（硬件产品经理/海外销售）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二</div>保持专业课不挂，刻意练表达——辩论队/演讲比赛/社团负责人；学Axure/Visio/PPT。</div>
+<div class="sem-node"><div class="sem-title">大二暑假-大三上</div>找一段技术型实习(FAE/技术支持/产品实习)。</div>
+<div class="sem-node"><div class="sem-title">大三下</div>秋招提前批投递技术销售/产品岗；准备"技术+沟通"复合面试。</div>
+<div class="sem-node key"><div class="关键提醒"></div>简历上一定要有"组织/沟通/带队"经历(项目组长/社团/比赛队长)，纯技术宅简历在这方向不吃香。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-light">中</span> 直接相关：通信原理、计算机网络、信号与系统。电子信息工程的技术背景本身就是最大敲门砖。商务谈判/方案写作/PRD撰写课堂不教需自学。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-shouqianjishuzhichigongchengshi/exp0/" target="_blank">职友集-售前技术支持应届薪资</a></li>
+<li>本校就业网-解决方案经理岗位</li>
+<li><a href="https://www.woshipm.com/zhichang/629909.html" target="_blank">人人都是产品经理-研发转产品</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch15">
+<div class="dir-header">
+<h2>15. 机器人 / 智能硬件 / 物联网</h2>
+<span class="badge b-blue">本科友好度：中(算法卷硕)</span>
+<span class="badge b-red">行业热度：极高(2026最热)</span>
+<span class="badge b-blue">薪资水平：高</span>
+</div>
+<p>2025-2026最热赛道(具身智能/人形机器人融资火爆)。<strong>算法岗卷硕士/博士，本科主要切嵌入式软件、驱动、测试、硬件、产品落地。</strong></p>
+
+<h3>① 工作内容与典型一天(机器人嵌入式)</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">9:30-10:00</div><div class="day-content">站会同步昨天关节电机/灵巧手驱动调试进度。</div></div>
+<div class="day-item"><div class="day-time">10:00-12:00</div><div class="day-content">在MCU(STM32/H7/RK系列)写FreeRTOS/RT-Thread任务；调CAN/EtherCAT通信；跟机械工程师对齐关节电机参数。</div></div>
+<div class="day-item"><div class="day-time">下午</div><div class="day-content">把代码烧到机器人本体实测——人形机器人/机械臂动起来，看是否抖动/过流；示波器抓信号；跟算法工程师对接ROS话题接口。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-blue"><strong>本科能进的岗：嵌入式软件(MCU/RTOS/Linux驱动)、硬件、测试、FAE。本科难进的岗：具身智能算法/VLA大模型/SLAM/运动规划——基本硕博起步。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>大寰机器人校招嵌入式明确"本科及以上，C/C++基础，了解RTOS或Linux"。</li>
+<li><span class="fact-tag">事实</span>珞石机器人嵌入式要求"本科及以上，精通C/C++，熟悉Linux内核，ARM Cortex-A，EtherCAT/CAN"。</li>
+</ul>
+
+<h3>③ 薪资范围</h3>
+<table>
+<tr><th>类型</th><th>月薪</th><th>年薪</th><th>城市</th></tr>
+<tr><td>宇树科技(本科)</td><td class="salary-num">18-25K×13薪</td><td class="salary-num">23-32万</td><td>杭州</td></tr>
+<tr><td>大疆DJI(本科)</td><td class="salary-num">15-22K×15-16薪</td><td class="salary-num">25-35万</td><td>深圳</td></tr>
+<tr><td>智元机器人(本科)</td><td>约15.3K</td><td>约18-25万</td><td>上海</td></tr>
+<tr><td>工业机器人(节卡/珞石/越疆/埃斯顿)</td><td class="salary-num">10-16K×13-14薪</td><td>14-22万</td><td>上海/苏州/西安</td></tr>
+<tr><td>IoT/智能硬件中小厂</td><td class="salary-num">8-12K×12-13薪</td><td>10-16万</td><td>深圳/西安</td></tr>
+</table>
+<p>3-5年后：宇树嵌入式社招20-50K；人形机器人资深嵌入式25-50K×15薪。智元RL算法岗30-60K×15(硕博，最高80K×15=120万)。</p>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>2026上半年具身智能融资935亿(同比增5倍)，岗位招聘量同比暴涨15倍。北理工估算人才缺口约100万人。</li>
+<li><strong>风险：</strong>行业目前融资驱动、demo阶段多，2026-2027可能洗牌，纯创业公司波动大。</li>
+<li><strong>天花板：</strong>技术线可到首席架构师；创业公司期权若上市收益巨大(但风险也大)。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<div class="bar-wrap"><div class="bar-label"><span>加班强度</span><span>创业公司996</span></div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#dc2626"></div></div></div>
+<p>具身智能创业公司高薪背后高强度，赶demo/发布会节奏接近互联网早期。工业机器人公司相对温和。IoT公司节奏最稳接近传统硬件。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag hard">C/C++精通/ARM Cortex-M/A</span>
+<span class="skill-tag hard">FreeRTOS/RT-Thread/Zephyr/Linux驱动</span>
+<span class="skill-tag know">CAN/CAN-FD/EtherCAT(工业机器人必备)</span>
+<span class="skill-tag know">电机驱动(FOC)/编码器(BISSC/SSI)/PID控制</span>
+<span class="skill-tag know">算法岗(硕士)：Python/ROS/SLAM/强化学习/VLA</span>
+<span class="skill-tag tool">Keil/IAR/STM32CubeMX/示波器</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>对机器人/硬件作品有热情，喜欢"做一个能动的东西出来"；动手能力强，能接受焊板子调机械结构；能接受创业公司不确定性(高薪+期权 vs 裁员风险)。数学/控制好的可走算法(建议读研)。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>宇树科技</strong>（杭州，四足/人形，本科高薪）</div>
+<div class="comp-item"><strong>智元机器人</strong>（上海，彭志辉创立）</div>
+<div class="comp-item"><strong>大疆DJI</strong>（深圳，无人机/具身智能）</div>
+<div class="comp-item"><strong>优必选</strong>（深圳，人形/服务机器人，已上市）</div>
+<div class="comp-item"><strong>节卡/珞石/越疆/埃斯顿</strong>（工业机器人，本科友好）</div>
+<div class="comp-item"><strong>海康机器人</strong>（杭州/西安，移动机器人/机器视觉）</div>
+<div class="comp-item"><strong>云鲸/石头/科沃斯</strong>（服务机器人）</div>
+<div class="comp-item"><strong>IoT方向</strong>：小米/华为IoT/涂鸦/广和通(西安有岗)</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二上</div>C语言+STM32入门；学FreeRTOS。</div>
+<div class="sem-node"><div class="sem-title">大二下</div>参加电赛、智能车竞赛、<strong>RoboMaster机甲大师赛</strong>(RM是机器人行业最认可的比赛，本校有战队)——进宇树/大疆的硬通货。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>主攻一个方向——嵌入式(CAN/EtherCAT电机控制)或ROS/SLAM(后者建议读研)；做完整项目(平衡车/机械臂/四足demo)。</div>
+<div class="sem-node key"><div class="sem-title">大三下-暑假</div>投大疆/宇树/优必选暑期实习。<strong>一段相关实习+一个能跑的硬件作品>成绩</strong>。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高</span> 直接相关：微机原理/单片机、嵌入式系统、自动控制原理、信号与系统、模电/数电。EtherCAT/ROS/FreeRTOS实战/电机FOC课堂不教需自学+项目。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://www.eet-china.com/mp/a516283.html" target="_blank">EET-宇树科技薪资</a></li>
+<li><a href="https://finance.sina.cn/2026-03-19/detail-inhrpnfx7451339.d.html" target="_blank">新浪财经-具身智能高薪招聘</a></li>
+<li><a href="https://app.mokahr.com/m/campus-recruitment/dhrobotics/168695" target="_blank">大寰机器人校招JD</a></li>
+<li><a href="https://we.dji.com/zh-CN/campus/notice?id=10" target="_blank">大疆校招公告</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch16">
+<div class="dir-header">
+<h2>16. 技术运维 / IT / 云计算运维</h2>
+<span class="badge b-green">本科友好度：很高</span>
+<span class="badge b-light">行业热度：中(稳定保底)</span>
+<span class="badge b-green">西安性价比之王</span>
+</div>
+<p>三大运营商(移动/电信/联通)是本校传统就业大户(2025届合计约217人)。这是本校本科的"稳定保底"方向。</p>
+
+<h3>① 工作内容与典型一天(运营商)</h3>
+<div class="day-timeline">
+<div class="day-item"><div class="day-time">8:30-9:00</div><div class="day-content">交接班，看监控大屏——昨晚有没有基站退服、核心网告警、专线故障。</div></div>
+<div class="day-item"><div class="day-time">9:00-12:00</div><div class="day-content">处理工单——某小区宽带故障、某专线中断、某机房设备告警；去机房巡检换板卡；开新专线做数据配置。</div></div>
+<div class="day-item"><div class="day-time">下午</div><div class="day-content">参加网络优化会议、写维护报告；新业务开通(5G基站/云资源池)；偶尔跟政企客户对接。运维岗需倒班/轮值。</div></div>
+</div>
+
+<h3>② 本科生可投性</h3>
+<div class="alert alert-green"><strong>本科友好度：很高。运营商校招对本科开放，本校是移动/电信总部明确的目标院校。但注意：移动西安分公司部分研发岗已要求硕士——本科主要投地市分公司、网络运维、政企支撑岗。</strong></div>
+<ul>
+<li><span class="fact-tag">事实</span>陕西移动2026校招第一批招238人。</li>
+</ul>
+
+<h3>③ 薪资范围(陕西/西安口径)</h3>
+<table>
+<tr><th>类型</th><th>年薪(税前)</th><th>备注</th></tr>
+<tr><td>陕西移动/电信(西安)</td><td class="salary-num">11-13万/年</td><td>六险二金，住房补贴每月3000元</td></tr>
+<tr><td>陕西联通(西安)</td><td class="salary-num">10-12万/年</td><td>同上</td></tr>
+<tr><td>外省运营商(江浙沪/北上广)</td><td class="salary-num">15-25万/年</td><td>东部沿海</td></tr>
+<tr><td>云厂商/互联网运维(阿里云等)</td><td class="salary-num">12-20K×13-14薪≈18-30万</td><td>杭州/深圳/西安</td></tr>
+<tr><td>DevOps(3-5年)</td><td class="salary-num">20-35K</td><td>一线</td></tr>
+</table>
+
+<h3>④ 发展前景与天花板</h3>
+<ul>
+<li><strong>趋势：</strong>传统网络运维在收缩(自动化程度提高)，但云原生运维、AI算力集群运维(GPU集群)、数据中心运维在爆发。</li>
+<li><strong>AI替代：</strong>纯人工巡检会被自动化替代；但故障根因分析、架构设计、自动化开发(Python/Go)的运维工程师反而更值钱——这是"运维工程师"和"运维开发/DevOps"的分水岭。</li>
+<li><strong>35岁问题：</strong>运营商内部几乎无35岁问题(体制内稳定)；互联网/云厂商需向DevOps/SRE/架构师转型。</li>
+</ul>
+
+<h3>⑤ 工作强度与生活方式</h3>
+<p>运营商稳定性极高、压力中等；运维岗需轮值/夜班但下班后基本不打扰；西安生活性价比高。云厂商7×24待命但比开发岗略轻。应酬远少于技术销售。</p>
+
+<h3>⑥ 核心技能要求</h3>
+<div class="skill-cloud">
+<span class="skill-tag know">通信原理/光纤传输/5G基站/核心网/路由交换</span>
+<span class="skill-tag know">华为HCIA/HCIP/HCIE认证(硬通货)</span>
+<span class="skill-tag hard">Linux/Shell/Python脚本</span>
+<span class="skill-tag tool">Docker/K8s/OpenStack</span>
+<span class="skill-tag tool">Ansible/Terraform/Prometheus/Grafana</span>
+<span class="skill-tag tool">Jenkins/GitLab CI</span>
+<span class="skill-tag know">TCP/IP/VLAN/BGP/SDN</span>
+<span class="skill-tag know">阿里云ACA/ACP认证</span>
+</div>
+
+<h3>⑦ 适合人群</h3>
+<p>追求稳定、性价比、西安/本地就业，不想卷高薪高压；性格细心有耐心，能接受值班和机房环境；想进体制内/央企。对云原生有兴趣的可走互联网云运维，薪资上限更高。</p>
+
+<h3>⑧ 代表性企业</h3>
+<div class="comp-grid">
+<div class="comp-item"><strong>中国移动</strong>（本校38人）</div>
+<div class="comp-item"><strong>中国电信</strong>（本校36人，陕西公司）</div>
+<div class="comp-item"><strong>中国联通/中国铁塔</strong>（西安/陕西）</div>
+<div class="comp-item"><strong>阿里云/华为云/腾讯云</strong>（云运维/DevOps）</div>
+<div class="comp-item"><strong>国家电网/南方电网</strong>（信通运维，稳定+高薪）</div>
+<div class="comp-item"><strong>各大银行科技子公司</strong>（数据中心运维，西安有招行软开）</div>
+</div>
+
+<h3>⑨ 大二大三准备路径</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二</div>学好通信原理/计算机网络/信号与系统；开始学Linux基本操作。</div>
+<div class="sem-node"><div class="sem-title">大二暑假</div>考<strong>华为HCIA-Routing & Switching</strong>(在校生可考，面试加分)；学Shell/Python。</div>
+<div class="sem-node"><div class="sem-title">大三上</div>确定方向——想稳就盯运营商秋招(9月提前批)；想冲云就自学Docker/K8s考阿里云ACP。</div>
+<div class="sem-node key"><div class="sem-title">大三暑假</div>投运营商暑期实习(留用率高)；运营商秋招9-11月集中笔试面试，内容偏行测+通信专业知识，提前刷行测题。</div>
+</div>
+
+<h3>⑩ 与专业课程关联度</h3>
+<p><span class="badge b-green">高(运营商)/中(云运维)</span> 直接相关(运营商)：通信原理、信号与系统、计算机网络、移动通信、光纤通信——这些几乎就是运营商笔试内容。本校通信学科全国顶尖，考运营商是"专业对口+学历对口"双重优势。</p>
+<h4>参考来源</h4>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/xian-dianxinwangluogongchengshi/" target="_blank">职友集-西安电信网络工程师薪资</a></li>
+<li>本校就业网-中国电信陕西公司校招</li>
+<li><a href="https://finance.sina.cn/2025-12-25/detail-inhcyrur3722166.d.html" target="_blank">新浪财经-中国移动薪酬体系</a></li>
+<li><a href="https://cnic.cas.cn/rcdw/rczp/szyxz/202501/t20250117_7519309.html" target="_blank">中科院云运维招聘</a></li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch17">
+<h2>第17章：方向选择决策框架</h2>
+<p style="color:#9333ea;font-weight:700;">— 横向模块A —</p>
+
+<h3>四轴自我盘点表</h3>
+<table>
+<tr><th>维度</th><th>关键问题</th><th>高分特征</th><th>低分特征</th></tr>
+<tr><td><strong>兴趣</strong></td><td>你更愿意花业余时间干什么？</td><td>焊电路/调驱动/看datasheet有成就感→硬件；刷LeetCode→软件；推公式/MATLAB仿真→算法；跟人聊跑客户→销售</td><td>对上述都无明显偏好</td></tr>
+<tr><td><strong>能力</strong></td><td>编程强弱/数学好坏/动手能力</td><td>C语言能独立写项目、高数线代90+、电赛动手快</td><td>代码靠抄、数学吃力、焊板手抖</td></tr>
+<tr><td><strong>价值观</strong></td><td>高薪/稳定/WLB排序</td><td>愿意996换40万→大厂；要户口编制→研究所；要准时下班→FAE/外企</td><td>没想清楚</td></tr>
+<tr><td><strong>学历规划</strong></td><td>本科就业or读研</td><td>想尽早经济独立→本科就业；想进IC/算法/研究所→必须读研</td><td>—</td></tr>
+</table>
+
+<h3>可操作决策树</h3>
+<div class="decision-tree">起点：大二上学期
+│
+├─ Q1: 你愿意花未来2-3年读研吗？
+│   ├─ 是（且GPA能保研/考研有把握）
+│   │   ├─ Q2: 数学+物理是否扎实（高数/模电/信号与系统≥85）？
+│   │   │   ├─ 是 → Q3: 对芯片/电磁/光学是否感兴趣？
+│   │   │   │   ├─ 是 → 走 IC设计/射频/光电/通信算法（读研后高薪天花板）
+│   │   │   │   └─ 否 → 走 雷达/信号处理/嵌入式AI（研究所或大厂）
+│   │   │   └─ 否 → 走 嵌入式Linux/FPGA/汽车电子（读研提升学历但不押注硬算法）
+│   │   └─ 否（明确本科就业）
+│   │       ├─ Q4: 编程能力是否强于平均水平？
+│   │       │   ├─ 是 → 嵌入式软件/驱动开发/汽车软件（本科即可进大厂）
+│   │       │   └─ 否 → Q5: 动手能力 vs 沟通能力？
+│   │       │       ├─ 动手强 → 硬件工程师/PCB/测试/电源
+│   │       │       ├─ 沟通强 → FAE/技术销售/售前
+│   │       │       └─ 都不强 → 国企/运营商/电网（求稳路线）
+│   └─ 还没想清楚 → 先按"嵌入式+C语言"打底，大三上再收敛</div>
+
+<h3>7维加权打分表（可交互）</h3>
+<p style="font-size:12px;color:#64748b;">对每个候选方向打1-5分(5=非常契合)，自动计算加权总分。</p>
+<table id="scoreTable">
+<tr><th>维度</th><th>权重</th><th>嵌入式软件</th><th>硬件/PCB</th><th>FPGA</th><th>FAE</th><th>汽车电子</th><th>技术销售</th><th>运营商运维</th></tr>
+<tr><td>兴趣匹配度</td><td>25%</td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.25" type="number" min="1" max="5" value="3"></td></tr>
+<tr><td>现有能力匹配</td><td>20%</td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.20" type="number" min="1" max="5" value="3"></td></tr>
+<tr><td>薪资天花板</td><td>15%</td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td></tr>
+<tr><td>行业景气度(2026-2030)</td><td>15%</td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.15" type="number" min="1" max="5" value="3"></td></tr>
+<tr><td>AI抗替代性</td><td>10%</td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td></tr>
+<tr><td>WLB/稳定性</td><td>10%</td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.10" type="number" min="1" max="5" value="3"></td></tr>
+<tr><td>本科可进入性</td><td>5%</td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td><td><input class="score-input" data-weight="0.05" type="number" min="1" max="5" value="3"></td></tr>
+<tr style="background:#dbeafe;font-weight:700;"><td colspan="2">加权总分 →</td><td class="score-total" id="total0"></td><td class="score-total" id="total1"></td><td class="score-total" id="total2"></td><td class="score-total" id="total3"></td><td class="score-total" id="total4"></td><td class="score-total" id="total5"></td><td class="score-total" id="total6"></td></tr>
+</table>
+
+<h3>三种人格画像推荐</h3>
+<div class="persona-grid">
+<div class="persona-card p1">
+<h4>🔥 画像1：卷王型</h4>
+<p style="font-size:13px;"><strong>编程强+数学好+追求高薪</strong></p>
+<p style="font-size:12px;">推荐：本科先冲软件/嵌入式保offer→读研转IC数字设计/验证或通信算法/自动驾驶算法。</p>
+<p style="font-size:12px;color:#64748b;">理由：硕士起薪25-40万。本校IC硕士offer案例：小米玄戒2.5万×15≈37.5万、地平线2.3万×15≈34.5万。</p>
+<p style="font-size:12px;color:#dc2626;">风险：竞争极卷，硕士是起步价。</p>
+</div>
+<div class="persona-card p2">
+<h4>🔧 画像2：理工男型</h4>
+<p style="font-size:13px;"><strong>动手强+喜欢硬件+求稳</strong></p>
+<p style="font-size:12px;">推荐：硬件开发/PCB/电源/FAE/测试，本科直接就业或读本校硕士进研究所。</p>
+<p style="font-size:12px;color:#64748b;">理由：AI短期替代不了"焊板子+示波器抓波形+产线救火"；研究所给编制户口。</p>
+<p style="font-size:12px;color:#ea580c;">风险：薪资天花板低于软件/IC，一线本科15-25万。</p>
+</div>
+<div class="persona-card p3">
+<h4>🤝 画像3：商务型</h4>
+<p style="font-size:13px;"><strong>沟通强+不想纯技术</strong></p>
+<p style="font-size:12px;">推荐：FAE/技术销售/售前/运营商政企岗。</p>
+<p style="font-size:12px;color:#64748b;">理由：TI等外企校招大量招FAE轮岗；本科即可入行，3-5年可转销售管理。</p>
+<p style="font-size:12px;color:#ea580c;">风险：技术深度天花板低，需持续跟进行业。</p>
+</div>
+</div>
+</div>
+
+<div class="card dir-section" id="ch18">
+<h2>第18章：本科 vs 读研深度决策</h2>
+<p style="color:#9333ea;font-weight:700;">— 横向模块B —</p>
+
+<h3>本校54%升学率背景</h3>
+<div class="alert alert-blue">
+<p><strong>事实数据(本校2025届就业质量报告)：</strong></p>
+<ul>
+<li>2025届本科深造率<strong>54.10%</strong>，约1573人留本校本校(占深造50%)，其余进国科大(75人)、西交大(65人)、东南大学(63人)、中科大(41人)、成电(41人)等。</li>
+<li>境内深造者<strong>95%进入"双一流"高校/科研院所</strong>。</li>
+<li>本校整体保研率约<strong>20%-25%</strong>；实验班升学率76%。</li>
+</ul>
+<p>解读：在本校"硕士是工科标配"已是现实。你本科就业反而属于"少数派"，但本校牌子在大厂校招中够用。</p>
+</div>
+
+<h3>16方向逐个分析：本科够不够？</h3>
+<table>
+<tr><th>#</th><th>方向</th><th>本科够不够</th><th>读研增益</th><th>建议</th></tr>
+<tr><td>1</td><td>IC数字前端设计</td><td style="color:#dc2626">不够</td><td>极大(硕士起步)</td><td><span class="badge b-red">强烈建议读研</span></td></tr>
+<tr><td>2</td><td>IC模拟设计</td><td style="color:#dc2626">不够</td><td>极大(看重流片经验)</td><td><span class="badge b-red">强烈建议读研</span></td></tr>
+<tr><td>3</td><td>IC验证(DV)</td><td style="color:#ea580c">勉强(入门可，天花板低)</td><td>大(硕士进头部组)</td><td><span class="badge b-orange">建议读研</span></td></tr>
+<tr><td>4</td><td>IC后端/版图</td><td style="color:#16a34a">本科可就业</td><td>中(先进节点要硕)</td><td><span class="badge b-green">本科性价比尚可</span></td></tr>
+<tr><td>5</td><td>射频/微波/RF</td><td style="color:#dc2626">不够</td><td>极大(研究所只要硕博)</td><td><span class="badge b-red">强烈建议读研</span></td></tr>
+<tr><td>6</td><td>嵌入式软件(MCU/RTOS)</td><td style="color:#16a34a">够</td><td>中</td><td><span class="badge b-green">本科性价比高</span></td></tr>
+<tr><td>7</td><td>嵌入式Linux应用</td><td style="color:#16a34a">够</td><td>中(3年经验≈硕士+1年)</td><td><span class="badge b-green">本科性价比高</span></td></tr>
+<tr><td>8</td><td>硬件开发(PCB/原理图)</td><td style="color:#16a34a">够</td><td>中(硕士做系统级/SI)</td><td><span class="badge b-green">本科性价比高</span></td></tr>
+<tr><td>9</td><td>FPGA开发</td><td style="color:#ea580c">勉强</td><td>大(通信/雷达需硕)</td><td><span class="badge b-orange">看方向：消费级本够，军工/通信建议读研</span></td></tr>
+<tr><td>10</td><td>通信算法/信号处理</td><td style="color:#dc2626">不够</td><td>极大(数学门槛高)</td><td><span class="badge b-red">强烈建议读研</span></td></tr>
+<tr><td>11</td><td>雷达/电子对抗/军工所</td><td style="color:#dc2626">基本不够</td><td>极大(编制职称按硕士走)</td><td><span class="badge b-red">强烈建议读研</span></td></tr>
+<tr><td>12</td><td>FAE/现场应用工程师</td><td style="color:#16a34a">够</td><td>小(看重沟通+现场经验)</td><td><span class="badge b-green">本科性价比高</span></td></tr>
+<tr><td>13</td><td>硬件测试/可靠性测试</td><td style="color:#16a34a">够</td><td>小</td><td><span class="badge b-green">本科性价比高</span></td></tr>
+<tr><td>14</td><td>技术销售/售前</td><td style="color:#16a34a">够</td><td>小(看业绩不看学历)</td><td><span class="badge b-green">本科性价比高</span></td></tr>
+<tr><td>15</td><td>电源/电力电子</td><td style="color:#16a34a">够(本科做应用)</td><td>中(车规/大功率需硕)</td><td><span class="badge b-blue">本科先就业，可读在职</span></td></tr>
+<tr><td>16</td><td>光电/光通信</td><td style="color:#dc2626">不够</td><td>大(光芯片/硅光是硕博赛道)</td><td><span class="badge b-red">强烈建议读研</span></td></tr>
+</table>
+
+<h3>强烈建议读研 vs 本科性价比高</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+<div class="alert alert-red">
+<strong>强烈建议读研(6个)</strong>
+<p>IC数字设计、IC模拟设计、射频微波、通信算法、雷达/军工研究所、光电/光芯片。</p>
+<p style="font-size:12px;">共同特征：技术壁垒高、课程深、JD直接写"硕士及以上"、起薪硕士比本科高10-15万/年。</p>
+</div>
+<div class="alert alert-green">
+<strong>本科性价比高(6个)</strong>
+<p>嵌入式软件、嵌入式Linux、硬件开发PCB、FAE、测试、技术销售。</p>
+<p style="font-size:12px;">共同特征：3年工作经验比2年硕士更值钱，岗位数量大，本科能进核心团队。</p>
+</div>
+</div>
+<p style="margin-top:10px;"><strong>中间地带(4个)：</strong>IC验证、IC后端、FPGA、电源电力电子。策略：先投实习，若大三暑假能拿到本科满意offer就走；拿不到再考研。</p>
+
+<h3>读研的隐性成本</h3>
+<table>
+<tr><th>成本项</th><th>分析</th></tr>
+<tr><td>时间成本</td><td>学硕3年/专硕2-3年。你2028年本科毕业，读研2030-2031才入职。</td></tr>
+<tr><td>机会成本</td><td>本科同学2028入职华为/比亚迪，3年后2031年已是资深工程师年薪30-40万+股票；你刚硕士毕业起薪可能25-30万。<strong>净差额约30-50万工资+错过的股票期权。</strong></td></tr>
+<tr><td>经济成本</td><td>学费8000/年×2-3年+生活费约2-3万/年，直接现金支出约6-10万；但硕士有国家补助+导师补贴+奖学金，实际净支出可能为0。</td></tr>
+<tr><td>秋招机会成本</td><td>读研参加的是2030/2031秋招，届时行业周期未知——2026年芯片热，2030年可能已降温。<strong>这是最大不确定性。</strong></td></tr>
+</table>
+<div class="alert alert-purple"><strong>结论：</strong>读研的价值=(目标方向是否强制硕士)×(学校/平台升级幅度)-(2-3年机会成本)。只有"强制硕士+能去更好平台"的方向才值得。</div>
+
+<h3>本校保研/考研难度</h3>
+<ul>
+<li>保研率约20-25%；考研本校通信工程学院2025学硕复试线330分(单科50/75)。</li>
+<li>外保去清北浙交复需排名前10%-15%；考研本校相对友好但复试按不低于120%差额淘汰。</li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch19">
+<h2>第19章：行业大趋势</h2>
+<p style="color:#9333ea;font-weight:700;">— 横向模块C —</p>
+
+<h3>AI对各岗位影响矩阵(2026现状)</h3>
+<table>
+<tr><th>岗位</th><th>AI影响类型</th><th>判断依据</th></tr>
+<tr><td>嵌入式软件(MCU驱动)</td><td><span class="badge b-green">增强</span></td><td>AI帮写寄存器初始化代码、生成FreeRTOS任务模板；但非标硬件/实时调试仍需人</td></tr>
+<tr><td>嵌入式Linux应用</td><td><span class="badge b-orange">部分替代</span></td><td>应用层代码AI可生成，底层驱动/性能调优仍需人</td></tr>
+<tr><td>硬件开发/PCB</td><td><span class="badge b-green">增强</span></td><td>AI辅助Layout和仿真，但高速信号完整性(PCIe/USB3.0/万兆网)反而更值钱</td></tr>
+<tr><td>IC设计(RTL)</td><td><span class="badge b-green">增强</span></td><td>LLM从自然语言生成RTL、自动生成testbench；但架构设计/签核仍靠资深工程师</td></tr>
+<tr><td>FAE/现场支持</td><td><span class="badge b-green">几乎不受影响</span></td><td>需要跑客户、焊板子、产线救火，AI替代不了现场判断</td></tr>
+<tr><td>测试工程师</td><td><span class="badge b-orange">替代低端</span></td><td>60%机械重复测试被AI替代；业务分析/风险把控仍需人</td></tr>
+<tr><td>纯CRUD/前后端软件</td><td><span class="badge b-red">强烈替代压力</span></td><td>详见《泛AI软件作战地图》</td></tr>
+<tr><td>算法/AI岗</td><td><span class="badge b-purple">增强+内卷</span></td><td>AI门槛降低，初级算法岗缩水，但顶尖大模型/具身智能算法仍稀缺</td></tr>
+</table>
+<div class="alert alert-blue"><strong>核心结论：</strong>"AI不会替代嵌入式工程师，但会用AI的嵌入式工程师会替代不会用的。"95.2%的底层开发岗位完全不要求AI/算法/大模型。</div>
+
+<h3>四大趋势卡片</h3>
+<div class="trend-grid">
+<div class="trend-card">
+<h4>🇨🇳 芯片国产替代</h4>
+<ul style="font-size:12.5px;">
+<li><strong>长鑫存储</strong>：2026Q1营收508亿(同比+719%)，科创板IPO首日市值3.3万亿，全球第四大DRAM</li>
+<li><strong>北方华创</strong>：2025年报营收高速增长，平台化布局</li>
+<li><strong>中芯国际</strong>：2025年9月产能利用率85%-95%</li>
+<li><strong>华为海思</strong>：已量产381款芯片，新麒麟采用逻辑折叠技术</li>
+<li><strong>长江存储</strong>：2026Q1收入超200亿(同比翻倍)，NAND全球份额超10%</li>
+</ul>
+<p style="font-size:12px;margin-top:6px;color:#166534;">判断：未来5年最确定赛道之一，设备/制造/设计全链条扩招。</p>
+</div>
+<div class="trend-card">
+<h4>🚗 新能源汽车爆发</h4>
+<ul style="font-size:12.5px;">
+<li>2025上半年新能源车渗透率<strong>44.3%</strong>，L2+智驾装车率67.8%</li>
+<li>比亚迪2023-2025累计招录5万应届生，研发岗占近8成</li>
+<li>智驾领域近一年新发岗位量同比暴涨<strong>28倍</strong>，核心人才平均跳槽周期仅1.5年</li>
+<li>半导体/算法/数字前端TSI>3(严重紧缺)</li>
+</ul>
+<p style="font-size:12px;margin-top:6px;color:#166534;">对硬件/嵌入式/电源岗是巨大雇主池。</p>
+</div>
+<div class="trend-card">
+<h4>🤖 机器人/具身智能</h4>
+<ul style="font-size:12.5px;">
+<li>2026上半年国内具身智能融资<strong>935亿元</strong>(同比增近5倍)</li>
+<li>2026年1-4月相关岗位招聘量同比暴涨<strong>15倍</strong></li>
+<li>北理工估算行业人才缺口约<strong>100万人</strong></li>
+<li>13家公司估值破百亿(宇树/智元/银河通用等)</li>
+<li>最缺：具身大模型、灵巧操作、力控、传感器融合、机器人嵌入式</li>
+</ul>
+<p style="font-size:12px;margin-top:6px;color:#166534;">2026-2030最大增量赛道，硬件+AI交叉背景最吃香。</p>
+</div>
+<div class="trend-card">
+<h4>🎖️ 国防军工景气</h4>
+<ul style="font-size:12.5px;">
+<li>2026年国防支出<strong>19095.61亿元</strong>，连续多年7%+增速</li>
+<li>军工电子核心元器件自主化、MMIC产线、抗辐照FPGA获专项资金328.6亿</li>
+<li>本校2025届238人签约中国电科</li>
+</ul>
+<p style="font-size:12px;margin-top:6px;color:#166534;">确定性强周期，研究所扩招稳定，但基本只要硕士。</p>
+</div>
+</div>
+
+<h3>2026-2030方向判断</h3>
+<table>
+<tr><th style="background:#16a34a">上行方向</th><th style="background:#2563eb">平稳方向</th><th style="background:#dc2626">萎缩方向</th></tr>
+<tr>
+<td style="background:#f0fdf4">
+<ul style="font-size:12.5px;">
+<li>芯片国产替代(设计/制造/设备/材料)</li>
+<li>具身智能/人形机器人</li>
+<li>汽车电子/智驾/三电</li>
+<li>军工电子(相控阵/卫星互联网)</li>
+<li>电源/车规半导体</li>
+</ul>
+</td>
+<td style="background:#eff6ff">
+<ul style="font-size:12.5px;">
+<li>嵌入式通用岗</li>
+<li>硬件开发(单板级)</li>
+<li>FAE/技术销售</li>
+<li>运营商/国企</li>
+<li>电源/电力电子</li>
+</ul>
+</td>
+<td style="background:#fef2f2">
+<ul style="font-size:12.5px;">
+<li>低端PCB Layout(AI辅助)</li>
+<li>机械重复测试</li>
+<li>传统功能机/消费电子低端硬件</li>
+<li>纯应用层CRUD软件</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="card dir-section" id="ch20">
+<h2>第20章：四类雇主对比</h2>
+<p style="color:#9333ea;font-weight:700;">— 横向模块D —</p>
+
+<h3>四类雇主横向对比</h3>
+<table>
+<tr><th>维度</th><th>民企大厂</th><th>中型民企</th><th>外企在华</th><th>国企/研究所</th></tr>
+<tr><td><strong>本科起薪</strong></td><td>18-30万</td><td>12-20万</td><td>15-25万(FAE)</td><td>12-20万(硕士)</td></tr>
+<tr><td><strong>硕士起薪</strong></td><td>28-50万</td><td>20-30万</td><td>20-35万</td><td>20-30万+安家费</td></tr>
+<tr><td><strong>稳定性</strong></td><td>中(35岁焦虑)</td><td>低(看融资)</td><td>中高(但裁员风险)</td><td style="color:#16a34a;font-weight:700">极高(事业编/央企编)</td></tr>
+<tr><td><strong>户口/编制</strong></td><td>深圳/上海有指标但紧张</td><td>少</td><td>少</td><td>研究所解决户口+事业编</td></tr>
+<tr><td><strong>晋升速度</strong></td><td>快(2-3年升主管)</td><td>快但天花板低</td><td>慢但透明</td><td>慢(职称体系)</td></tr>
+<tr><td><strong>工作强度</strong></td><td>996/大小周</td><td>大小周</td><td style="color:#16a34a">WLB好(准点下班)</td><td>项目期加班，平时规律</td></tr>
+<tr><td><strong>培训体系</strong></td><td>完善(华为大学)</td><td>弱</td><td>极完善(TI CAP轮岗)</td><td>体系化(师带徒)</td></tr>
+<tr><td><strong>跳槽价值</strong></td><td style="color:#16a34a;font-weight:700">极高(简历镀金)</td><td>中</td><td>高(外企背书)</td><td>较低(圈子封闭)</td></tr>
+</table>
+
+<h3>本校特色军工研究所详解(中电科主要所)</h3>
+<table>
+<tr><th>所</th><th>城市</th><th>核心方向</th><th>待遇特点</th></tr>
+<tr><td><strong>14所</strong></td><td>南京</td><td>雷达(国之重器，最牛)</td><td>硕士总包25万+，六险两金三补贴、岗位分红</td></tr>
+<tr><td><strong>38所</strong></td><td>合肥</td><td>微电子/反隐身雷达</td><td>硕士总包25万+</td></tr>
+<tr><td><strong>29所</strong></td><td>成都</td><td>电子对抗/侦察</td><td>硕士总包25万+，成都生活成本低</td></tr>
+<tr><td><strong>54所</strong></td><td>石家庄</td><td>通信测控/光电通信</td><td>博士安家费25-70万+购房补贴30万；硕士10万购房补贴+3万安家费</td></tr>
+<tr><td><strong>10所</strong></td><td>成都</td><td>航空电子/指控</td><td>事业编，硕士为主</td></tr>
+<tr><td><strong>20所</strong></td><td>西安</td><td>导航/通信</td><td>本地所，西安生活成本最低</td></tr>
+</table>
+<p style="font-size:12px;color:#64748b;margin-top:8px;">其他：航天科技/科工各所(504所西安/五院北京/八院上海)；航空工业雷华所(无锡，机/弹载雷达)。共性：基本只要硕士及以上，本校是目标校；事业编+户口+超长假期(54所9天高温假+14天春节假)；跳槽出体制较难。</p>
+
+<h3>民企分层(本校2025届本科签约数据)</h3>
+<ul>
+<li><strong>大厂：</strong>华为(807人，其中本科106人)、字节(9人)、腾讯(13人)、阿里(14人)、美团(18人)、京东(12人)。</li>
+<li><strong>中型：</strong>OPPO(10人)、vivo、小米、大疆、比亚迪(59人)、中兴(9人)、TCL(39人)、上汽(32人)。</li>
+<li><strong>创业公司：</strong>具身智能(宇树/智元/银河通用)、芯片初创——薪资高但风险大。</li>
+</ul>
+
+<h3>外企在华情况(2025-2026)</h3>
+<ul>
+<li><strong>TI(德州仪器)：</strong>2027秋招开放Analog FAE轮岗项目，覆盖深圳/上海/成都/杭州/北京/广州/苏州7城，本科可投。成都制造基地是TI全球唯一端到端制造中心。</li>
+<li><strong>高通：</strong>在华员工从2018年3000+增至2026年6000+，侧重端侧AI适配。</li>
+<li><strong>三星/SK海力士/台积电：</strong>三星西安NAND工厂扩产、台积电南京二厂投产，合计新增3000+岗位。</li>
+<li><strong>ADI/NXP/Intel：</strong>招聘规模收缩但FAE/技术支持岗仍稳定开放，WLB最佳。</li>
+</ul>
+</div>
+
+<div class="card dir-section" id="ch21">
+<h2>第21章：城市选择</h2>
+<p style="color:#9333ea;font-weight:700;">— 横向模块E —</p>
+
+<h3>本校2025届本科就业城市分布</h3>
+<div style="margin:14px 0;">
+<div class="hbar-row"><div class="hbar-label">深圳</div><div class="hbar-track"><div class="hbar-fill" style="width:79%;background:#2563eb">15.81%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">西安</div><div class="hbar-track"><div class="hbar-fill" style="width:75%;background:#16a34a">15.00%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">北京</div><div class="hbar-track"><div class="hbar-fill" style="width:37%;background:#9333ea">7.37%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">上海</div><div class="hbar-track"><div class="hbar-fill" style="width:31%;background:#ea580c">6.18%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">成都</div><div class="hbar-track"><div class="hbar-fill" style="width:20%;background:#0891b2">4.09%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">杭州</div><div class="hbar-track"><div class="hbar-fill" style="width:15%;background:#dc2626">本校杭研院招499人</div></div></div>
+</div>
+
+<h3>六城对比卡片</h3>
+<div class="city-grid">
+<div class="city-card">
+<h4>深圳(本校毕业生第一目的地)</h4>
+<p style="font-size:12.5px;"><strong>产业：</strong>硬件之都。华为/大疆/比亚迪/中兴/TCL/OPPO/vivo总部；IC设计(海思/紫光展锐深圳分部)。</p>
+<p style="font-size:12.5px;"><strong>优势方向：</strong>嵌入式、硬件、FAE、IC验证、消费电子。</p>
+<p style="font-size:12.5px;"><strong>生活成本：</strong>单间2000-3500元/月(南山/福田)。</p>
+<p style="font-size:12.5px;"><strong>薪资：</strong>本科嵌入式15-20K×14薪。</p>
+<p style="font-size:12.5px;"><strong>落户：</strong>全日制大专以上即可，应届最快30分钟线上办结。</p>
+</div>
+<div class="city-card">
+<h4>西安(本地大本营)</h4>
+<p style="font-size:12.5px;"><strong>产业：</strong>军工研究所集群(20所/21所/航天504所)、三星半导体、比亚迪西安、中兴西安、华为西研所。</p>
+<p style="font-size:12.5px;"><strong>优势方向：</strong>军工嵌入式、半导体制造、本地研究所。</p>
+<p style="font-size:12.5px;"><strong>生活成本：</strong>单间1000-1800元/月，房价低。</p>
+<p style="font-size:12.5px;"><strong>薪资：</strong>本科嵌入式应届约10-14K(平均14.1K)。</p>
+<p style="font-size:12.5px;"><strong>落户：</strong>本科以上学历不限年龄直接落。</p>
+</div>
+<div class="city-card">
+<h4>北京</h4>
+<p style="font-size:12.5px;"><strong>产业：</strong>互联网(字节/百度)、芯片(华为北研所/地平线/寒武纪)、军工(航天科技/科工各所)。</p>
+<p style="font-size:12.5px;"><strong>优势方向：</strong>算法、IC设计、军工。</p>
+<p style="font-size:12.5px;"><strong>生活成本：</strong>单间3000-4500元/月。</p>
+<p style="font-size:12.5px;"><strong>落户：</strong>紧张，硕士+72分打分制，本科基本无望。</p>
+</div>
+<div class="city-card">
+<h4>上海</h4>
+<p style="font-size:12.5px;"><strong>产业：</strong>IC设计(紫光展锐/格科微/华为上海/小米玄戒/地平线浦东)、汽车电子(上汽/蔚来)。</p>
+<p style="font-size:12.5px;"><strong>优势方向：</strong>IC设计/验证、汽车电子。</p>
+<p style="font-size:12.5px;"><strong>生活成本：</strong>单间3000-5000元/月。</p>
+<p style="font-size:12.5px;"><strong>落户：</strong>世界一流大学应届硕士直接落；本科需72分打分。</p>
+</div>
+<div class="city-card">
+<h4>成都</h4>
+<p style="font-size:12.5px;"><strong>产业：</strong>TI成都制造基地、华为成研所、电科29所、大疆成研所、英特尔成都。</p>
+<p style="font-size:12.5px;"><strong>优势方向：</strong>半导体制造/封测、军工电子、嵌入式。</p>
+<p style="font-size:12.5px;"><strong>生活成本：</strong>单间1500-2500元/月，宜居。</p>
+<p style="font-size:12.5px;"><strong>落户：</strong>大专以上即可。</p>
+</div>
+<div class="city-card">
+<h4>杭州</h4>
+<p style="font-size:12.5px;"><strong>产业：</strong>阿里、海康威视、大华、华为杭研所、之江实验室。</p>
+<p style="font-size:12.5px;"><strong>优势方向：</strong>安防/视觉嵌入式、芯片(国芯科技等)。</p>
+<p style="font-size:12.5px;"><strong>生活成本：</strong>单间2000-3500元/月。</p>
+<p style="font-size:12.5px;"><strong>落户：</strong>应届本科可落。本校杭州研究院本身招499人。</p>
+</div>
+</div>
+</div>
+
+<div class="card dir-section" id="ch22">
+<h2>第22章：大二到大四准备时间轴</h2>
+<p style="color:#9333ea;font-weight:700;">— 横向模块F —</p>
+<p style="font-size:13px;color:#64748b;">你2029届，当前2026年9月=大二上刚开学。本时间轴侧重硬件/IC/嵌入式/通信/军工方向，与《泛AI软件作战地图》互补。</p>
+
+<div class="sem-timeline">
+<div class="sem-node">
+<div class="sem-title">学期1：大二上(2026.9-2027.1)<span class="sem-phase">探索期</span></div>
+<ul style="font-size:13px;">
+<li><strong>课程：</strong>模电、信号与系统、C语言——绩点冲85+(保研/考研都看)。</li>
+<li><strong>技能：</strong>STM32 HAL库跑通(点灯/串口/PWM/ADC)；Multisim/AD画简单原理图。</li>
+<li><strong>项目：</strong>做"STM32+传感器+OLED显示"小项目传GitHub。</li>
+<li><strong>竞赛：</strong>报名蓝桥杯嵌入式组(省赛4月)或电赛预备队(2027年是大年)。</li>
+</ul>
+<div class="alert alert-red" style="margin-top:8px;"><strong>⭐关键节点：10月前确定自己是"本科就业派"还是"读研派"——这决定后面所有投入。</strong></div>
+</div>
+
+<div class="sem-node">
+<div class="sem-title">学期2：大二下(2027.2-2027.7)<span class="sem-phase">定向期</span></div>
+<ul style="font-size:13px;">
+<li><strong>课程：</strong>数电、微机原理、电磁场与电磁波(若做射频/通信)。</li>
+<li><strong>技能：</strong>嵌入式派学FreeRTOS+SPI/I2C/CAN；IC派学Verilog HDL+FPGA开发板；硬件派学Altium画4层板。</li>
+<li><strong>项目：</strong>做较完整项目(智能小车/环境监测节点/简易示波器)；参加蓝桥杯嵌入式省赛(2027.4)拿省二以上。</li>
+<li><strong>考证：</strong>英语六级务必过(研究所/外企硬门槛)。</li>
+</ul>
+</div>
+
+<div class="sem-node key">
+<div class="sem-title">学期3：大三上(2027.9-2028.1)<span class="sem-phase">收敛期【最关键】</span></div>
+<ul style="font-size:13px;">
+<li><strong>课程：</strong>通信原理、数字信号处理、单片机课程设计。</li>
+<li><strong>方向必须收敛：</strong>嵌入式派学Linux驱动/Kernel/Yocto；IC派深入Verilog+UVM参加集创赛；硬件派学高速PCB/SI/PI；FAE派补产品知识练演讲。</li>
+<li><strong>项目：</strong>做1个能写进简历的"主项目"。</li>
+<li><strong>竞赛：</strong>电赛(2027.8已结束若参加则冲国奖)；集创赛/半导体设计大赛(秋)。</li>
+<li><strong>实习：</strong>开始投寒假实习(2028年1-2月)，目标华为/中兴/比亚迪/大疆/海康。</li>
+</ul>
+<div class="alert alert-orange" style="margin-top:8px;"><strong>⭐若打算保研，本学期GPA排名决定一切；若考研，本学期开始看数学英语。</strong></div>
+</div>
+
+<div class="sem-node key">
+<div class="sem-title">学期4：大三下(2028.2-2028.7)<span class="sem-phase">黄金实习期</span></div>
+<ul style="font-size:13px;">
+<li><strong>课程：</strong>按方向选射频/光电/嵌入式系统等选修课。</li>
+<li><strong>实习：</strong><strong>【黄金期】大三暑假实习是本科就业最重要窗口</strong>——3-5月投暑期实习提前批(华为勇敢星/大疆天空之城)；6-8月实习2-3个月争取return offer。</li>
+</ul>
+<div class="alert alert-red" style="margin-top:8px;"><strong>⭐秋招提前批：7月开始(华为/大疆/字节通常7月初开)，不要等9月正式批！若没拿到return offer，9-10月全力秋招。</strong></div>
+</div>
+
+<div class="sem-node">
+<div class="sem-title">学期5：大四上(2028.9-2029.1)<span class="sem-phase">收获期</span></div>
+<ul style="font-size:13px;">
+<li><strong>秋招主战场：</strong>9-11月正式批，海投+笔试+面试。本校校招季企业7000+家，人均4份offer。</li>
+<li><strong>重点投：</strong>华为(本科招硬件/嵌入式)、比亚迪、中兴、TCL、三大运营商(移动38人/电信36人)、国家电网(18人)、北方华创(15人)、大疆/OPPO/vivo。</li>
+<li><strong>春招补录：</strong>2029年3-4月捡漏。</li>
+</ul>
+</div>
+</div>
+
+<h3>关键节点日历</h3>
+<table>
+<tr><th>时间</th><th>事件</th></tr>
+<tr><td>2027.4</td><td>蓝桥杯省赛</td></tr>
+<tr><td>2027.8</td><td>电赛国赛(奇数年)</td></tr>
+<tr><td>2027.9</td><td>秋招提前批预热(面向2028届)</td></tr>
+<tr><td>2028.3-5</td><td>暑期实习投递黄金期</td></tr>
+<tr><td>2028.6-8</td><td>暑期实习(决定return offer)</td></tr>
+<tr style="background:#fee2e2;font-weight:700;"><td>2028.7</td><td>秋招提前批开闸(华为/大疆/字节)</td></tr>
+<tr><td>2028.9-11</td><td>秋招正式批</td></tr>
+<tr><td>2029.3-4</td><td>春招补录</td></tr>
+</table>
+</div>
+
+<div class="card dir-section" id="ch23">
+<h2>第23章：参考来源总索引</h2>
+<p style="color:#64748b;font-size:13px;">以下链接均来自5份研究报告，按类别汇总。标注【事实】=招聘平台/校招简章/官方报告；【网友】=知乎/牛客/抖音/脉脉个人经验。</p>
+
+<h3>本校就业背景数据</h3>
+<ul class="ref-list">
+<li>本校2025届就业质量报告PDF</li>
+<li><a href="http://www.eol.cn/news/dongtai/202601/t20260130_2717983.shtml" target="_blank">中国教育在线-807人入职华为</a></li>
+<li><a href="https://www.xiancn.com/content/2026-01/18/content_7324408.htm" target="_blank">西安新闻网-本校就业</a></li>
+<li><a href="https://edu.cnr.cn/eduzt/wddx/mxzs/20260611/t20260611_527656848.shtml" target="_blank">央广网-本校招生</a></li>
+</ul>
+
+<h3>嵌入式/硬件方向</h3>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-qianrushikaifagongchengshi/edu2/exp0/" target="_blank">职友集-应届生嵌入式本科薪资</a></li>
+<li><a href="https://www.eet-china.com/mp/a463208.html" target="_blank">EET-嵌入式工程师薪资真相</a></li>
+<li><a href="https://m.eefocus.com/article/2046089.html" target="_blank">与非网-芯片公司嵌入式一天</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-pcb+layout/" target="_blank">职友集-PCB Layout薪资</a></li>
+<li><a href="https://www.eet-china.com/mp/a478556.html" target="_blank">EET-为什么不担心AI取代硬件</a></li>
+</ul>
+
+<h3>IC/FPGA方向</h3>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-shuziicyanzhenggongchengshi/exp0/" target="_blank">职友集-数字IC验证学历</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-icbantushejigongchengshi/ind-monixinpian/" target="_blank">职友集-IC版图薪资学历</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-FPGAgongchengshi/edu2/" target="_blank">职友集-FPGA本科薪资</a></li>
+<li><a href="http://fpgachina.cn/" target="_blank">全国大学生FPGA创新设计竞赛</a></li>
+<li><a href="https://www.maxscend.com/details/140.html" target="_blank">卓胜微-射频设计JD</a></li>
+</ul>
+
+<h3>通信/雷达方向</h3>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-shepingongchengshi/edu2/" target="_blank">职友集-射频本科薪资</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-wuxiantongxinsuanfagongchengshi/ind-5g/" target="_blank">职友集-5G无线通信算法</a></li>
+<li><a href="https://m.jobui.com/company/44726/salary/edu3/" target="_blank">职友集-中电科14所硕士</a></li>
+<li><a href="https://www.nowcoder.com/enterprise/2481/salary" target="_blank">牛客-中国电科薪资爆料</a></li>
+</ul>
+
+<h3>FAE/测试方向</h3>
+<ul class="ref-list">
+<li><a href="https://m.jobui.com/salary/quanguo-faexianchangyingyonggongchengshi/exp0/ind-xinpian/" target="_blank">职友集-芯片FAE应届</a></li>
+<li><a href="https://www.jobui.com/salary/quanguo-ceshikaifa/edu2/ind-ruanjian/" target="_blank">职友集-测开本科</a></li>
+<li><a href="https://m.jobui.com/salary/quanguo-xinpianateceshigongchengshi/edu2/ind-bandaoti/" target="_blank">职友集-ATE本科应届</a></li>
+<li><a href="https://www.elecfans.com/d/6568469.html" target="_blank">电子发烧友-FAE职业规划</a></li>
+</ul>
+
+<h3>汽车/机器人方向</h3>
+<ul class="ref-list">
+<li>本校-比亚迪2026校招</li>
+<li><a href="https://m.jobui.com/company/7377/salary/j/qianrushiruanjian/" target="_blank">职友集-比亚迪嵌入式薪资</a></li>
+<li><a href="https://www.eet-china.com/mp/a516283.html" target="_blank">EET-宇树科技薪资</a></li>
+<li><a href="https://we.dji.com/zh-CN/campus/notice?id=10" target="_blank">大疆校招</a></li>
+<li><a href="http://auto.cnr.cn/2015xc/20260416/t20260416_527586611.shtml" target="_blank">央广网-比亚迪招5万应届生</a></li>
+</ul>
+
+<h3>行业趋势数据</h3>
+<ul class="ref-list">
+<li><a href="https://stcn.com/article/detail/4042694.html" target="_blank">证券时报-长鑫逆袭</a></li>
+<li><a href="http://m.chinanews.com/wap/detail/chs/zw/jw672074.shtml" target="_blank">中新网-华为韬定律芯片</a></li>
+<li><a href="https://www.digitalchina.gov.cn/2026/xwzx/szkx/202609/t20260904_5367901.htm" target="_blank">数字中国峰会-具身智能融资935亿</a></li>
+<li><a href="http://auto.youth.cn/xw/202509/t20250909_16225327.htm" target="_blank">中国青年网-新能源渗透率44.3%</a></li>
+<li><a href="https://epaper.cs.com.cn/zgzqb/wap/html/2025-04/25/nw.D110000zgzqb_20250425_1-B423.htm" target="_blank">中证报-2025国防预算1.81万亿</a></li>
+<li><a href="https://www.eet-china.com/mp/a503480.html" target="_blank">EET-当嵌入式遇见大模型</a></li>
+</ul>
+
+<h3>城市/落户政策</h3>
+<ul class="ref-list">
+<li><a href="http://sz.people.com.cn/n2/2026/0725/c202846-41649787.html" target="_blank">人民网-深圳应届30分钟落户</a></li>
+<li><a href="http://sh.bendibao.com/zffw/2025123/302634.shtm" target="_blank">上海-应届落户打分</a></li>
+<li><a href="http://xa.bendibao.com/live/2020522/73881.shtm" target="_blank">西安-学历落户政策</a></li>
+</ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>📊 <strong>电子信息工程职业方向全景指南</strong> | 本校电信·2029届本科就业版</p>
+<p>数据采集时间：2026年9月 | 整合自5份研究报告(Group A/B/C/D + 横向模块A-F)</p>
+<p>【事实】=招聘平台/校招简章/官方就业报告公开数据 | 【网友】=知乎/牛客/抖音/脉脉个人经验，仅供参考</p>
+<p>薪资数据随年份/部门/offer谈判波动，实际以当年校招公告为准 | 生成日期：2026-09-28</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Sidebar active highlight
+const sections = document.querySelectorAll('.dir-section');
+const navLinks = document.querySelectorAll('.sidebar a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector('.sidebar a[href="#'+id+'"]');
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Score calculator
+const inputs = document.querySelectorAll('.score-input');
+function calcScores() {
+  const totals = [0,0,0,0,0,0,0];
+  const rows = document.querySelectorAll('#scoreTable tr');
+  rows.forEach(row => {
+    const rowInputs = row.querySelectorAll('.score-input');
+    if (rowInputs.length === 0) return;
+    rowInputs.forEach((inp, idx) => {
+      const w = parseFloat(inp.dataset.weight);
+      const v = parseFloat(inp.value) || 0;
+      totals[idx] += v * w;
+    });
+  });
+  for (let i = 0; i < 7; i++) {
+    const el = document.getElementById('total'+i);
+    if (el) el.textContent = totals[i].toFixed(2);
+  }
+}
+inputs.forEach(inp => inp.addEventListener('input', calcScores));
+calcScores();
+</script>
+</body>
+</html>

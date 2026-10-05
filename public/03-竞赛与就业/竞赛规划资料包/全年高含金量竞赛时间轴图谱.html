@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全年高含金量竞赛时间轴图谱 — 电子信息工程·本校大二</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background:#f8fafc; color:#1e293b; padding:20px; }
+.container { max-width:1400px; margin:0 auto; }
+h1 { text-align:center; font-size:24px; margin-bottom:6px; color:#0f172a; }
+.subtitle { text-align:center; color:#64748b; font-size:14px; margin-bottom:20px; }
+.controls { display:flex; justify-content:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.filter-btn { padding:8px 20px; border-radius:20px; border:2px solid; cursor:pointer; font-size:14px; font-weight:600; transition:all .2s; background:#fff; }
+.filter-btn.active { color:#fff; }
+.filter-btn[data-track="保研"] { border-color:#dc2626; color:#dc2626; }
+.filter-btn[data-track="保研"].active { background:#dc2626; }
+.filter-btn[data-track="就业"] { border-color:#2563eb; color:#2563eb; }
+.filter-btn[data-track="就业"].active { background:#2563eb; }
+.filter-btn[data-track="考公"] { border-color:#16a34a; color:#16a34a; }
+.filter-btn[data-track="考公"].active { background:#16a34a; }
+.filter-btn[data-track="留学"] { border-color:#9333ea; color:#9333ea; }
+.filter-btn[data-track="留学"].active { background:#9333ea; }
+.filter-btn:hover { transform:translateY(-1px); box-shadow:0 2px 8px rgba(0,0,0,.1); }
+.legend { display:flex; justify-content:center; gap:20px; margin-bottom:16px; font-size:13px; flex-wrap:wrap; }
+.legend-item { display:flex; align-items:center; gap:6px; }
+.legend-color { width:24px; height:14px; border-radius:3px; }
+.legend-prep { width:24px; height:14px; border-radius:3px; border:2px dashed #94a3b8; background:#f1f5f9; }
+.legend-gray { width:24px; height:14px; border-radius:3px; background:#64748b; }
+.user-profile { background:#fff; border-radius:12px; padding:16px 20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.profile-title { font-weight:700; font-size:15px; margin-bottom:10px; color:#0f172a; }
+.profile-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.tag { padding:4px 12px; border-radius:12px; font-size:13px; font-weight:500; }
+.tag-school { background:#dbeafe; color:#1e40af; }
+.tag-grade { background:#fef3c7; color:#92400e; }
+.tag-skill { background:#d1fae5; color:#065f46; }
+.tag-goal { background:#ede9fe; color:#5b21b6; }
+.profile-advice { font-size:13px; line-height:1.8; color:#475569; background:#f8fafc; padding:10px 14px; border-radius:8px; }
+.timeline-wrapper { background:#fff; border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,.08); overflow-x:auto; }
+.timeline { position:relative; min-width:900px; }
+.months-header { display:flex; position:relative; height:32px; margin-left:80px; border-bottom:2px solid #e2e8f0; margin-bottom:4px; }
+.month-col { position:absolute; top:0; height:100%; border-right:1px solid #f1f5f9; display:flex; align-items:center; justify-content:center; font-size:12px; color:#64748b; font-weight:600; }
+.month-col:last-child { border-right:none; }
+.track-lane { position:relative; margin-bottom:8px; border-radius:0 8px 8px 0; overflow:visible; }
+.track-label { position:absolute; left:0; top:0; width:80px; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:700; font-size:15px; border-radius:0 8px 8px 0; z-index:2; }
+.track-dot { width:10px; height:10px; border-radius:50%; margin-bottom:2px; }
+.track-count { font-size:11px; font-weight:400; opacity:.8; }
+.lane-content { position:relative; margin-left:80px; }
+.comp-bar { position:absolute; height:26px; border-radius:5px; cursor:pointer; display:flex; align-items:center; padding:0 7px; color:#fff; font-size:11px; font-weight:500; transition:all .15s; box-shadow:0 1px 2px rgba(0,0,0,.12); overflow:hidden; z-index:1; }
+.comp-bar:hover { transform:scaleY(1.2); z-index:10; box-shadow:0 4px 12px rgba(0,0,0,.25); }
+.comp-bar.rec-recommend { border:2px solid; }
+.comp-bar.rec-challenge { opacity:.85; }
+.comp-bar.dachuang-bar { border:2px dashed #475569 !important; font-style:italic; }
+.bar-label { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; }
+.bar-month { font-size:9px; opacity:.9; margin-left:4px; flex-shrink:0; }
+.prep-bar { position:absolute; top:0; height:100%; left:0; border-radius:3px 0 0 3px; z-index:-1; }
+.rolling-bar { background:repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,.15) 4px, rgba(255,255,255,.15) 8px) !important; }
+.detail-panel { background:#fff; border-radius:12px; padding:20px; margin-top:16px; box-shadow:0 1px 3px rgba(0,0,0,.08); display:none; }
+.detail-panel.show { display:block; }
+.detail-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+.detail-title { font-size:18px; font-weight:700; color:#0f172a; }
+.detail-close { cursor:pointer; color:#94a3b8; font-size:20px; background:none; border:none; }
+.detail-close:hover { color:#ef4444; }
+.detail-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; }
+.detail-item { background:#f8fafc; padding:10px 14px; border-radius:8px; }
+.detail-label { font-size:12px; color:#64748b; margin-bottom:4px; font-weight:600; }
+.detail-value { font-size:13px; color:#1e293b; line-height:1.6; }
+.detail-tracks { display:flex; gap:6px; flex-wrap:wrap; }
+.detail-track-tag { padding:2px 10px; border-radius:10px; font-size:12px; font-weight:600; color:#fff; }
+.detail-recommend { display:inline-block; padding:2px 10px; border-radius:10px; font-size:12px; font-weight:600; }
+.rec-badge-推荐 { background:#dc2626; color:#fff; }
+.rec-badge-可冲 { background:#f59e0b; color:#fff; }
+.rec-badge-不建议 { background:#6b7280; color:#fff; }
+.match-high { color:#16a34a; font-weight:600; }
+.match-mid { color:#f59e0b; font-weight:600; }
+.match-low { color:#ef4444; font-weight:600; }
+.footer { text-align:center; margin-top:16px; font-size:12px; color:#94a3b8; line-height:1.8; }
+.footer a { color:#3b82f6; text-decoration:none; }
+.track-lane.hidden { display:none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📊 全年高含金量竞赛时间轴图谱</h1>
+  <div class="subtitle">本校 · 电子信息工程 · 2025级大二 | 本科就业导向·软件/AI赛道优先 | 数据更新：2026年9月</div>
+  <div class="controls">
+    <button class="filter-btn active" data-track="保研">🔴 保研</button>
+    <button class="filter-btn active" data-track="就业">🔵 就业</button>
+    <button class="filter-btn active" data-track="考公">🟢 考公</button>
+    <button class="filter-btn active" data-track="留学">🟣 留学</button>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-color" style="background:#dc2626;"></div>保研</div>
+    <div class="legend-item"><div class="legend-color" style="background:#2563eb;"></div>就业</div>
+    <div class="legend-item"><div class="legend-color" style="background:#16a34a;"></div>考公</div>
+    <div class="legend-item"><div class="legend-color" style="background:#9333ea;"></div>留学</div>
+    <div class="legend-item"><div class="legend-gray"></div>大创/科研项目</div>
+    <div class="legend-item"><div class="legend-prep"></div>备赛周期</div>
+    <div class="legend-item">━━ 实线=推荐</div>
+  </div>
+  
+<div class="user-profile">
+  <div class="profile-title">👤 个人画像与匹配</div>
+  <div class="profile-tags">
+    <span class="tag tag-school">🏫 本校 · 电子信息工程</span>
+    <span class="tag tag-grade">📅 2025级 · 大二上</span>
+    <span class="tag tag-skill">🤖 熟练使用AI工具</span>
+    <span class="tag tag-goal">🎯 本科就业导向·不保研</span>
+  </div>
+  <div class="profile-advice">
+    <strong>大二策略：</strong>以"试水+积累作品集"为主，优先参加软件/AI类赛事（GPLT天梯赛、蓝桥杯、4C计算机设计大赛、中国软件杯、天池、飞桨黑客松），积累代码量和可演示项目；电赛/嵌入式等硬件类作为兴趣向不作主线；
+    <strong>大三黄金期：</strong>冲击大厂背书赛事（华为软件精英挑战赛、RoboMaster、各厂黑客松、ICPC/CCPC），用竞赛项目转化为GitHub作品集和实习敲门砖；
+    <strong>大四上：</strong>秋招决战，用竞赛+项目+实习经历包装简历。<strong>大创（国创/校创）</strong>虽非竞赛但可作为项目经历写简历，大二下即可申报。
+  </div>
+</div>
+  <div class="timeline-wrapper">
+    <div class="timeline">
+      <div class="months-header"><div class="month-col" style="left:0.00%;width:8.33%;"><span>1月</span></div><div class="month-col" style="left:8.33%;width:8.33%;"><span>2月</span></div><div class="month-col" style="left:16.67%;width:8.33%;"><span>3月</span></div><div class="month-col" style="left:25.00%;width:8.33%;"><span>4月</span></div><div class="month-col" style="left:33.33%;width:8.33%;"><span>5月</span></div><div class="month-col" style="left:41.67%;width:8.33%;"><span>6月</span></div><div class="month-col" style="left:50.00%;width:8.33%;"><span>7月</span></div><div class="month-col" style="left:58.33%;width:8.33%;"><span>8月</span></div><div class="month-col" style="left:66.67%;width:8.33%;"><span>9月</span></div><div class="month-col" style="left:75.00%;width:8.33%;"><span>10月</span></div><div class="month-col" style="left:83.33%;width:8.33%;"><span>11月</span></div><div class="month-col" style="left:91.67%;width:8.33%;"><span>12月</span></div></div>
+      
+    <div class="track-lane" data-track="保研" style="border-left:4px solid #dc2626;background:#fef2f2;">
+      <div class="track-label" style="color:#991b1b;background:#fecaca;">
+        <span class="track-dot" style="background:#dc2626;"></span>
+        保研
+        <span class="track-count">66项</span>
+      </div>
+      <div class="lane-content" style="height:1030px;">
+        
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:3px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="2" data-track="保研" title="赛事：Kaggle数据科学竞赛（Featured/Research级）&#10;报名：常年滚动开放 ~ 按具体比赛而定（通常赛期2-4个月，各比赛独立截止）&#10;比赛：常年滚动（Featured/Research级比赛全年不断）&#10;备赛：每个比赛2-4个月&#10;年级：大二-研一&#10;价值：Featured级金/银/铜牌是全球数据科学领域黄金标准；Google/字节/腾讯/美团等头部AI企业算法岗直接认可；K">
+      
+      <span class="bar-label">Kaggle数据科学竞赛（Fe…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:35px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="9" data-track="保研" title="赛事：昇腾AI算法挑战赛（含算子赛/模型适配赛）&#10;报名：全年滚动（算子进阶赛2026年初报名） ~ 视具体赛题而定&#10;比赛：全年多场次（2026年含Model Agent适配赛20万奖金）&#10;备赛：视赛题2-4周不等&#10;年级：大三及以上（AI/算力方向）&#10;价值：单项奖金10-20万元；获奖可获华为昇腾生态就业/实习机会；算子优化能力稀缺">
+      
+      <span class="bar-label">昇腾AI算法挑战赛（含算子赛/…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="11" data-track="保研" title="赛事：腾讯犀牛鸟精英人才培养计划&#10;报名：参考惯例1月（2026年1月8日开放申请） ~ 参考惯例3-4月&#10;比赛：校企双导师培养6-12个月&#10;备赛：全年培养&#10;年级：大三及以上本科生/硕博（科研方向）&#10;价值：入选后校企双导师联合培养；接触产业真实课题与数据；表现优异可获腾讯校招SP；对保研推荐信有帮助">
+      
+      <span class="bar-label">腾讯犀牛鸟精英人才培养计划</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:33.33%;top:99px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="5" data-track="保研" title="赛事：中国大学生计算机设计大赛（4C）&#10;报名：参考惯例1月（大赛通知发布） ~ 参考惯例4月中下旬（2025：4.20-5.5报名）&#10;比赛：校赛3-4月；省赛5-6月；国赛7-8月（2025第18届获奖公告9月）&#10;备赛：提前3-5个月&#10;年级：大二-大三&#10;价值：国赛一等奖在保研综测与IT类企业简历中有一定加分；比赛科目多（软件应用、数媒、微课、人工智能类），适配面广；考公/留学认">
+      
+      <span class="bar-label">中国大学生计算机设计大赛（4C）</span>
+      <span class="bar-month">1月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:33.33%;top:131px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="6" data-track="保研" title="赛事：全国大学生生命科学竞赛（创新创业类）&#10;报名：参考惯例1月20日（创新创业类网报开始） ~ 参考惯例4月20日（网报截止）&#10;比赛：申报1-4月，资格审查4-5月，网评5月，省赛6月，全国决赛7-8月&#10;备赛：3-6个月&#10;年级：大二-大三&#10;价值：生命科学领域权威赛事，创新创业类赛道欢迎交叉学科项目">
+      
+      <span class="bar-label">全国大学生生命科学竞赛（创新创…</span>
+      <span class="bar-month">1月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:33.33%;top:163px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="7" data-track="保研" title="赛事：全国大学生英语竞赛（NECCS）&#10;报名：参考惯例1月初（2026赛季：2025.12.17起） ~ 参考惯例3月中旬（2026赛季：2026.3.13截止）&#10;比赛：初赛4月第二个周日；决赛5月第二个周日（2026:4.12初赛/5.10决赛）&#10;备赛：提前1-2个月（熟悉题型）&#10;年级：大一-大四&#10;价值：特等奖/全国一等奖在保研复试与留学申请中有一定英语能力背书；B类(英语专业)/C类(非英本)分组；考公/就业认可度一般">
+      
+      <span class="bar-label">全国大学生英语竞赛（NECCS）</span>
+      <span class="bar-month">1月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:50.00%;top:195px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="8" data-track="保研" title="赛事：全国大学生集成电路创新创业大赛（集创赛）&#10;报名：参考惯例1月下旬（2025年1月24日） ~ 参考惯例3月20日（2025年3月20日）&#10;比赛：4-6月初赛/分赛区，7-8月全国总决赛&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：高教学会目录唯一集成电路专业A类赛事；IC设计/验证/版图方向就业认可度极高，数十家企业冠名出题（华为海思/紫光/中兴微">
+      
+      <span class="bar-label">全国大学生集成电路创新创业大赛…</span>
+      <span class="bar-month">1月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:8.33%;width:33.33%;top:3px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="16" data-track="保研" title="赛事：高校电力电子应用设计大赛&#10;报名：参考惯例2月（2026年第12届2月6日发布通知） ~ 参考惯例3月底（2026年延期至3月31日）&#10;比赛：5月各赛道启动，8月中期检查，10-11月决赛（2026年11月3-7日四地决赛）&#10;备赛：6-8个月（跨年跨度长）&#10;年级：大三/大四（需较强硬件设计能力）&#10;价值：电力电子领域顶级赛事，中国电源学会主办；电磁兼容设计赛道与电子信息专业对口；新能源/电动汽车行业就业背书强；设电力电子A">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">高校电力电子应用设计大赛</span>
+      <span class="bar-month">2月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:8.33%;width:41.67%;top:35px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="15" data-track="保研" title="赛事：中国大学生服务外包创新创业大赛&#10;报名：参考惯例2月（2026年为2月11日左右） ~ 参考惯例3月（2026年为3月20-31日）&#10;比赛：区域赛参考惯例6月；全国总决赛参考惯例8月&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：教育部A类学科竞赛；国家级二等奖以上在部分省份（如江苏、四川）选调中可作为国家级竞赛荣誉；IT/软件/外包企业认可度高；">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国大学生服务外包创新创业大赛</span>
+      <span class="bar-month">2月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:16.67%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="25" data-track="保研" title="赛事：全国大学生物理实验竞赛（创新）&#10;报名：参考惯例2-3月（校内选拔） ~ 参考惯例4月中旬校内截止；全国正式提交9月1-15日&#10;比赛：校选3-4月答辩，全国材料提交9月，评审10-11月&#10;备赛：3-6个月&#10;年级：大二-大三&#10;价值：教育部白名单赛事，保研综测加分，实验创新能力证明">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生物理实验竞赛（创新）</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:16.67%;top:227px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="26" data-track="保研" title="赛事：全国大学生统计建模大赛&#10;报名：参考惯例2-3月 ~ 参考惯例4月中旬（2026年约4月15日截止）&#10;比赛：报名3-4月，论文提交5月，评审6-8月&#10;备赛：2-3个月&#10;年级：大二-大三&#10;价值：统计建模领域权威赛事，大数据/AI方向求职加分，与数学建模互补">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生统计建模大赛</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:16.67%;top:259px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="31" data-track="保研" title="赛事：华为软件精英挑战赛（CodeCraft·普朗克计划）&#10;报名：参考惯例3月中旬（2026年3月16日） ~ 参考惯例4月上旬（2026年4月9日）&#10;比赛：区域初赛4月中旬-6月；全国总决赛6月-7月&#10;备赛：约2-3个月&#10;年级：大二及以上（需有代码基础）&#10;价值：总奖金68万元；获奖可获华为校招面试直通卡/SP及以上offer；区域赛出线即有加分">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">华为软件精英挑战赛（CodeC…</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:16.67%;top:291px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="34" data-track="保研" title="赛事：数字中国创新大赛·数字安全赛道&#10;报名：2026年3月12日 ~ 2026年4月6日（优秀案例征集赛）&#10;比赛：2026年4月预赛/决赛&#10;备赛：1-2个月&#10;年级：大二/大三&#10;价值：国家数字中国建设峰会官方赛事，政府+华为背书；聚焦国产算力/AI应用，奖金+算力代金券；华为等企业就业友好；赛题2"AI">
+      <div class="prep-bar" style="left:8.33%;width:8.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">数字中国创新大赛·数字安全赛道</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:323px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="20" data-track="保研" title="赛事：中国机器人大赛暨RoboCup机器人世界杯中国赛&#10;报名：参考惯例年初（2026年校赛报名截止3月31日） ~ 参考惯例3月底&#10;比赛：RoboCup中国公开赛5月初（2026年5月2-4日北京怀柔）；总决赛10月（2026年10月16-18日杭州）&#10;备赛：6-10个月&#10;年级：大三/大四（学术性强，适合有科研基础者）&#10;价值：RoboCup为国际顶级机器人赛事，中国赛优秀队伍可晋级国际赛；学术性强，留学申请（海外robotics/AI方向）背书">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国机器人大赛暨RoboCup…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:355px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="27" data-track="保研" title="赛事：全国大学生节能减排社会实践与科技竞赛&#10;报名：参考惯例3月下旬（第一轮通知） ~ 参考惯例4月12日18:00前（高校报名截止）&#10;比赛：作品提交5月25日前；函评5-6月；全国总决赛8月（2026年第19届在大连理工）&#10;备赛：提前5-8个月（需实物/装置/论文）&#10;年级：大二-大四&#10;价值：教育部A类赛事，国奖在保研综测与新能源/电气类企业就业中有加分；考公/留学认可度中等">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生节能减排社会实践与科…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:387px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="30" data-track="保研" title="赛事：北斗杯全国青少年空天科技体验与创新大赛（大学组）&#10;报名：参考惯例次年2-3月 ~ 参考惯例3-4月&#10;比赛：参考惯例5月初选，暑期全国总决赛（2025年第14届总决赛在郑州）&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：空天科技/北斗导航领域权威赛事，政府背书强；对航天/导航/卫星方向就业有帮助">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">北斗杯全国青少年空天科技体验与…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:25.00%;top:419px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="33" data-track="保研" title="赛事：大学生创新创业训练计划（国创/校创）&#10;报名：参考惯例3月 ~ 参考惯例5月立项截止&#10;比赛：全年申报（通常3-5月立项），项目执行期1-2年&#10;备赛：1-2年（项目执行周期）&#10;年级：大二-大三&#10;价值：非竞赛，是科研项目，保研综测加分项；国创立项含金量高，可作为科研经历写入保研简历；分为国家级/省级/校级三级">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">大学生创新创业训练计划（国创/…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:451px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="17" data-track="保研" title="赛事："西门子杯"中国智能制造挑战赛（CIMC）&#10;报名：参考惯例3月初（2026年第20届校选3月31日-4月15日） ~ 参考惯例4月中旬&#10;比赛：初赛5-6月，全国总决赛7-8月&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：国家A类赛事，教育部与西门子战略合作；工业自动化/智能制造领域规模最大；西门子及工业自动化行业就业背书强">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">"西门子杯"中国智能制造挑战赛…</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:483px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="19" data-track="保研" title="赛事：中国机器人及人工智能大赛（CRAIC）&#10;报名：参考惯例3月（2026年第28届3月1日开始） ~ 各省赛区不同，参考惯例5-6月&#10;比赛：省赛6月前完成，全国赛7-8月（2026年7月中下旬合肥/线上）&#10;备赛：3-5个月&#10;年级：大二/大三&#10;价值：届数多（第28届），赛项覆盖广；2026年新增人形机器人专项赛（具身智能热点）；行业协会主办">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国机器人及人工智能大赛（CR…</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:515px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="23" data-track="保研" title="赛事：中国高校计算机大赛-网络技术挑战赛&#10;报名：2026年3月4日 ~ 2026年4月14日&#10;比赛：资格赛4.15-4.17，选拔赛6月，挑战赛8.10-8.12&#10;备赛：4-5个月&#10;年级：大二/大三&#10;价值：中国高校计算机大赛(C4)系列白名单赛事，偏网络工程/网络安全方向，与本校网安学科匹配">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国高校计算机大赛-网络技术挑…</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:41.67%;top:547px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="24" data-track="保研" title="赛事：全国大学生嵌入式芯片与系统设计竞赛&#10;报名：参考惯例2-3月（应用赛道）；6月下旬（芯片设计赛道） ~ 应用赛道参考惯例4月下旬（2025年4月25日）；芯片设计赛道参考惯例8月底&#10;比赛：应用赛道7月作品提交、8-9月决赛；芯片设计赛道11月作品提交、11月底决赛&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：教育部白名单A类赛事，本校保研加分赛事；嵌入式/Linux/芯片方向就业认可度高；分应用赛道（偏应用开发）和芯片设计赛道">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生嵌入式芯片与系统设计…</span>
+      <span class="bar-month">3月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:50.00%;top:579px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="21" data-track="保研" title="赛事：中国软件杯大学生软件设计大赛&#10;报名：参考惯例3月（第十五届为2026.3启动） ~ 参考惯例6-7月（第十五届延至2026.7.20）&#10;比赛：参考惯例8月全国总决赛（2026.8）&#10;备赛：4-5个月&#10;年级：大二/大三&#10;价值：工信部指导的A类赛事，公益性全程免费，企业命题真实工程场景，获奖对软件开发方向就业帮助大">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国软件杯大学生软件设计大赛</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:50.00%;top:611px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="22" data-track="保研" title="赛事：中国高校计算机大赛-大数据挑战赛&#10;报名：2026年3月26日 ~ 2026年7月15日&#10;比赛：线上赛3.26-8.2，决赛8月&#10;备赛：4-5个月&#10;年级：大二/大三&#10;价值：C4系列A类赛事，清华大学主办，2018-2025连续入选学科竞赛排行榜，算法竞赛顶级，保研认可度高于天池/Kaggle">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国高校计算机大赛-大数据挑战赛</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:50.00%;top:643px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="28" data-track="保研" title="赛事：全国大学生计算机系统能力大赛-编译系统设计赛（华为毕昇杯）&#10;报名：参考惯例3月中下旬（2026年约3月启动） ~ 参考惯例5月底（2026年约5.30）&#10;比赛：参考惯例7-8月决赛&#10;备赛：4-6个月&#10;年级：大三/大四/研一&#10;价值：与已有OS赛/CPU赛同属系统能力大赛系列，编译方向顶级赛事，华为冠名，系统方向保研加分强">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生计算机系统能力大赛-…</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:50.00%;top:675px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="29" data-track="保研" title="赛事：全国大学生计算机系统能力大赛（操作系统/CPU设计赛）&#10;报名：参考惯例2-3月（操作系统赛2月28日；CPU龙芯杯3月20日） ~ 操作系统赛参考惯例5月下旬（2025年5月28日）；CPU赛参考惯例4月&#10;比赛：操作系统赛7-8月决赛；CPU赛7-8月决赛&#10;备赛：提前4-6个月&#10;年级：大三-研一&#10;价值：系统能力顶级赛事，CPU设计赛（龙芯杯）在国产芯片/系统软件方向认可度极高；对考研复试/保研面试有强加分；但门槛高、周期">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生计算机系统能力大赛（…</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:50.00%;top:707px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="32" data-track="保研" title="赛事：国际空中机器人大赛（IARC）&#10;报名：参考惯例1-3月（2027 Mission 10申请建议1-3月提交） ~ 每年6月1日&#10;比赛：每年8月（美国/亚太赛区交替举办）&#10;备赛：1-2年&#10;年级：大三/大四（需深入科研积累）&#10;价值：国际顶级无人机/空中机器人赛事，清华等顶尖高校参加；留学申请（尤其美国/欧洲机器人方向）极强背书；Mission 10冠">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">国际空中机器人大赛（IARC）</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:16.67%;top:739px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="45" data-track="保研" title="赛事：挑战杯全国大学生课外学术科技作品竞赛 / 创业计划竞赛&#10;报名：参考惯例3-4月（校赛启动） ~ 参考惯例5-6月（2026年揭榜挂帅为5月30日-6月30日）&#10;比赛：校赛4-5月→省赛6-7月→国赛10-11月&#10;备赛：提前6-12个月（需有科研成果积累）&#10;年级：大二-研三&#10;价值：被誉为中国大学生科技创新奥林匹克；国赛等级奖项是保研加分硬通货；江苏/湖南/山东/广东等多省定向选调公告明确将挑战杯国家">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">挑战杯全国大学生课外学术科技作…</span>
+      <span class="bar-month">4月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:25.00%;top:771px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="36" data-track="保研" title="赛事：中美青年创客大赛（共创未来）&#10;报名：参考惯例4月下旬 ~ 参考惯例6月上旬（2026年各校约6月8-10日截止）&#10;比赛：分赛区选拔赛5-6月，全国总决赛7月下旬（上海张江）&#10;备赛：2-3个月（含作品制作）&#10;年级：大二-大四&#10;价值：教育部主办白名单赛事，保研综测加分认可度高，创新创业类高含金量，3-5人团队创客作品">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中美青年创客大赛（共创未来）</span>
+      <span class="bar-month">4月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:25.00%;top:803px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="37" data-track="保研" title="赛事：信息安全与对抗技术竞赛（ISCC）&#10;报名：2026年4月24日（第23届） ~ 2026年5月6日&#10;比赛：参考惯例5-6月线上赛&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：国内最早创办的CTF赛事之一（2004年创办），连续23届，累计15.7万+参赛者，北理工主办，入门友好">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">信息安全与对抗技术竞赛（ISC…</span>
+      <span class="bar-month">4月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:33.33%;top:835px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="41" data-track="保研" title="赛事：全国大学生电子设计竞赛（TI杯/电赛）&#10;报名：参考惯例3-4月（学校统一组织） ~ 参考惯例6月中旬（2026年上海赛区6月15日截止）&#10;比赛：奇数年全国赛7月底-8月初（2025年7月30日-8月2日）；偶数年专题赛7月29日-8月1日赛区赛，8月下旬决赛&#10;备赛：提前6-8个月（建议大二上启动，大二下暑假参赛）&#10;年级：大二-大三&#10;价值：电子信息类最权威学科竞赛；国赛二等奖以上是电子类保研硬通货；华为/中兴/大疆/汇川等硬件大厂高度认可；多省定向选调中作为">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生电子设计竞赛（TI杯…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:33.33%;top:867px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="42" data-track="保研" title="赛事：全国大学生计算机系统能力大赛-数据库管理系统设计赛&#10;报名：参考惯例4月下旬（2026年为2026.4.25） ~ 参考惯例7月中旬（2026年为2026.7.13）&#10;比赛：参考惯例7月下旬-8月中旬决赛&#10;备赛：3-4个月&#10;年级：大三/大四/研一&#10;价值：与已有OS赛/CPU赛同系列，数据库方向顶级赛事，500+队伍参赛，系统方向保研认可度高">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生计算机系统能力大赛-…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:33.33%;top:899px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="43" data-track="保研" title="赛事：华为终端硬件精英挑战赛&#10;报名：参考惯例4月（2026年报名约3-4月） ~ 参考惯例5月&#10;比赛：区域决赛7月；全国总决赛8月初（2026年8月1-2日）&#10;备赛：约3-4个月&#10;年级：大二及以上（电子类/硬件方向）&#10;价值：总奖金32万元；获奖可获华为终端校招面试绿色通道；硬件方向含金量高">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">华为终端硬件精英挑战赛</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:33.33%;top:931px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="47" data-track="保研" title="赛事：睿抗机器人开发者大赛（RAICOM）CAIP强脑赛道&#10;报名：参考惯例3-4月 ~ 参考惯例6月中旬（AI视觉赛题为2026.6.13）&#10;比赛：参考惯例6-7月（2026.6.27 AI视觉赛）&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：工信部人才交流中心主办，入选高教学会竞赛名录；四大赛道（工创/设计/强脑/强体）；具身智能/行业大模型方向热点；华为等企">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">睿抗机器人开发者大赛（RAIC…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:41.67%;top:963px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="39" data-track="保研" title="赛事：全国大学生光电设计竞赛&#10;报名：参考惯例3-4月 ~ 参考惯例5月中旬（2026年西北赛区5月15日初定）&#10;比赛：参考惯例8月（2025年第13届8月下旬浙江大学承办）&#10;备赛：3-4个月&#10;年级：大二/大三&#10;价值：光电领域唯一国家级学科竞赛，本校光学工程为优势学科；保研加分认可度高；光学工程/光电子行业就业对口">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生光电设计竞赛</span>
+      <span class="bar-month">4月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:41.67%;top:995px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="40" data-track="保研" title="赛事：全国大学生物联网设计竞赛&#10;报名：参考惯例4月初（2026年为4月1日） ~ 参考惯例6月中旬（2026年为6月15日）&#10;比赛：参考惯例8月中下旬全国总决赛（2026年8月22-24日贵州大学）&#10;备赛：3-4个月&#10;年级：大二/大三&#10;价值：高教学会竞赛分析报告收录赛事，保研认可度较好；本校为承办校之一，校内资源丰富；物联网/嵌入式行业就业对口">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生物联网设计竞赛</span>
+      <span class="bar-month">4月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:25.00%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="51" data-track="保研" title="赛事：全国大学生信息安全竞赛（作品赛/创新实践能力赛）&#10;报名：作品赛参考惯例5月中下旬；创新实践能力赛参考惯例11月 ~ 作品赛参考惯例6月25日（2025年6月25日）；创新实践能力赛参考惯例12月21日&#10;比赛：作品赛7月初评、8-9月决赛；创新实践能力赛12月底线上初赛、次年3-4月决赛&#10;备赛：作品赛提前3-4个月；创新实践赛提前1-2个月&#10;年级：大二-大三&#10;价值：网安领域顶级A类赛事，保研认可度高；对网安/安全岗就业有强背书；但对电子信息工程非网安方向匹配度一般">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生信息安全竞赛（作品赛…</span>
+      <span class="bar-month">5月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:41.67%;top:99px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="49" data-track="保研" title="赛事："华为杯"中国研究生人工智能创新大赛&#10;报名：参考惯例5月下旬（2025年5月27日） ~ 参考惯例8月22日（2025年8月22日）&#10;比赛：9月初赛评审，10-11月决赛&#10;备赛：提前3-4个月&#10;年级：研一-研二（本科生需已获研究生录取资格）&#10;价值：AI领域研究生顶级赛事，获奖对读博/AI实验室申请/大厂AI岗有强背书；但本科大二学生一般不能直接参赛，需保研拿到off">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">"华为杯"中国研究生人工智能创…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:33.33%;width:41.67%;top:131px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="52" data-track="保研" title="赛事：全国大学生数学建模竞赛（CUMCM，高教社杯）&#10;报名：参考惯例5月（校内报名启动） ~ 参考惯例9月1日20:00前（向全国组委会报名截止）&#10;比赛：参考惯例9月上旬周四18:00至周日20:00（2025:9.4-9.7；2026:9.10开赛）&#10;备赛：提前3-4个月（暑假集中集训）&#10;年级：大二-大三&#10;价值：国一/国二是保研夏令营与综测的硬通货；美国/英国工科留学申请中认可度高；对算法/数据类岗位就业有辅助；考公认可度一般">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生数学建模竞赛（CUM…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:33.33%;top:3px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="57" data-track="保研" title="赛事：腾讯广告算法大赛&#10;报名：参考惯例6月中旬（2025年6月16日） ~ 参考惯例7月31日（2025年7月31日）&#10;比赛：8-9月初赛，9-10月复赛，11月底线下决赛（2025年11月深圳）&#10;备赛：提前2-3个月&#10;年级：大三-研二&#10;价值：与KDD顶会联合举办，优胜成果被KDD Workshop Proceedings收录；腾讯入职绿色通道（免笔试/直通面试">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">腾讯广告算法大赛</span>
+      <span class="bar-month">6月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:41.67%;top:163px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="56" data-track="保研" title="赛事：外研社·国才杯全国大学生外语能力大赛（英语写作/阅读/演讲/笔译）&#10;报名：参考惯例6月初 ~ 参考惯例9-10月（写作阅读约10月4日，演讲约9月中下旬）&#10;比赛：校赛9-10月，省赛10-11月，国赛11-12月&#10;备赛：1-3个月&#10;年级：大二-大四&#10;价值：英语类顶级赛事，保研/留学申请英语能力证明，外企求职加分；含写作/阅读/演讲/笔译/口译/短视频多赛项">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">外研社·国才杯全国大学生外语能…</span>
+      <span class="bar-month">6月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:41.67%;width:50.00%;top:227px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="55" data-track="保研" title="赛事：全国大学生FPGA创新设计竞赛（嵌赛FPGA赛道）&#10;报名：参考惯例6月下旬（2025年6月27日） ~ 参考惯例9月22日（2025年9月22日24:00）&#10;比赛：9-11月作品设计，11月7日作品提交，11月28-30日决赛&#10;备赛：提前2-3个月&#10;年级：大二-大三&#10;价值：FPGA/数字IC方向高含金量赛事，对本校微电子/集成电路方向保研加分；对紫光展锐/华为海思/兆易创新等IC设计岗就业有">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生FPGA创新设计竞赛…</span>
+      <span class="bar-month">6月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:50.00%;width:33.33%;top:35px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="59" data-track="保研" title="赛事：中国大学生工程实践与创新能力大赛（工训赛）&#10;报名：参考惯例6-7月（校赛报名） ~ 参考惯例10月（省赛报名截止）&#10;比赛：校赛9-10月，省赛10-11月，国赛次年（2027年第十届）&#10;备赛：3-6个月&#10;年级：大二-大三&#10;价值：教育部白名单A类赛事，工程实践能力顶级证明，保研综测高分项">
+      <div class="prep-bar" style="left:16.67%;width:33.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国大学生工程实践与创新能力大…</span>
+      <span class="bar-month">7月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:58.33%;width:16.67%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="60" data-track="保研" title="赛事：CCPC中国大学生程序设计竞赛&#10;报名：参考惯例8月（网络赛报名） ~ 参考惯例9月（网络赛报名截止）&#10;比赛：网络赛9月；分站赛10-12月；总决赛次年3-6月&#10;备赛：提前6-12个月&#10;年级：大二-大四&#10;价值：与ICPC同为国内算法竞赛两大顶赛，金牌对大厂算法岗背书极强；保研复试加分；考公/留学认可度有限">
+      <div class="prep-bar" style="left:0.00%;width:58.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">CCPC中国大学生程序设计竞赛</span>
+      <span class="bar-month">8月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:58.33%;width:16.67%;top:195px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="61" data-track="保研" title="赛事：ICPC国际大学生程序设计竞赛（亚洲区域赛）&#10;报名：参考惯例8月（网络预选赛报名） ~ 参考惯例8月底-10月（各站点报名截止不同）&#10;比赛：网络赛9月；亚洲区域赛10-11月（多站点）&#10;备赛：提前6-12个月（长期刷题训练）&#10;年级：大二-大四&#10;价值：区域赛金牌（尤其金/银）是大厂算法岗（字节/腾讯/阿里/美团）最硬背书之一，大量直通面试/免笔试；保研复试中有显著加分；">
+      <div class="prep-bar" style="left:0.00%;width:58.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">ICPC国际大学生程序设计竞赛…</span>
+      <span class="bar-month">8月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:58.33%;width:25.00%;top:259px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="62" data-track="保研" title="赛事：中国国际大学生创新大赛（原中国“互联网+”大学生创新创业大赛）&#10;报名：2026-08（报名系统8月10日开放） ~ 2026-09-25（2026年截止；2025年截止不晚于7月1日）&#10;比赛：校赛8-10月、省赛10-11月、全国总决赛11月&#10;备赛：提前4-6个月&#10;年级：大二-大四&#10;价值：国内规模最大的双创赛事（2025年619万项目参赛）；国赛金奖是保研top项目和选调面试重磅加分；江苏/浙江/四川/广东">
+      <div class="prep-bar" style="left:16.67%;width:41.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国国际大学生创新大赛（原中国…</span>
+      <span class="bar-month">8月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:8.33%;top:291px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="64" data-track="保研" title="赛事：ABU Robocon亚太大学生机器人大赛（全国大学生机器人大赛ROBOCON）&#10;报名：参考惯例9月（新赛季赛题发布后启动） ~ 参考惯例10-11月&#10;比赛：国内选拔赛参考惯例7月；国际总决赛参考惯例8月（2026国内赛7月江阴，国际赛8月23日香港）&#10;备赛：提前8-10个月（全年备赛，赛题发布即开始）&#10;年级：大二-大四&#10;价值：首批入选高校学科竞赛排行榜的19项重点竞赛之一；国家级二等奖以上对保研加分明显；大疆/华为/小米等机器人硬件方向大厂高度">
+      <div class="prep-bar" style="left:0.00%;width:66.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">ABU Robocon亚太大学…</span>
+      <span class="bar-month">9月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:25.00%;top:323px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="67" data-track="保研" title="赛事：“正大杯”全国大学生市场调查与分析大赛&#10;报名：参考惯例9月底（宣传启动） ~ 参考惯例10月底（2025年：10月31日24:00截止）&#10;比赛：知识赛网考10-11月；校赛次年3月；省赛/国赛次年4-5月&#10;备赛：提前4-6个月（需完整调研项目）&#10;年级：大二-大三&#10;价值：国赛一等奖在统计/数据类岗位就业与保研综测中有加分；对互联网用研/数据分析岗有背书；考公/留学认可度一般">
+      <div class="prep-bar" style="left:25.00%;width:41.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">“正大杯”全国大学生市场调查与…</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:355px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="68" data-track="保研" title="赛事：全国大学生数学竞赛（CMC）&#10;报名：参考惯例6-9月（各校自行组织报名） ~ 参考惯例10月上旬（2026年各校约10月11-19日截止）&#10;比赛：初赛11月中旬（2026年为11月14日9:00-11:30），决赛次年4月（2027年4月大连理工）&#10;备赛：3-6个月（高等数学系统复习）&#10;年级：大二为主（刚学完高数）&#10;价值：非数学类国赛一等奖保研认可度高，纯笔试证明数学功底；进入武书连大学评价指标体系">
+      <div class="prep-bar" style="left:33.33%;width:33.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生数学竞赛（CMC）</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:387px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="70" data-track="保研" title="赛事：全国密码技术竞赛&#10;报名：参考惯例9月初（第十一届为2026.9.2） ~ 参考惯例10月初（第十届2025年截止约9月）&#10;比赛：参考惯例11月决赛（第十届2025.11南开大学）&#10;备赛：2-3个月&#10;年级：大三/大四/研一&#10;价值：国家密码管理局指导，密码方向唯一国家级赛事，密评行业/密码局系统/国企密码岗位认可度高">
+      <div class="prep-bar" style="left:50.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国密码技术竞赛</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:419px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="72" data-track="保研" title="赛事：强网杯全国网络安全挑战赛&#10;报名：参考惯例9月（第九届为2025.9启动） ~ 参考惯例10月&#10;比赛：参考惯例11月线下总决赛（第九届2025.11郑州）&#10;备赛：3-6个月&#10;年级：大三/大四/研一&#10;价值：网安领域顶级赛事，军方背景（信息工程大学主办），国家级规格，获奖对网安方向就业认可度极高，考公/国安系统有优势">
+      <div class="prep-bar" style="left:33.33%;width:33.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">强网杯全国网络安全挑战赛</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:33.33%;top:451px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="71" data-track="保研" title="赛事：华为ICT大赛（实践赛/创新赛/编程赛）&#10;报名：参考惯例9月上旬（2025年9月10日） ~ 实践赛10月31日；创新赛11月30日（2025-2026赛季）&#10;比赛：11-12月省赛，次年3月全国总决赛，次年5-6月全球总决赛&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：华为官方赛事，全国总决赛获奖可获华为校招面试直通卡/实习offer；实践赛偏网络/云计算/存储，创新赛偏AI应用开发；2">
+      <div class="prep-bar" style="left:50.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">华为ICT大赛（实践赛/创新赛…</span>
+      <span class="bar-month">9月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:75.00%;width:8.33%;top:3px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="75" data-track="保研" title="赛事：RoboMaster机甲大师超级对抗赛（RMUC）&#10;报名：参考惯例10月底（2026赛季报名2025年10月29日） ~ 参考惯例11月初（2026赛季报名截止2025年11月6日）&#10;比赛：区域赛5-6月，复活赛7-8月，全国赛7-8月（2026年深圳春茧）&#10;备赛：约10个月（跨年赛季，全年投入）&#10;年级：大二入队最佳（大一需先成为预备队员）&#10;价值：DJI官方赛事；获奖/参与经历在大疆/机器人/自动驾驶行业认可度极高；技术覆盖机器视觉/嵌入式/机械/射频；RMUA侧重">
+      <div class="prep-bar" style="left:0.00%;width:75.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">RoboMaster机甲大师超…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="78" data-track="保研" title="赛事：全国大学生电子商务创新创意及创业挑战赛（三创赛）&#10;报名：参考惯例10月（上一年度，2026届为2025年10月20日起） ~ 参考惯例12月31日（2026届第十六届）&#10;比赛：校赛3-4月→省赛5-6月→全国总决赛7-8月&#10;备赛：提前3-4个月&#10;年级：大二-大四&#10;价值：教育部A类竞赛；国赛二等奖以上在部分省份选调中可作为国家级竞赛荣誉；对电商/互联网运营方向就业有帮助；电子信息工程学生可">
+      <div class="prep-bar" style="left:50.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生电子商务创新创意及创…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:99px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="80" data-track="保研" title="赛事：蓝桥杯全国软件和信息技术专业人才大赛&#10;报名：参考惯例10月（次年比赛报名启动，2025.10.20起） ~ 参考惯例12月-次年4月（各省不同）&#10;比赛：省赛次年4月；全国总决赛次年5-6月&#10;备赛：提前2-4个月（针对性刷题）&#10;年级：大一下-大三&#10;价值：国赛二等奖以上在企业校招中有一定认可度（尤其中小厂/国企软开）；省奖含金量有限，多数学校综测加分较少；考公/留学几乎不认">
+      <div class="prep-bar" style="left:50.00%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">蓝桥杯全国软件和信息技术专业人…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:25.00%;top:131px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="76" data-track="保研" title="赛事：中国大学生物理学术竞赛（CUPT）&#10;报名：参考惯例9-10月（校赛选拔） ~ 参考惯例12月-次年3月&#10;比赛：校赛10-12月，省赛/区域赛5-6月，全国国赛8月（2026年第17届苏州大学）&#10;备赛：8-12个月（从选题到国赛）&#10;年级：大一-大三&#10;价值：物理界顶级本科生竞赛，'物理辩论赛'（Physics Fight）形式，保研加分高，科研实践能力强证明">
+      <div class="prep-bar" style="left:0.00%;width:75.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">中国大学生物理学术竞赛（CUP…</span>
+      <span class="bar-month">10月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:3px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="83" data-track="保研" title="赛事：“挑战杯”全国大学生课外学术科技作品竞赛（大挑）&#10;报名：参考惯例11月（校赛启动） ~ 参考次年3-6月（省赛推报国赛）&#10;比赛：国赛参考惯例10-11月（奇数年）&#10;备赛：提前6-12个月（需完整科研作品积累）&#10;年级：大二-大四&#10;价值：保研综测加分权重最高赛事之一；国赛获奖在选调生/央国企简历关高度认可；留学申请可作科研经历背书；对技术岗就业有辅助但非直">
+      <div class="prep-bar" style="left:8.33%;width:75.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">“挑战杯”全国大学生课外学术科…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:35px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="84" data-track="保研" title="赛事：全国大学生智能汽车竞赛（恩智浦杯）&#10;报名：参考惯例11月-次年1月（前一年10月公布赛题后开放报名） ~ 参考惯例6月中旬（2025年6月15日）&#10;比赛：7月分赛区比赛，8月全国总决赛&#10;备赛：提前6-10个月（赛题公布后即开始备车）&#10;年级：大二-大三&#10;价值：教育部白名单A类赛事，本校保研认可度高；涉及自动控制/图像处理/嵌入式，对大疆/华为/汇川等硬件控制岗就业帮助大；202">
+      <div class="prep-bar" style="left:16.67%;width:66.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生智能汽车竞赛（恩智浦…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:8.33%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="85" data-track="保研" title="赛事：全国大学生机器人大赛ROBOTAC&#10;报名：参考惯例10-11月（第25届2025年11月报名） ~ 参考惯例11月&#10;比赛：中期检查次年上半年，总决赛7-8月（2026年第25届）&#10;备赛：6-9个月&#10;年级：大二/大三&#10;价值：与ROBOCON（已有ABU Robocon）不同的对抗型机器人赛事，共青团中央主办保研认可度高；偏实战对抗；设AIRO">
+      <div class="prep-bar" style="left:25.00%;width:58.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生机器人大赛ROBOT…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:99px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="86" data-track="保研" title="赛事：团体程序设计天梯赛（GPLT）&#10;报名：参考惯例11月下旬（2026届为2025.11.20） ~ 参考惯例3月下旬（2026届为2026.3.22）&#10;比赛：参考惯例4月中旬（2026届为2026.4.19）&#10;备赛：3-4个月&#10;年级：大二/大三&#10;价值：中国高校计算机大赛(C4)系列白名单赛事，团队奖+个人奖双轨制，本校参与度高，覆盖面广">
+      <div class="prep-bar" style="left:58.33%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">团体程序设计天梯赛（GPLT）</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:163px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="88" data-track="保研" title="赛事：美国大学生数学建模竞赛（MCM/ICM，美赛）&#10;报名：参考惯例11月 ~ 参考惯例1月（2026年为1月28日）&#10;比赛：参考惯例2月初（2026年为1月30日-2月3日，96小时连续比赛）&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：O奖/F奖（全球top1%）对美/英/港新CS/工科硕士留学申请有强背书；M奖以上多数985/211高校保研加分；大厂数">
+      <div class="prep-bar" style="left:58.33%;width:25.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">美国大学生数学建模竞赛（MCM…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:16.67%;top:195px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="81" data-track="保研" title="赛事：DataCon大数据安全分析竞赛&#10;报名：参考惯例10-11月 ~ 参考惯例11月底&#10;比赛：参考惯例12月决赛&#10;备赛：1-2个月&#10;年级：大三/大四/研一&#10;价值：国内首个大数据安全分析专项赛，被誉为数据安全分析第一品牌，奇安信+清华联合主办，覆盖1000+高校，企业认可度高">
+      <div class="prep-bar" style="left:75.00%;width:8.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">DataCon大数据安全分析竞赛</span>
+      <span class="bar-month">11月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:91.67%;width:8.33%;top:3px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="89" data-track="保研" title="赛事：iFLYTEK AI开发者大赛（星火杯·大模型应用创新赛）&#10;报名：参考惯例12月下旬（2025年12月26日启动） ~ 参考惯例4月上旬（2026年4月9日）&#10;比赛：5月全国总决赛&#10;备赛：约3.5-4个月&#10;年级：大二及以上（AI应用方向）&#10;价值：累计582+赛题/18.1万+团队参与；获奖可获讯飞实习/校招绿色通道；星火杯证书对保研有加分">
+      <div class="prep-bar" style="left:58.33%;width:33.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">iFLYTEK AI开发者大赛…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:91.67%;width:8.33%;top:35px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="90" data-track="保研" title="赛事：“挑战杯”中国大学生创业计划竞赛（小挑）&#10;报名：参考惯例11-12月（校赛启动） ~ 参考次年5-8月（省赛推报）&#10;比赛：国赛参考惯例10-11月（偶数年，2026年为第15届）&#10;备赛：提前4-8个月（需撰写完整创业计划书）&#10;年级：大二-大四&#10;价值：与大挑并列保研综测最高权重赛事；金奖项目常获地方政府/园区落地支持；考公选调认可度高；对创业类岗位就业有背书；留学申请可">
+      <div class="prep-bar" style="left:41.67%;width:50.00%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">“挑战杯”中国大学生创业计划竞…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:67px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="92" data-track="保研" title="赛事：全国大学生机械创新设计大赛&#10;报名：参考惯例前一年12月-当年3月（启动） ~ 参考惯例5-6月（2026常规赛：5.1-6.10报名）&#10;比赛：赛区预赛3-5月；国赛初评6月；全国决赛7月中下旬&#10;备赛：提前8-12个月（需机械结构设计与实物制作）&#10;年级：大二-大四&#10;价值：教育部A类赛事，国奖在保研与机械/装备类企业就业中认可度高；电科学生仅在“机电控制/电子测控”相关赛道可参与；考公/留学">
+      <div class="prep-bar" style="left:8.33%;width:83.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生机械创新设计大赛</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:99px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="93" data-track="保研" title="赛事：全国大学生软件创新大赛&#10;报名：参考惯例12月初（第十九届为2025.12.2） ~ 参考惯例2月初（第十九届为2026.2.2）&#10;比赛：参考惯例5月全国决赛（2026.5）&#10;备赛：3-5个月&#10;年级：大二/大三&#10;价值：示范性软件学院联盟主办，本校计算机学院专门发通知组织参赛，免费报名">
+      <div class="prep-bar" style="left:58.33%;width:33.33%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">全国大学生软件创新大赛</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:163px;background:#dc2626;border-color:#dc2626;"
+         data-comp-id="94" data-track="保研" title="赛事：大学生新一代信息通信科技大赛（原大唐杯全国大学生移动通信5G技术大赛）&#10;报名：参考惯例11-12月（次年赛季） ~ 参考惯例次年1-3月（2026年第13届报名截止3月10日）&#10;比赛：参考惯例上半年校赛/省赛，年中全国总决赛（2026年7月武汉）&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：列入高教学会竞赛分析报告；通信行业高度对口，中信科/三大运营商就业背书；偏实操仿真">
+      <div class="prep-bar" style="left:75.00%;width:16.67%;background:#fecaca;border-left:2px dashed #dc2626;"></div>
+      <span class="bar-label">大学生新一代信息通信科技大赛（…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+      </div>
+    </div>
+
+    <div class="track-lane" data-track="就业" style="border-left:4px solid #2563eb;background:#eff6ff;">
+      <div class="track-label" style="color:#1e40af;background:#bfdbfe;">
+        <span class="track-dot" style="background:#2563eb;"></span>
+        就业
+        <span class="track-count">81项</span>
+      </div>
+      <div class="lane-content" style="height:1094px;">
+        
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:8.33%;top:3px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="1" data-track="就业" title="赛事：IBM Quantum Challenge（IBM量子计算挑战赛）&#10;报名：参考惯例每年不定期开放（通常年中） ~ 线上活动开放期内完成（约2-4周窗口）&#10;比赛：线上自主完成，学习+挑战模式&#10;备赛：1-2个月（需先学Qiskit框架）&#10;年级：大二-大四&#10;价值：量子计算领域入门级全球挑战赛，IBM官方证书，留学申请前沿方向背书">
+      
+      <span class="bar-label">IBM Quantum Cha…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:35px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="2" data-track="就业" title="赛事：Kaggle数据科学竞赛（Featured/Research级）&#10;报名：常年滚动开放 ~ 按具体比赛而定（通常赛期2-4个月，各比赛独立截止）&#10;比赛：常年滚动（Featured/Research级比赛全年不断）&#10;备赛：每个比赛2-4个月&#10;年级：大二-研一&#10;价值：Featured级金/银/铜牌是全球数据科学领域黄金标准；Google/字节/腾讯/美团等头部AI企业算法岗直接认可；K">
+      
+      <span class="bar-label">Kaggle数据科学竞赛（Fe…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:8.33%;top:67px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="3" data-track="就业" title="赛事：MLH（Major League Hacking）系列黑客松/Global Hack Week&#10;报名：参考惯例每月/每季度开放（GHW通常1月/4月/7月/12月） ~ 活动开始前1周截止&#10;比赛：线上48小时集中开发，全年多场&#10;备赛：1-2周（了解规则+组队）&#10;年级：大二-大四&#10;价值：国际开源社区履历，对留学申请和外企求职有加分；Hackathon Season累计200+场全球赛事">
+      
+      <span class="bar-label">MLH（Major Leagu…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:8.33%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="4" data-track="就业" title="赛事：XCTF国际联赛&#10;报名：各分站赛不同，全年滚动报名 ~ 各分站赛前1-2周截止&#10;比赛：全年多站分站赛，年底总决赛&#10;备赛：持续备赛&#10;年级：大二/大三&#10;价值：国内最具影响力的CTF联赛体系，已举办10届，覆盖国内外高校战队，网安企业校招认可度高">
+      
+      <span class="bar-label">XCTF国际联赛</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:131px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="9" data-track="就业" title="赛事：昇腾AI算法挑战赛（含算子赛/模型适配赛）&#10;报名：全年滚动（算子进阶赛2026年初报名） ~ 视具体赛题而定&#10;比赛：全年多场次（2026年含Model Agent适配赛20万奖金）&#10;备赛：视赛题2-4周不等&#10;年级：大三及以上（AI/算力方向）&#10;价值：单项奖金10-20万元；获奖可获华为昇腾生态就业/实习机会；算子优化能力稀缺">
+      
+      <span class="bar-label">昇腾AI算法挑战赛（含算子赛/…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:8.33%;top:163px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="10" data-track="就业" title="赛事：美团低空经济与具身智能挑战赛&#10;报名：参考惯例年中 ~ 视赛题而定&#10;比赛：初赛/决赛两阶段&#10;备赛：约2-3个月&#10;年级：大二及以上（机器人/无人机方向）&#10;价值：美团机器人研究院官方赛事；具身智能/低空经济前沿方向；获奖可获美团机器人方向实习/就业关注；赛题源于真实物流无人机场景">
+      
+      <span class="bar-label">美团低空经济与具身智能挑战赛</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:195px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="11" data-track="就业" title="赛事：腾讯犀牛鸟精英人才培养计划&#10;报名：参考惯例1月（2026年1月8日开放申请） ~ 参考惯例3-4月&#10;比赛：校企双导师培养6-12个月&#10;备赛：全年培养&#10;年级：大三及以上本科生/硕博（科研方向）&#10;价值：入选后校企双导师联合培养；接触产业真实课题与数据；表现优异可获腾讯校招SP；对保研推荐信有帮助">
+      
+      <span class="bar-label">腾讯犀牛鸟精英人才培养计划</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:33.33%;top:227px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="5" data-track="就业" title="赛事：中国大学生计算机设计大赛（4C）&#10;报名：参考惯例1月（大赛通知发布） ~ 参考惯例4月中下旬（2025：4.20-5.5报名）&#10;比赛：校赛3-4月；省赛5-6月；国赛7-8月（2025第18届获奖公告9月）&#10;备赛：提前3-5个月&#10;年级：大二-大三&#10;价值：国赛一等奖在保研综测与IT类企业简历中有一定加分；比赛科目多（软件应用、数媒、微课、人工智能类），适配面广；考公/留学认">
+      
+      <span class="bar-label">中国大学生计算机设计大赛（4C）</span>
+      <span class="bar-month">1月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:50.00%;top:259px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="8" data-track="就业" title="赛事：全国大学生集成电路创新创业大赛（集创赛）&#10;报名：参考惯例1月下旬（2025年1月24日） ~ 参考惯例3月20日（2025年3月20日）&#10;比赛：4-6月初赛/分赛区，7-8月全国总决赛&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：高教学会目录唯一集成电路专业A类赛事；IC设计/验证/版图方向就业认可度极高，数十家企业冠名出题（华为海思/紫光/中兴微">
+      
+      <span class="bar-label">全国大学生集成电路创新创业大赛…</span>
+      <span class="bar-month">1月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:8.33%;width:33.33%;top:3px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="13" data-track="就业" title="赛事：Google Summer of Code（GSoC 谷歌编程之夏）&#10;报名：参考惯例2月中旬（2026年2月19日公布指导组织） ~ 参考惯例3月底（2026年3月16-31日学生申请）&#10;比赛：社区Bonding 5月，编码5-8月，中期评估7月，最终评估8-11月&#10;备赛：2-3个月（需提前与开源社区mentor沟通）&#10;年级：大二-大四&#10;价值：全球最大开源实习项目，有stipend津贴，留学申请极强背书，大厂开源经历就业高分项">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">Google Summer o…</span>
+      <span class="bar-month">2月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:8.33%;width:33.33%;top:35px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="16" data-track="就业" title="赛事：高校电力电子应用设计大赛&#10;报名：参考惯例2月（2026年第12届2月6日发布通知） ~ 参考惯例3月底（2026年延期至3月31日）&#10;比赛：5月各赛道启动，8月中期检查，10-11月决赛（2026年11月3-7日四地决赛）&#10;备赛：6-8个月（跨年跨度长）&#10;年级：大三/大四（需较强硬件设计能力）&#10;价值：电力电子领域顶级赛事，中国电源学会主办；电磁兼容设计赛道与电子信息专业对口；新能源/电动汽车行业就业背书强；设电力电子A">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">高校电力电子应用设计大赛</span>
+      <span class="bar-month">2月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:8.33%;width:41.67%;top:67px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="15" data-track="就业" title="赛事：中国大学生服务外包创新创业大赛&#10;报名：参考惯例2月（2026年为2月11日左右） ~ 参考惯例3月（2026年为3月20-31日）&#10;比赛：区域赛参考惯例6月；全国总决赛参考惯例8月&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：教育部A类学科竞赛；国家级二等奖以上在部分省份（如江苏、四川）选调中可作为国家级竞赛荣誉；IT/软件/外包企业认可度高；">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国大学生服务外包创新创业大赛</span>
+      <span class="bar-month">2月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:16.67%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="26" data-track="就业" title="赛事：全国大学生统计建模大赛&#10;报名：参考惯例2-3月 ~ 参考惯例4月中旬（2026年约4月15日截止）&#10;比赛：报名3-4月，论文提交5月，评审6-8月&#10;备赛：2-3个月&#10;年级：大二-大三&#10;价值：统计建模领域权威赛事，大数据/AI方向求职加分，与数学建模互补">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生统计建模大赛</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:16.67%;top:131px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="31" data-track="就业" title="赛事：华为软件精英挑战赛（CodeCraft·普朗克计划）&#10;报名：参考惯例3月中旬（2026年3月16日） ~ 参考惯例4月上旬（2026年4月9日）&#10;比赛：区域初赛4月中旬-6月；全国总决赛6月-7月&#10;备赛：约2-3个月&#10;年级：大二及以上（需有代码基础）&#10;价值：总奖金68万元；获奖可获华为校招面试直通卡/SP及以上offer；区域赛出线即有加分">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">华为软件精英挑战赛（CodeC…</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:16.67%;top:163px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="34" data-track="就业" title="赛事：数字中国创新大赛·数字安全赛道&#10;报名：2026年3月12日 ~ 2026年4月6日（优秀案例征集赛）&#10;比赛：2026年4月预赛/决赛&#10;备赛：1-2个月&#10;年级：大二/大三&#10;价值：国家数字中国建设峰会官方赛事，政府+华为背书；聚焦国产算力/AI应用，奖金+算力代金券；华为等企业就业友好；赛题2"AI">
+      <div class="prep-bar" style="left:8.33%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">数字中国创新大赛·数字安全赛道</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:195px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="20" data-track="就业" title="赛事：中国机器人大赛暨RoboCup机器人世界杯中国赛&#10;报名：参考惯例年初（2026年校赛报名截止3月31日） ~ 参考惯例3月底&#10;比赛：RoboCup中国公开赛5月初（2026年5月2-4日北京怀柔）；总决赛10月（2026年10月16-18日杭州）&#10;备赛：6-10个月&#10;年级：大三/大四（学术性强，适合有科研基础者）&#10;价值：RoboCup为国际顶级机器人赛事，中国赛优秀队伍可晋级国际赛；学术性强，留学申请（海外robotics/AI方向）背书">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国机器人大赛暨RoboCup…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:291px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="27" data-track="就业" title="赛事：全国大学生节能减排社会实践与科技竞赛&#10;报名：参考惯例3月下旬（第一轮通知） ~ 参考惯例4月12日18:00前（高校报名截止）&#10;比赛：作品提交5月25日前；函评5-6月；全国总决赛8月（2026年第19届在大连理工）&#10;备赛：提前5-8个月（需实物/装置/论文）&#10;年级：大二-大四&#10;价值：教育部A类赛事，国奖在保研综测与新能源/电气类企业就业中有加分；考公/留学认可度中等">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生节能减排社会实践与科…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:323px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="30" data-track="就业" title="赛事：北斗杯全国青少年空天科技体验与创新大赛（大学组）&#10;报名：参考惯例次年2-3月 ~ 参考惯例3-4月&#10;比赛：参考惯例5月初选，暑期全国总决赛（2025年第14届总决赛在郑州）&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：空天科技/北斗导航领域权威赛事，政府背书强；对航天/导航/卫星方向就业有帮助">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">北斗杯全国青少年空天科技体验与…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:355px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="17" data-track="就业" title="赛事："西门子杯"中国智能制造挑战赛（CIMC）&#10;报名：参考惯例3月初（2026年第20届校选3月31日-4月15日） ~ 参考惯例4月中旬&#10;比赛：初赛5-6月，全国总决赛7-8月&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：国家A类赛事，教育部与西门子战略合作；工业自动化/智能制造领域规模最大；西门子及工业自动化行业就业背书强">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">"西门子杯"中国智能制造挑战赛…</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:387px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="19" data-track="就业" title="赛事：中国机器人及人工智能大赛（CRAIC）&#10;报名：参考惯例3月（2026年第28届3月1日开始） ~ 各省赛区不同，参考惯例5-6月&#10;比赛：省赛6月前完成，全国赛7-8月（2026年7月中下旬合肥/线上）&#10;备赛：3-5个月&#10;年级：大二/大三&#10;价值：届数多（第28届），赛项覆盖广；2026年新增人形机器人专项赛（具身智能热点）；行业协会主办">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国机器人及人工智能大赛（CR…</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:419px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="23" data-track="就业" title="赛事：中国高校计算机大赛-网络技术挑战赛&#10;报名：2026年3月4日 ~ 2026年4月14日&#10;比赛：资格赛4.15-4.17，选拔赛6月，挑战赛8.10-8.12&#10;备赛：4-5个月&#10;年级：大二/大三&#10;价值：中国高校计算机大赛(C4)系列白名单赛事，偏网络工程/网络安全方向，与本校网安学科匹配">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国高校计算机大赛-网络技术挑…</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:33.33%;top:451px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="35" data-track="就业" title="赛事：腾讯游戏安全技术竞赛&#10;报名：参考惯例3月（2026年4月发布） ~ 参考惯例3月下旬（2025年截止3月23日）&#10;比赛：4-6月线上赛/决赛&#10;备赛：约2-3个月&#10;年级：大三及以上（网安/安全方向）&#10;价值：万元奖金+Q币奖励；获奖获腾讯实习面试绿色通道；游戏安全方向独特赛道">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">腾讯游戏安全技术竞赛</span>
+      <span class="bar-month">3月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:41.67%;top:483px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="24" data-track="就业" title="赛事：全国大学生嵌入式芯片与系统设计竞赛&#10;报名：参考惯例2-3月（应用赛道）；6月下旬（芯片设计赛道） ~ 应用赛道参考惯例4月下旬（2025年4月25日）；芯片设计赛道参考惯例8月底&#10;比赛：应用赛道7月作品提交、8-9月决赛；芯片设计赛道11月作品提交、11月底决赛&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：教育部白名单A类赛事，本校保研加分赛事；嵌入式/Linux/芯片方向就业认可度高；分应用赛道（偏应用开发）和芯片设计赛道">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生嵌入式芯片与系统设计…</span>
+      <span class="bar-month">3月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:50.00%;top:515px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="21" data-track="就业" title="赛事：中国软件杯大学生软件设计大赛&#10;报名：参考惯例3月（第十五届为2026.3启动） ~ 参考惯例6-7月（第十五届延至2026.7.20）&#10;比赛：参考惯例8月全国总决赛（2026.8）&#10;备赛：4-5个月&#10;年级：大二/大三&#10;价值：工信部指导的A类赛事，公益性全程免费，企业命题真实工程场景，获奖对软件开发方向就业帮助大">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国软件杯大学生软件设计大赛</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:50.00%;top:547px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="22" data-track="就业" title="赛事：中国高校计算机大赛-大数据挑战赛&#10;报名：2026年3月26日 ~ 2026年7月15日&#10;比赛：线上赛3.26-8.2，决赛8月&#10;备赛：4-5个月&#10;年级：大二/大三&#10;价值：C4系列A类赛事，清华大学主办，2018-2025连续入选学科竞赛排行榜，算法竞赛顶级，保研认可度高于天池/Kaggle">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国高校计算机大赛-大数据挑战赛</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:50.00%;top:579px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="28" data-track="就业" title="赛事：全国大学生计算机系统能力大赛-编译系统设计赛（华为毕昇杯）&#10;报名：参考惯例3月中下旬（2026年约3月启动） ~ 参考惯例5月底（2026年约5.30）&#10;比赛：参考惯例7-8月决赛&#10;备赛：4-6个月&#10;年级：大三/大四/研一&#10;价值：与已有OS赛/CPU赛同属系统能力大赛系列，编译方向顶级赛事，华为冠名，系统方向保研加分强">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生计算机系统能力大赛-…</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:50.00%;top:611px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="29" data-track="就业" title="赛事：全国大学生计算机系统能力大赛（操作系统/CPU设计赛）&#10;报名：参考惯例2-3月（操作系统赛2月28日；CPU龙芯杯3月20日） ~ 操作系统赛参考惯例5月下旬（2025年5月28日）；CPU赛参考惯例4月&#10;比赛：操作系统赛7-8月决赛；CPU赛7-8月决赛&#10;备赛：提前4-6个月&#10;年级：大三-研一&#10;价值：系统能力顶级赛事，CPU设计赛（龙芯杯）在国产芯片/系统软件方向认可度极高；对考研复试/保研面试有强加分；但门槛高、周期">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生计算机系统能力大赛（…</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:16.67%;top:643px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="45" data-track="就业" title="赛事：挑战杯全国大学生课外学术科技作品竞赛 / 创业计划竞赛&#10;报名：参考惯例3-4月（校赛启动） ~ 参考惯例5-6月（2026年揭榜挂帅为5月30日-6月30日）&#10;比赛：校赛4-5月→省赛6-7月→国赛10-11月&#10;备赛：提前6-12个月（需有科研成果积累）&#10;年级：大二-研三&#10;价值：被誉为中国大学生科技创新奥林匹克；国赛等级奖项是保研加分硬通货；江苏/湖南/山东/广东等多省定向选调公告明确将挑战杯国家">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">挑战杯全国大学生课外学术科技作…</span>
+      <span class="bar-month">4月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:25.00%;top:675px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="36" data-track="就业" title="赛事：中美青年创客大赛（共创未来）&#10;报名：参考惯例4月下旬 ~ 参考惯例6月上旬（2026年各校约6月8-10日截止）&#10;比赛：分赛区选拔赛5-6月，全国总决赛7月下旬（上海张江）&#10;备赛：2-3个月（含作品制作）&#10;年级：大二-大四&#10;价值：教育部主办白名单赛事，保研综测加分认可度高，创新创业类高含金量，3-5人团队创客作品">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中美青年创客大赛（共创未来）</span>
+      <span class="bar-month">4月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:25.00%;top:707px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="37" data-track="就业" title="赛事：信息安全与对抗技术竞赛（ISCC）&#10;报名：2026年4月24日（第23届） ~ 2026年5月6日&#10;比赛：参考惯例5-6月线上赛&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：国内最早创办的CTF赛事之一（2004年创办），连续23届，累计15.7万+参赛者，北理工主办，入门友好">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">信息安全与对抗技术竞赛（ISC…</span>
+      <span class="bar-month">4月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:25.00%;top:739px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="44" data-track="就业" title="赛事：抖音AI创变者计划黑客松联赛&#10;报名：参考惯例4月（2026年4月13日启动） ~ 各城市站提前1-2周（2026年全国赛4月13日-8月31日）&#10;比赛：城市站5-6月，五大区复赛7月，全国总决赛8月（北京）&#10;备赛：每场48小时极限开发&#10;年级：大二-大四&#10;价值：字节跳动官方AI产品创新赛事，优秀者获实习面试机会，覆盖400+高校5000+学生">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">抖音AI创变者计划黑客松联赛</span>
+      <span class="bar-month">4月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:25.00%;top:771px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="46" data-track="就业" title="赛事：百度之星程序设计大赛&#10;报名：参考惯例4月下旬（2025年4月23日） ~ 参考惯例8月上旬（2025年8月9日，按场次截止）&#10;比赛：初赛6月29日/8月10日两场线上，决赛12月初线下（2025年12月7日北京）&#10;备赛：提前3-6个月（算法刷题训练）&#10;年级：大二-大四&#10;价值：国内历史最悠久的程序设计竞赛之一，百度官方背书；决赛获奖可获百度校招面试绿色通道；但本质是ACM-ICPC风格算法竞赛，">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">百度之星程序设计大赛</span>
+      <span class="bar-month">4月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:33.33%;top:803px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="38" data-track="就业" title="赛事：全国三维数字化创新设计大赛（3D大赛/3DDS）&#10;报名：参考惯例4月上旬（2026年4月3日启动） ~ 参考惯例6月30日（初赛报名截止）&#10;比赛：初赛4-7月，复赛/省赛8-10月，全国总决赛11-12月&#10;备赛：2-4个月&#10;年级：大二-大四&#10;价值：数字化设计领域知名赛事，工业设计/机械方向就业有一定加分">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国三维数字化创新设计大赛（3…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:33.33%;top:835px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="41" data-track="就业" title="赛事：全国大学生电子设计竞赛（TI杯/电赛）&#10;报名：参考惯例3-4月（学校统一组织） ~ 参考惯例6月中旬（2026年上海赛区6月15日截止）&#10;比赛：奇数年全国赛7月底-8月初（2025年7月30日-8月2日）；偶数年专题赛7月29日-8月1日赛区赛，8月下旬决赛&#10;备赛：提前6-8个月（建议大二上启动，大二下暑假参赛）&#10;年级：大二-大三&#10;价值：电子信息类最权威学科竞赛；国赛二等奖以上是电子类保研硬通货；华为/中兴/大疆/汇川等硬件大厂高度认可；多省定向选调中作为">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生电子设计竞赛（TI杯…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:33.33%;top:867px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="42" data-track="就业" title="赛事：全国大学生计算机系统能力大赛-数据库管理系统设计赛&#10;报名：参考惯例4月下旬（2026年为2026.4.25） ~ 参考惯例7月中旬（2026年为2026.7.13）&#10;比赛：参考惯例7月下旬-8月中旬决赛&#10;备赛：3-4个月&#10;年级：大三/大四/研一&#10;价值：与已有OS赛/CPU赛同系列，数据库方向顶级赛事，500+队伍参赛，系统方向保研认可度高">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生计算机系统能力大赛-…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:33.33%;top:899px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="43" data-track="就业" title="赛事：华为终端硬件精英挑战赛&#10;报名：参考惯例4月（2026年报名约3-4月） ~ 参考惯例5月&#10;比赛：区域决赛7月；全国总决赛8月初（2026年8月1-2日）&#10;备赛：约3-4个月&#10;年级：大二及以上（电子类/硬件方向）&#10;价值：总奖金32万元；获奖可获华为终端校招面试绿色通道；硬件方向含金量高">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">华为终端硬件精英挑战赛</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:33.33%;top:931px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="47" data-track="就业" title="赛事：睿抗机器人开发者大赛（RAICOM）CAIP强脑赛道&#10;报名：参考惯例3-4月 ~ 参考惯例6月中旬（AI视觉赛题为2026.6.13）&#10;比赛：参考惯例6-7月（2026.6.27 AI视觉赛）&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：工信部人才交流中心主办，入选高教学会竞赛名录；四大赛道（工创/设计/强脑/强体）；具身智能/行业大模型方向热点；华为等企">
+      <div class="prep-bar" style="left:8.33%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">睿抗机器人开发者大赛（RAIC…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:41.67%;top:963px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="39" data-track="就业" title="赛事：全国大学生光电设计竞赛&#10;报名：参考惯例3-4月 ~ 参考惯例5月中旬（2026年西北赛区5月15日初定）&#10;比赛：参考惯例8月（2025年第13届8月下旬浙江大学承办）&#10;备赛：3-4个月&#10;年级：大二/大三&#10;价值：光电领域唯一国家级学科竞赛，本校光学工程为优势学科；保研加分认可度高；光学工程/光电子行业就业对口">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生光电设计竞赛</span>
+      <span class="bar-month">4月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:41.67%;top:995px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="40" data-track="就业" title="赛事：全国大学生物联网设计竞赛&#10;报名：参考惯例4月初（2026年为4月1日） ~ 参考惯例6月中旬（2026年为6月15日）&#10;比赛：参考惯例8月中下旬全国总决赛（2026年8月22-24日贵州大学）&#10;备赛：3-4个月&#10;年级：大二/大三&#10;价值：高教学会竞赛分析报告收录赛事，保研认可度较好；本校为承办校之一，校内资源丰富；物联网/嵌入式行业就业对口">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生物联网设计竞赛</span>
+      <span class="bar-month">4月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:25.00%;width:50.00%;top:1027px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="48" data-track="就业" title="赛事：腾讯云黑客松（Tencent Cloud Hackathon）&#10;报名：参考惯例3-4月（各场不同） ~ 赛前1-2周截止（各场不同）&#10;比赛：全年多场，单场48小时集中开发；2026年有AI Game Development赛4-9月、智能渗透赛3-4月等&#10;备赛：1-2周&#10;年级：大二-大四&#10;价值：腾讯官方背书，实习/校招绿色通道机会，云原生/AI应用实战经验">
+      <div class="prep-bar" style="left:16.67%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">腾讯云黑客松（Tencent …</span>
+      <span class="bar-month">4月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:25.00%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="51" data-track="就业" title="赛事：全国大学生信息安全竞赛（作品赛/创新实践能力赛）&#10;报名：作品赛参考惯例5月中下旬；创新实践能力赛参考惯例11月 ~ 作品赛参考惯例6月25日（2025年6月25日）；创新实践能力赛参考惯例12月21日&#10;比赛：作品赛7月初评、8-9月决赛；创新实践能力赛12月底线上初赛、次年3-4月决赛&#10;备赛：作品赛提前3-4个月；创新实践赛提前1-2个月&#10;年级：大二-大三&#10;价值：网安领域顶级A类赛事，保研认可度高；对网安/安全岗就业有强背书；但对电子信息工程非网安方向匹配度一般">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生信息安全竞赛（作品赛…</span>
+      <span class="bar-month">5月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:41.67%;top:131px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="49" data-track="就业" title="赛事："华为杯"中国研究生人工智能创新大赛&#10;报名：参考惯例5月下旬（2025年5月27日） ~ 参考惯例8月22日（2025年8月22日）&#10;比赛：9月初赛评审，10-11月决赛&#10;备赛：提前3-4个月&#10;年级：研一-研二（本科生需已获研究生录取资格）&#10;价值：AI领域研究生顶级赛事，获奖对读博/AI实验室申请/大厂AI岗有强背书；但本科大二学生一般不能直接参赛，需保研拿到off">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">"华为杯"中国研究生人工智能创…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:41.67%;top:163px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="50" data-track="就业" title="赛事：中国高校计算机大赛-移动应用创新赛&#10;报名：参考惯例4-5月 ~ 参考惯例6月底（启明/启迪赛道2026.6.30，启航赛道2026.7.31）&#10;比赛：参考惯例8-9月决赛&#10;备赛：3-5个月&#10;年级：大二/大三&#10;价值：C4系列白名单赛事，苹果赞助，iOS/macOS生态，海外认可度尚可，适合移动端开发方向">
+      <div class="prep-bar" style="left:0.00%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国高校计算机大赛-移动应用创…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:33.33%;width:41.67%;top:227px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="52" data-track="就业" title="赛事：全国大学生数学建模竞赛（CUMCM，高教社杯）&#10;报名：参考惯例5月（校内报名启动） ~ 参考惯例9月1日20:00前（向全国组委会报名截止）&#10;比赛：参考惯例9月上旬周四18:00至周日20:00（2025:9.4-9.7；2026:9.10开赛）&#10;备赛：提前3-4个月（暑假集中集训）&#10;年级：大二-大三&#10;价值：国一/国二是保研夏令营与综测的硬通货；美国/英国工科留学申请中认可度高；对算法/数据类岗位就业有辅助；考公认可度一般">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生数学建模竞赛（CUM…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:50.00%;top:1059px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="53" data-track="就业" title="赛事：黄鹤杯网络安全人才创新大赛&#10;报名：参考惯例5月 ~ 2026年6月30日&#10;比赛：参考惯例10月决赛（2025.10武汉）&#10;备赛：3-5个月&#10;年级：大三/大四&#10;价值：依托国家网安人才基地，小米安全/东风汽车等企业支持，华中地区网安人才就业有区域影响力">
+      <div class="prep-bar" style="left:0.00%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">黄鹤杯网络安全人才创新大赛</span>
+      <span class="bar-month">5月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:33.33%;top:3px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="57" data-track="就业" title="赛事：腾讯广告算法大赛&#10;报名：参考惯例6月中旬（2025年6月16日） ~ 参考惯例7月31日（2025年7月31日）&#10;比赛：8-9月初赛，9-10月复赛，11月底线下决赛（2025年11月深圳）&#10;备赛：提前2-3个月&#10;年级：大三-研二&#10;价值：与KDD顶会联合举办，优胜成果被KDD Workshop Proceedings收录；腾讯入职绿色通道（免笔试/直通面试">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">腾讯广告算法大赛</span>
+      <span class="bar-month">6月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:41.67%;width:50.00%;top:35px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="55" data-track="就业" title="赛事：全国大学生FPGA创新设计竞赛（嵌赛FPGA赛道）&#10;报名：参考惯例6月下旬（2025年6月27日） ~ 参考惯例9月22日（2025年9月22日24:00）&#10;比赛：9-11月作品设计，11月7日作品提交，11月28-30日决赛&#10;备赛：提前2-3个月&#10;年级：大二-大三&#10;价值：FPGA/数字IC方向高含金量赛事，对本校微电子/集成电路方向保研加分；对紫光展锐/华为海思/兆易创新等IC设计岗就业有">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生FPGA创新设计竞赛…</span>
+      <span class="bar-month">6月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:50.00%;width:25.00%;top:67px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="58" data-track="就业" title="赛事：AFAC金融智能创新大赛（蚂蚁集团）&#10;报名：参考惯例6-7月（外滩大会前） ~ 参考惯例8月&#10;比赛：9月外滩大会决赛颁奖&#10;备赛：约3个月&#10;年级：大三及以上（金融科技/AI方向）&#10;价值：奖金+资本对接+媒体曝光；挑战组解决真实金融AI问题；初创组可获创投对接；蚂蚁生态资源">
+      <div class="prep-bar" style="left:25.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">AFAC金融智能创新大赛（蚂蚁…</span>
+      <span class="bar-month">7月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:50.00%;width:33.33%;top:195px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="59" data-track="就业" title="赛事：中国大学生工程实践与创新能力大赛（工训赛）&#10;报名：参考惯例6-7月（校赛报名） ~ 参考惯例10月（省赛报名截止）&#10;比赛：校赛9-10月，省赛10-11月，国赛次年（2027年第十届）&#10;备赛：3-6个月&#10;年级：大二-大三&#10;价值：教育部白名单A类赛事，工程实践能力顶级证明，保研综测高分项">
+      <div class="prep-bar" style="left:16.67%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国大学生工程实践与创新能力大…</span>
+      <span class="bar-month">7月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:58.33%;width:16.67%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="60" data-track="就业" title="赛事：CCPC中国大学生程序设计竞赛&#10;报名：参考惯例8月（网络赛报名） ~ 参考惯例9月（网络赛报名截止）&#10;比赛：网络赛9月；分站赛10-12月；总决赛次年3-6月&#10;备赛：提前6-12个月&#10;年级：大二-大四&#10;价值：与ICPC同为国内算法竞赛两大顶赛，金牌对大厂算法岗背书极强；保研复试加分；考公/留学认可度有限">
+      <div class="prep-bar" style="left:0.00%;width:58.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">CCPC中国大学生程序设计竞赛</span>
+      <span class="bar-month">8月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:58.33%;width:16.67%;top:259px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="61" data-track="就业" title="赛事：ICPC国际大学生程序设计竞赛（亚洲区域赛）&#10;报名：参考惯例8月（网络预选赛报名） ~ 参考惯例8月底-10月（各站点报名截止不同）&#10;比赛：网络赛9月；亚洲区域赛10-11月（多站点）&#10;备赛：提前6-12个月（长期刷题训练）&#10;年级：大二-大四&#10;价值：区域赛金牌（尤其金/银）是大厂算法岗（字节/腾讯/阿里/美团）最硬背书之一，大量直通面试/免笔试；保研复试中有显著加分；">
+      <div class="prep-bar" style="left:0.00%;width:58.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">ICPC国际大学生程序设计竞赛…</span>
+      <span class="bar-month">8月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:58.33%;width:25.00%;top:291px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="62" data-track="就业" title="赛事：中国国际大学生创新大赛（原中国“互联网+”大学生创新创业大赛）&#10;报名：2026-08（报名系统8月10日开放） ~ 2026-09-25（2026年截止；2025年截止不晚于7月1日）&#10;比赛：校赛8-10月、省赛10-11月、全国总决赛11月&#10;备赛：提前4-6个月&#10;年级：大二-大四&#10;价值：国内规模最大的双创赛事（2025年619万项目参赛）；国赛金奖是保研top项目和选调面试重磅加分；江苏/浙江/四川/广东">
+      <div class="prep-bar" style="left:16.67%;width:41.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国国际大学生创新大赛（原中国…</span>
+      <span class="bar-month">8月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:58.33%;width:33.33%;top:323px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="63" data-track="就业" title="赛事：工行杯全国大学生金融科技创新大赛&#10;报名：参考惯例5-8月（第十七届2026年5月启动） ~ 参考惯例9-10月&#10;比赛：省赛10-11月；全国决赛12月-次年1月&#10;备赛：约4-6个月&#10;年级：大二及以上（金融科技方向）&#10;价值：17届历史千余高校参与；获奖可获工行校招/实习优先；对进入银行/金融国企就业有直接帮助；证书认可度高">
+      <div class="prep-bar" style="left:16.67%;width:41.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">工行杯全国大学生金融科技创新大赛</span>
+      <span class="bar-month">8月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:8.33%;top:355px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="64" data-track="就业" title="赛事：ABU Robocon亚太大学生机器人大赛（全国大学生机器人大赛ROBOCON）&#10;报名：参考惯例9月（新赛季赛题发布后启动） ~ 参考惯例10-11月&#10;比赛：国内选拔赛参考惯例7月；国际总决赛参考惯例8月（2026国内赛7月江阴，国际赛8月23日香港）&#10;备赛：提前8-10个月（全年备赛，赛题发布即开始）&#10;年级：大二-大四&#10;价值：首批入选高校学科竞赛排行榜的19项重点竞赛之一；国家级二等奖以上对保研加分明显；大疆/华为/小米等机器人硬件方向大厂高度">
+      <div class="prep-bar" style="left:0.00%;width:66.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">ABU Robocon亚太大学…</span>
+      <span class="bar-month">9月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:8.33%;top:387px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="73" data-track="就业" title="赛事：阿里天池大数据/AI算法竞赛&#10;报名：全年滚动（各赛题不同，新人赛通常3-9月） ~ 各赛题独立，通常持续1-3个月&#10;比赛：全年滚动，季度性赛事&#10;备赛：提前1-2个月（针对具体赛题）&#10;年级：大二-大四&#10;价值：国内最大数据科学竞赛平台，天池Top名次在阿里/字节/美团等算法岗校招中有强简历背书；免费参赛；适合利用AI工具做Kag">
+      <div class="prep-bar" style="left:58.33%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">阿里天池大数据/AI算法竞赛</span>
+      <span class="bar-month">9月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:25.00%;top:419px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="65" data-track="就业" title="赛事：Meta Hacker Cup&#10;报名：参考惯例8-9月 ~ 参考惯例10月（首轮前）&#10;比赛：多轮线上赛9-11月，全球总决赛12月（2025年总决赛12月20日线上举行）&#10;备赛：长期算法训练3-6个月以上&#10;年级：大二-大四&#10;价值：全球顶级算法竞赛，与ICPC/CCPC同级别的算法背书，Meta/FAANG面试绿色通道，冠军$20,000">
+      <div class="prep-bar" style="left:33.33%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">Meta Hacker Cup</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:25.00%;top:451px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="67" data-track="就业" title="赛事：“正大杯”全国大学生市场调查与分析大赛&#10;报名：参考惯例9月底（宣传启动） ~ 参考惯例10月底（2025年：10月31日24:00截止）&#10;比赛：知识赛网考10-11月；校赛次年3月；省赛/国赛次年4-5月&#10;备赛：提前4-6个月（需完整调研项目）&#10;年级：大二-大三&#10;价值：国赛一等奖在统计/数据类岗位就业与保研综测中有加分；对互联网用研/数据分析岗有背书；考公/留学认可度一般">
+      <div class="prep-bar" style="left:25.00%;width:41.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">“正大杯”全国大学生市场调查与…</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:483px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="70" data-track="就业" title="赛事：全国密码技术竞赛&#10;报名：参考惯例9月初（第十一届为2026.9.2） ~ 参考惯例10月初（第十届2025年截止约9月）&#10;比赛：参考惯例11月决赛（第十届2025.11南开大学）&#10;备赛：2-3个月&#10;年级：大三/大四/研一&#10;价值：国家密码管理局指导，密码方向唯一国家级赛事，密评行业/密码局系统/国企密码岗位认可度高">
+      <div class="prep-bar" style="left:50.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国密码技术竞赛</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:515px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="72" data-track="就业" title="赛事：强网杯全国网络安全挑战赛&#10;报名：参考惯例9月（第九届为2025.9启动） ~ 参考惯例10月&#10;比赛：参考惯例11月线下总决赛（第九届2025.11郑州）&#10;备赛：3-6个月&#10;年级：大三/大四/研一&#10;价值：网安领域顶级赛事，军方背景（信息工程大学主办），国家级规格，获奖对网安方向就业认可度极高，考公/国安系统有优势">
+      <div class="prep-bar" style="left:33.33%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">强网杯全国网络安全挑战赛</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:33.33%;top:547px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="69" data-track="就业" title="赛事：全国大学生软件测试大赛&#10;报名：参考惯例9月下旬（第十一届为2026.9.20） ~ 参考惯例10月底（第十一届为2026.10.30）&#10;比赛：参考惯例11-12月总决赛&#10;备赛：1-2个月&#10;年级：大二/大三&#10;价值：2023年列入教育部白名单，华为/百度/阿里/腾讯等企业联合命题，软件测试方向最权威赛事">
+      <div class="prep-bar" style="left:58.33%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生软件测试大赛</span>
+      <span class="bar-month">9月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:33.33%;top:579px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="71" data-track="就业" title="赛事：华为ICT大赛（实践赛/创新赛/编程赛）&#10;报名：参考惯例9月上旬（2025年9月10日） ~ 实践赛10月31日；创新赛11月30日（2025-2026赛季）&#10;比赛：11-12月省赛，次年3月全国总决赛，次年5-6月全球总决赛&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：华为官方赛事，全国总决赛获奖可获华为校招面试直通卡/实习offer；实践赛偏网络/云计算/存储，创新赛偏AI应用开发；2">
+      <div class="prep-bar" style="left:50.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">华为ICT大赛（实践赛/创新赛…</span>
+      <span class="bar-month">9月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:3px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="74" data-track="就业" title="赛事：NVIDIA年度Hackathon黑客松（中国区）&#10;报名：参考惯例年中（2025年赛事） ~ 参考惯例赛前1-2个月&#10;比赛：年度总决赛10月（NVIDIA中国开发者日期间）&#10;备赛：约2-3个月&#10;年级：大二及以上（AI/GPU方向）&#10;价值：接触CUDA/TensorRT/NeMo等NVIDIA全栈技术；获奖可获NVIDIA生态关注；对出国深造/AI公司就业有">
+      <div class="prep-bar" style="left:58.33%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">NVIDIA年度Hackath…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:75.00%;width:8.33%;top:67px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="75" data-track="就业" title="赛事：RoboMaster机甲大师超级对抗赛（RMUC）&#10;报名：参考惯例10月底（2026赛季报名2025年10月29日） ~ 参考惯例11月初（2026赛季报名截止2025年11月6日）&#10;比赛：区域赛5-6月，复活赛7-8月，全国赛7-8月（2026年深圳春茧）&#10;备赛：约10个月（跨年赛季，全年投入）&#10;年级：大二入队最佳（大一需先成为预备队员）&#10;价值：DJI官方赛事；获奖/参与经历在大疆/机器人/自动驾驶行业认可度极高；技术覆盖机器视觉/嵌入式/机械/射频；RMUA侧重">
+      <div class="prep-bar" style="left:0.00%;width:75.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">RoboMaster机甲大师超…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="78" data-track="就业" title="赛事：全国大学生电子商务创新创意及创业挑战赛（三创赛）&#10;报名：参考惯例10月（上一年度，2026届为2025年10月20日起） ~ 参考惯例12月31日（2026届第十六届）&#10;比赛：校赛3-4月→省赛5-6月→全国总决赛7-8月&#10;备赛：提前3-4个月&#10;年级：大二-大四&#10;价值：教育部A类竞赛；国赛二等奖以上在部分省份选调中可作为国家级竞赛荣誉；对电商/互联网运营方向就业有帮助；电子信息工程学生可">
+      <div class="prep-bar" style="left:50.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生电子商务创新创意及创…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:131px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="80" data-track="就业" title="赛事：蓝桥杯全国软件和信息技术专业人才大赛&#10;报名：参考惯例10月（次年比赛报名启动，2025.10.20起） ~ 参考惯例12月-次年4月（各省不同）&#10;比赛：省赛次年4月；全国总决赛次年5-6月&#10;备赛：提前2-4个月（针对性刷题）&#10;年级：大一下-大三&#10;价值：国赛二等奖以上在企业校招中有一定认可度（尤其中小厂/国企软开）；省奖含金量有限，多数学校综测加分较少；考公/留学几乎不认">
+      <div class="prep-bar" style="left:50.00%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">蓝桥杯全国软件和信息技术专业人…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:75.00%;width:25.00%;top:163px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="77" data-track="就业" title="赛事：中国移动"九天·梧桐"杯数智创新大赛&#10;报名：参考惯例9-10月（第五届2025年9月启动） ~ 参考惯例11月&#10;比赛：省赛12月-次年1月；全国决赛3-6月（第五届2026年6月总决赛）&#10;备赛：约6-8个月&#10;年级：大二及以上（数据/AI方向）&#10;价值：运营商头部赛事；获奖可获中国移动校招/实习优先推荐；开放脱敏真实数据；对进入国企/运营商就业极有帮助">
+      <div class="prep-bar" style="left:16.67%;width:58.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">中国移动"九天·梧桐"杯数智创…</span>
+      <span class="bar-month">10月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:25.00%;top:227px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="79" data-track="就业" title="赛事：全国大学生职业规划大赛&#10;报名：2025-10（第三届启动，2025年10月20日平台开放） ~ 参考惯例1月底（不晚于2026-01-31）&#10;比赛：校赛11-12月→省赛3-4月→全国总决赛5-6月&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：教育部官方赛事，全国总决赛奖项在考公/选调求职中体现职业规划能力；获奖证书教育部认可；对明确就业方向和准备面试有实际帮助">
+      <div class="prep-bar" style="left:58.33%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生职业规划大赛</span>
+      <span class="bar-month">10月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:8.33%;top:3px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="82" data-track="就业" title="赛事：Microsoft Imagine Cup（微软创新杯）&#10;报名：参考惯例10-11月 ~ 参考惯例次年1-2月&#10;比赛：区域赛3-4月，世界总决赛5-6月（Microsoft Build大会）&#10;备赛：3-6个月&#10;年级：大二-大四&#10;价值：全球历史最悠久学生科技创业赛（20+年），冠军$100,000奖金，与Satya Nadella mentoring机会">
+      <div class="prep-bar" style="left:50.00%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">Microsoft Imagi…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:67px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="83" data-track="就业" title="赛事：“挑战杯”全国大学生课外学术科技作品竞赛（大挑）&#10;报名：参考惯例11月（校赛启动） ~ 参考次年3-6月（省赛推报国赛）&#10;比赛：国赛参考惯例10-11月（奇数年）&#10;备赛：提前6-12个月（需完整科研作品积累）&#10;年级：大二-大四&#10;价值：保研综测加分权重最高赛事之一；国赛获奖在选调生/央国企简历关高度认可；留学申请可作科研经历背书；对技术岗就业有辅助但非直">
+      <div class="prep-bar" style="left:8.33%;width:75.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">“挑战杯”全国大学生课外学术科…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="84" data-track="就业" title="赛事：全国大学生智能汽车竞赛（恩智浦杯）&#10;报名：参考惯例11月-次年1月（前一年10月公布赛题后开放报名） ~ 参考惯例6月中旬（2025年6月15日）&#10;比赛：7月分赛区比赛，8月全国总决赛&#10;备赛：提前6-10个月（赛题公布后即开始备车）&#10;年级：大二-大三&#10;价值：教育部白名单A类赛事，本校保研认可度高；涉及自动控制/图像处理/嵌入式，对大疆/华为/汇川等硬件控制岗就业帮助大；202">
+      <div class="prep-bar" style="left:16.67%;width:66.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生智能汽车竞赛（恩智浦…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:8.33%;top:131px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="85" data-track="就业" title="赛事：全国大学生机器人大赛ROBOTAC&#10;报名：参考惯例10-11月（第25届2025年11月报名） ~ 参考惯例11月&#10;比赛：中期检查次年上半年，总决赛7-8月（2026年第25届）&#10;备赛：6-9个月&#10;年级：大二/大三&#10;价值：与ROBOCON（已有ABU Robocon）不同的对抗型机器人赛事，共青团中央主办保研认可度高；偏实战对抗；设AIRO">
+      <div class="prep-bar" style="left:25.00%;width:58.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生机器人大赛ROBOT…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:195px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="86" data-track="就业" title="赛事：团体程序设计天梯赛（GPLT）&#10;报名：参考惯例11月下旬（2026届为2025.11.20） ~ 参考惯例3月下旬（2026届为2026.3.22）&#10;比赛：参考惯例4月中旬（2026届为2026.4.19）&#10;备赛：3-4个月&#10;年级：大二/大三&#10;价值：中国高校计算机大赛(C4)系列白名单赛事，团队奖+个人奖双轨制，本校参与度高，覆盖面广">
+      <div class="prep-bar" style="left:58.33%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">团体程序设计天梯赛（GPLT）</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:259px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="88" data-track="就业" title="赛事：美国大学生数学建模竞赛（MCM/ICM，美赛）&#10;报名：参考惯例11月 ~ 参考惯例1月（2026年为1月28日）&#10;比赛：参考惯例2月初（2026年为1月30日-2月3日，96小时连续比赛）&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：O奖/F奖（全球top1%）对美/英/港新CS/工科硕士留学申请有强背书；M奖以上多数985/211高校保研加分；大厂数">
+      <div class="prep-bar" style="left:58.33%;width:25.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">美国大学生数学建模竞赛（MCM…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:16.67%;top:291px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="81" data-track="就业" title="赛事：DataCon大数据安全分析竞赛&#10;报名：参考惯例10-11月 ~ 参考惯例11月底&#10;比赛：参考惯例12月决赛&#10;备赛：1-2个月&#10;年级：大三/大四/研一&#10;价值：国内首个大数据安全分析专项赛，被誉为数据安全分析第一品牌，奇安信+清华联合主办，覆盖1000+高校，企业认可度高">
+      <div class="prep-bar" style="left:75.00%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">DataCon大数据安全分析竞赛</span>
+      <span class="bar-month">11月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:16.67%;top:355px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="87" data-track="就业" title="赛事：字节跳动工程竞技赛/青训营&#10;报名：工程竞技赛参考惯例11月初；青训营参考惯例11月底 ~ 工程竞技赛参考惯例12月底；青训营参考惯例1月初&#10;比赛：工程竞技赛11-12月；青训营1月笔试、1-2月线上培训&#10;备赛：提前1-2个月&#10;年级：大二-大四&#10;价值：字节跳动官方赛事/训练营，优秀者可获字节校招面试直通/实习offer；青训营全程免费、含前端/后端/大数据/AI方向培训">
+      <div class="prep-bar" style="left:75.00%;width:8.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">字节跳动工程竞技赛/青训营</span>
+      <span class="bar-month">11月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:91.67%;width:8.33%;top:3px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="89" data-track="就业" title="赛事：iFLYTEK AI开发者大赛（星火杯·大模型应用创新赛）&#10;报名：参考惯例12月下旬（2025年12月26日启动） ~ 参考惯例4月上旬（2026年4月9日）&#10;比赛：5月全国总决赛&#10;备赛：约3.5-4个月&#10;年级：大二及以上（AI应用方向）&#10;价值：累计582+赛题/18.1万+团队参与；获奖可获讯飞实习/校招绿色通道；星火杯证书对保研有加分">
+      <div class="prep-bar" style="left:58.33%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">iFLYTEK AI开发者大赛…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:91.67%;width:8.33%;top:35px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="90" data-track="就业" title="赛事：“挑战杯”中国大学生创业计划竞赛（小挑）&#10;报名：参考惯例11-12月（校赛启动） ~ 参考次年5-8月（省赛推报）&#10;比赛：国赛参考惯例10-11月（偶数年，2026年为第15届）&#10;备赛：提前4-8个月（需撰写完整创业计划书）&#10;年级：大二-大四&#10;价值：与大挑并列保研综测最高权重赛事；金奖项目常获地方政府/园区落地支持；考公选调认可度高；对创业类岗位就业有背书；留学申请可">
+      <div class="prep-bar" style="left:41.67%;width:50.00%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">“挑战杯”中国大学生创业计划竞…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:67px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="91" data-track="就业" title="赛事：全国口译大赛&#10;报名：参考惯例12月 ~ 参考惯例次年1-2月&#10;比赛：初赛2-3月，复赛3月，全国决赛4月&#10;备赛：3-6个月&#10;年级：大二-大四&#10;价值：口译领域权威赛事，CATTI同级行业背书，外企/翻译行业认可度高">
+      <div class="prep-bar" style="left:58.33%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国口译大赛</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:99px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="92" data-track="就业" title="赛事：全国大学生机械创新设计大赛&#10;报名：参考惯例前一年12月-当年3月（启动） ~ 参考惯例5-6月（2026常规赛：5.1-6.10报名）&#10;比赛：赛区预赛3-5月；国赛初评6月；全国决赛7月中下旬&#10;备赛：提前8-12个月（需机械结构设计与实物制作）&#10;年级：大二-大四&#10;价值：教育部A类赛事，国奖在保研与机械/装备类企业就业中认可度高；电科学生仅在“机电控制/电子测控”相关赛道可参与；考公/留学">
+      <div class="prep-bar" style="left:8.33%;width:83.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生机械创新设计大赛</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:131px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="93" data-track="就业" title="赛事：全国大学生软件创新大赛&#10;报名：参考惯例12月初（第十九届为2025.12.2） ~ 参考惯例2月初（第十九届为2026.2.2）&#10;比赛：参考惯例5月全国决赛（2026.5）&#10;备赛：3-5个月&#10;年级：大二/大三&#10;价值：示范性软件学院联盟主办，本校计算机学院专门发通知组织参赛，免费报名">
+      <div class="prep-bar" style="left:58.33%;width:33.33%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">全国大学生软件创新大赛</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:195px;background:#2563eb;border-color:#2563eb;"
+         data-comp-id="94" data-track="就业" title="赛事：大学生新一代信息通信科技大赛（原大唐杯全国大学生移动通信5G技术大赛）&#10;报名：参考惯例11-12月（次年赛季） ~ 参考惯例次年1-3月（2026年第13届报名截止3月10日）&#10;比赛：参考惯例上半年校赛/省赛，年中全国总决赛（2026年7月武汉）&#10;备赛：2-3个月&#10;年级：大二/大三&#10;价值：列入高教学会竞赛分析报告；通信行业高度对口，中信科/三大运营商就业背书；偏实操仿真">
+      <div class="prep-bar" style="left:75.00%;width:16.67%;background:#bfdbfe;border-left:2px dashed #2563eb;"></div>
+      <span class="bar-label">大学生新一代信息通信科技大赛（…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+      </div>
+    </div>
+
+    <div class="track-lane" data-track="考公" style="border-left:4px solid #16a34a;background:#f0fdf4;">
+      <div class="track-label" style="color:#166534;background:#bbf7d0;">
+        <span class="track-dot" style="background:#16a34a;"></span>
+        考公
+        <span class="track-count">15项</span>
+      </div>
+      <div class="lane-content" style="height:262px;">
+        
+    <div class="comp-bar rec-challenge" 
+         style="left:8.33%;width:41.67%;top:3px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="15" data-track="考公" title="赛事：中国大学生服务外包创新创业大赛&#10;报名：参考惯例2月（2026年为2月11日左右） ~ 参考惯例3月（2026年为3月20-31日）&#10;比赛：区域赛参考惯例6月；全国总决赛参考惯例8月&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：教育部A类学科竞赛；国家级二等奖以上在部分省份（如江苏、四川）选调中可作为国家级竞赛荣誉；IT/软件/外包企业认可度高；">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">中国大学生服务外包创新创业大赛</span>
+      <span class="bar-month">2月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:16.67%;top:35px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="34" data-track="考公" title="赛事：数字中国创新大赛·数字安全赛道&#10;报名：2026年3月12日 ~ 2026年4月6日（优秀案例征集赛）&#10;比赛：2026年4月预赛/决赛&#10;备赛：1-2个月&#10;年级：大二/大三&#10;价值：国家数字中国建设峰会官方赛事，政府+华为背书；聚焦国产算力/AI应用，奖金+算力代金券；华为等企业就业友好；赛题2"AI">
+      <div class="prep-bar" style="left:8.33%;width:8.33%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">数字中国创新大赛·数字安全赛道</span>
+      <span class="bar-month">3月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:16.67%;top:67px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="45" data-track="考公" title="赛事：挑战杯全国大学生课外学术科技作品竞赛 / 创业计划竞赛&#10;报名：参考惯例3-4月（校赛启动） ~ 参考惯例5-6月（2026年揭榜挂帅为5月30日-6月30日）&#10;比赛：校赛4-5月→省赛6-7月→国赛10-11月&#10;备赛：提前6-12个月（需有科研成果积累）&#10;年级：大二-研三&#10;价值：被誉为中国大学生科技创新奥林匹克；国赛等级奖项是保研加分硬通货；江苏/湖南/山东/广东等多省定向选调公告明确将挑战杯国家">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">挑战杯全国大学生课外学术科技作…</span>
+      <span class="bar-month">4月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:25.00%;width:33.33%;top:99px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="41" data-track="考公" title="赛事：全国大学生电子设计竞赛（TI杯/电赛）&#10;报名：参考惯例3-4月（学校统一组织） ~ 参考惯例6月中旬（2026年上海赛区6月15日截止）&#10;比赛：奇数年全国赛7月底-8月初（2025年7月30日-8月2日）；偶数年专题赛7月29日-8月1日赛区赛，8月下旬决赛&#10;备赛：提前6-8个月（建议大二上启动，大二下暑假参赛）&#10;年级：大二-大三&#10;价值：电子信息类最权威学科竞赛；国赛二等奖以上是电子类保研硬通货；华为/中兴/大疆/汇川等硬件大厂高度认可；多省定向选调中作为">
+      <div class="prep-bar" style="left:0.00%;width:25.00%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">全国大学生电子设计竞赛（TI杯…</span>
+      <span class="bar-month">4月-7月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:33.33%;top:35px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="54" data-track="考公" title="赛事：中国青年志愿服务项目大赛&#10;报名：参考惯例6月（第八届2026年为6月1日） ~ 参考惯例6月30日（第八届2026年为6月30日）&#10;比赛：省赛8-9月→全国赛10-12月（志交会期间）&#10;备赛：提前3-6个月（需有持续运营的志愿服务项目）&#10;年级：大二-研三&#10;价值：共青团中央主办的志愿服务领域最高赛事；全国赛银奖以上在选调面试和考察环节是重要加分项；与西部计划/返家乡等基层项目衔接；">
+      <div class="prep-bar" style="left:8.33%;width:33.33%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">中国青年志愿服务项目大赛</span>
+      <span class="bar-month">6月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:41.67%;top:67px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="56" data-track="考公" title="赛事：外研社·国才杯全国大学生外语能力大赛（英语写作/阅读/演讲/笔译）&#10;报名：参考惯例6月初 ~ 参考惯例9-10月（写作阅读约10月4日，演讲约9月中下旬）&#10;比赛：校赛9-10月，省赛10-11月，国赛11-12月&#10;备赛：1-3个月&#10;年级：大二-大四&#10;价值：英语类顶级赛事，保研/留学申请英语能力证明，外企求职加分；含写作/阅读/演讲/笔译/口译/短视频多赛项">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">外研社·国才杯全国大学生外语能…</span>
+      <span class="bar-month">6月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:58.33%;width:25.00%;top:3px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="62" data-track="考公" title="赛事：中国国际大学生创新大赛（原中国“互联网+”大学生创新创业大赛）&#10;报名：2026-08（报名系统8月10日开放） ~ 2026-09-25（2026年截止；2025年截止不晚于7月1日）&#10;比赛：校赛8-10月、省赛10-11月、全国总决赛11月&#10;备赛：提前4-6个月&#10;年级：大二-大四&#10;价值：国内规模最大的双创赛事（2025年619万项目参赛）；国赛金奖是保研top项目和选调面试重磅加分；江苏/浙江/四川/广东">
+      <div class="prep-bar" style="left:16.67%;width:41.67%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">中国国际大学生创新大赛（原中国…</span>
+      <span class="bar-month">8月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:58.33%;width:33.33%;top:99px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="63" data-track="考公" title="赛事：工行杯全国大学生金融科技创新大赛&#10;报名：参考惯例5-8月（第十七届2026年5月启动） ~ 参考惯例9-10月&#10;比赛：省赛10-11月；全国决赛12月-次年1月&#10;备赛：约4-6个月&#10;年级：大二及以上（金融科技方向）&#10;价值：17届历史千余高校参与；获奖可获工行校招/实习优先；对进入银行/金融国企就业有直接帮助；证书认可度高">
+      <div class="prep-bar" style="left:16.67%;width:41.67%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">工行杯全国大学生金融科技创新大赛</span>
+      <span class="bar-month">8月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:131px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="70" data-track="考公" title="赛事：全国密码技术竞赛&#10;报名：参考惯例9月初（第十一届为2026.9.2） ~ 参考惯例10月初（第十届2025年截止约9月）&#10;比赛：参考惯例11月决赛（第十届2025.11南开大学）&#10;备赛：2-3个月&#10;年级：大三/大四/研一&#10;价值：国家密码管理局指导，密码方向唯一国家级赛事，密评行业/密码局系统/国企密码岗位认可度高">
+      <div class="prep-bar" style="left:50.00%;width:16.67%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">全国密码技术竞赛</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:25.00%;top:163px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="72" data-track="考公" title="赛事：强网杯全国网络安全挑战赛&#10;报名：参考惯例9月（第九届为2025.9启动） ~ 参考惯例10月&#10;比赛：参考惯例11月线下总决赛（第九届2025.11郑州）&#10;备赛：3-6个月&#10;年级：大三/大四/研一&#10;价值：网安领域顶级赛事，军方背景（信息工程大学主办），国家级规格，获奖对网安方向就业认可度极高，考公/国安系统有优势">
+      <div class="prep-bar" style="left:33.33%;width:33.33%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">强网杯全国网络安全挑战赛</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:35px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="78" data-track="考公" title="赛事：全国大学生电子商务创新创意及创业挑战赛（三创赛）&#10;报名：参考惯例10月（上一年度，2026届为2025年10月20日起） ~ 参考惯例12月31日（2026届第十六届）&#10;比赛：校赛3-4月→省赛5-6月→全国总决赛7-8月&#10;备赛：提前3-4个月&#10;年级：大二-大四&#10;价值：教育部A类竞赛；国赛二等奖以上在部分省份选调中可作为国家级竞赛荣誉；对电商/互联网运营方向就业有帮助；电子信息工程学生可">
+      <div class="prep-bar" style="left:50.00%;width:25.00%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">全国大学生电子商务创新创意及创…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:75.00%;width:25.00%;top:195px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="77" data-track="考公" title="赛事：中国移动"九天·梧桐"杯数智创新大赛&#10;报名：参考惯例9-10月（第五届2025年9月启动） ~ 参考惯例11月&#10;比赛：省赛12月-次年1月；全国决赛3-6月（第五届2026年6月总决赛）&#10;备赛：约6-8个月&#10;年级：大二及以上（数据/AI方向）&#10;价值：运营商头部赛事；获奖可获中国移动校招/实习优先推荐；开放脱敏真实数据；对进入国企/运营商就业极有帮助">
+      <div class="prep-bar" style="left:16.67%;width:58.33%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">中国移动"九天·梧桐"杯数智创…</span>
+      <span class="bar-month">10月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:25.00%;top:227px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="79" data-track="考公" title="赛事：全国大学生职业规划大赛&#10;报名：2025-10（第三届启动，2025年10月20日平台开放） ~ 参考惯例1月底（不晚于2026-01-31）&#10;比赛：校赛11-12月→省赛3-4月→全国总决赛5-6月&#10;备赛：提前2-3个月&#10;年级：大二-大四&#10;价值：教育部官方赛事，全国总决赛奖项在考公/选调求职中体现职业规划能力；获奖证书教育部认可；对明确就业方向和准备面试有实际帮助">
+      <div class="prep-bar" style="left:58.33%;width:16.67%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">全国大学生职业规划大赛</span>
+      <span class="bar-month">10月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:3px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="83" data-track="考公" title="赛事：“挑战杯”全国大学生课外学术科技作品竞赛（大挑）&#10;报名：参考惯例11月（校赛启动） ~ 参考次年3-6月（省赛推报国赛）&#10;比赛：国赛参考惯例10-11月（奇数年）&#10;备赛：提前6-12个月（需完整科研作品积累）&#10;年级：大二-大四&#10;价值：保研综测加分权重最高赛事之一；国赛获奖在选调生/央国企简历关高度认可；留学申请可作科研经历背书；对技术岗就业有辅助但非直">
+      <div class="prep-bar" style="left:8.33%;width:75.00%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">“挑战杯”全国大学生课外学术科…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:91.67%;width:8.33%;top:3px;background:#16a34a;border-color:#16a34a;"
+         data-comp-id="90" data-track="考公" title="赛事：“挑战杯”中国大学生创业计划竞赛（小挑）&#10;报名：参考惯例11-12月（校赛启动） ~ 参考次年5-8月（省赛推报）&#10;比赛：国赛参考惯例10-11月（偶数年，2026年为第15届）&#10;备赛：提前4-8个月（需撰写完整创业计划书）&#10;年级：大二-大四&#10;价值：与大挑并列保研综测最高权重赛事；金奖项目常获地方政府/园区落地支持；考公选调认可度高；对创业类岗位就业有背书；留学申请可">
+      <div class="prep-bar" style="left:41.67%;width:50.00%;background:#bbf7d0;border-left:2px dashed #16a34a;"></div>
+      <span class="bar-label">“挑战杯”中国大学生创业计划竞…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+      </div>
+    </div>
+
+    <div class="track-lane" data-track="留学" style="border-left:4px solid #9333ea;background:#faf5ff;">
+      <div class="track-label" style="color:#6b21a8;background:#e9d5ff;">
+        <span class="track-dot" style="background:#9333ea;"></span>
+        留学
+        <span class="track-count">24项</span>
+      </div>
+      <div class="lane-content" style="height:294px;">
+        
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:8.33%;top:3px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="1" data-track="留学" title="赛事：IBM Quantum Challenge（IBM量子计算挑战赛）&#10;报名：参考惯例每年不定期开放（通常年中） ~ 线上活动开放期内完成（约2-4周窗口）&#10;比赛：线上自主完成，学习+挑战模式&#10;备赛：1-2个月（需先学Qiskit框架）&#10;年级：大二-大四&#10;价值：量子计算领域入门级全球挑战赛，IBM官方证书，留学申请前沿方向背书">
+      
+      <span class="bar-label">IBM Quantum Cha…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:0.00%;width:8.33%;top:35px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="2" data-track="留学" title="赛事：Kaggle数据科学竞赛（Featured/Research级）&#10;报名：常年滚动开放 ~ 按具体比赛而定（通常赛期2-4个月，各比赛独立截止）&#10;比赛：常年滚动（Featured/Research级比赛全年不断）&#10;备赛：每个比赛2-4个月&#10;年级：大二-研一&#10;价值：Featured级金/银/铜牌是全球数据科学领域黄金标准；Google/字节/腾讯/美团等头部AI企业算法岗直接认可；K">
+      
+      <span class="bar-label">Kaggle数据科学竞赛（Fe…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:8.33%;top:67px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="3" data-track="留学" title="赛事：MLH（Major League Hacking）系列黑客松/Global Hack Week&#10;报名：参考惯例每月/每季度开放（GHW通常1月/4月/7月/12月） ~ 活动开始前1周截止&#10;比赛：线上48小时集中开发，全年多场&#10;备赛：1-2周（了解规则+组队）&#10;年级：大二-大四&#10;价值：国际开源社区履历，对留学申请和外企求职有加分；Hackathon Season累计200+场全球赛事">
+      
+      <span class="bar-label">MLH（Major Leagu…</span>
+      <span class="bar-month">1月-1月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:0.00%;width:33.33%;top:99px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="7" data-track="留学" title="赛事：全国大学生英语竞赛（NECCS）&#10;报名：参考惯例1月初（2026赛季：2025.12.17起） ~ 参考惯例3月中旬（2026赛季：2026.3.13截止）&#10;比赛：初赛4月第二个周日；决赛5月第二个周日（2026:4.12初赛/5.10决赛）&#10;备赛：提前1-2个月（熟悉题型）&#10;年级：大一-大四&#10;价值：特等奖/全国一等奖在保研复试与留学申请中有一定英语能力背书；B类(英语专业)/C类(非英本)分组；考公/就业认可度一般">
+      
+      <span class="bar-label">全国大学生英语竞赛（NECCS）</span>
+      <span class="bar-month">1月-4月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:8.33%;width:33.33%;top:3px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="13" data-track="留学" title="赛事：Google Summer of Code（GSoC 谷歌编程之夏）&#10;报名：参考惯例2月中旬（2026年2月19日公布指导组织） ~ 参考惯例3月底（2026年3月16-31日学生申请）&#10;比赛：社区Bonding 5月，编码5-8月，中期评估7月，最终评估8-11月&#10;备赛：2-3个月（需提前与开源社区mentor沟通）&#10;年级：大二-大四&#10;价值：全球最大开源实习项目，有stipend津贴，留学申请极强背书，大厂开源经历就业高分项">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">Google Summer o…</span>
+      <span class="bar-month">2月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:8.33%;width:41.67%;top:35px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="14" data-track="留学" title="赛事：iGEM国际基因工程机器大赛&#10;报名：参考惯例1-2月早鸟注册（2026年2月12日Early Deadline） ~ 参考惯例4-6月（2026年4月2日常规/6月4日最晚）&#10;比赛：注册2-6月，项目执行5-9月，Team Roster冻结9月，Grand Jamboree 10-11月&#10;备赛：8-12个月（全年项目制）&#10;年级：大二-大三&#10;价值：合成生物学全球顶级跨学科赛事，留学申请极强背书（尤其北美），电子信息学生可参与Hardware/Software赛道">
+      <div class="prep-bar" style="left:0.00%;width:8.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">iGEM国际基因工程机器大赛</span>
+      <span class="bar-month">2月-6月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:16.67%;width:25.00%;top:67px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="20" data-track="留学" title="赛事：中国机器人大赛暨RoboCup机器人世界杯中国赛&#10;报名：参考惯例年初（2026年校赛报名截止3月31日） ~ 参考惯例3月底&#10;比赛：RoboCup中国公开赛5月初（2026年5月2-4日北京怀柔）；总决赛10月（2026年10月16-18日杭州）&#10;备赛：6-10个月&#10;年级：大三/大四（学术性强，适合有科研基础者）&#10;价值：RoboCup为国际顶级机器人赛事，中国赛优秀队伍可晋级国际赛；学术性强，留学申请（海外robotics/AI方向）背书">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">中国机器人大赛暨RoboCup…</span>
+      <span class="bar-month">3月-5月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:16.67%;width:50.00%;top:131px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="32" data-track="留学" title="赛事：国际空中机器人大赛（IARC）&#10;报名：参考惯例1-3月（2027 Mission 10申请建议1-3月提交） ~ 每年6月1日&#10;比赛：每年8月（美国/亚太赛区交替举办）&#10;备赛：1-2年&#10;年级：大三/大四（需深入科研积累）&#10;价值：国际顶级无人机/空中机器人赛事，清华等顶尖高校参加；留学申请（尤其美国/欧洲机器人方向）极强背书；Mission 10冠">
+      <div class="prep-bar" style="left:0.00%;width:16.67%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">国际空中机器人大赛（IARC）</span>
+      <span class="bar-month">3月-8月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:41.67%;top:99px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="49" data-track="留学" title="赛事："华为杯"中国研究生人工智能创新大赛&#10;报名：参考惯例5月下旬（2025年5月27日） ~ 参考惯例8月22日（2025年8月22日）&#10;比赛：9月初赛评审，10-11月决赛&#10;备赛：提前3-4个月&#10;年级：研一-研二（本科生需已获研究生录取资格）&#10;价值：AI领域研究生顶级赛事，获奖对读博/AI实验室申请/大厂AI岗有强背书；但本科大二学生一般不能直接参赛，需保研拿到off">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">"华为杯"中国研究生人工智能创…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:33.33%;width:41.67%;top:163px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="50" data-track="留学" title="赛事：中国高校计算机大赛-移动应用创新赛&#10;报名：参考惯例4-5月 ~ 参考惯例6月底（启明/启迪赛道2026.6.30，启航赛道2026.7.31）&#10;比赛：参考惯例8-9月决赛&#10;备赛：3-5个月&#10;年级：大二/大三&#10;价值：C4系列白名单赛事，苹果赞助，iOS/macOS生态，海外认可度尚可，适合移动端开发方向">
+      <div class="prep-bar" style="left:0.00%;width:33.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">中国高校计算机大赛-移动应用创…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:33.33%;width:41.67%;top:195px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="52" data-track="留学" title="赛事：全国大学生数学建模竞赛（CUMCM，高教社杯）&#10;报名：参考惯例5月（校内报名启动） ~ 参考惯例9月1日20:00前（向全国组委会报名截止）&#10;比赛：参考惯例9月上旬周四18:00至周日20:00（2025:9.4-9.7；2026:9.10开赛）&#10;备赛：提前3-4个月（暑假集中集训）&#10;年级：大二-大三&#10;价值：国一/国二是保研夏令营与综测的硬通货；美国/英国工科留学申请中认可度高；对算法/数据类岗位就业有辅助；考公认可度一般">
+      <div class="prep-bar" style="left:8.33%;width:25.00%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">全国大学生数学建模竞赛（CUM…</span>
+      <span class="bar-month">5月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:33.33%;top:3px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="57" data-track="留学" title="赛事：腾讯广告算法大赛&#10;报名：参考惯例6月中旬（2025年6月16日） ~ 参考惯例7月31日（2025年7月31日）&#10;比赛：8-9月初赛，9-10月复赛，11月底线下决赛（2025年11月深圳）&#10;备赛：提前2-3个月&#10;年级：大三-研二&#10;价值：与KDD顶会联合举办，优胜成果被KDD Workshop Proceedings收录；腾讯入职绿色通道（免笔试/直通面试">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">腾讯广告算法大赛</span>
+      <span class="bar-month">6月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:41.67%;width:41.67%;top:67px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="56" data-track="留学" title="赛事：外研社·国才杯全国大学生外语能力大赛（英语写作/阅读/演讲/笔译）&#10;报名：参考惯例6月初 ~ 参考惯例9-10月（写作阅读约10月4日，演讲约9月中下旬）&#10;比赛：校赛9-10月，省赛10-11月，国赛11-12月&#10;备赛：1-3个月&#10;年级：大二-大四&#10;价值：英语类顶级赛事，保研/留学申请英语能力证明，外企求职加分；含写作/阅读/演讲/笔译/口译/短视频多赛项">
+      <div class="prep-bar" style="left:25.00%;width:16.67%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">外研社·国才杯全国大学生外语能…</span>
+      <span class="bar-month">6月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:58.33%;width:16.67%;top:35px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="61" data-track="留学" title="赛事：ICPC国际大学生程序设计竞赛（亚洲区域赛）&#10;报名：参考惯例8月（网络预选赛报名） ~ 参考惯例8月底-10月（各站点报名截止不同）&#10;比赛：网络赛9月；亚洲区域赛10-11月（多站点）&#10;备赛：提前6-12个月（长期刷题训练）&#10;年级：大二-大四&#10;价值：区域赛金牌（尤其金/银）是大厂算法岗（字节/腾讯/阿里/美团）最硬背书之一，大量直通面试/免笔试；保研复试中有显著加分；">
+      <div class="prep-bar" style="left:0.00%;width:58.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">ICPC国际大学生程序设计竞赛…</span>
+      <span class="bar-month">8月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:58.33%;width:25.00%;top:227px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="62" data-track="留学" title="赛事：中国国际大学生创新大赛（原中国“互联网+”大学生创新创业大赛）&#10;报名：2026-08（报名系统8月10日开放） ~ 2026-09-25（2026年截止；2025年截止不晚于7月1日）&#10;比赛：校赛8-10月、省赛10-11月、全国总决赛11月&#10;备赛：提前4-6个月&#10;年级：大二-大四&#10;价值：国内规模最大的双创赛事（2025年619万项目参赛）；国赛金奖是保研top项目和选调面试重磅加分；江苏/浙江/四川/广东">
+      <div class="prep-bar" style="left:16.67%;width:41.67%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">中国国际大学生创新大赛（原中国…</span>
+      <span class="bar-month">8月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:66.67%;width:8.33%;top:131px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="73" data-track="留学" title="赛事：阿里天池大数据/AI算法竞赛&#10;报名：全年滚动（各赛题不同，新人赛通常3-9月） ~ 各赛题独立，通常持续1-3个月&#10;比赛：全年滚动，季度性赛事&#10;备赛：提前1-2个月（针对具体赛题）&#10;年级：大二-大四&#10;价值：国内最大数据科学竞赛平台，天池Top名次在阿里/字节/美团等算法岗校招中有强简历背书；免费参赛；适合利用AI工具做Kag">
+      <div class="prep-bar" style="left:58.33%;width:8.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">阿里天池大数据/AI算法竞赛</span>
+      <span class="bar-month">9月-9月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:66.67%;width:25.00%;top:259px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="65" data-track="留学" title="赛事：Meta Hacker Cup&#10;报名：参考惯例8-9月 ~ 参考惯例10月（首轮前）&#10;比赛：多轮线上赛9-11月，全球总决赛12月（2025年总决赛12月20日线上举行）&#10;备赛：长期算法训练3-6个月以上&#10;年级：大二-大四&#10;价值：全球顶级算法竞赛，与ICPC/CCPC同级别的算法背书，Meta/FAANG面试绿色通道，冠军$20,000">
+      <div class="prep-bar" style="left:33.33%;width:33.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">Meta Hacker Cup</span>
+      <span class="bar-month">9月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:75.00%;width:8.33%;top:3px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="74" data-track="留学" title="赛事：NVIDIA年度Hackathon黑客松（中国区）&#10;报名：参考惯例年中（2025年赛事） ~ 参考惯例赛前1-2个月&#10;比赛：年度总决赛10月（NVIDIA中国开发者日期间）&#10;备赛：约2-3个月&#10;年级：大二及以上（AI/GPU方向）&#10;价值：接触CUDA/TensorRT/NeMo等NVIDIA全栈技术；获奖可获NVIDIA生态关注；对出国深造/AI公司就业有">
+      <div class="prep-bar" style="left:58.33%;width:16.67%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">NVIDIA年度Hackath…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:75.00%;width:8.33%;top:35px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="75" data-track="留学" title="赛事：RoboMaster机甲大师超级对抗赛（RMUC）&#10;报名：参考惯例10月底（2026赛季报名2025年10月29日） ~ 参考惯例11月初（2026赛季报名截止2025年11月6日）&#10;比赛：区域赛5-6月，复活赛7-8月，全国赛7-8月（2026年深圳春茧）&#10;备赛：约10个月（跨年赛季，全年投入）&#10;年级：大二入队最佳（大一需先成为预备队员）&#10;价值：DJI官方赛事；获奖/参与经历在大疆/机器人/自动驾驶行业认可度极高；技术覆盖机器视觉/嵌入式/机械/射频；RMUA侧重">
+      <div class="prep-bar" style="left:0.00%;width:75.00%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">RoboMaster机甲大师超…</span>
+      <span class="bar-month">10月-10月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:83.33%;width:8.33%;top:3px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="82" data-track="留学" title="赛事：Microsoft Imagine Cup（微软创新杯）&#10;报名：参考惯例10-11月 ~ 参考惯例次年1-2月&#10;比赛：区域赛3-4月，世界总决赛5-6月（Microsoft Build大会）&#10;备赛：3-6个月&#10;年级：大二-大四&#10;价值：全球历史最悠久学生科技创业赛（20+年），冠军$100,000奖金，与Satya Nadella mentoring机会">
+      <div class="prep-bar" style="left:50.00%;width:33.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">Microsoft Imagi…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:35px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="83" data-track="留学" title="赛事：“挑战杯”全国大学生课外学术科技作品竞赛（大挑）&#10;报名：参考惯例11月（校赛启动） ~ 参考次年3-6月（省赛推报国赛）&#10;比赛：国赛参考惯例10-11月（奇数年）&#10;备赛：提前6-12个月（需完整科研作品积累）&#10;年级：大二-大四&#10;价值：保研综测加分权重最高赛事之一；国赛获奖在选调生/央国企简历关高度认可；留学申请可作科研经历背书；对技术岗就业有辅助但非直">
+      <div class="prep-bar" style="left:8.33%;width:75.00%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">“挑战杯”全国大学生课外学术科…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:83.33%;width:8.33%;top:67px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="88" data-track="留学" title="赛事：美国大学生数学建模竞赛（MCM/ICM，美赛）&#10;报名：参考惯例11月 ~ 参考惯例1月（2026年为1月28日）&#10;比赛：参考惯例2月初（2026年为1月30日-2月3日，96小时连续比赛）&#10;备赛：提前3-4个月&#10;年级：大二-大三&#10;价值：O奖/F奖（全球top1%）对美/英/港新CS/工科硕士留学申请有强背书；M奖以上多数985/211高校保研加分；大厂数">
+      <div class="prep-bar" style="left:58.33%;width:25.00%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">美国大学生数学建模竞赛（MCM…</span>
+      <span class="bar-month">11月-11月</span>
+    </div>
+
+    <div class="comp-bar rec-recommend" 
+         style="left:91.67%;width:8.33%;top:3px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="90" data-track="留学" title="赛事：“挑战杯”中国大学生创业计划竞赛（小挑）&#10;报名：参考惯例11-12月（校赛启动） ~ 参考次年5-8月（省赛推报）&#10;比赛：国赛参考惯例10-11月（偶数年，2026年为第15届）&#10;备赛：提前4-8个月（需撰写完整创业计划书）&#10;年级：大二-大四&#10;价值：与大挑并列保研综测最高权重赛事；金奖项目常获地方政府/园区落地支持；考公选调认可度高；对创业类岗位就业有背书；留学申请可">
+      <div class="prep-bar" style="left:41.67%;width:50.00%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">“挑战杯”中国大学生创业计划竞…</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+
+    <div class="comp-bar rec-challenge" 
+         style="left:91.67%;width:8.33%;top:35px;background:#9333ea;border-color:#9333ea;"
+         data-comp-id="91" data-track="留学" title="赛事：全国口译大赛&#10;报名：参考惯例12月 ~ 参考惯例次年1-2月&#10;比赛：初赛2-3月，复赛3月，全国决赛4月&#10;备赛：3-6个月&#10;年级：大二-大四&#10;价值：口译领域权威赛事，CATTI同级行业背书，外企/翻译行业认可度高">
+      <div class="prep-bar" style="left:58.33%;width:33.33%;background:#e9d5ff;border-left:2px dashed #9333ea;"></div>
+      <span class="bar-label">全国口译大赛</span>
+      <span class="bar-month">12月-12月</span>
+    </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="detail-panel" id="detailPanel">
+    <div class="detail-header">
+      <div class="detail-title" id="detailTitle"></div>
+      <button class="detail-close" onclick="document.getElementById('detailPanel').classList.remove('show')">✕</button>
+    </div>
+    <div class="detail-grid" id="detailGrid"></div>
+  </div>
+  <div class="footer">
+    数据来源：各赛事官网、教育部白名单、中国高等教育学会竞赛目录、高校教务处通知、大厂招聘官网 | 
+    2027年未公布日期标注为"参考惯例时间"，以官方最新通知为准 | 每周一自动更新赛事时间与停办信息<br>
+    共收录 <strong>94</strong> 项高含金量赛事+科研项目，剔除付费水赛与山寨赛事
+  </div>
+</div>
+<script>
+const competitions = [{"id": 1, "name": "IBM Quantum Challenge（IBM量子计算挑战赛）", "organizer": "IBM Quantum", "url": "https://www.ibm.com/quantum/", "reg_start": "参考惯例每年不定期开放（通常年中）", "reg_end": "线上活动开放期内完成（约2-4周窗口）", "comp_time": "线上自主完成，学习+挑战模式", "prep_cycle": "1-2个月（需先学Qiskit框架）", "grade": "大二-大四", "tracks": ["留学", "就业"], "tracks_raw": "留学/就业", "value": "量子计算领域入门级全球挑战赛，IBM官方证书，留学申请前沿方向背书", "pitfall": "非高强度竞技，更像在线学习挑战（Learn & Challenge）；需提前自学Qiskit；对保研综测帮助有限，但对留学和前沿方向探索有价值；2024年有5256人注册/2383活跃用户", "threshold": "Python基础，量子计算入门知识", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "IBM Quantum官网博客（2025年3月教育进展文章）", "start_month": 1, "end_month": 1}, {"id": 2, "name": "Kaggle数据科学竞赛（Featured/Research级）", "organizer": "Kaggle (Google LLC)", "url": "https://www.kaggle.com/competitions", "reg_start": "常年滚动开放", "reg_end": "按具体比赛而定（通常赛期2-4个月，各比赛独立截止）", "comp_time": "常年滚动（Featured/Research级比赛全年不断）", "prep_cycle": "每个比赛2-4个月", "grade": "大二-研一", "tracks": ["就业", "留学", "保研"], "tracks_raw": "就业/留学/保研", "value": "Featured级金/银/铜牌是全球数据科学领域黄金标准；Google/字节/腾讯/美团等头部AI企业算法岗直接认可；Kaggle Master/Grandmaster头衔对CS/Data Science方向留学申请有极强背书；对保研复试展示工程能力有帮助。", "pitfall": "Playground级/Getting Started级奖牌含金量低，务必只选Featured或Research级；Kaggle不发纸质证书，需自行保存排行榜截图；注意部分比赛禁止外部数据/模型；铜牌门槛约top10%，银牌top5%，金牌top0.2%。", "threshold": "免费注册，1-4人组队；需Python+机器学习基础（Pandas/Scikit-learn/PyTorch）；建议先打1-2个银牌比赛积累经验再冲Featured。", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓", "source": "Kaggle官网（kaggle.com/competitions）；人民网重庆频道2026年4月报道（重庆邮电大学本科生获Kaggle金牌）；华龙网相关报道。", "start_month": 1, "end_month": 1}, {"id": 3, "name": "MLH（Major League Hacking）系列黑客松/Global Hack Week", "organizer": "Major League Hacking（全球最大学生黑客松联盟）", "url": "https://mlh.com/", "reg_start": "参考惯例每月/每季度开放（GHW通常1月/4月/7月/12月）", "reg_end": "活动开始前1周截止", "comp_time": "线上48小时集中开发，全年多场", "prep_cycle": "1-2周（了解规则+组队）", "grade": "大二-大四", "tracks": ["就业", "留学"], "tracks_raw": "就业/留学", "value": "国际开源社区履历，对留学申请和外企求职有加分；Hackathon Season累计200+场全球赛事", "pitfall": "大部分为线上英文活动，无国内官方证书，与保研综测关联弱；中国区无专属线下站点，需全英文交流；适合已有编程基础者快速积累项目经验", "threshold": "基础全栈编程能力，英文沟通", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024/2025/2026连续举办，2026赛季200+场", "source": "MLH官网mlh.com及events.mlh.com", "start_month": 1, "end_month": 1}, {"id": 4, "name": "XCTF国际联赛", "organizer": "赛宁网安（XCTF组委会），攻防世界平台运营", "url": "https://adworld.xctf.org.cn", "reg_start": "各分站赛不同，全年滚动报名", "reg_end": "各分站赛前1-2周截止", "comp_time": "全年多站分站赛，年底总决赛", "prep_cycle": "持续备赛", "grade": "大二/大三", "tracks": ["就业"], "tracks_raw": "就业", "value": "国内最具影响力的CTF联赛体系，已举办10届，覆盖国内外高校战队，网安企业校招认可度高", "pitfall": "分站赛众多水平参差不齐，只有总决赛和知名分站赛含金量高；纯民间商业联赛，保研认可度不如官方白名单赛事；需长期稳定训练", "threshold": "3人固定战队，CTF各方向（Web/Pwn/Reverse/Crypto）能力", "major_match": "高", "ai_match": "低", "recommend": "可冲", "history": "2024第8届/2025第9届/2026第10届连续举办", "source": "攻防世界平台(adworld.xctf.org.cn)赛事日历", "start_month": 1, "end_month": 1}, {"id": 5, "name": "中国大学生计算机设计大赛（4C）", "organizer": "中国大学生计算机设计大赛组织委员会（多所985高校联合发起）", "url": "https://jsjds.blcu.edu.cn/", "reg_start": "参考惯例1月（大赛通知发布）", "reg_end": "参考惯例4月中下旬（2025：4.20-5.5报名）", "comp_time": "校赛3-4月；省赛5-6月；国赛7-8月（2025第18届获奖公告9月）", "prep_cycle": "提前3-5个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "国赛一等奖在保研综测与IT类企业简历中有一定加分；比赛科目多（软件应用、数媒、微课、人工智能类），适配面广；考公/留学认可度中等", "pitfall": "需先过校赛/省赛才能推国赛；部分类别收评审费；科目繁杂，建议选人工智能/数媒设计类与AI能力结合", "threshold": "报名费约200-300元/作品；团队2-3人；需提交软件作品/设计作品/视频", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024✓(第17届) 2025✓(第18届) 2026✓(第19届)", "source": "4C官网 jsjds.blcu.edu.cn；2025第18届通知与获奖公告；北航/北工大2025报名通知", "start_month": 1, "end_month": 4}, {"id": 6, "name": "全国大学生生命科学竞赛（创新创业类）", "organizer": "教育部高等学校生物技术/生物工程类专业教学指导委员会", "url": "http://www.culsc.cn/", "reg_start": "参考惯例1月20日（创新创业类网报开始）", "reg_end": "参考惯例4月20日（网报截止）", "comp_time": "申报1-4月，资格审查4-5月，网评5月，省赛6月，全国决赛7-8月", "prep_cycle": "3-6个月", "grade": "大二-大三", "tracks": ["保研"], "tracks_raw": "保研", "value": "生命科学领域权威赛事，创新创业类赛道欢迎交叉学科项目", "pitfall": "分科学探究类（偏实验研究，前一年8月-当年1月报名）和创新创业类（偏项目实践，1-4月申报）两个赛道；电子信息学生仅在'智慧医疗/生物医学工程/生物信息'交叉方向可参与，纯电子信息项目不建议参加；需与生科院团队合作", "threshold": "需有生命科学相关项目背景，3-5人团队", "major_match": "低", "ai_match": "高", "recommend": "不建议", "history": "2024(9届)/2025(10届)/2026(11届)连续举办", "source": "culsc.cn官网及西南交大/西安交大/温州大学2026年通知", "start_month": 1, "end_month": 4}, {"id": 7, "name": "全国大学生英语竞赛（NECCS）", "organizer": "国际英语外语教师协会中国英语外语教师协会（TEFL-China）、高等学校大学外语教学研究会", "url": "https://www.chinaneccs.cn/", "reg_start": "参考惯例1月初（2026赛季：2025.12.17起）", "reg_end": "参考惯例3月中旬（2026赛季：2026.3.13截止）", "comp_time": "初赛4月第二个周日；决赛5月第二个周日（2026:4.12初赛/5.10决赛）", "prep_cycle": "提前1-2个月（熟悉题型）", "grade": "大一-大四", "tracks": ["留学", "保研"], "tracks_raw": "留学/保研", "value": "特等奖/全国一等奖在保研复试与留学申请中有一定英语能力背书；B类(英语专业)/C类(非英本)分组；考公/就业认可度一般", "pitfall": "需报名费约50元/人；获奖面较大但国家级奖项需从初赛突围；勿把校级/省级奖当国家级；与四六级不冲突但别混淆", "threshold": "报名费50元/人；个人笔试(含听力)；C类适合非英语专业", "major_match": "低", "ai_match": "低", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓", "source": "NECCS报名页 neccs.saikr.com；中央财经/中国人民大学2025报名通知 报名入口 https://neccs.saikr.com/；2026-10-03人工核验：官网与报名站均可访问", "start_month": 1, "end_month": 4}, {"id": 8, "name": "全国大学生集成电路创新创业大赛（集创赛）", "organizer": "工业和信息化部人才交流中心、中国半导体行业协会", "url": "http://univ.ciciec.com", "reg_start": "参考惯例1月下旬（2025年1月24日）", "reg_end": "参考惯例3月20日（2025年3月20日）", "comp_time": "4-6月初赛/分赛区，7-8月全国总决赛", "prep_cycle": "提前3-4个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "高教学会目录唯一集成电路专业A类赛事；IC设计/验证/版图方向就业认可度极高，数十家企业冠名出题（华为海思/紫光/中兴微等），获奖可获校招绿色通道；本校微电子方向保研加分", "pitfall": "赛题分模拟/数字/版图/先进工艺等多个方向，不同方向门槛差异大；数字IC方向需Verilog，模拟方向需Cadence Virtuoso经验；无报名费但企业赛题可能要求使用指定EDA工具", "threshold": "无报名费；3人一队；需联系指导教师；数字方向需Verilog/数电基础，模拟方向需模电/EDA工具经验", "major_match": "高", "ai_match": "低", "recommend": "推荐", "history": "2024✓(第八届) 2025✓(第九届) 2026✓(参考惯例1-3月报名)", "source": "ciciec.com官网；西安交大/北邮2025年报名通知", "start_month": 1, "end_month": 6}, {"id": 9, "name": "昇腾AI算法挑战赛（含算子赛/模型适配赛）", "organizer": "华为昇腾生态（华为云）", "url": "https://developer.huaweicloud.com/competition/information/1300000124/introduction", "reg_start": "全年滚动（算子进阶赛2026年初报名）", "reg_end": "视具体赛题而定", "comp_time": "全年多场次（2026年含Model Agent适配赛20万奖金）", "prep_cycle": "视赛题2-4周不等", "grade": "大三及以上（AI/算力方向）", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "单项奖金10-20万元；获奖可获华为昇腾生态就业/实习机会；算子优化能力稀缺", "pitfall": "与华为ICT大赛昇腾赛道（已有列表）不同；本赛为华为云平台独立算法赛；偏底层算子开发而非应用层", "threshold": "熟悉C++/Python；有GPU/AI算子优化经验者优先；了解深度学习框架", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024-2026持续举办多场赛题（算子赛/适配赛/模型优化赛）", "source": "华为云开发者大赛平台；昇腾社区hiascend.com", "start_month": 1, "end_month": 1}, {"id": 10, "name": "美团低空经济与具身智能挑战赛", "organizer": "美团机器人研究院（深圳市美团机器人研究院+清华深圳国际研究生院）", "url": "https://uav-challenge.meituan.com/", "reg_start": "参考惯例年中", "reg_end": "视赛题而定", "comp_time": "初赛/决赛两阶段", "prep_cycle": "约2-3个月", "grade": "大二及以上（机器人/无人机方向）", "tracks": ["就业"], "tracks_raw": "就业", "value": "美团机器人研究院官方赛事；具身智能/低空经济前沿方向；获奖可获美团机器人方向实习/就业关注；赛题源于真实物流无人机场景", "pitfall": "偏无人机/机器人操作而非通用算法；第四届（2026）以具身智能操作为核心；与美团编程大赛不同", "threshold": "有机器人/控制/嵌入式基础；对具身智能/无人机感兴趣；2-5人组队", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024第三届/2026第四届连续举办", "source": "美团低空经济挑战赛官网uav-challenge.meituan.com", "start_month": 1, "end_month": 1}, {"id": 11, "name": "腾讯犀牛鸟精英人才培养计划", "organizer": "腾讯公司（与CCF联合发起）", "url": "https://ur.tencent.com/article/1516", "reg_start": "参考惯例1月（2026年1月8日开放申请）", "reg_end": "参考惯例3-4月", "comp_time": "校企双导师培养6-12个月", "prep_cycle": "全年培养", "grade": "大三及以上本科生/硕博（科研方向）", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "入选后校企双导师联合培养；接触产业真实课题与数据；表现优异可获腾讯校招SP；对保研推荐信有帮助", "pitfall": "非竞赛而是科研人才计划；需提交简历/科研陈述；竞争激烈（入选率低）；偏向已有科研基础者", "threshold": "有明确研究兴趣方向；GPA较好；能投入足够时间做科研项目", "major_match": "中", "ai_match": "高", "recommend": "推荐", "history": "2024第七年/2025第九年/2026持续开放申请", "source": "腾讯高校合作ur.tencent.com；2026年1月8日官方公告", "start_month": 1, "end_month": 1}, {"id": 12, "name": "英特尔AI创新应用大赛", "organizer": "英特尔（中国）有限公司", "url": "https://www.intel.cn/content/www/cn/zh/architecture-and-technology/registration-for-ai-innovation-competition.html", "reg_start": "参考惯例上半年", "reg_end": "参考惯例年中", "comp_time": "约3个月", "prep_cycle": "大二及以上（AI/边缘计算方向）", "grade": "就业/留学", "tracks": ["百万奖金池；优秀团队直通英特尔全球AI嘉年华；低门槛开发工具+全栈资源；边缘AI方向"], "tracks_raw": "百万奖金池；优秀团队直通英特尔全球AI嘉年华；低门槛开发工具+全栈资源；边缘AI方向", "value": "含青少年组/开发者组/企业组多赛道；偏应用创新而非硬核算法；与oneAPI校园黑客松（2023后停办）不同", "pitfall": "对边缘AI/OpenVINO有兴趣；有应用开发能力即可；门槛相对较低", "threshold": "中", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "英特尔中国官网intel.cn；2025年第二届招募公告", "source": "", "start_month": 1, "end_month": 1}, {"id": 13, "name": "Google Summer of Code（GSoC 谷歌编程之夏）", "organizer": "Google", "url": "https://summerofcode.withgoogle.com/", "reg_start": "参考惯例2月中旬（2026年2月19日公布指导组织）", "reg_end": "参考惯例3月底（2026年3月16-31日学生申请）", "comp_time": "社区Bonding 5月，编码5-8月，中期评估7月，最终评估8-11月", "prep_cycle": "2-3个月（需提前与开源社区mentor沟通）", "grade": "大二-大四", "tracks": ["留学", "就业"], "tracks_raw": "留学/就业", "value": "全球最大开源实习项目，有stipend津贴，留学申请极强背书，大厂开源经历就业高分项", "pitfall": "不是竞赛而是开源实习项目！需提前2-3月与开源社区mentor建立联系并做贡献；中国学生需注意Google服务访问问题；竞争激烈；通常3月申请5-8月远程工作；成功后有奖学金", "threshold": "Git/Linux基础，能独立完成开源项目任务", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024/2025/2026连续举办", "source": "developers.google.com/open-source/gsoc官网Timeline [自动检查:error_timed out，需人工确认]", "start_month": 2, "end_month": 5}, {"id": 14, "name": "iGEM国际基因工程机器大赛", "organizer": "iGEM Foundation（美国波士顿/巴黎）", "url": "https://competition.igem.org/", "reg_start": "参考惯例1-2月早鸟注册（2026年2月12日Early Deadline）", "reg_end": "参考惯例4-6月（2026年4月2日常规/6月4日最晚）", "comp_time": "注册2-6月，项目执行5-9月，Team Roster冻结9月，Grand Jamboree 10-11月", "prep_cycle": "8-12个月（全年项目制）", "grade": "大二-大三", "tracks": ["留学"], "tracks_raw": "留学", "value": "合成生物学全球顶级跨学科赛事，留学申请极强背书（尤其北美），电子信息学生可参与Hardware/Software赛道", "pitfall": "团队报名费极高（约$5000+，需学校资助/赞助）；备赛周期长达一年投入巨大；偏生物方向，电子信息学生需找到hardware/software/网站开发切入点；需加入本校iGEM团队（本校暂无成熟团队需自主组队）", "threshold": "需加入团队，编程/硬件/Web开发/建模能力者受欢迎", "major_match": "低", "ai_match": "高", "recommend": "推荐", "history": "2024/2025/2026连续举办", "source": "competition.igem.org官网Registration/Calendar页面", "start_month": 2, "end_month": 6}, {"id": 15, "name": "中国大学生服务外包创新创业大赛", "organizer": "教育部、商务部、无锡市人民政府", "url": "http://www.fwwb.org.cn/", "reg_start": "参考惯例2月（2026年为2月11日左右）", "reg_end": "参考惯例3月（2026年为3月20-31日）", "comp_time": "区域赛参考惯例6月；全国总决赛参考惯例8月", "prep_cycle": "提前2-3个月", "grade": "大二-大四", "tracks": ["保研", "就业", "考公"], "tracks_raw": "保研/就业/考公", "value": "教育部A类学科竞赛；国家级二等奖以上在部分省份（如江苏、四川）选调中可作为国家级竞赛荣誉；IT/软件/外包企业认可度高；对保研复试展示工程实践能力有帮助。", "pitfall": "注意区分国家级总决赛奖项和省级/区域赛奖项，选调通常只认国家级；A类（问题导向创新）和B类（企业命题）难度不同；部分赛题与电子信息专业匹配度一般，需选软件开发/AI相关赛题。", "threshold": "免费，3-5人团队；需软件开发/系统设计能力；B类赛题由企业提供真实需求。", "major_match": "中", "ai_match": "高", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓（第十七届）", "source": "服务外包大赛官网（fwwb.org.cn）；上海工程技术大学/中国地质大学2026年报名通知；杭州科技职业技术学院东部赛区报道。", "start_month": 2, "end_month": 6}, {"id": 16, "name": "高校电力电子应用设计大赛", "organizer": "中国电源学会", "url": "https://design.cpss.org.cn/", "reg_start": "参考惯例2月（2026年第12届2月6日发布通知）", "reg_end": "参考惯例3月底（2026年延期至3月31日）", "comp_time": "5月各赛道启动，8月中期检查，10-11月决赛（2026年11月3-7日四地决赛）", "prep_cycle": "6-8个月（跨年跨度长）", "grade": "大三/大四（需较强硬件设计能力）", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "电力电子领域顶级赛事，中国电源学会主办；电磁兼容设计赛道与电子信息专业对口；新能源/电动汽车行业就业背书强；设电力电子AI设计赛道", "pitfall": "需指导教师签名支持函及实验场地；备赛周期长需硬件平台；四个赛道方向差异大，电子信息学生优先选电磁兼容设计赛道；非免费赛事但费用较低", "threshold": "较高，需电力电子/电路设计/EMC基础", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024(第10届)、2025(第11届)、2026(第12届)连续举办", "source": "中国电源学会cpss.org.cn；竞赛官网design.cpss.org.cn赛程安排", "start_month": 2, "end_month": 5}, {"id": 17, "name": "\"西门子杯\"中国智能制造挑战赛（CIMC）", "organizer": "教育部高等教育司指导，北京化工大学与西门子（中国）有限公司共同发起", "url": "http://www.siemenscup-cimc.org.cn/", "reg_start": "参考惯例3月初（2026年第20届校选3月31日-4月15日）", "reg_end": "参考惯例4月中旬", "comp_time": "初赛5-6月，全国总决赛7-8月", "prep_cycle": "2-3个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "国家A类赛事，教育部与西门子战略合作；工业自动化/智能制造领域规模最大；西门子及工业自动化行业就业背书强", "pitfall": "赛项偏工业自动化/PLC/过程控制，纯电子信息学生需补自动化知识；\"离散行业自动化\"或\"信息工程\"方向较适合电子信息学生；部分赛项需在西门子平台上练习；注意与纯电子信息方向的匹配度", "threshold": "中等，需自动化/控制/PLC基础", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024(第18届)、2025(第19届)、2026(第20届)连续举办", "source": "西门子杯官网siemenscup-cimc.org.cn；哈工大/大连大学校内通知", "start_month": 3, "end_month": 6}, {"id": 18, "name": "HarmonyOS创新赛（极客赛道+应用赛道）", "organizer": "华为终端有限公司（鸿蒙生态）", "url": "https://developer.huawei.com/consumer/cn/activity/digixActivity/digixcmsdetail/101773710117484023", "reg_start": "极客赛道3月中旬（2026年3月18日）；应用赛道6月", "reg_end": "极客赛道5月下旬；应用赛道11月上旬（2025年截止11月10日）", "comp_time": "极客赛道约2.5个月；应用赛道约5个月", "prep_cycle": "大二及以上（有应用开发兴趣）", "grade": "保研/就业", "tracks": ["总奖金超68万元；极客赛道含HDC松山湖36小时线下决赛；获奖", "入围可获华为生态就业关注"], "tracks_raw": "总奖金超68万元；极客赛道含HDC松山湖36小时线下决赛；获奖/入围可获华为生态就业关注", "value": "极客马拉松已升级更名为HarmonyOS创新赛；偏应用开发而非底层技术；需学习ArkTS/鸿蒙开发框架", "pitfall": "有移动端/全栈开发基础；对鸿蒙生态感兴趣；可跨专业组队", "threshold": "中（偏软件开发而非硬件）", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "华为开发者联盟官网developer.huawei.com；HarmonyOS官网资讯", "source": "", "start_month": 3, "end_month": 3}, {"id": 19, "name": "中国机器人及人工智能大赛（CRAIC）", "organizer": "中国机电一体化技术应用协会、中国机器人及人工智能大赛组委会", "url": "https://www.caairobot.com/", "reg_start": "参考惯例3月（2026年第28届3月1日开始）", "reg_end": "各省赛区不同，参考惯例5-6月", "comp_time": "省赛6月前完成，全国赛7-8月（2026年7月中下旬合肥/线上）", "prep_cycle": "3-5个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "届数多（第28届），赛项覆盖广；2026年新增人形机器人专项赛（具身智能热点）；行业协会主办", "pitfall": "赛项极多（数十个细分赛道），质量参差不齐；部分赛项偏表演/展示，技术含量有限；报名前仔细看赛题，优先选人形机器人/自主移动机器人等高含金量赛项；注意甄别是否为培训捆绑赛", "threshold": "中低（不同赛道差异大）", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024(第26届)、2025(第27届)、2026(第28届)连续举办", "source": "CRAIC官网caairobot.com；北京市科委人形机器人专项赛报道", "start_month": 3, "end_month": 6}, {"id": 20, "name": "中国机器人大赛暨RoboCup机器人世界杯中国赛", "organizer": "中国自动化学会", "url": "https://rcccaa.drct-caa.org.cn/", "reg_start": "参考惯例年初（2026年校赛报名截止3月31日）", "reg_end": "参考惯例3月底", "comp_time": "RoboCup中国公开赛5月初（2026年5月2-4日北京怀柔）；总决赛10月（2026年10月16-18日杭州）", "prep_cycle": "6-10个月", "grade": "大三/大四（学术性强，适合有科研基础者）", "tracks": ["保研", "留学", "就业"], "tracks_raw": "保研/留学/就业", "value": "RoboCup为国际顶级机器人赛事，中国赛优秀队伍可晋级国际赛；学术性强，留学申请（海外robotics/AI方向）背书好；中国自动化学会主办", "pitfall": "赛道众多（足球机器人/救援/服务/仿真组等），水平参差不齐；仿真组门槛低但认可度也低，实物组认可度高但门槛高；务必选对赛道；注意区分青少年组和大学组", "threshold": "较高，需机器人/AI/控制综合能力", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024、2025、2026连续举办", "source": "中国自动化学会caa.org.cn；大赛官网rcccaa.drct-caa.org.cn；RoboCup Federation官网", "start_month": 3, "end_month": 5}, {"id": 21, "name": "中国软件杯大学生软件设计大赛", "organizer": "工业和信息化部指导，中国软件杯大赛组委会", "url": "https://www.cnsoftbei.com", "reg_start": "参考惯例3月（第十五届为2026.3启动）", "reg_end": "参考惯例6-7月（第十五届延至2026.7.20）", "comp_time": "参考惯例8月全国总决赛（2026.8）", "prep_cycle": "4-5个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "工信部指导的A类赛事，公益性全程免费，企业命题真实工程场景，获奖对软件开发方向就业帮助大", "pitfall": "赛题量大工程量重，需团队协作；部分专项赛与主赛道时间不同步；注意辨别冒充收费的诈骗", "threshold": "3-5人组队，具备完整软件开发能力", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024第十三届/2025第十四届/2026第十五届连续举办", "source": "官网cnsoftbei.com（第十五届通知/报名截止通知/总决赛通知）", "start_month": 3, "end_month": 8}, {"id": 22, "name": "中国高校计算机大赛-大数据挑战赛", "organizer": "清华大学、大数据系统软件国家工程研究中心（和鲸科技平台支持）", "url": "和鲸科技平台（heywhale.com）", "reg_start": "2026年3月26日", "reg_end": "2026年7月15日", "comp_time": "线上赛3.26-8.2，决赛8月", "prep_cycle": "4-5个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "C4系列A类赛事，清华大学主办，2018-2025连续入选学科竞赛排行榜，算法竞赛顶级，保研认可度高于天池/Kaggle", "pitfall": "与天池大数据竞赛定位类似但学术认可度更高；赛题每年变化（如2026金融时序预测），需关注当年方向", "threshold": "1-3人组队，机器学习/数据挖掘/Python能力", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024/2025/2026连续举办", "source": "太原理工/中国石油大学/青岛科技大学等校教务处通知 + 和鲸科技", "start_month": 3, "end_month": 8}, {"id": 23, "name": "中国高校计算机大赛-网络技术挑战赛", "organizer": "全国高等学校计算机教育研究会", "url": "C4系列官网（网络技术挑战赛）", "reg_start": "2026年3月4日", "reg_end": "2026年4月14日", "comp_time": "资格赛4.15-4.17，选拔赛6月，挑战赛8.10-8.12", "prep_cycle": "4-5个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "中国高校计算机大赛(C4)系列白名单赛事，偏网络工程/网络安全方向，与本校网安学科匹配", "pitfall": "分A系列（命题式）和B系列（自主选题），B系列自由度高但工作量大；与网络安全竞赛有交叉", "threshold": "3人组队，网络技术/网络编程基础", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "西安邮电大学/北京科技大学/沈阳工业大学等校教务处竞赛规程", "start_month": 3, "end_month": 6}, {"id": 24, "name": "全国大学生嵌入式芯片与系统设计竞赛", "organizer": "中国电子学会、全国大学生嵌入式芯片与系统设计竞赛组委会", "url": "http://www.socchina.net", "reg_start": "参考惯例2-3月（应用赛道）；6月下旬（芯片设计赛道）", "reg_end": "应用赛道参考惯例4月下旬（2025年4月25日）；芯片设计赛道参考惯例8月底", "comp_time": "应用赛道7月作品提交、8-9月决赛；芯片设计赛道11月作品提交、11月底决赛", "prep_cycle": "提前3-4个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "教育部白名单A类赛事，本校保研加分赛事；嵌入式/Linux/芯片方向就业认可度高；分应用赛道（偏应用开发）和芯片设计赛道（偏IC设计）", "pitfall": "该竞赛原名单列FPGA赛道已并入本竞赛，不要重复报名；注意区分应用赛道和芯片设计赛道，报名时间不同；无报名费但部分企业赛题要求使用指定开发板", "threshold": "无报名费；3人一队；应用赛道需掌握ARM/Linux/嵌入式C；芯片设计赛道需掌握Verilog/数字IC设计", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024✓ 2025✓(第八届) 2026✓(进行中)", "source": "socchina.net官网；四川大学/哈工大/北航2025年报名通知PDF", "start_month": 3, "end_month": 7}, {"id": 25, "name": "全国大学生物理实验竞赛（创新）", "organizer": "教育部高等学校物理学类专业教学指导委员会", "url": "（通过各校教务处/物理学院通知，无单一全国官网）", "reg_start": "参考惯例2-3月（校内选拔）", "reg_end": "参考惯例4月中旬校内截止；全国正式提交9月1-15日", "comp_time": "校选3-4月答辩，全国材料提交9月，评审10-11月", "prep_cycle": "3-6个月", "grade": "大二-大三", "tracks": ["保研"], "tracks_raw": "保研", "value": "教育部白名单赛事，保研综测加分，实验创新能力证明", "pitfall": "分创新类和讲课类，创新类更适合工科生；需提交研究报告+演示PPT+视频；本校物理学院每年3-4月组织校内选拔（2026年报名至4月1日）；每队不超过5人", "threshold": "物理实验基础，3-5人团队", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024(10届)/2025(11届)/2026(12届)连续举办", "source": "南京邮电/北航/中科大/本校物理学院2026年通知", "start_month": 3, "end_month": 4}, {"id": 26, "name": "全国大学生统计建模大赛", "organizer": "中国统计教育学会", "url": "http://tjjmds.ai-learning.net/", "reg_start": "参考惯例2-3月", "reg_end": "参考惯例4月中旬（2026年约4月15日截止）", "comp_time": "报名3-4月，论文提交5月，评审6-8月", "prep_cycle": "2-3个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "统计建模领域权威赛事，大数据/AI方向求职加分，与数学建模互补", "pitfall": "与数学建模(CUMCM/美赛)不同：统计建模偏数据分析和统计方法应用，论文制作为主；不收报名费；3人组队不可跨校；每队指导老师1人", "threshold": "统计学/R/Python基础，数据分析能力", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024(10届)/2025(11届)/2026(12届)连续举办", "source": "tjjmds.ai-learning.net官网及华南理工/北航/兰州大学2026年通知", "start_month": 3, "end_month": 4}, {"id": 27, "name": "全国大学生节能减排社会实践与科技竞赛", "organizer": "教育部高等教育司、共青团中央、中国科学院等（“节能减排竞赛”组委会）", "url": "http://www.jienengjianpai.org/", "reg_start": "参考惯例3月下旬（第一轮通知）", "reg_end": "参考惯例4月12日18:00前（高校报名截止）", "comp_time": "作品提交5月25日前；函评5-6月；全国总决赛8月（2026年第19届在大连理工）", "prep_cycle": "提前5-8个月（需实物/装置/论文）", "grade": "大二-大四", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "教育部A类赛事，国奖在保研综测与新能源/电气类企业就业中有加分；考公/留学认可度中等", "pitfall": "主题紧扣“双碳”，纯软件项目较难出彩；社会实践类与科技制作类分组；勿与收费“节能减排培训营”混淆", "threshold": "免费报名；团队一般≤7人；需提交实物装置/研究报告/论文", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "2024✓(第17届) 2025✓(第18届) 2026✓(第19届，8月大连理工)", "source": "节能减排官网 jienengjianpai.org；上海工程大/东华大学2025校内通知；四川农大2026通知", "start_month": 3, "end_month": 5}, {"id": 28, "name": "全国大学生计算机系统能力大赛-编译系统设计赛（华为毕昇杯）", "organizer": "全国高等学校计算机教育研究会、系统能力培养研究专家组、华为（毕昇杯冠名）", "url": "https://compiler.educg.net", "reg_start": "参考惯例3月中下旬（2026年约3月启动）", "reg_end": "参考惯例5月底（2026年约5.30）", "comp_time": "参考惯例7-8月决赛", "prep_cycle": "4-6个月", "grade": "大三/大四/研一", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "与已有OS赛/CPU赛同属系统能力大赛系列，编译方向顶级赛事，华为冠名，系统方向保研加分强", "pitfall": "难度极大，需要编译原理扎实基础；工程量巨大（从零实现编译器），周期长；电子信息专业需自学编译原理，门槛高", "threshold": "2-3人组队，编译原理+C/C++系统编程基础", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "官网compiler.educg.net + 哈工大威海/西安交大/渤海大学等校通知", "start_month": 3, "end_month": 8}, {"id": 29, "name": "全国大学生计算机系统能力大赛（操作系统/CPU设计赛）", "organizer": "全国高等学校计算机教育研究会、系统能力培养研究专家组", "url": "https://www.nscscc.com", "reg_start": "参考惯例2-3月（操作系统赛2月28日；CPU龙芯杯3月20日）", "reg_end": "操作系统赛参考惯例5月下旬（2025年5月28日）；CPU赛参考惯例4月", "comp_time": "操作系统赛7-8月决赛；CPU赛7-8月决赛", "prep_cycle": "提前4-6个月", "grade": "大三-研一", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "系统能力顶级赛事，CPU设计赛（龙芯杯）在国产芯片/系统软件方向认可度极高；对考研复试/保研面试有强加分；但门槛高、周期长", "pitfall": "操作系统赛和CPU赛技术栈完全不同，不要混淆；CPU赛需Verilog+计算机组成原理基础，门槛高；对电子信息工程非计算机系统方向匹配度一般；无报名费", "threshold": "无报名费；3-5人一队；操作系统赛需C/OS内核开发经验，CPU赛需Verilog/数字逻辑基础", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓", "source": "nscscc.com官网；educg.net系统能力大赛官网；湖北汽车工业学院2025年通知", "start_month": 3, "end_month": 8}, {"id": 30, "name": "北斗杯全国青少年空天科技体验与创新大赛（大学组）", "organizer": "中国卫星导航系统管理办公室指导；中科院空天信息创新研究院、中国光华科技基金会主办", "url": "https://www.beidou.org/", "reg_start": "参考惯例次年2-3月", "reg_end": "参考惯例3-4月", "comp_time": "参考惯例5月初选，暑期全国总决赛（2025年第14届总决赛在郑州）", "prep_cycle": "2-3个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "空天科技/北斗导航领域权威赛事，政府背书强；对航天/导航/卫星方向就业有帮助", "pitfall": "该赛原为中小学生白名单赛事，大学组保研认可度因校而异，务必确认本校保研政策是否认可；部分赛道偏科普体验，技术含量有限", "threshold": "中等，需GNSS/北斗相关技术基础", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024(第14届)、2025(第15届)、2026持续举办", "source": "北斗卫星导航系统官网beidou.gov.cn；中国卫星导航年会beidou.org", "start_month": 3, "end_month": 5}, {"id": 31, "name": "华为软件精英挑战赛（CodeCraft·普朗克计划）", "organizer": "华为技术有限公司", "url": "https://developer.huaweicloud.com/codecraft2026", "reg_start": "参考惯例3月中旬（2026年3月16日）", "reg_end": "参考惯例4月上旬（2026年4月9日）", "comp_time": "区域初赛4月中旬-6月；全国总决赛6月-7月", "prep_cycle": "约2-3个月", "grade": "大二及以上（需有代码基础）", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "总奖金68万元；获奖可获华为校招面试直通卡/SP及以上offer；区域赛出线即有加分", "pitfall": "注意区分华为ICT大赛（已有列表）；软挑侧重算法与数据结构编程，难度较高；组队2-3人", "threshold": "熟练掌握C/C++或Python；有ACM/ICPC基础者优势大", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024第七届/2025第八届/2026第九届连续举办", "source": "华为云开发者大赛平台官网developer.huaweicloud.com；2026赛程已公布", "start_month": 3, "end_month": 4}, {"id": 32, "name": "国际空中机器人大赛（IARC）", "organizer": "国际空中机器人大赛组委会（美国）", "url": "http://www.aerialroboticscompetition.org/", "reg_start": "参考惯例1-3月（2027 Mission 10申请建议1-3月提交）", "reg_end": "每年6月1日", "comp_time": "每年8月（美国/亚太赛区交替举办）", "prep_cycle": "1-2年", "grade": "大三/大四（需深入科研积累）", "tracks": ["留学", "保研"], "tracks_raw": "留学/保研", "value": "国际顶级无人机/空中机器人赛事，清华等顶尖高校参加；留学申请（尤其美国/欧洲机器人方向）极强背书；Mission 10冠军奖金$30,000", "pitfall": "参赛费约$1,500+（约1.1万人民币），费用较高；技术门槛极高，需成熟无人机自主导航技术；中国仅清华等顶尖高校有队伍，本校需先加入相关实验室/课题组；无中文官网，需英文沟通；周期长不适合时间紧张者", "threshold": "极高", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024、2025、2026连续举办（Mission 10进行中）", "source": "IARC官网aerialroboticscompetition.org；参赛者列表含清华大学", "start_month": 3, "end_month": 8}, {"id": 33, "name": "大学生创新创业训练计划（国创/校创）", "organizer": "教育部（国创）/各高校（校创）", "url": "（通过学校教务处/创新创业中心申报，无单一全国官网）", "reg_start": "参考惯例3月", "reg_end": "参考惯例5月立项截止", "comp_time": "全年申报（通常3-5月立项），项目执行期1-2年", "prep_cycle": "1-2年（项目执行周期）", "grade": "大二-大三", "tracks": ["保研"], "tracks_raw": "保研", "value": "非竞赛，是科研项目，保研综测加分项；国创立项含金量高，可作为科研经历写入保研简历；分为国家级/省级/校级三级", "pitfall": "非竞赛，是科研项目，保研综测加分项；需联系指导教师+撰写项目申请书；结题需提交成果（论文/专利/软件著作权/研究报告）；建议大二上联系导师，大二下申请立项，大三执行结题", "threshold": "需联系指导教师，有初步研究方向，3-5人团队", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "每年持续申报（国创/省创/校创三级体系）", "source": "教育部高等教育司及各校教务处年度通知", "start_month": 3, "end_month": 5}, {"id": 34, "name": "数字中国创新大赛·数字安全赛道", "organizer": "数字中国建设峰会组委会（国家发改委、中央网信办、工信部等多部委）", "url": "https://www.dcic-china.com", "reg_start": "2026年3月12日", "reg_end": "2026年4月6日（优秀案例征集赛）", "comp_time": "2026年4月预赛/决赛", "prep_cycle": "1-2个月", "grade": "大二/大三", "tracks": ["保研", "就业", "考公"], "tracks_raw": "保研/就业/考公", "value": "国家数字中国建设峰会官方赛事，政府+华为背书；聚焦国产算力/AI应用，奖金+算力代金券；华为等企业就业友好；赛题2\"AI+科学研究\"仅限高校赛队参加", "pitfall": "赛道众多（14个赛道），数字安全赛道只是其中之一；偏产业应用展示，学术/保研认可度一般；与\"安恒杯\"无直接关系 非传统学科竞赛，部分赛题面向企业/社会开发者，参赛前确认高校赛队组别；备赛周期短但竞争激烈（产学研同台）；获奖在数字中国建设峰会期间展示", "threshold": "个人/团队均可，网安实践或方案设计能力", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "数字中国建设峰会官网(szzg.gov.cn) + 人民网福建频道 + 新华网", "start_month": 3, "end_month": 4}, {"id": 35, "name": "腾讯游戏安全技术竞赛", "organizer": "腾讯游戏（腾讯安全联合实验室/游戏安全实验室）", "url": "https://gslab.qq.com/html/competition/2025/index.htm", "reg_start": "参考惯例3月（2026年4月发布）", "reg_end": "参考惯例3月下旬（2025年截止3月23日）", "comp_time": "4-6月线上赛/决赛", "prep_cycle": "约2-3个月", "grade": "大三及以上（网安/安全方向）", "tracks": ["就业"], "tracks_raw": "就业", "value": "万元奖金+Q币奖励；获奖获腾讯实习面试绿色通道；游戏安全方向独特赛道", "pitfall": "与TCTF（网安攻防赛）不同；本赛侧重游戏反作弊/安全AI；非网安专业需补游戏安全知识", "threshold": "有C++/逆向/机器学习基础；对游戏安全反作弊有兴趣；单人或组队", "major_match": "中", "ai_match": "高", "recommend": "可冲", "history": "2025/2026连续举办", "source": "腾讯游戏安全中心gslab.qq.com；腾讯云开发者社区", "start_month": 3, "end_month": 6}, {"id": 36, "name": "中美青年创客大赛（共创未来）", "organizer": "中华人民共和国教育部", "url": "https://chinaus-maker.cscse.edu.cn/", "reg_start": "参考惯例4月下旬", "reg_end": "参考惯例6月上旬（2026年各校约6月8-10日截止）", "comp_time": "分赛区选拔赛5-6月，全国总决赛7月下旬（上海张江）", "prep_cycle": "2-3个月（含作品制作）", "grade": "大二-大四", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "教育部主办白名单赛事，保研综测加分认可度高，创新创业类高含金量，3-5人团队创客作品", "pitfall": "需有实物作品或可演示原型，非纯编程比赛；中美关系波动可能影响美方参与但国内赛区正常举办；本校属陕西/西北赛区", "threshold": "需有硬件/创客作品原型，3-5人团队", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024/2025/2026连续举办，2026年总决赛7月上海", "source": "教育部官网cscse.com.cn及上海理工/西南交大/东北大学等2026年分赛区通知 2026-10-03人工核验：可正常访问（此前为脚本TLS误报）", "start_month": 4, "end_month": 6}, {"id": 37, "name": "信息安全与对抗技术竞赛（ISCC）", "organizer": "北京理工大学、中国兵工学会、教育部信息对抗技术专业虚拟教研室", "url": "https://www.isclab.org.cn", "reg_start": "2026年4月24日（第23届）", "reg_end": "2026年5月6日", "comp_time": "参考惯例5-6月线上赛", "prep_cycle": "2-3个月", "grade": "大二/大三", "tracks": ["就业", "保研"], "tracks_raw": "就业/保研", "value": "国内最早创办的CTF赛事之一（2004年创办），连续23届，累计15.7万+参赛者，北理工主办，入门友好", "pitfall": "知名度和奖金不如强网杯/XCTF总决赛，适合CTF新手练手；包含破阵夺旗赛/无限擂台赛/数据安全赛等多个赛项", "threshold": "个人/3人团队均可，CTF基础入门", "major_match": "高", "ai_match": "低", "recommend": "可冲", "history": "2024第21届/2025第22届/2026第23届连续举办", "source": "官网isclab.org.cn + 西安交大/成都信息工程大学通知", "start_month": 4, "end_month": 6}, {"id": 38, "name": "全国三维数字化创新设计大赛（3D大赛/3DDS）", "organizer": "国家制造业信息化培训中心、3D动力网", "url": "https://www.3ddl.net/", "reg_start": "参考惯例4月上旬（2026年4月3日启动）", "reg_end": "参考惯例6月30日（初赛报名截止）", "comp_time": "初赛4-7月，复赛/省赛8-10月，全国总决赛11-12月", "prep_cycle": "2-4个月", "grade": "大二-大四", "tracks": ["就业"], "tracks_raw": "就业", "value": "数字化设计领域知名赛事，工业设计/机械方向就业有一定加分", "pitfall": "含金量有争议！非教育部白名单赛事，社会认可度分层明显：国赛特等/一等奖有一定认可度，但省赛及以下奖项水较深；偏机械/工业设计方向，电子信息专业匹配度一般；还有18周年精英联赛（2025.9-2026.3）平行赛事", "threshold": "3D建模软件（SolidWorks/UG/CAD），2-4人团队", "major_match": "低", "ai_match": "低", "recommend": "可冲", "history": "2024(17届)/2025(18届)/2026(19届)连续举办", "source": "3ddl.net官网及武汉纺织大学/扬州大学/重庆交大2026年通知", "start_month": 4, "end_month": 7}, {"id": 39, "name": "全国大学生光电设计竞赛", "organizer": "中国光学学会", "url": "https://gd.moocollege.com/", "reg_start": "参考惯例3-4月", "reg_end": "参考惯例5月中旬（2026年西北赛区5月15日初定）", "comp_time": "参考惯例8月（2025年第13届8月下旬浙江大学承办）", "prep_cycle": "3-4个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "光电领域唯一国家级学科竞赛，本校光学工程为优势学科；保研加分认可度高；光学工程/光电子行业就业对口", "pitfall": "分创意赛道（实物制作）和光学设计赛道（软件仿真），两者难度和认可度不同；需3人组队；赛题每年不同需提前关注", "threshold": "中等，需光学/光电技术基础", "major_match": "高", "ai_match": "低", "recommend": "可冲", "history": "2024(第12届)、2025(第13届)、2026(第14届)连续举办", "source": "竞赛官网gd.moocollege.com；西安交大/南开大学等校教务处通知", "start_month": 4, "end_month": 8}, {"id": 40, "name": "全国大学生物联网设计竞赛", "organizer": "全国高等学校计算机教育研究会", "url": "https://iot.sjtu.edu.cn/", "reg_start": "参考惯例4月初（2026年为4月1日）", "reg_end": "参考惯例6月中旬（2026年为6月15日）", "comp_time": "参考惯例8月中下旬全国总决赛（2026年8月22-24日贵州大学）", "prep_cycle": "3-4个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "高教学会竞赛分析报告收录赛事，保研认可度较好；本校为承办校之一，校内资源丰富；物联网/嵌入式行业就业对口", "pitfall": "需组队3-5人并提前联系指导教师；作品需实物+演示视频，非纯论文赛；注意与嵌入式芯片与系统设计竞赛区分", "threshold": "中等，需嵌入式/物联网开发基础", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024(第11届)、2025(第12届)、2026(第13届)连续举办", "source": "竞赛官网iot.sjtu.edu.cn章程及通知；本校为2026年承办校之一", "start_month": 4, "end_month": 8}, {"id": 41, "name": "全国大学生电子设计竞赛（TI杯/电赛）", "organizer": "教育部高等教育司、工信部人事教育司、中国电子学会", "url": "http://nuedc.xjtu.edu.cn", "reg_start": "参考惯例3-4月（学校统一组织）", "reg_end": "参考惯例6月中旬（2026年上海赛区6月15日截止）", "comp_time": "奇数年全国赛7月底-8月初（2025年7月30日-8月2日）；偶数年专题赛7月29日-8月1日赛区赛，8月下旬决赛", "prep_cycle": "提前6-8个月（建议大二上启动，大二下暑假参赛）", "grade": "大二-大三", "tracks": ["保研", "就业", "考公"], "tracks_raw": "保研/就业/考公", "value": "电子信息类最权威学科竞赛；国赛二等奖以上是电子类保研硬通货；华为/中兴/大疆/汇川等硬件大厂高度认可；多省定向选调中作为国家级竞赛认可。", "pitfall": "电赛为奇数年全国赛、偶数年专题赛交替，不要把专题赛当成全国赛；不存在所谓'省级报名费'以外的付费培训，警惕培训机构绑定的'保过班'；必须通过学校领队统一报名，不接受个人报名 奇数年举办（2025、2027），偶数年仅有赛区模拟/专题赛；4天3夜封闭式制作，体力与调试要求高；陕西省赛由本校承办，主场优势明显 奇数年办国赛（2025/2027），偶数年仅办专题赛（2024/2026），专题赛含金量略低于国赛；省赛一等奖才能推国赛；4天3夜封闭比赛体力要求高；报名费约500元/队；不要混淆省赛和国赛奖项级别。", "threshold": "无报名费；3人一队；需掌握STM32/51单片机、模电数电、PCB画板、焊接调试；学校统一组织", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024✓(信息类专题赛) 2025✓(全国赛) 2026✓(模拟电子系统设计专题赛)", "source": "nuedc.xjtu.edu.cn官方通知PDF；西安交大教务处2026年通知；山东赛区2026年通知 2026-10-03人工核验：官网服务器暂不可达（西交），2026年专题赛通知已由组委会发布（nuedc.sjtu.edu.cn），赛事在办、非停办，继续观察 [自动检查:http_502，需人工确认] [自动检查:error_timed out，需人工确认]", "start_month": 4, "end_month": 7}, {"id": 42, "name": "全国大学生计算机系统能力大赛-数据库管理系统设计赛", "organizer": "全国高等学校计算机教育研究会、系统能力培养研究专家组（华东师大承办）", "url": "https://db.educg.net", "reg_start": "参考惯例4月下旬（2026年为2026.4.25）", "reg_end": "参考惯例7月中旬（2026年为2026.7.13）", "comp_time": "参考惯例7月下旬-8月中旬决赛", "prep_cycle": "3-4个月", "grade": "大三/大四/研一", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "与已有OS赛/CPU赛同系列，数据库方向顶级赛事，500+队伍参赛，系统方向保研认可度高", "pitfall": "需要操作系统+数据库系统扎实基础，工程量大；偏底层实现，与AI方向关联度低", "threshold": "2-3人组队，数据库系统原理+系统编程基础", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024首届PolarDB赛/2025第二届/2026第三届连续举办", "source": "官网db.educg.net + 南京大学/云南民族大学等校通知", "start_month": 4, "end_month": 7}, {"id": 43, "name": "华为终端硬件精英挑战赛", "organizer": "华为技术有限公司（终端BG）", "url": "https://developer.huaweicloud.com/contest/hardware-elite2026.html", "reg_start": "参考惯例4月（2026年报名约3-4月）", "reg_end": "参考惯例5月", "comp_time": "区域决赛7月；全国总决赛8月初（2026年8月1-2日）", "prep_cycle": "约3-4个月", "grade": "大二及以上（电子类/硬件方向）", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "总奖金32万元；获奖可获华为终端校招面试绿色通道；硬件方向含金量高", "pitfall": "注意与\"全国大学生嵌入式芯片与系统设计竞赛\"（已有列表）区分；本赛为华为终端独立举办；需硬件开发板基础", "threshold": "具备STM32/嵌入式开发基础；硬件焊接/调试能力；1-3人组队", "major_match": "高", "ai_match": "低", "recommend": "推荐", "history": "2025首届/2026第二届连续举办", "source": "华为云开发者大赛平台官网；杭州电子科技大学等高校2026获奖新闻", "start_month": 4, "end_month": 7}, {"id": 44, "name": "抖音AI创变者计划黑客松联赛", "organizer": "字节跳动（抖音）", "url": "https://aiia.douyin.com/", "reg_start": "参考惯例4月（2026年4月13日启动）", "reg_end": "各城市站提前1-2周（2026年全国赛4月13日-8月31日）", "comp_time": "城市站5-6月，五大区复赛7月，全国总决赛8月（北京）", "prep_cycle": "每场48小时极限开发", "grade": "大二-大四", "tracks": ["就业"], "tracks_raw": "就业", "value": "字节跳动官方AI产品创新赛事，优秀者获实习面试机会，覆盖400+高校5000+学生", "pitfall": "与已有列表中'字节跳动工程竞技赛/青训营'不同：本赛事偏AI产品创新（48h从0到1做产品），非算法竞赛；2025年首届，2026年第二届；赛道含互动空间/生活搭子/视频Agent等", "threshold": "AI应用开发能力，产品思维", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2025首届，2026第二届（46场交流赛+全国总决赛）", "source": "aiia.douyin.com官网及赛事细则文档 2026-10-03人工核验：可正常访问（此前为脚本TLS误报）", "start_month": 4, "end_month": 6}, {"id": 45, "name": "挑战杯全国大学生课外学术科技作品竞赛 / 创业计划竞赛", "organizer": "共青团中央、中国科协、教育部、全国学联", "url": "https://www.tiaozhanbei.net", "reg_start": "参考惯例3-4月（校赛启动）", "reg_end": "参考惯例5-6月（2026年揭榜挂帅为5月30日-6月30日）", "comp_time": "校赛4-5月→省赛6-7月→国赛10-11月", "prep_cycle": "提前6-12个月（需有科研成果积累）", "grade": "大二-研三", "tracks": ["保研", "考公", "就业"], "tracks_raw": "保研/考公/就业", "value": "被誉为中国大学生科技创新奥林匹克；国赛等级奖项是保研加分硬通货；江苏/湖南/山东/广东等多省定向选调公告明确将挑战杯国家级奖项列为优先选调条件；考公面试中展现综合能力。", "pitfall": "大挑（课外学术科技作品）和小挑（创业计划竞赛）隔年交替，注意区分；仅国家级奖项有选调认可价值；揭榜挂帅专项赛含金量低于主赛道；2026年为第十五届小挑（创业计划竞赛）。", "threshold": "免费，3-10人团队；需有学术论文/科研项目/创业方案；校赛选拔激烈，需通过校内推荐。", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓（第十五届创业计划竞赛）", "source": "挑战杯官网（tiaozhanbei.net）；陕西师范大学/西南石油大学2026年揭榜挂帅通知；山东财经大学2025年校赛通知。", "start_month": 4, "end_month": 5}, {"id": 46, "name": "百度之星程序设计大赛", "organizer": "百度公司", "url": "https://star.baidu.com", "reg_start": "参考惯例4月下旬（2025年4月23日）", "reg_end": "参考惯例8月上旬（2025年8月9日，按场次截止）", "comp_time": "初赛6月29日/8月10日两场线上，决赛12月初线下（2025年12月7日北京）", "prep_cycle": "提前3-6个月（算法刷题训练）", "grade": "大二-大四", "tracks": ["就业"], "tracks_raw": "就业", "value": "国内历史最悠久的程序设计竞赛之一，百度官方背书；决赛获奖可获百度校招面试绿色通道；但本质是ACM-ICPC风格算法竞赛，与电子信息工程硬件方向关联度低", "pitfall": "收报名费80元/人/单场（合理）；赛制为ACM算法题，需C/C++刷题能力，非AI/硬件方向；对保研加分权重有限（本校一般视为B类）；零基础不建议投入大量时间", "threshold": "80元/人/场；个人赛；需熟练C/C++，掌握数据结构与算法、动态规划等", "major_match": "低", "ai_match": "低", "recommend": "可冲", "history": "2023✓(第19届) 2024✓(第20届) 2025✓(第21届) 2026✓(参考惯例4月启动)", "source": "百度之星官网astar.baidu.com；青岛科大/哈工大威海2025年通知", "start_month": 4, "end_month": 6}, {"id": 47, "name": "睿抗机器人开发者大赛（RAICOM）CAIP强脑赛道", "organizer": "工业和信息化部人才交流中心", "url": "https://www.raicom.com.cn", "reg_start": "参考惯例3-4月", "reg_end": "参考惯例6月中旬（AI视觉赛题为2026.6.13）", "comp_time": "参考惯例6-7月（2026.6.27 AI视觉赛）", "prep_cycle": "2-3个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "工信部人才交流中心主办，入选高教学会竞赛名录；四大赛道（工创/设计/强脑/强体）；具身智能/行业大模型方向热点；华为等企业参与", "pitfall": "赛事赛道庞杂（CAIR/CAIM/CAIP/CAIA四大类十余赛项），只选CAIP强脑算法赛道；硬件类赛道与电赛/智能车重复；部分省赛由各校自行组织 原名RoboCom机器人开发者大赛，后更名RAICOM；赛项多，部分偏虚拟仿真/创意类，技术深度不如RMUC/RoboCup；\"强脑\"赛道偏AI算法适合AI方向学生；注意区分RAICOM（开发者大赛）和RoboCom（青少年/高中生赛事）", "threshold": "1-2人/队，AI算法或大模型应用开发能力", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "官网raicom.com.cn + 北邮/电子科大/石家庄铁道等校通知", "start_month": 4, "end_month": 7}, {"id": 48, "name": "腾讯云黑客松（Tencent Cloud Hackathon）", "organizer": "腾讯云", "url": "https://tch.cloud.tencent.com/", "reg_start": "参考惯例3-4月（各场不同）", "reg_end": "赛前1-2周截止（各场不同）", "comp_time": "全年多场，单场48小时集中开发；2026年有AI Game Development赛4-9月、智能渗透赛3-4月等", "prep_cycle": "1-2周", "grade": "大二-大四", "tracks": ["就业"], "tracks_raw": "就业", "value": "腾讯官方背书，实习/校招绿色通道机会，云原生/AI应用实战经验", "pitfall": "与已有列表中'腾讯广告算法大赛'不同，本赛事偏产品/工程创新；多场赛事主题不同，关注官网获取最新场次；部分赛道偏安全攻防或游戏开发", "threshold": "全栈开发能力，了解腾讯云产品者优先", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024/2025/2026连续举办多场", "source": "tch.cloud.tencent.com官网及腾讯云开发者社区", "start_month": 4, "end_month": 9}, {"id": 49, "name": "\"华为杯\"中国研究生人工智能创新大赛", "organizer": "中国学位与研究生教育学会、中国科协青少年科技中心", "url": "https://cpipc.acge.org.cn", "reg_start": "参考惯例5月下旬（2025年5月27日）", "reg_end": "参考惯例8月22日（2025年8月22日）", "comp_time": "9月初赛评审，10-11月决赛", "prep_cycle": "提前3-4个月", "grade": "研一-研二（本科生需已获研究生录取资格）", "tracks": ["保研", "留学", "就业"], "tracks_raw": "保研/留学/就业", "value": "AI领域研究生顶级赛事，获奖对读博/AI实验室申请/大厂AI岗有强背书；但本科大二学生一般不能直接参赛，需保研拿到offer后以'已录取研究生'身份参加", "pitfall": "主要面向研究生，普通大二本科生无参赛资格！仅'已获得研究生录取资格的本科生'可参加；若计划保研，可在大四拿到offer后参加；不要被'AI大赛'名称误导而大二盲目报名", "threshold": "无报名费；3-5人一队；需有AI项目/论文基础；参赛主体须为研究生或已录取研究生的本科生", "major_match": "中", "ai_match": "高", "recommend": "可冲", "history": "2023✓(第五届) 2024✓(第六届) 2025✓(第七届) 2026✓(参考惯例5月启动)", "source": "cpipc.acge.org.cn研创赛平台；中科大/华东师大/北理工2025年通知", "start_month": 5, "end_month": 9}, {"id": 50, "name": "中国高校计算机大赛-移动应用创新赛", "organizer": "全国高等学校计算机教育研究会、浙江大学、苹果公司（Apple）", "url": "C4系列官网（移动应用创新赛）", "reg_start": "参考惯例4-5月", "reg_end": "参考惯例6月底（启明/启迪赛道2026.6.30，启航赛道2026.7.31）", "comp_time": "参考惯例8-9月决赛", "prep_cycle": "3-5个月", "grade": "大二/大三", "tracks": ["就业", "留学"], "tracks_raw": "就业/留学", "value": "C4系列白名单赛事，苹果赞助，iOS/macOS生态，海外认可度尚可，适合移动端开发方向", "pitfall": "主要限定苹果生态（Swift/SwiftUI），需要苹果开发者账号；非移动端开发方向帮助有限；偏产品创新而非纯技术", "threshold": "1-5人组队，移动端开发或产品设计能力", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "2024第九届/2025第十届/2026第十一届连续举办", "source": "西南交通大学/哈工大威海等校教务处通知", "start_month": 5, "end_month": 9}, {"id": 51, "name": "全国大学生信息安全竞赛（作品赛/创新实践能力赛）", "organizer": "教育部网络空间安全教指委、中国信息安全测评中心", "url": "http://www.ciscn.cn", "reg_start": "作品赛参考惯例5月中下旬；创新实践能力赛参考惯例11月", "reg_end": "作品赛参考惯例6月25日（2025年6月25日）；创新实践能力赛参考惯例12月21日", "comp_time": "作品赛7月初评、8-9月决赛；创新实践能力赛12月底线上初赛、次年3-4月决赛", "prep_cycle": "作品赛提前3-4个月；创新实践赛提前1-2个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "网安领域顶级A类赛事，保研认可度高；对网安/安全岗就业有强背书；但对电子信息工程非网安方向匹配度一般", "pitfall": "作品赛收报名费200元/队（合理范围）；注意区分作品赛（做项目）和创新实践能力赛（CTF攻防），技术栈完全不同；创新实践赛偏CTF，零基础不建议直接上", "threshold": "作品赛200元/队，创新实践赛免费；3-4人一队；作品赛需开发完整安全系统，创新实践赛需CTF竞赛经验", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "2024✓(第17届) 2025✓(第18届作品赛/第19届创新实践赛) 2026✓", "source": "ciscn.cn官方通知；上海交大/西安交大网安学院2025年通知", "start_month": 5, "end_month": 7}, {"id": 52, "name": "全国大学生数学建模竞赛（CUMCM，高教社杯）", "organizer": "中国工业与应用数学学会（CSIAM）", "url": "https://www.mcm.edu.cn/", "reg_start": "参考惯例5月（校内报名启动）", "reg_end": "参考惯例9月1日20:00前（向全国组委会报名截止）", "comp_time": "参考惯例9月上旬周四18:00至周日20:00（2025:9.4-9.7；2026:9.10开赛）", "prep_cycle": "提前3-4个月（暑假集中集训）", "grade": "大二-大三", "tracks": ["保研", "留学", "就业"], "tracks_raw": "保研/留学/就业", "value": "国一/国二是保研夏令营与综测的硬通货；美国/英国工科留学申请中认可度高；对算法/数据类岗位就业有辅助；考公认可度一般", "pitfall": "注意与美赛MCM/ICM区分（美赛偏英语写作、含金量分层）；省二省三价值有限，需冲国奖；勿报收费“保奖”培训班", "threshold": "报名费约200元/队；3人一队（建模/编程/写作分工）；需掌握MATLAB/Python/Lingo与论文写作", "major_match": "中", "ai_match": "高", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓", "source": "官网 mcm.edu.cn；中国工业与应用数学学会2025第一次通知PDF；陕西赛区组委会通知", "start_month": 5, "end_month": 9}, {"id": 53, "name": "黄鹤杯网络安全人才创新大赛", "organizer": "武汉市委网信办、武汉市总工会、武汉市人社局、国家网络安全人才与创新基地", "url": "https://hhb.whcsa.org.cn", "reg_start": "参考惯例5月", "reg_end": "2026年6月30日", "comp_time": "参考惯例10月决赛（2025.10武汉）", "prep_cycle": "3-5个月", "grade": "大三/大四", "tracks": ["就业"], "tracks_raw": "就业", "value": "依托国家网安人才基地，小米安全/东风汽车等企业支持，华中地区网安人才就业有区域影响力", "pitfall": "区域性赛事（武汉），全国范围内认可度一般；偏实践创新+理论创新双赛道，非纯CTF解题赛；与职业技能大赛结合", "threshold": "团队/个人均可，网安实践或创新方案能力", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "官网hhb.whcsa.org.cn + 新华网湖北频道 + 武汉市委网信办", "start_month": 5, "end_month": 10}, {"id": 54, "name": "中国青年志愿服务项目大赛", "organizer": "共青团中央、中国志愿服务联合会、民政部", "url": "http://zhijh.youth.cn", "reg_start": "参考惯例6月（第八届2026年为6月1日）", "reg_end": "参考惯例6月30日（第八届2026年为6月30日）", "comp_time": "省赛8-9月→全国赛10-12月（志交会期间）", "prep_cycle": "提前3-6个月（需有持续运营的志愿服务项目）", "grade": "大二-研三", "tracks": ["考公"], "tracks_raw": "考公", "value": "共青团中央主办的志愿服务领域最高赛事；全国赛银奖以上在选调面试和考察环节是重要加分项；与西部计划/返家乡等基层项目衔接；体现基层服务意识，高度契合选调导向。", "pitfall": "不是传统学科竞赛，需有真实运营满1年以上的志愿服务项目（非临时拼凑）；仅对考公/选调路径有价值，对留学/大厂就业帮助有限；注意区分省级赛和全国赛。", "threshold": "免费，团队形式申报；需有实际运行的志愿服务项目（如支教/社区服务/科技助老等）；建议从校青协/志联现有项目升级。", "major_match": "低", "ai_match": "中", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓（第八届）", "source": "中国青年志愿者网（zgzyz.org.cn）2026年8月通知；中国青年报2026年9月报道。", "start_month": 6, "end_month": 9}, {"id": 55, "name": "全国大学生FPGA创新设计竞赛（嵌赛FPGA赛道）", "organizer": "中国电子学会、全国大学生嵌入式芯片与系统设计竞赛组委会", "url": "http://www.fpgachina.cn", "reg_start": "参考惯例6月下旬（2025年6月27日）", "reg_end": "参考惯例9月22日（2025年9月22日24:00）", "comp_time": "9-11月作品设计，11月7日作品提交，11月28-30日决赛", "prep_cycle": "提前2-3个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "FPGA/数字IC方向高含金量赛事，对本校微电子/集成电路方向保研加分；对紫光展锐/华为海思/兆易创新等IC设计岗就业有背书", "pitfall": "该赛事原名单列，现已是嵌入式竞赛的FPGA创新设计赛道，不要被名称混淆；赛题多为企业命题（如海思/紫光同创），需使用指定FPGA开发板；无报名费", "threshold": "无报名费；3人一队；需掌握Verilog/VHDL、数字电路、FPGA开发流程", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓(7月6日-9月22日报名)", "source": "fpgachina.cn官网；北航/西交大/哈工大深圳2025年报名通知", "start_month": 6, "end_month": 11}, {"id": 56, "name": "外研社·国才杯全国大学生外语能力大赛（英语写作/阅读/演讲/笔译）", "organizer": "外语教学与研究出版社（FLTRP）、中国外语教育研究中心", "url": "https://ucc.fltrp.com/", "reg_start": "参考惯例6月初", "reg_end": "参考惯例9-10月（写作阅读约10月4日，演讲约9月中下旬）", "comp_time": "校赛9-10月，省赛10-11月，国赛11-12月", "prep_cycle": "1-3个月", "grade": "大二-大四", "tracks": ["保研", "留学", "考公"], "tracks_raw": "保研/留学/考公", "value": "英语类顶级赛事，保研/留学申请英语能力证明，外企求职加分；含写作/阅读/演讲/笔译/口译/短视频多赛项", "pitfall": "已更名为'理解当代中国'全国大学生外语能力大赛；非英语专业可报综合能力赛项（写作/阅读）；演讲赛项须从综合能力优胜者中遴选；公开赛每年5/9/10月三场可多次参加", "threshold": "英语水平良好（CET-6 550+有竞争力）", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024/2025/2026连续举办", "source": "ucc.fltrp.com官网及燕山大学/中山大学/中央财大2026年通知", "start_month": 6, "end_month": 10}, {"id": 57, "name": "腾讯广告算法大赛", "organizer": "腾讯广告（腾讯公司）", "url": "https://algo.qq.com", "reg_start": "参考惯例6月中旬（2025年6月16日）", "reg_end": "参考惯例7月31日（2025年7月31日）", "comp_time": "8-9月初赛，9-10月复赛，11月底线下决赛（2025年11月深圳）", "prep_cycle": "提前2-3个月", "grade": "大三-研二", "tracks": ["保研", "就业", "留学"], "tracks_raw": "保研/就业/留学", "value": "与KDD顶会联合举办，优胜成果被KDD Workshop Proceedings收录；腾讯入职绿色通道（免笔试/直通面试）；总奖池超600万元人民币；对大厂算法岗求职和CS方向留学申请均有强背书。", "pitfall": "赛题偏推荐系统/大模型方向，需要较强的ML/DL基础，大二零基础不建议直接冲；非教育部白名单，保研加分权重低；决赛线下需到深圳；个人/3人以内团队 面向有ML基础的参赛者，零基础直接参赛成绩有限；建议先在Kaggle拿到银牌再参加；全球5700+队伍竞争，获奖率低；赛题偏推荐系统/大规模建模，需相关领域知识。", "threshold": "无报名费；可个人或组队（≤3人）；需掌握Python/PyTorch、推荐系统或NLP基础", "major_match": "中", "ai_match": "高", "recommend": "可冲", "history": "2023✓ 2024✓ 2025✓(2800队参赛) 2026✓(参考惯例6月启动)", "source": "algo.qq.com官网；腾讯新闻2025年6月启动通知；腾讯云2025年12月决赛报道", "start_month": 6, "end_month": 9}, {"id": 58, "name": "AFAC金融智能创新大赛（蚂蚁集团）", "organizer": "蚂蚁集团（外滩大会期间举办）", "url": "https://www.antdigital.com/", "reg_start": "参考惯例6-7月（外滩大会前）", "reg_end": "参考惯例8月", "comp_time": "9月外滩大会决赛颁奖", "prep_cycle": "约3个月", "grade": "大三及以上（金融科技/AI方向）", "tracks": ["就业"], "tracks_raw": "就业", "value": "奖金+资本对接+媒体曝光；挑战组解决真实金融AI问题；初创组可获创投对接；蚂蚁生态资源", "pitfall": "偏金融科技/创业方向；挑战组偏算法解题；与银行系赛事风格不同；需关注外滩大会时间节点", "threshold": "有机器学习/风控/图计算基础；对金融科技有兴趣；可跨学科组队", "major_match": "中", "ai_match": "高", "recommend": "可冲", "history": "2024第三届?/2025第四届/2026持续举办", "source": "央广网2025年报道；新浪财经2026年报道；外滩大会", "start_month": 7, "end_month": 9}, {"id": 59, "name": "中国大学生工程实践与创新能力大赛（工训赛）", "organizer": "教育部高等教育司", "url": "http://gcxl.dlut.edu.cn/", "reg_start": "参考惯例6-7月（校赛报名）", "reg_end": "参考惯例10月（省赛报名截止）", "comp_time": "校赛9-10月，省赛10-11月，国赛次年（2027年第十届）", "prep_cycle": "3-6个月", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "教育部白名单A类赛事，工程实践能力顶级证明，保研综测高分项", "pitfall": "原名'全国大学生工程训练综合能力竞赛'，2021年更名；赛项含智能物流搬运/飞行器设计仿真/智能网联汽车/机器人竞赛等；2027年第十届国赛，2026年下半年校选省赛阶段；每队不超过4名学生+2名指导教师", "threshold": "工程实践综合能力（机械+电子+编程），3-4人团队", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024(8届)/2025(9届)/2026筹备(10届2027年办)", "source": "gcxl.dlut.edu.cn官网及华南理工/浙江大学/河南科大2026年通知 2026-10-03人工核验：可正常访问", "start_month": 7, "end_month": 10}, {"id": 60, "name": "CCPC中国大学生程序设计竞赛", "organizer": "中国大学生程序设计竞赛组委会（CCF支持）", "url": "https://ccpc.io/", "reg_start": "参考惯例8月（网络赛报名）", "reg_end": "参考惯例9月（网络赛报名截止）", "comp_time": "网络赛9月；分站赛10-12月；总决赛次年3-6月", "prep_cycle": "提前6-12个月", "grade": "大二-大四", "tracks": ["就业", "保研"], "tracks_raw": "就业/保研", "value": "与ICPC同为国内算法竞赛两大顶赛，金牌对大厂算法岗背书极强；保研复试加分；考公/留学认可度有限", "pitfall": "需先通过网络赛选拔获得分站赛名额；勿与CCF其他赛事（CCSP、CSP）混淆；门槛与ICPC相当", "threshold": "报名费由学校承担/自筹；3人一队；需C++算法能力", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024✓ 2025✓(第10届总决赛) 2026✓(第11届)", "source": "CCPC官网 ccpc.io；ccpc.io/rules 赛制规则页 [自动检查:error_[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i，需人工确认]", "start_month": 8, "end_month": 9}, {"id": 61, "name": "ICPC国际大学生程序设计竞赛（亚洲区域赛）", "organizer": "ICPC基金会（北京总部由北京大学承办，ICPC Asia Regional）", "url": "https://icpc.global/", "reg_start": "参考惯例8月（网络预选赛报名）", "reg_end": "参考惯例8月底-10月（各站点报名截止不同）", "comp_time": "网络赛9月；亚洲区域赛10-11月（多站点）", "prep_cycle": "提前6-12个月（长期刷题训练）", "grade": "大二-大四", "tracks": ["保研", "就业", "留学"], "tracks_raw": "保研/就业/留学", "value": "区域赛金牌（尤其金/银）是大厂算法岗（字节/腾讯/阿里/美团）最硬背书之一，大量直通面试/免笔试；保研复试中有显著加分；留学申请可作编程能力证明；考公几乎不认可", "pitfall": "门槛极高，需系统刷LeetCode/Codeforces；打星队成绩不计奖；勿把网络赛成绩当区域赛成绩；2025年为第50届，西安站由西工大承办 门槛极高，需Codeforces Rating 1600+才有拿铜希望；仅3人一队，分工极明确；邀请赛含金量低于正式区域赛；若无法进入区域赛获奖则投入产出比低；本校ACM队传统较强但竞争激烈。", "threshold": "报名费约几百元/队（学校统一组织）；3人一队共用1台电脑；需极强算法与C++基础", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓", "source": "ICPC北京总部 icpc.pku.edu.cn；icpc.global 区域赛finder；2025成都/西安/武汉站邀请函 北京总部 https://icpc.pku.edu.cn/；2026-10-03人工核验：可访问", "start_month": 8, "end_month": 9}, {"id": 62, "name": "中国国际大学生创新大赛（原中国“互联网+”大学生创新创业大赛）", "organizer": "教育部等10余个中央部委及地方政府共同主办", "url": "https://cy.ncss.org.cn/", "reg_start": "2026-08（报名系统8月10日开放）", "reg_end": "2026-09-25（2026年截止；2025年截止不晚于7月1日）", "comp_time": "校赛8-10月、省赛10-11月、全国总决赛11月", "prep_cycle": "提前4-6个月", "grade": "大二-大四", "tracks": ["保研", "就业", "考公", "留学"], "tracks_raw": "保研/就业/考公/留学", "value": "国内规模最大的双创赛事（2025年619万项目参赛）；国赛金奖是保研top项目和选调面试重磅加分；江苏/浙江/四川/广东等多省定向选调公告明确将国家级奖项列为优先条件；金奖项目可获投资对接。", "pitfall": "2024年起由“互联网+”正式更名为“中国国际大学生创新大赛”，勿沿用旧名搜索；注意区分高教主赛道、产业赛道、红旅赛道、萌芽赛道；勿报收费山寨赛 注意区分校赛/省赛/国赛级别，仅国赛金/银奖有高含金量；红旅赛道和高教主赛道难度不同；唯一官方入口为cy.ncss.cn，警惕山寨版；项目需有实际落地成果而非纯PPT。", "threshold": "免费报名；团队一般5-15人；需有原型/产品/调研报告；鼓励跨校跨专业", "major_match": "中", "ai_match": "高", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓", "source": "教育部官网；全国大学生创业服务网 cy.ncss.org.cn（2025/2026通知）", "start_month": 8, "end_month": 10}, {"id": 63, "name": "工行杯全国大学生金融科技创新大赛", "organizer": "中国工商银行股份有限公司", "url": "https://www.gonghangbei.com", "reg_start": "参考惯例5-8月（第十七届2026年5月启动）", "reg_end": "参考惯例9-10月", "comp_time": "省赛10-11月；全国决赛12月-次年1月", "prep_cycle": "约4-6个月", "grade": "大二及以上（金融科技方向）", "tracks": ["考公", "就业"], "tracks_raw": "考公/就业", "value": "17届历史千余高校参与；获奖可获工行校招/实习优先；对进入银行/金融国企就业有直接帮助；证书认可度高", "pitfall": "偏金融业务场景而非纯技术；需了解金融知识；非计算机硬核赛；作品赛形式需答辩", "threshold": "对金融+科技交叉感兴趣；有数据分析/产品设计能力；可跨专业组队", "major_match": "中", "ai_match": "中", "recommend": "推荐", "history": "2024第十五届/2025第十六届/2026第十七届连续举办", "source": "工行杯官网gonghangbei.com；新华网/人民网各省报道", "start_month": 8, "end_month": 11}, {"id": 64, "name": "ABU Robocon亚太大学生机器人大赛（全国大学生机器人大赛ROBOCON）", "organizer": "亚太广播联盟（ABU）、中国科学技术协会、共青团中央", "url": "https://www.robocon.org.cn", "reg_start": "参考惯例9月（新赛季赛题发布后启动）", "reg_end": "参考惯例10-11月", "comp_time": "国内选拔赛参考惯例7月；国际总决赛参考惯例8月（2026国内赛7月江阴，国际赛8月23日香港）", "prep_cycle": "提前8-10个月（全年备赛，赛题发布即开始）", "grade": "大二-大四", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "首批入选高校学科竞赛排行榜的19项重点竞赛之一；国家级二等奖以上对保研加分明显；大疆/华为/小米等机器人硬件方向大厂高度认可；对电子信息类保研面试展示工程能力有帮助。", "pitfall": "极度耗时耗力（每周投入20小时以上，持续近一年）；需机械/电子/软件多学科协作；获奖门槛高（仅前几名获国一）；本校非Robocon传统强队校，需评估实验室资源和指导老师。", "threshold": "免费，5-10人团队；需机械设计（SolidWorks）+嵌入式（STM32）+自动控制+机器视觉综合能力；通常加入校机器人战队。", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓", "source": "ROBOCON官网（robocon.cn）；新华网2026年7月江阴国内选拔赛报道；人民网2026年8月香港国际赛报道；重庆理工大学/西华师范大学获奖报道。 2026-10-03核验：旧域名 robocon.cn 已失效，已更新为现官网（第二十五届2026报名指南已发布）", "start_month": 9, "end_month": 7}, {"id": 65, "name": "Meta Hacker Cup", "organizer": "Meta Platforms（原Facebook）", "url": "https://www.facebook.com/codingcompetitions/hacker-cup", "reg_start": "参考惯例8-9月", "reg_end": "参考惯例10月（首轮前）", "comp_time": "多轮线上赛9-11月，全球总决赛12月（2025年总决赛12月20日线上举行）", "prep_cycle": "长期算法训练3-6个月以上", "grade": "大二-大四", "tracks": ["就业", "留学"], "tracks_raw": "就业/留学", "value": "全球顶级算法竞赛，与ICPC/CCPC同级别的算法背书，Meta/FAANG面试绿色通道，冠军$20,000", "pitfall": "注意：Google Kick Start已于2023年停办、Google Hash Code已于2022年停办，勿再等待这两项；Meta Hacker Cup截至2025年12月仍正常举办（2025总决赛25人入围），并未停办；纯算法竞赛非黑客松，与已有列表ICPC/CCPC/百度之星同类", "threshold": "算法能力强（Codeforces 1800+有竞争力）", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2023/2024/2025连续举办（2025决赛12月20日）", "source": "cphof.org standings及Codeforces官方博客确认 2026-10-03人工核验：Facebook需代理访问（国内网络不可直连），2025届正常举办，非停办 [自动检查:http_400，需人工确认] [自动检查:error_timed out，需人工确认]", "start_month": 9, "end_month": 11}, {"id": 66, "name": "PaddlePaddle Hackathon飞桨黑客松", "organizer": "百度飞桨（深度学习技术及应用国家工程研究中心）", "url": "https://www.paddlepaddle.org.cn/contributionguide?docPath=hackathon_cn", "reg_start": "参考惯例8-9月（第九期2025年8月20日上线）", "reg_end": "视赛题而定", "comp_time": "约3-4个月（线上开源贡献）", "prep_cycle": "大二及以上（开源/AI框架方向）", "grade": "保研/就业", "tracks": ["现金奖励+周边；导师1v1指导；开源贡献经历对出国", "就业简历加分；GPU算力资源支持"], "tracks_raw": "现金奖励+周边；导师1v1指导；开源贡献经历对出国/就业简历加分；GPU算力资源支持", "value": "偏开源代码贡献而非比赛打榜；需要读源码/提PR；非传统算法竞赛；门槛在开源协作能力", "pitfall": "熟悉Python/C++；有深度学习框架使用经验；Git开源协作能力；单人完成", "threshold": "中（偏AI框架开发）", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "飞桨官网paddlepaddle.org.cn；飞桨开源社区博客pfcc.blog", "source": "", "start_month": 9, "end_month": 9}, {"id": 67, "name": "“正大杯”全国大学生市场调查与分析大赛", "organizer": "中国商业统计学会（教育部高等学校统计学类教指委指导）", "url": "http://www.china-cssc.org/", "reg_start": "参考惯例9月底（宣传启动）", "reg_end": "参考惯例10月底（2025年：10月31日24:00截止）", "comp_time": "知识赛网考10-11月；校赛次年3月；省赛/国赛次年4-5月", "prep_cycle": "提前4-6个月（需完整调研项目）", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "国赛一等奖在统计/数据类岗位就业与保研综测中有加分；对互联网用研/数据分析岗有背书；考公/留学认可度一般", "pitfall": "知识赛为网考个人赛(70%通过率)，仅为门槛，实践赛团队奖才是核心；勿把知识赛通过当获奖；需报名费", "threshold": "报名费约100-200元/人；实践赛3-5人团队；需问卷设计+数据采集+统计分析+报告", "major_match": "低", "ai_match": "高", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓", "source": "中国商业统计学会官网 china-cssc.org；竞赛规则页；青岛农大/河南大学2025通知", "start_month": 9, "end_month": 11}, {"id": 68, "name": "全国大学生数学竞赛（CMC）", "organizer": "中国数学会", "url": "https://www.cmathc.org.cn/", "reg_start": "参考惯例6-9月（各校自行组织报名）", "reg_end": "参考惯例10月上旬（2026年各校约10月11-19日截止）", "comp_time": "初赛11月中旬（2026年为11月14日9:00-11:30），决赛次年4月（2027年4月大连理工）", "prep_cycle": "3-6个月（高等数学系统复习）", "grade": "大二为主（刚学完高数）", "tracks": ["保研"], "tracks_raw": "保研", "value": "非数学类国赛一等奖保研认可度高，纯笔试证明数学功底；进入武书连大学评价指标体系", "pitfall": "与已有列表中'全国大学生数学建模竞赛（CUMCM）'完全不同！CMC是纯数学笔试（考高等数学），每年10-11月初赛；报名费约100元；非数学类只考高数（微积分），不考线代概率；数学类分A/B/C类", "threshold": "高数基础扎实，个人参赛", "major_match": "高", "ai_match": "低", "recommend": "推荐", "history": "2024(16届)/2025(17届)/2026(18届)连续举办", "source": "cmathc.org.cn官网及西安交大/中山大学/四川大学等2026年报名通知", "start_month": 9, "end_month": 11}, {"id": 69, "name": "全国大学生软件测试大赛", "organizer": "CCF软件工程专委会/系统软件专委会/容错计算专委会、教育部软件工程教指委、慕测平台", "url": "https://www.mooctest.org", "reg_start": "参考惯例9月下旬（第十一届为2026.9.20）", "reg_end": "参考惯例10月底（第十一届为2026.10.30）", "comp_time": "参考惯例11-12月总决赛", "prep_cycle": "1-2个月", "grade": "大二/大三", "tracks": ["就业"], "tracks_raw": "就业", "value": "2023年列入教育部白名单，华为/百度/阿里/腾讯等企业联合命题，软件测试方向最权威赛事", "pitfall": "预选赛不颁发证书；偏测试方向，对开发岗求职帮助有限；部分赛道为企业冠名赛", "threshold": "个人赛为主，了解软件测试基础理论", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024第九届/2025第十届/2026第十一届连续举办", "source": "官网mooctest.org + 成都信息工程大学通知 + 搜狐报道", "start_month": 9, "end_month": 12}, {"id": 70, "name": "全国密码技术竞赛", "organizer": "国家密码管理局指导，中国密码学会主办", "url": "https://www.chinacodes.com.cn", "reg_start": "参考惯例9月初（第十一届为2026.9.2）", "reg_end": "参考惯例10月初（第十届2025年截止约9月）", "comp_time": "参考惯例11月决赛（第十届2025.11南开大学）", "prep_cycle": "2-3个月", "grade": "大三/大四/研一", "tracks": ["考公", "就业", "保研"], "tracks_raw": "考公/就业/保研", "value": "国家密码管理局指导，密码方向唯一国家级赛事，密评行业/密码局系统/国企密码岗位认可度高", "pitfall": "需要密码学专业基础，偏理论+应用结合，不是纯CTF解题赛；以学校为单位报名（领队老师制），学生不能单独注册", "threshold": "3-5人组队，密码学/应用数学基础", "major_match": "高", "ai_match": "低", "recommend": "推荐", "history": "2024第九届/2025第十届/2026第十一届连续举办", "source": "官网chinacodes.com.cn + 天津市国家密码管理局 + 南京理工大学通知", "start_month": 9, "end_month": 11}, {"id": 71, "name": "华为ICT大赛（实践赛/创新赛/编程赛）", "organizer": "华为技术有限公司", "url": "https://e.huawei.com/cn/talent/ict-academy/", "reg_start": "参考惯例9月上旬（2025年9月10日）", "reg_end": "实践赛10月31日；创新赛11月30日（2025-2026赛季）", "comp_time": "11-12月省赛，次年3月全国总决赛，次年5-6月全球总决赛", "prep_cycle": "提前2-3个月", "grade": "大二-大四", "tracks": ["就业", "保研"], "tracks_raw": "就业/保研", "value": "华为官方赛事，全国总决赛获奖可获华为校招面试直通卡/实习offer；实践赛偏网络/云计算/存储，创新赛偏AI应用开发；2025-2026赛季全球100+国家22万人参赛", "pitfall": "实践赛内容偏华为认证体系（HCIA/HCIP），与电子信息工程核心课程关联度一般；创新赛更适合有AI项目经验的同学；不属教育部白名单，保研加分权重视学校政策而定（本校一般认可）", "threshold": "无报名费；个人赛（实践赛）或3人团队（创新赛）；实践赛需掌握网络/路由/云计算基础，创新赛需AI应用开发能力", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "2023-2024✓ 2024-2025✓ 2025-2026✓(第十届已收官) 2026-2027赛季进行中", "source": "华为官网e.huawei.com；大连理工/东南大学2025年通知；华为2026年6月全球总决赛新闻", "start_month": 9, "end_month": 12}, {"id": 72, "name": "强网杯全国网络安全挑战赛", "organizer": "中央网信办、河南省人民政府指导；信息工程大学、郑州大学、中国网络空间安全协会等主办", "url": "参考ichunqiu平台赛事页面", "reg_start": "参考惯例9月（第九届为2025.9启动）", "reg_end": "参考惯例10月", "comp_time": "参考惯例11月线下总决赛（第九届2025.11郑州）", "prep_cycle": "3-6个月", "grade": "大三/大四/研一", "tracks": ["就业", "考公", "保研"], "tracks_raw": "就业/考公/保研", "value": "网安领域顶级赛事，军方背景（信息工程大学主办），国家级规格，获奖对网安方向就业认可度极高，考公/国安系统有优势", "pitfall": "难度极大，需有CTF战队基础；线上赛规模空前但获奖率极低；与已有CISC信息安全竞赛不同（CISC是教指委主办，强网杯是网信办/军方主办）", "threshold": "3人战队，CTF竞赛经验丰富", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2023第七届/2024第八届/2025第九届连续举办", "source": "中央网信办官网(cac.gov.cn) + 河南网信网 + 本校网安学院通知", "start_month": 9, "end_month": 11}, {"id": 73, "name": "阿里天池大数据/AI算法竞赛", "organizer": "阿里云计算有限公司", "url": "https://tianchi.aliyun.com", "reg_start": "全年滚动（各赛题不同，新人赛通常3-9月）", "reg_end": "各赛题独立，通常持续1-3个月", "comp_time": "全年滚动，季度性赛事", "prep_cycle": "提前1-2个月（针对具体赛题）", "grade": "大二-大四", "tracks": ["就业", "留学"], "tracks_raw": "就业/留学", "value": "国内最大数据科学竞赛平台，天池Top名次在阿里/字节/美团等算法岗校招中有强简历背书；免费参赛；适合利用AI工具做Kaggle风格数据建模；部分赛题提供算力资源", "pitfall": "天池竞赛数量多但质量参差不齐，需选择'天池大学生竞赛'或官方企业赛题，避免参与野鸡赛题；非教育部白名单赛事，保研加分权重低；竞赛排名≠论文，留学背书有限；建议选择新人赛/高校计划入门", "threshold": "无报名费；1-3人组队；需掌握Python/Pandas/机器学习基础，熟练使用AI工具辅助建模", "major_match": "中", "ai_match": "高", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓(全年持续)", "source": "tianchi.aliyun.com官网；天池大学生竞赛章程", "start_month": 9, "end_month": 9}, {"id": 74, "name": "NVIDIA年度Hackathon黑客松（中国区）", "organizer": "英伟达（NVIDIA）", "url": "https://developer.nvidia.cn/blog/nvidia-2025-annual-ai-agent-hackathon-showcase/", "reg_start": "参考惯例年中（2025年赛事）", "reg_end": "参考惯例赛前1-2个月", "comp_time": "年度总决赛10月（NVIDIA中国开发者日期间）", "prep_cycle": "约2-3个月", "grade": "大二及以上（AI/GPU方向）", "tracks": ["就业", "留学"], "tracks_raw": "就业/留学", "value": "接触CUDA/TensorRT/NeMo等NVIDIA全栈技术；获奖可获NVIDIA生态关注；对出国深造/AI公司就业有加分", "pitfall": "偏AI Agent/生成式AI应用开发；2025年主题为智能体生态；与天池平台合作运营；中文社区资源较多", "threshold": "熟悉Python/PyTorch；对GPU加速/AI推理优化有兴趣；2-5人组队", "major_match": "中", "ai_match": "高", "recommend": "可冲", "history": "2025首届年度Hackathon（200+队400+人）；2026 NVIDIA中国开发者日10月苏州持续举办", "source": "NVIDIA开发者博客developer.nvidia.cn；电子工程专辑报道", "start_month": 10, "end_month": 10}, {"id": 75, "name": "RoboMaster机甲大师超级对抗赛（RMUC）", "organizer": "大疆创新（DJI），全国大学生机器人大赛组委会", "url": "https://www.robomaster.com/zh-CN/robo/rm", "reg_start": "参考惯例10月底（2026赛季报名2025年10月29日）", "reg_end": "参考惯例11月初（2026赛季报名截止2025年11月6日）", "comp_time": "区域赛5-6月，复活赛7-8月，全国赛7-8月（2026年深圳春茧）", "prep_cycle": "约10个月（跨年赛季，全年投入）", "grade": "大二入队最佳（大一需先成为预备队员）", "tracks": ["保研", "就业", "留学"], "tracks_raw": "保研/就业/留学", "value": "DJI官方赛事；获奖/参与经历在大疆/机器人/自动驾驶行业认可度极高；技术覆盖机器视觉/嵌入式/机械/射频；RMUA侧重算法", "pitfall": "备赛周期极长（全年高强度投入），须通过校队招新选拔，非个人可报名；时间投入巨大需平衡学业；本校是否有战队需提前确认 在线刷榜赛制，需在大疆指定仿真平台开发算法；与RMUC是独立赛事但可同时关注；排名靠刷榜积分决定，需持续迭代 工作量极大（需全年备赛）；团队规模大（10-30人）；机械/电控/视觉多岗位；与ABU Robocon（已有列表）是不同赛事", "threshold": "高，需通过校队招新选拔", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024(RMUC2024)、2025(RMUC2025)、2026(RMUC2026)连续举办", "source": "RoboMaster官网robomaster.com赛程；东北大学2026全国总冠军报道", "start_month": 10, "end_month": 6}, {"id": 76, "name": "中国大学生物理学术竞赛（CUPT）", "organizer": "教育部高等学校物理学类专业教学指导委员会", "url": "https://cupt-iypt.com", "reg_start": "参考惯例9-10月（校赛选拔）", "reg_end": "参考惯例12月-次年3月", "comp_time": "校赛10-12月，省赛/区域赛5-6月，全国国赛8月（2026年第17届苏州大学）", "prep_cycle": "8-12个月（从选题到国赛）", "grade": "大一-大三", "tracks": ["保研"], "tracks_raw": "保研", "value": "物理界顶级本科生竞赛，'物理辩论赛'（Physics Fight）形式，保研加分高，科研实践能力强证明", "pitfall": "备赛周期极长（近一年），需大量时间做实验和理论推导；与物理实验竞赛不同，CUPT是团队对抗式竞赛；本校每年10月组织校内选拔（QQ群报名）；5-8人团队", "threshold": "物理基础好，实验动手+表达辩论能力，5-8人团队", "major_match": "中", "ai_match": "低", "recommend": "可冲", "history": "2024(15届)/2025(16届)/2026(17届)连续举办", "source": "华中师大/内蒙科大/西工大/本校本科生院2026年通知 2026-10-03核验：原域名 mso.org.cn 已失效，已更新为现官网", "start_month": 10, "end_month": 12}, {"id": 77, "name": "中国移动\"九天·梧桐\"杯数智创新大赛", "organizer": "中国移动通信集团有限公司", "url": "https://it.10086.cn/honghu/", "reg_start": "参考惯例9-10月（第五届2025年9月启动）", "reg_end": "参考惯例11月", "comp_time": "省赛12月-次年1月；全国决赛3-6月（第五届2026年6月总决赛）", "prep_cycle": "约6-8个月", "grade": "大二及以上（数据/AI方向）", "tracks": ["就业", "考公"], "tracks_raw": "就业/考公", "value": "运营商头部赛事；获奖可获中国移动校招/实习优先推荐；开放脱敏真实数据；对进入国企/运营商就业极有帮助", "pitfall": "原\"梧桐杯\"大数据赛已升级更名为\"九天·梧桐\"杯；赛题偏大数据/AI应用而非底层算法；省赛竞争激烈", "threshold": "有数据分析/机器学习基础；熟悉Python/SQL；3-5人组队", "major_match": "中", "ai_match": "高", "recommend": "推荐", "history": "第三届/第四届（2024-25）/第五届（2025-26）连续举办", "source": "中国移动官网10086.cn；人民网/人民日报报道；769所高校3288队参赛", "start_month": 10, "end_month": 12}, {"id": 78, "name": "全国大学生电子商务创新创意及创业挑战赛（三创赛）", "organizer": "教育部电子商务类专业教学指导委员会、商务部流通产业促进中心等", "url": "http://www.3chuang.net", "reg_start": "参考惯例10月（上一年度，2026届为2025年10月20日起）", "reg_end": "参考惯例12月31日（2026届第十六届）", "comp_time": "校赛3-4月→省赛5-6月→全国总决赛7-8月", "prep_cycle": "提前3-4个月", "grade": "大二-大四", "tracks": ["考公", "就业", "保研"], "tracks_raw": "考公/就业/保研", "value": "教育部A类竞赛；国赛二等奖以上在部分省份选调中可作为国家级竞赛荣誉；对电商/互联网运营方向就业有帮助；电子信息工程学生可结合直播技术/跨境电商技术参赛。", "pitfall": "唯一官网为3chuang.net，警惕山寨赛事；经管类专业为主，电子信息工程需找技术结合点；省赛奖项选调认可度有限；注册时需通过规则答题测试。", "threshold": "免费（常规赛），3-5人团队；需商业计划书+电商项目方案；建议跨专业组队（经管+技术）。", "major_match": "低", "ai_match": "高", "recommend": "可冲", "history": "2024✓ 2025✓ 2026✓（第十六届）", "source": "三创赛官网（3chuang.net）；太原理工大学/山东财经大学/武汉科技大学2026届报名通知。", "start_month": 10, "end_month": 4}, {"id": 79, "name": "全国大学生职业规划大赛", "organizer": "教育部", "url": "https://zgs.chsi.com.cn", "reg_start": "2025-10（第三届启动，2025年10月20日平台开放）", "reg_end": "参考惯例1月底（不晚于2026-01-31）", "comp_time": "校赛11-12月→省赛3-4月→全国总决赛5-6月", "prep_cycle": "提前2-3个月", "grade": "大二-大四", "tracks": ["考公", "就业"], "tracks_raw": "考公/就业", "value": "教育部官方赛事，全国总决赛奖项在考公/选调求职中体现职业规划能力；获奖证书教育部认可；对明确就业方向和准备面试有实际帮助。", "pitfall": "偏综合素质展示而非技术能力，对理工科保研/留学帮助有限；注意区分本科生赛道和研究生赛道；校赛奖项含金量低，需冲省赛以上；比赛形式为PPT展示+答辩，需演讲表达能力。", "threshold": "免费，个人参赛；需提交职业规划书+PPT展示+面试答辩。", "major_match": "低", "ai_match": "高", "recommend": "可冲", "history": "2024✓（首届） 2025✓（第二届） 2026✓（第三届）", "source": "教育部官网2025年10月通知（moe.gov.cn）；全国大学生职业规划大赛平台（zgs.chsi.com.cn）。", "start_month": 10, "end_month": 12}, {"id": 80, "name": "蓝桥杯全国软件和信息技术专业人才大赛", "organizer": "工业和信息化部人才交流中心", "url": "https://dasai.lanqiao.cn/", "reg_start": "参考惯例10月（次年比赛报名启动，2025.10.20起）", "reg_end": "参考惯例12月-次年4月（各省不同）", "comp_time": "省赛次年4月；全国总决赛次年5-6月", "prep_cycle": "提前2-4个月（针对性刷题）", "grade": "大一下-大三", "tracks": ["就业", "保研"], "tracks_raw": "就业/保研", "value": "国赛二等奖以上在企业校招中有一定认可度（尤其中小厂/国企软开）；省奖含金量有限，多数学校综测加分较少；考公/留学几乎不认可", "pitfall": "【含金量争议】省赛获奖人数多、价值有限，国赛二等奖以上才有实质认可度；需缴纳报名费（约300元/人）；勿被“保过班”“培训捆绑”营销误导；电子类/单片机赛道对电科专业更对口", "threshold": "报名费约300元/人；个人赛一人一机；分软件赛(Python/C++/Java)与电子赛(单片机/嵌入式)", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024✓(第15届) 2025✓(第16届) 2026✓(第17届进行中)", "source": "蓝桥杯官网 dasai.lanqiao.cn；蓝桥云课大赛回顾页", "start_month": 10, "end_month": 4}, {"id": 81, "name": "DataCon大数据安全分析竞赛", "organizer": "清华大学网络科学与空间研究院、奇安信集团、蚂蚁集团、腾讯安全应急响应中心", "url": "https://www.datacon.org.cn", "reg_start": "参考惯例10-11月", "reg_end": "参考惯例11月底", "comp_time": "参考惯例12月决赛", "prep_cycle": "1-2个月", "grade": "大三/大四/研一", "tracks": ["就业", "保研"], "tracks_raw": "就业/保研", "value": "国内首个大数据安全分析专项赛，被誉为数据安全分析第一品牌，奇安信+清华联合主办，覆盖1000+高校，企业认可度高", "pitfall": "偏数据分析+安全交叉（AI安全/软件供应链/威胁分析/口令安全），不是纯CTF攻防；需要机器学习/数据挖掘基础", "threshold": "1-3人组队，Python+机器学习+安全基础", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2023/2024/2025连续举办", "source": "官网datacon.org.cn + 奇安信技术研究院(research.qianxin.com)", "start_month": 11, "end_month": 12}, {"id": 82, "name": "Microsoft Imagine Cup（微软创新杯）", "organizer": "微软（Microsoft）", "url": "https://imaginecup.microsoft.com/", "reg_start": "参考惯例10-11月", "reg_end": "参考惯例次年1-2月", "comp_time": "区域赛3-4月，世界总决赛5-6月（Microsoft Build大会）", "prep_cycle": "3-6个月", "grade": "大二-大四", "tracks": ["留学", "就业"], "tracks_raw": "留学/就业", "value": "全球历史最悠久学生科技创业赛（20+年），冠军$100,000奖金，与Satya Nadella mentoring机会，留学申请强背书", "pitfall": "仍在举办但全球影响力较巅峰期有所下降；中国区队伍通过全球线上赛参与；需年满18岁且为在校生；技术栈要求Azure/OpenAI；2026年冠军CopyFlag（英国队，AI内容检测）", "threshold": "3人团队，需有完整创业项目原型，Azure技术栈", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024/2025/2026连续举办（2025冠军Argus，2026冠军CopyFlag）", "source": "imaginecup.microsoft.com官网及Microsoft News", "start_month": 11, "end_month": 4}, {"id": 83, "name": "“挑战杯”全国大学生课外学术科技作品竞赛（大挑）", "organizer": "共青团中央、中国科协、教育部、中国工程院、全国学联", "url": "https://www.tiaozhanbei.net/", "reg_start": "参考惯例11月（校赛启动）", "reg_end": "参考次年3-6月（省赛推报国赛）", "comp_time": "国赛参考惯例10-11月（奇数年）", "prep_cycle": "提前6-12个月（需完整科研作品积累）", "grade": "大二-大四", "tracks": ["保研", "考公", "留学", "就业"], "tracks_raw": "保研/考公/留学/就业", "value": "保研综测加分权重最高赛事之一；国赛获奖在选调生/央国企简历关高度认可；留学申请可作科研经历背书；对技术岗就业有辅助但非直接敲门砖", "pitfall": "注意区分大挑（课外学术，奇数年）与小挑（创业计划，偶数年）；勿报山寨“挑战杯”商业培训赛；专项赛（人工智能+、揭榜挂帅）与主体赛认可度不同，以主体赛国赛含金量最高", "threshold": "免费报名；团队≤8人；需有实物/论文/调研报告类作品；鼓励跨专业组队", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024✗(小挑年) 2025✓(第19届) 2026✗(小挑年)；2027为大挑年", "source": "挑战杯官网 tiaozhanbei.net；四川大学/常州工学院2025年专项赛通知；哈尔滨理工大学团委时间安排页", "start_month": 11, "end_month": 11}, {"id": 84, "name": "全国大学生智能汽车竞赛（恩智浦杯）", "organizer": "教育部自动化类教指委、中国自动化学会", "url": "http://www.smartcarrace.com", "reg_start": "参考惯例11月-次年1月（前一年10月公布赛题后开放报名）", "reg_end": "参考惯例6月中旬（2025年6月15日）", "comp_time": "7月分赛区比赛，8月全国总决赛", "prep_cycle": "提前6-10个月（赛题公布后即开始备车）", "grade": "大二-大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "教育部白名单A类赛事，本校保研认可度高；涉及自动控制/图像处理/嵌入式，对大疆/华为/汇川等硬件控制岗就业帮助大；2025年第20届3287队参赛规模大", "pitfall": "车队耗材成本较高（车体/传感器/电机约2000-5000元自费），但无报名费；分竞速组/创意组/AI信组等多个组别，不同组别技术栈差异大；建议加入学校已有车队而非零基础自建", "threshold": "无报名费；3-5人一队；需掌握嵌入式C、自动控制原理、Python/C++图像处理；学校车队统一组织", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024✓(第19届2945队) 2025✓(第20届3287队) 2026✓(参考惯例7-8月)", "source": "中国自动化学会caa.org.cn赛事页；恩智浦云实验室竞赛页；洛阳理工学院赛事介绍", "start_month": 11, "end_month": 7}, {"id": 85, "name": "全国大学生机器人大赛ROBOTAC", "organizer": "共青团中央、全国大学生机器人大赛组委会", "url": "https://www.robotac.cn/", "reg_start": "参考惯例10-11月（第25届2025年11月报名）", "reg_end": "参考惯例11月", "comp_time": "中期检查次年上半年，总决赛7-8月（2026年第25届）", "prep_cycle": "6-9个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "与ROBOCON（已有ABU Robocon）不同的对抗型机器人赛事，共青团中央主办保研认可度高；偏实战对抗；设AIROBOTIC创新挑战赛赛道", "pitfall": "务必区分ROBOTAC（对抗型，robotac.cn）与ROBOCON（亚广联，robocon.org.cn），二者完全不同；团队赛须由学校管理员统一报名，个人不能直接报名；部分赛区选拔赛单独组织", "threshold": "中等，需机械/电子/控制综合能力", "major_match": "高", "ai_match": "中", "recommend": "可冲", "history": "2024(第23届)、2025(第24届)、2026(第25届)连续举办", "source": "ROBOTAC官网robotac.cn；安徽省教育厅获奖报道", "start_month": 11, "end_month": 8}, {"id": 86, "name": "团体程序设计天梯赛（GPLT）", "organizer": "教育部高等学校计算机类/软件工程/大学计算机课程教学指导委员会、全国高等学校计算机教育研究会", "url": "https://gplt.patest.cn", "reg_start": "参考惯例11月下旬（2026届为2025.11.20）", "reg_end": "参考惯例3月下旬（2026届为2026.3.22）", "comp_time": "参考惯例4月中旬（2026届为2026.4.19）", "prep_cycle": "3-4个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "中国高校计算机大赛(C4)系列白名单赛事，团队奖+个人奖双轨制，本校参与度高，覆盖面广", "pitfall": "保研认可度一般（低于ICPC/CCPC），主要用于就业简历加分；每校有5万人规模上限，需校内选拔；以学校为单位组队（10人一队），个人不能单独报名", "threshold": "会C/C++/Java/Python任一语言，10人校队组队", "major_match": "高", "ai_match": "中", "recommend": "推荐", "history": "2024第九届/2025第十届/2026第十一届连续举办", "source": "官网gplt.patest.cn + 多校教务处通知（云南大学/郑州航院/贵州商学院等）", "start_month": 11, "end_month": 4}, {"id": 87, "name": "字节跳动工程竞技赛/青训营", "organizer": "字节跳动有限公司", "url": "https://contest.bytedance.com", "reg_start": "工程竞技赛参考惯例11月初；青训营参考惯例11月底", "reg_end": "工程竞技赛参考惯例12月底；青训营参考惯例1月初", "comp_time": "工程竞技赛11-12月；青训营1月笔试、1-2月线上培训", "prep_cycle": "提前1-2个月", "grade": "大二-大四", "tracks": ["就业"], "tracks_raw": "就业", "value": "字节跳动官方赛事/训练营，优秀者可获字节校招面试直通/实习offer；青训营全程免费、含前端/后端/大数据/AI方向培训；对字节系就业帮助大", "pitfall": "青训营本质是免费培训营而非严格竞赛，含金量不如正式算法赛；工程竞技赛偏工程开发而非算法；非教育部白名单，无保研加分；注意区分'青训营'和'工程竞技赛'，前者是培训后者是比赛", "threshold": "无报名费；青训营需通过笔试选拔；需掌握至少一门编程语言（Python/Java/C++等）", "major_match": "中", "ai_match": "中", "recommend": "可冲", "history": "2023✓ 2024✓(第四届青训营) 2025✓(工程竞技赛/青训营) 2026✓(参考惯例11月启动)", "source": "contest.bytedance.com官网；掘金/牛客青训营通知", "start_month": 11, "end_month": 12}, {"id": 88, "name": "美国大学生数学建模竞赛（MCM/ICM，美赛）", "organizer": "COMAP（美国数学及其应用联合会）", "url": "https://www.comap.com/contests/mcm-icm", "reg_start": "参考惯例11月", "reg_end": "参考惯例1月（2026年为1月28日）", "comp_time": "参考惯例2月初（2026年为1月30日-2月3日，96小时连续比赛）", "prep_cycle": "提前3-4个月", "grade": "大二-大三", "tracks": ["保研", "留学", "就业"], "tracks_raw": "保研/留学/就业", "value": "O奖/F奖（全球top1%）对美/英/港新CS/工科硕士留学申请有强背书；M奖以上多数985/211高校保研加分；大厂数据分析/算法岗简历亮点。注意：S奖占比约60%，实际含金量有限。", "pitfall": "报名费100美元/队（约700元人民币），费用不退还；国内参赛队伍占95%以上，部分高校已降低美赛在保研中的权重；仅O/F/M奖有实际价值，H奖/S奖含金量低；警惕培训机构捆绑报名收费。", "threshold": "3人组队，报名费约700元/队；需数学建模+编程（Python/MATLAB）+英文论文写作能力；无前置竞赛门槛，可零基础起步。", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024✓ 2025✓ 2026✓", "source": "COMAP官网（comap.com）；长沙理工大学/厦门工学院等高校教务处2026年报名通知；人民网关于美赛争议报道。 2026-10-03核验：COMAP官网改版，路径已更新并验证可访问", "start_month": 11, "end_month": 2}, {"id": 89, "name": "iFLYTEK AI开发者大赛（星火杯·大模型应用创新赛）", "organizer": "科大讯飞股份有限公司（中国信息协会联合主办）", "url": "https://challenge.xfyun.cn/xinghuo", "reg_start": "参考惯例12月下旬（2025年12月26日启动）", "reg_end": "参考惯例4月上旬（2026年4月9日）", "comp_time": "5月全国总决赛", "prep_cycle": "约3.5-4个月", "grade": "大二及以上（AI应用方向）", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "累计582+赛题/18.1万+团队参与；获奖可获讯飞实习/校招绿色通道；星火杯证书对保研有加分", "pitfall": "赛题极多需筛选高质量赛道；部分子赛题偏应用创意而非硬核技术；注意区分官方赛与第三方合作赛", "threshold": "有大模型应用开发经验优先；可使用讯飞星火API；2-5人组队", "major_match": "高", "ai_match": "高", "recommend": "推荐", "history": "2024-2026连续举办（每年12月启动次年5月决赛）", "source": "讯飞开放平台challenge.xfyun.cn；官网实时数据 2026-10-03人工核验：可正常访问（此前为脚本TLS误报）", "start_month": 12, "end_month": 5}, {"id": 90, "name": "“挑战杯”中国大学生创业计划竞赛（小挑）", "organizer": "共青团中央、教育部、人社部、中国科协、全国学联等", "url": "https://www.tiaozhanbei.net/", "reg_start": "参考惯例11-12月（校赛启动）", "reg_end": "参考次年5-8月（省赛推报）", "comp_time": "国赛参考惯例10-11月（偶数年，2026年为第15届）", "prep_cycle": "提前4-8个月（需撰写完整创业计划书）", "grade": "大二-大四", "tracks": ["保研", "考公", "就业", "留学"], "tracks_raw": "保研/考公/就业/留学", "value": "与大挑并列保研综测最高权重赛事；金奖项目常获地方政府/园区落地支持；考公选调认可度高；对创业类岗位就业有背书；留学申请可作领导力/创新经历", "pitfall": "2026年为第15届小挑年，校赛通常3月截止（如多校3月底完成校赛推报）；注意识别收费培训捆绑的“创业赛”；专项赛（东北振兴、揭榜挂帅）含金量低于主体赛", "threshold": "免费报名；团队≤8人（含指导教师）；需提交创业计划书+商业模式；技术/经管/设计混合组队更易出彩", "major_match": "中", "ai_match": "高", "recommend": "推荐", "history": "2024✓(第14届) 2025✗(大挑年) 2026✓(第15届)", "source": "挑战杯官网；合肥工业大学/四川大学2026年专项赛通知；上海出版印刷高专2026校赛通知", "start_month": 12, "end_month": 11}, {"id": 91, "name": "全国口译大赛", "organizer": "中国外文局、中国翻译协会", "url": "http://www.lscat.cn/", "reg_start": "参考惯例12月", "reg_end": "参考惯例次年1-2月", "comp_time": "初赛2-3月，复赛3月，全国决赛4月", "prep_cycle": "3-6个月", "grade": "大二-大四", "tracks": ["留学", "就业"], "tracks_raw": "留学/就业", "value": "口译领域权威赛事，CATTI同级行业背书，外企/翻译行业认可度高", "pitfall": "以英语专业为主，非英语专业竞争力较弱；需学校推荐报名（每校每语种限报1人）；与外研社口译赛项有重叠，选其一即可；含交传/同传多个语种", "threshold": "英语口译能力强，需学校推荐", "major_match": "低", "ai_match": "低", "recommend": "可冲", "history": "2024(12届)/2025(13届)/2026(14届)连续举办", "source": "lscat.cn及中国网2026年4月颁奖报道（390+院校4000+选手）", "start_month": 12, "end_month": 3}, {"id": 92, "name": "全国大学生机械创新设计大赛", "organizer": "教育部高等教育司、机械工业教育发展中心、中国机械工程学会等", "url": "https://umic.moocollege.com/", "reg_start": "参考惯例前一年12月-当年3月（启动）", "reg_end": "参考惯例5-6月（2026常规赛：5.1-6.10报名）", "comp_time": "赛区预赛3-5月；国赛初评6月；全国决赛7月中下旬", "prep_cycle": "提前8-12个月（需机械结构设计与实物制作）", "grade": "大二-大四", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "教育部A类赛事，国奖在保研与机械/装备类企业就业中认可度高；电科学生仅在“机电控制/电子测控”相关赛道可参与；考公/留学认可度一般", "pitfall": "两年一届（2026第十二届常规赛决赛已在哈工大7月结束）；自第十二届起拆分为2026常规赛赛季与2027数字孪生挑战赛季；纯电科学生无机械结构基础不建议主做", "threshold": "报名费由学校承担；团队≤6-8人；需机械结构+电控+加工制作能力", "major_match": "低", "ai_match": "中", "recommend": "可冲", "history": "2024✗(上届) 2025✓(启动) 2026✓(第十二届常规赛决赛7月)", "source": "机械创新大赛官网 umic.moocollege.com；哈工大12umic页面；重庆交大2026通知", "start_month": 12, "end_month": 5}, {"id": 93, "name": "全国大学生软件创新大赛", "organizer": "示范性软件学院联盟", "url": "https://www.swcontest.com.cn", "reg_start": "参考惯例12月初（第十九届为2025.12.2）", "reg_end": "参考惯例2月初（第十九届为2026.2.2）", "comp_time": "参考惯例5月全国决赛（2026.5）", "prep_cycle": "3-5个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "示范性软件学院联盟主办，本校计算机学院专门发通知组织参赛，免费报名", "pitfall": "主要面向示范性软件学院学生，非软院学生在部分高校保研认定中略低；分区域赛+全国赛两级", "threshold": "3-5人组队，软件开发+创新设计能力", "major_match": "高", "ai_match": "高", "recommend": "可冲", "history": "2024第十七届/2025第十八届/2026第十九届连续举办", "source": "官网swcontest.com.cn + 本校计算机学院通知（校园网内网系统 "start_month": 12, "end_month": 5}, {"id": 94, "name": "大学生新一代信息通信科技大赛（原大唐杯全国大学生移动通信5G技术大赛）", "organizer": "工业和信息化部人才交流中心、中国通信企业协会、中信科移动通信技术股份有限公司", "url": "https://dtcup.dtxiaotangren.com", "reg_start": "参考惯例11-12月（次年赛季）", "reg_end": "参考惯例次年1-3月（2026年第13届报名截止3月10日）", "comp_time": "参考惯例上半年校赛/省赛，年中全国总决赛（2026年7月武汉）", "prep_cycle": "2-3个月", "grade": "大二/大三", "tracks": ["保研", "就业"], "tracks_raw": "保研/就业", "value": "列入高教学会竞赛分析报告；通信行业高度对口，中信科/三大运营商就业背书；偏实操仿真", "pitfall": "原\"大唐杯\"已更名为\"信科赛\"，认准官方域名dtcup.dtxiaotangren.com；部分赛道需在指定仿真平台练习；报名由学校教师统一登录", "threshold": "中低，通信原理基础即可入门", "major_match": "高", "ai_match": "低", "recommend": "可冲", "history": "2024(第11届)、2025(第12届)、2026(第13届)连续举办", "source": "山东大学/成都大学/南京邮电等校通知；中信科移动官网报道 2026-10-03人工核验：原官网域名已失效；第十三届2026年7月已在武汉科技大学举办（赛事在办），新官网待核实，报名以省校通知为准 [自动检查:error_[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i，需人工确认] [自动检查:error_[Errno 11001] getaddrinfo failed，需人工确认]", "start_month": 12, "end_month": 7}];
+const trackColors = {"保研": "#dc2626", "就业": "#2563eb", "考公": "#16a34a", "留学": "#9333ea"};
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.classList.toggle('active');
+    const lane = document.querySelector(`.track-lane[data-track="${this.dataset.track}"]`);
+    if (lane) lane.classList.toggle('hidden', !this.classList.contains('active'));
+  });
+});
+document.querySelectorAll('.comp-bar').forEach(bar => {
+  bar.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const comp = competitions.find(c => c.id === parseInt(this.dataset.compId));
+    if (!comp) return;
+    showDetail(comp);
+  });
+});
+function showDetail(c) {
+  document.getElementById('detailTitle').textContent = c.name;
+  const tracksHtml = c.tracks.map(t => `<span class="detail-track-tag" style="background:${trackColors[t]||'#64748b'}">${t}</span>`).join('');
+  const mc = m => m === '高' ? 'match-high' : (m === '中' ? 'match-mid' : 'match-low');
+  document.getElementById('detailGrid').innerHTML = `
+    <div class="detail-item"><div class="detail-label">适用赛道</div><div class="detail-value"><div class="detail-tracks">${tracksHtml}</div></div></div>
+    <div class="detail-item"><div class="detail-label">推荐等级</div><div class="detail-value"><span class="detail-recommend rec-badge-${c.recommend}">${c.recommend}</span></div></div>
+    <div class="detail-item"><div class="detail-label">主办方</div><div class="detail-value">${c.organizer || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">报名时间</div><div class="detail-value">${c.reg_start || '-'} ~ ${c.reg_end || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">比赛时间</div><div class="detail-value">${c.comp_time || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">建议备赛周期</div><div class="detail-value">${c.prep_cycle || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">适配年级</div><div class="detail-value">${c.grade || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">参赛门槛</div><div class="detail-value">${c.threshold || '-'}</div></div>
+    <div class="detail-item" style="grid-column:1/-1;"><div class="detail-label">🏆 获奖价值</div><div class="detail-value">${c.value || '-'}</div></div>
+    <div class="detail-item" style="grid-column:1/-1;"><div class="detail-label">⚠️ 避坑提示</div><div class="detail-value" style="color:#dc2626;">${c.pitfall || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">专业匹配度（电子信息工程）</div><div class="detail-value ${mc(c.major_match)}">${c.major_match || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">AI能力匹配度</div><div class="detail-value ${mc(c.ai_match)}">${c.ai_match || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">近3年举办记录</div><div class="detail-value">${c.history || '-'}</div></div>
+    <div class="detail-item"><div class="detail-label">官方链接</div><div class="detail-value"><a href="${c.url}" target="_blank" style="color:#3b82f6;">${c.url ? '点击访问官网' : '-'}</a></div></div>
+  `;
+  document.getElementById('detailPanel').classList.add('show');
+  document.getElementById('detailPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+</script>
+</body>
+</html>

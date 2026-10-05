@@ -151,4 +151,4 @@ git clone --depth 1 https://github.com/deepseek-ai/DeepSeek-V3
 
 ---
 
-下一篇：[01-DeepSeek-R1](#/doc/d445)
+下一篇：[01-DeepSeek-R1](/16-AI源码与AI交互研习库/03_模型源码_DeepSeek与朋友们/01-DeepSeek-R1-纯强化学习如何炼成)

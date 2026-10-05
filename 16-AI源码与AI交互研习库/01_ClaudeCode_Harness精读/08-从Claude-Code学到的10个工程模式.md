@@ -58,4 +58,4 @@ TODO 用 TodoWrite 落到界面、计划落成 plan 文件、记忆落成 CLAUDE
 
 ---
 
-下一篇：[09-官方工程博客导读](#/doc/d435)——Anthropic 亲口讲设计理念的几篇文章怎么读。
+下一篇：[09-官方工程博客导读](/16-AI源码与AI交互研习库/01_ClaudeCode_Harness精读/09-官方工程博客导读)——Anthropic 亲口讲设计理念的几篇文章怎么读。

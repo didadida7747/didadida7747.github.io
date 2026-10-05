@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>核心软件AI方向深度规划 — 本校电信·2029届</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;background:#f0f2f5;color:#1e293b;line-height:1.7}
+a{color:#2563eb;text-decoration:none}
+a:hover{text-decoration:underline}
+a[target="_blank"]::after{content:" \2197";font-size:10px}
+.sidebar{position:fixed;left:0;top:0;width:260px;height:100vh;background:#fff;box-shadow:2px 0 8px rgba(0,0,0,.08);overflow-y:auto;z-index:100;padding:16px 0}
+.sidebar h3{font-size:14px;color:#0f172a;padding:8px 16px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.sidebar a{display:block;padding:5px 16px;font-size:12px;color:#475569;border-left:3px solid transparent;transition:all .15s;text-decoration:none}
+.sidebar a:hover{background:#eff6ff;color:#2563eb;text-decoration:none}
+.sidebar a.active{border-left-color:#2563eb;background:#dbeafe;color:#1e40af;font-weight:600}
+.sidebar .nav-group{font-size:10px;color:#94a3b8;padding:8px 16px 4px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+.main{margin-left:280px;max-width:1100px;padding:24px 32px 60px}
+.page-header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;padding:32px;margin-bottom:20px}
+.page-header h1{font-size:28px;margin-bottom:8px}
+.page-header .subtitle{font-size:15px;opacity:.9;margin-bottom:14px}
+.profile-tags{display:flex;flex-wrap:wrap;gap:8px}
+.profile-tags span{padding:4px 12px;border-radius:12px;font-size:12px;background:rgba(255,255,255,.2)}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h2{font-size:22px;color:#0f172a;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+.card h3{font-size:16px;color:#1e40af;margin:20px 0 8px;padding-left:10px;border-left:4px solid #2563eb}
+.card h4{font-size:14px;color:#0f172a;margin:12px 0 6px}
+.card p{margin-bottom:8px;font-size:13.5px}
+.card ul,.card ol{margin:6px 0 10px 20px;font-size:13.5px}
+.card li{margin-bottom:3px}
+.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700;color:#fff;margin-right:6px}
+.b-green{background:#16a34a}.b-blue{background:#2563eb}.b-orange{background:#ea580c}.b-red{background:#dc2626}.b-purple{background:#9333ea}.b-gray{background:#6b7280}.b-light{background:#f1f5f9;color:#475569}
+.dir-green h2{color:#16a34a!important;border-bottom-color:#16a34a!important}
+.dir-green h3{color:#15803d;border-left-color:#16a34a}
+.dir-blue h2{color:#2563eb!important;border-bottom-color:#2563eb!important}
+.dir-blue h3{color:#1e40af;border-left-color:#2563eb}
+.dir-red h2{color:#dc2626!important;border-bottom-color:#dc2626!important}
+.dir-red h3{color:#b91c1c;border-left-color:#dc2626}
+.dir-purple h2{color:#9333ea!important;border-bottom-color:#9333ea!important}
+.dir-purple h3{color:#7e22ce;border-left-color:#9333ea}
+.overview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0}
+.ov-card{border-radius:10px;padding:18px;border-top:4px solid;transition:all .2s;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ov-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.ov-card.g{border-color:#16a34a}.ov-card.b{border-color:#2563eb}.ov-card.r{border-color:#dc2626}.ov-card.p{border-color:#9333ea}
+.ov-name{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.ov-salary{font-family:monospace;font-size:14px;font-weight:700;color:#dc2626;margin:6px 0}
+.ov-desc{font-size:12px;color:#64748b;line-height:1.5;margin-bottom:8px}
+.ov-tags{display:flex;flex-wrap:wrap;gap:4px}
+.ov-tags span{padding:2px 8px;border-radius:4px;font-size:10px;background:#f1f5f9;color:#475569}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
+th{background:#1e3a8a;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:7px 10px;border-bottom:1px solid #e2e8f0}
+tr:nth-child(even) td{background:#f8fafc}
+tr:hover td{background:#eff6ff}
+.salary-num{font-family:monospace;font-weight:700;color:#dc2626}
+.alert{padding:12px 16px;border-radius:8px;margin:10px 0;font-size:13px}
+.alert-green{background:#f0fdf4;border-left:4px solid #16a34a}
+.alert-blue{background:#eff6ff;border-left:4px solid #2563eb}
+.alert-orange{background:#fff7ed;border-left:4px solid #ea580c}
+.alert-red{background:#fef2f2;border-left:4px solid #dc2626}
+.alert-purple{background:#faf5ff;border-left:4px solid #9333ea}
+.hbar-row{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.hbar-label{width:170px;text-align:right;padding-right:10px;color:#334155;flex-shrink:0;font-size:11.5px}
+.hbar-track{flex:1;background:#f1f5f9;border-radius:4px;height:24px;position:relative}
+.hbar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:6px;color:#fff;font-size:11px;font-family:monospace;font-weight:700;min-width:60px}
+.bar-wrap{margin:6px 0}
+.bar-label{font-size:12px;color:#475569;display:flex;justify-content:space-between}
+.bar-track{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-top:2px}
+.bar-fill{height:100%;border-radius:4px}
+.skill-cloud{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.skill-tag{padding:4px 10px;border-radius:6px;font-size:12px;background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}
+.skill-tag.hard{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.skill-tag.tool{background:#d1fae5;border-color:#6ee7b7;color:#065f46}
+.skill-tag.know{background:#fef3c7;border-color:#fcd34d;color:#92400e}
+.proj-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin:12px 0;transition:all .2s}
+.proj-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:#93c5fd}
+.proj-card h4{color:#1e40af;font-size:15px;margin-bottom:6px}
+.proj-meta{font-size:11px;color:#64748b;margin-bottom:8px}
+.gh-btn{display:inline-block;padding:3px 10px;background:#24292e;color:#fff!important;border-radius:6px;font-size:11px;text-decoration:none;margin:2px 4px 2px 0}
+.gh-btn:hover{background:#000;text-decoration:none}
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
+.comp-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;font-size:12.5px}
+.comp-item strong{color:#0f172a}
+.sem-timeline{position:relative;padding-left:28px;margin:14px 0}
+.sem-timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#2563eb,#9333ea);border-radius:2px}
+.sem-node{position:relative;margin-bottom:14px;background:#f8fafc;border-radius:10px;padding:14px 16px;border:1px solid #e2e8f0}
+.sem-node::before{content:'';position:absolute;left:-24px;top:14px;width:12px;height:12px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 0 2px #2563eb}
+.sem-node.key::before{background:#dc2626;box-shadow:0 0 0 2px #dc2626;width:16px;height:16px;left:-26px}
+.sem-title{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.sem-phase{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;background:#dbeafe;color:#1e40af;margin-left:6px}
+.check-item{display:flex;align-items:flex-start;gap:8px;padding:3px 0;cursor:pointer;font-size:13px}
+.check-item input[type=checkbox]{margin-top:4px;cursor:pointer;width:15px;height:15px;accent-color:#2563eb}
+.check-item.done label{text-decoration:line-through;color:#94a3b8}
+.level-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-left:4px}
+.lv-master{background:#d1fae5;color:#065f46}
+.lv-pro{background:#dbeafe;color:#1e40af}
+.lv-use{background:#fef3c7;color:#92400e}
+.lv-know{background:#f1f5f9;color:#64748b}
+.fact-tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;background:#d1fae5;color:#065f46}
+.net-tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;background:#ffedd5;color:#9a3412}
+.score-input{width:50px;padding:4px;border:1px solid #cbd5e1;border-radius:4px;text-align:center;font-size:13px}
+.score-total{font-weight:700;color:#dc2626;font-size:15px;font-family:monospace}
+.score-rec{background:#d1fae5;padding:4px 8px;border-radius:4px;font-weight:700;color:#065f46}
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.persona-card{border-radius:10px;padding:16px;background:#f8fafc;border-top:4px solid}
+.persona-card.p1{border-color:#16a34a}.persona-card.p2{border-color:#dc2626}.persona-card.p3{border-color:#9333ea}
+.city-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0}
+.city-card{border-radius:10px;padding:16px;border:1px solid #e2e8f0;background:#fff}
+.city-card h4{color:#1e40af;font-size:15px;margin-bottom:6px}
+.trend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0}
+.trend-card{border-radius:10px;padding:16px;background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1px solid #e2e8f0}
+.trend-card h4{color:#7c3aed;margin-bottom:6px}
+.ref-list{font-size:12px;color:#475569;padding-left:0;list-style:none;columns:2;column-gap:24px}
+.ref-list li{margin-bottom:4px;word-break:break-all;break-inside:avoid}
+.ref-list li::before{content:"\1F517 ";}
+.flow-diagram{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:16px 0;padding:16px;background:#f8fafc;border-radius:10px}
+.flow-box{padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;text-align:center;min-width:120px}
+.flow-arrow{font-size:20px;color:#64748b;font-weight:700}
+.footer{text-align:center;padding:24px;font-size:12px;color:#94a3b8;line-height:1.8}
+.dir-section{scroll-margin-top:20px}
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0;padding:16px}}
+
+/* === Top榜 & 项目卡片增强样式（本次更新新增） === */
+.top-banner{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#7c2d12;border-radius:12px;padding:18px 22px;margin-bottom:18px;font-size:14px;font-weight:600}
+.top-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:14px 0}
+.top-col{border-radius:12px;padding:16px;border-top:4px solid;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.top-col.tg{border-color:#16a34a}.top-col.tb{border-color:#2563eb}.top-col.tr{border-color:#dc2626}.top-col.tp{border-color:#9333ea}
+.top-col h3{margin:0 0 10px;font-size:15px;padding-left:0;border:none}
+.top-col.tg h3{color:#15803d}.top-col.tb h3{color:#1e40af}.top-col.tr h3{color:#b91c1c}.top-col.tp h3{color:#7e22ce}
+.top-section-label{font-size:11px;font-weight:700;color:#92400e;background:#fef3c7;padding:2px 8px;border-radius:4px;display:inline-block;margin:10px 0 6px}
+.top-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px dashed #e2e8f0;font-size:12.5px;line-height:1.5}
+.top-item:last-child{border-bottom:none}
+.top-item .ti-name{font-weight:600;color:#0f172a}
+.top-item .ti-desc{color:#64748b;font-size:11.5px}
+.top-item .ti-star{font-family:monospace;font-size:10.5px;color:#ea580c;font-weight:700;white-space:nowrap}
+.type-tut{color:#2563eb;font-weight:700}
+.type-dev{color:#16a34a;font-weight:700}
+.type-src{color:#9333ea;font-weight:700}
+.gpu-yes{color:#16a34a;font-weight:700}
+.gpu-no{color:#dc2626;font-weight:700}
+
+
+/* === 实习·求职·资源 新增章节样式 === */
+.feature-card{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:2px solid #93c5fd;border-radius:12px;padding:18px;margin:14px 0}
+.feature-card.ospp{border-color:#f59e0b;background:linear-gradient(135deg,#fffbeb,#fef3c7)}
+.feature-card h4{color:#b45309;font-size:16px;margin-bottom:8px}
+.formula-box{background:#0f172a;color:#e2e8f0;border-radius:8px;padding:14px 18px;font-family:Consolas,monospace;font-size:12.5px;margin:10px 0;line-height:1.8}
+
+</style>
+</head>
+<body>
+<div class="sidebar">
+<h3>📚 目录导航</h3>
+<div class="nav-group">总览</div>
+<a href="#ch0" class="active">第0章：全景速览</a>
+<a href="#ch_top">🏆 第1章：精选资源Top榜</a>
+<div class="nav-group">4个核心方向</div>
+<a href="#ch1">2. AI应用开发/大模型工程</a>
+<a href="#ch2">3. 后端开发(Java/Go/C++)</a>
+<a href="#ch3">4. 算法工程师(CV/NLP/推荐)</a>
+<a href="#ch4">5. AI Infra/工程化</a>
+<div class="nav-group">横向决策</div>
+<a href="#ch5">第6章：方向对比与选择</a>
+<a href="#ch6">第7章：本科vs读研决策</a>
+<a href="#ch7">第8章：行业大趋势</a>
+<a href="#ch8">第9章：四类雇主对比</a>
+<a href="#ch9">第10章：城市选择</a>
+<a href="#ch10">第11章：行动时间轴</a>
+<div class="nav-group">实习·求职·资源</div>
+<a href="#ch12">第12章：实习全攻略</a>
+<a href="#ch13">第13章：求职流程与权益</a>
+<a href="#ch14">第14章：外部算力资源</a>
+<a href="#ch15">第15章：个人品牌建设</a>
+<a href="#ch16">第16章：查漏补缺</a>
+<a href="#ch17">第17章：参考来源索引</a>
+</div>
+
+<div class="main">
+<div class="page-header">
+<h1>核心软件AI方向深度规划</h1>
+<div class="subtitle">本校电信·2029届·本科就业版 — 聚焦4大软件/AI方向</div>
+<div class="profile-tags">
+<span>🎓 本校电子信息工程·大二·2029届（2028年秋招）</span>
+<span>💻 本科就业导向</span>
+<span>🖥️ RTX 4060 8GB / 16GB内存</span>
+<span>📊 数据截至2026年9月</span>
+<span>🎯 只走软件/AI方向，其他12方向已排除</span>
+</div>
+</div>
+
+<div class="alert alert-blue">
+<strong>📌 方向聚焦说明：</strong>本规划已明确只走以下4个软件/AI核心方向：<strong>AI应用开发、后端开发、算法工程师、AI Infra</strong>。
+其他12个方向（嵌入式/硬件/IC/FPGA/射频/通信/雷达/汽车电子/FAE/测试/技术销售/机器人/运维）经评估后已排除，不在本报告展开。
+本报告是对《电子信息工程职业方向全景指南》的深度重构，每个方向均含7个模块：技能树/项目/资源/JD分析/公司清单/校招准备/薪资。
+</div>
+
+<!-- CH0 -->
+<div class="card dir-section" id="ch0">
+<h2>第0章：全景速览</h2>
+<p style="color:#64748b;font-size:13px;">4个核心方向一览。<span class="badge b-green">绿=AI应用</span><span class="badge b-blue">蓝=后端</span><span class="badge b-red">红=算法(高门槛)</span><span class="badge b-purple">紫=AI Infra</span></p>
+<div class="overview-grid">
+<div class="ov-card g"><div class="ov-name">🤖 AI应用开发/大模型工程</div><div class="ov-desc">用大模型API做产品：RAG知识库、Agent编排、LLM应用层。Python为主，3个月可入门。</div><div class="ov-salary">本科 18-35万 | 硕士 28-45万</div><div class="ov-tags"><span class="badge b-green" style="font-size:10px">本科友好★★★★</span><span>RAG/Agent</span><span>Python</span><span>LangChain</span></div></div>
+<div class="ov-card b"><div class="ov-name">☕ 后端开发(Java/Go/C++)</div><div class="ov-desc">写服务端：微服务、高并发、数据库、分布式。校招最成熟岗位，本科绝对主力。</div><div class="ov-salary">本科 18-30万 | 硕士 26-36万</div><div class="ov-tags"><span class="badge b-blue" style="font-size:10px">本科友好★★★★★</span><span>Java/Go</span><span>MySQL</span><span>Redis</span></div></div>
+<div class="ov-card r"><div class="ov-name">📊 算法工程师(CV/NLP/推荐)</div><div class="ov-desc">训模型、调参、发论文。<strong>核心岗硕士起步，本科门槛最高</strong>。</div><div class="ov-salary">本科 22-30万(应用岗) | 硕士 36-60万</div><div class="ov-tags"><span class="badge b-red" style="font-size:10px">本科友好★★</span><span>PyTorch</span><span>数学</span><span>竞赛/论文</span></div></div>
+<div class="ov-card p"><div class="ov-name">⚡ AI Infra/工程化</div><div class="ov-desc">让大模型跑得快/省/稳：CUDA算子、推理引擎、模型部署。人才极度稀缺。</div><div class="ov-salary">本科 25-40万 | 硕士 40-70万</div><div class="ov-tags"><span class="badge b-purple" style="font-size:10px">本科友好★★★</span><span>C++/CUDA</span><span>vLLM</span><span>TensorRT</span></div></div>
+</div>
+
+<h3>4方向核心对比表</h3>
+<table>
+<tr><th>对比维度</th><th>AI应用开发</th><th>后端开发</th><th>算法工程师</th><th>AI Infra</th></tr>
+<tr><td><strong>本科友好度</strong></td><td>★★★★☆ 高</td><td>★★★★★ 最高</td><td>★★☆☆☆ 低(硕士起步)</td><td>★★★☆☆ 中高(门槛高)</td></tr>
+<tr><td><strong>应届本科总包</strong></td><td class="salary-num">18-35万</td><td class="salary-num">18-30万</td><td class="salary-num">22-30万(应用岗)</td><td class="salary-num">25-40万</td></tr>
+<tr><td><strong>应届硕士总包</strong></td><td>28-45万</td><td>26-36万</td><td>36-60万(SSP 58-85万)</td><td>40-70万</td></tr>
+<tr><td><strong>3-5年薪资</strong></td><td>35-60万</td><td>30-55万</td><td>60-120万</td><td>60-100万</td></tr>
+<tr><td><strong>内卷程度(1-10)</strong></td><td>6 需求爆发但涌入多</td><td>7 CRUD卷，AI融合稍缓</td><td>9.5 学历通胀严重</td><td>4 人才稀缺(3.4岗抢1人)</td></tr>
+<tr><td><strong>上手难度(1-10)</strong></td><td>4 Python+框架</td><td>6 需学分布式/中间件</td><td>9 数学+论文+竞赛</td><td>9 C++/CUDA/体系结构</td></tr>
+<tr><td><strong>数学要求</strong></td><td>★★☆☆☆ 低</td><td>★☆☆☆☆ 极低</td><td>★★★★★ 极高</td><td>★★★☆☆ 中</td></tr>
+<tr><td><strong>发展前景</strong></td><td>上行 Agent/RAG爆发</td><td>平稳偏上行 AI Native后端</td><td>两极分化</td><td>强上行 大模型基建刚需</td></tr>
+<tr><td><strong>AI替代风险</strong></td><td>中低</td><td>中(CRUD被Copilot替代)</td><td>中高(实验自动化)</td><td>低(底层优化难替代)</td></tr>
+</table>
+
+<h3>应届本科薪资横向对比（万元/年）</h3>
+<div>
+<div class="hbar-row"><div class="hbar-label">AI应用开发</div><div class="hbar-track"><div class="hbar-fill" style="width:56%;background:#16a34a">18-35万 (中位26万)</div></div></div>
+<div class="hbar-row"><div class="hbar-label">后端开发</div><div class="hbar-track"><div class="hbar-fill" style="width:48%;background:#2563eb">18-30万 (中位24万)</div></div></div>
+<div class="hbar-row"><div class="hbar-label">算法(应用岗本科)</div><div class="hbar-track"><div class="hbar-fill" style="width:50%;background:#dc2626">22-30万 (中位26万)</div></div></div>
+<div class="hbar-row"><div class="hbar-label">AI Infra</div><div class="hbar-track"><div class="hbar-fill" style="width:64%;background:#9333ea">25-40万 (中位32万)</div></div></div>
+<div class="hbar-row"><div class="hbar-label">算法核心岗(硕士参考)</div><div class="hbar-track"><div class="hbar-fill" style="width:92%;background:#dc2626">36-60万 (SSP 85万+)</div></div></div>
+</div>
+<p style="font-size:11px;color:#94a3b8;margin-top:8px;">注：本科总包=base×月数+签字费+股票。北京/上海/杭州/深圳比西安高30-50%。算法核心岗本科基本拿不到，列硕士数作参考。数据来源：牛客2026爆料、职友集、猎聘、前程无忧报告。</p>
+</div>
+
+<!-- CH_TOP: 精选资源Top榜 -->
+<div class="card dir-section" id="ch_top">
+<h2>🏆 第1章：精选资源Top榜 — 最值得花时间的项目与课程</h2>
+<div class="top-banner">🎯 <strong>不知道从哪开始？就看这一章。</strong> 每个方向精选5个最值得做的项目 + 3门最值得看的课，全部经过URL核实、star数确认、4060可运行性验证。建议按"📚教程型 → 🔧实战型 → 🔬精读型"顺序推进。</div>
+
+<div class="top-grid">
+
+<!-- AI应用 Top -->
+<div class="top-col tg">
+<h3>🤖 AI应用开发 · Top5项目</h3>
+<div class="top-item"><span class="ti-star">★14k</span><div><a href="https://github.com/datawhalechina/llm-universe" target="_blank" class="ti-name">datawhalechina/llm-universe</a> <span class="badge b-light" style="font-size:9px">入门</span><br><span class="ti-desc">📚 中文LLM应用开发入门首选，从零构建个人知识库RAG助手，文档极友好。</span></div></div>
+<div class="top-item"><span class="ti-star">★11k</span><div><a href="https://github.com/datawhalechina/all-in-rag" target="_blank" class="ti-name">datawhalechina/all-in-rag</a> <span class="badge b-light" style="font-size:9px">入门~中级</span><br><span class="ti-desc">📚 RAG全栈教程：文档切分→向量化→检索→重排全链路，学完能独立设计RAG系统。</span></div></div>
+<div class="top-item"><span class="ti-star">★144k</span><div><a href="https://github.com/langgenius/dify" target="_blank" class="ti-name">langgenius/dify</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">🔧 国产LLM平台顶流，Docker一键部署，可视化Workflow+RAG+Agent全套，二开做毕设/简历底座。</span></div></div>
+<div class="top-item"><span class="ti-star">★138k</span><div><a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" class="ti-name">Shubhamsaboo/awesome-llm-apps</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">🔧 100+端到端AI Agent/RAG模板，挑一个fork二开就是简历作品。</span></div></div>
+<div class="top-item"><span class="ti-star">★72k</span><div><a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank" class="ti-name">hiyouga/LLaMA-Factory</a> + <a href="https://github.com/datawhalechina/self-llm" target="_blank" class="ti-name">self-llm</a> <span class="badge b-light" style="font-size:9px">中级~高级</span><br><span class="ti-desc">🔧 WebUI一键LoRA微调7B模型，4060 8GB刚好能跑，"微调过大模型"简历硬核加分。</span></div></div>
+<div class="top-section-label">🎓 Top3课程</div>
+<div class="top-item"><span class="ti-star">15万播放</span><div><a href="https://www.bilibili.com/video/BV178w1z7EHQ" target="_blank" class="ti-name">黑马LangChain+LangGraph实战</a><br><span class="ti-desc">📚 7小时中文系统课，零基础跟敲，AI应用开发上手首选。</span></div></div>
+<div class="top-item"><span class="ti-star">万级播放</span><div><a href="https://www.bilibili.com/video/BV1ECQ9B5EKe" target="_blank" class="ti-name">吴恩达RAG实战课</a><br><span class="ti-desc">📚 DeepLearning.AI官方RAG课程，覆盖高级RAG、知识图谱RAG、Agentic RAG。</span></div></div>
+<div class="top-item"><span class="ti-star">125万+回放</span><div><a href="https://www.bilibili.com/video/BV1RxZmYCEfB" target="_blank" class="ti-name">李沐《动手学深度学习》</a><br><span class="ti-desc">📚 161集58小时，中文DL第一课，建立Transformer直觉。</span></div></div>
+</div>
+
+<!-- 后端 Top -->
+<div class="top-col tb">
+<h3>☕ 后端开发 · Top5项目</h3>
+<div class="top-item"><span class="ti-star">★130k</span><div><a href="https://github.com/krahets/hello-algo" target="_blank" class="ti-name">krahets/hello-algo</a> <span class="badge b-light" style="font-size:9px">入门</span><br><span class="ti-desc">📚 动画图解数据结构与算法，国内最佳算法入门，面试刷题前必读。</span></div></div>
+<div class="top-item"><span class="ti-star">★10k+</span><div><a href="https://github.com/201206030/novel" target="_blank" class="ti-name">201206030/novel</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">🔧 保姆级教程从零开发生产级Java系统，Spring Boot 3+Vue3+JDK21，比mall更适合新手。</span></div></div>
+<div class="top-item"><span class="ti-star">★76k</span><div><a href="https://github.com/macrozheng/mall" target="_blank" class="ti-name">macrozheng/mall</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">🔧 Java电商项目天花板，SpringBoot全家桶标配，配套教程极丰富。</span></div></div>
+<div class="top-item"><span class="ti-star">★158k</span><div><a href="https://github.com/Snailclimb/JavaGuide" target="_blank" class="ti-name">Snailclimb/JavaGuide</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">📚 Java后端面试圣经，JVM/并发/数据库/分布式/系统设计全覆盖，秋招前必刷。</span></div></div>
+<div class="top-item"><span class="ti-star">★17k</span><div><a href="https://github.com/geektutu/7days-golang" target="_blank" class="ti-name">geektutu/7days-golang</a> <span class="badge b-light" style="font-size:9px">中级~高级</span><br><span class="ti-desc">📚 7天手写Gee Web框架/分布式缓存/RPC，理解Go底层和分布式系统的最佳中文实战。</span></div></div>
+<div class="top-section-label">🎓 Top3课程</div>
+<div class="top-item"><span class="ti-star">百万级播放</span><div><a href="https://www.bilibili.com/video/BV19E411D78Q" target="_blank" class="ti-name">王道考研 计算机网络</a><br><span class="ti-desc">📚 计网体系建立最快路径，就业/考研双用。</span></div></div>
+<div class="top-item"><span class="ti-star">数十万播放</span><div><a href="https://www.bilibili.com/video/BV1N741177F5" target="_blank" class="ti-name">蒋炎岩《操作系统：设计与实现》</a><br><span class="ti-desc">📚 国内OS课天花板，Hacker风格，对做Infra/系统方向极有帮助。</span></div></div>
+<div class="top-item"><span class="ti-star">—</span><div><a href="https://programmercarl.com/" target="_blank" class="ti-name">代码随想录（LeetCode刷题）</a><br><span class="ti-desc">📚 按类型刷LeetCode，后端笔试面试必备。</span></div></div>
+</div>
+
+<!-- 算法 Top -->
+<div class="top-col tr">
+<h3>📊 算法工程师 · Top5项目</h3>
+<div class="top-item"><span class="ti-star">★81k</span><div><a href="https://github.com/d2l-ai/d2l-zh" target="_blank" class="ti-name">d2l-ai/d2l-zh</a> <span class="badge b-light" style="font-size:9px">入门</span><br><span class="ti-desc">📚 中文深度学习第一教材，代码可运行，配李沐B站视频，被全球500+大学采用。</span></div></div>
+<div class="top-item"><span class="ti-star">★数万</span><div><a href="https://github.com/datawhalechina/thorough-pytorch" target="_blank" class="ti-name">datawhalechina/thorough-pytorch</a> <span class="badge b-light" style="font-size:9px">入门~中级</span><br><span class="ti-desc">📚 中文PyTorch入门最佳，三阶段从基础到案例，配合d2l做练习。</span></div></div>
+<div class="top-item"><span class="ti-star">★105k</span><div><a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" class="ti-name">rasbt/LLMs-from-scratch</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">📚 从零手写GPT-like LLM，从tokenizer到预训练到SFT到LoRA，逐行讲解。</span></div></div>
+<div class="top-item"><span class="ti-star">★63k</span><div><a href="https://github.com/karpathy/nanoGPT" target="_blank" class="ti-name">karpathy/nanoGPT</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">📚 ~1000行代码完整复现GPT训练，理解Transformer训练流程的最短路径。</span></div></div>
+<div class="top-item"><span class="ti-star">★67k</span><div><a href="https://github.com/labmlai/annotated_deep_learning_paper_implementations" target="_blank" class="ti-name">labmlai/annotated_dl_paper_impl</a> <span class="badge b-light" style="font-size:9px">中级~高级</span><br><span class="ti-desc">🔬 60+经典论文（Transformer/ViT/Diffusion）逐行注释实现，进阶读论文用。</span></div></div>
+<div class="top-section-label">🎓 Top3课程</div>
+<div class="top-item"><span class="ti-star">125万+回放</span><div><a href="https://www.bilibili.com/video/BV1RxZmYCEfB" target="_blank" class="ti-name">李沐《动手学深度学习》</a><br><span class="ti-desc">📚 DL入门地基，边看边敲代码。</span></div></div>
+<div class="top-item"><span class="ti-star">数万~十万</span><div><a href="https://www.bilibili.com/video/BV12nG16zETp" target="_blank" class="ti-name">吴恩达深度学习2026（中文翻译）</a><br><span class="ti-desc">📚 补ML基础，经典Deep Learning Specialization。</span></div></div>
+<div class="top-item"><span class="ti-star">—</span><div><a href="https://www.bilibili.com/video/BV1YsqSY8EiW" target="_blank" class="ti-name">李宏毅机器学习2025</a><br><span class="ti-desc">📚 台大李宏毅，风格幽默，已覆盖LLM/Agent内容。</span></div></div>
+</div>
+
+<!-- AI Infra Top -->
+<div class="top-col tp">
+<h3>⚡ AI Infra · Top5项目</h3>
+<div class="top-item"><span class="ti-star">★129k</span><div><a href="https://github.com/ggml-org/llama.cpp" target="_blank" class="ti-name">ggml-org/llama.cpp</a> <span class="badge b-light" style="font-size:9px">入门</span><br><span class="ti-desc">📚 纯C/C++推理实现，GGUF量化格式事实标准，Ollama底层，4060直接跑，边用边读代码。</span></div></div>
+<div class="top-item"><span class="ti-star">数百星</span><div><a href="https://github.com/jmaczan/tiny-vllm" target="_blank" class="ti-name">jmaczan/tiny-vllm</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">📚 几千行C++/CUDA从零手写推理引擎，理解vLLM内部原理的最佳教学项目，完美匹配4060。</span></div></div>
+<div class="top-item"><span class="ti-star">新项目</span><div><a href="https://github.com/scq6688/YOLOv13-ONNX-TensorRT" target="_blank" class="ti-name">scq6688/YOLOv13-ONNX-TensorRT</a> <span class="badge b-light" style="font-size:9px">中级</span><br><span class="ti-desc">🔧 数据标注→训练→ONNX→TensorRT C++部署全工业流水线，CV部署岗直接对口，4060完美适配。</span></div></div>
+<div class="top-item"><span class="ti-star">★92k</span><div><a href="https://github.com/vllm-project/vllm" target="_blank" class="ti-name">vllm-project/vllm</a> <span class="badge b-light" style="font-size:9px">中高</span><br><span class="ti-desc">🔧 事实标准LLM推理引擎，PagedAttention发明者，就业最高频要求，pip装小模型跑服务再读核心代码。</span></div></div>
+<div class="top-item"><span class="ti-star">★25k</span><div><a href="https://github.com/Dao-AILab/flash-attention" target="_blank" class="ti-name">Dao-AILab/flash-attention</a> <span class="badge b-light" style="font-size:9px">高级</span><br><span class="ti-desc">🔬 现代LLM必备注意力kernel，pip装了就能用；进阶精读其tiling实现，冲高级岗位。</span></div></div>
+<div class="top-section-label">🎓 Top3课程</div>
+<div class="top-item"><span class="ti-star">万级播放</span><div><a href="https://www.bilibili.com/video/BV1MZbjzSEtV" target="_blank" class="ti-name">YOLOv13从训练到TensorRT部署</a><br><span class="ti-desc">📚 12P约10小时，6.8万播放，工业级部署全流程，简历项目级。</span></div></div>
+<div class="top-item"><span class="ti-star">数千~万</span><div><a href="https://www.bilibili.com/video/BV1YC5y6QEmz" target="_blank" class="ti-name">NVIDIA官方《现代CUDA编程》</a><br><span class="ti-desc">📚 NVIDIA官方出品，CUDA Tile新编程模型+多GPU，短课碎片时间学。</span></div></div>
+<div class="top-item"><span class="ti-star">千级播放</span><div><a href="https://www.bilibili.com/video/BV1c1MP6iEL1" target="_blank" class="ti-name">SGEMM优化源码实践</a><br><span class="ti-desc">📚 国内少有的CUDA手写优化实战，从naive到tiling到shared memory，面试硬核。</span></div></div>
+</div>
+
+</div>
+<div class="alert alert-purple" style="margin-top:14px">
+<strong>💡 使用建议：</strong>上表star数为2026年9月核实数据。每个方向选3-4个项目做深（不要贪多），课程选1-2门跟完。<strong>项目类型推进顺序：📚教程型（跟着做学知识）→ 🔧实战型（fork后改造成自己的项目）→ 🔬精读型（读源码学原理，适合进阶）。</strong>
+</div>
+</div>
+
+<div class="card dir-section dir-green" id="ch1">
+<div class="dir-header" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+<h2>2. AI应用开发 / 大模型工程</h2>
+<span class="badge b-green">本科友好度★★★★</span>
+<span class="badge b-green">需求爆发中</span>
+<span class="badge b-light">Python为主</span>
+</div>
+<div class="alert alert-green">
+<strong>定位：</strong>用大模型API（DeepSeek/通义/OpenAI/Claude）做产品的工程师——RAG知识库、Agent编排、LLM应用层。<strong>不是训模型，而是用模型</strong>。硬件约束：RTX 4060 8GB优先调云端API，本地仅跑1.5B-3B量化小模型做调试。
+</div>
+
+<h3>模块1：详细技能树（按学期阶段，可勾选）</h3>
+<p style="font-size:12px;color:#64748b">掌握程度：<span class="level-badge lv-master">熟练</span>=能独立用并解决报错 <span class="level-badge lv-pro">会用</span>=能照着文档跑通demo <span class="level-badge lv-use">了解</span>=看得懂能复述原理</p>
+
+<h4>阶段A：大二上（2026.9-2027.1）—— 打地基，跑通第一个LLM Demo</h4>
+<div class="check-item done"><input type="checkbox" checked><label>Python语法（变量/函数/类/装饰器/异常/文件IO）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Python工程化（venv/pip/requirements、虚拟环境管理）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Git基本操作（add/commit/push/pull/branch/merge、GitHub建仓）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Linux基本命令（cd/ls/grep/ps/top/vim/ssh）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>JavaScript/TypeScript入门（ES6语法、Promise、async/await）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>大模型基础：Token、上下文窗口、temperature、top_p、system/user/assistant角色<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Prompt Engineering基础（角色设定、few-shot、CoT、输出JSON格式约束）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Transformer直觉理解（Self-Attention在做什么，不要求手推公式）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>调用过至少2家云端API：DeepSeek API、通义千问/百炼、OpenAI兼容接口<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LangChain基础（LLM Chain、PromptTemplate、Output Parser、Sequential Chain）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>FastAPI入门（写一个/chat接口，本地8000端口跑通）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Chroma本地向量数据库（pip install chromadb，存100条文档做语义检索）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Streamlit/Gradio快速做聊天UI（10行代码起一个网页对话框）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>GitHub建仓+README写清楚（截图+启动命令）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Docker概念（镜像/容器/Dockerfile是什么，能docker run别人的镜像）<span class="level-badge lv-use">了解</span></label></div>
+<div class="alert alert-blue" style="margin:8px 0"><strong>本阶段里程碑：</strong>用LangChain+DeepSeek API+Chroma+Streamlit做一个「本校课程资料问答机器人」，喂50份PDF，能回答"计电学院的保研政策是什么"。</div>
+
+<h4>阶段B：大二下（2027.2-2027.6）—— 深入RAG，做出第一个像样项目</h4>
+<div class="check-item"><input type="checkbox"><label>Python进阶（异步asyncio、pydantic数据校验、logging日志）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>TypeScript+React/Next.js基础（能改模板、写页面组件、调后端API）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>RAG全链路原理：文档加载→切分chunk→Embedding→向量库检索→重排rerank→拼Prompt→LLM生成<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Embedding模型选型（bge-large-zh、text-embedding-3-small、M3E）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>RAG常见坑：chunk大小怎么定、top_k怎么选、召回率低怎么优化、幻觉怎么压<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Function Calling/Tool Calling原理（让模型输出结构化JSON去调你写的函数）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LlamaIndex入门（SimpleDirectoryReader、VectorStoreIndex、QueryEngine）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LangChain进阶（RetrievalQA、ConversationalRetrievalChain、Memory记忆）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>向量数据库：本地Chroma+云端任意一个（Zilliz/Milvus Lite/Pinecone免费额度）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>FastAPI进阶（Pydantic请求体、中间件、CORS、uvicorn部署）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Next.js 14 App Router（写一个前端页面调FastAPI后端）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Docker会写Dockerfile+docker-compose（把后端+向量库一键起）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>云服务器：阿里云/腾讯云学生机（9.9元/月轻量应用服务器），把项目部署上线拿公网IP<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Nginx反向代理入门（域名+80端口转发）<span class="level-badge lv-use">了解</span></label></div>
+<div class="alert alert-blue" style="margin:8px 0"><strong>本阶段里程碑：</strong>完成「项目2：企业知识库RAG问答系统」并部署上线，公网可访问，README写清架构图。</div>
+
+<h4>阶段C：大二暑假（2027.7-2027.8）—— 第一段实习或高强度项目冲刺</h4>
+<div class="alert alert-orange" style="margin:8px 0"><strong>目标二选一：</strong>①首选：投中小型AI创业公司/外包团队远程实习（日薪150-250，主要攒经历）；②完整复刻一个开源RAG/Agent项目（如RAGFlow二次开发），GitHub出技术博客。</div>
+<div class="check-item"><input type="checkbox"><label>Agent架构：ReAct模式、Plan-and-Execute、Reflection自我反思<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LangGraph入门（状态图、节点、边、条件路由，做一个能调工具的Agent）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>多轮对话记忆方案（Buffer Memory/Summary Memory/向量库存历史）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>RAG评估：用RAGAS框架打分（faithfulness、answer_relevancy）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>CI/CD概念（GitHub Actions自动跑测试/部署）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>学会用AI Coding工具（Cursor/Claude Code/通义灵码）提效<span class="level-badge lv-master">熟练</span> — 2026年JD明确加分项</label></div>
+<div class="alert alert-blue" style="margin:8px 0"><strong>本阶段里程碑：</strong>GitHub上有2个star≥20的项目；LeetCode刷到100题。</div>
+
+<h4>阶段D：大三上（2027.9-2028.1）—— Agent进阶+冲大厂日常实习</h4>
+<div class="check-item"><input type="checkbox"><label>Transformer细节（Multi-Head Attention、KV Cache、位置编码）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>微调认知：LoRA/QLoRA原理（不要求自己训，能讲清"为什么用LoRA"、"7B模型微调要多少显存"）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>模型部署认知：vLLM/Ollama/量化（GGUF/GPTQ）<span class="level-badge lv-use">了解</span> — RTX4060 8G可跑Qwen2.5-7B-Instruct-GGUF Q4量化版做本地演示</label></div>
+<div class="check-item"><input type="checkbox"><label>多模态RAG（图文混排PDF、表格抽取）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LangGraph熟练（做多Agent协作：规划Agent+检索Agent+写代码Agent）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>AutoGen/CrewAI任选其一跑通一个多Agent demo<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>向量数据库进阶：Milvus或Qdrant，会做混合检索（向量+BM25关键词）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>观察性工具：LangSmith/Langfuse（追踪一次LLM调用花了多少钱、哪步慢）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Redis（缓存对话历史、限流）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>消息队列RabbitMQ/Kafka概念（异步处理长任务）<span class="level-badge lv-use">了解</span></label></div>
+<div class="alert alert-blue" style="margin:8px 0"><strong>本阶段里程碑：</strong>投大厂日常实习（字节火山引擎、腾讯混元、阿里通义、美团LLM平台组），哪怕没过也攒笔试面试经验；完成「项目4：多Agent协作系统」。</div>
+
+<h4>阶段E：大三下+大三暑假（2028.2-2028.8）—— 决定性实习+秋招冲刺</h4>
+<div class="alert alert-red" style="margin:8px 0"><strong>这是生死线学期。</strong>目标：拿到一段3个月以上、有名气公司的AI应用/大模型工程实习，争取留用或拿到return offer。</div>
+<div class="check-item"><input type="checkbox"><label>八股文系统过一遍（见模块6面试考点清单）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>把前4个项目按STAR法则量化写进简历<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LeetCode刷到250-300题（Hot 100二刷完）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>手写一遍RAG全链路（不看教程，凭记忆搭一个最简版）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>准备3个项目的「深挖问答」：为什么chunk选512？为什么选bge不选openai embedding？延迟多少？并发怎么扛？<span class="level-badge lv-master">熟练</span></label></div>
+
+<h3>模块2：实战项目清单（6个，由易到难，RTX 4060可完成）</h3>
+<div class="alert alert-green">
+<strong>📌 项目类型说明：</strong>建议按 <span class="type-tut">📚 教程学习型</span>（跟着做学知识）→ <span class="type-dev">🔧 二次开发实战型</span>（fork后改造成自己的项目）→ <span class="type-src">🔬 源码精读型</span>（读源码学原理，适合进阶）的顺序推进。
+所有项目<strong>优先调云端API</strong>（DeepSeek-V3/通义qwen-plus/豆包pro），月成本控制在50元以内；本地仅在需要演示离线能力时跑Qwen2.5-3B-Instruct-GGUF。
+</div>
+
+<div class="proj-card">
+<h4>项目1：datawhalechina/llm-universe — 中文LLM应用入门 <span class="badge b-light">★14k</span> <span class="badge b-green">入门</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：Python / LangChain / FastAPI / Jupyter Notebook | <span class="gpu-yes">✅ RTX4060可跑（调API为主）</span></div>
+<p>Datawhale出品的中文LLM应用开发教程，从零到一构建个人知识库助手。跟着教程完成"基于大语言模型的个人知识库问答"，建立RAG完整认知。</p>
+<p><strong>简历亮点：</strong>"系统学习LLM应用开发全流程，独立完成个人知识库RAG问答Demo，理解文档切分→Embedding→检索→生成完整链路。"</p>
+<a class="gh-btn" href="https://github.com/datawhalechina/llm-universe" target="_blank">GitHub ↗ llm-universe</a>
+</div>
+
+<div class="proj-card">
+<h4>项目2：datawhalechina/all-in-rag — RAG全栈深入 <span class="badge b-light">★11.2k</span> <span class="badge b-green">入门~中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：Python / 向量数据库 / 检索增强生成 | <span class="gpu-yes">✅ RTX4060可跑（RAG推理不训练）</span></div>
+<p>Datawhale RAG专项教程，从文档切分→向量化→检索→重排全链路。配合llm-universe学最佳，学完能独立设计文档问答系统。</p>
+<p><strong>简历亮点：</strong>"深入学习RAG全链路优化，掌握文档切分策略、混合检索（向量+BM25）、重排模型等关键技术，能独立设计并实现生产级RAG系统。"</p>
+<a class="gh-btn" href="https://github.com/datawhalechina/all-in-rag" target="_blank">GitHub ↗ all-in-rag</a>
+</div>
+
+<div class="proj-card">
+<h4>项目3：langgenius/dify — 可视化LLM平台二次开发 <span class="badge b-light">★144k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：Python / Next.js / TypeScript / Docker | <span class="gpu-yes">✅ RTX4060可跑（Docker部署，模型走API/Ollama）</span></div>
+<p>国产开源LLM平台顶流。Docker一键部署，可视化搭AI应用Workflow+RAG+Agent全套。Fork后自定义一个应用场景（如"本校保研政策问答"或"简历优化助手"），加自己的前端页面和业务逻辑。</p>
+<p><strong>简历亮点：</strong>"基于Dify二次开发XX智能应用，自定义Workflow编排+RAG知识库+Agent工具调用，Docker部署上线，公网可访问，用户量XXX。"</p>
+<a class="gh-btn" href="https://github.com/langgenius/dify" target="_blank">GitHub ↗ dify</a>
+</div>
+
+<div class="proj-card">
+<h4>项目4：Shubhamsaboo/awesome-llm-apps — 模板二开出作品 <span class="badge b-light">★138k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：Python / Streamlit / LangChain / LlamaIndex / 多LLM API | <span class="gpu-yes">✅ RTX4060可跑（多数模板支持Ollama本地模型）</span></div>
+<p>100+端到端可克隆可运行的AI Agent/RAG模板合集。从中挑一个（如AI论文写作助手、AI PDF助手、多Agent协作系统），fork后改造成自己的项目——换数据源、加业务逻辑、美化UI，就是一个完整简历作品。</p>
+<p><strong>简历亮点：</strong>"基于awesome-llm-apps模板二次开发XX AI应用，集成LangChain+多LLM API+Streamlit界面，支持XXX功能，GitHub 20+ star。"</p>
+<a class="gh-btn" href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank">GitHub ↗ awesome-llm-apps</a>
+</div>
+
+<div class="proj-card">
+<h4>项目5：Mintplex-Labs/anything-llm — 全栈私有知识库 <span class="badge b-light">★66k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：Node.js / Express / React / Vite / 多向量数据库 | <span class="gpu-yes">✅ RTX4060可跑（支持llama.cpp本地模型，RAG不吃GPU）</span></div>
+<p>本地优先的私有ChatGPT，Docker一键启动。全栈RAG系统，支持多文档、多向量库、多模型。适合做"企业知识库问答"方向的实战——部署后研究其前后端架构，做功能扩展（如加文档批量导入、权限管理）。</p>
+<p><strong>简历亮点：</strong>"部署并二次开发AnythingLLM私有知识库系统，支持多格式文档解析与语义检索，研究其Node.js+React全栈架构，扩展XX功能模块。"</p>
+<a class="gh-btn" href="https://github.com/Mintplex-Labs/anything-llm" target="_blank">GitHub ↗ anything-llm</a>
+</div>
+
+<div class="proj-card">
+<h4>项目6：self-llm + LLaMA-Factory — LoRA微调开源模型 <span class="badge b-light">★31k+72k</span> <span class="badge b-orange">中级~高级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> + <span class="type-dev">🔧 实战型</span> | 技术栈：Python / PyTorch / Gradio WebUI / LoRA微调 | <span class="gpu-yes">✅ RTX4060 8GB可跑（QLoRA+4bit量化微调7B模型）</span></div>
+<p>跟着datawhalechina/self-llm教程，用LLaMA-Factory可视化界面对Qwen2.5-7B做LoRA微调，用自己构造的"本校校情"问答数据集做SFT。8GB显存用QLoRA+4bit量化刚好能跑。</p>
+<p><strong>简历亮点：</strong>"基于LLaMA-Factory用QLoRA在RTX4060上微调Qwen2.5-7B（4bit量化），构造XXX条领域问答数据做SFT，在测试集上准确率从62%提升到81%。"</p>
+<a class="gh-btn" href="https://github.com/datawhalechina/self-llm" target="_blank">GitHub ↗ self-llm</a>
+<a class="gh-btn" href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">GitHub ↗ LLaMA-Factory</a>
+</div>
+
+<h3>模块3：学习资源</h3>
+<h4>课程（按学习顺序）</h4>
+<table>
+<tr><th>顺序</th><th>资源</th><th>类型</th><th>难度</th><th>时长</th><th>适合阶段</th></tr>
+<tr><td>1</td><td><a href="https://www.bilibili.com/video/BV178w1z7EHQ" target="_blank">黑马程序员《LangChain+LangGraph开发实战》</a></td><td>视频(B站)</td><td>入门</td><td>7小时</td><td>大二上·起步</td></tr>
+<tr><td>2</td><td><a href="https://www.bilibili.com/video/BV1ECQ9B5EKe" target="_blank">吴恩达《RAG实战课》（DeepLearning.AI）</a></td><td>视频(B站)</td><td>入门~中级</td><td>数小时</td><td>大二上~下</td></tr>
+<tr><td>3</td><td><a href="https://github.com/datawhalechina/llm-universe" target="_blank">datawhalechina/llm-universe（中文教程）</a></td><td>文档/书籍</td><td>入门</td><td>3-4周</td><td>大二上·入门首选</td></tr>
+<tr><td>4</td><td><a href="https://github.com/datawhalechina/all-in-rag" target="_blank">datawhalechina/all-in-rag（RAG全栈指南）</a></td><td>文档/书籍</td><td>中级</td><td>2-3周</td><td>大二下·深入RAG</td></tr>
+<tr><td>5</td><td><a href="https://www.bilibili.com/video/BV1RxZmYCEfB" target="_blank">李沐《动手学深度学习》（Transformer章节）</a></td><td>视频(B站)</td><td>中级</td><td>3周(选看)</td><td>大二下·补原理</td></tr>
+<tr><td>6</td><td><a href="https://python.langchain.com/docs/tutorials/" target="_blank">LangChain/LangGraph官方Tutorials</a></td><td>文档</td><td>中级</td><td>2周</td><td>大二下·边做边查</td></tr>
+<tr><td>7</td><td><a href="https://fastapi.tiangolo.com/zh/tutorial/" target="_blank">FastAPI官方Tutorial（中文）</a></td><td>文档</td><td>入门~中级</td><td>1周</td><td>大二下·后端基础</td></tr>
+<tr><td>8</td><td><a href="https://github.com/datawhalechina/hello-agents" target="_blank">datawhalechina/hello-agents（Agent系统教程）</a></td><td>文档/书籍</td><td>中级</td><td>3周</td><td>大二暑假·Agent进阶</td></tr>
+</table>
+<h4>优质GitHub教程仓库</h4>
+<ul>
+<li><a href="https://github.com/datawhalechina/self-llm" target="_blank">datawhalechina/self-llm</a> <span class="badge b-light">★31k</span> — 开源大模型食用指南，手把手教微调/部署Qwen/Llama</li>
+<li><a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">hiyouga/LLaMA-Factory</a> <span class="badge b-light">★72k</span> — 一站式LLM微调平台，WebUI一键LoRA</li>
+<li><a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank">Shubhamsaboo/awesome-llm-apps</a> <span class="badge b-light">★138k</span> — 100+端到端AI应用模板合集</li>
+<li><a href="https://github.com/langgenius/dify" target="_blank">langgenius/dify</a> <span class="badge b-light">★144k</span> — LLM应用开发平台，中文文档友好</li>
+<li><a href="https://github.com/Mintplex-Labs/anything-llm" target="_blank">Mintplex-Labs/anything-llm</a> <span class="badge b-light">★66k</span> — 本地优先私有知识库问答系统</li>
+</ul>
+<h4>必读博客/文档</h4>
+<ul>
+<li><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">Lilian Weng: LLM Powered Autonomous Agents</a></li>
+<li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank">Jay Alammar: The Illustrated Transformer</a></li>
+<li><a href="https://python.langchain.com/docs/concepts/" target="_blank">LangChain官方概念文档</a></li>
+</ul>
+
+
+<h3>模块4：真实岗位JD分析（2025-2026校招/实习）</h3>
+
+<h4>JD 1.1：字节跳动「AI全栈开发工程师-火山引擎」校招</h4>
+<p>来源：<a href="https://jobs.bytedance.com/campus/m/position/7668198999834364165/detail" target="_blank">字节校招官网</a></p>
+<table>
+<tr><th>JD要求</th><th>所需能力</th><th>本科准备程度</th></tr>
+<tr><td>2027届本科及以上，计算机/AI/软工相关优先</td><td>本科可投，专业不限死但要写得出代码</td><td>✅ 本科可投</td></tr>
+<tr><td>有实际项目中的性能优化、系统设计或工程落地经验</td><td>不能只跑demo，要能讲"我把首字延迟从5s优化到2s，做了哪三件事"</td><td>⚠️ 需要项目深挖经验</td></tr>
+<tr><td>有AI Coding工具实际使用经验，熟练Python/Go/TS/C至少一门</td><td><strong>2026年新增显性要求</strong>：简历写"日常使用Cursor/Claude Code提升效率X%"，面试可能现场用AI工具写代码</td><td>✅ 大二开始用即可</td></tr>
+<tr><td>了解主流Agent框架、Agent核心机制有实践认知（优先）</td><td>"了解即可"——本科不要求精通Agent源码，但必须亲手做过至少一个LangGraph/AutoGen项目</td><td>✅ 做过项目即可</td></tr>
+</table>
+<div class="alert alert-blue"><strong>隐含要求：</strong>火山引擎是ToB云，看重工程能力（部署、稳定性），不是算法研究。本科准备重点是"能把LLM能力做成一个稳定可用的Web服务"。</div>
+
+<h4>JD 1.2：腾讯「大模型应用开发工程师」（CSIG/PCG相关组）</h4>
+<p>来源：<a href="https://hr.tencent.com/m/jobdesc.html?postId=2079104781984645120" target="_blank">腾讯校招官网</a></p>
+<table>
+<tr><th>JD要求</th><th>解读</th></tr>
+<tr><td>本科及以上，计算机/AI/软工相关</td><td>本科可投</td></tr>
+<tr><td>熟练掌握Python，扎实工程能力与代码质量意识</td><td>Python必须熟练，不能只会调API</td></tr>
+<tr><td>熟悉LangChain/LangGraph等主流与前沿框架者优先</td><td><strong>LangChain/LangGraph是腾讯JD直接点名的框架</strong>，不是可选项</td></tr>
+<tr><td>熟悉RAG、Prompt Engineering、Harness Engineering、Loop Engineering、Function Calling、Agent编排</td><td>2025-2026新术语：<strong>Harness Engineering</strong>（让LLM在工程约束下可靠输出）、<strong>Loop Engineering</strong>（让LLM循环调用直到任务完成）。面试可能问"你怎么保证LLM输出一定符合schema？怎么处理它反复调用工具失败？"</td></tr>
+<tr><td>了解主流大模型（GPT、Claude、开源大模型）</td><td>要能对比不同模型在哪个场景该用哪个，成本/延迟/效果三角权衡</td></tr>
+</table>
+<div class="alert alert-green"><strong>本科生准备度：</strong>Python熟练+2个RAG/Agent项目+能讲清Function Calling流程，就够过简历关；面试重点在项目深挖和八股。</div>
+
+<h4>JD 1.3：腾讯「Agent平台研发工程师」</h4>
+<p>来源：<a href="https://hr.tencent.com/m/jobdesc.html?postId=1915242132004782080" target="_blank">腾讯校招官网</a></p>
+<p>原文：精通Go/Python至少一种；高并发、分布式服务、任务调度/工作流系统开发经验；熟悉Claude Code、Codex、LangGraph、OpenCode、AutoGen等。</p>
+<div class="alert alert-orange"><strong>解读：</strong>这个岗偏后端基础设施（做Agent平台本身，不是用Agent做业务），要求更高，本科可作为冲刺目标。信号：<strong>只会LangChain调API不够，要补Go/分布式</strong>——这也是为什么后端方向作为Plan B并列。</div>
+
+<h4>JD 1.4：美团「AI后端开发工程师」校招</h4>
+<p>来源：<a href="https://m.yingjiesheng.com/job-008-091-468.html" target="_blank">应届生求职网</a></p>
+<p>原文：本科及以上；掌握Java/C/C++/Python/Go至少一门；了解MySQL；扎实的数据结构/操作系统/数据库/算法/网络基础；了解LLM基本原理，用过主流大模型API。</p>
+<div class="alert alert-orange"><strong>解读：</strong>美团把AI岗挂在后端名下，意味着<strong>AI应用岗的底层仍然是后端基本功</strong>。即使走AI方向，计算机网络/操作系统/MySQL这些八股一个都不能少。</div>
+
+<h3>模块5：目标公司清单（冲刺/主力/保底）</h3>
+<div class="alert alert-blue">
+<strong>本校2025届全校签约数据</strong>：华为807人、中国电科238、比亚迪218、中航工业159、TP-Link 129、中国航天110、阿里巴巴107、美团104；电信/移动/中兴/字节/小米/百度均70+。
+<strong>本科单独口径</strong>：华为约106人、美团18、阿里14、腾讯13、京东12、字节9。本校在互联网大厂的校友密度远高于普通211，内推资源极好。
+</div>
+
+<h4>冲刺档（本科能进，但需要强项目+好实习）</h4>
+<table>
+<tr><th>公司</th><th>岗位</th><th>招聘特点</th><th>本校校友(本科)</th><th>笔试面试风格</th></tr>
+<tr><td>字节跳动(豆包/火山引擎/Flow)</td><td>AI全栈、大模型应用后端</td><td>本科有机会，但要求2个以上硬核项目+LeetCode 300+</td><td>约9人/届</td><td>笔试算法难(Hard占比高)，面试深挖项目，AI Coding现场写</td></tr>
+<tr><td>腾讯(混元/CSG/PCG)</td><td>大模型应用开发、Agent平台</td><td>本科可投，偏好985/本校这档211</td><td>约13人</td><td>笔试常规(Medium为主)，面试八股深+项目</td></tr>
+<tr><td>阿里(通义/钉钉/淘天AI)</td><td>LLM应用工程师</td><td>杭州为主，本科名额少于硕士</td><td>约14人</td><td>笔试3道算法+1道系统设计，面试重项目</td></tr>
+<tr><td>百度(文心/智能云)</td><td>大模型应用研发</td><td>北京，AI岗位多，本科名额相对友好</td><td>全校70+</td><td>笔试偏基础，面试问RAG/微调细节多</td></tr>
+<tr><td>DeepSeek(深度求索)</td><td>大模型应用/全栈</td><td>2026.9开放约150名额，偏好对AGI有热情者；本科极难但薪资天花板极高</td><td>极少</td><td>面试看重智力和自驱力，可能现场出开放题</td></tr>
+<tr><td>MiniMax/月之暗面(Kimi)/智谱</td><td>大模型应用/多模态</td><td>明星创业公司，硕士为主，本科全栈/工程岗有少量名额；实习转正比例高</td><td>少</td><td>面试重工程落地和项目热情，节奏快</td></tr>
+</table>
+
+<h4>主力档（本校本科主战场，命中率最高）</h4>
+<table>
+<tr><th>公司</th><th>岗位</th><th>特点</th><th>本校本科签约</th></tr>
+<tr><td>美团</td><td>后台开发/AI后端</td><td>北京/上海，笔试规范，本校校友多，性价比高</td><td>约18人</td></tr>
+<tr><td>京东</td><td>后端/AI应用</td><td>北京/西安（京东西北总部在西安）</td><td>约12人</td></tr>
+<tr><td>快手</td><td>服务端/大模型应用</td><td>北京，薪资给得到位</td><td>若干</td></tr>
+<tr><td>小红书</td><td>后端/AI产品研发</td><td>上海，偏好年轻活力，面试体验好</td><td>若干</td></tr>
+<tr><td>拼多多</td><td>后端</td><td>上海，薪资高加班多，本科可冲</td><td>若干</td></tr>
+<tr><td>网易(雷火/有道)</td><td>服务端/教育AI</td><td>杭州/广州，有道有AI教育岗</td><td>若干</td></tr>
+<tr><td>滴滴</td><td>后端</td><td>北京，国际化部门薪资高</td><td>若干</td></tr>
+</table>
+
+<h4>保底档（西安/稳定/本校对口）</h4>
+<table>
+<tr><th>单位</th><th>说明</th></tr>
+<tr><td><strong>华为(含西研所)</strong></td><td>本校第一大雇主(全校807人)。西研所在西安，岗位含云计算、AI应用、后端开发。本科进华为相对容易，薪资25-35w总包，稳定性强。<strong>这是本校本科的绝对安全垫。</strong></td></tr>
+<tr><td><strong>中国电科(20所/39所/54所等西安所)</strong></td><td>军工央企，全校238人。西安本地，解决户口，薪资15-25w，稳定。</td></tr>
+<tr><td><strong>银行科技子公司</strong>(工银科技/建信金科/招行信用卡中心)</td><td>西安/成都/北京均有岗，笔试考行测+技术，八股为主，不歧视本科生。总包18-28w，WLB。</td></tr>
+<tr><td><strong>三大运营商研究院</strong>(电信研究院/移动咪咕/联通软件研究院西安分院)</td><td>稳定，西安有岗，总包15-22w。</td></tr>
+<tr><td><strong>TP-Link/中兴通讯</strong></td><td>深圳/南京/西安，全校TP-Link 129人、中兴70+，本科友好，总包20-30w。</td></tr>
+<tr><td><strong>宇信科技/神州数码等金融科技</strong></td><td>大模型应用开发岗（校招12-20k），可作为西安本地保底。</td></tr>
+</table>
+
+<h3>模块6：实习与校招准备</h3>
+<h4>简历写法范例（AI应用方向）</h4>
+<div class="alert alert-green">
+<strong>STAR法则+量化</strong>：Situation(背景)→Task(任务)→Action(你做了什么)→Result(量化结果)。<br><br>
+<strong>反面教材：</strong>"使用LangChain做了一个RAG项目，调用了OpenAI接口。"（没量化、没技术细节、没你的贡献）<br><br>
+<strong>正面范例：</strong><br>
+<strong>项目：企业知识库RAG问答系统</strong> | 个人独立开发 | 2027.03-2027.06<br>
+- 针对企业文档检索准确率低、大模型幻觉问题，基于LlamaIndex+Qdrant+FastAPI+Next.js设计并实现一套多租户文档问答系统；<br>
+- 设计混合检索策略（bge-m3向量召回+BM25关键词召回+RRF融合），在200篇内部文档测试集上将召回准确率从61%提升至86%；<br>
+- 通过chunk大小动态切分、重排模型bge-reranker-v2-m3、对话摘要压缩上下文，将首字延迟控制在1.8s，单次问答LLM成本&lt;0.02元；<br>
+- Docker Compose部署于阿里云ECS，接入Langfuse做调用链路观测，公网demo累计被同学/老师使用500+次；<br>
+- GitHub: github.com/yourname/xxx，23 star，11 fork。
+</div>
+<p><strong>简历硬规则：</strong>一页纸（本科）；每个项目至少2个量化数字；技能栈按熟练度排序，别写"精通"超过2项；放GitHub链接和在线demo链接。</p>
+
+<h4>面试八股清单</h4>
+<p><strong>大模型八股（必背）：</strong></p>
+<ul>
+<li>Transformer：Self-Attention公式、Multi-Head为什么有效、位置编码（正弦/RoPE/ALiBi）、KV Cache原理</li>
+<li>Tokenization：BPE是什么、为什么中文和英文token效率不同</li>
+<li>RAG：完整链路；chunk size怎么选；top_k怎么定；召回率低怎么优化（query改写、混合检索、rerank、Parent-Document Retriever）；怎么评估RAG（RAGAS指标）；RAG vs微调什么时候用哪个</li>
+<li>Agent：ReAct范式；Function Calling流程；规划（Plan-and-Execute）；反思（Reflection）；多Agent协作模式；工具调用失败怎么处理</li>
+<li>Prompt：CoT、Few-shot、Tree-of-Thoughts；怎么让输出稳定JSON；system prompt怎么写</li>
+<li>部署与成本：为什么要KV Cache；vLLM为什么快（PagedAttention）；量化（INT8/INT4/GGUF）对效果影响</li>
+<li>微调（了解即可）：全参微调vs LoRA vs QLoRA；LoRA为什么省显存；SFT vs RLHF vs DPO</li>
+</ul>
+<p><strong>Python八股：</strong>GIL、装饰器、生成器、*args/**kwargs、深拷贝浅拷贝、异步asyncio原理、常见内置数据结构复杂度。</p>
+<p><strong>计算机基础（美团JD点名要求）：</strong></p>
+<ul>
+<li>计算机网络：TCP三次握手/四次挥手、HTTP/1.1 vs HTTP/2、HTTPS原理、状态码</li>
+<li>操作系统：进程vs线程、锁、死锁、内存分页、零拷贝</li>
+<li>数据库：MySQL索引（B+树）、事务隔离级别、MVCC</li>
+</ul>
+
+<h4>LeetCode刷题要求</h4>
+<div class="bar-wrap"><div class="bar-label"><span>总量目标（2028.6前）</span><span>250-300题</span></div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#16a34a"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>每日频率(大二)</span><span>1题/天</span></div><div class="bar-track"><div class="bar-fill" style="width:33%;background:#2563eb"></div></div></div>
+<div class="bar-wrap"><div class="bar-label"><span>每日频率(大三)</span><span>2题/天</span></div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#2563eb"></div></div></div>
+<table>
+<tr><th>题型</th><th>题量</th><th>重要性</th></tr>
+<tr><td>数组/哈希表/双指针/滑动窗口</td><td>40题</td><td>⭐⭐⭐ 必考</td></tr>
+<tr><td>动态规划（背包/子序列）</td><td>40题</td><td>⭐⭐⭐ 必考</td></tr>
+<tr><td>栈/队列/二叉树</td><td>30题</td><td>⭐⭐⭐</td></tr>
+<tr><td>回溯/排列组合</td><td>20题</td><td>⭐⭐</td></tr>
+<tr><td>链表</td><td>15题</td><td>⭐⭐</td></tr>
+<tr><td>二分查找</td><td>15题</td><td>⭐⭐</td></tr>
+<tr><td>图论（BFS/DFS/拓扑）</td><td>15题</td><td>⭐⭐</td></tr>
+<tr><td>贪心/设计题</td><td>10题</td><td>⭐</td></tr>
+</table>
+<p>推荐顺序：先随<a href="https://programmercarl.com/" target="_blank">《代码随想录》</a>按类型刷，再刷Hot 100，最后刷公司真题。字节笔试Hard占比高，美团/腾讯以Medium为主。</p>
+
+<h4>实习投递时间节点</h4>
+<table>
+<tr><th>时间</th><th>动作</th></tr>
+<tr><td>2027.3-5（大二下春）</td><td>投日常实习（远程/北京上海均可，日薪150-250），目标攒经历不挑公司。Boss直聘搜"大模型 实习""RAG 实习"</td></tr>
+<tr><td>2027.7-8（大二暑假）</td><td>第一段实习坐班2-3个月，或高强度做完项目4</td></tr>
+<tr><td>2027.9-12（大三上秋）</td><td>投大厂日常实习（字节/腾讯/阿里/美团/百度），争取大三下入职</td></tr>
+<tr><td><strong>2028.3-5（大三下春）</strong></td><td><strong>暑期实习提前批开（3月），这是最重要的实习投递窗口——大厂暑期实习转正率30-50%</strong></td></tr>
+<tr><td>2028.7-8（大三暑假）</td><td>决定性实习，争取在这家公司拿到return offer</td></tr>
+<tr><td>2028.7下旬</td><td><strong>秋招提前批开启</strong>（字节/腾讯/阿里通常7月底-8月），免笔试或笔试简单，优先投递</td></tr>
+<tr><td>2028.9-11</td><td>正式秋招，海投+内推</td></tr>
+</table>
+
+<h3>模块7：薪资数据（2025-2026应届）</h3>
+<p><span class="fact-tag">事实</span>=官方JD区间  <span class="net-tag">网友</span>=牛客/offer爆料/招聘网站统计。本科vs硕士差距显著。</p>
+
+<h4>大厂AI应用/大模型岗应届总包（北京/上海/杭州）</h4>
+<table>
+<tr><th>公司</th><th>学历</th><th>月薪</th><th>月数</th><th>首年总包</th><th>来源</th></tr>
+<tr><td>字节跳动(豆包大模型算法，本科SP)</td><td>本科</td><td>28k</td><td>16</td><td class="salary-num">约52w</td><td><span class="net-tag">网友</span> 牛客爆料(北邮本科案例)</td></tr>
+<tr><td>字节跳动(AI全栈/后端，白菜-SP)</td><td>本科</td><td>25-33k</td><td>15-16</td><td class="salary-num">40-60w</td><td><span class="net-tag">网友</span> 职友集+牛客</td></tr>
+<tr><td>字节跳动(后端开发，SSP)</td><td>硕士</td><td>35-38k</td><td>15</td><td class="salary-num">约70-80w</td><td><span class="net-tag">网友</span> 牛客26届爆料</td></tr>
+<tr><td>腾讯(后台/AI应用)</td><td>本/硕</td><td>20-30k</td><td>16</td><td class="salary-num">35-55w</td><td><span class="net-tag">网友</span> 6figr+国内实际白菜30-40w</td></tr>
+<tr><td>阿里(后端/大模型应用，杭州)</td><td>本科</td><td>25-30k</td><td>16</td><td class="salary-num">42-56w</td><td><span class="net-tag">网友</span> CSDN盘点26届</td></tr>
+<tr><td>蚂蚁集团(AI应用开发)</td><td>本/硕</td><td>35-50k</td><td>15</td><td class="salary-num">52.5-75w</td><td><span class="net-tag">网友</span> 2026春招报道</td></tr>
+<tr><td>美团(后端/AI后端，白菜)</td><td>本科</td><td>27k</td><td>15</td><td class="salary-num">约43.5w</td><td><span class="net-tag">网友</span> 牛客爆料</td></tr>
+<tr><td>美团(后端SP)</td><td>本科</td><td>29-33k</td><td>15</td><td class="salary-num">50-61w</td><td><span class="net-tag">网友</span> 牛客爆料</td></tr>
+<tr><td>百度(大模型应用)</td><td>本/硕</td><td>20-30k</td><td>14-15</td><td class="salary-num">30-45w</td><td><span class="fact-tag">事实</span> 招聘网站统计</td></tr>
+</table>
+
+<h4>明星AI创业公司</h4>
+<table>
+<tr><th>公司</th><th>学历</th><th>总包</th><th>来源</th></tr>
+<tr><td>DeepSeek核心系统校招</td><td>硕/博为主</td><td class="salary-num">网传60-90k×14(封顶约126w)；大模型全栈50-80k</td><td><span class="net-tag">网友</span> CSDN/PANews爆料，本科极少</td></tr>
+<tr><td>月之暗面Kimi</td><td>硕士SP</td><td class="salary-num">48-70w，现金待遇好</td><td><span class="net-tag">网友</span> 牛客盘点</td></tr>
+<tr><td>MiniMax</td><td>硕士</td><td class="salary-num">36-58w，多模态岗溢价</td><td><span class="net-tag">网友</span> 牛客盘点</td></tr>
+<tr><td>智谱AI</td><td>硕士</td><td class="salary-num">35-60w</td><td><span class="net-tag">网友</span> 牛客+职友集</td></tr>
+<tr><td>面壁智能(西安有岗)</td><td>本/硕</td><td class="salary-num">校招大模型算法18-35k×15(本科可投)</td><td><span class="fact-tag">事实</span> 企查查招聘数据</td></tr>
+</table>
+
+<h4>中型公司/国企/银行科技</h4>
+<table>
+<tr><th>单位</th><th>本科首年总包</th></tr>
+<tr><td>中型互联网(B站/携程/微博/知乎)</td><td class="salary-num">18-30w</td></tr>
+<tr><td>华为(西研所，本科)</td><td class="salary-num">25-35w(14-16薪)</td></tr>
+<tr><td>银行科技子公司(建信金科/工银科技等)</td><td class="salary-num">18-28w(含公积金)</td></tr>
+<tr><td>运营商研究院/电科所(西安)</td><td class="salary-num">15-22w</td></tr>
+<tr><td>金融科技外包(宇信科技大模型应用校招)</td><td class="salary-num">14-24w(12-20k×13)</td></tr>
+</table>
+
+<div class="alert alert-orange">
+<strong>本科vs硕士差距（重要！）：</strong>
+<ul style="margin-top:6px">
+<li>大厂前后端开发：本科总包18-25w(白菜)，硕士26-36w(同岗差30-50%)</li>
+<li>AI算法/大模型基座：<strong>本科基本拿不到</strong>，本科只能做AI应用工程/后端；硕士算法岗40-60w，顶尖985硕士SSP可达70w+</li>
+<li>AI应用工程岗：本硕差距小于纯算法岗，本科做到30-40w完全可行</li>
+</ul>
+</div>
+
+<h4>3-5年后薪资</h4>
+<ul>
+<li>AI应用/大模型工程方向：3年经验跳槽普遍<span class="salary-num">50-80w</span>；5年做到技术骨干/小Leader，<span class="salary-num">80-150w</span>（一线）</li>
+<li>后端方向：3年<span class="salary-num">40-70w</span>，5年<span class="salary-num">60-120w</span></li>
+<li>国企/银行：涨幅平缓，5年总包25-40w，但稳定、西安本地可生活</li>
+<li>创业公司薪资波动大，跟公司融资/上市强相关</li>
+</ul>
+</div>
+
+<!-- CH2: 后端开发 -->
+<div class="card dir-section dir-blue" id="ch2">
+<div class="dir-header" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+<h2>3. 后端开发（Java/Go/C++）</h2>
+<span class="badge b-blue">本科友好度★★★★★</span>
+<span class="badge b-blue">校招最成熟</span>
+<span class="badge b-light">不吃显卡</span>
+</div>
+<div class="alert alert-blue">
+<strong>路线选择：</strong><strong>首选Java路线</strong>（岗位最多、教程最全、本校校友去华为/阿里/美团/京东都是Java）；<strong>Go作为大二暑假后追加</strong>（字节/腾讯/美团大量Go岗，有Java基础2周可上手）；C++仅在投游戏服务端（网易雷火/米哈游）或高性能基础架构时补充。<br><br>
+<strong>与AI应用方向的关系：</strong>后端是AI应用岗的"底盘"。即使最后走AI应用，MySQL/Redis/分布式/网络八股照样要考。建议大二上先定主路线，大二暑假后两个方向各做一个项目，秋招海投两边都投。
+</div>
+
+<h3>模块1：详细技能树（Java路线+Go路线并列）</h3>
+
+<h4>阶段A：大二上（2026.9-2027.1）—— 语言基础+数据结构</h4>
+<p><strong>Java路线：</strong></p>
+<div class="check-item"><input type="checkbox"><label>Java SE：JDK 17语法、OOP（封装/继承/多态）、集合框架（ArrayList/LinkedList/HashMap/HashSet源码级理解）、异常、泛型、IO<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>JVM入门：内存区域、GC垃圾回收（了解即可）<span class="level-badge lv-use">了解</span></label></div>
+<div class="check-item"><input type="checkbox"><label>并发基础：线程、synchronized、ReentrantLock、wait/notify<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Maven/Gradle构建工具<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Git+GitHub<span class="level-badge lv-master">熟练</span></label></div>
+<p><strong>Go路线（可选并行）：</strong></p>
+<div class="check-item"><input type="checkbox"><label>Go语法（gofmt、包管理go mod、指针不做算术、error处理）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Goroutine+channel（CSP模型）<span class="level-badge lv-pro">会用</span></label></div>
+<p><strong>计算机基础（两方向共用）：</strong></p>
+<div class="check-item"><input type="checkbox"><label>数据结构与算法：LeetCode刷80题<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>计算机网络：TCP/IP、HTTP<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Linux常用命令+Vim<span class="level-badge lv-pro">会用</span></label></div>
+<div class="alert alert-blue" style="margin:8px 0"><strong>本阶段里程碑：</strong>用Java写一个控制台版「学生成绩管理系统」（增删改查+文件存储），或用Go写一个CLI待办事项。</div>
+
+<h4>阶段B：大二下（2027.2-2027.6）—— 数据库+Web框架</h4>
+<p><strong>Java路线：</strong></p>
+<div class="check-item"><input type="checkbox"><label>MySQL：SQL语法、索引（B+树、聚簇/非聚簇、最左匹配）、事务（ACID、隔离级别、MVCC）、explain执行计划<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Redis：5种基本数据结构、持久化（RDB/AOF）、缓存穿透/击穿/雪崩、分布式锁<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Spring Boot 3：IoC/DI、AOP、RESTful API、拦截器/过滤器、全局异常处理<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>MyBatis/MyBatis-Plus：Mapper编写、动态SQL<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Spring MVC+参数校验+Swagger/Knife4j接口文档<span class="level-badge lv-pro">会用</span></label></div>
+<p><strong>Go路线：</strong></p>
+<div class="check-item"><input type="checkbox"><label>Gin框架（路由、中间件、参数绑定、JWT鉴权）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>GORM（MySQL操作）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Go操作Redis（go-redis库）<span class="level-badge lv-pro">会用</span></label></div>
+<p><strong>工程能力：</strong></p>
+<div class="check-item"><input type="checkbox"><label>Docker入门（Dockerfile、docker-compose起MySQL+Redis）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>阿里云学生服务器部署项目<span class="level-badge lv-pro">会用</span></label></div>
+<div class="alert alert-blue" style="margin:8px 0"><strong>本阶段里程碑：</strong>完成「项目1：博客/后台管理系统」并部署上线。</div>
+
+<h4>阶段C：大二暑假（2027.7-2027.8）—— 第一个完整项目+实习</h4>
+<div class="check-item"><input type="checkbox"><label>Spring Cloud微服务入门（Nacos注册中心、OpenFeign调用、Gateway网关）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>RabbitMQ/Kafka消息队列（异步解耦、削峰填谷）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>项目实战：跟着mall或renren-fast做一个完整电商系统，自己改造其中1-2个模块<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>投第一段实习（中小厂Java/Go后端实习）</label></div>
+
+<h4>阶段D：大三上（2027.9-2028.1）—— 分布式+项目深化</h4>
+<div class="check-item"><input type="checkbox"><label>分布式基础：CAP定理、BASE理论、分布式ID、分布式事务（Seata了解）、接口幂等<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Redis进阶：分布式锁（Redisson）、Redis Cluster、缓存与数据库双写一致性<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>MySQL进阶：分库分表（ShardingSphere了解）、慢查询优化、读写分离<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>Kafka/RocketMQ深入：消息不丢、不重复、顺序消费<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>设计模式（单例/工厂/策略/责任链）<span class="level-badge lv-pro">会用</span></label></div>
+<div class="check-item"><input type="checkbox"><label>完成「项目3：短链接服务」或「项目4：即时通讯IM」</label></div>
+
+<h4>阶段E：大三下+大三暑假（2028.2-2028.8）—— 实习+八股+秋招</h4>
+<div class="check-item"><input type="checkbox"><label>Java八股系统过一遍（见模块6）<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>LeetCode刷到250-300题<span class="level-badge lv-master">熟练</span></label></div>
+<div class="check-item"><input type="checkbox"><label>拿到一段大厂后端暑期实习（关键！）</label></div>
+<div class="check-item"><input type="checkbox"><label>系统设计入门（怎么设计一个短链接系统、秒杀系统、Feed流）<span class="level-badge lv-pro">会用</span></label></div>
+
+<h3>模块2：实战项目清单（6个，由易到难）</h3>
+<div class="alert alert-blue">
+<strong>📌 项目类型说明：</strong>建议按 <span class="type-tut">📚 教程学习型</span>（跟着做学知识）→ <span class="type-dev">🔧 二次开发实战型</span>（fork后改造成自己的项目）→ <span class="type-src">🔬 源码精读型</span>（读源码学原理）的顺序推进。
+后端项目不涉及GPU，16GB内存可跑（ES/RabbitMQ等可选关闭）。
+</div>
+
+<div class="proj-card">
+<h4>项目1：krahets/hello-algo — 算法打底 <span class="badge b-light">★130k</span> <span class="badge b-green">入门</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：多语言（Python/Java/C++/Go/JS等12种） | <span>不涉及GPU</span></div>
+<p>国内最佳算法入门教程，动画图解+一键运行。面试刷题前必读，配合<a href="https://programmercarl.com/" target="_blank">代码随想录</a>按类型刷LeetCode。</p>
+<p><strong>简历亮点：</strong>算法基础扎实，LeetCode刷到250+题，面试手撕代码无压力。</p>
+<a class="gh-btn" href="https://github.com/krahets/hello-algo" target="_blank">GitHub ↗ hello-algo</a>
+<a class="gh-btn" href="https://github.com/labuladong/fucking-algorithm" target="_blank">labuladong算法小抄 ↗</a>
+</div>
+
+<div class="proj-card">
+<h4>项目2：201206030/novel — 保姆级Java全栈项目 <span class="badge b-light">★10k+</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> + <span class="type-dev">🔧 实战型</span> | 技术栈：Spring Boot 3.3 / MyBatis-Plus / Vue 3 / ShardingSphere / Redis / RabbitMQ / Spring AI | <span>不涉及GPU，16GB内存可跑</span></div>
+<p>保姆级教程手把手从零开发上线生产级小说阅读系统。技术栈最新（Spring Boot 3+Vue3+JDK21），已集成Spring AI，比mall更适合新手跟做。跟完整个教程就是一个完整简历项目。</p>
+<p><strong>简历亮点：</strong>"基于Spring Boot 3+Vue3从零开发小说阅读系统，用户/书籍/搜索/评论全模块，Redis缓存+RabbitMQ异步+ShardingSphere分库分表，Docker部署上线。"</p>
+<a class="gh-btn" href="https://github.com/201206030/novel" target="_blank">GitHub ↗ novel</a>
+</div>
+
+<div class="proj-card">
+<h4>项目3：macrozheng/mall — Java电商经典 <span class="badge b-light">★76.5k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：Spring Boot 3.5 / MyBatis / Elasticsearch / Redis / RabbitMQ / MongoDB / Docker / Vue | <span>不涉及GPU，16GB内存跑Docker稍紧张但可行</span></div>
+<p>Java电商项目天花板，文档教程极全。学完novel后用mall进阶——研究其商品/订单/库存/支付模块设计，在此基础上二开一个自己的电商场景（如校园二手交易）。进阶版可看mall-swarm微服务版。</p>
+<p><strong>简历亮点：</strong>"基于Spring Boot 3.5搭建电商系统，集成ES商品检索+Redis缓存+RabbitMQ异步下单，Docker Compose部署，理解微服务拆分思路。"</p>
+<a class="gh-btn" href="https://github.com/macrozheng/mall" target="_blank">GitHub ↗ mall</a>
+<a class="gh-btn" href="https://github.com/macrozheng/mall-swarm" target="_blank">GitHub ↗ mall-swarm(微服务版)</a>
+</div>
+
+<div class="proj-card">
+<h4>项目4：Snailclimb/JavaGuide — 面试八股系统刷 <span class="badge b-light">★158k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：文档类（Java/后端/系统设计/AI面试） | <span>不涉及</span></div>
+<p>Java后端面试圣经，覆盖Java基础/JVM/并发/数据库/分布式/系统设计，已更新AI方向路线图。秋招前2个月系统过一遍，配合实际项目理解记忆。</p>
+<p><strong>简历亮点：</strong>面试八股无死角，Java/JVM/并发/MySQL/分布式全掌握，笔试面试通过率大幅提升。</p>
+<a class="gh-btn" href="https://github.com/Snailclimb/JavaGuide" target="_blank">GitHub ↗ JavaGuide</a>
+</div>
+
+<div class="proj-card">
+<h4>项目5：geektutu/7days-golang — Go底层手写系列 <span class="badge b-light">★16.8k</span> <span class="badge b-orange">中级~高级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：Go | <span>不涉及GPU</span></div>
+<p>7天手写Gee Web框架/分布式缓存/RPC/分布式KV。理解Go底层和分布式系统的最佳中文实战教程。想走Go后端方向必学，比直接用框架更能理解原理。</p>
+<p><strong>简历亮点：</strong>"从零手写Go Web框架（路由/中间件/上下文）和分布式缓存（LRU/一致性哈希），深入理解Go HTTP底层和分布式系统原理。"</p>
+<a class="gh-btn" href="https://github.com/geektutu/7days-golang" target="_blank">GitHub ↗ 7days-golang</a>
+</div>
+
+<div class="proj-card">
+<h4>项目6：zeromicro/go-zero — Go微服务框架实战 <span class="badge b-light">★33.3k</span> <span class="badge b-orange">高级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：Go / RPC / API / 微服务 / goctl代码生成 | <span>不涉及GPU</span></div>
+<p>国内Go后端就业认可度高的微服务框架，自带goctl代码生成工具，工程实践丰富，高并发场景验证过。用go-zero搭一个微服务项目（如短链接+用户中心），理解RPC/服务发现/配置中心。备选B站开源的<a href="https://github.com/go-kratos/kratos" target="_blank">Kratos</a>（★26k）。</p>
+<p><strong>简历亮点：</strong>"基于go-zero微服务框架搭建XX系统，使用goctl代码生成，RPC服务通信+服务发现+配置中心，理解高并发微服务架构。"</p>
+<a class="gh-btn" href="https://github.com/zeromicro/go-zero" target="_blank">GitHub ↗ go-zero</a>
+<a class="gh-btn" href="https://github.com/go-kratos/kratos" target="_blank">GitHub ↗ kratos(备选)</a>
+</div>
+
+<h3>模块3：学习资源</h3>
+<h4>课程（按学习顺序）</h4>
+<table>
+<tr><th>顺序</th><th>资源</th><th>类型</th><th>难度</th><th>时长</th><th>适合阶段</th></tr>
+<tr><td>1</td><td>尚硅谷/黑马Java零基础（B站搜"尚硅谷Java宋红康"，倍速看）</td><td>视频(B站)</td><td>入门</td><td>8周</td><td>大二上·起步</td></tr>
+<tr><td>2</td><td><a href="https://github.com/krahets/hello-algo" target="_blank">hello-algo 动画图解算法</a> + <a href="https://programmercarl.com/" target="_blank">代码随想录刷题</a></td><td>文档/书籍</td><td>入门~中级</td><td>贯穿全年</td><td>大二上~大三</td></tr>
+<tr><td>3</td><td>狂神说Java（MySQL/SpringBoot系列，B站搜"狂神说SpringBoot"）</td><td>视频(B站)</td><td>入门~中级</td><td>4周</td><td>大二上</td></tr>
+<tr><td>4</td><td><a href="https://www.bilibili.com/video/BV19E411D78Q" target="_blank">王道考研《计算机网络》</a></td><td>视频(B站)</td><td>入门</td><td>6周</td><td>大二上~下·计网基础</td></tr>
+<tr><td>5</td><td><a href="https://www.bilibili.com/video/BV1N741177F5" target="_blank">蒋炎岩《操作系统：设计与实现》（南大）</a></td><td>视频(B站)</td><td>中级</td><td>8周(选看)</td><td>大二下·OS基础</td></tr>
+<tr><td>6</td><td><a href="https://www.liwenzhou.com/posts/Go/golang-menu/" target="_blank">李文周Go语言教程</a></td><td>文档/视频</td><td>入门~中级</td><td>4周</td><td>大二下·学Go</td></tr>
+<tr><td>7</td><td><a href="https://github.com/Snailclimb/JavaGuide" target="_blank">JavaGuide 面试八股</a></td><td>文档/书籍</td><td>中级</td><td>秋招前2个月</td><td>大三下·冲刺</td></tr>
+<tr><td>8</td><td><a href="https://xiaolincoding.com/" target="_blank">小林coding（计网/OS图解）</a></td><td>文档</td><td>中级</td><td>反复看</td><td>大二下~大三</td></tr>
+</table>
+<h4>优质GitHub教程仓库</h4>
+<ul>
+<li><a href="https://github.com/krahets/hello-algo" target="_blank">krahets/hello-algo</a> <span class="badge b-light">★130k</span> — 动画图解数据结构与算法</li>
+<li><a href="https://github.com/Snailclimb/JavaGuide" target="_blank">Snailclimb/JavaGuide</a> <span class="badge b-light">★158k</span> — Java后端面试圣经</li>
+<li><a href="https://github.com/labuladong/fucking-algorithm" target="_blank">labuladong/fucking-algorithm</a> <span class="badge b-light">★130k+</span> — 算法面试套路模板</li>
+<li><a href="https://github.com/geektutu/7days-golang" target="_blank">geektutu/7days-golang</a> <span class="badge b-light">★17k</span> — 7天手写Go Web/缓存/RPC</li>
+<li><a href="https://github.com/YunaiV/ruoyi-vue-pro" target="_blank">YunaiV/ruoyi-vue-pro</a> <span class="badge b-light">★39k</span> — Java后台管理脚手架（二次开发快速出活）</li>
+</ul>
+<h4>书籍</h4>
+<ul>
+<li>《Java核心技术 卷一》（先看，后略）</li>
+<li>《深入理解Java虚拟机》（周志明，大三下当字典查）</li>
+<li>《Redis设计与实现》（黄健宏）</li>
+<li>《MySQL是怎样运行的》（小孩子49号）</li>
+<li>《Go语言设计与实现》（深入原理时读）</li>
+</ul>
+<h4>文档/博客</h4>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/index.html" target="_blank">Spring Boot官方文档</a></li>
+<li><a href="https://tech.meituan.com/" target="_blank">美团技术团队博客（后端面试必读）</a></li>
+</ul>
+
+
+<h3>模块4：真实岗位JD分析</h3>
+<h4>JD 2.1：美团「后台开发工程师」校招</h4>
+<p>来源：<a href="https://zhaopin.meituan.com/" target="_blank">美团招聘官网</a></p>
+<table>
+<tr><th>JD要求</th><th>解读</th></tr>
+<tr><td>精通Java</td><td>要能讲HashMap源码（数组+链表+红黑树、扩容机制、ConcurrentHashMap分段锁/CAS）</td></tr>
+<tr><td>理解JVM工作机制</td><td>内存模型（堆/栈/方法区）、GC算法（CMS/G1）、如何排查OOM</td></tr>
+<tr><td>精通MySQL设计与性能优化</td><td>explain看索引、最左匹配、慢查询怎么定位</td></tr>
+<tr><td>熟悉Dubbo/Kafka等分布式中间件</td><td>隐含要求：非常看重"你做的项目里哪一步慢，你怎么优化的"——项目2要做压测</td></tr>
+</table>
+
+<h4>JD 2.2：字节跳动「后端开发工程师-26届校招」</h4>
+<p>来源：<a href="https://www.zhipin.com/job_detail/533f58961c804e3903Jz0tq8GFZV.html" target="_blank">BOSS直聘</a></p>
+<p>标签：Java、Redis、Spring、Kafka、MySQL。<strong>解读：</strong>字节后端Java/Go各占一半，Go岗在字节内部份额比阿里大。如果你学Go，字节是最好的去向。</p>
+
+<h4>JD 2.3：牛客「Go后端开发工程师-2026校招」</h4>
+<p>来源：<a href="https://mnowpick.nowcoder.com/m/detail/index?jobId=440327" target="_blank">牛客校招</a></p>
+<p>原文：本科及以上；扎实算法与数据结构；熟悉Go/C++/Java至少一种；熟悉MySQL/MongoDB；熟悉Linux/Git。</p>
+<div class="alert alert-green"><strong>解读：</strong>Go岗对项目要求略低于Java岗（Go在国内大规模使用才5-6年，科班Go出身的人少），<strong>本科生用Go反而更容易突围</strong>。</div>
+
+<h3>模块5：目标公司清单（结合本校数据）</h3>
+<h4>冲刺档</h4>
+<table>
+<tr><th>公司</th><th>特点</th><th>参考薪资</th><th>本校本科</th></tr>
+<tr><td>字节跳动(Go/Java后端)</td><td>北京/上海/杭州，笔试Hard多</td><td class="salary-num">白菜43.5w，SP 50-60w</td><td>约9人</td></tr>
+<tr><td>腾讯(后台开发TEG/CSIG)</td><td>深圳/北京/成都</td><td class="salary-num">30-45w</td><td>约13人</td></tr>
+<tr><td>阿里(淘天/本地生活/阿里云)</td><td>杭州</td><td class="salary-num">42-56w</td><td>约14人</td></tr>
+<tr><td>拼多多</td><td>上海，薪资高加班多</td><td class="salary-num">25-30k×16</td><td>若干</td></tr>
+</table>
+<h4>主力档（本校主战场）</h4>
+<table>
+<tr><th>公司</th><th>特点</th><th>参考薪资</th><th>本校本科</th></tr>
+<tr><td>美团(北京)</td><td>笔试规范，最值得重点投</td><td class="salary-num">白菜约43w</td><td>约18人</td></tr>
+<tr><td>京东(北京/西安)</td><td>西安有西北总部岗，可回家乡</td><td class="salary-num">30-45w</td><td>约12人</td></tr>
+<tr><td>快手(北京)/小红书(上海)/网易(杭州)/滴滴</td><td>薪资30-50w，本科可投</td><td class="salary-num">30-50w</td><td>若干</td></tr>
+</table>
+<h4>保底档（本校本地/国企）</h4>
+<table>
+<tr><th>单位</th><th>说明</th></tr>
+<tr><td><strong>华为(西研所/杭研所)</strong></td><td>本校第一大雇主，本科25-35w，西安有岗。<strong>后端方向的最强安全垫。</strong></td></tr>
+<tr><td><strong>中国电科20/39/54所(西安)</strong></td><td>15-25w，军工户口</td></tr>
+<tr><td><strong>银行科技子公司</strong>(建信金科/中软国际银行线)</td><td>18-25w，WLB</td></tr>
+<tr><td><strong>中兴/TP-Link</strong>(西安/南京/深圳)</td><td>20-30w</td></tr>
+<tr><td><strong>三大运营商西安研究院</strong></td><td>15-20w</td></tr>
+</table>
+
+<h3>模块6：实习与校招准备</h3>
+<h4>简历项目范例</h4>
+<div class="alert alert-green">
+<strong>项目：微服务电商系统（mall改造版）</strong> | 主程 | 2027.09-2027.12<br>
+- 基于Spring Cloud Alibaba拆分商品/订单/库存3个服务，Nacos注册发现，Gateway统一鉴权；<br>
+- 针对秒杀场景超卖问题，Redis预扣库存+Lua脚本保证原子性，Redis分布式锁(Redisson)兜底，压测1000并发下零超卖；<br>
+- 订单异步创建：RabbitMQ削峰，下单接口RT从800ms降至120ms；<br>
+- MySQL分库分表(ShardingSphere按用户ID取模)，支持100万订单数据查询P99&lt;200ms；<br>
+- GitHub: xxx，含压测报告截图。
+</div>
+
+<h4>面试八股清单</h4>
+<p><strong>Java必考：</strong></p>
+<ul>
+<li>集合：HashMap源码（put流程、扩容、红黑树转红阈值）、ConcurrentHashMap、ArrayList vs LinkedList</li>
+<li>JVM：内存区域、对象创建过程、GC Roots、CMS/G1区别、OOM排查命令</li>
+<li>并发：synchronized锁升级、volatile、AQS、线程池参数怎么设、ThreadLocal</li>
+<li>Spring：IoC原理、Bean生命周期、AOP动态代理（JDK vs CGLIB）、循环依赖怎么解决</li>
+</ul>
+<p><strong>MySQL必考：</strong>B+树为什么比B树/哈希适合做索引、最左匹配、覆盖索引、回表、MVCC、间隙锁、慢查询优化。</p>
+<p><strong>Redis必考：</strong>5种数据结构底层（ziplist/skiplist）、RDB vs AOF、缓存穿透/击穿/雪崩、分布式锁怎么实现、Redis为什么单线程还快。</p>
+<p><strong>分布式：</strong>CAP、BASE、分布式事务方案（2PC/TCC/本地消息表）、接口幂等、分布式ID。</p>
+<p><strong>网络/OS：</strong>TCP三次握手、HTTPS、HTTP 1.1/2/3、进程线程协程、零拷贝。</p>
+
+<h4>LeetCode刷题</h4>
+<div class="bar-wrap"><div class="bar-label"><span>总量目标</span><span>250-300题(后端比AI更重视算法)</span></div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#2563eb"></div></div></div>
+<p>重点：数组/哈希/双指针40、二叉树30、动态规划40、回溯20、图论15、二分15、链表15。按《代码随想录》顺序刷，再刷Hot 100二刷，再刷美团/字节真题。</p>
+
+<h4>实习时间节点（同AI应用方向）</h4>
+<table>
+<tr><th>时间</th><th>动作</th></tr>
+<tr><td>2027.3-5</td><td>投日常实习（中小厂Java实习）</td></tr>
+<tr><td>2027.7-8</td><td>第一段实习</td></tr>
+<tr><td><strong>2028.3-5</strong></td><td><strong>暑期实习提前批（最重要）</strong></td></tr>
+<tr><td>2028.7-8</td><td>大厂暑期实习，争取return</td></tr>
+<tr><td>2028.7下旬</td><td>秋招提前批</td></tr>
+</table>
+
+<h3>模块7：薪资数据（2025-2026应届，后端方向）</h3>
+<table>
+<tr><th>公司</th><th>学历</th><th>月薪×月数</th><th>首年总包</th><th>来源</th></tr>
+<tr><td>字节后端(白菜)</td><td>本</td><td>27k×15</td><td class="salary-num">约43.5w</td><td><span class="net-tag">网友</span> 牛客26届爆料</td></tr>
+<tr><td>字节后端(SP)</td><td>本</td><td>29-33k×15</td><td class="salary-num">50-61w</td><td><span class="net-tag">网友</span> 牛客爆料</td></tr>
+<tr><td>字节后端(SSP)</td><td>硕</td><td>35-38k×15</td><td class="salary-num">70-85w</td><td><span class="net-tag">网友</span> 牛客爆料</td></tr>
+<tr><td>阿里后端(杭州)</td><td>本</td><td>25-30k×16</td><td class="salary-num">42-56w</td><td><span class="net-tag">网友</span> CSDN盘点26届</td></tr>
+<tr><td>美团后端(白菜)</td><td>本</td><td>27k×15.5</td><td class="salary-num">约43w</td><td><span class="net-tag">网友</span> 抖音offer爆料(地大本科案例)</td></tr>
+<tr><td>腾讯后台</td><td>本/硕</td><td>20-30k×16</td><td class="salary-num">35-55w</td><td><span class="net-tag">网友</span> 6figr/招聘统计</td></tr>
+<tr><td>滴滴国际化</td><td>本</td><td>27k×16</td><td class="salary-num">约43w</td><td><span class="net-tag">网友</span> 抖音offer爆料</td></tr>
+<tr><td>中型互联网(B站/携程/微博)</td><td>本</td><td>15-22k×14-16</td><td class="salary-num">22-35w</td><td><span class="fact-tag">事实</span> 职友集</td></tr>
+<tr><td>华为西研所(本科)</td><td>本</td><td>18-25k×14-16</td><td class="salary-num">25-35w</td><td><span class="fact-tag">事实</span> 本校就业网/offershow</td></tr>
+<tr><td>银行科技子公司</td><td>本</td><td>12-18k×12-14</td><td class="salary-num">18-28w</td><td><span class="net-tag">网友</span> Offershow</td></tr>
+<tr><td>运营商/电科所</td><td>本</td><td>10-15k×12</td><td class="salary-num">15-22w</td><td><span class="net-tag">网友</span> 西安本地行情</td></tr>
+</table>
+<div class="alert alert-green">
+<strong>本科vs硕士差距：</strong>后端岗本科白菜20-27k，硕士白菜27-33k，同公司差30%左右；但<strong>后端岗本科拿SP的比例显著高于AI算法岗</strong>，本校本科进字节/美团后端是常态，不必焦虑学历。<br>
+<strong>3-5年后：</strong>一线大厂后端3年经验50-80w，5年80-120w；华为/国企5年30-50w。
+</div>
+</div>
+
+<!-- CH3: 算法工程师 -->
+<div class="card dir-section dir-red" id="ch3">
+<div class="dir-header" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+<h2>4. 算法工程师（CV/NLP/推荐/搜索/大模型）</h2>
+<span class="badge b-red">本科友好度★★ 低</span>
+<span class="badge b-red">核心岗硕士起步</span>
+<span class="badge b-orange">数学要求极高</span>
+</div>
+
+<div class="alert alert-red">
+<strong>⚠️ 先把丑话说在前面：</strong>算法岗是本科门槛最高的方向，没有之一。
+头部大厂（字节Seed、腾讯混元、阿里通义、DeepSeek、智谱、MiniMax）的<strong>研究型/预训练型算法岗，本科基本无机会</strong>。
+2025校招"AI算法、大模型岗位清一色硕士及以上，本科简历投100份回3个都算多"是招聘市场的普遍观察。
+本科能投的算法岗只有三类：①算法工程化/AI应用岗（做RAG/Agent/落地）②中厂/垂类公司应用算法 ③国企/研究院算法岗。
+<strong>如果你坚持走算法核心岗，必须做好读研准备。</strong>
+</div>
+
+<h3>本科曲线救国路径</h3>
+<div class="flow-diagram">
+<div class="flow-box" style="background:#d1fae5;color:#065f46">本科：AI应用/算法工程化岗</div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#dbeafe;color:#1e40af">工作1-2年：ML Platform/算法工程</div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#fee2e2;color:#b91c1c">跳槽/在职读研转核心算法</div>
+</div>
+<p><strong>路径B（最主流）：</strong>考研到985/强211计算机/AI硕士。本校本校保研/考研到电院、计算机学院、人工智能学院，或外推清北浙交。</p>
+<p><strong>路径C：</strong>本科走方向4（AI Infra），用工程能力切入AI行业，门槛比研究岗低。</p>
+
+<h3>模块1：详细技能树</h3>
+<div class="alert alert-blue">
+<strong>本校学生的数学优势：</strong>根据本校培养方案，你的必修课已包含：<strong>高等数学A（12学分）、线性代数、概率论与数理统计、信号与系统、数字信号处理、数字图像处理、随机信号分析</strong>。
+机器学习最吃数学的三门课你全是必修，且比纯软学生多学了信号处理——这对做CV、序列模型是直接加分。
+需要自学补齐：<strong>最优化方法</strong>（梯度下降、凸优化、拉格朗日、KKT）、矩阵论进阶、数值计算。
+</div>
+
+<h4>阶段一：大二上（2026秋）——打地基</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>本校是否必修</th><th>目标</th></tr>
+<tr><td>数学</td><td>高等数学A（微积分、多元微分、级数）</td><td>✅ 必修</td><td>熟练（期末85+）</td></tr>
+<tr><td>数学</td><td>线性代数（矩阵运算、特征值、SVD概念）</td><td>✅ 必修</td><td>熟练</td></tr>
+<tr><td>数学</td><td>概率论与数理统计（分布、期望、贝叶斯、假设检验）</td><td>✅ 必修</td><td>熟练</td></tr>
+<tr><td>编程</td><td>Python语法、NumPy、Pandas、Matplotlib</td><td>自学</td><td>熟练</td></tr>
+<tr><td>编程</td><td>C语言/C++基础（指针、内存、STL）</td><td>✅ C程序设计必修</td><td>会用</td></tr>
+<tr><td>编程</td><td>数据结构（数组/链表/栈队列/树/哈希）</td><td>选修/自学</td><td>会用，LeetCode Easy</td></tr>
+<tr><td>ML启蒙</td><td>吴恩达Machine Learning公开课（2022新版）</td><td>自学</td><td>了解</td></tr>
+</table>
+<div class="alert alert-orange" style="margin:8px 0"><strong>本阶段不要碰深度学习。</strong>把Python写顺、NumPy向量化运算理解透、高数线代期末考好，是这半年唯一的正事。LeetCode每周3题Easy起步。</div>
+
+<h4>阶段二：大二下（2027春）——机器学习入门</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>目标</th></tr>
+<tr><td>数学</td><td>自学最优化方法（梯度下降、凸优化、拉格朗日、KKT）</td><td>会用</td></tr>
+<tr><td>ML理论</td><td>线性回归、逻辑回归推导、损失函数、梯度下降</td><td>熟练能手推</td></tr>
+<tr><td>ML理论</td><td>偏差/方差、过拟合/正则化（L1/L2/Dropout概念）</td><td>熟练</td></tr>
+<tr><td>ML理论</td><td>决策树、随机森林、GBDT、XGBoost、LightGBM原理</td><td>会用</td></tr>
+<tr><td>ML理论</td><td>SVM（间隔、核函数、对偶）、KMeans、PCA</td><td>了解推导</td></tr>
+<tr><td>工具</td><td>sklearn跑通完整ML项目（数据清洗→特征工程→交叉验证→评估）</td><td>熟练</td></tr>
+<tr><td>编程</td><td>LeetCode累计100题（Easy 60+Medium 40）</td><td>—</td></tr>
+<tr><td>工程</td><td>Git/GitHub、Markdown、Linux基本命令</td><td>会用</td></tr>
+</table>
+
+<h4>阶段三：大三上（2027秋）——深度学习+方向初定</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>目标</th></tr>
+<tr><td>DL理论</td><td>反向传播手推、激活函数（ReLU/SiLU/GELU）、MLP</td><td>熟练</td></tr>
+<tr><td>DL框架</td><td>PyTorch（Tensor操作、autograd、nn.Module、DataLoader）</td><td>熟练</td></tr>
+<tr><td>DL理论</td><td>CNN（卷积、池化、ResNet残差、BatchNorm）</td><td>熟练</td></tr>
+<tr><td>DL理论</td><td>RNN/LSTM/GRU、Seq2Seq（了解即可，现在主力是Transformer）</td><td>了解</td></tr>
+<tr><td>DL理论</td><td>Transformer（自注意力、Multi-Head、位置编码、LayerNorm）</td><td>熟练能手画</td></tr>
+<tr><td>DL工程</td><td>训练技巧：学习率warmup、余弦退火、混合精度AMP、early stop、数据增强</td><td>会用</td></tr>
+<tr><td>方向细分</td><td>CV路线：目标检测（YOLO系列）/图像分类/分割（U-Net）</td><td>会用</td></tr>
+<tr><td>方向细分</td><td>NLP路线：BERT微调、文本分类、HuggingFace Transformers</td><td>会用</td></tr>
+<tr><td>方向细分</td><td>推荐路线：Embedding、召回（双塔）、排序（DeepFM/DIN）</td><td>了解</td></tr>
+<tr><td>编程</td><td>LeetCode累计250题（Medium为主）</td><td>—</td></tr>
+<tr><td>工程</td><td>Docker基础、conda环境管理、WSL2</td><td>会用</td></tr>
+</table>
+<div class="alert alert-red" style="margin:8px 0"><strong>这学期结束前必须做完1个完整DL项目并放到GitHub</strong>，否则大三暑假实习没戏。</div>
+
+<h4>阶段四：大三下（2028春）——冲实习+方向深化</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>目标</th></tr>
+<tr><td>方向深化CV</td><td>复现YOLOv8训练自定义数据集，尝试改进mAP；了解SAM/CLIP多模态</td><td>会用</td></tr>
+<tr><td>方向深化NLP</td><td>用HuggingFace微调一个7B以内小模型（Qwen/Llama蒸馏版），做SFT/LoRA</td><td>会用</td></tr>
+<tr><td>方向深化推荐</td><td>学王树森推荐系统课，理解召回→粗排→精排→重排漏斗</td><td>了解</td></tr>
+<tr><td>论文</td><td>精读5-8篇方向内经典论文（ResNet/Attention Is All You Need/BERT/YOLOv8/OneFormer）</td><td>会读</td></tr>
+<tr><td>竞赛</td><td>打1个Kaggle或天池比赛，目标铜牌/前10%</td><td>—</td></tr>
+<tr><td>工程</td><td>分布式训练基础（DataParallel/DDP概念、单机多卡）</td><td>了解</td></tr>
+<tr><td><strong>实习</strong></td><td><strong>2028年3-5月必须开始投日常实习/暑期实习</strong></td><td>本科转算法最关键一跳</td></tr>
+</table>
+
+<h4>阶段五：大四（2028秋招）——面试冲刺</h4>
+<ul>
+<li>LeetCode累计350-450题，CodeTop热题反复刷</li>
+<li>ML八股全部背熟并能手推（见模块6）</li>
+<li>简历上2-3个项目，每个都能讲30分钟细节、ablation、为什么这么做</li>
+<li>大三暑假实习是主战场，争取return offer</li>
+</ul>
+
+<h3>模块2：实战项目清单（6个，由易到难，适配RTX 4060 8GB）</h3>
+<div class="alert alert-orange">
+<strong>📌 项目类型说明：</strong>建议按 <span class="type-tut">📚 教程学习型</span>（跟着做学知识）→ <span class="type-dev">🔧 二次开发实战型</span>（fork后改造成自己的项目）→ <span class="type-src">🔬 源码精读型</span>（读源码学原理）的顺序推进。
+<strong>硬件约束：</strong>RTX 4060 8GB，不要碰70B全参训练。所有项目用小模型、公开数据集、单卡训练。
+</div>
+
+<div class="proj-card">
+<h4>项目1：d2l-ai/d2l-zh — 动手学深度学习 <span class="badge b-light">★81k</span> <span class="badge b-green">入门</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：Jupyter Notebook + PyTorch | <span class="gpu-yes">✅ RTX4060可跑（小模型课程示例）</span></div>
+<p>中文深度学习第一教材，被全球500+大学采用。配合<a href="https://www.bilibili.com/video/BV1RxZmYCEfB" target="_blank">李沐B站视频</a>边看边敲代码，从MLP→CNN→RNN→Transformer全流程过一遍。</p>
+<p><strong>简历亮点：</strong>DL基础扎实，能手写MLP/CNN/Transformer核心代码，不是只会调pipeline。</p>
+<a class="gh-btn" href="https://github.com/d2l-ai/d2l-zh" target="_blank">GitHub ↗ d2l-zh</a>
+<a class="gh-btn" href="https://zh.d2l.ai/" target="_blank">在线书 ↗</a>
+</div>
+
+<div class="proj-card">
+<h4>项目2：datawhalechina/thorough-pytorch — PyTorch上手 <span class="badge b-light">★数万</span> <span class="badge b-green">入门~中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：PyTorch + Jupyter | <span class="gpu-yes">✅ RTX4060完全适配</span></div>
+<p>中文PyTorch入门最佳，三阶段从张量操作→神经网络→实战案例，组队学习模式友好。配合d2l做练习，快速上手框架。</p>
+<p><strong>简历亮点：</strong>熟练使用PyTorch，能独立搭建训练 pipeline，理解自动求导/DataLoader/模型保存加载。</p>
+<a class="gh-btn" href="https://github.com/datawhalechina/thorough-pytorch" target="_blank">GitHub ↗ thorough-pytorch</a>
+</div>
+
+<div class="proj-card">
+<h4>项目3：rasbt/LLMs-from-scratch — 从零手写GPT <span class="badge b-light">★105k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：PyTorch + Jupyter Notebook | <span class="gpu-yes">✅ RTX4060可跑（124M GPT-2级别小模型）</span></div>
+<p>配套书《Build a LLM From Scratch》，从零手写GPT-like LLM：从tokenizer→attention→预训练→SFT→LoRA，逐行讲解。比直接读vLLM源码友好100倍。</p>
+<p><strong>简历亮点：</strong>"从零实现GPT-like架构，理解tokenizer/Transformer/预训练/SFT/LoRA全流程，能讲清LLM内部每个组件的原理。"</p>
+<a class="gh-btn" href="https://github.com/rasbt/LLMs-from-scratch" target="_blank">GitHub ↗ LLMs-from-scratch</a>
+</div>
+
+<div class="proj-card">
+<h4>项目4：karpathy/nanoGPT — 最简GPT训练复现 <span class="badge b-light">★63k</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：PyTorch | <span class="gpu-yes">✅ RTX4060完全够用（小模型训练）</span></div>
+<p>Karpathy出品，~1000行代码完整复现GPT训练。理解Transformer训练流程的最短路径——数据准备→模型定义→训练循环→生成推理。在4060上训练一个小GPT几分钟出结果。</p>
+<p><strong>简历亮点：</strong>"复现nanoGPT，在自己构造的小语料上训练迷你GPT，理解batch训练/loss计算/学习率warmup/生成采样全流程。"</p>
+<a class="gh-btn" href="https://github.com/karpathy/nanoGPT" target="_blank">GitHub ↗ nanoGPT</a>
+</div>
+
+<div class="proj-card">
+<h4>项目5：labmlai/annotated_dl_paper_impl — 经典论文逐行注释 <span class="badge b-light">★67k</span> <span class="badge b-orange">中级~高级</span></h4>
+<div class="proj-meta"><span class="type-src">🔬 源码精读型</span> | 技术栈：PyTorch | <span class="gpu-yes">✅ 示例都能跑</span></div>
+<p>60+经典论文带注释实现：Transformer/ViT/Diffusion/StyleGAN/DDIM等。配合nn.labml.ai网站阅读体验极佳。选3-5篇精读，面试能讲清论文细节。</p>
+<p><strong>简历亮点：</strong>"精读并复现X篇经典论文（Transformer/ViT/Diffusion），能讲清论文动机/方法/实验/ ablation。"</p>
+<a class="gh-btn" href="https://github.com/labmlai/annotated_deep_learning_paper_implementations" target="_blank">GitHub ↻ annotated_dl_papers</a>
+</div>
+
+<div class="proj-card">
+<h4>项目6：Kaggle/天池竞赛 — 打比赛拿奖牌 <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 实战型</span> | 技术栈：Python / scikit-learn / LightGBM / PyTorch | <span class="gpu-yes">✅ RTX4060可跑</span></div>
+<p>路径：①Kaggle先打"Titanic生存预测"入门→"房价预测"→tabular Playground系列；②天池"入门算法赛"（金融风控/O2O优惠券）。本科就业打1-2个入门赛即可，目标铜牌/前10%，奖牌写简历。</p>
+<p><strong>简历亮点：</strong>"Kaggle/天池竞赛铜牌（前X%），完整跑通数据清洗→特征工程→建模→交叉验证→调优流程。"</p>
+<a class="gh-btn" href="https://www.kaggle.com/learn" target="_blank">Kaggle Learn ↗</a>
+<a class="gh-btn" href="https://tianchi.aliyun.com/" target="_blank">天池竞赛 ↗</a>
+</div>
+
+<h3>模块3：学习资源</h3>
+<h4>课程（按学习顺序）</h4>
+<table>
+<tr><th>顺序</th><th>资源</th><th>类型</th><th>难度</th><th>时长</th><th>适合阶段</th></tr>
+<tr><td>1</td><td><a href="https://www.bilibili.com/video/BV1RxZmYCEfB" target="_blank">李沐《动手学深度学习》完整版（161集）</a></td><td>视频(B站)</td><td>入门</td><td>58小时</td><td>大二上·DL入门地基</td></tr>
+<tr><td>2</td><td><a href="https://www.bilibili.com/video/BV12nG16zETp" target="_blank">吴恩达深度学习2026（中文翻译）</a></td><td>视频(B站)</td><td>入门</td><td>数周</td><td>大二上·补ML基础</td></tr>
+<tr><td>3</td><td><a href="https://github.com/datawhalechina/thorough-pytorch" target="_blank">datawhalechina/thorough-pytorch</a></td><td>文档/书籍</td><td>入门~中级</td><td>3周</td><td>大二上~下·PyTorch上手</td></tr>
+<tr><td>4</td><td><a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank">rasbt/LLMs-from-scratch</a></td><td>文档/书籍</td><td>中级</td><td>4周</td><td>大二下·理解LLM内部</td></tr>
+<tr><td>5</td><td><a href="https://www.bilibili.com/video/BV1YsqSY8EiW" target="_blank">李宏毅机器学习2025</a></td><td>视频(B站)</td><td>中级</td><td>选看</td><td>大二下·理论深化</td></tr>
+<tr><td>6</td><td>CS231n斯坦福计算机视觉（B站中文字幕）</td><td>视频</td><td>中级</td><td>选看</td><td>大二暑假·CV方向</td></tr>
+<tr><td>7</td><td>CS224n斯坦福NLP（B站中文字幕）</td><td>视频</td><td>中级</td><td>选看</td><td>大三上·NLP方向</td></tr>
+</table>
+<h4>优质GitHub教程仓库</h4>
+<ul>
+<li><a href="https://github.com/d2l-ai/d2l-zh" target="_blank">d2l-ai/d2l-zh</a> <span class="badge b-light">★81k</span> — 动手学深度学习中文版</li>
+<li><a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank">rasbt/LLMs-from-scratch</a> <span class="badge b-light">★105k</span> — 从零手写LLM</li>
+<li><a href="https://github.com/karpathy/nanoGPT" target="_blank">karpathy/nanoGPT</a> <span class="badge b-light">★63k</span> — 最简GPT训练复现</li>
+<li><a href="https://github.com/labmlai/annotated_deep_learning_paper_implementations" target="_blank">labmlai/annotated_dl_paper_impl</a> <span class="badge b-light">★67k</span> — 60+经典论文带注释实现</li>
+<li><a href="https://github.com/datawhalechina/thorough-pytorch" target="_blank">datawhalechina/thorough-pytorch</a> <span class="badge b-light">★数万</span> — 深入浅出PyTorch</li>
+<li><a href="https://github.com/datawhalechina/leedl-tutorial" target="_blank">datawhalechina/leedl-tutorial</a> <span class="badge b-light">★15k+</span> — 李宏毅ML教程中文整理版</li>
+</ul>
+<h4>书籍</h4>
+<ul>
+<li>《统计学习方法》李航（第二版）——大二下配合ML理论读，LR/SVM/EM推导必备</li>
+<li>《动手学深度学习》李沐等——大三上主力教材，配合代码</li>
+<li>《深度学习》花书（Goodfellow）——当字典查，不要从头读</li>
+</ul>
+<h4>竞赛平台</h4>
+<ul>
+<li><strong>大二下：</strong>Kaggle tabular入门赛（Titanic→房价预测→Playground）</li>
+<li><strong>大三上：</strong>天池入门算法赛（金融风控、O2O优惠券），目标复赛/铜牌</li>
+<li>简历认可度：Kaggle奖牌>天池一等奖>铜牌>参赛无成绩。<strong>只有奖牌和具体排名才写简历</strong></li>
+</ul>
+
+<h3>模块4：真实岗位JD分析</h3>
+<h4>JD 3.1：智谱AI GLM团队 后训练RLHF算法工程师（26届校招）</h4>
+<p>来源：<a href="https://zhipu-ai.jobs.feishu.cn/zhipucampus/m/position/detail/7539834541713459475" target="_blank">智谱校招</a></p>
+<div class="alert alert-red"><strong>原文：</strong>"2026届毕业，NLP/ML/AI/软工等相关专业，<strong>硕士及以上学历</strong>；熟悉PyTorch、HuggingFace、Megatron；对Transformer架构有较深入理解，有相关研究经验者优先。"<br>
+<strong>解读：</strong>明星大模型公司核心算法岗，<strong>硕士是硬门槛</strong>，本科直接投简历会被系统筛掉。</div>
+
+<h4>JD 3.2：牛客网在招"算法工程师"（2026届）</h4>
+<p>来源：<a href="https://mnowpick.nowcoder.com/m/detail/index?jobId=435721" target="_blank">牛客校招</a></p>
+<div class="alert alert-red"><strong>原文：</strong>"计算机/AI/数学相关专业，<strong>硕士及以上学历</strong>。<strong>博士毕业生或在ACL/EMNLP/ICLR/CVPR等顶会发表过论文者优先</strong>。"<br>
+<strong>解读：</strong>这就是头部算法岗的标准画像——硕士起步，顶会论文是加分项。本科简历在这个池子里几乎没有话语权。</div>
+
+<h4>JD 3.3：某公司"AI算法工程师J28876"（2026届，牛客）</h4>
+<p>来源：<a href="https://mnowpick.nowcoder.com/m/detail/index?jobId=450887" target="_blank">牛客校招</a></p>
+<div class="alert alert-green"><strong>原文：</strong>"2026年应届生，<strong>本科及以上学历</strong>；有科研论文发表；跟进DeepSeek R1、Long Context、RAG、Agent、o1、多模态垂类等技术。"<br>
+<strong>解读：</strong>注意——<strong>这条是少数写"本科及以上"的算法岗</strong>，但它本质是"AI应用/工程化"岗（做RAG、Agent、业务落地），不是核心研究岗。<strong>这就是本科生的主战场。</strong></div>
+
+<h4>JD 3.4：群核科技 算法工程师（2026校招，BOSS直聘）</h4>
+<p>来源：<a href="https://www.zhipin.com/job_detail/a373799004aaf1570nd-39i-E1VQ.html" target="_blank">BOSS直聘</a></p>
+<p><strong>原文：</strong>"本科及以上学历，硕士博士优先；扎实代码基础，熟练C++/Java/Python至少一门，熟练至少一个DL框架。"</p>
+<div class="alert alert-orange"><strong>解读：</strong>写"本科及以上"但"硕博优先"=本科能过简历关的概率低，除非你有强实习/竞赛。</div>
+
+<h4>JD 3.5：中科院网络信息中心 算法岗</h4>
+<p>来源：<a href="https://cnic.cas.cn/rcdw/rczp/szyxz/202501/t20250120_7520304.html" target="_blank">中科院人才网</a></p>
+<p><strong>原文：</strong>"本科及以上学历；依托预训练大模型完成算法适配、调优与工程化落地。"</p>
+<div class="alert alert-blue"><strong>解读：</strong>事业单位/研究所类，本科可投，做的是模型落地而非创新研究，是本科保底选项。</div>
+
+<h3>模块5：目标公司清单</h3>
+<h4>冲刺档（核心算法研究岗，本科概率&lt;5%）</h4>
+<table>
+<tr><th>公司</th><th>特点</th><th>学历</th><th>参考应届总包(硕士为主)</th></tr>
+<tr><td>字节跳动(Seed/抖音推荐/豆包)</td><td>大模型、推荐、CV全线最强，薪资天花板</td><td>硕士起步，SSP要硕博/顶会</td><td class="salary-num">大模型SSP可达75万，普通算法40-50万；Top Seed传闻300-600万</td></tr>
+<tr><td>腾讯(混元/微信/优图)</td><td>大模型、CV、推荐</td><td>硕士</td><td class="salary-num">算法50k×15+股票，总包70万级</td></tr>
+<tr><td>阿里(通义/淘天推荐/达摩院)</td><td>通义大模型、搜索推荐</td><td>硕士</td><td class="salary-num">大模型算法月3-4万，总包50-70万</td></tr>
+<tr><td>百度(文心/百度研究院)</td><td>大模型、自动驾驶感知</td><td>硕士</td><td class="salary-num">40-60万</td></tr>
+<tr><td>DeepSeek/MiniMax/智谱</td><td>明星大模型创业公司</td><td>硕博为主</td><td class="salary-num">60-120万，但本科极难</td></tr>
+</table>
+<p><strong>本校校友：</strong>本校AI硕士拿字节大模型70万+的案例真实存在，但注意那是<strong>硕士</strong>。</p>
+
+<h4>主力档（本科有机会，但需强实习/竞赛）</h4>
+<table>
+<tr><th>公司</th><th>特点</th><th>学历</th><th>总包参考</th></tr>
+<tr><td>美团(到家/到店推荐)</td><td>推荐算法强，本科相对友好</td><td>硕士为主，优秀本科可试</td><td class="salary-num">35-55万</td></tr>
+<tr><td>快手(推荐/可灵大模型)</td><td>推荐+视频理解</td><td>硕士</td><td class="salary-num">40-60万</td></tr>
+<tr><td>小红书(推荐/多模态)</td><td>生活方式推荐</td><td>硕士</td><td class="salary-num">40-60万</td></tr>
+<tr><td>拼多多(推荐/广告)</td><td>薪资高、加班多</td><td>硕士</td><td class="salary-num">50-70万</td></tr>
+<tr><td>网易(互娱/有道)</td><td>游戏AI、NLP</td><td>本科可投部分岗</td><td class="salary-num">30-45万</td></tr>
+<tr><td>商汤/旷视</td><td>CV老牌，但近年收缩</td><td>硕士</td><td class="salary-num">35-55万</td></tr>
+<tr><td>地平线/大疆</td><td>车载感知、无人机CV</td><td>硕士，本科有强项目可试</td><td class="salary-num">大疆算法有110万传闻(顶尖硕博)</td></tr>
+</table>
+
+<h4>保底档（本科可投）</h4>
+<ul>
+<li>中型公司<strong>算法应用/AI工程岗</strong>：做业务模型微调、RAG、Agent落地（JD 3.3类），总包20-35万</li>
+<li>国企/央企研究院、研究所（中科院各所、中电科14所/28所/54所，西安本地）：本科可投，年薪15-25万，稳定，本校校友极多</li>
+<li>西安本地：华为西安研究所、中兴、比亚迪西安、荣耀——本校家门口的就业池</li>
+</ul>
+
+<h3>模块6：实习与校招准备</h3>
+<h4>简历写法</h4>
+<div class="alert alert-red">算法岗简历是"<strong>论文/竞赛/项目</strong>三驾马车"，本科没有论文就靠<strong>竞赛奖牌+2-3个有深度的项目+1段实习</strong>。</div>
+<div class="alert alert-green">
+<strong>范例：</strong><br>
+<strong>自定义目标检测系统</strong> | 2027.03-2027.06 | Python/PyTorch/Ultralytics<br>
+- 基于YOLOv8s在3000张车辆数据上训练，通过引入CBAM注意力+优化mosaic增强，mAP@0.5由0.78提升至0.83（+5.1%）；<br>
+- 用TensorRT FP16导出engine，单帧推理从28ms降至9ms（3.1×）；<br>
+- GitHub: github.com/你的id/vehicle-detector，Star 120。
+</div>
+
+<h4>面试考点</h4>
+<p><strong>机器学习八股（必背）：</strong></p>
+<ul>
+<li>偏差vs方差；过拟合/欠拟合原因与解决手段</li>
+<li>LR推导（sigmoid、对数似然、梯度）；SVM推导（间隔、对偶、核技巧）</li>
+<li>决策树分裂准则（ID3/C4.5/CART）、GBDT与XGBoost区别、LightGBM histogram技巧</li>
+<li>KMeans原理与缺点、EM算法、PCA推导</li>
+<li>交叉验证、评价指标（精确率/召回率/F1/AUC/ROC）</li>
+</ul>
+<p><strong>深度学习八股（必背）：</strong></p>
+<ul>
+<li>激活函数对比（Sigmoid/Tanh/ReLU/LeakyReLU/GELU），为什么ReLU缓解梯度消失</li>
+<li>BatchNorm原理与推理/训练差异；LayerNorm vs BatchNorm</li>
+<li>Dropout原理、训练/推理差异</li>
+<li>优化器：SGD/Momentum/Adam/AdamW区别；学习率warmup为什么</li>
+<li>Transformer细节：自注意力QKV矩阵推导、Multi-Head为什么、位置编码、FFN、Pre-LN vs Post-LN</li>
+<li>方向细分：CV考ResNet为什么能加深、YOLO系列演进；NLP考BERT vs GPT区别、LoRA原理</li>
+</ul>
+<p><strong>数学推导：</strong>LR手推梯度、SVM对偶、反向传播链式法则、注意力softmax计算。</p>
+
+<h4>LeetCode要求</h4>
+<div class="bar-wrap"><div class="bar-label"><span>算法岗总量目标</span><span>300-450题(Medium为主)</span></div><div class="bar-track"><div class="bar-fill" style="width:95%;background:#dc2626"></div></div></div>
+<p>重点题型：数组、字符串、链表、二叉树、动态规划、回溯、二分、滑动窗口。策略：按LeetCode Hot 100+CodeTop刷。大模型岗还考"手撕"：手推KMeans、手写cross-entropy、手写multi-head attention。</p>
+
+<h4>竞赛与论文</h4>
+<ul>
+<li><strong>竞赛：</strong>Kaggle铜牌/天池TOP10%是本科算法简历的重要加分；银牌以上可以冲主力公司</li>
+<li><strong>论文：</strong>本科生发顶会现实路径——大二下/大三进本校校内实验室（电院智能所、计算机学院、人工智能学院都有CV/NLP组），跟着硕士师兄师姐做挂名二作/三作。不指望一作顶会，有workshop或普通核心即可，<strong>主要作用是给简历加"科研经历"一栏</strong>，以及为考研/保研铺路</li>
+</ul>
+
+<h3>模块7：薪资数据</h3>
+<p><strong>口径：</strong>税前年总包（base×月数+年终奖+签字费+股票/期权摊销），<strong>以硕士为主</strong>，本科能拿到的单独标注。</p>
+<h4>大厂算法岗应届总包（硕士）</h4>
+<table>
+<tr><th>档位</th><th>总包</th><th>说明</th></tr>
+<tr><td>普通算法offer</td><td class="salary-num">35-50万</td><td>腾讯普通算法19-22k×16+房补≈35-43万</td></tr>
+<tr><td>SP</td><td class="salary-num">50-70万</td><td>字节大模型31k×16+签字费≈53万；腾讯混元38k×15+股票≈70万</td></tr>
+<tr><td>SSP/顶尖</td><td class="salary-num">75-110万+</td><td>字节大模型SSP 75万；大疆算法有110万传闻；Top Seed级传闻300万+(极少数博士/天才)</td></tr>
+</table>
+<h4>本科能拿到的情况（诚实）</h4>
+<ul>
+<li>头部大厂算法岗本科：<strong>极少</strong>，即便有也是算法工程化岗，总包25-35万，比同岗硕士低10-20万</li>
+<li>中厂/国企算法应用岗本科：<strong>18-30万</strong></li>
+<li>本校本科去华为/中兴/比亚迪算法相关岗：15-25万</li>
+</ul>
+<h4>3-5年后</h4>
+<ul>
+<li>算法岗3-5年（P6/P7级）：硕士背景普遍<span class="salary-num">60-120万</span>，大模型方向更高</li>
+<li><strong>本科vs硕士差距：</strong>起薪差距约10-20万/年，且本科晋升资深算法岗会遇到学历天花板；但如果本科走工程路线（方向4），差距会明显缩小</li>
+</ul>
+</div>
+
+<!-- CH4: AI Infra -->
+<div class="card dir-section dir-purple" id="ch4">
+<div class="dir-header" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+<h2>5. AI Infra / 工程化（模型部署、推理优化、训练框架）</h2>
+<span class="badge b-purple">本科可投但门槛高</span>
+<span class="badge b-purple">人才极度稀缺</span>
+<span class="badge b-orange">C++/CUDA硬核</span>
+</div>
+
+<div class="alert alert-purple">
+<strong>什么是AI Infra？为什么紧缺？</strong><br>
+<strong>AI Infra是"让大模型跑得起来、跑得快、跑得便宜"的工程岗位。</strong>算法研究员负责发明模型，AI Infra工程师负责把模型塞进GPU里榨干每一滴算力。它覆盖：
+<ul style="margin-top:6px">
+<li><strong>训练侧：</strong>分布式训练框架（PyTorch源码、DeepSpeed、Megatron）、集群调度、通信库（NCCL）</li>
+<li><strong>推理侧：</strong>推理引擎（vLLM、SGLang、TensorRT-LLM、TGI）、KV Cache优化、PagedAttention、连续批处理</li>
+<li><strong>算子/编译器侧：</strong>CUDA kernel开发、AI编译器（TVM、MLIR、XLA）、模型量化（GPTQ/AWQ/FP8）、算子融合</li>
+<li><strong>MLOps：</strong>模型上线、监控、弹性伸缩</li>
+</ul>
+</div>
+
+<div class="alert alert-green">
+<strong>为什么紧缺：</strong>2024-2026年大模型爆发，但会调PyTorch的人一抓一把，<strong>能写高性能CUDA kernel、能把7B模型在单卡上推到1000 token/s的人极少</strong>。
+猎聘上一条具身机器人公司"大模型推理加速工程师（CUDA）"岗位年薪预算120万可突破；英伟达2026校招美国base 12.4-24.15万美元。
+国内华为27届校招AI Infra工程师开到22-35k×16薪。<br><br>
+<strong>本校学生的独特优势：</strong>你学过信号与系统、数字信号处理、模电数电、计算机底层——这正是AI Infra最需要的"懂硬件+懂系统"的底子。CUDA本质是把计算映射到GPU硬件结构上，本校电子信息背景比纯软学生更容易上手。
+</div>
+
+<div class="alert alert-blue">
+<strong>本科可投性结论：</strong>AI Infra对本科比算法研究岗友好——因为它更看<strong>工程能力</strong>而非论文。华为昇腾、字节AML、阿里PAI、各云厂商、AI创业公司的Infra岗，<strong>本科有强C++/CUDA项目是可以投的</strong>，但门槛依然高：你必须真的写过CUDA、真的部署过推理引擎，而不是只看过视频。
+</div>
+
+<h3>模块1：详细技能树</h3>
+
+<h4>阶段一：大二上（2026秋）——C++与系统基础打底</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>本校是否必修</th><th>目标</th></tr>
+<tr><td>语言</td><td>C语言、C++（指针、内存管理、STL容器、智能指针）</td><td>C是必修，C++自学</td><td>熟练</td></tr>
+<tr><td>编程</td><td>Python、NumPy</td><td>自学</td><td>熟练</td></tr>
+<tr><td>数学</td><td>高数、线代、概率论（同方向3）</td><td>✅ 必修</td><td>熟练</td></tr>
+<tr><td>系统</td><td>Linux基本命令、Shell、Git</td><td>自学</td><td>会用</td></tr>
+<tr><td>数据结构</td><td>LeetCode C++刷题（100题）</td><td>自学</td><td>—</td></tr>
+</table>
+
+<h4>阶段二：大二下（2027春）——计算机系统+CUDA入门</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>目标</th></tr>
+<tr><td>系统</td><td>《深入理解计算机系统》(CSAPP)前8章：缓存、内存层次、链接</td><td>会用</td></tr>
+<tr><td>OS</td><td>进程/线程、锁、协程、零拷贝（概念）</td><td>了解</td></tr>
+<tr><td>GPU</td><td>CUDA入门：kernel写法、thread/block/grid、显存分层（global/shared/register）</td><td>会写向量加法、矩阵乘法</td></tr>
+<tr><td>DL基础</td><td>同方向3：PyTorch跑通MNIST/CIFAR，理解前向反向</td><td>会用</td></tr>
+<tr><td>工具</td><td>Nsight Systems/Nsight Compute性能分析工具跑起来</td><td>了解</td></tr>
+</table>
+
+<h4>阶段三：大三上（2027秋）——推理部署实战</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>目标</th></tr>
+<tr><td>部署</td><td>ONNX导出、ONNX Runtime</td><td>熟练</td></tr>
+<tr><td>部署</td><td>TensorRT：trtexec转换、FP16/INT8校准、C++推理API</td><td>会用</td></tr>
+<tr><td>压缩</td><td>模型量化原理（PTQ/QAT、对称/非对称、GPTQ/AWQ）、剪枝、蒸馏</td><td>会用</td></tr>
+<tr><td>推理引擎</td><td>vLLM部署一个7B量化模型，理解PagedAttention、continuous batching</td><td>会用</td></tr>
+<tr><td>CUDA</td><td>写几个常用算子：矩阵乘优化、softmax、attention forward</td><td>会写</td></tr>
+<tr><td>LeetCode</td><td>300题（C++）</td><td>—</td></tr>
+</table>
+
+<h4>阶段四：大三下（2028春）——方向深化+实习</h4>
+<table>
+<tr><th>模块</th><th>技术点</th><th>目标</th></tr>
+<tr><td>训练侧</td><td>PyTorch autograd源码阅读、DDP原理、NCCL通信</td><td>了解</td></tr>
+<tr><td>分布式</td><td>张量并行TP/流水线并行PP/ZeRO概念</td><td>了解</td></tr>
+<tr><td>AI编译器</td><td>TVM或MLIR概念了解（不要求精通）</td><td>了解</td></tr>
+<tr><td><strong>实习</strong></td><td><strong>投华为昇腾、字节AML、阿里PAI、商汤等Infra实习岗</strong></td><td>—</td></tr>
+</table>
+
+<h4>阶段五：大四（2028秋招）</h4>
+<ul>
+<li>C++深度面试（多态、虚函数、内存对齐、智能指针、move语义）</li>
+<li>CUDA kernel手撕（矩阵乘加tiling）</li>
+<li>计算机体系结构（GPU SM、warp、内存coalescing）</li>
+<li>OS、网络八股</li>
+</ul>
+
+<h3>模块2：实战项目清单（6个，由易到难，适配4060 8GB）</h3>
+<div class="alert alert-purple">
+<strong>📌 项目类型说明：</strong>建议按 <span class="type-tut">📚 教程学习型</span>（跟着做学知识）→ <span class="type-dev">🔧 二次开发实战型</span>（fork后改造成自己的项目）→ <span class="type-src">🔬 源码精读型</span>（读源码学原理）的顺序推进。
+AI Infra门槛高，先从用工具开始，再读教学级源码，最后精读生产级kernel。
+</div>
+
+<div class="proj-card">
+<h4>项目1：ggml-org/llama.cpp — C++推理入门 <span class="badge b-light">★129k</span> <span class="badge b-green">入门</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> + <span class="type-dev">🔧 实战型</span> | 技术栈：纯C/C++ | <span class="gpu-yes">✅ RTX4060极其友好（CUDA后端+GGUF量化）</span></div>
+<p>纯C实现的LLM推理引擎，是理解模型推理底层、做边缘部署的最佳读物。Ollama等工具的底层。在4060上编译跑通Qwen2.5-7B-Q4量化模型，边用边读核心推理代码，理解矩阵乘/量化/内存布局。</p>
+<p><strong>简历亮点：</strong>"编译并部署llama.cpp在RTX4060上运行7B量化模型，理解GGUF格式/CUDA后端/推理优化底层。"</p>
+<a class="gh-btn" href="https://github.com/ggml-org/llama.cpp" target="_blank">GitHub ↗ llama.cpp</a>
+</div>
+
+<div class="proj-card">
+<h4>项目2：jmaczan/tiny-vllm — 手写迷你推理引擎 <span class="badge b-light">数百星</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> + <span class="type-src">🔬 精读型</span> | 技术栈：C++ + CUDA + CMake | <span class="gpu-yes">✅ RTX4060完全可以（设计为消费级GPU跑）</span></div>
+<p>用~几千行C++/CUDA从零实现一个推理引擎，是理解vLLM内部原理的最佳教学项目。跟完代码理解：模型加载→前向推理→KV Cache→batch调度。完美衔接后续读vLLM源码。</p>
+<p><strong>简历亮点：</strong>"手写迷你LLM推理引擎（C++/CUDA），实现模型加载+前向推理+KV Cache，理解推理引擎核心原理。"</p>
+<a class="gh-btn" href="https://github.com/jmaczan/tiny-vllm" target="_blank">GitHub ↗ tiny-vllm</a>
+</div>
+
+<div class="proj-card">
+<h4>项目3：scq6688/YOLOv13-ONNX-TensorRT — CV部署全流程 <span class="badge b-light">新项目</span> <span class="badge b-blue">中级</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：PyTorch → ONNX → TensorRT / Python / C++ | <span class="gpu-yes">✅ RTX4060完美适配（YOLOv13n/s训练+TRT部署都在8GB内）</span></div>
+<p>从数据标注→训练→ONNX→TensorRT C++部署的完整工业流水线。配合<a href="https://www.bilibili.com/video/BV1MZbjzSEtV" target="_blank">B站12P教程（6.8万播放）</a>跟做。对本科就业找CV部署岗非常实用。</p>
+<p><strong>简历亮点：</strong>"完成YOLOv13从训练到TensorRT C++部署全流程，FP32→FP16→INT8量化加速对比，单帧延迟从28ms降至5ms。"</p>
+<a class="gh-btn" href="https://github.com/scq6688/YOLOv13-ONNX-TensorRT" target="_blank">GitHub ↗ YOLOv13-TRT</a>
+<a class="gh-btn" href="https://www.bilibili.com/video/BV1MZbjzSEtV" target="_blank">B站教程 ↗</a>
+</div>
+
+<div class="proj-card">
+<h4>项目4：vllm-project/vllm — 生产级推理引擎 <span class="badge b-light">★92k</span> <span class="badge b-orange">中高</span></h4>
+<div class="proj-meta"><span class="type-dev">🔧 二次开发实战型</span> | 技术栈：Python + CUDA kernel（C++/CUDA） | <span class="gpu-yes">✅ RTX4060可跑小模型（7B Q4量化）</span></div>
+<p>事实标准的LLM推理引擎，PagedAttention发明者，就业市场最高频要求。先用pip安装，在4060上跑7B量化模型起OpenAI兼容API服务，做压测（TTFT/TPOT/吞吐），再读PagedAttention核心代码理解原理。</p>
+<p><strong>简历亮点：</strong>"部署vLLM推理服务，AWQ量化7B模型，压测不同并发下TTFT/TPOT/吞吐，开启prefix caching优化；阅读PagedAttention核心源码理解显存分页机制。"</p>
+<a class="gh-btn" href="https://github.com/vllm-project/vllm" target="_blank">GitHub ↗ vllm</a>
+<a class="gh-btn" href="https://docs.vllm.ai/" target="_blank">官方文档 ↗</a>
+</div>
+
+<div class="proj-card">
+<h4>项目5：NVIDIA/cuda-samples — CUDA官方示例集 <span class="badge b-light">★7k+</span> <span class="badge b-orange">中级~高级</span></h4>
+<div class="proj-meta"><span class="type-tut">📚 教程学习型</span> | 技术栈：CUDA C++ | <span class="gpu-yes">✅ RTX4060完美适配（deviceQuery/nbody/矩阵乘都能跑）</span></div>
+<p>学CUDA的第一站，从向量加到张量核，分层组织。配合<a href="https://www.bilibili.com/video/BV1YC5y6QEmz" target="_blank">NVIDIA官方CUDA课</a>和<a href="https://www.bilibili.com/video/BV1KyDWBMErc" target="_blank">CUDA速成课</a>，从naive矩阵乘开始逐步加tiling/shared memory/vectorize优化。</p>
+<p><strong>简历亮点：</strong>"完成CUDA官方示例集，手写矩阵乘/向量加/规约算子，用Nsight Compute分析occupancy和memory bandwidth，理解GPU并行编程模型。"</p>
+<a class="gh-btn" href="https://github.com/NVIDIA/cuda-samples" target="_blank">GitHub ↗ cuda-samples</a>
+</div>
+
+<div class="proj-card">
+<h4>项目6：Dao-AILab/flash-attention — FlashAttention源码精读 <span class="badge b-light">★25k</span> <span class="badge b-red">高级</span></h4>
+<div class="proj-meta"><span class="type-src">🔬 源码精读型</span> | 技术栈：Python + CUDA (Triton) | <span class="gpu-yes">✅ pip install flash-attn即可用（SM89完全支持）</span></div>
+<p>现代LLM训练/推理必备的注意力kernel，被几乎所有LLM框架依赖。先用pip装了用，进阶再精读其tiling实现——为什么FlashAttention能把IO复杂度从O(N²)降到O(N)，online softmax怎么实现。配合<a href="https://www.bilibili.com/video/BV1c1MP6iEL1" target="_blank">SGEMM优化实战课</a>加深理解。</p>
+<p><strong>简历亮点：</strong>"精读FlashAttention CUDA kernel源码，理解tiling/online softmax/IO-aware优化原理，能讲清FlashAttention为什么比标准Attention快且省显存。"</p>
+<a class="gh-btn" href="https://github.com/Dao-AILab/flash-attention" target="_blank">GitHub ↗ flash-attention</a>
+</div>
+
+<h3>模块3：学习资源</h3>
+<h4>课程（按学习顺序）</h4>
+<table>
+<tr><th>顺序</th><th>资源</th><th>类型</th><th>难度</th><th>时长</th><th>适合阶段</th></tr>
+<tr><td>1</td><td><a href="https://www.bilibili.com/video/BV1RxZmYCEfB" target="_blank">李沐《动手学深度学习》</a>（先懂训练侧再谈优化）</td><td>视频(B站)</td><td>入门</td><td>选看</td><td>大二上·DL基础</td></tr>
+<tr><td>2</td><td><a href="https://www.bilibili.com/video/BV1KyDWBMErc" target="_blank">CUDA编程速成课</a>（向量加/矩阵乘示例驱动）</td><td>视频(B站)</td><td>入门~中级</td><td>速成系列</td><td>大二下·CUDA入门</td></tr>
+<tr><td>3</td><td><a href="https://www.bilibili.com/video/BV1YC5y6QEmz" target="_blank">NVIDIA官方《现代CUDA编程》</a>（CUDA Tile+多GPU）</td><td>视频(B站)</td><td>中级</td><td>短课</td><td>大二下·最新CUDA模型</td></tr>
+<tr><td>4</td><td><a href="https://www.bilibili.com/video/BV1MZbjzSEtV" target="_blank">YOLOv13从训练到TensorRT部署</a>（12P约10h）</td><td>视频(B站)</td><td>中级</td><td>10小时</td><td>大二暑假·部署实战</td></tr>
+<tr><td>5</td><td><a href="https://www.bilibili.com/video/BV1c1MP6iEL1" target="_blank">SGEMM优化源码实践讲解</a>（naive→tiling→shared memory）</td><td>视频(B站)</td><td>高级</td><td>单集</td><td>大三上·CUDA进阶硬核</td></tr>
+<tr><td>6</td><td><a href="https://www.bilibili.com/video/BV1N741177F5" target="_blank">蒋炎岩《操作系统：设计与实现》</a></td><td>视频(B站)</td><td>中级</td><td>选看</td><td>大二下~大三·系统基础</td></tr>
+</table>
+<h4>优质GitHub仓库</h4>
+<ul>
+<li><a href="https://github.com/ggml-org/llama.cpp" target="_blank">ggml-org/llama.cpp</a> <span class="badge b-light">★129k</span> — C++推理引擎入门</li>
+<li><a href="https://github.com/jmaczan/tiny-vllm" target="_blank">jmaczan/tiny-vllm</a> <span class="badge b-light">教学型</span> — 手写迷你vLLM，理解推理引擎原理</li>
+<li><a href="https://github.com/vllm-project/vllm" target="_blank">vllm-project/vllm</a> <span class="badge b-light">★92k</span> — 生产级推理引擎，PagedAttention</li>
+<li><a href="https://github.com/NVIDIA/cuda-samples" target="_blank">NVIDIA/cuda-samples</a> <span class="badge b-light">★7k+</span> — 官方CUDA示例集</li>
+<li><a href="https://github.com/Dao-AILab/flash-attention" target="_blank">Dao-AILab/flash-attention</a> <span class="badge b-light">★25k</span> — FlashAttention kernel，进阶精读</li>
+<li><a href="https://github.com/scq6688/YOLOv13-ONNX-TensorRT" target="_blank">scq6688/YOLOv13-ONNX-TensorRT</a> <span class="badge b-light">实战型</span> — CV部署全流程</li>
+</ul>
+<h4>书籍/文档</h4>
+<ul>
+<li>《CUDA C++ Programming Guide》（官方PDF）——写CUDA当手册查</li>
+<li>CSAPP《深入理解计算机系统》——所有系统岗的圣经</li>
+<li><a href="https://docs.vllm.ai/" target="_blank">vLLM官方文档</a>——部署和参数调优参考</li>
+</ul>
+<h4>必读论文</h4>
+<ul>
+<li>Attention Is All You Need（理解你优化的是什么）</li>
+<li>FlashAttention（IO-aware注意力优化）</li>
+<li>PagedAttention / vLLM论文（显存分页）</li>
+</ul>
+
+
+<h3>模块4：真实JD分析</h3>
+<h4>JD 4.1：华为AI Infra工程师（27届校招）</h4>
+<p>来源：<a href="https://career.huawei.com/reccampportal/portal5/campus-recruitment-detail.html?jobId=24079" target="_blank">华为校招</a></p>
+<div class="alert alert-green"><strong>原文：</strong>"参与AI基础架构核心竞争力构建：AI系统训练推理性能、集群规模、可用性；算子开发、模型训练与推理性能优化、AI编译器、生态软件仓适配、软硬协同。"<br>
+猎聘显示该岗22-35k×16薪，<strong>本科可投</strong>（华为校招对本科相对友好）。</div>
+
+<h4>JD 4.2：深圳某公司 大模型部署与推理优化（猎聘）</h4>
+<p>来源：<a href="https://www.liepin.com/a/79403809.shtml" target="_blank">猎聘</a></p>
+<p><strong>原文：</strong>"负责vLLM、SGLang、TensorRT-LLM部署与性能优化；K8s/Docker搭建推理基础设施；模型量化、显存优化、推理加速，提升GPU利用率。"</p>
+
+<h4>JD 4.3：某具身机器人公司 大模型推理加速（CUDA）（BOSS）</h4>
+<p>来源：<a href="https://www.zhipin.com/job_detail/1c4377caa12b7d4603Jz3dS0ElJX.html" target="_blank">BOSS直聘</a></p>
+<div class="alert alert-purple"><strong>原文：</strong>"大模型推理加速工程师（CUDA），熟悉C++/CUDA/Python，了解vLLM/TensorRT，年薪预算120万可突破，对标P6+。"</div>
+
+<h4>JD 4.4：NVIDIA Deep Learning Software Engineer, Inference（2026校招）</h4>
+<p>来源：<a href="https://jobs.nvidia.com/careers/job/893396467982" target="_blank">NVIDIA官网</a></p>
+<p>base 12.4万-24.15万美元，要求C++/CUDA、GPU体系结构经验、了解PyTorch/vLLM/SGLang。</p>
+
+<h3>模块5：目标公司清单</h3>
+<table>
+<tr><th>档位</th><th>公司</th><th>特点</th><th>学历</th><th>参考总包</th></tr>
+<tr><td>冲刺</td><td>英伟达、AMD、DeepSeek、字节AML/Seed Infra、阿里PAI</td><td>全球顶尖，要求极强系统功底</td><td>硕为主，本科大牛可试</td><td class="salary-num">英伟达美国$12-24万base；国内60-120万</td></tr>
+<tr><td>主力</td><td>华为昇腾、腾讯太极、百度昆仑、商汤、旷视、美团、快手</td><td>国产算力+云Infra扩招</td><td>本科可投，硕优先</td><td class="salary-num">华为AI Infra 22-35k×16≈40-60万；算子开发岗华为26k+年终≈41万</td></tr>
+<tr><td>保底</td><td>中型云厂商、AI推理创业公司、研究所</td><td>做部署/优化落地</td><td>本科友好</td><td class="salary-num">25-40万</td></tr>
+</table>
+<p><strong>本校校友：</strong>华为、中兴、昇腾生态里本校人极多，这是你天然的主场。</p>
+
+<h3>模块6：实习与校招准备</h3>
+<h4>简历写法</h4>
+<div class="alert alert-purple">Infra简历三要素：<strong>C++/CUDA项目 &gt; 部署/优化项目 &gt; LeetCode</strong>。</div>
+<div class="alert alert-green">
+<strong>范例：</strong><br>
+<strong>YOLOv8 TensorRT部署与加速</strong> | 2027.09-2027.12 | C++/CUDA/TensorRT<br>
+- 将YOLOv8s从PyTorch导出ONNX并构建TensorRT FP16 engine，单帧推理延迟28ms→8.6ms（3.3×），INT8校准后进一步降至5.2ms，mAP损失&lt;1%；<br>
+- 手写CUDA后处理kernel（NMS坐标还原），替代CPU后处理，端到端吞吐提升40%。
+</div>
+
+<h4>面试考点</h4>
+<ul>
+<li><strong>C++深度：</strong>虚函数实现、多态、智能指针、move语义、内存对齐、RAII</li>
+<li><strong>CUDA：</strong>thread/block/warp模型、shared memory bank conflict、memory coalescing、occupancy计算、如何优化一个kernel</li>
+<li><strong>体系结构/OS：</strong>CPU cache、内存层次、进程线程、锁、零拷贝</li>
+<li><strong>DL基础：</strong>Transformer前向过程、KV Cache是什么、量化为什么掉点</li>
+<li>LeetCode：300+题，C++写</li>
+</ul>
+
+<div class="alert alert-green">
+<strong>本科现实：</strong>Infra岗<strong>不看论文、不看顶会</strong>，这是它和算法研究岗最大的区别——<strong>它只看你写没写过东西</strong>。这对本科极其友好。
+代价是：C++和CUDA的学习曲线比调PyTorch陡得多，需要你真的啃硬骨头。
+</div>
+
+<h3>模块7：薪资数据（2025-2026）</h3>
+<table>
+<tr><th>档位</th><th>总包</th><th>来源</th></tr>
+<tr><td>华为AI Infra校招</td><td class="salary-num">22-35k×16≈40-60万</td><td><span class="fact-tag">事实</span> 猎聘华为27届校招</td></tr>
+<tr><td>华为算子开发（硕士）</td><td class="salary-num">26k×16+年终≈41万</td><td><span class="net-tag">网友</span> 抖音哈工大硕士offer分享</td></tr>
+<tr><td>具身机器人公司推理加速CUDA</td><td class="salary-num">预算120万可突破(P6+级，非应届)</td><td><span class="fact-tag">事实</span> BOSS直聘</td></tr>
+<tr><td>英伟达Inference SWE（美国应届）</td><td class="salary-num">$12.4-24.15万base+股票</td><td><span class="fact-tag">事实</span> NVIDIA官网</td></tr>
+<tr><td>国内云厂商/创业公司Infra应届</td><td class="salary-num">本科25-40万，硕士40-70万</td><td><span class="net-tag">网友</span> 综合职友集、猎聘</td></tr>
+</table>
+<div class="alert alert-purple">
+<strong>结论：</strong>AI Infra是2025-2026年<strong>性价比最高的AI方向之一</strong>——薪资接近算法岗，但学历门槛明显低于算法研究岗，且本校电子信息背景在硬件/系统上有天然优势。
+</div>
+</div>
+
+<!-- CH5: 横向对比与选择决策 -->
+<div class="card dir-section" id="ch5">
+<h2>第6章：4方向横向对比与选择决策</h2>
+
+<h3>4方向关系图</h3>
+<div class="flow-diagram">
+<div class="flow-box" style="background:#d1fae5;color:#065f46">AI应用开发<br>(RAG/Agent)</div>
+<div class="flow-arrow">+</div>
+<div class="flow-box" style="background:#dbeafe;color:#1e40af">后端开发<br>(Java/Go/分布式)</div>
+<div class="flow-arrow">=</div>
+<div class="flow-box" style="background:#fef3c7;color:#92400e;font-weight:700">⭐ 黄金组合：全栈AI工程师<br>(最抢手)</div>
+</div>
+<div class="flow-diagram">
+<div class="flow-box" style="background:#f3e8ff;color:#7e22ce">AI Infra<br>(C++/CUDA/推理引擎)</div>
+<div class="flow-arrow">需要</div>
+<div class="flow-box" style="background:#dbeafe;color:#1e40af">后端+系统功底</div>
+<div class="flow-arrow">+</div>
+<div class="flow-box" style="background:#fee2e2;color:#b91c1c">深度学习理解</div>
+</div>
+<div class="flow-diagram">
+<div class="flow-box" style="background:#fee2e2;color:#b91c1c">核心算法研究<br>(硕士起步)</div>
+<div class="flow-arrow">曲线救国</div>
+<div class="flow-box" style="background:#d1fae5;color:#065f46">本科AI应用/算法工程</div>
+<div class="flow-arrow">→2-3年→</div>
+<div class="flow-box" style="background:#fef3c7;color:#92400e">内部转算法/在职读研</div>
+</div>
+
+<h3>"AI应用+后端"是黄金组合</h3>
+<p>市场上最抢手的是<strong>全栈AI工程师</strong>——既能用LangChain/LlamaIndex搭RAG知识库、写Agent编排逻辑，又能用Java/Go写微服务、做模型服务化部署（vLLM/TGI）、搭向量数据库（Milvus/Qdrant）。2026年前程无忧报告显示，掌握SpringAI、RAG、智能体开发的应届生起薪比传统开发高出30%-100%。纯CRUD后端正在被AI编程助手压缩，而"懂AI的后端"反而最稀缺。</p>
+
+<h3>大二大三如何保留转换可能性</h3>
+<ul>
+<li><strong>大二全年：</strong>C语言+Python+数据结构+高数+线代全部打扎实。这些是四个方向共同的地基，无论最后选哪个都不浪费</li>
+<li><strong>大二下：</strong>每个方向都浅尝一个Demo——后端写个CRUD小网站，AI应用调API做个聊天机器人，算法跑个MNIST分类，Infra层面看一遍vLLM源码</li>
+<li><strong>大三上（2027年9月）：</strong>这是<strong>最后收敛决策点</strong>。此时已有足够项目经验和实习认知，可以确定主攻方向。但前两年的基础让你随时可以切换</li>
+</ul>
+
+<h3>可交互方向匹配打分表</h3>
+<p style="font-size:12px;color:#64748b">请按1-5分（1=很不匹配，5=非常匹配）为自己打分，JS自动计算总分：</p>
+<table>
+<tr><th>评估维度</th><th>权重</th><th>AI应用</th><th>后端</th><th>算法</th><th>AI Infra</th></tr>
+<tr><td>兴趣：喜欢调API做产品</td><td>15%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_0"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_0"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_0"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_0"></td></tr>
+<tr><td>兴趣：喜欢写服务/系统</td><td>15%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_1"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_1"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_1"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_1"></td></tr>
+<tr><td>兴趣：喜欢数学/论文</td><td>15%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_2"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_2"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_2"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_2"></td></tr>
+<tr><td>兴趣：喜欢底层/性能</td><td>15%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_3"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_3"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_3"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_3"></td></tr>
+<tr><td>能力：编程能力</td><td>10%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_4"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_4"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_4"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_4"></td></tr>
+<tr><td>能力：数学/理论功底</td><td>10%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_5"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_5"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_5"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_5"></td></tr>
+<tr><td>价值观：想快速就业赚钱</td><td>10%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_6"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_6"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_6"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_6"></td></tr>
+<tr><td>价值观：能接受读2-3年研</td><td>10%</td><td><input class="score-input" type="number" min="1" max="5" id="score_ai_7"></td><td><input class="score-input" type="number" min="1" max="5" id="score_be_7"></td><td><input class="score-input" type="number" min="1" max="5" id="score_algo_7"></td><td><input class="score-input" type="number" min="1" max="5" id="score_infra_7"></td></tr>
+<tr style="font-weight:700;background:#f1f5f9"><td colspan="2">总分（满分5）</td><td><span class="score-total" id="total_ai">—</span></td><td><span class="score-total" id="total_be">—</span></td><td><span class="score-total" id="total_algo">—</span></td><td><span class="score-total" id="total_infra">—</span></td></tr>
+</table>
+<p style="font-size:11px;color:#94a3b8">≥4.0=强烈推荐 | 3.0-4.0=可以考虑 | &lt;3.0=不建议</p>
+
+<h3>三种典型人格画像</h3>
+<div class="persona-grid">
+<div class="persona-card p1">
+<h4 style="color:#16a34a">编程强+数学一般+想快速就业</h4>
+<p>代码写得溜但高数线代成绩一般，不想读研，大三就要拿offer</p>
+<p style="margin-top:8px"><strong>推荐方向：后端开发/AI应用开发</strong></p>
+<p style="font-size:12px;color:#64748b">这两个方向本科就业最成熟，薪资天花板虽不如算法但下限高、岗位多。后端是基本盘，AI应用是增量。组合起来投最稳。</p>
+</div>
+<div class="persona-card p2">
+<h4 style="color:#dc2626">数学好+爱研究+能接受读研</h4>
+<p>线代概率论90+，喜欢看论文，成绩在专业前20%能保研</p>
+<p style="margin-top:8px"><strong>推荐方向：算法工程师</strong></p>
+<p style="font-size:12px;color:#64748b">算法岗高薪资（硕士40-60万）和高天花板（博士100万+）只对高学历开放。本校本科深造率54.1%，只要保持绩点保研或考研到985/本校，算法路径完全可行。</p>
+</div>
+<div class="persona-card p3">
+<h4 style="color:#9333ea">底层控+性能狂+C++强</h4>
+<p>喜欢折腾操作系统、看汇编、追求极致性能，对"为什么快"着迷</p>
+<p style="margin-top:8px"><strong>推荐方向：AI Infra</strong></p>
+<p style="font-size:12px;color:#64748b">Infra人才极度稀缺（美国市场3.4个岗位抢1人），内卷程度最低。但要求C++/CUDA/系统功底极强，适合真正热爱底层的人。本科直接进难度大，建议读研后切入。</p>
+</div>
+</div>
+</div>
+
+<!-- CH6: 本科vs读研 -->
+<div class="card dir-section" id="ch6">
+<h2>第7章：本科vs读研深度决策</h2>
+
+<h3>4方向逐个分析</h3>
+<table>
+<tr><th>方向</th><th>本科够不够</th><th>读研增益</th><th>建议</th></tr>
+<tr><td><strong>AI应用开发</strong></td><td>✅ 本科可投，掌握Python+LangChain+向量库+1个RAG/Agent项目即可</td><td>中等：读研能接触更深入的模型微调、多模态项目，但本科靠实习和项目同样能补</td><td><strong>本科就业+在职提升</strong>，如果实习期间发现自己对模型原理很感兴趣再考虑在职硕士</td></tr>
+<tr><td><strong>后端开发</strong></td><td>✅ 本科完全够，本科是绝对主力（大厂后端校招本科占比40-50%）</td><td>低：后端看重工程能力和实习，学历溢价不如算法明显</td><td><strong>强烈建议本科直接就业</strong>，3年工作经验比硕士学历在后端市场更值钱</td></tr>
+<tr><td><strong>算法工程师</strong></td><td>❌ 本科极难，核心算法岗硕士起步占比90%+，本科只能走"算法工程化"曲线</td><td>极大：硕士发论文/打Kaggle/在大厂算法组实习，毕业直接拿SP/SSP（45-85万）</td><td><strong>强烈建议读研</strong>。本校本校保研或考研到更好学校是必由之路</td></tr>
+<tr><td><strong>AI Infra</strong></td><td>⚠️ 有机会但门槛高，需本科就有硬核C++/CUDA项目</td><td>中高：读研能接触大规模训练/推理集群，有更多时间深挖底层</td><td>看个人能力。大二大三就能独立做出CUDA优化项目并开源→本科可冲；否则读研更稳妥</td></tr>
+</table>
+
+<h3>本科就业 vs 读研路径利弊对比</h3>
+<table>
+<tr><th>方向</th><th>本科直接就业</th><th>读研后就业</th></tr>
+<tr><td><strong>AI应用</strong></td><td>✅ 早2-3年赚钱（20-30万/年），积累实战经验<br>❌ 技术天花板较低，容易被替代</td><td>✅ 有机会接触核心模型，薪资高10-15万<br>❌ 2-3年机会成本约50-80万</td></tr>
+<tr><td><strong>后端</strong></td><td>✅ 3年工作经验&gt;&gt;3年硕士，大厂后端主管很多是本科<br>❌ 学历在晋升高层时可能受限</td><td>✅ 可进更大平台/核心部门<br>❌ 对后端岗性价比极低</td></tr>
+<tr><td><strong>算法</strong></td><td>❌ 本科几乎进不了核心算法岗，只能做边角料<br>✅ 早工作积累行业认知</td><td>✅ 算法岗入场券，薪资翻倍<br>❌ 考研/保研竞争激烈，2-3年时间成本</td></tr>
+<tr><td><strong>AI Infra</strong></td><td>⚠️ 少数强者可进，但名额极少<br>✅ 早接触真实业务场景</td><td>✅ 系统训练底层能力，选择面宽<br>❌ 同样有机会成本</td></tr>
+</table>
+
+<h3>读研的隐性成本 vs 收益</h3>
+<div class="comp-grid">
+<div class="comp-item" style="border-left:4px solid #dc2626">
+<strong style="color:#dc2626">隐性成本（2-3年）</strong><br>
+- 直接收入损失：本科就业3年约60-90万薪资<br>
+- 读研学费+生活费：约10-15万<br>
+- <strong>总机会成本：约70-105万</strong>
+</div>
+<div class="comp-item" style="border-left:4px solid #16a34a">
+<strong style="color:#16a34a">收益（算法/Infra方向）</strong><br>
+- 硕士起薪比本科高15-30万/年（算法岗差距尤其大）<br>
+- 5年累计薪资差距可达50-100万<br>
+- 长期职业天花板更高（算法专家/技术总监基本要求硕士+）
+</div>
+</div>
+<p><strong>结论：</strong>对于算法方向，读研的长期经济回报为正；对于后端方向，读研不划算。</p>
+
+<h3>本校保研率与考研难度</h3>
+<table>
+<tr><th>指标</th><th>数据</th></tr>
+<tr><td>本科深造率（2025届）</td><td><strong>54.10%</strong></td></tr>
+<tr><td>境内深造进入双一流比例</td><td>95%</td></tr>
+<tr><td>实验班升学率</td><td>76%</td></tr>
+<tr><td>普通专业保研率（估算）</td><td>约20%-25%</td></tr>
+<tr><td>计算机学院2026硕士招生</td><td>399人（含非全2人）</td></tr>
+<tr><td>本校2026全日制硕士总招生</td><td>4800名（含推免1800名）</td></tr>
+<tr><td>计算机学术学位复试线</td><td>约310-320分/500</td></tr>
+<tr><td>计算机技术（专硕）复试线</td><td>315分</td></tr>
+</table>
+<div class="alert alert-blue"><strong>关键提示：</strong>本校本科深造率54%意味着超过一半同学都在考研/保研。如果你的目标是算法岗，<strong>保研是最优路径</strong>（省去考研备考时间，大三下就能去实习）。考研本校计算机难度中等偏上（复试线315+），但比考清北复交容易。</div>
+
+<h3>决策节点时间线</h3>
+<div class="sem-timeline">
+<div class="sem-node"><div class="sem-title">大二下（2027年3-6月）</div>评估自己绩点排名。如果专业前20%，开始准备保研；如果在20%-50%，评估考研可行性。</div>
+<div class="sem-node key"><div class="sem-title">大三上（2027年9-12月）—— 最后决策点</div>此时保研资格基本明朗（9月开学看绩点排名），考研报名在10月。如果决心本科就业，从9月开始投日常实习；如果决定考研，9月进入全职备考状态。</div>
+</div>
+</div>
+
+<!-- CH7: 行业大趋势 -->
+<div class="card dir-section" id="ch7">
+<h2>第8章：行业大趋势</h2>
+
+<div class="trend-grid">
+<div class="trend-card">
+<h4>📈 趋势1：大模型应用爆发（Agent/RAG/AI编程）</h4>
+<p>根据人民网2026年9月《2026 AI人才市场报告》，<strong>从2024上半年到2026上半年，AI相关招聘职位增长约119%</strong>，在全部招聘职位中占比从0.72%升至2.01%。</p>
+<ul>
+<li><strong>RAG：</strong>已成为企业级LLM产品"标配能力"，核心挑战从"能不能用"转向"工程优化"</li>
+<li><strong>Agent开发：</strong>2025-2026持续热门。腾讯2026年8月JD明确要求：任务规划、长期记忆、多Agent协同、MCP协议集成</li>
+<li><strong>私有化智能体：</strong>"门槛最低、需求量最大、岗位缺口最多"的方向</li>
+<li><strong>薪资阶梯：</strong>API调用初级18-25K→RAG开发22-30K→Agent流程集成30K→项目负责人40K+</li>
+</ul>
+</div>
+<div class="trend-card">
+<h4>🤖 趋势2：AI编程助手对初级程序员的影响</h4>
+<p>Cursor的Tab自动补全接受率达72%，GitHub Copilot约30%；Claude Code在SWE-bench上达80.8%。AI编程助手已从"补全"进化到"Agent模式"。</p>
+<p><strong>变重要的能力：</strong>系统架构设计、Debug/调试、需求理解与产品思维、代码审查、领域知识</p>
+<p><strong>被压缩的能力：</strong>纯CRUD业务代码、基础语法记忆、简单页面搭建</p>
+<div class="alert alert-orange" style="margin:6px 0"><strong>对大二学生的启示：</strong>不要把时间浪费在"背语法"上，要尽早接触项目、理解系统设计、学会用AI工具提效。<strong>初学者必须先手写代码建立底层认知，再用AI提效。</strong></div>
+</div>
+<div class="trend-card">
+<h4>🔗 趋势3：后端与AI融合</h4>
+<ul>
+<li><strong>AI Native后端：</strong>不再是单纯CRUD，要集成模型调用、流式输出、Token计量、成本控制</li>
+<li><strong>向量数据库：</strong>Milvus/Qdrant/PGVector成为后端标配中间件，类似10年前MySQL的普及过程</li>
+<li><strong>模型服务化：</strong>vLLM/TGI/Triton部署推理服务，需要懂GPU显存管理、并发调度、KV Cache优化的后端工程师</li>
+<li>纯Java/Go后端如果不主动拥抱AI，3-5后面临职业危机</li>
+</ul>
+</div>
+<div class="trend-card">
+<h4>⚡ 趋势4：AI Infra人才紧缺</h4>
+<ul>
+<li>ManpowerGroup 2026全球人才短缺调查：AI技能已取代传统IT成为全球最难填补的技能</li>
+<li>AI Infra/ML Platform工程师岗位竞争比约<strong>3.4:1</strong>（美国市场）</li>
+<li>猎聘2026年9月在招薪资：训练框架40-70K×18薪、推理框架50-80K×16薪</li>
+<li>大模型训练/推理成本占公司总支出60%+，任何10%的效率提升都值百万级</li>
+</ul>
+</div>
+</div>
+
+<h3>算法岗内卷现状</h3>
+<div class="alert alert-red">
+<ul style="margin-top:4px">
+<li><strong>供过于求：</strong>2023-2024是算法岗"毕业即巅峰"，大量硕博涌入。2025-2026核心算法岗开始缩招，大厂更倾向于用AI辅助自动化实验</li>
+<li><strong>学历通胀：</strong>2020年算法岗本科可进，2023年硕士起步，2026年头部公司算法岗博士占比持续上升。字节AI岗SSP（58-85万）基本被博士和顶尖硕士瓜分</li>
+<li><strong>两极分化：</strong>核心算法（新模型架构/预训练）缩招且极高门槛；应用算法（推荐系统/搜索/NLP落地）仍在增长但要求更多工程能力</li>
+<li><strong>DeepSeek效应：</strong>2025年DeepSeek证明了"少数人高效做大事"，行业对大规模算法团队的需求在收缩，对<strong>高质量+工程化</strong>算法人才的需求在上升</li>
+</ul>
+</div>
+
+<h3>2026-2030年四方向需求预测</h3>
+<table>
+<tr><th>方向</th><th>需求趋势</th><th>判断依据</th></tr>
+<tr><td><strong>AI应用开发</strong></td><td style="color:#16a34a;font-weight:700">强上行 ↑↑↑</td><td>Agent/RAG/私有化部署才刚起步，企业AI转型才1-2年，2030年前是黄金期</td></tr>
+<tr><td><strong>后端开发</strong></td><td style="color:#2563eb;font-weight:700">平稳偏上行 ↑</td><td>纯CRUD萎缩，但AI Native后端/模型服务化需求增长，总体岗位量平稳</td></tr>
+<tr><td><strong>算法工程师</strong></td><td style="color:#ea580c;font-weight:700">两极分化 ↔</td><td>核心算法萎缩（博士卷），应用算法/算法工程化增长（硕士可入）</td></tr>
+<tr><td><strong>AI Infra</strong></td><td style="color:#9333ea;font-weight:700">强上行 ↑↑↑</td><td>大模型基建是硬需求，人才稀缺度未来5年不会缓解</td></tr>
+</table>
+</div>
+
+<!-- CH8: 四类雇主对比 -->
+<div class="card dir-section" id="ch8">
+<h2>第9章：四类雇主对比</h2>
+
+<h3>四类雇主详细对比表</h3>
+<table>
+<tr><th>维度</th><th>互联网大厂</th><th>明星AI创业公司</th><th>国企/银行科技岗</th><th>外企</th></tr>
+<tr><td><strong>代表公司</strong></td><td>字节/腾讯/阿里/百度/美团/快手/拼多多/小红书</td><td>DeepSeek/MiniMax/月之暗面(Kimi)/智谱/百川/阶跃星辰</td><td>工行/建行/农行软开、国家电网、中电科各所</td><td>微软/谷歌/亚马逊/NVIDIA/Intel</td></tr>
+<tr><td><strong>应届本科薪资</strong></td><td class="salary-num">18-30万(白菜)，SP 30-40万</td><td class="salary-num">25-50万+期权(本科名额极少)</td><td class="salary-num">15-25万</td><td class="salary-num">30-50万(在华headcount少)</td></tr>
+<tr><td><strong>应届硕士薪资</strong></td><td class="salary-num">26-45万，SP 45-55万，SSP 58-85万</td><td class="salary-num">40-100万+期权(DeepSeek核心岗最高126万；智谱博士总包可达182万)</td><td class="salary-num">18-25万(户口有概率解决)</td><td class="salary-num">40-70万(谷歌/微软中国)</td></tr>
+<tr><td>期权/股票</td><td>上市公司股票，RSU按4年归属</td><td>期权占比高但风险大(公司可能倒闭)</td><td>无</td><td>上市公司RSU</td></tr>
+<tr><td>工作强度</td><td>996/大小周为主，字节美团拼多多强度高</td><td>极高，创业公司节奏，期权画饼</td><td>朝九晚五/偶尔加班，WLB好</td><td>朝九晚六，WLB最好</td></tr>
+<tr><td>稳定性</td><td>中(35岁危机存在但技术好可跳槽)</td><td>极低(大模型淘汰赛进行中，"六小虎"已变"四小强")</td><td>极高(铁饭碗)</td><td>中高(裁员风险低于互联网)</td></tr>
+<tr><td>晋升</td><td>体系成熟但竞争激烈，2-3年升一级</td><td>快但不确定，公司活着就有机会</td><td>慢但稳，论资排辈</td><td>体系成熟，晋升慢但清晰</td></tr>
+<tr><td>跳槽价值</td><td>极高(大厂履历是硬通货)</td><td>高(AI领域经验稀缺)</td><td>低(跳去互联网不太认)</td><td>高(外企履历+英语能力)</td></tr>
+<tr><td>户口</td><td>北京/上海排队，深圳杭州较易</td><td>同大厂</td><td>北京上海户口概率较高(尤其总行)</td><td>视公司政策</td></tr>
+</table>
+
+<div class="alert alert-orange">
+<strong>AI创业公司特别注意：</strong>
+<ul style="margin-top:6px">
+<li><strong>DeepSeek：</strong>零外部融资，靠幻方量化自有资金供血，薪资高（核心系统6-9万/月），但不发期权。实习生日薪500-990元，顶尖天才生日薪5500元</li>
+<li><strong>月之暗面(Kimi)：</strong>推出"穿越计划"，未毕业实习生也能拿期权</li>
+<li><strong>MiniMax：</strong>期权激励覆盖全岗位，实习生中有获得数十万美金期权的案例</li>
+<li><strong>风险提示：</strong>百川智能、零一万物已放弃大参数模型转向应用，"六小虎"格局在变化。创业公司期权能否变现高度不确定</li>
+</ul>
+</div>
+
+<h3>本校校友集中的公司（2025届全校签约）</h3>
+<table>
+<tr><th>公司</th><th>入职人数</th><th>校友密度</th></tr>
+<tr><td><strong>华为</strong></td><td><strong>807人</strong>(全国高校第一)</td><td>极高，本校是华为最大生源校</td></tr>
+<tr><td>中国电科</td><td>238人</td><td>极高，军工/电子方向对口</td></tr>
+<tr><td>比亚迪</td><td>218人</td><td>高，硬件+软件都招</td></tr>
+<tr><td>中航工业</td><td>159人</td><td>高，军工对口</td></tr>
+<tr><td>TP-Link</td><td>129人</td><td>高</td></tr>
+<tr><td>中国航天</td><td>110人</td><td>高</td></tr>
+<tr><td>阿里巴巴</td><td>107人</td><td>高</td></tr>
+<tr><td>美团</td><td>104人</td><td>高</td></tr>
+<tr><td>中国电信</td><td>96人</td><td>中高</td></tr>
+<tr><td>中国移动</td><td>88人</td><td>中高</td></tr>
+<tr><td>中兴通讯</td><td>83人</td><td>高</td></tr>
+<tr><td>字节跳动</td><td>75人</td><td>中高</td></tr>
+</table>
+<div class="alert alert-blue"><strong>本校优势：</strong>在华为、军工/电子系统（电科/航天/中航）、通信设备（中兴/TP-Link）校友网络极强。互联网大厂中阿里/美团/字节本校校友也在快速增长。如果你进华为或中电科，几乎每个部门都有本校学长内推。</div>
+
+<h3>各类雇主校招时间线与笔试面试风格</h3>
+<table>
+<tr><th>雇主类型</th><th>提前批</th><th>正式批</th><th>笔试风格</th><th>面试风格</th></tr>
+<tr><td><strong>互联网大厂</strong></td><td>6-7月</td><td>8-10月集中，9月最高峰</td><td>算法题(Medium)+项目深挖+计算机基础</td><td>3-4轮技术面，手撕代码，项目深挖，系统设计</td></tr>
+<tr><td><strong>AI创业公司</strong></td><td>5-6月更早开始抢人</td><td>滚动招聘，招满即止</td><td>算法题+大模型相关(RAG/Agent/PyTorch)</td><td>技术深度面试，可能要求现场写模型代码</td></tr>
+<tr><td><strong>银行科技岗</strong></td><td>暑期实习3-4月</td><td>9-10月网申，10-11月笔试</td><td>行测+性格测试+部分编程题(较简单)</td><td>半结构化面试，不深挖技术</td></tr>
+<tr><td><strong>外企</strong></td><td>8-9月</td><td>9-11月</td><td>算法题(中等)+英语能力</td><td>行为面试+技术面试，英文可能</td></tr>
+</table>
+<p style="font-size:11px;color:#94a3b8">注意：2029届（你）的秋招对应时间是<strong>2028年7-11月</strong>。暑期实习（2028年6-8月）是拿return offer的最佳通道。</p>
+</div>
+
+<!-- CH9: 城市选择 -->
+<div class="card dir-section" id="ch9">
+<h2>第10章：城市选择</h2>
+
+<h3>七城市详细对比</h3>
+<div class="city-grid">
+<div class="city-card">
+<h4>北京</h4>
+<p><strong>产业：</strong>AI创业公司最密集，大模型六小虎总部，互联网总部多</p>
+<p><strong>代表公司：</strong>字节/百度/美团/月之暗面/智谱/百川/MiniMax</p>
+<p><strong>岗位密度：</strong>AI应用★★★★★ 后端★★★★★ 算法★★★★★ Infra★★★★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">25-45万</span> | <strong>房租：</strong>4000-7000元/月</p>
+<p><strong>落户：</strong>极难（积分落户） | <strong>本校友好：</strong>★★★★（7.37%本科去北京）</p>
+</div>
+<div class="city-card">
+<h4>上海</h4>
+<p><strong>产业：</strong>金融科技+外企+AI研究</p>
+<p><strong>代表公司：</strong>拼多多/小红书/B站/微软/谷歌/商汤</p>
+<p><strong>岗位密度：</strong>AI应用★★★★ 后端★★★★ 算法★★★★ Infra★★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">25-45万</span> | <strong>房租：</strong>4500-7000元/月</p>
+<p><strong>落户：</strong>难（居转户7年） | <strong>本校友好：</strong>★★★★（6.18%）</p>
+</div>
+<div class="city-card">
+<h4>深圳</h4>
+<p><strong>产业：</strong>硬件+软件+AI，华为/腾讯总部</p>
+<p><strong>代表公司：</strong>华为/腾讯/大疆/中兴/平安科技</p>
+<p><strong>岗位密度：</strong>AI应用★★★★ 后端★★★★★ 算法★★★★ Infra★★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">22-40万</span> | <strong>房租：</strong>3000-5000元/月</p>
+<p><strong>落户：</strong>较易（应届生秒批） | <strong>本校友好：</strong>★★★★★（15.81%，本科第一）</p>
+</div>
+<div class="city-card">
+<h4>杭州</h4>
+<p><strong>产业：</strong>电商+云计算+AI</p>
+<p><strong>代表公司：</strong>阿里/网易/海康/大华/之江实验室</p>
+<p><strong>岗位密度：</strong>AI应用★★★★ 后端★★★★ 算法★★★ Infra★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">22-40万</span> | <strong>房租：</strong>2500-4000元/月</p>
+<p><strong>落户：</strong>容易（应届本科可落） | <strong>本校友好：</strong>★★★</p>
+</div>
+<div class="city-card">
+<h4>广州</h4>
+<p><strong>产业：</strong>商贸+游戏+制造业AI</p>
+<p><strong>代表公司：</strong>微信游戏/网易游戏/虎牙/欢聚</p>
+<p><strong>岗位密度：</strong>AI应用★★ 后端★★★ 算法★★ Infra★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">15-25万</span> | <strong>房租：</strong>2000-3500元/月</p>
+<p><strong>落户：</strong>容易 | <strong>本校友好：</strong>★★</p>
+</div>
+<div class="city-card">
+<h4>成都</h4>
+<p><strong>产业：</strong>游戏+数字创意+运维中心</p>
+<p><strong>代表公司：</strong>腾讯成都/阿里成都/华为成都/字节成都</p>
+<p><strong>岗位密度：</strong>AI应用★★★ 后端★★★ 算法★★ Infra★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">15-25万</span> | <strong>房租：</strong>1500-2500元/月</p>
+<p><strong>落户：</strong>容易（人才公寓补贴） | <strong>本校友好：</strong>★★★（4.09%）</p>
+</div>
+</div>
+<div class="city-card" style="border:2px solid #16a34a">
+<h4 style="color:#16a34a">西安（家门口）</h4>
+<p><strong>产业：</strong>军工/电子/华为研究所/半导体</p>
+<p><strong>代表公司：</strong>华为西研所/中兴/三星/比亚迪/中电科20所/西安分院</p>
+<p><strong>岗位密度：</strong>AI应用★★ 后端★★★ 算法★ Infra★★</p>
+<p><strong>应届年薪：</strong><span class="salary-num">12-20万</span> | <strong>房租：</strong>1000-2000元/月</p>
+<p><strong>落户：</strong>非常容易 | <strong>本校友好：</strong>★★★★★（15.00%，本地）</p>
+</div>
+
+<h3>本校2025届本科就业城市分布</h3>
+<div>
+<div class="hbar-row"><div class="hbar-label">深圳</div><div class="hbar-track"><div class="hbar-fill" style="width:79%;background:#2563eb">15.81%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">西安</div><div class="hbar-track"><div class="hbar-fill" style="width:75%;background:#16a34a">15.00%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">北京</div><div class="hbar-track"><div class="hbar-fill" style="width:37%;background:#9333ea">7.37%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">上海</div><div class="hbar-track"><div class="hbar-fill" style="width:31%;background:#9333ea">6.18%</div></div></div>
+<div class="hbar-row"><div class="hbar-label">成都</div><div class="hbar-track"><div class="hbar-fill" style="width:20%;background:#ea580c">4.09%</div></div></div>
+</div>
+<p style="font-size:11px;color:#94a3b8">深圳是本校本科毕业生最大流向城市（华为/腾讯/大疆/比亚迪），其次是留在西安（华为西研所/军工/中兴）。</p>
+
+<h3>四方向分别最适合的城市</h3>
+<table>
+<tr><th>方向</th><th>首选城市</th><th>理由</th></tr>
+<tr><td><strong>AI应用开发</strong></td><td>北京 &gt; 深圳 &gt; 杭州</td><td>北京AI创业公司最密集（月之暗面/智谱/百川/MiniMax总部），Agent/RAG岗位最多；深圳有腾讯/华为AI；杭州有阿里通义/之江实验室</td></tr>
+<tr><td><strong>后端开发</strong></td><td>深圳 &gt; 北京 &gt; 杭州</td><td>深圳腾讯/华为/平安/大量互联网中厂，后端岗位密度最高；北京字节/美团/百度；杭州阿里</td></tr>
+<tr><td><strong>算法工程师</strong></td><td>北京 &gt; 上海 &gt; 深圳</td><td>北京大模型公司总部最集中，算法岗最多；上海有商汤/B站/微软研究院</td></tr>
+<tr><td><strong>AI Infra</strong></td><td>北京 &gt; 深圳 &gt; 上海</td><td>北京是AI Infra公司最集中地；深圳华为/腾讯有大规模训练集群；上海有AMD/英伟达相关团队</td></tr>
+</table>
+</div>
+
+<!-- CH10: 行动时间轴 -->
+<div class="card dir-section" id="ch10">
+<h2>第11章：大二到大四行动时间轴（2026.9-2029.1）</h2>
+<div class="alert alert-blue">你当前位置：<strong>大二上学期，2026年9月</strong>。距离2029届秋招（2028年7月提前批）还有约22个月。</div>
+
+<div class="sem-timeline">
+<div class="sem-node">
+<div class="sem-title">大二上：2026.9 - 2027.1（当前学期）<span class="sem-phase">打地基</span></div>
+<p><strong>学习：</strong>C语言进阶（指针/内存/数据结构）；Python基础语法；高数/线代/概率论（GPA为王）</p>
+<p><strong>项目：</strong>装环境（VS Code+Anaconda+Git）；把C语言教材课后题写一遍；用Python写小脚本</p>
+<p><strong>刷题：</strong>LeetCode从20题→120题（数组/字符串→链表→栈队列→树）</p>
+<p><strong>关键节点：</strong>9月确定兴趣方向（旁听计算机课程、看B站入门视频）；12月期末冲刺（绩点决定保研资格）</p>
+</div>
+
+<div class="sem-node">
+<div class="sem-title">大二下：2027.2 - 2027.6<span class="sem-phase">方向分支启动</span></div>
+<p><strong>学习：</strong>Python深入（OOP/装饰器/异步）；计算机网络；操作系统；MySQL基础；Linux/Shell</p>
+<p><strong>项目：</strong>方向分支启动——AI应用做聊天机器人；后端做博客系统；算法跑MNIST/CIFAR；Infra写C++矩阵乘+CUDA入门</p>
+<p><strong>刷题：</strong>LeetCode累计150题→250题</p>
+<p><strong>关键节点：</strong>3月报名蓝桥杯省赛；5月数学建模国赛赛前培训；6月评估绩点排名判断保研可能性</p>
+</div>
+
+<div class="sem-node">
+<div class="sem-title">大二暑假：2027.7 - 2027.8<span class="sem-phase">黄金提升期</span></div>
+<p><strong>学习：</strong>集中学习方向技术栈（每天8小时）；系统刷LeetCode</p>
+<p><strong>项目：</strong>做一个完整可写进简历的项目——AI应用：企业RAG知识库部署上线；后端：短链接/秒杀系统；算法：复现YOLOv8/Transformer文本分类；Infra：TensorRT部署YOLOv8+4bit量化</p>
+<p><strong>刷题：</strong>LeetCode累计300题→350题</p>
+<p><strong>关键节点：</strong>简历定稿；开始关注大三日常实习内推信息</p>
+</div>
+
+<div class="sem-node key">
+<div class="sem-title">大三上：2027.9 - 2028.1<span class="sem-phase">方向收敛+实习启动 ⚠️决策点</span></div>
+<p><strong>学习：</strong>方向深入技术；系统设计基础；八股文整理（OS/网络/数据库/语言）</p>
+<p><strong>项目：</strong>项目二/三启动——AI应用：多Agent协作系统；后端：微服务电商/IM；算法：Kaggle比赛+进实验室；Infra：手写CUDA算子+vLLM部署压测</p>
+<p><strong>关键节点：</strong>9月开学看保研排名——前15%走保研；15%-30%准备考研或就业双线并行；30%以后全力就业。开始投日常实习（远程/西安本地）。12月寒假实习投递</p>
+</div>
+
+<div class="sem-node">
+<div class="sem-title">大三寒假：2028.1 - 2028.2<span class="sem-phase">面试冲刺</span></div>
+<p><strong>面试准备：</strong>剑指Offer刷完；LeetCode累计500题；八股文三轮复习</p>
+<p><strong>简历优化：</strong>项目STAR法则重写；找学长学姐/牛客模拟面试</p>
+<p><strong>暑期实习投递准备：</strong>整理目标公司清单（互联网+AI创业+国企科技）；关注各公司暑期实习开信息</p>
+</div>
+
+<div class="sem-node key">
+<div class="sem-title">大三下：2028.2 - 2028.6<span class="sem-phase">暑期实习黄金投递期 ⚠️最重要</span></div>
+<p><strong>2月：</strong>暑期实习网申开始！大厂2月就开始陆续开放（参考2027届腾讯3月、字节3-4月）</p>
+<p><strong>3月：</strong>暑期实习大批量投递：字节/腾讯/阿里/美团/百度/华为+AI创业公司；每天投5-10家</p>
+<p><strong>4月：</strong>笔试面试高峰；持续投递；日常实习如果在做争取转正或攒经历</p>
+<p><strong>5月：</strong>暑期实习offer发放；比较offer，选择最想去的</p>
+<p><strong>6月：</strong>期末；准备入职暑期实习</p>
+</div>
+
+<div class="sem-node key">
+<div class="sem-title">大三暑假：2028.7 - 2028.8<span class="sem-phase">决定性实习+秋招提前批 ⚠️生死线</span></div>
+<p><strong>7月：</strong>暑期实习入职（6-8月）；同时<strong>秋招提前批开了</strong>！互联网大厂7月开始提前批投递（参考2027届：腾讯7.15青云计划，字节8.3正式开）</p>
+<p><strong>8月：</strong>实习中争取转正答辩（8月底出结果）；提前批笔试面试；<strong>如果实习转正成功=秋招结束</strong></p>
+</div>
+
+<div class="sem-node key">
+<div class="sem-title">大四上：2028.9 - 2029.1<span class="sem-phase">秋招正式批 ⚠️主战场</span></div>
+<p><strong>9月：</strong><strong>秋招正式批主战场！</strong>每天投递+笔试+面试；9月是网申最高峰</p>
+<p><strong>10月：</strong>笔试面试高峰期；互联网大厂+AI公司+银行科技岗都在招</p>
+<p><strong>11月：</strong>offer比较；签约；补录开始</p>
+<p><strong>12月：</strong>秋招收尾；没拿到理想offer的准备春招</p>
+<p><strong>2029.1：</strong>春招预热；补录</p>
+</div>
+</div>
+
+<h3>关键提醒</h3>
+<div class="alert alert-red">
+<ol style="margin-top:4px">
+<li><strong>GPA是大二的第一优先级：</strong>无论哪个方向，前两年绩点决定你有没有保研资格（前20%）。保研=大三下直接去大厂实习，比考研轻松两年</li>
+<li><strong>LeetCode目标500题：</strong>大三寒假前完成。按每天2题计算，从大二上开始约250天可完成</li>
+<li><strong>RTX 4060 8GB的用法：</strong>不能训练大模型，但可以（1）做7B模型的QLoRA微调（2）跑vLLM推理做Infra学习（3）跑YOLO/ResNet等小模型。完全够本科阶段使用</li>
+<li><strong>2028年7月秋招提前批就开始了！</strong>不要等到大四9月才准备。暑期实习（2028年6-8月）是拿return offer的最佳通道，转正概率远高于正式秋招</li>
+<li><strong>本校的校友网络是最大优势：</strong>华为807人/届、阿里107人/届、美团104人/届。找学长学姐内推比海投有效10倍</li>
+<li><strong>AI编程助手要学会用但不要依赖：</strong>大二阶段手写代码打基础，大三以后用Cursor/Copilot提效。面试时手写代码能力是硬要求</li>
+</ol>
+</div>
+</div>
+
+
+<!-- CH12: 实习全攻略 -->
+<div class="card dir-section dir-blue" id="ch12">
+<h2>第12章：实习全攻略（远程实习 + 开源实习）</h2>
+<div class="alert alert-red">
+<strong>⚠️ 先纠正一个常见误解：</strong>经逐一核实腾讯/字节/阿里/百度/美团/快手六大厂官网，技术实习岗（后端/算法/前端/客户端/AI）<strong>全部要求线下到岗</strong>，JD 上写的"远程"仅指<strong>线上面试</strong>，不是入职后远程上班。它们的工作地点都写死在北京/上海/深圳/杭州/成都。"大厂+纯远程+技术岗"三者兼得在国内校招体系里基本不存在。
+</div>
+
+<h3>12.1 远程实习的真实来源</h3>
+<table>
+<tr><th>来源</th><th>日薪/报酬</th><th>特点</th></tr>
+<tr><td><strong>中小厂/创业公司远程岗</strong></td><td><span class="salary-num">150-250 元/天</span></td><td>每周3-4天、持续3个月以上，开正式实习证明；技术远程岗占比不到20%（80%是运营/社群类）</td></tr>
+<tr><td><strong>科研院所远程岗</strong></td><td><span class="salary-num">150-250 元/天</span></td><td>如中科院软件所在BOSS直聘招 Linux C/C++/Python 实习，北京/南京可远程</td></tr>
+<tr><td><strong>国家大学生就业服务平台</strong></td><td>见JD</td><td>政府背书，<a href="https://www.ncss.cn" target="_blank">ncss.cn</a> 有"全远程实习"栏目，正规、骗局少</td></tr>
+<tr><td><strong>开源之夏 / GSoC</strong></td><td><span class="salary-num">8000-12000 元 / $900-3600</span></td><td>远程、有导师、有奖金、含金量公认（见12.5/12.6）</td></tr>
+<tr><td><strong>外企 fully remote</strong></td><td>美元/人民币</td><td>Supabase/Grafana Labs 等100%分布式公司，英语要求高，面向海外学生为主</td></tr>
+</table>
+<div class="alert alert-orange"><strong>网友经验：</strong>技术远程岗少的原因——①技术岗需访问内部代码库，安全合规要求高；②高频 pair programming / CR 远程效率低；③国内大厂文化偏坐班。<strong>这正是 OSPP/GSoC 对你特别重要的原因：它们是"远程+技术含量高+含金量被公认"的少数路径。</strong></div>
+
+<h3>12.2 远程实习投递渠道清单</h3>
+<table>
+<tr><th>渠道</th><th>URL</th><th>特点</th><th>使用方法</th></tr>
+<tr><td>实习僧</td><td><a href="https://www.shixiseng.com" target="_blank">shixiseng.com</a></td><td>专做实习，大一大二远程岗多</td><td>APP内搜"远程实习"，筛选"远程"标签，看"企业认证"蓝标</td></tr>
+<tr><td>BOSS直聘</td><td><a href="https://www.zhipin.com" target="_blank">zhipin.com</a></td><td>回复快，适合海投</td><td>搜"远程实习/线上实习"，筛选"不限城市+企业直招"</td></tr>
+<tr><td>牛客实习广场</td><td><a href="https://www.nowcoder.com/intern" target="_blank">nowcoder.com/intern</a></td><td>程序员氛围浓，技术岗质量高</td><td>实习广场搜"远程"，可看面经</td></tr>
+<tr><td>国家大学生就业服务平台</td><td><a href="https://www.ncss.cn" target="_blank">ncss.cn</a></td><td>政府背书，正规</td><td>搜"远程实习/全远程"</td></tr>
+<tr><td>本校就业网</td><td>校园网内网系统
+<tr><td>公司校招官网</td><td>见12.9节</td><td>大厂无远程技术岗，但暑期实习信息最权威</td><td>订阅公众号/邮件提醒</td></tr>
+</table>
+<p style="font-size:12px;color:#64748b">💡 远程岗下线快（平均3-7天招满），建议每天刷一次；提前把简历写好并开放"求职中"状态，让 HR 主动找你。</p>
+
+<h3>12.3 远程实习避坑：付费实习骗局</h3>
+<div class="alert alert-red">
+<strong>🚨 2026年7月人民网/新华网/央视/央广网集中曝光"付费远程实习"骗局：</strong>中介谎称能通过"实习内推"让学生进知名企业"远程实习"，诱骗学生签合同付款，再由"后端部门"冒充企业人员面试、发任务、开假证明。腾讯、普华永道、中信证券、美团、毕马威、安永等均已官方声明：<strong>从未授权任何第三方机构提供有偿实习内推，整个招聘过程不收取任何费用。</strong>
+<br><br>
+<strong>凡是要你交"内推费/保证金/培训费/服装费"的，100% 是骗局。</strong>正规实习是公司给你发工资，不是你给公司钱。
+</div>
+<p><strong>正规远程实习判断标准（满足越多越靠谱）：</strong></p>
+<ol>
+<li><strong>不收取任何费用</strong>——这是第一红线</li>
+<li>能在企业官网/ncss.cn 查到，有工商注册和"企业认证"蓝标</li>
+<li>有明确技术任务和代码产出（GitHub 仓库、具体技术栈 Spring Boot/PyTorch/Go），而非"发朋友圈、做社群"</li>
+<li>至少一轮技术面试（写代码/讲项目），用企业邮箱发 offer</li>
+<li>日薪 150-250 元/天是正常区间；"日薪500+无需经验大一大二即可"要警惕</li>
+</ol>
+
+<h3>12.4 远程实习 vs 线下实习 vs 开源项目：优先级</h3>
+<table>
+<tr><th>选项</th><th>技术岗秋招认可度</th><th>时间灵活度</th><th>适合阶段</th></tr>
+<tr><td>大厂线下暑期实习（大三暑假）</td><td><span class="badge b-red">★★★★★ 最高</span> 转正率50-70%</td><td>低，坐班2-3个月</td><td>大三下暑假（2028.7-8）</td></tr>
+<tr><td>开源之夏OSPP / GSoC（暑期）</td><td><span class="badge b-purple">★★★★☆ 高</span> 代码可验证+名企内推</td><td>中，暑期全职3个月</td><td><strong>大二暑假（2027.7-9）首选</strong></td></tr>
+<tr><td>中小厂线下日常实习</td><td><span class="badge b-blue">★★★☆☆ 中等</span> 看产出</td><td>中，到岗1-2个月</td><td>大二寒假（2027.1-2）</td></tr>
+<tr><td>中小厂远程技术实习</td><td><span class="badge b-orange">★★☆☆☆ 中低</span> 需靠代码产出证明</td><td>高，每周3-4天</td><td>学期内补充经历</td></tr>
+<tr><td>日常 GitHub 开源贡献</td><td><span class="badge b-blue">★★★☆☆ 中等</span> 有合并PR即可</td><td>极高，随时做</td><td>大二全年持续</td></tr>
+<tr><td>付费实习/水实习</td><td><span class="badge b-gray">☆☆☆☆☆ 负资产</span> 背调翻车</td><td>-</td><td><strong>坚决不做</strong></td></tr>
+</table>
+
+<h3>12.5 开源之夏 OSPP 专题 ⭐</h3>
+<div class="feature-card ospp">
+<h4>🏆 开源软件供应链点亮计划（OSPP）—— 课多学生的完美路径</h4>
+<p><strong>官网：<a href="https://summer-ospp.ac.cn" target="_blank">https://summer-ospp.ac.cn</a></strong>（移动端 m.summer.ospp.ac.cn）｜主办方：中国科学院软件研究所</p>
+<p><span class="badge b-green">远程</span><span class="badge b-blue">一对一导师带教</span><span class="badge b-orange">税前8000/12000元</span><span class="badge b-purple">结项证书+名企内推</span></p>
+</div>
+
+<h4>📅 OSPP 时间线（以2025经典模式为参考，每年节奏基本一致）</h4>
+<table>
+<tr><th>阶段</th><th>时间</th><th>你需要做什么</th></tr>
+<tr><td>社区报名</td><td>3月</td><td>关注官网，看哪些社区今年参与</td></tr>
+<tr><td>项目上线</td><td>4月</td><td>刷项目列表，筛选AI/后端/Infra方向</td></tr>
+<tr><td>学生申请+导师沟通</td><td>5-6月</td><td><strong>关键期</strong>：提前邮件联系导师，写 proposal，提交申请</td></tr>
+<tr><td>中选公示</td><td>6月底</td><td>查中选名单</td></tr>
+<tr><td>项目开发</td><td>7-9月</td><td>暑期全职开发，与导师周会同步</td></tr>
+<tr><td>结项审核</td><td>10月</td><td>提交结项报告，导师评审</td></tr>
+</table>
+<div class="alert alert-orange"><strong>📌 2025新规：一个学生只能申请一个项目</strong>（此前可申请多个），所以选项目要更谨慎。奖金：基础项目税前 <span class="salary-num">8000 元</span> / 进阶项目税前 <span class="salary-num">12000 元</span>，通过结项后发放。</div>
+
+<h4>📝 申请准备攻略</h4>
+<ul>
+<li><strong>选项目：</strong>优先技术栈匹配；看导师活跃度（邮件回复速度）；第一次申请选"基础"档；优先 Apache/Dromara/OpenAnolis 等成熟社区</li>
+<li><strong>提前联系导师：</strong>4月初项目列表上线就发邮件，介绍技术背景，最好已 fork 仓库、跑通代码、提过1-2个小 PR；邮件要具体到"我看了XX issue，觉得可以这样解决……"</li>
+<li><strong>写 proposal：</strong>= 详细技术方案 + 细致时间规划（粒度不大于1周，分阶段里程碑）；附过去相关开发经历。<strong>申请书质量是中选的最重要标准</strong></li>
+<li><strong>需要的基础：</strong>熟练一门语言（Python/Go/C++/Java）；熟悉 Git/GitHub；能独立跑开源项目；有1-2个课程项目即可，不要求大牛</li>
+</ul>
+
+<h4>🎯 适合你4个方向的开源社区清单</h4>
+<table>
+<tr><th>方向</th><th>推荐社区/项目</th><th>说明</th></tr>
+<tr><td><span class="badge b-green">AI应用</span></td><td><a href="https://github.com/langgenius/dify" target="_blank">Dify</a> / FastGPT / RAGFlow / MaxKB / <a href="https://github.com/chatchat-space/Langchain-Chatchat" target="_blank">LangChain-Chatchat</a></td><td>LLMOps/RAG/Agent，Python+Next.js，中文文档友好</td></tr>
+<tr><td><span class="badge b-blue">后端</span></td><td>Apache Dubbo / Spring Cloud Alibaba / Dromara / <a href="https://github.com/apache/apisix" target="_blank">Apache APISIX</a> / <a href="https://github.com/alibaba/nacos" target="_blank">Nacos</a> / Seata / OpenAnolis龙蜥 / openEuler</td><td>微服务/网关/注册中心/操作系统，Java/Go/C/Rust</td></tr>
+<tr><td><span class="badge b-red">算法</span></td><td>PaddlePaddle / <a href="https://github.com/PaddlePaddle/PaddleNLP" target="_blank">PaddleNLP</a> / MindSpore华为昇腾 / Apache MXNet / TVM</td><td>国产深度学习框架，本校背景有优势</td></tr>
+<tr><td><span class="badge b-purple">AI Infra</span></td><td><a href="https://github.com/vllm-project/vllm" target="_blank">vLLM</a> / PyTorch / Triton Inference Server / DeepSpeed / Megatron-LM / SGLang / MLIR</td><td>大模型推理/训练优化，Python/CUDA</td></tr>
+</table>
+
+<h3>12.6 Google Summer of Code (GSoC) 专题</h3>
+<div class="alert alert-blue">
+<strong>官网：<a href="https://summerofcode.withgoogle.com" target="_blank">summerofcode.withgoogle.com</a></strong> ｜ Google 主办的全球官方暑期开源项目。<strong>不要求雅思托福成绩</strong>，但 proposal 全英文撰写、与导师沟通用英语。
+</div>
+<table>
+<tr><th>时间节点</th><th>事项</th></tr>
+<tr><td>3月16-31日</td><td>学生申请通道开放/截止</td></tr>
+<tr><td>4月30日</td><td>公布入选学生名单</td></tr>
+<tr><td>5月1日-24日</td><td>Community Bonding（熟悉社区）</td></tr>
+<tr><td>5月25日</td><td>正式开始编码</td></tr>
+<tr><td>7月</td><td>中期考核</td></tr>
+<tr><td>8月17-31日</td><td>最终考核（标准12周项目）</td></tr>
+</table>
+<p><strong>津贴标准（中国区，项目总额）：</strong><span class="badge b-blue">Small $900</span><span class="badge b-purple">Medium $1800</span><span class="badge b-orange">Large $3600</span>（约6500-26000元，分45%/55%两期通过 Payoneer 发放）</p>
+<table>
+<tr><th>对比维度</th><th>OSPP</th><th>GSoC</th></tr>
+<tr><td>国内互联网大厂校招</td><td>认可度高，简历关有效</td><td>认可度更高，尤其外企/国际化团队</td></tr>
+<tr><td>留学申请</td><td>一般</td><td><span class="badge b-purple">极强加分项</span></td></tr>
+<tr><td>英语要求</td><td>低（中文为主）</td><td>中高（全英文 proposal）</td></tr>
+<tr><td>申请时间</td><td>每年5-6月</td><td>每年3月</td></tr>
+<tr><td><strong>对你的建议</strong></td><td><strong>大二暑假（2027）首选</strong></td><td>大三上（2028初）可同时申请作为 backup</td></tr>
+</table>
+
+<h3>12.7 日常开源贡献（现在就该开始）</h3>
+<p><strong>新手四步法：</strong></p>
+<ol>
+<li><strong>选项目：</strong>去 <a href="https://goodfirstissue.org" target="_blank">goodfirstissue.org</a> 或 GitHub 搜 <code>label:"good first issue" language:Python AI</code></li>
+<li><strong>Fork + Clone：</strong>fork 目标仓库到自己账号，clone 到本地</li>
+<li><strong>读贡献指南：</strong>每个仓库根目录有 CONTRIBUTING.md</li>
+<li><strong>从小 PR 开始：</strong>补文档（修typo/翻译）→ 加测试 → 修 good first issue 标签的 bug → 实现小功能（&lt;200行）</li>
+</ol>
+<table>
+<tr><th>方向</th><th>新手友好项目</th><th>GitHub</th><th>切入点</th></tr>
+<tr><td><span class="badge b-green">AI应用</span></td><td>Dify / FastGPT / LangChain</td><td><a href="https://github.com/langgenius/dify" target="_blank">dify</a> / <a href="https://github.com/labring/FastGPT" target="_blank">FastGPT</a> / <a href="https://github.com/langchain-ai/langchain" target="_blank">langchain</a></td><td>翻译i18n、补文档、good first issue</td></tr>
+<tr><td><span class="badge b-blue">后端</span></td><td>Apache APISIX / Nacos / Supabase</td><td><a href="https://github.com/apache/apisix" target="_blank">apisix</a> / <a href="https://github.com/alibaba/nacos" target="_blank">nacos</a> / <a href="https://github.com/supabase/supabase" target="_blank">supabase</a></td><td>Lua/Go插件、Java bug修复、TS文档</td></tr>
+<tr><td><span class="badge b-red">算法</span></td><td>HuggingFace Transformers / PaddleNLP</td><td><a href="https://github.com/huggingface/transformers" target="_blank">transformers</a> / <a href="https://github.com/PaddlePaddle/PaddleNLP" target="_blank">PaddleNLP</a></td><td>新模型支持、文档、示例</td></tr>
+<tr><td><span class="badge b-purple">AI Infra</span></td><td>vLLM / PyTorch / Triton / SGLang</td><td><a href="https://github.com/vllm-project/vllm" target="_blank">vllm</a> / <a href="https://github.com/pytorch/pytorch" target="_blank">pytorch</a> / <a href="https://github.com/sgl-project/sglang" target="_blank">sglang</a></td><td>27个good first issue、文档、新模型支持</td></tr>
+</table>
+<div class="alert alert-green"><strong>简历呈现关键：</strong>PR 必须是 <strong>merged（已合并）</strong>的，closed/rejected 不算。即使是修 typo 的 PR，也比"自学了XX框架"有说服力——因为有第三方验证。</div>
+
+<h3>12.8 三类开源实习对比总表</h3>
+<table>
+<tr><th>维度</th><th>开源之夏 OSPP</th><th>GSoC</th><th>日常 GitHub 贡献</th></tr>
+<tr><td>主办方</td><td>中科院软件研究所</td><td>Google</td><td>无，自发行为</td></tr>
+<tr><td>时间长度</td><td>约3.5个月（6月底-9月底）</td><td>标准12周（5月底-8月中）</td><td>随时</td></tr>
+<tr><td>报酬</td><td><span class="salary-num">8000/12000元 税前</span></td><td><span class="salary-num">$900-3600</span></td><td>无（少数 bug bounty）</td></tr>
+<tr><td>英语要求</td><td>中文为主</td><td>全英文</td><td>视项目而定</td></tr>
+<tr><td>申请难度</td><td>中等，需写 proposal</td><td>较高，全球竞争</td><td>低，找 good first issue</td></tr>
+<tr><td>含金量</td><td>国内校招认可度高</td><td>国际认可度极高</td><td>中，有合并PR即可</td></tr>
+</table>
+
+<h3>12.9 小厂 vs 大厂实习权衡 & 转正率</h3>
+<table>
+<tr><th>维度</th><th>大厂实习</th><th>小厂/创业公司</th></tr>
+<tr><td>门槛</td><td>高：简历关看学校/刷题/项目，3-4轮面试</td><td>低：1-2轮面试，考察基础即可</td></tr>
+<tr><td>日常工作</td><td>可能做边角料，但流程规范、CR严格、工具链先进</td><td>一人多岗，独立负责完整模块，产出可见</td></tr>
+<tr><td>技术成长</td><td>接触高并发/分布式/海量数据，同事强</td><td>全栈能力提升，但技术栈可能不规范</td></tr>
+<tr><td>简历认可度</td><td><span class="badge b-red">硬通货</span>，HR看到公司名直接过简历关</td><td>看产出和公司质量</td></tr>
+<tr><td>薪资</td><td>技术岗200-400元/天，月薪5k-15k</td><td>100-200元/天，月薪3k-6k</td></tr>
+<tr><td>适合阶段</td><td><strong>大三暑假（决定秋招）</strong></td><td>大二寒假/暑假（第一段练手）</td></tr>
+</table>
+<p><strong>各厂暑期实习转正率（约数，牛客/搞定offer/北青报综合）：</strong></p>
+<table>
+<tr><th>公司</th><th>暑期实习转正率</th><th>备注</th></tr>
+<tr><td>腾讯</td><td><span class="badge b-green">~70%</span></td><td>技术岗转正率较高</td></tr>
+<tr><td>百度</td><td><span class="badge b-green">~70%</span></td><td>官方称历年校招正式员工超50%来自实习转正</td></tr>
+<tr><td>阿里巴巴</td><td><span class="badge b-blue">~65%</span></td><td>一线技术岗约60%</td></tr>
+<tr><td>字节跳动</td><td><span class="badge b-blue">&gt;50%</span></td><td>2026年转正实习生招聘7000人，史上最大</td></tr>
+<tr><td>美团</td><td><span class="badge b-blue">较高</span></td><td>招人多，转正名额相对充足；需实习满60自然日</td></tr>
+<tr><td>快手</td><td><span class="badge b-orange">50-60%</span></td><td>比较卷；实习满40天可参与留用</td></tr>
+</table>
+<div class="alert alert-orange"><strong>⚠️ 重要提醒：</strong>以上是<strong>暑期实习</strong>（大三下招聘、大三暑假入职）的数据，不是日常实习。部分企业"不发offer先实习半年，不承诺转正"，名额受部门HC预算影响。<strong>不要把鸡蛋放一个篮子：暑期实习期间同步准备秋招。</strong></div>
+
+<h3>12.10 实习完整时间规划</h3>
+<div class="sem-timeline">
+<div class="sem-node">
+<div class="sem-title">2026.9-2027.1（大二上/现在）<span class="sem-phase">打基础+第一段远程经历</span></div>
+<p>LeetCode每天1-2题；选1个技术栈深入（Python+FastAPI 或 Go）；给 Dify/vLLM 提第一个PR；投1份中小厂远程技术实习</p>
+</div>
+<div class="sem-node">
+<div class="sem-title">2027.1-2027.2（大二寒假）<span class="sem-phase">第一段线下/远程实习</span></div>
+<p>争取1份中小厂日常实习（线下1个月或远程持续）；开始研究 OSPP 社区列表</p>
+</div>
+<div class="sem-node">
+<div class="sem-title">2027.2-2027.6（大二下）<span class="sem-phase">OSPP/GSoC申请准备</span></div>
+<p>2月关注OSPP/GSoC社区名单；3月联系导师、写proposal；持续刷题做项目</p>
+</div>
+<div class="sem-node key">
+<div class="sem-title">2027.7-2027.9（大二暑假）<span class="sem-phase">关键假期1：OSPP中选开发 ⚠️</span></div>
+<p>OSPP 6月底出结果，中选则暑期全职开发（远程，完美契合课多）；同时投递大厂暑期实习（线下）作为backup</p>
+</div>
+<div class="sem-node">
+<div class="sem-title">2027.9-2028.1（大三上）<span class="sem-phase">GSoC申请+日常实习</span></div>
+<p>2028年1-3月申请GSoC；学期内做1份远程/日常实习补充；刷题刷到300+题</p>
+</div>
+<div class="sem-node">
+<div class="sem-title">2028.1-2028.2（大三寒假）<span class="sem-phase">大厂日常实习</span></div>
+<p>争取中大厂线下日常实习1-2个月，积累第二段大厂经历</p>
+</div>
+<div class="sem-node key">
+<div class="sem-title">2028.3-2028.5（大三下）<span class="sem-phase">暑期实习投递季 ⚠️</span></div>
+<p>大厂暑期实习3-5月集中开放，全力投递，拿面试</p>
+</div>
+<div class="sem-node key">
+<div class="sem-title">2028.7-2028.9（大三暑假）<span class="sem-phase">决定性实习+争取转正 ⚠️生死线</span></div>
+<p>线下坐班2-3个月，7-8月参加转正答辩，拿 return offer</p>
+</div>
+</div>
+</div>
+
+<!-- CH13: 求职流程与权益 -->
+<div class="card dir-section" id="ch13">
+<h2>第13章：求职流程与权益（法律部分经法条核实）</h2>
+
+<h3>13.1 校招完整流程时间线</h3>
+<div class="flow-diagram">
+<div class="flow-box" style="background:#dbeafe;color:#1e40af">提前批<br><small>2028.7-8月</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#d1fae5;color:#065f46">正式批<br><small>2028.9-11月</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#fef3c7;color:#92400e">补录<br><small>2028.11-12月</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#fce7f3;color:#9d174d">春招<br><small>2029.2-4月</small></div>
+</div>
+<p style="font-size:12px;color:#64748b">💡 提前批不影响正式批投递（相当于多一次机会）；暑期实习转正成功=秋招提前结束。</p>
+
+<h3>13.2 三方协议详解</h3>
+<div class="alert alert-blue">
+<strong>📘 正确知识：</strong>三方协议是<strong>毕业生、用人单位、学校</strong>三方签订的就业意向书面形式。<strong>它不是劳动合同</strong>——形成于毕业前、正式用工前，属于<strong>普通民事合同，受《民法典》合同编调整，不适用《劳动合同法》</strong>。法律约束力依据《民法典》第490条（签名盖章成立）和第119条。<strong>终止时点：</strong>毕业生到单位报到、签订正式劳动合同后，三方协议自行终止。
+</div>
+<div class="alert alert-red">
+<strong>🚨 纠正常见误解：不存在"违约金5000元法定上限"</strong>。很多学校就业手册写的"通常不超过5000元"是经验建议，不是法律规定。
+<br><br>
+违约金受《民法典》<strong>第585条</strong>调整：约定违约金<strong>过分高于造成的损失</strong>的，可请求法院/仲裁机构适当减少。量化标准——最高法《民法典合同编通则解释》<strong>第65条</strong>：违约金<strong>超过造成损失30%</strong>的，一般可认定"过分高于损失"，应予调减。司法实践中三方违约金常见3000-8000元；若单位约定2-5万且实际损失很小，起诉后大概率被调到几千元。
+</div>
+<div class="alert alert-orange">
+<strong>⚠️ 考研/考公/入伍/留学免责——法律不自动豁免！</strong>"考上研究生就不用赔三方违约金"不是天然成立的。正确做法：签三方时在<strong>备注栏手写</strong>补充条款（如"若乙方录取为研究生/公务员/入伍/获得留学offer，本协议自动解除，双方互不承担违约责任"），<strong>并要求用人单位签字盖章确认</strong>。只有学校盖章、没有企业盖章的备注不生效。
+</div>
+<div class="alert alert-red"><strong>🚨 绝不签空白三方！</strong>空白处事后补填违约金数字，你无法举证。看清违约金金额，能谈低就谈低；三方≠劳动合同，报到后一定要再签书面劳动合同。</div>
+
+<h3>13.3 应届生身份</h3>
+<ul>
+<li><strong>国家择业期2年：</strong>统一招生毕业生离校时和择业期内（2年）未落实工作单位，户口档案保留在学校/就业服务机构的，可按应届毕业生对待（<a href="https://corp.ncss.cn/ncss/zt/yjbyszc.shtml" target="_blank">国家大学生就业服务平台</a>）</li>
+<li><strong>2024-2025重大放宽：</strong>北京/上海/湖北/四川/山东等多省市发文——机关事业单位、地方国企"应届"岗位向毕业2年内开放，<strong>不对是否有工作经历、是否缴社保作限制</strong></li>
+<li><strong>签三方 ≠ 失去应届生身份：</strong>三方只是民事就业意向，不缴社保、不签正式劳动合同，就不算"落实工作单位"</li>
+<li><strong>但注意：</strong>互联网大厂"校招"通常<strong>只认毕业当年</strong>（校招按毕业年份算：2029届秋招于2028年秋进行，主要招2029年毕业的人）。政策放宽主要利好<strong>考公、考编、国企</strong></li>
+</ul>
+
+<h3>13.4 内推</h3>
+<div class="alert alert-blue">
+<strong>内推码/内推链接的作用：</strong>让你的简历进入 HR 的<strong>优先筛选池</strong>（机器初筛通过率更高），<strong>增加曝光，但不保证面试、更不保证offer</strong>。正规内推<strong>员工和企业都不向求职者收钱</strong>。
+</div>
+<div class="alert alert-red"><strong>🚨 警惕"付费内推/保offer/包过"骗局：</strong>律师指出这类收费轻则违背公序良俗导致合同无效，重则<strong>可能构成诈骗罪（刑法第266条）</strong>。</div>
+<p><strong>免费找内推的正确渠道：</strong>① 牛客网内推专区（学长学姐自发发内推码）；② 本校校友群/院系学长学姐（<strong>本校在互联网圈校友极多，这是你的巨大优势</strong>）；③ 脉脉/LinkedIn 直接找目标公司员工礼貌私信附简历；④ 目标公司校园大使。</p>
+
+<h3>13.5 Offer 比较维度清单</h3>
+<table>
+<tr><th>维度</th><th>要问清什么</th></tr>
+<tr><td><strong>总包及结构</strong></td><td>税前年薪 = 月薪×薪数（12/13/14/16薪）+ 年终奖（写进offer还是口头？）+ 股票/期权；问清 base、绩效系数、公积金基数和比例</td></tr>
+<tr><td><strong>城市与生活成本</strong></td><td>深圳/杭州/北京 vs 西安/成都，房价房租差一倍</td></tr>
+<tr><td><strong>岗位匹配度</strong></td><td>核心业务还是边缘部门？和你的AI/后端方向是否一致？</td></tr>
+<tr><td><strong>发展空间</strong></td><td>导师制？晋升机制？轮岗？</td></tr>
+<tr><td><strong>工作强度</strong></td><td>是否大小周/996？</td></tr>
+<tr><td><strong>户口/编制</strong></td><td>北京上海户口指标、国企事业编</td></tr>
+<tr><td><strong>五险一金基数</strong></td><td>按全额工资还是最低基数缴，差异巨大</td></tr>
+</table>
+<div class="alert alert-red"><strong>🚨 识别劳务派遣/外包：</strong>看<strong>劳动合同签约主体</strong>——如果签约方是"XX人力资源公司/XX劳务派遣公司"而不是你以为的大厂，你就是派遣岗；岗位描述常出现"驻场""服务某客户公司""外包项目"。应届生尽量避开纯外包岗作为第一份工作。</div>
+<p><strong>谈薪：</strong>时机是<strong>拿到书面offer之后、签字之前</strong>；用另一个offer的总包做锚点；互联网大厂通常有一次谈薪窗口。</p>
+
+<h3>13.6 大厂 vs 国企/银行科技岗：流程差异</h3>
+<table>
+<tr><th>环节</th><th>互联网大厂</th><th>国企/银行科技岗</th></tr>
+<tr><td>网申</td><td>官网/内推，开放即投</td><td>官网+统一时间窗口，常限报1个岗位</td></tr>
+<tr><td>笔试</td><td>编程题（LeetCode中等难度）+行测</td><td><strong>行测/EPI（言语/逻辑/数资）+性格测试</strong>，编程占比低</td></tr>
+<tr><td>面试</td><td>2-3轮技术面+1轮HR面，重手撕代码和项目</td><td>半结构化面试，重综合素质/家庭背景/稳定性</td></tr>
+<tr><td>体检</td><td>常规</td><td>常规+部分公务员标准</td></tr>
+<tr><td>政审/背调</td><td>普通背调</td><td><span class="badge b-red">政审较严</span>（查档案/社会信用/亲属情况）</td></tr>
+<tr><td>签约</td><td>两方offer letter + 后续三方</td><td>三方流程规范，常有公示环节</td></tr>
+</table>
+
+<h3>13.7 劳动合同基本权益</h3>
+<h4>试用期（《劳动合同法》第19条）</h4>
+<table>
+<tr><th>合同期限</th><th>试用期上限</th></tr>
+<tr><td>3个月以上不满1年</td><td><span class="badge b-blue">≤ 1个月</span></td></tr>
+<tr><td>1年以上不满3年</td><td><span class="badge b-orange">≤ 2个月</span></td></tr>
+<tr><td>3年以上固定期限或无固定期限</td><td><span class="badge b-red">≤ 6个月</span></td></tr>
+</table>
+<p>同一单位与同一劳动者<strong>只能约定一次试用期</strong>；只约定试用期的，试用期不成立，该期限就是劳动合同期限。</p>
+<h4>社保公积金</h4>
+<div class="alert alert-red"><strong>入职即应缴纳社保（养老/医疗/失业/工伤/生育）和公积金，试用期也必须缴。不缴社保是违法的</strong>，口头承诺"转正再缴"不要信。</div>
+<h4>竞业限制（《劳动合同法》第23、24条）</h4>
+<ul>
+<li>竞业限制人员<strong>限于高管、高级技术人员和其他负有保密义务的人员</strong>——普通应届生岗位一般不适用</li>
+<li>竞业限制期内单位<strong>必须按月给经济补偿</strong>；没有补偿的竞业限制条款，劳动者可主张不履行</li>
+<li>竞业限制期限<strong>最长不超过2年</strong></li>
+</ul>
+</div>
+
+<!-- CH14: 外部算力资源 -->
+<div class="card dir-section dir-purple" id="ch14">
+<h2>第14章：外部算力资源（RTX 4060 8GB 之外）</h2>
+<div class="alert alert-blue">
+<strong>📌 基线判断：</strong>你的 RTX 4060 8GB 能跑 7B 模型 INT4/INT8 量化推理、小型CNN/BERT微调；<strong>做不到</strong> 7B全精度微调（LoRA勉强）、13B以上训练、70B推理、分布式训练。核心策略：<strong>本地负责"写代码/debug/小模型推理/量化实验"，云端负责"正式训练/大模型微调/长时跑实验"</strong>。
+</div>
+
+<h3>14.1 算力平台对比大表</h3>
+<table>
+<tr><th>平台</th><th>GPU型号</th><th>显存</th><th>免费额度</th><th>单次时长</th><th>适用场景</th><th>注册门槛</th><th>URL</th></tr>
+<tr>
+<td><strong>Kaggle</strong></td><td>P100 / 2×T4</td><td>16GB / 15GB×2</td>
+<td><span class="badge b-green">30h/周</span> 周日UTC重置</td><td>12h</td>
+<td>教学/竞赛/小模型训练</td><td>手机验证</td>
+<td><a href="https://www.kaggle.com/docs/notebooks" target="_blank">kaggle.com</a></td>
+</tr>
+<tr>
+<td><strong>Colab 免费</strong></td><td>T4（高峰期可能更弱）</td><td>16GB</td>
+<td>无固定额度，看运气</td><td>12h，<span class="badge b-red">易断</span></td>
+<td>快速demo/跟练</td><td>Google账号</td>
+<td><a href="https://colab.research.google.com" target="_blank">colab.research.google.com</a></td>
+</tr>
+<tr>
+<td>Colab Pro</td><td>更快GPU</td><td>更大</td>
+<td>100算力单位/月</td><td>更长</td><td>轻度训练</td><td>付费 ~$9.99/月</td>
+<td><a href="https://colab.research.google.com/signup" target="_blank">Pro signup</a></td>
+</tr>
+<tr style="background:#fef3c7">
+<td><strong>AutoDL ⭐主力</strong></td><td>RTX4090/A800/H800等</td><td>11-96GB</td>
+<td>付费但极便宜<br><span class="salary-num">4090 ¥1.88/h</span></td><td>不限（按小时）</td>
+<td><strong>主力训练/大模型微调</strong></td><td>实名+学生认证95折</td>
+<td><a href="https://www.autodl.com/" target="_blank">autodl.com</a></td>
+</tr>
+<tr>
+<td><strong>HF ZeroGPU</strong></td><td>动态分配</td><td>视模型</td>
+<td>按调用切片</td><td>秒-分钟级</td>
+<td><span class="badge b-orange">只做推理Demo</span>，<strong>严禁训练</strong></td><td>用免费，建Space需Pro</td>
+<td><a href="https://hf.co/docs/hub/spaces-zerogpu" target="_blank">HF ZeroGPU</a></td>
+</tr>
+<tr>
+<td><strong>AWS Studio Lab</strong></td><td>T4 (G4dn.xlarge)</td><td>16GB</td>
+<td><span class="badge b-blue">GPU 4h/天</span>，次数不限</td><td>GPU 4h / CPU 12h</td>
+<td>学AWS生态/课程实验</td><td>邮件申请审批（慢）</td>
+<td><a href="https://studiolab.sagemaker.aws/" target="_blank">studiolab.sagemaker.aws</a></td>
+</tr>
+<tr>
+<td><strong>百度AI Studio</strong></td><td>V100</td><td>16/32GB</td>
+<td>每天约8-12h算力卡</td><td>数小时</td>
+<td><span class="badge b-orange">偏飞桨PaddlePaddle</span></td><td>百度账号</td>
+<td><a href="https://aistudio.baidu.com/" target="_blank">aistudio.baidu.com</a></td>
+</tr>
+</table>
+<p style="font-size:12px;color:#64748b">AutoDL 2026.9实时价格：2080Ti ¥0.88/h · A4000 ¥0.92/h · 3090 ¥1.32/h · <strong>4090 24GB ¥1.88/h</strong> · V100 ¥1.88/h · 5090 ¥2.78/h · A800 80GB ¥5.59/h · H800 ¥9.98/h。学生认证免费升级炼丹会员再95折。</p>
+
+<h3>14.2 "本地推理 + 云端训练"配合策略</h3>
+<div class="flow-diagram">
+<div class="flow-box" style="background:#dbeafe;color:#1e40af">本地4060<br><small>写代码/读论文/数据预处理<br>Ollama量化模型跑推理调prompt</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#d1fae5;color:#065f46">云端AutoDL<br><small>4090 24GB跑正式训练<br>7B LoRA微调一晚6-8h</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#fef3c7;color:#92400e">下载权重回本地<br><small>4-bit量化后本地验证效果</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box" style="background:#fce7f3;color:#9d174d">HF ZeroGPU部署<br><small>在线Demo放进简历</small></div>
+</div>
+<div class="alert alert-green"><strong>💰 成本估算：</strong>7B LoRA 微调一晚约6-8小时，用 RTX 4090（¥1.88/h）成本 <span class="salary-num">约12-15元</span>，一顿饭钱。按每周租10-15小时算，每月约¥80-120；两年总花费可控制在 <span class="salary-num">2000-4000元</span>，远低于买一台4090台式机。</div>
+
+<h3>14.3 四个方向分别推荐算力方案</h3>
+<table>
+<tr><th>方向</th><th>算力需求</th><th>推荐方案</th></tr>
+<tr><td><span class="badge b-green">AI应用</span></td><td><span class="badge b-light">几乎不烧GPU</span></td><td>本地4060跑Llama.cpp量化模型 + 云端API（DeepSeek/通义/OpenAI兼容接口）；AutoDL仅在需要本地embedding时偶尔用</td></tr>
+<tr><td><span class="badge b-blue">后端</span></td><td><span class="badge b-light">零GPU</span></td><td>本地写Java/Go/Python，阿里云/腾讯云轻量服务器（学生机便宜）部署；GPU预算花在"做一个AI相关后端项目"作为加分</td></tr>
+<tr><td><span class="badge b-red">算法</span></td><td><span class="badge b-red">最吃算力</span></td><td>主力 AutoDL 4090 24GB（复现论文/小模型训练）；7B+微调上A800 80GB（¥5.59/h）；Kaggle每周30h免费补充。大二下就注册好AutoDL学生认证</td></tr>
+<tr><td><span class="badge b-purple">AI Infra</span></td><td><span class="badge b-orange">偶租多卡</span></td><td>本地4060学CUDA/TensorRT入门；深入时租AutoDL A800/H800学多卡通信、vLLM/TensorRT-LLM部署。更看重对系统的理解而非堆训练时长</td></tr>
+</table>
+</div>
+
+<!-- CH15: 个人品牌与影响力建设 -->
+<div class="card dir-section" id="ch15">
+<h2>第15章：个人品牌与影响力建设</h2>
+
+<h3>15.1 技术博客平台对比</h3>
+<table>
+<tr><th>平台</th><th>优点</th><th>缺点</th><th>适合</th></tr>
+<tr><td><strong>掘金</strong></td><td>技术氛围好、UI现代、有流量推荐、简历可直接贴链接</td><td>偏前端/互联网</td><td><span class="badge b-green">国内技术品牌首选</span></td></tr>
+<tr><td>知乎</td><td>流量大、能写"入行/求职"长文引流</td><td>水文多、技术深度一般</td><td>写求职经验、科普</td></tr>
+<tr><td>CSDN</td><td>搜索引擎收录最好</td><td>广告多、内容质量参差</td><td>仅做SEO沉淀，不当主阵地</td></tr>
+<tr><td>Hexo/Hugo + GitHub Pages</td><td>完全自定义、免费</td><td>要自己折腾、没流量</td><td>后期有精力再做</td></tr>
+<tr><td>公众号</td><td>私域沉淀</td><td>更新压力大</td><td>不建议大二就开</td></tr>
+</table>
+<p><strong>写什么：</strong>① 项目复盘（做了什么/踩了什么坑/怎么解决）；② 学习笔记（跟完一门课/复现一篇论文）；③ 环境配置踩坑（CUDA/PyTorch/AutoDL 这类最容易被搜索到）。<strong>频率：每月1-2篇高质量 &gt; 每周水文</strong>，大三秋招前攒10-15篇即可。第一篇就写你最近遇到的具体问题，如"在AutoDL上用4090微调7B模型的完整流程与踩坑记录"。</p>
+
+<h3>15.2 GitHub 主页优化</h3>
+<ul>
+<li><strong>Profile README：</strong>创建一个与你用户名同名的仓库（<code>你的用户名/你的用户名</code>），里面的 README 会显示在个人主页。包含：一句话自我介绍+方向（如"本校电信工程，关注LLM应用与后端"）+ 技术栈徽章 + 置顶项目链接 + 联系方式</li>
+<li><strong>置顶项目（Pinned）：</strong>选3-6个你<strong>真正写了代码、有像样README</strong>的项目，不要把学课时的demo全置顶</li>
+<li><strong>Commit活跃度：</strong>绿色 contribution graph 是 HR 快速判断"你是不是真在写代码"的信号。<strong>持续、真实</strong>地提交，不要用脚本刷绿</li>
+<li><strong>项目README质量：</strong>每个置顶项目写清楚——解决什么问题、技术栈、如何本地运行、截图/GIF、你具体做了什么</li>
+</ul>
+
+<h3>15.3 简历 bullet 公式模板</h3>
+<div class="formula-box">[项目/开源名称] + [你具体承担的角色和动作，动词开头] + [用到的技术难点] + [可量化的结果]</div>
+<p style="font-size:12px;color:#64748b">量化维度可选：性能提升百分比、延迟从X降到Y、显存占用降低X%、支持QPS、用户数、模型精度提升、代码行数/Star数。</p>
+<h4>三个可直接套用的范例：</h4>
+<div class="proj-card">
+<h4>范例1：算法/微调方向</h4>
+<p>基于 LoRA 在 RTX 4090 上微调 7B 开源大模型，采用 4-bit 量化将显存占用从 24GB 压到 12GB，完成领域问答数据集（约5000条）训练，推理延迟降至 80ms/token；项目代码与复盘文章获 GitHub 120 Star。</p>
+</div>
+<div class="proj-card">
+<h4>范例2：AI应用/RAG方向</h4>
+<p>独立设计并实现 RAG 检索增强问答系统，接入向量数据库（FAISS）与重排序模型，在自建200篇文档上把回答准确率从基线 62% 提升到 85%，并部署为 Hugging Face Space 在线 Demo。</p>
+</div>
+<div class="proj-card">
+<h4>范例3：后端方向</h4>
+<p>使用 FastAPI + PostgreSQL + Redis 开发后端服务，设计 JWT 鉴权与限流中间件，压测达到 800 QPS、P99 延迟 &lt; 50ms；编写3篇掘金教程累计阅读1.2万，被2个技术专栏转载。</p>
+</div>
+
+<h3>15.4 务实定位：个人品牌到底有多大加成</h3>
+<div class="alert alert-orange">
+<strong>💡 个人品牌是"放大器"，不是"救生圈"：</strong>
+<ul style="margin:6px 0 0 18px">
+<li><strong>简历初筛阶段：</strong>HR 每天看几百份简历，99% 不会点进你的 GitHub/博客。<strong>个人品牌不是入场券。</strong></li>
+<li><strong>进入面试后：</strong>技术面试官很可能点开你的 GitHub。一个有真实项目、有持续 commit、有 README 的候选人，会在"两个候选人技术差不多"时成为决胜因素。</li>
+<li><strong>对算法/AI Infra 方向加成最大</strong>（这个方向难造假，代码和实验记录就是硬实力）；对纯后端/业务岗加成次之。</li>
+</ul>
+<strong>结论：先有项目和实习，再花时间包装成博客和GitHub；不要本末倒置，为了写博客耽误刷题和实习。</strong>
+</div>
+</div>
+
+<!-- CH16: 查漏补缺 -->
+<div class="card dir-section" id="ch16">
+<h2>第16章：查漏补缺（GPA / 英语 / 证书 / 时间管理 / 分流 / Plan B）</h2>
+
+<h3>16.1 GPA 绩点</h3>
+<table>
+<tr><th>用途</th><th>GPA要求</th></tr>
+<tr><td>保研</td><td><span class="badge b-red">硬通货 3.5-3.7+</span>，本校电信院竞争激烈</td></tr>
+<tr><td>出国申请</td><td>招生官第一眼看的硬指标，3.5+ 较有竞争力</td></tr>
+<tr><td>就业（互联网）</td><td>无公开硬性分数线；但 <span class="badge b-orange">低于3.0 在部分大厂/国企/银行可能被系统过滤</span></td></tr>
+</table>
+<div class="alert alert-blue"><strong>你的策略（本科就业导向）：</strong>保住 <strong>3.0+</strong>（不挂科、不拉胯），有精力冲到3.3+。<strong>不必为刷到3.8牺牲实习和项目时间</strong>，但也别跌破3.0触发机器筛选。专业课（数据结构/操作系统/计网/组成原理/概率论）一定考好——这些既是绩点也是面试考点。</div>
+
+<h3>16.2 英语</h3>
+<ul>
+<li>六级425分是社会公认"过线"标准；国企/银行网申425是基础筛选线</li>
+<li><strong>外企/涉外岗：普遍要求六级 500+</strong>，核心管培生岗甚至550+，笔试面试常有英文环节</li>
+<li>结合你"有出国工作意愿"：六级冲 <span class="badge b-blue">500+</span> 是底线；真要出国工作/申海外硕士，六级不被认可，需考 <strong>雅思6.5-7.0 或 托福90-100+</strong></li>
+<li>建议：大二下/大三上先把六级刷到500+；大三再决定是否考雅思。英语面试准备：用英文做自我介绍、能讲清楚项目技术栈和难点</li>
+</ul>
+
+<h3>16.3 证书对比：哪些有用、哪些是智商税</h3>
+<table>
+<tr><th>证书</th><th>互联网大厂</th><th>国企/银行/落户</th><th>云/出海</th><th>建议</th></tr>
+<tr><td><strong>软考中级（软件设计师）</strong></td><td><span class="badge b-gray">几乎不看</span></td><td><span class="badge b-green">有用</span>：职称落户广深/上海积分/杭州E类人才</td><td>-</td><td>想去国企/落户广深，大二大三就能考，无学历门槛</td></tr>
+<tr><td><strong>华为HCIA/HCIP/HCIE</strong></td><td>纯软件开发/算法岗帮助有限</td><td>华为生态/运营商/ICT集成商认可度高</td><td>HCIP-Cloud对Infra方向有加分</td><td>走AI Infra/云计算方向可考HCIP</td></tr>
+<tr><td><strong>AWS/阿里云认证</strong></td><td>国内应用开发岗不看重</td><td>-</td><td><span class="badge b-green">出海公司尤其吃香</span></td><td>契合你出国工作意愿，可考AWS Solutions Architect</td></tr>
+</table>
+<div class="alert alert-blue"><strong>总结：</strong>互联网就业方向 = 证书不是重点，刷题+项目+实习才是；国企/落户/出国云方向 = 软考中级、AWS认证值得考。</div>
+
+<h3>16.4 寒暑假利用与时间管理</h3>
+<div class="sem-timeline">
+<div class="sem-node">
+<div class="sem-title">大二寒假（2027.1-2）<span class="sem-phase">补基础</span></div>
+<p>① LeetCode每天1-2题补上来；② 跑通一个AutoDL小项目（如微调对话模型）；③ 六级单词</p>
+</div>
+<div class="sem-node key">
+<div class="sem-title">大二暑假（2027.7-9）<span class="sem-phase">第一段实习黄金窗口 ⚠️</span></div>
+<p>目标：找远程或西安本地的开发/算法实习，哪怕小公司；同时做一个能写进简历的完整项目</p>
+</div>
+<div class="sem-node">
+<div class="sem-title">大三上（2027.9-2028.1）<span class="sem-phase">投日常实习</span></div>
+<p>开始投日常实习（远程实习转正机会），巩固八股文（OS/计网/数据库/语言）</p>
+</div>
+<div class="sem-node key">
+<div class="sem-title">大三寒假-大三下（2028.3-6）<span class="sem-phase">暑期实习提前批 ⚠️进大厂最佳通道</span></div>
+<p>暑期实习提前批是进入大厂的最佳通道（实习转正率远高于秋招直招）</p>
+</div>
+</div>
+<p><strong>时间管理原则：</strong>课业保证不挂科、GPA 3.0+ 即可；<strong>把整块时间（寒暑假/周末）投入实习和项目，碎片时间用来刷题和背单词</strong>。不要为了刷高GPA放弃唯一的暑假实习窗口。</p>
+
+<h3>16.5 求职信息渠道完整清单</h3>
+<table>
+<tr><th>渠道</th><th>用途</th><th>网址/方式</th></tr>
+<tr><td><strong>牛客网</strong></td><td>面经、笔试真题、内推码、校招日历</td><td><a href="https://www.nowcoder.com" target="_blank">nowcoder.com</a></td></tr>
+<tr><td><strong>offershow</strong></td><td>查同届offer薪资爆料、谈薪参考</td><td>小程序/App</td></tr>
+<tr><td><strong>脉脉</strong></td><td>公司真实评价、员工内推、避雷</td><td><a href="https://www.maimai.cn" target="_blank">maimai.cn</a></td></tr>
+<tr><td><strong>实习僧</strong></td><td>实习岗位主渠道</td><td><a href="https://www.shixiseng.com" target="_blank">shixiseng.com</a></td></tr>
+<tr><td><strong>本校就业网</strong></td><td>校招企业多，定向到本校发布</td><td>校园网内网系统
+<tr><td>国家大学生就业服务平台</td><td>官方校招、政策</td><td><a href="https://www.ncss.cn" target="_blank">ncss.cn</a></td></tr>
+<tr><td>各公司校招公众号</td><td>第一时间获取开/关投递</td><td>"字节跳动招聘""腾讯校园招聘"等</td></tr>
+<tr><td>校友群/学长学姐</td><td>最靠谱的内推和信息</td><td>本校院系群</td></tr>
+<tr><td>LinkedIn</td><td>外企、出海公司、海外机会</td><td><a href="https://www.linkedin.com" target="_blank">linkedin.com</a></td></tr>
+</table>
+<p style="font-size:12px;color:#64748b">💡 用法闭环：牛客看面经和内推 → 官网投递 → offershow查薪资 → 脉脉看口碑。</p>
+
+<h3>16.6 保研/考研/出国/就业：分流决策节点</h3>
+<table>
+<tr><th>时间节点</th><th>必须做的决定</th></tr>
+<tr><td><strong>大二下（现在-2027春）</strong></td><td>想清楚倾向哪条路：保研→死磕绩点排名；考研→放GPA但开始数学英语基础；出国→死磕GPA+雅思+科研；就业→保GPA3.0+，重心转向刷题/项目/实习。<strong>关键：先保留多条路的可能性</strong>——保住GPA、保住英语、做项目，这三件事保研/出国/就业都要</td></tr>
+<tr><td><strong>大三上（2027秋）</strong></td><td><strong>必须做决定。</strong>此时绩点大致定型，再想转保研或出国成本极高。就业方向从这时全力冲实习</td></tr>
+<tr><td><strong>大三下（2028春）</strong></td><td>2029届暑期实习提前批/春招启动，就业党正式开战</td></tr>
+</table>
+
+<h3>16.7 Plan B：秋招不顺利怎么办</h3>
+<ol>
+<li><strong>春招（2029.2-4月）：</strong>秋招补录+新岗位，第二次机会，很多人春招拿到更好的</li>
+<li><strong>实习转正/日常实习：</strong>秋招失利就先去一个能转正的实习，用半年实习换正式offer</li>
+<li><strong>考公/考编/国企：</strong>不排斥体制内的话，应届身份（2年择业期）还在，可参加国考省考</li>
+<li><strong>二战考研：</strong>仅当你有明确目标且能承受一年时间成本时考虑</li>
+</ol>
+<div class="alert alert-green"><strong>💪 心态与健康：</strong>秋招是个概率游戏，被拒不代表你不行。保持作息、运动，和朋友吐槽，别一个人硬扛。本校电信的牌子在IT行业是硬通货，只要你刷题和项目过关，大概率能上岸。</div>
+
+<h3>16.8 技术副业/接单的现实性</h3>
+<div class="alert alert-orange">
+<strong>💰 理性说明：不鼓励低价外包。</strong>本科生在猪八戒网等平台接到的多是低价小单（常有"8000元做淘宝+抖音+拼多多"这类离谱需求），平台抽成高、价格内卷。大二大三靠谱接单月入几百到两三千已是不错。<strong>对简历影响中性甚至偏负</strong>——HR更看重正规公司实习而非外包小单，大量接单还会占用刷题和实习时间。<strong>真想赚钱，远不如把时间投入一段好实习</strong>——实习工资更高、简历含金量更高、还可能转正。
+</div>
+</div>
+
+
+<!-- CH17: 参考来源索引 -->
+<div class="card dir-section" id="ch17">
+<h2>第17章：参考来源总索引</h2>
+<p style="font-size:12px;color:#64748b">所有研究文件中引用的链接汇总，按类别分组。</p>
+
+<h3>AI应用开发方向</h3>
+<ul class="ref-list">
+<li><a href="https://jobs.bytedance.com/campus/m/position/7668198999834364165/detail" target="_blank">字节AI全栈开发JD(火山引擎)</a></li>
+<li><a href="https://hr.tencent.com/m/jobdesc.html?postId=2079104781984645120" target="_blank">腾讯大模型应用开发JD</a></li>
+<li><a href="https://hr.tencent.com/m/jobdesc.html?postId=1915242132004782080" target="_blank">腾讯Agent平台研发JD</a></li>
+<li><a href="https://m.yingjiesheng.com/job-008-091-468.html" target="_blank">美团AI后端开发JD</a></li>
+<li><a href="https://python.langchain.com/docs/tutorials/rag/" target="_blank">LangChain RAG教程</a></li>
+<li><a href="https://github.com/ajndkr/awesome-llm-apps" target="_blank">awesome-llm-apps</a></li>
+<li><a href="https://github.com/infiniflow/ragflow" target="_blank">RAGFlow (70k+ star)</a></li>
+<li><a href="https://github.com/langgenius/dify" target="_blank">Dify (155k+ star)</a></li>
+<li><a href="https://docs.llamaindex.ai/" target="_blank">LlamaIndex官方文档</a></li>
+<li><a href="https://langchain-ai.github.io/langgraph/tutorials/introduction/" target="_blank">LangGraph官方教程</a></li>
+<li><a href="https://github.com/microsoft/autogen" target="_blank">AutoGen</a></li>
+<li><a href="https://github.com/crewAIInc/crewAI" target="_blank">CrewAI</a></li>
+<li><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">Lilian Weng: LLM Powered Autonomous Agents</a></li>
+<li><a href="https://lilianweng.github.io/posts/2024-07-07-hallucination/" target="_blank">Lilian Weng: RAG/Hallucination</a></li>
+<li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank">The Illustrated Transformer</a></li>
+<li><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">吴恩达Prompt Engineering课</a></li>
+<li><a href="https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/" target="_blank">吴恩达LangChain课</a></li>
+<li><a href="https://www.deeplearning.ai/short-courses/advanced-rag-optimization/" target="_blank">吴恩达Advanced RAG课</a></li>
+<li><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2025-spring.php" target="_blank">李宏毅ML 2025</a></li>
+<li><a href="https://zh.d2l.ai/" target="_blank">李沐动手学深度学习</a></li>
+<li><a href="https://fastapi.tiangolo.com/zh/tutorial/" target="_blank">FastAPI中文教程</a></li>
+<li><a href="https://nextjs.org/learn" target="_blank">Next.js官方Learning</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank">廖雪峰Python教程</a></li>
+<li><a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMA-Factory</a></li>
+</ul>
+
+<h3>后端开发方向</h3>
+<ul class="ref-list">
+<li><a href="https://zhaopin.meituan.com/" target="_blank">美团招聘官网</a></li>
+<li><a href="https://www.zhipin.com/job_detail/533f58961c804e3903Jz0tq8GFZV.html" target="_blank">字节后端开发JD(BOSS)</a></li>
+<li><a href="https://mnowpick.nowcoder.com/m/detail/index?jobId=440327" target="_blank">牛客Go后端JD</a></li>
+<li><a href="https://github.com/macrozheng/mall" target="_blank">mall电商教程项目</a></li>
+<li><a href="https://github.com/macrozheng/mall-swarm" target="_blank">mall-swarm微服务版</a></li>
+<li><a href="https://gitee.com/renrenio/renren-fast" target="_blank">renren-fast后台脚手架</a></li>
+<li><a href="https://github.com/wyuxhunk/awesome-java" target="_blank">awesome-java学习路线</a></li>
+<li><a href="https://netty.io/wiki/" target="_blank">Netty官方示例</a></li>
+<li><a href="https://github.com/crossoverJie/cim" target="_blank">cim分布式IM</a></li>
+<li><a href="https://www.liwenzhou.com/posts/Go/golang-menu/" target="_blank">李文周Go教程</a></li>
+<li><a href="https://xiaolincoding.com/" target="_blank">小林coding(网络/OS图解)</a></li>
+<li><a href="https://programmercarl.com/" target="_blank">代码随想录(LeetCode)</a></li>
+<li><a href="https://docs.spring.io/spring-boot/index.html" target="_blank">Spring Boot官方文档</a></li>
+<li><a href="https://tech.meituan.com/" target="_blank">美团技术团队博客</a></li>
+<li><a href="https://interviewguide.cn/notes/02-learning_route/02-language/04-Java.html" target="_blank">阿秀的学习笔记(Java)</a></li>
+</ul>
+
+<h3>算法工程师方向</h3>
+<ul class="ref-list">
+<li><a href="https://zhipu-ai.jobs.feishu.cn/zhipucampus/m/position/detail/7539834541713459475" target="_blank">智谱AI RLHF算法工程师JD</a></li>
+<li><a href="https://mnowpick.nowcoder.com/m/detail/index?jobId=435721" target="_blank">牛客算法工程师JD(硕士起步)</a></li>
+<li><a href="https://mnowpick.nowcoder.com/m/detail/index?jobId=450887" target="_blank">某公司AI算法工程师JD(本科可)</a></li>
+<li><a href="https://www.zhipin.com/job_detail/a373799004aaf1570nd-39i-E1VQ.html" target="_blank">群核科技算法工程师JD</a></li>
+<li><a href="https://cnic.cas.cn/rcdw/rczp/szyxz/202501/t20250120_7520304.html" target="_blank">中科院网络信息中心算法岗</a></li>
+<li><a href="https://www.kaggle.com/learn" target="_blank">Kaggle Learn</a></li>
+<li><a href="https://github.com/microsoft/LightGBM/tree/master/examples" target="_blank">LightGBM官方示例</a></li>
+<li><a href="https://zh.d2l.ai/chapter_convolutional-modern/resnet.html" target="_blank">d2l残差网络章节</a></li>
+<li><a href="https://github.com/kuangliu/pytorch-cifar" target="_blank">pytorch-cifar模板</a></li>
+<li><a href="https://github.com/ultralytics/ultralytics" target="_blank">ultralytics YOLOv8仓库</a></li>
+<li><a href="https://gluebenchmark.com/" target="_blank">GLUE基准</a></li>
+<li><a href="https://huggingface.co/docs/transformers/tasks/sequence_classification" target="_blank">HuggingFace文本分类教程</a></li>
+<li><a href="https://github.com/RUCAIBox/RecBole" target="_blank">RecBole推荐系统框架</a></li>
+<li><a href="https://github.com/d2l-ai/d2l-zh" target="_blank">d2l-zh GitHub源码</a></li>
+<li><a href="https://space.bilibili.com/1567748478/channel/detail?cid=175509" target="_blank">李沐B站合集</a></li>
+<li><a href="https://gaokao.chsi.com.cn/wap/sch/viewzyjs?dicCurId=73396609&specId=73384328" target="_blank">本校电信专业介绍(阳光高考)</a></li>
+</ul>
+
+<h3>AI Infra方向</h3>
+<ul class="ref-list">
+<li><a href="https://career.huawei.com/reccampportal/portal5/campus-recruitment-detail.html?jobId=24079" target="_blank">华为AI Infra工程师JD</a></li>
+<li><a href="https://www.liepin.com/a/79403809.shtml" target="_blank">猎聘：大模型部署与推理优化岗</a></li>
+<li><a href="https://www.zhipin.com/job_detail/1c4377caa12b7d4603Jz3dS0ElJX.html" target="_blank">BOSS：大模型推理加速CUDA岗</a></li>
+<li><a href="https://jobs.nvidia.com/careers/job/893396467982" target="_blank">NVIDIA Inference SWE校招</a></li>
+<li><a href="https://docs.vllm.ai/" target="_blank">vLLM官方文档</a></li>
+<li><a href="https://github.com/vllm-project/vllm" target="_blank">vLLM GitHub仓库</a></li>
+<li><a href="https://docs.ultralytics.com/integrations/tensorrt" target="_blank">Ultralytics TensorRT文档</a></li>
+<li><a href="https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/getting-started/quick-start-guide.html" target="_blank">TensorRT快速上手</a></li>
+<li><a href="https://pypi.org/project/GPTQModel/" target="_blank">GPTQModel PyPI</a></li>
+<li><a href="https://docs.vllm.ai/en/v0.6.1/quantization/auto_awq.html" target="_blank">AutoAWQ文档</a></li>
+<li><a href="https://m.liepin.com/company-jobs/954482/city-070020/" target="_blank">猎聘华为27届校招Infra岗</a></li>
+</ul>
+
+<h3>横向/数据来源</h3>
+<ul class="ref-list">
+<li>本校2025届就业质量报告</li>
+<li>人民网《2026 AI人才市场报告》（2026.9）</li>
+<li>前程无忧《2026届校招市场AI人才需求报告》</li>
+<li>猎聘2026年9月在招岗位数据</li>
+<li>职友集2026年9月薪资统计</li>
+<li>牛客网2026年校招爆料/面经</li>
+<li>36氪2025-2026年大模型人才战报道</li>
+<li>证券时报2026年7月报道</li>
+<li>ManpowerGroup 2026全球人才短缺调查</li>
+<li>21财经2026年7月新质人才月薪数据</li>
+</ul>
+</div>
+
+<div class="footer">
+<p>核心软件AI方向深度规划 · 本校电信·2029届本科就业版</p>
+<p>数据截至2026年9月 | 硬件：RTX 4060 8GB | 聚焦4方向：AI应用/后端/算法/AI Infra</p>
+<p style="margin-top:8px">本报告所有薪资/就业/行业数据均来自2025-2026年公开搜索来源，内卷/难度评分为综合评估，仅供参考。个人决策请结合自身实际情况。</p>
+</div>
+
+</div><!-- end main -->
+
+<script>
+const sections=document.querySelectorAll('.dir-section');
+const navLinks=document.querySelectorAll('.sidebar a[href^="#"]');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.remove('active'));
+      const link=document.querySelector('.sidebar a[href="#'+e.target.id+'"]');
+      if(link)link.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -60% 0px'});
+sections.forEach(s=>observer.observe(s));
+
+document.querySelectorAll('.check-item input[type=checkbox]').forEach(cb=>{
+  cb.addEventListener('change',function(){
+    this.closest('.check-item').classList.toggle('done',this.checked);
+  });
+});
+
+function calcScores(){
+  const weights=[0.15,0.15,0.15,0.15,0.10,0.10,0.10,0.10];
+  const dirs=['ai','be','algo','infra'];
+  dirs.forEach(d=>{
+    let total=0;
+    for(let i=0;i<8;i++){
+      const el=document.getElementById('score_'+d+'_'+i);
+      if(el){const v=parseFloat(el.value)||0;total+=v*weights[i];}
+    }
+    const totalEl=document.getElementById('total_'+d);
+    if(totalEl){
+      let label=total.toFixed(2);
+      if(total>=4.0){label+=' ⭐强推';totalEl.parentElement.classList.add('score-rec');}
+      else if(total>=3.0){label+=' ✓ 可考虑';totalEl.parentElement.classList.remove('score-rec');}
+      else{label+=' ✗ 不建议';totalEl.parentElement.classList.remove('score-rec');}
+      totalEl.textContent=label;
+    }
+  });
+}
+document.querySelectorAll('.score-input').forEach(inp=>{
+  inp.addEventListener('input',calcScores);
+});
+</script>
+</body>
+</html>

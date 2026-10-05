@@ -64,10 +64,10 @@ OMP 的特色更集中在多模型路由、LSP/DAP、子代理和可扩展运行
 
 ## 本目录入口
 
-- [Codex 学习资料](#/doc/d007)
-- [Grok Build 学习资料](#/doc/d020)
-- [OMP 学习资料](#/doc/d035)
-- [ZCode 使用指南](#/doc/d041)
+- [Codex 学习资料](/01-电脑与工具链/AI编程工具/codex使用/codex-learning/)
+- [Grok Build 学习资料](/01-电脑与工具链/AI编程工具/grok使用/grok-learning/00-start-here)
+- [OMP 学习资料](/01-电脑与工具链/AI编程工具/omp使用/)
+- [ZCode 使用指南](/01-电脑与工具链/AI编程工具/zcode使用/ZCode使用指南-大二学生版)
 
 ## 外部来源
 

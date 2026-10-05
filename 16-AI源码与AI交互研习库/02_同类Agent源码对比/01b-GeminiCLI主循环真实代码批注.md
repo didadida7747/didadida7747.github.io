@@ -6,7 +6,7 @@ title: "01b · Gemini CLI 主循环：真实代码逐段批注"
 
 > 素材：本库 clone 的 `gemini-cli`（main 分支，`packages/core/src/core/client.ts`，1313 行）。
 > 这是"读真实源码"的示范篇：每段代码都是从本地文件**原样摘出**的，行号即 clone 版本实际行号，你随时可以打开对照。
-> 前置阅读：[01-GeminiCLI源码精读](#/doc/d438)（路线图），本篇是正式的代码精读。
+> 前置阅读：[01-GeminiCLI源码精读](/16-AI源码与AI交互研习库/02_同类Agent源码对比/01-GeminiCLI源码精读-开源版Claude-Code)（路线图），本篇是正式的代码精读。
 
 ## 0. 结构定位：主循环是"生成器套生成器"
 
@@ -160,4 +160,4 @@ if (loopResult.count > 1) {
 
 ---
 
-下一篇：[02b-Aider替换算法真实代码批注](#/doc/d441)
+下一篇：[02b-Aider替换算法真实代码批注](/16-AI源码与AI交互研习库/02_同类Agent源码对比/02b-Aider替换算法真实代码批注)

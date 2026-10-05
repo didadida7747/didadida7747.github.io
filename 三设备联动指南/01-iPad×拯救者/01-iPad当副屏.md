@@ -38,7 +38,7 @@ title: "iPad 当拯救者的副屏"
 1. 拯救者装 [Sunshine](https://github.com/LizardByte/Sunshine)(约 41.8k★,持续更新),装好后浏览器打开 `https://localhost:47990` 设好账号;
 2. 加装**虚拟显示器驱动**(社区常用 IddSampleDriver 或 Parsec 虚拟屏驱动),让 Windows 多出一块"不存在的显示器";
 3. iPad 装 [Moonlight](https://github.com/moonlight-stream/moonlight-ios)(约 1.7k★),自动发现主机,输入 PIN 配对;
-4. Moonlight 里选择虚拟屏输出 → iPad 就成了一块低延迟无线副屏,配合手柄还能直接玩电脑游戏(见 [04-1 游戏串流](#/doc/d374))。
+4. Moonlight 里选择虚拟屏输出 → iPad 就成了一块低延迟无线副屏,配合手柄还能直接玩电脑游戏(见 [04-1 游戏串流](/三设备联动指南/04-游戏与媒体/01-Sunshine与Moonlight游戏串流))。
 
 - 拯救者优势:独显 NVENC 硬编码,串流开销极小。
 - 代价:步骤比前两个多,虚拟屏驱动需与显卡驱动配合,个别机型要折腾。

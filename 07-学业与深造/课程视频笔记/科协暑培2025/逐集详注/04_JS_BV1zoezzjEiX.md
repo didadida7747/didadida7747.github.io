@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · JavaScript 入门（于越洋, BV1zoezzjEiX）"
+---
+
 # 2025科协暑培 · JavaScript 入门（于越洋, BV1zoezzjEiX）
 
 ## 定位

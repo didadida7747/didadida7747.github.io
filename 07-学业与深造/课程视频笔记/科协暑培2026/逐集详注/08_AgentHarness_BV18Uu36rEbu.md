@@ -1,3 +1,7 @@
+---
+title: "2026科协暑培 · 第8讲 手撕 Claude Code 源码：Agent Harness（张维轩, BV18Uu36rEbu）"
+---
+
 # 2026科协暑培 · 第8讲 手撕 Claude Code 源码：Agent Harness（张维轩, BV18Uu36rEbu）
 
 ## 定位

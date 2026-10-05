@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · django（刘炳麟, BV1R3tAzSE35）"
+---
+
 # 2025科协暑培 · django（刘炳麟, BV1R3tAzSE35）
 
 ## 定位

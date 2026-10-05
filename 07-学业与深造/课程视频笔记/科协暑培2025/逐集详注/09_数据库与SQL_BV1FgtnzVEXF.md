@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · 数据库 & SQL（陈毓椿, BV1FgtnzVEXF）"
+---
+
 # 2025科协暑培 · 数据库 & SQL（陈毓椿, BV1FgtnzVEXF）
 
 ## 定位

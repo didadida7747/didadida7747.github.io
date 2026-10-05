@@ -1,3 +1,7 @@
+---
+title: "SI100+ 2026夏 · Lec.06 控制流（BV1xCgp6BEkj）"
+---
+
 # SI100+ 2026夏 · Lec.06 控制流（BV1xCgp6BEkj）
 
 ## 定位

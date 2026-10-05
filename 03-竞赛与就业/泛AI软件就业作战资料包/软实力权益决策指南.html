@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,1000">
+<title>软实力权益决策指南 · 泛AI软件就业作战</title>
+<style>
+:root{--blue:#2563eb;--blue-d:#1d4ed8;--bg:#f1f5f9;--card:#fff;--txt:#1e293b;--muted:#64748b;--border:#e2e8f0;--warn:#dc2626;--warn-bg:#fef2f2;--warn-bd:#fecaca;--hl:#eff6ff;--hl-bd:#bfdbfe;--gold:#f59e0b;--green:#16a34a;--green-bg:#f0fdf4;--green-bd:#bbf7d0;--purple:#7c3aed;--purple-bg:#f5f3ff;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.75;min-width:1000px;font-size:15px}
+.wrap{max-width:1200px;margin:0 auto;padding:24px}
+header.hero{background:linear-gradient(135deg,#1e40af,#3730a3);color:#fff;padding:40px 32px;border-radius:16px;margin-bottom:24px;box-shadow:0 4px 20px rgba(30,64,175,.25)}
+header.hero h1{font-size:30px;margin-bottom:8px}
+header.hero p{opacity:.92;font-size:15px}
+.profile{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.profile span{background:rgba(255,255,255,.18);padding:4px 14px;border-radius:20px;font-size:13px}
+nav.toc{background:var(--card);border-radius:12px;padding:16px 24px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:100}
+nav.toc a{color:var(--blue);text-decoration:none;padding:6px 14px;border-radius:8px;font-size:14px;transition:.15s}
+nav.toc a:hover{background:var(--hl)}
+section{background:var(--card);border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+h2{font-size:22px;color:var(--blue-d);border-left:4px solid var(--blue);padding-left:12px;margin-bottom:18px}
+h3{font-size:17px;margin:20px 0 10px;color:var(--txt)}
+h4{font-size:15px;margin:14px 0 8px;color:var(--blue-d)}
+ul.flat{padding-left:20px}
+ul.flat li{margin-bottom:4px;font-size:14.5px}
+ol.flat{padding-left:20px}
+ol.flat li{margin-bottom:6px;font-size:14.5px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+table th{background:var(--blue);color:#fff;padding:10px 12px;text-align:left}
+table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+table tr:nth-child(even) td{background:#f8fafc}
+.law-ref{background:#fffbeb;border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin:10px 0;color:#78350f}
+.law-ref .src{font-size:12px;color:#92400e;margin-top:4px;display:block}
+.tip{background:var(--green-bg);border-left:3px solid var(--green);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin:10px 0;color:#14532d}
+.warn-box{background:var(--warn-bg);border:2px solid var(--warn-bd);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warn-box .wt{color:var(--warn);font-weight:700;font-size:15px;margin-bottom:6px}
+.warn-box p{font-size:14px;color:#7f1d1d}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.info-card{background:#f8fafc;border-radius:10px;padding:16px;border-top:3px solid var(--blue)}
+.info-card h4{margin-top:0}
+.info-card p{font-size:13.5px;color:#334155}
+.timeline{position:relative;padding-left:28px;margin:16px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:3px;background:var(--blue);border-radius:2px}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:'';position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--blue)}
+.tl-item .tl-time{font-weight:700;color:var(--blue-d);font-size:14px}
+.tl-item .tl-body{font-size:14px;color:#334155;margin-top:2px}
+.formula{background:#0f172a;color:#e2e8f0;padding:16px 20px;border-radius:10px;font-family:"Cascadia Code",Consolas,monospace;font-size:13.5px;margin:12px 0;overflow-x:auto;white-space:pre}
+.tag{display:inline-block;background:var(--hl);color:var(--blue-d);padding:2px 10px;border-radius:12px;font-size:12px;border:1px solid var(--hl-bd);margin:2px}
+.tag.warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-bd)}
+.tag.ok{background:var(--green-bg);color:var(--green);border-color:var(--green-bd)}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.vs-card{border-radius:10px;padding:16px}
+.vs-card.rev{background:var(--green-bg);border:2px solid var(--green-bd)}
+.vs-card.irrev{background:var(--warn-bg);border:2px solid var(--warn-bd)}
+.vs-card h4{margin-top:0}
+.decision-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0}
+.df-step{background:var(--hl);border:1px solid var(--hl-bd);border-radius:8px;padding:10px 16px;font-size:13.5px;color:var(--blue-d);font-weight:600}
+.df-arrow{color:var(--muted);font-size:18px}
+.checklist{list-style:none;padding:0}
+.checklist li{padding:6px 0 6px 28px;position:relative;font-size:14.5px}
+.checklist li::before{content:'☐';position:absolute;left:0;color:var(--blue);font-size:16px}
+.perspective-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.persp-card{text-align:center;padding:16px;border-radius:10px;background:#f8fafc;border:1px solid var(--border)}
+.persp-card .timeframe{font-size:13px;color:var(--muted);margin-bottom:6px}
+.persp-card .question{font-size:14px;font-weight:600;color:var(--blue-d)}
+@media print{nav.toc{position:static}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>软实力 · 权益保障 · 现实成本 · 决策框架</h1>
+  <p>从校园到职场的最后一公里：软技能修炼、劳动法护身符、城市成本账、offer加权决策</p>
+  <div class="profile">
+    <span>本校电子信息工程</span>
+    <span>大模型应用开发方向</span>
+    <span>本科就业</span>
+    <span>2028届</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#sec1">① 软实力</a>
+  <a href="#sec2">② 权益保障</a>
+  <a href="#sec3">③ 现实成本</a>
+  <a href="#sec4">④ 决策框架</a>
+</nav>
+
+<!-- ========== 第一板块：软实力 ========== -->
+<section id="sec1">
+<h2>① 软实力：技术沟通与职场生存</h2>
+
+<h3>1.1 技术沟通与汇报：如何讲清楚技术方案</h3>
+<div class="card-grid">
+  <div class="info-card">
+    <h4>汇报万能结构：结论先行 → 背景 → 方案 → 风险 → 请求</h4>
+    <p><strong>第一步（30秒）：</strong>直接说结论——"我建议用RAG方案而不是微调，理由是……"<br>
+    <strong>第二步（1分钟）：</strong>交代背景——"现有客服系统准确率只有60%，主要原因是知识库更新滞后"<br>
+    <strong>第三步（2分钟）：</strong>讲方案对比——列2-3个方案的优劣，给推荐项<br>
+    <strong>第四步（30秒）：</strong>说风险——"RAG方案的风险是召回准确率，我计划用混合检索缓解"<br>
+    <strong>第五步：</strong>明确请求——"需要您批准2周调研时间/需要数据团队配合"</p>
+  </div>
+  <div class="info-card">
+    <h4>技术汇报三忌</h4>
+    <p>❌ <strong>只讲技术不讲业务：</strong>"我用了LangChain的RecursiveCharacterTextSplitter"——领导不关心<br>
+    ✅ 要翻译成业务语言："我把文档切成小块喂给模型，这样回答更精准，准确率从60%提到85%"<br><br>
+    ❌ <strong>只讲方案不讲对比：</strong>直接说"我打算做X"——领导无法判断<br>
+    ✅ 至少给2个选项："方案A快但效果一般，方案B慢但效果好，我推荐B"<br><br>
+    ❌ <strong>报喜不报忧：</strong>出了问题才说——领导最愤怒的是"为什么不早说"<br>
+    ✅ 风险前置：主动说"这个方案有个风险是……，我的预案是……"</p>
+  </div>
+</div>
+
+<h4> elevator pitch（电梯演讲）模板</h4>
+<div class="tip">
+  <strong>30秒版：</strong>"我在做一个大模型客服助手项目，目标是把人工客服量降低30%。目前用RAG方案已经在测试集跑到85%准确率，预计下周上线灰度。需要您帮忙协调客服团队提供标注数据。"
+</div>
+
+<h3>1.2 文档写作：设计文档与周报</h3>
+<div class="card-grid">
+  <div class="info-card">
+    <h4>设计文档模板（Tech Design Doc）</h4>
+    <p><strong>1. 背景与目标：</strong>为什么要做这个？解决什么问题？<br>
+    <strong>2. 现状分析：</strong>现在怎么做的？痛点在哪？<br>
+    <strong>3. 方案设计：</strong>整体架构图 + 模块说明 + 接口定义<br>
+    <strong>4. 技术选型对比：</strong>为什么选A不选B？（至少列2个候选）<br>
+    <strong>5. 风险与备选：</strong>可能出什么问题？Plan B是什么？<br>
+    <strong>6. 排期与里程碑：</strong>拆成2周一个迭代，每个迭代有可验收产出<br>
+    <strong>7. 上线与回滚方案：</strong>怎么灰度？出问题怎么回滚？</p>
+  </div>
+  <div class="info-card">
+    <h4>周报模板（STAR法则）</h4>
+    <p><strong>本周完成（Situation-Task-Action-Result）：</strong><br>
+    • 完成了RAG召回模块开发（T：提升知识库召回率；A：实现了BM25+向量混合检索；R：召回率从70%→88%）<br>
+    • 修复了3个线上bug<br><br>
+    <strong>下周计划：</strong><br>
+    • 接入FAQ自动生成<br>
+    • 配合测试团队做集成测试<br><br>
+    <strong>风险/阻塞：</strong><br>
+    • 数据标注人手不足，可能延期2天<br><br>
+    <em>原则：量化结果，不写流水账；主动暴露风险，不等被问</em></p>
+  </div>
+</div>
+
+<h3>1.3 跨团队协作</h3>
+<ul class="flat">
+  <li><strong>对齐目标：</strong>开工前先和协作方确认"我们要一起达成什么目标？成功标准是什么？"——避免各干各的</li>
+  <li><strong>明确接口：</strong>和对方约定"我什么时候给你什么？你什么时候给我什么？格式是什么？"——写在文档里，不口头约定</li>
+  <li><strong>主动同步：</strong>每周至少一次进度同步，哪怕是"本周无变化，预计下周X交付"——沉默=失控</li>
+  <li><strong>冲突处理：</strong>对事不对人，先对齐目标再讨论方案；如果方案分歧，用数据说话（POC/benchmark），不靠职级压人</li>
+  <li><strong>留痕：</strong>重要决策和结论一定要发邮件/飞书确认，"刚我们讨论的结论是……，如有异议请X天内回复"</li>
+</ul>
+
+<h3>1.4 第一份工作快速融入：30/60/90天计划</h3>
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-time">第1-30天：观察与吸收期</div>
+    <div class="tl-body">
+      • 搞清楚组织架构：谁是决策人？谁是执行关键人？谁和谁是矛盾方？<br>
+      • 读完团队所有相关文档（代码仓库README、历史设计文档、周报）<br>
+      • 找导师/直属leader做一次"1对1"：问清楚"您对我前3个月的期望是什么？"<br>
+      • 主动认领小任务：修bug、写脚本、补文档——快速建立"靠谱"印象<br>
+      • 不要急着表现：前30天少说多听，理解团队的做事方式和文化
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">第31-60天：产出与验证期</div>
+    <div class="tl-body">
+      • 独立负责一个小模块/小项目，做出可量化的成果<br>
+      • 开始在周会上主动汇报——练表达，建立存在感<br>
+      • 识别团队的"痛点"：什么事情大家都嫌麻烦？你能不能优化它？<br>
+      • 和跨团队协作方建立关系：请喝杯咖啡，了解他们的工作<br>
+      • 主动找leader做30天回顾："我做得怎么样？哪里需要改进？"
+    </div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">第61-90天：定位与加速期</div>
+    <div class="tl-body">
+      • 明确自己的"标签"：在团队里你最擅长什么？（模型调优？工程落地？文档？）<br>
+      • 提出一个改进建议并推动落地——展示你不只是执行者，还能发现问题<br>
+      • 试用期转正答辩准备：整理3个月的成果（量化数据），想清楚"我为什么值得留下"<br>
+      • 开始规划下一阶段：转正后想做什么方向？需要补什么技能？
+    </div>
+  </div>
+</div>
+
+<h3>1.5 向上管理与预期管理</h3>
+<div class="card-grid">
+  <div class="info-card">
+    <h4>向上管理的核心：管理老板的信息输入</h4>
+    <p>老板最怕的不是坏消息，是<strong>不知道</strong>。<br><br>
+    • <strong>每周主动同步：</strong>不管老板问不问，每周发一次进度（好消息+坏消息+下周计划）<br>
+    • <strong>坏消息早说：</strong>"这个需求可能要延期2天，原因是……，我的应对是……"——越早说，老板越有缓冲<br>
+    • <strong>带着方案提问题：</strong>不要说"这个做不了"，要说"这个做不了，但是我有两个替代方案，推荐B"<br>
+    • <strong>理解老板的KPI：</strong>你的工作怎么帮老板完成他的目标？对齐这个，你的优先级就对了</p>
+  </div>
+  <div class="info-card">
+    <h4>预期管理：不要过度承诺</h4>
+    <p>新人最容易犯的错：老板问"这个多久能做完？"——为了表现好说"3天"，结果做了5天。<br><br>
+    <strong>正确做法：</strong><br>
+    • 估算时间×1.5-2倍，然后说"预计一周左右，中间我会同步进度"<br>
+    • 提前做完 = 惊喜；延期 = 信任崩塌<br><br>
+    <strong>接活时三问：</strong><br>
+    1. 这个事情的优先级是什么？（如果手头有别的活，哪个先？）<br>
+    2. 什么时候要？（确认deadline）<br>
+    3. 做到什么程度算完？（确认验收标准）</p>
+  </div>
+</div>
+</section>
+
+<!-- ========== 第二板块：权益保障 ========== -->
+<section id="sec2">
+<h2>② 权益保障：劳动法护身符</h2>
+
+<h3>2.1 三方协议与违约金</h3>
+<table>
+  <tr><th>要点</th><th>说明</th><th>法律依据</th></tr>
+  <tr><td>三方协议性质</td><td>民事协议（不是劳动合同），约束"毕业后去这家公司报到"。报到签订劳动合同后，三方自动失效</td><td>《普通高等学校毕业生就业工作暂行规定》</td></tr>
+  <tr><td>违约金上限</td><td>通常约定5000元-10000元，部分企业（尤其国企）可能更高。<strong>法律未明确规定上限，但过高可协商</strong></td><td>《民法典》合同编</td></tr>
+  <tr><td>什么情况不用付违约金</td><td>①考上公务员/研究生并被录取（部分三方协议有此条款，需看清楚）②企业未按约定提供岗位/薪资 ③企业先违约</td><td>三方协议条款约定 + 《民法典》</td></tr>
+  <tr><td>注意事项</td><td>签之前看清楚：违约金多少？有没有"升学/考公免责"条款？薪资写的是税前还是税后？有没有附加服务期？</td><td>—</td></tr>
+</table>
+<div class="law-ref">
+  <strong>法条来源：</strong>《普通高等学校毕业生就业工作暂行规定》（教学〔1997〕6号），教育部官网可查。三方协议属于民事协议，不适用《劳动合同法》，违约金纠纷适用《民法典》合同编。
+  <span class="src">来源：教育部 / 中国人大网</span>
+</div>
+
+<h3>2.2 劳动合同与试用期规定</h3>
+<table>
+  <tr><th>劳动合同期限</th><th>试用期上限</th><th>试用期工资下限</th></tr>
+  <tr><td>3个月以上不满1年</td><td>≤1个月</td><td rowspan="4">不得低于本单位相同岗位最低档工资<strong>80%</strong>，或不得低于劳动合同约定工资的<strong>80%</strong>，且不得低于当地最低工资标准</td></tr>
+  <tr><td>1年以上不满3年</td><td>≤2个月</td></tr>
+  <tr><td>3年以上固定期限 / 无固定期限</td><td>≤6个月</td></tr>
+  <tr><td>以完成一定工作任务为期限 / 不满3个月</td><td><strong>不得约定试用期</strong></td></tr>
+</table>
+<div class="law-ref">
+  <strong>法条原文：</strong>《劳动合同法》第十九条：劳动合同期限三个月以上不满一年的，试用期不得超过一个月；劳动合同期限一年以上不满三年的，试用期不得超过二个月；三年以上固定期限和无固定期限的劳动合同，试用期不得超过六个月。<br>
+  第二十条：劳动者在试用期的工资不得低于本单位相同岗位最低档工资或者劳动合同约定工资的百分之八十，并不得低于用人单位所在地的最低工资标准。
+  <span class="src">来源：《中华人民共和国劳动合同法》（2012年修正），中国人大网 npc.gov.cn</span>
+</div>
+
+<div class="warn-box">
+  <div class="wt">⚠ 试用期辞退的法定条件（企业不能随便开人）</div>
+  <p>《劳动合同法》第二十一条：在试用期中，除劳动者有本法第三十九条和第四十条第一项、第二项规定的情形外，用人单位不得解除劳动合同。用人单位在试用期解除劳动合同的，应当向劳动者说明理由。<br><br>
+  <strong>第三十九条（过失性辞退，无需赔偿）：</strong><br>
+  • 在试用期间被证明不符合录用条件的（<strong>注意：企业必须有明确的录用条件，且能证明你不符合</strong>）<br>
+  • 严重违反用人单位规章制度的<br>
+  • 严重失职，营私舞弊，给用人单位造成重大损害的<br><br>
+  <strong>第四十条第一项（医疗期满）：</strong>患病或非因工负伤，医疗期满后不能从事原工作也不能从事另行安排的工作<br>
+  <strong>第四十条第二项（不能胜任）：</strong>不能胜任工作，经过培训或调整岗位仍不能胜任（需提前30天通知或额外付1个月工资）
+</div>
+
+<h3>2.3 竞业限制与保密协议</h3>
+<table>
+  <tr><th>要点</th><th>法律规定</th></tr>
+  <tr><td>适用人员</td><td>仅限<strong>高级管理人员、高级技术人员和其他负有保密义务的人员</strong>——普通应届生签的竞业限制，很多情况下可能被认定无效</td></tr>
+  <tr><td>期限上限</td><td>解除或终止劳动合同后，竞业限制期限<strong>不得超过2年</strong></td></tr>
+  <tr><td>经济补偿</td><td>竞业限制期间，企业必须<strong>按月给予经济补偿</strong>（通常为离职前12个月平均工资的30%-50%）。<strong>如果企业不给补偿，你可以不遵守竞业限制</strong></td></tr>
+  <tr><td>违约金</td><td>按合同约定，但如果金额过高（如年薪10倍），仲裁时可请求调低</td></tr>
+  <tr><td>保密协议 vs 竞业限制</td><td>保密协议：不能泄露商业秘密（无论在职还是离职后，<strong>无期限限制但也无补偿</strong>）；竞业限制：不能去竞争对手公司（<strong>有期限+有补偿</strong>）</td></tr>
+</table>
+<div class="law-ref">
+  <strong>法条原文：</strong>《劳动合同法》第二十三条：用人单位与劳动者可以在劳动合同中约定保守用人单位的商业秘密和与知识产权相关的保密事项。对负有保密义务的劳动者，用人单位可以在劳动合同或者保密协议中与劳动者约定竞业限制条款，并约定在解除或者终止劳动合同后，在竞业限制期限内按月给予劳动者经济补偿。劳动者违反竞业限制约定的，应当按照约定向用人单位支付违约金。<br>
+  第二十四条：竞业限制的人员限于用人单位的高级管理人员、高级技术人员和其他负有保密义务的人员。竞业限制期限不得超过二年。
+  <span class="src">来源：《中华人民共和国劳动合同法》第二十三条、第二十四条</span>
+</div>
+
+<h3>2.4 背调流程与注意事项</h3>
+<ul class="flat">
+  <li><strong>背调时机：</strong>通常在offer发放后、入职前。正规企业会先征得你同意才做背调</li>
+  <li><strong>背调内容：</strong>学历学位验证、工作经历核实（时间、职位、离职原因）、有无犯罪记录、部分会查社保缴纳记录</li>
+  <li><strong>注意：</strong>简历上的实习时间、职位、项目描述一定要真实——背调发现造假，offer可以直接撤销，已入职的可以无偿辞退</li>
+  <li><strong>联系人：</strong>背调联系人一般是你前直属leader或HR，提前和对方打好招呼</li>
+  <li><strong>隐私保护：</strong>如果你不想让现公司知道你在找工作，可以要求背调只联系已经离职的公司</li>
+</ul>
+
+<h3>2.5 应届生身份保留</h3>
+<div class="tip">
+  <strong>关键概念：</strong>"应届生"身份主要用于<strong>校招、落户、考公、国企招聘</strong>。不同场景定义不同：
+</div>
+<table>
+  <tr><th>场景</th><th>应届生定义</th><th>说明</th></tr>
+  <tr><td>企业校招</td><td>通常指毕业当年（如2028届=2028年毕业）</td><td>部分企业接受"择业期内"（毕业后2年内未交社保）也算应届</td></tr>
+  <tr><td>公务员/事业单位</td><td>看招考公告，多数要求"应届毕业生"（当年），部分岗位限"择业期内未落实工作单位"</td><td><strong>关键：毕业后2年内未缴纳社保，档案在学校/人才市场，通常可按应届对待</strong></td></tr>
+  <tr><td>落户（北京/上海）</td><td>严格要求毕业当年（如2028年6月-12月）</td><td>落户名额极度有限，错过当年基本没有第二次机会</td></tr>
+</table>
+<div class="law-ref">
+  <strong>政策来源：</strong>人社部《关于做好2024年高校毕业生就业创业工作的通知》及各地人社局规定。"择业期"政策各地不同，一般为毕业2年内，未落实工作单位、档案保留在学校或人才交流机构的毕业生，可按应届高校毕业生对待。具体以目标城市人社局/招考公告为准。
+  <span class="src">来源：人力资源和社会保障部 mohrss.gov.cn / 各地人社局官网</span>
+</div>
+
+<h3>2.6 档案派遣</h3>
+<table>
+  <tr><th>去向</th><th>适用情况</th><th>优缺点</th></tr>
+  <tr><td>转到单位（有人事管理权）</td><td>国企、事业单位、公务员——单位有档案保管权</td><td>✓ 工龄连续计算、评职称方便<br>✗ 离职时转档案比较麻烦</td></tr>
+  <tr><td>转到单位所在地人才市场</td><td>民营企业——单位无档案管理权，委托人才市场托管</td><td>✓ 灵活，离职时不用转档案<br>✓ 部分城市落户需要档案在当地人才市场</td></tr>
+  <tr><td>回原籍（户籍地教育局/人才中心）</td><td>暂未就业、准备考研考公、自由职业</td><td>✓ 最稳妥，不会丢<br>✓ 保留应届生身份方便<br>✗ 异地办事可能需要跑腿</td></tr>
+</table>
+<div class="tip">
+  <strong>实操建议：</strong>如果去民企，档案一般转到单位注册地的人才市场（问HR要"档案接收函"）；如果暂时没确定，先申请<strong>档案留校2年</strong>或回原籍，不要自己拿着档案（<strong>自持档案 = 死档，人才市场不收</strong>）。
+</div>
+
+<h3>2.7 加班与裁员：劳动法常识</h3>
+
+<h4>加班时长限制</h4>
+<table>
+  <tr><th>项目</th><th>法律规定</th></tr>
+  <tr><td>每日加班上限</td><td>一般每日不得超过1小时；特殊原因每日不得超过3小时</td></tr>
+  <tr><td>每月加班上限</td><td>不得超过36小时</td></tr>
+  <tr><td>加班费标准</td><td>工作日加班：1.5倍工资；休息日加班又不能补休：2倍工资；法定节假日加班：3倍工资</td></tr>
+</table>
+<div class="law-ref">
+  <strong>法条来源：</strong>《劳动法》第四十一条、第四十四条。劳动部《工资支付暂行规定》第十三条。
+  <span class="src">来源：《中华人民共和国劳动法》，中国人大网</span>
+</div>
+
+<h4>经济补偿金计算（N / N+1 / 2N）</h4>
+<table>
+  <tr><th>情形</th><th>补偿标准</th><th>适用条件</th></tr>
+  <tr><td>N（经济补偿金）</td><td>每满1年支付1个月工资；6个月以上不满1年按1年算；不满6个月支付半个月工资</td><td>合法解除（如裁员、协商解除、不能胜任工作调岗后仍不行）</td></tr>
+  <tr><td>N+1（代通知金）</td><td>N + 1个月工资（替代提前30天通知）</td><td>《劳动合同法》第40条：医疗期满、不能胜任、客观情况重大变化——企业没提前30天通知时</td></tr>
+  <tr><td>2N（赔偿金）</td><td>经济补偿金的2倍</td><td><strong>违法解除劳动合同</strong>（企业没有合法理由就开人）</td></tr>
+</table>
+<div class="formula">N = 工作年限 × 离职前12个月平均工资（税前，含奖金/补贴）
+
+举例：工作2年7个月，被裁员（合法裁员）
+→ N = 3个月工资（满6个月按1年算）
+→ 如果没提前30天通知：N+1 = 4个月
+→ 如果是违法辞退：2N = 6个月
+
+⚠ 社平工资3倍封顶：如果月工资 > 当地上年度职工月平均工资3倍
+  按3倍封顶计算，且年限最高不超过12年</div>
+<div class="law-ref">
+  <strong>法条原文：</strong>《劳动合同法》第四十七条：经济补偿按劳动者在本单位工作的年限，每满一年支付一个月工资的标准向劳动者支付。六个月以上不满一年的，按一年计算；不满六个月的，向劳动者支付半个月工资的经济补偿。<br>
+  第八十七条：用人单位违反本法规定解除或者终止劳动合同的，应当依照本法第四十七条规定的经济补偿标准的二倍向劳动者支付赔偿金。
+  <span class="src">来源：《中华人民共和国劳动合同法》第四十条、第四十一条、第四十七条、第八十七条</span>
+</div>
+
+<h3>2.8 社保公积金基数与比例</h3>
+<table>
+  <tr><th>项目</th><th>单位缴纳</th><th>个人缴纳</th><th>说明</th></tr>
+  <tr><td>养老保险</td><td>16%</td><td>8%</td><td>累计缴满15年，退休后领养老金</td></tr>
+  <tr><td>医疗保险</td><td>8%-10%</td><td>2%</td><td>看病报销，个人账户每月返钱</td></tr>
+  <tr><td>失业保险</td><td>0.5%-1%</td><td>0.5%</td><td>被裁员后可领失业金</td></tr>
+  <tr><td>工伤保险</td><td>0.2%-1.9%</td><td>0%</td><td>工伤赔付，个人不缴</td></tr>
+  <tr><td>生育保险</td><td>0.5%-1%</td><td>0%</td><td>已并入医保，个人不缴</td></tr>
+  <tr><td>住房公积金</td><td>5%-12%</td><td>5%-12%</td><td>单位和个人同比例缴纳，全部进个人账户。<strong>比例越高越好</strong></td></tr>
+</table>
+<div class="tip">
+  <strong>基数怎么定：</strong>社保基数 = 你上一年度月平均工资（新入职按首月全薪）。<strong>基数有上下限</strong>：当地社平工资的60%-300%。<br>
+  <strong>避坑：</strong>有些公司按最低基数交社保（虽然违法但常见）——这意味着你的公积金少了、医保账户返钱少了、未来养老金也少了。谈offer时问清楚："五险一金按什么基数交？"
+</div>
+<div class="law-ref">
+  <strong>政策来源：</strong>《社会保险法》（2011年施行）、《住房公积金管理条例》（国务院令第350号）。具体缴费比例以上海市/北京市/深圳市人社局当年公布的社保缴费通知为准，各地略有差异。
+  <span class="src">来源：人力资源和社会保障部 mohrss.gov.cn / 住建部</span>
+</div>
+</section>
+
+<!-- ========== 第三板块：现实成本 ========== -->
+<section id="sec3">
+<h2>③ 现实成本：租房、城市选择与存钱计划</h2>
+
+<h3>3.1 一线实习租房成本与押金（合租价格区间）</h3>
+<table>
+  <tr><th>城市</th><th>合租单间（偏远/老破小）</th><th>合租单间（近地铁/近郊）</th><th>主卧独卫</th><th>押金惯例</th></tr>
+  <tr><td>北京</td><td>1500-2200</td><td>2500-4000</td><td>4000-6000</td><td>押一付三</td></tr>
+  <tr><td>上海</td><td>1500-2000</td><td>2500-3800</td><td>3800-5500</td><td>押一付三</td></tr>
+  <tr><td>深圳</td><td>1200-1800</td><td>2000-3500</td><td>3500-5000</td><td>押一付一（较多）</td></tr>
+  <tr><td>广州</td><td>1000-1500</td><td>1800-2800</td><td>2800-4000</td><td>押一付一/付三</td></tr>
+  <tr><td>杭州</td><td>1200-1800</td><td>2000-3200</td><td>3200-4500</td><td>押一付三</td></tr>
+</table>
+<p style="font-size:13px;color:var(--muted);">* 单位：元/月，2025-2026年市场参考价，实际因地段/装修/户型差异较大。数据综合自如/贝壳/豆瓣租房小组经验。</p>
+
+<div class="warn-box">
+  <div class="wt">⚠ 租房避坑</div>
+  <p>• <strong>押金：</strong>正规是"押一付三"（1个月押金+3个月房租）。遇到"押一付一"的公寓（自如/蛋壳类），注意看是不是长租贷——<strong>不要签贷款合同！</strong><br>
+  • <strong>看房：</strong>一定要实地看！图片可能是照骗。检查：漏水、隔音、门锁、家电是否正常、电费是民电还是商电（商电贵一倍）<br>
+  • <strong>合同：</strong>和房东签（不是二房东），看房产证原件+身份证。退租时拍照留证，避免被扣押金</p>
+</div>
+
+<h3>3.2 城市选择维度对比</h3>
+<table>
+  <tr><th>维度</th><th>北京</th><th>上海</th><th>深圳</th><th>杭州</th><th>成都</th></tr>
+  <tr><td>AI/大模型岗位密度</td><td>★★★★★</td><td>★★★★★</td><td>★★★★☆</td><td>★★★★☆</td><td>★★★☆☆</td></tr>
+  <tr><td>生活成本（租房为核心）</td><td>极高</td><td>极高</td><td>高</td><td>中高</td><td>中低</td></tr>
+  <tr><td>落户难度</td><td>极难（积分+名额）</td><td>难（打分制）</td><td>较易（核准制）</td><td>中等（学历+社保）</td><td>较易</td></tr>
+  <tr><td>房价（均价万元/㎡）</td><td>6-8</td><td>6-9</td><td>5-7</td><td>3-5</td><td>1.5-2.5</td></tr>
+  <tr><td>代表AI公司</td><td>字节/百度/智谱/月之暗面</td><td>阿里/商汤/ MiniMax</td><td>腾讯/华为/大疆</td><td>阿里/ DeepSeek/群核</td><td>华为/腾讯成都/各大厂分部</td></tr>
+  <tr><td>适合人群</td><td>想进顶级大厂/研究院</td><td>金融+科技交叉</td><td>工程落地/硬件AI</td><td>电商AI/创业氛围</td><td>性价比/慢生活</td></tr>
+</table>
+
+<h3>3.3 存钱计划：从实习工资到正式工资</h3>
+<div class="card-grid">
+  <div class="info-card">
+    <h4>实习期（日薪200-400元，月薪4000-8000）</h4>
+    <p>实习工资目标：<strong>覆盖房租+基本生活</strong>，能存下钱是bonus<br><br>
+    • 房租控制在收入的<strong>30%以内</strong>（如月薪6000，房租≤1800）<br>
+    • 吃饭：食堂/自带饭，控制在1500-2000/月<br>
+    • 交通+通讯：300-500<br>
+    • 目标储蓄率：<strong>10%-20%</strong>（每月存500-1500）<br>
+    • <strong>重点：</strong>实习别太抠——花钱买技能（买书、买课、参加技术活动）是回报率最高的投资</p>
+  </div>
+  <div class="info-card">
+    <h4>正式入职（月薪15K-30K，税前）</h4>
+    <p>税后到手约为税前的<strong>75%-80%</strong>（扣社保公积金+个税）<br><br>
+    • 房租：控制在<strong>到手收入的25%-30%</strong><br>
+    • 吃饭+日常：2000-3000<br>
+    • 社交+娱乐：1000-2000<br>
+    • 目标储蓄率：<strong>30%-40%</strong><br>
+    • <strong>应急基金：</strong>先存够3-6个月生活费（约3-5万），放在货币基金里，然后再考虑理财<br>
+    • <strong>公积金：</strong>这是你的强制储蓄——基数越高，公积金账户每月进账越多（买房/租房都能提）</p>
+  </div>
+</div>
+<div class="tip">
+  <strong>10-10-10法则存钱版：</strong>工资到手后，先转10%到定期/货币基金（先存后花），再安排支出。不要"花剩了再存"——通常存不下来。
+</div>
+</section>
+
+<!-- ========== 第四板块：决策框架 ========== -->
+<section id="sec4">
+<h2>④ 决策框架：offer选择与Plan B</h2>
+
+<h3>4.1 Offer加权打分模型</h3>
+<p>面对多个offer时，不要凭感觉，用加权打分量化决策。</p>
+
+<div class="formula">总分 = 薪资 × W1 + 成长 × W2 + 城市 × W3 + 稳定 × W4 + 加班 × W5
+
+W1+W2+W3+W4+W5 = 1（权重之和为1）
+
+每个维度按1-10分打分，乘以权重后加总。
+分数高的不一定是"最好的"，但是"最符合你当前优先级的"。</div>
+
+<table>
+  <tr><th>维度</th><th>权重参考（应届版）</th><th>打分标准（1-10分）</th></tr>
+  <tr><td>薪资</td><td>W1 = 0.20</td><td>10=年薪>40W；7=25-35W；5=18-25W；3=12-18W；1=<12W</td></tr>
+  <tr><td>成长（技术成长/带教/项目质量）</td><td>W2 = 0.30</td><td>10=顶级团队+大佬带+核心项目；7=正规团队+有学习空间；5=一般团队+边缘项目；3=打杂</td></tr>
+  <tr><td>城市</td><td>W3 = 0.15</td><td>10=心仪城市+行业聚集；7=可接受；5=一般；1=完全不想待</td></tr>
+  <tr><td>稳定（公司存活/业务前景）</td><td>W4 = 0.15</td><td>10=大厂/国企稳定；7=成长期公司；5=小厂；1=创业早期</td></tr>
+  <tr><td>加班（WLB）</td><td>W5 = 0.20</td><td>10=不加班；7=大小周；5=996但有补偿；1=无限加班无补偿</td></tr>
+</table>
+
+<div class="tip">
+  <strong>怎么用：</strong>把你的每个offer按这5个维度打分，算总分。<br>
+  <strong>权重可以自己调：</strong>如果你现在最缺钱，把W1调到0.35；如果你最看重学东西，把W2调到0.40。<br>
+  <strong>注意：</strong>这是辅助工具，不是算命——打分时尽量客观，多问问已经工作的学长姐。
+</div>
+
+<h3>4.2 信息不足时的决策框架</h3>
+
+<h4>可逆 vs 不可逆决策</h4>
+<div class="vs-grid">
+  <div class="vs-card rev">
+    <h4>✓ 可逆决策（可以快速试错）</h4>
+    <p>• 选哪个实习？<br>
+    • 先去小公司还是大公司？（干1-2年可以跳）<br>
+    • 住哪个区域？（换房成本低）<br>
+    • 学什么框架？（随时可以换）</p>
+    <p><strong>策略：</strong>快速决策，先上车再调整。不要花3个月纠结一个实习offer。</p>
+  </div>
+  <div class="vs-card irrev">
+    <h4>✗ 不可逆决策（慎重）</h4>
+    <p>• 签三方/劳动合同（违约金/档案）<br>
+    • 落户（北京上海户口只有一次机会）<br>
+    • 放弃校招去gap（应届生身份）<br>
+    • 和公司签竞业限制协议</p>
+    <p><strong>策略：</strong>慢决策，多问人，查清楚再签。宁可推迟一周，不要签了后悔三年。</p>
+  </div>
+</div>
+
+<h4>10-10-10法则</h4>
+<div class="perspective-grid">
+  <div class="persp-card">
+    <div class="timeframe">10周后</div>
+    <div class="question">这个选择，10周后我会怎么看？</div>
+  </div>
+  <div class="persp-card">
+    <div class="timeframe">10个月后</div>
+    <div class="question">10个月后，这个决定还重要吗？</div>
+  </div>
+  <div class="persp-card">
+    <div class="timeframe">10年后</div>
+    <div class="question">10年后回头看，哪个选择让我不后悔？</div>
+  </div>
+</div>
+<p style="font-size:14px;color:var(--muted);">当你纠结两个offer时，想想10年后——你更在意"多赚了5万"还是"学到了真东西"？大多数短期痛苦（加班、搬家）在10年后都不重要，而技能积累和履历背书会一直跟着你。</p>
+
+<h3>4.3 Plan B/C触发条件</h3>
+<table>
+  <tr><th>方案</th><th>什么时候启动</th><th>具体动作</th></tr>
+  <tr><td><strong>Plan B：春招补录</strong></td><td>秋招结束（11月底）时，手里0个offer或offer不满意</td><td>• 12月复盘：简历/面试哪里挂了？<br>• 1-2月刷题+改简历，准备春招<br>• 春招3-4月是最后一波校招机会，务必抓住</td></tr>
+  <tr><td><strong>Plan C：国企/事业单位</strong></td><td>互联网秋招进展不顺，或你发现自己更想要稳定</td><td>• 9-10月：关注国家电网/中国电子/中电科等国企校招<br>• 注意：国企网申很早（9-10月），笔试考行测+专业知识<br>• 11-12月：国考/省考报名</td></tr>
+  <tr><td><strong>Plan D：考公/选调生</strong></td><td>坚定想进体制内，或互联网就业市场极差时</td><td>• 国考：10月报名，11月底笔试<br>• 省考：多数省份2-3月报名<br>• 选调生：看学校资格，9-11月关注学校就业网<br>• 备考周期：至少3-6个月</td></tr>
+  <tr><td><strong>Plan E：港硕/新硕</strong></td><td>秋招完全没offer，且家庭经济条件允许（30-50万预算）</td><td>• 申请季9-12月，12月前递交申请<br>• 港三（港大/港中文/港科技）CS相关项目<br>• 好处：1年毕业，可拿应届生身份参加2029届校招<br>• 风险：费用高，回来仍需面对就业市场</td></tr>
+</table>
+
+<h3>4.4 求职心态与概率思维</h3>
+<div class="card-grid">
+  <div class="info-card">
+    <h4>概率思维：面试是 numbers game</h4>
+    <p>把面试当<strong>概率游戏</strong>，不是对个人能力的审判：<br><br>
+    • 投100份简历 → 20份笔试 → 10个面试 → 3个二面 → 1个offer<br>
+    • <strong>被拒是常态，不是失败</strong>——你只是在提高基数<br>
+    • 每次面试后复盘：哪题答得不好？下次怎么改进？<br>
+    • 不要因为一次面试挂了就否定自己——可能只是岗位不匹配、可能是面试官今天心情不好</p>
+  </div>
+  <div class="info-card">
+    <h4>同辈压力应对</h4>
+    <p>• <strong>别人的offer ≠ 你的价值：</strong>有人去了大厂但996，有人去了小厂但技术成长快——人生是马拉松，不是百米冲刺<br>
+    • <strong>减少社交媒体比较：</strong>朋友圈/脉脉上全是"拿到字节SP"，沉默的大多数你看不到<br>
+    • <strong>和昨天的自己比：</strong>这周比上周多会了一个技能、多面了一家公司，就是进步<br>
+    • <strong>接受不确定性：</strong>第一份工作不会定义你的一生——工作3-5年后跳槽，第一份工作的权重会快速下降</p>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>最后一句话：</strong>求职是信息收集 + 概率优化 + 心态管理。你不需要"完美"，你只需要"比昨天好一点，比平均多投一点，比多数人坚持久一点"。
+</div>
+
+</section>
+
+<footer style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">
+  软实力权益决策指南 · 泛AI软件就业作战资料包 · 2026.09<br>
+  法律条文来源：《中华人民共和国劳动合同法》《劳动法》《社会保险法》《住房公积金管理条例》 · 人社部 mohrss.gov.cn · 中国人大网 npc.gov.cn
+</footer>
+
+</div>
+</body>
+</html>

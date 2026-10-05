@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · Rust（陈毓椿, BV1uitpzNE5L）"
+---
+
 # 2025科协暑培 · Rust（陈毓椿, BV1uitpzNE5L）
 
 ## 定位

@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · Web 基础（姚宇辰, BV1UmhszLEey）"
+---
+
 # 2025科协暑培 · Web 基础（姚宇辰, BV1UmhszLEey）
 
 ## 定位

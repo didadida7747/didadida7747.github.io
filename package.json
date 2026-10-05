@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev",
-    "build": "vitepress build",
+    "build": "vitepress build && node scripts/copy-html-assets.mjs",
     "preview": "vitepress preview",
     "rebuild": "node scripts/rebuild.mjs",
     "wx:sync": "npm --prefix ../04_前沿科技雷达/公众号精选 run wx:sync"

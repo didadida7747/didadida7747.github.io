@@ -1,3 +1,7 @@
+---
+title: "AI 编程工具选择指南"
+---
+
 # AI 编程工具选择指南
 
 更新时间：2026-08-13
@@ -60,14 +64,13 @@ OMP 的特色更集中在多模型路由、LSP/DAP、子代理和可扩展运行
 
 ## 本目录入口
 
-- [Codex 学习资料](/01-电脑与工具链/AI编程工具/codex-learning/)
-- [Grok Build 学习资料](/01-电脑与工具链/AI编程工具/grok-learning/00-start-here)
-- [OMP 学习资料](/01-电脑与工具链/AI编程工具/omp使用/)
-- [ZCode 使用指南](/01-电脑与工具链/AI编程工具/ZCode使用指南-大二学生版)
+- [Codex 学习资料](#/doc/d007)
+- [Grok Build 学习资料](#/doc/d020)
+- [OMP 学习资料](#/doc/d035)
+- [ZCode 使用指南](#/doc/d041)
 
 ## 外部来源
 
 - Codex 官方文档：https://developers.openai.com/codex/
 - OMP 官方项目：https://github.com/can1357/oh-my-pi
 - OMP 官方站点：https://omp.sh/
-

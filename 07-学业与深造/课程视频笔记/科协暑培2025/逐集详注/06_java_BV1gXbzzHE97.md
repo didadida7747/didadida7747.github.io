@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · Java 基础（康嘉成, BV1gXbzzHE97）"
+---
+
 # 2025科协暑培 · Java 基础（康嘉成, BV1gXbzzHE97）
 
 ## 定位

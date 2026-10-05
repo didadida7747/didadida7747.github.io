@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · LLM Reasoning: From Informal to Formal（科协学术部讲者, BV1vr8FzJEcV）"
+---
+
 # 2025科协暑培 · LLM Reasoning: From Informal to Formal（科协学术部讲者, BV1vr8FzJEcV）
 
 > 讲者姓名 frontmatter 未载，开场仅称"刚从温哥华开会回来、大三升大四"；该讲者所在组即文中 2 月发布 90.4 SOTA formal prover 的团队。

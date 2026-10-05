@@ -1,3 +1,7 @@
+---
+title: "2026科协暑培 · 第5讲 AI Overview（杨凯森, BV1oH346AEwU）"
+---
+
 # 2026科协暑培 · 第5讲 AI Overview（杨凯森, BV1oH346AEwU）
 
 ## 定位

@@ -1,3 +1,7 @@
+---
+title: "2026科协暑培 · 第11讲 LLM 与网络安全（eki, BV1pS8g6yEsv）"
+---
+
 # 2026科协暑培 · 第11讲 LLM 与网络安全（eki, BV1pS8g6yEsv）
 
 ## 定位

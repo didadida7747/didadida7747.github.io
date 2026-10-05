@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · 神经网络与 PyTorch 入门（梁改正, BV1M6gVzfE1M）"
+---
+
 # 2025科协暑培 · 神经网络与 PyTorch 入门（梁改正, BV1M6gVzfE1M）
 
 ## 定位

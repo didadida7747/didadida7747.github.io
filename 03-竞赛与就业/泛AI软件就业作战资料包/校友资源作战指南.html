@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校友资源作战指南 · 本校人泛AI/软件就业</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b5fff'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E6%A0%A1%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f5f6f8;
+  --surface:#ffffff;
+  --ink:#1a2332;
+  --ink-2:#3d4a5c;
+  --ink-3:#6b7789;
+  --line:#e3e7ee;
+  --accent:#0b5fff;
+  --accent-soft:#e8f0ff;
+  --accent-2:#c8102e;
+  --good:#0a8a4a;
+  --warn:#b8860b;
+  --code-bg:#0f1729;
+  --code-ink:#e2e8f0;
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ===== Hero ===== */
+.hero{
+  background:linear-gradient(135deg,#0b1e3f 0%,#123a7a 55%,#0b5fff 100%);
+  color:#fff;padding:56px 0 48px;
+}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+.hero .sub{font-size:16px;opacity:.9;max-width:780px}
+.hero .meta{margin-top:18px;font-size:13px;opacity:.75}
+.hero .badges{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .badge{
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  padding:4px 12px;border-radius:999px;font-size:12.5px;
+}
+
+/* ===== Nav ===== */
+.nav{
+  position:sticky;top:0;z-index:50;background:var(--surface);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.03);
+}
+.nav-inner{display:flex;gap:4px;overflow-x:auto;padding:10px 0}
+.nav a{
+  white-space:nowrap;padding:7px 14px;border-radius:8px;font-size:13.5px;
+  color:var(--ink-2);font-weight:500;
+}
+.nav a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none}
+
+/* ===== Sections ===== */
+section{padding:42px 0 8px}
+h2{
+  font-size:24px;font-weight:800;margin-bottom:6px;
+  display:flex;align-items:center;gap:10px;
+}
+h2 .num{
+  display:inline-flex;width:34px;height:34px;border-radius:8px;
+  background:var(--accent);color:#fff;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;flex-shrink:0;
+}
+h3{font-size:17px;font-weight:700;margin:26px 0 10px;color:var(--ink)}
+.lead{color:var(--ink-2);font-size:14.5px;margin-bottom:18px;max-width:900px}
+.src{
+  font-size:12px;color:var(--ink-3);margin-top:6px;
+  border-left:3px solid var(--line);padding-left:10px;
+}
+.src a{color:var(--ink-3);word-break:break-all}
+
+/* ===== Cards / grid ===== */
+.grid{display:grid;gap:16px;margin:16px 0}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;
+}
+.card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+.card p,.card li{font-size:13.5px;color:var(--ink-2)}
+.card ul{padding-left:18px;margin-top:6px}
+.card ul li{margin-bottom:4px}
+
+/* ===== Stat tiles ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.stat{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;text-align:center;
+}
+.stat .v{font-size:26px;font-weight:800;color:var(--accent);line-height:1.2}
+.stat .l{font-size:12.5px;color:var(--ink-3);margin-top:4px}
+
+/* ===== Tables ===== */
+.table-wrap{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);word-wrap:break-word}
+th{background:#f0f3f8;font-weight:700;color:var(--ink);font-size:13px}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#fafbfe}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td:first-child{white-space:nowrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11.5px;font-weight:600}
+.tag-blue{background:var(--accent-soft);color:var(--accent)}
+.tag-red{background:#fde8eb;color:var(--accent-2)}
+.tag-green{background:#e6f5ec;color:var(--good)}
+.tag-gray{background:#eef0f4;color:var(--ink-3)}
+.na{color:var(--ink-3);font-style:italic}
+
+/* ===== Code block / template ===== */
+.tpl{
+  background:var(--code-bg);color:var(--code-ink);border-radius:var(--radius);
+  padding:34px 18px 16px;margin:12px 0;font-size:13px;line-height:1.7;
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  white-space:pre-wrap;word-break:break-word;position:relative;
+}
+.tpl .label{
+  position:absolute;top:8px;right:10px;font-size:11px;color:#8aa0c0;
+  background:rgba(255,255,255,.08);padding:2px 8px;border-radius:4px;
+}
+.copy-btn{
+  position:absolute;top:8px;right:64px;cursor:pointer;
+  background:rgba(255,255,255,.1);color:#dbe4f3;border:1px solid rgba(255,255,255,.15);
+  padding:2px 10px;border-radius:4px;font-size:11px;font-family:inherit;
+}
+.copy-btn:hover{background:rgba(255,255,255,.2)}
+.tpl-title{font-weight:700;color:#ffd166;margin-bottom:6px;font-family:inherit}
+
+/* ===== Steps ===== */
+.steps{counter-reset:step;margin:14px 0}
+.step{
+  position:relative;padding:12px 14px 12px 52px;margin-bottom:10px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+}
+.step::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;
+  background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;
+}
+.step b{color:var(--ink)}
+.step p{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+
+/* ===== Callout ===== */
+.callout{
+  border-left:4px solid var(--accent);background:var(--accent-soft);
+  padding:12px 16px;border-radius:0 var(--radius) var(--radius) 0;margin:14px 0;
+  font-size:13.5px;color:var(--ink-2);
+}
+.callout.warn{border-color:var(--warn);background:#fdf6e3}
+.callout.danger{border-color:var(--accent-2);background:#fde8eb}
+.callout b{color:var(--ink)}
+
+/* ===== Footer ===== */
+footer{
+  margin-top:48px;padding:28px 0;border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:12.5px;
+}
+.toc-mini{font-size:13px;color:var(--ink-3);margin-top:8px}
+.toc-mini a{color:var(--ink-3);margin-right:12px}
+
+@media (max-width:820px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:26px}
+  th,td{padding:7px 8px;font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>校友资源作战指南</h1>
+    <div class="sub">本校 · 泛 AI / 软件方向本科就业 · 从官方就业数据到内推进场的全套打法</div>
+    <div class="badges">
+      <span class="badge">数据抓取日期 2026-09-28</span>
+      <span class="badge">源：校园网内网系统 官方 PDF</span>
+      <span class="badge">适用：电院 / 计算机 / 人工智能方向</span>
+      <span class="badge">Python + Go / 大模型应用开发</span>
+    </div>
+    <div class="meta">本指南所有就业数据均来自本校官方就业质量年度报告（PDF 原件已存于本目录）；校友分布为公开报道与官方报告交叉印证，未获取的字段一律标注"未获取"，不编造姓名与精确人数。</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#m1">① 官方就业数据</a>
+    <a href="#m2">② 目标公司校友分布</a>
+    <a href="#m3">③ 找校友路径</a>
+    <a href="#m4">④ 内推全流程</a>
+    <a href="#m5">⑤ 校内资源</a>
+    <a href="#m6">⑥ 长期人脉经营</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ====================== MODULE 1 ====================== -->
+<section id="m1">
+  <h2><span class="num">1</span>本校官方就业数据（2024 / 2025 届）</h2>
+  <p class="lead">数据直接从本校就业信息网公开 PDF 提取，统计截至 2024 年 12 月 / 2025 年 12 月。两份 PDF 原件已下载到本资料包目录下（就业质量报告（已脱敏） / 就业质量报告（已脱敏））。</p>
+
+  <div class="callout">
+    <b>报告来源：</b><br>
+    2024 届报告：https://校园网内网系统 发布）<br>
+    2025 届报告：https://校园网内网系统 发布）<br>
+    抓取日期：<b>2026-09-28</b>。
+  </div>
+
+  <h3>1.1 总盘子：规模与毕业去向落实率</h3>
+  <div class="stats">
+    <div class="stat"><div class="v">10076</div><div class="l">2025 届毕业生总数（本 5399 / 硕 4307 / 博 370）</div></div>
+    <div class="stat"><div class="v">97.22%</div><div class="l">2025 届总体毕业去向落实率（本 96.39% / 研 98.18%）</div></div>
+    <div class="stat"><div class="v">54.10%</div><div class="l">2025 届本科升学率（境内 45.01% + 出境 9.09%）</div></div>
+    <div class="stat"><div class="v">86.32%</div><div class="l">2025 届毕业生重点领域高质量就业占比</div></div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:22%"><col style="width:26%"><col style="width:26%"><col style="width:26%"></colgroup>
+      <thead><tr><th>指标</th><th>2024 届</th><th>2025 届</th><th>口径</th></tr></thead>
+      <tbody>
+        <tr><td>毕业生总数</td><td>9751 人（本 5317 / 硕 4086 / 博 348）</td><td>10076 人（本 5399 / 硕 4307 / 博 370）</td><td>截至当年 12 月</td></tr>
+        <tr><td>总体毕业去向落实率</td><td>97.04%</td><td>97.22%</td><td>教育部口径</td></tr>
+        <tr><td>本科落实率</td><td>95.86%</td><td>96.39%</td><td>—</td></tr>
+        <tr><td>研究生落实率</td><td>98.44%</td><td>98.18%</td><td>—</td></tr>
+        <tr><td>本科升学率</td><td>54.79%（境内 46.81% + 出境 7.97%）</td><td>54.10%（境内 45.01% + 出境 9.09%）</td><td>本科生以升学为主</td></tr>
+        <tr><td>研究生单位就业占比</td><td>95.04%</td><td>94.93%</td><td>研究生直接就业为主</td></tr>
+        <tr><td>签约世界 500 强人数</td><td class="na">未单列总数（本科+研究生分列）</td><td>本科 556 人 / 研究生 1685 人</td><td>2025 报告表 1-13/1-14</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">来源：本校《2024 届毕业生就业质量年度报告》第 5、14–15 页；《2025 届》第 5、14、20–23 页。抓取 2026-09-28。</div>
+
+  <h3>1.2 重点就业单位 TOP 名单（官方签约人数）</h3>
+  <p class="lead">这是你"找校友"的最硬线索——名单上的公司就是本校人密度最高的地方。</p>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:6%"><col style="width:30%"><col style="width:14%"><col style="width:14%"><col style="width:14%"><col style="width:22%"></colgroup>
+      <thead><tr><th>序</th><th>单位</th><th>2025 本科</th><th>2025 研究生</th><th>2025 合计</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>华为技术有限公司</td><td class="num">106</td><td class="num">701</td><td class="num"><b>807</b></td><td><span class="tag tag-red">本校第一大户</span></td></tr>
+        <tr><td>2</td><td>中国电子科技集团（CETC）</td><td class="num">15</td><td class="num">223</td><td class="num">238</td><td><span class="tag tag-blue">军工/研究所</span></td></tr>
+        <tr><td>3</td><td>比亚迪股份有限公司</td><td class="num">59</td><td class="num">159</td><td class="num">218</td><td><span class="tag tag-blue">新能源</span></td></tr>
+        <tr><td>4</td><td>中国航空工业集团</td><td class="num">17</td><td class="num">142</td><td class="num">159</td><td><span class="tag tag-blue">军工</span></td></tr>
+        <tr><td>5</td><td>深圳市联洲国际技术有限公司</td><td class="num">80</td><td class="num">49</td><td class="num">129</td><td><span class="tag tag-gray">P-T-S/普联系列</span></td></tr>
+        <tr><td>6</td><td>中国航天科技集团</td><td class="num">未入本科 TOP30</td><td class="num">110</td><td class="num">110+</td><td><span class="tag tag-blue">军工</span></td></tr>
+        <tr><td>7</td><td>阿里巴巴集团</td><td class="num">14</td><td class="num">93</td><td class="num">107</td><td><span class="tag tag-green">互联网大厂</span></td></tr>
+        <tr><td>8</td><td>美团（北京三快在线）</td><td class="num">18</td><td class="num">86</td><td class="num">104</td><td><span class="tag tag-green">互联网大厂</span></td></tr>
+        <tr><td>9</td><td>中兴通讯</td><td class="num">9</td><td class="num">74</td><td class="num">83</td><td><span class="tag tag-blue">通信</span></td></tr>
+        <tr><td>10</td><td>百度集团</td><td class="num">未入本科 TOP30</td><td class="num">70</td><td class="num">70+</td><td><span class="tag tag-green">AI/大厂</span></td></tr>
+        <tr><td>11</td><td>字节跳动（北京字跳网络）</td><td class="num">9</td><td class="num">66</td><td class="num">75</td><td><span class="tag tag-green">AI/大厂</span></td></tr>
+        <tr><td>12</td><td>小米集团</td><td class="num">7（500 强表）</td><td class="num">65</td><td class="num">72+</td><td><span class="tag tag-green">智能硬件</span></td></tr>
+        <tr><td>13</td><td>TCL 科技集团</td><td class="num">39</td><td class="num">未入研究生 TOP30</td><td class="num">39+</td><td><span class="tag tag-blue">制造</span></td></tr>
+        <tr><td>14</td><td>中国移动</td><td class="num">38</td><td class="num">50</td><td class="num">88</td><td><span class="tag tag-blue">运营商</span></td></tr>
+        <tr><td>15</td><td>中国电信</td><td class="num">36</td><td class="num">60</td><td class="num">96</td><td><span class="tag tag-blue">运营商</span></td></tr>
+        <tr><td>16</td><td>京东集团</td><td class="num">12</td><td class="num">45</td><td class="num">57</td><td><span class="tag tag-green">大厂</span></td></tr>
+        <tr><td>17</td><td>腾讯控股</td><td class="num">13</td><td class="num">44</td><td class="num">57</td><td><span class="tag tag-green">大厂</span></td></tr>
+        <tr><td>18</td><td>中国电子信息产业集团（CEC）</td><td class="num">23</td><td class="num">39</td><td class="num">62</td><td><span class="tag tag-blue">军工/国央企</span></td></tr>
+        <tr><td>19</td><td>荣耀终端</td><td class="num">未入本科 TOP30</td><td class="num">37</td><td class="num">37+</td><td><span class="tag tag-blue">终端</span></td></tr>
+        <tr><td>20</td><td>快手科技</td><td class="num">未入本科 TOP30</td><td class="num">20</td><td class="num">20+</td><td><span class="tag tag-green">大厂</span></td></tr>
+        <tr><td>21</td><td>拼多多（上海寻梦）</td><td class="num">未入本科 TOP30</td><td class="num">24</td><td class="num">24+</td><td><span class="tag tag-green">大厂</span></td></tr>
+        <tr><td>22</td><td>普联技术（TP-Link）</td><td class="num">11</td><td class="num">未入研究生 TOP30</td><td class="num">11+</td><td><span class="tag tag-gray">网络设备</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">来源：本校《2025 届毕业生就业质量年度报告》表 1-11（本科签约集中单位）、表 1-12（研究生）。"合计"为本+研相加，未在本科 TOP30 中出现的按"未入表"处理，不臆测零。抓取 2026-09-28。</div>
+
+  <h3>1.3 行业分布（签约去向）</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:34%"><col style="width:16.5%"><col style="width:16.5%"><col style="width:16.5%"><col style="width:16.5%"></colgroup>
+      <thead><tr><th>行业类（%）</th><th>2024 本科</th><th>2025 本科</th><th>2024 研究生</th><th>2025 研究生</th></tr></thead>
+      <tbody>
+        <tr><td>信息传输、软件和信息技术服务业</td><td class="num">32.49</td><td class="num"><b>39.95</b></td><td class="num">44.89</td><td class="num"><b>45.59</b></td></tr>
+        <tr><td>制造业</td><td class="num">33.35</td><td class="num">26.94</td><td class="num">17.91</td><td class="num">16.15</td></tr>
+        <tr><td>科学研究和技术服务业</td><td class="num">8.06</td><td class="num">9.84</td><td class="num">19.25</td><td class="num">22.64</td></tr>
+        <tr><td>教育业</td><td class="num">4.84</td><td class="num">3.87</td><td class="num">5.96</td><td class="num">4.99</td></tr>
+        <tr><td>金融业</td><td class="num">3.05</td><td class="num">2.15</td><td class="num">4.71</td><td class="num">3.36</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><b>对你（大模型应用 / Python+Go）的含义：</b>本科生去"信息传输、软件和信息技术服务业"的比例一年从 32.49% 跳到 39.95%，是涨幅最大的方向；研究生在这个行业已近一半。这是你的主赛道。</div>
+  <div class="src">来源：2025 报告表 1-6、表 3-1。抓取 2026-09-28。</div>
+
+  <h3>1.4 地域分布（主要就业城市）</h3>
+  <div class="grid grid-2">
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup>
+        <thead><tr><th>城市</th><th>2024 本科</th><th>2025 本科</th></tr></thead>
+        <tbody>
+          <tr><td>深圳</td><td class="num">13.36%</td><td class="num"><b>15.81%</b></td></tr>
+          <tr><td>西安</td><td class="num">19.30%</td><td class="num">15.00%</td></tr>
+          <tr><td>北京</td><td class="num">4.95%</td><td class="num">7.37%</td></tr>
+          <tr><td>上海</td><td class="num">6.39%</td><td class="num">6.18%</td></tr>
+          <tr><td>成都</td><td class="num">4.03%</td><td class="num">4.09%</td></tr>
+          <tr><td>杭州</td><td class="num">2.42%</td><td class="num">2.96%</td></tr>
+          <tr><td>武汉</td><td class="num">1.79%</td><td class="num">2.20%</td></tr>
+          <tr><td>南京</td><td class="num">1.96%</td><td class="num">2.20%</td></tr>
+          <tr><td>广州</td><td class="num">2.07%</td><td class="num">2.04%</td></tr>
+          <tr><td>合肥</td><td class="num">2.30%</td><td class="num">1.72%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup>
+        <thead><tr><th>城市</th><th>2024 研究生</th><th>2025 研究生</th></tr></thead>
+        <tbody>
+          <tr><td>西安</td><td class="num">26.09%</td><td class="num">21.68%</td></tr>
+          <tr><td>上海</td><td class="num">12.63%</td><td class="num">15.85%</td></tr>
+          <tr><td>北京</td><td class="num">12.63%</td><td class="num">12.97%</td></tr>
+          <tr><td>深圳</td><td class="num">6.77%</td><td class="num">9.44%</td></tr>
+          <tr><td>杭州</td><td class="num">5.60%</td><td class="num">5.17%</td></tr>
+          <tr><td>成都</td><td class="num">4.07%</td><td class="num">3.83%</td></tr>
+          <tr><td>武汉</td><td class="num">2.68%</td><td class="num">2.45%</td></tr>
+          <tr><td>南京</td><td class="num">2.80%</td><td class="num">2.31%</td></tr>
+          <tr><td>合肥</td><td class="num">1.55%</td><td class="num">1.70%</td></tr>
+          <tr><td>广州</td><td class="num">2.13%</td><td class="num">1.54%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="callout"><b>地域选择建议：</b>本科去深圳已成第一选择（超过西安）；研究生留西安比例最高但向上海/北京扩散。做 AI 应用开发，北京/上海/深圳/杭州是岗位最密的四城，校友资源也最厚。</div>
+  <div class="src">来源：2024 报告表 1-8/1-9；2025 报告表 1-8/1-9。抓取 2026-09-28。</div>
+
+  <h3>1.5 升学率与深造去向</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <h4>本科升学率（54.10%）</h4>
+      <ul>
+        <li>境内深造 45.01%：留本校 63.01%，去其他双一流 31.38%，研究所 4.62%</li>
+        <li>出国出境 9.09%（491 人）：南洋理工、新加坡国立、布里斯托、悉尼等</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>外校深造 TOP10（2025 届本科）</h4>
+      <ul>
+        <li>国科大 75 · 西安交大 65 · 东南大学 63</li>
+        <li>电子科大 41 · 中科大 41 · 浙大 38</li>
+        <li>北航 35 · 上交 33 · 清华 32 · 复旦 28</li>
+      </ul>
+    </div>
+  </div>
+  <div class="src">来源：2025 报告 1.5 节、表 1-15。抓取 2026-09-28。</div>
+</section>
+
+<!-- ====================== MODULE 2 ====================== -->
+<section id="m2">
+  <h2><span class="num">2</span>目标公司校友分布</h2>
+  <p class="lead">综合官方签约数据 + 公开报道，给出你目标公司的"本校人密度量级"。注意：官方报告只公布签约人数，不公布在职总人数；下表"在职量级"为公开报道口径，已标注来源与年份，不编造精确数字。</p>
+
+  <h3>2.1 通信 / 军工 / 科技央企（本校基本盘）</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:16%"><col style="width:20%"><col style="width:22%"><col style="width:42%"></colgroup>
+      <thead><tr><th>公司</th><th>2025 届签约（本+研）</th><th>本校人在职量级</th><th>对口传统 / 说明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>华为</b></td>
+          <td class="num">807 人（本 106 + 研 701）</td>
+          <td><span class="tag tag-red">全国高校第一</span> 公开报道：截至 2018.9 在职本校校友 8406 人；每年入职 500–1000 人</td>
+          <td>华为西安研究所毗邻本校南校区，是本校最大雇主；公开报道中出现的本校籍华为高管包括中国区总裁鲁勇、手机产品线总裁何刚（据澎湃 2019 报道）。校招签约人数连续多年全国高校第一。</td>
+        </tr>
+        <tr>
+          <td><b>中国电科 CETC</b></td>
+          <td class="num">238 人（本 15 + 研 223）</td>
+          <td>研究生大户，多个研究所（西安 20 所、39 所等）常年定点招聘</td>
+          <td>本校军工就业主渠道；2024 届研究生签约 CETC 306 人。研究所岗位偏硬件/信号/雷达，本科直招较少，多走研究生。</td>
+        </tr>
+        <tr>
+          <td><b>中兴通讯</b></td>
+          <td class="num">83 人（本 9 + 研 74）</td>
+          <td>本校传统对口通信大厂，深圳/南京/西安均有大量校友</td>
+          <td>与华为同属通信设备第一梯队；西安研究所也在高新区，校友密度高。</td>
+        </tr>
+        <tr>
+          <td><b>中国电子 CEC</b></td>
+          <td class="num">62 人（本 23 + 研 39）</td>
+          <td>含中国电子信息产业集团下属多研究所</td>
+          <td>与 CETC 并列军工电子两大集团。</td>
+        </tr>
+        <tr>
+          <td><b>中航工业 / 航天科技 / 航天科工 / 兵器</b></td>
+          <td class="num">合计约 377 人（研为主）</td>
+          <td>研究生为主，研究所/院所岗位</td>
+          <td>2025 届军工单位及部队共 1050 人。本科进核心研究所较难，多需读研。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">签约人数来源：2025 报告表 1-11/1-12；在职 8406 人来源：澎湃新闻《到华为去！到本校来！》2019-05（<a href="https://m.thepaper.cn/newsDetail_forward_3539238" target="_blank">链接</a>）；华为每年入职 500–1000 人来源：本校校友处文章（链接）。抓取 2026-09-28。</div>
+
+  <h3>2.2 互联网大厂（你重点目标）</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:14%"><col style="width:18%"><col style="width:24%"><col style="width:44%"></colgroup>
+      <thead><tr><th>公司</th><th>2025 届签约</th><th>本校人特征</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><b>阿里巴巴</b></td><td class="num">107（本 14 + 研 93）</td><td>研究生为主，杭州/北京/西安</td><td>本校与阿里有校企合作（见 2025 报告学校概况）；淘天、阿里云、通义实验室均有本校校友。</td></tr>
+        <tr><td><b>美团</b></td><td class="num">104（本 18 + 研 86）</td><td>北京为主，技术岗</td><td>本科可进，本校人占比在大厂里相对高，是本科友好型选择。</td></tr>
+        <tr><td><b>字节跳动</b></td><td class="num">75（本 9 + 研 66）</td><td>北京/上海，推荐/后端/算法</td><td>2024 届研究生签约 29 人，2025 届涨到 66 人，增速快；大模型方向（豆包/Seed）校友正在增多。</td></tr>
+        <tr><td><b>百度</b></td><td class="num">70+（研 70）</td><td>北京为主，AI 岗多</td><td>2024 届研究生 45 人；百度是本校传统 AI 雇主，文心/自动驾驶团队校友多。</td></tr>
+        <tr><td><b>腾讯</b></td><td class="num">57（本 13 + 研 44）</td><td>深圳/北京，本校腾讯创新俱乐部 2007 年成立</td><td>俱乐部历史久，内推通道顺；但本科转正门槛较高。</td></tr>
+        <tr><td><b>京东</b></td><td class="num">57（本 12 + 研 45）</td><td>北京为主</td><td>本校人稳定流入。</td></tr>
+        <tr><td><b>快手</b></td><td class="num">20+（研 20）</td><td>北京为主</td><td>2025 新进入研究生 TOP30，规模小于上面几家。</td></tr>
+        <tr><td><b>拼多多</b></td><td class="num">24+（研 24）</td><td>上海为主</td><td>薪资高、强度大，本校研究生有一定规模。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">签约数据：2025 报告表 1-11/1-12。字节 2024 vs 2025 增速：2024 报告表 1-13（29 人）对比 2025 报告表 1-12（66 人）。抓取 2026-09-28。</div>
+
+  <h3>2.3 AI 创业公司（DeepSeek / 智谱等）</h3>
+  <div class="callout warn">
+    <b>未获取精确签约数据。</b>本校官方就业质量报告只列"签约集中单位 TOP30"，DeepSeek、智谱、月之暗面、MiniMax、百川等 AI 创业公司未进入 2024/2025 届 TOP30 名单，因此<b>没有官方公开人数</b>。可确认的是：(1) 本校与阿里、腾讯、华为等大厂有校企联合实验室（2025 报告学校概况原文提及）；(2) 这些公司校招量本身小、以硕博/顶尖本科为主，本校毕业生有进入但未形成规模统计。建议：去这些公司直接用脉脉/LinkedIn 按"学校=本校 + 公司=DeepSeek/智谱"搜在职员工，能看到多少算多少，不要轻信网传"XX 人团队"。
+  </div>
+  <div class="src">来源：2024/2025 报告签约集中单位名单（未出现 AI 创业公司）；校企合作表述见 2025 报告第 3 页。抓取 2026-09-28。</div>
+</section>
+
+<!-- ====================== MODULE 3 ====================== -->
+<section id="m3">
+  <h2><span class="num">3</span>找校友路径</h2>
+  <p class="lead">按"冷启动 → 温连接 → 热引荐"三层推进。原则：<b>先给价值再请教，问问题不要 offer</b>。</p>
+
+  <h3>3.1 脉脉 / LinkedIn 按"学校+公司"筛选（操作步骤）</h3>
+  <div class="steps">
+    <div class="step"><b>注册并完善档案</b><p>脉脉用真实头像、学校选"本校"、专业写"电子信息工程"、目标岗位写"大模型应用开发/后端开发"。LinkedIn 同理，英文简历同步挂上 GitHub。</p></div>
+    <div class="step"><b>进入"人脉/校友"搜索</b><p>脉脉：首页搜索框输公司名（如"字节跳动"）→ 进入公司主页 → 点"员工"→ 在筛选栏找"学校/毕业院校"→ 选"本校"。LinkedIn：搜索公司名 → People → 筛选 "School: 本校 University"。</p></div>
+    <div class="step"><b>按层级排序</b><p>优先找 2–5 年经验的"学长学姐"（刚毕业 1–3 年的人最愿意回消息，也最了解校招现状）；资深 director 级先关注不打扰。</p></div>
+    <div class="step"><b>看共同连接</b><p>脉脉"二度人脉"（共同好友/同校群）通过率远高于陌生人。先在本校校内群里加几个目标公司的人，再通过他们二度扩散。</p></div>
+    <div class="step"><b>发私信（见下方模板）</b><p>不要一上来就"求内推"。先做信息访谈，聊 2–3 轮后再自然提内推。</p></div>
+  </div>
+
+  <h3>3.2 本校校友会 / 地方校友群入口</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <h4>官方入口</h4>
+      <ul>
+        <li>校友事务与对外合作处官网：校园网内网系统
+        <li>微信小程序：<b>"本校人"</b>（校友总会官方，可看校友风采、分会活动）</li>
+        <li>校友总会电话：029-81891839；邮箱 xyzh@校园网内网系统
+        <li>国内地区校友分会 44 个（北京/深圳/上海/广州/杭州/成都/西安等），海外有硅谷、美国、加拿大、澳新等分会</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>学院校友联系人（2026 通讯录）</h4>
+      <ul>
+        <li>通信工程学院：刘航 029-88204185</li>
+        <li>广州研究院：王文娟 020-32030692</li>
+        <li>杭州研究院：潘雪艳 0571-22828362</li>
+        <li>完整通讯录：校友分会与学院联系人（2026）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><b>用法：</b>去目标城市前，先在"本校人"小程序找当地校友会秘书长，说"我是本校电院在读、准备去 XX 城找 AI 应用方向实习，想请教当地校友"——地方校友会通常有定期聚餐/羽毛球/博饼活动，线下见一次比线上发 10 条私信管用。</div>
+  <div class="src">来源：本校校友处官网 校园网内网系统 2026-09-28）；分会通讯录 2026 版。</div>
+
+  <h3>3.3 学长学姐 / 导师 / 辅导员 / 就业办引荐</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup>
+      <thead><tr><th>渠道</th><th>怎么开口</th><th>注意点</th></tr></thead>
+      <tbody>
+        <tr><td><b>直系学长学姐</b></td><td>学院大群/年级群问"有没有在 XX 公司做后端的师兄师姐想请教 15 分钟"</td><td>带奶茶/请客吃饭；别白嫖，面完给反馈</td></tr>
+        <tr><td><b>导师 / 实验室老师</b></td><td>主动报方向："老师我想去工业界做大模型应用，您和华为/字节的横向项目里有没有能推荐的人"</td><td>有横向项目的导师人脉极广；本校有 68 个校企联合实验室</td></tr>
+        <tr><td><b>辅导员</b></td><td>问"咱们学院去年去 XX 公司的学长有没有群"</td><td>辅导员手里有历届就业名单，别不好意思</td></tr>
+        <tr><td><b>就业指导服务中心</b></td><td>校园网内网系统 在线咨询 / 现场预约个体职业咨询（2025 报告：研究生对个体职业咨询有效性评价 94.74%）</td><td>就业办和企业 HR 直接对接，能拿到定向内推码</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>3.4 Cold Message 与信息访谈模板（可直接复制）</h3>
+
+  <div class="tpl"><span class="label">脉脉 / LinkedIn</span><button class="copy-btn" onclick="copyTpl(this)">复制</button><div class="tpl-title">首次联系话术（3 句话，不索取）</div>师兄你好，我是本校电院 2025 级本科在读，方向是大模型应用开发（Python/Go）。
+看到你在 XX 做 XX 方向，我最近在准备暑期实习，想请教 15 分钟：你们团队校招最看重哪类项目经验？
+不会占用太多时间，你方便时回我就行，不方便也完全理解！</div>
+
+  <div class="tpl"><span class="label">信息访谈</span><button class="copy-btn" onclick="copyTpl(this)">复制</button><div class="tpl-title">信息访谈问题清单（按顺序问，别一口气全发）</div>1. 你当年从本校到现在这家公司，走的是校招还是实习转正？
+2. 团队里本校师兄师姐大概什么比例？主要在哪些组？
+3. 校招笔试/面试最常被问哪类题？算法占比重不重？
+4. 本科进你们组现实吗？还是更偏好硕士？
+5. 实习生日常做什么？能接触到核心大模型业务吗？
+6. 如果我现在大二结束，暑假前该补哪 1–2 个项目最有用？
+7. （聊熟之后）方便帮我看一眼简历吗？/ 你们组秋招有内推名额吗？</div>
+
+  <div class="tpl"><span class="label">跟进</span><button class="copy-btn" onclick="copyTpl(this)">复制</button><div class="tpl-title">聊完后 24 小时内的跟进话术</div>师兄谢谢你昨天的时间！
+按你说的，我这周把 [具体行动，如：把 RAG 项目接到 Go 后端、补完力扣 hot100] 做起来。
+如果之后有秋招内推名额，再冒昧打扰你；也欢迎你有空回本校交流，我请你吃饭。</div>
+
+  <div class="callout danger"><b>红线：</b>① 第一次联系绝不发"求内推"；② 不群发模板，每段话里必须有一个只有你们俩知道的细节（他的组、他毕业年份、他的一条动态）；③ 被已读不回不要追问，隔 2–3 个月换一个由头再聊；④ 永远不要把校友当免费简历修改器。</div>
+</section>
+
+<!-- ====================== MODULE 4 ====================== -->
+<section id="m4">
+  <h2><span class="num">4</span>内推全流程</h2>
+  <p class="lead">内推不是"万能直通卡"，但能让你的简历从海投池里被 HR 看见。理解不同公司的内推机制差异，比盲目要码重要 10 倍。</p>
+
+  <h3>4.1 内推码 / 定向内推 / 强推的区别</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:16%"><col style="width:30%"><col style="width:30%"><col style="width:24%"></colgroup>
+      <thead><tr><th>类型</th><th>是什么</th><th>作用</th><th>怎么拿到</th></tr></thead>
+      <tbody>
+        <tr><td><b>内推码</b></td><td>员工在系统生成的一串码，候选人网申时填入</td><td>简历进入"内推池"，HR 优先筛选；不保证笔试/面试</td><td>脉脉/校友群/牛客网公开搜，员工愿意发</td></tr>
+        <tr><td><b>定向内推</b></td><td>员工直接把简历发到某业务组 HR 邮箱/招聘群</td><td>比内推码强，简历直接到用人经理眼前</td><td>和校友聊熟后请他帮忙"发到组里"</td></tr>
+        <tr><td><b>强推 / S 级推荐</b></td><td>员工（通常是高绩效/主管级）背书，HR 必须看</td><td>可能免笔试、直接约面；名额有限</td><td>需要你和推荐人有信任基础，或导师/实验室强关系</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><b>本科实战建议：</b>大二大三先冲"定向内推"实习，秋招时校友帮你"强推"校招。内推码只是保底，别把它当目标。</div>
+
+  <h3>4.2 不同公司内推机制（公开信息整理）</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:14%"><col style="width:30%"><col style="width:30%"><col style="width:26%"></colgroup>
+      <thead><tr><th>公司</th><th>内推入口</th><th>进度查询</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td><b>字节跳动</b></td><td>员工内推码 / 内推系统投递，简历到招聘系统</td><td>候选人在"字节招聘"公众号/官网查进度；内推人可在系统看状态</td><td>内推码不占 HC，但简历初筛较严；一人一年只能推 N 次，推多了校友谨慎</td></tr>
+        <tr><td><b>阿里巴巴</b></td><td>阿里内部内推系统（员工分享链接）</td><td>"阿里巴巴招聘"公众号/官网查；淘天/本地生活等 BU 独立</td><td>内推后 3–7 天没消息=大概率挂，别等</td></tr>
+        <tr><td><b>腾讯</b></td><td>腾讯招聘官网内推链接；本校腾讯创新俱乐部有内推通道</td><td>官网查状态；club 负责人可帮问</td><td>简历池大，内推后最好再找校友帮"催简历"</td></tr>
+        <tr><td><b>华为</b></td><td>华为校招内推码（本校是主场，校友群里到处都是）</td><td>"华为招聘"公众号；西研所各部门 HR 直接对接</td><td>华为是本校第一大户，内推文化极成熟；2025 届招 807 人，本校人之间互相推很常见</td></tr>
+        <tr><td><b>美团</b></td><td>美团招聘内推链接</td><td>官网查；内推人系统可见</td><td>本科友好，本校校友多，主动找回复率高</td></tr>
+        <tr><td><b>百度</b></td><td>百度招聘内推</td><td>官网查</td><td>AI 岗（文心/百度智能云）本校校友集中</td></tr>
+        <tr><td><b>DeepSeek / 智谱等 AI 创业公司</b></td><td>未获取公开内推机制；通常直接邮件 HR 或创始人/员工转发简历</td><td>未获取</td><td>小公司没有标准化内推系统，找到谁内推就直接发邮箱</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">上述内推机制为各公司招聘官网公开流程 + 本校校友公开分享整理，具体规则每年可能调整，投递前以当年官方招聘页为准。DeepSeek/智谱机制标注"未获取"。抓取 2026-09-28。</div>
+
+  <h3>4.3 内推全流程时间线</h3>
+  <div class="steps">
+    <div class="step"><b>暑假（7–8 月）：攒项目 + 找校友</b><p>把大模型应用项目（RAG/Agent/微调）做到能演示；同时在脉脉/校友会联系 2–3 个目标公司校友做信息访谈。</p></div>
+    <div class="step"><b>秋招提前批（7–8 月）：要内推码</b><p>提前批不影响正式批，先海投内推码练手；和校友说"我先投提前批试一下，麻烦帮我留意简历状态"。</p></div>
+    <div class="step"><b>正式秋招（9–10 月）：定向内推</b><p>9 月开学后，找已聊过 2 轮以上的校友帮你"定向发到组里"。本校秋招节奏：9 月宣讲会密集，10 月笔试面试高峰。</p></div>
+    <div class="step"><b>投递后跟进（3–7 天）</b><p>如果简历状态一直是"已投递"没变"被查看"，礼貌请校友帮看一眼系统："师兄我上周投了 XX 组，系统还是已投递状态，方便帮我看下简历有没有被 HR 捞起吗？"</p></div>
+    <div class="step"><b>挂了之后</b><p>24 小时内问校友"方便帮我看看简历哪里可以改吗"，不要沉默消失；春招（次年 3–4 月）再用更新后的简历请他再推一次。</p></div>
+  </div>
+</section>
+
+<!-- ====================== MODULE 5 ====================== -->
+<section id="m5">
+  <h2><span class="num">5</span>校内资源</h2>
+  <p class="lead">本校是少数"校招比校友网还好用"的学校——2025 届吸引 7286 家单位进校、发布岗位 41 万个，岗位供需比 41:1。别舍近求远。</p>
+
+  <h3>5.1 就业信息网与公众号</h3>
+  <div class="grid grid-2">
+    <div class="card">
+      <h4>线上入口</h4>
+      <ul>
+        <li>本校就业信息网：校园网内网系统
+        <li>公众号：<b>"本校就业"</b>（每日推送校招信息）</li>
+        <li>个体职业咨询：就业指导服务中心现场预约（2025 报告满意度 94.74%）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>校招大盘（2025 届）</h4>
+      <ul>
+        <li>进校招聘单位：7286 家</li>
+        <li>发布岗位：41 万+ 个</li>
+        <li>岗位供需比：41:1</li>
+        <li>毕业生平均收到面试 12.7 次、offer 3.74 份、求职耗时 4.33 个月</li>
+      </ul>
+    </div>
+  </div>
+  <div class="src">来源：西安新闻网《陕西两高校就业报告》2026-01-18（<a href="https://www.xiancn.com/content/2026-01/18/content_7324408.htm" target="_blank">链接</a>）；2025 报告 4.1.1 节。抓取 2026-09-28。</div>
+
+  <h3>5.2 宣讲会 / 双选会日历规律</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:18%"><col style="width:42%"><col style="width:40%"></colgroup>
+      <thead><tr><th>时间</th><th>事件</th><th>你该做什么</th></tr></thead>
+      <tbody>
+        <tr><td>3–4 月</td><td>春招双选会、企业春招补录</td><td>大三下：投暑期实习内推，争取实习 return offer</td></tr>
+        <tr><td>5–6 月</td><td>暑期实习面试高峰</td><td>进组实习，留下好印象</td></tr>
+        <tr><td>7–8 月</td><td>秋招提前批开启（字节/阿里/腾讯/美团等）</td><td>内推码投递，练笔面试</td></tr>
+        <tr><td><b>9–10 月</b></td><td><b>秋招正式批：宣讲会最密集期</b>，华为/中电科/各大厂集中进校</td><td>这是主战场！每周跑 2–3 场宣讲会，现场递简历、加 HR 和校友微信</td></tr>
+        <tr><td>11–12 月</td><td>秋招收尾、补录</td><td>收割 offer，签三方</td></tr>
+        <tr><td>次年 3–4 月</td><td>春招（秋招没拿到满意 offer 的补救窗口）</td><td>用秋招面经补投</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.3 校企俱乐部</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:22%"><col style="width:18%"><col style="width:60%"></colgroup>
+      <thead><tr><th>俱乐部</th><th>本校成立时间</th><th>对你的价值</th></tr></thead>
+      <tbody>
+        <tr><td><b>本校华为创新俱乐部</b></td><td>2010 年 11 月</td><td><span class="tag tag-red">华为全国首家高校俱乐部</span>，校团委 + 华为西研所联合指导，下设无线通信/云计算/网络媒体等技术组；有"华创杯"竞赛、西研所参访、内推绿色通道。做通信/硬件/后端都适合。</td></tr>
+        <tr><td><b>本校腾讯创新俱乐部（XDTIC）</b></td><td>2007 年 4 月</td><td>互联网产品/技术方向，技术部+线上+线下部门；拿过本校"品牌建设奖"；腾讯校招内推和活动直通。</td></tr>
+        <tr><td>字节跳动本校俱乐部</td><td class="na">未获取</td><td>公开信息未检索到本校官方字节俱乐部；字节更倾向直接走实习/内推，不依赖校园俱乐部。</td></tr>
+        <tr><td>其他（中兴/阿里/美团等）</td><td class="na">未获取</td><td>本校有 68 个校企联合实验室，但学生俱乐部形态的具体名单未在官网完整列出；建议开学后看校社团招新海报。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">华为俱乐部：本校本科生院（链接）；腾讯俱乐部：腾讯高校合作（<a href="https://ur.tencent.com/talent/program" target="_blank">链接</a>）。抓取 2026-09-28。</div>
+
+  <h3>5.4 实验室横向项目与推荐机会</h3>
+  <div class="callout">
+    2025 报告学校概况原文：本校与中国电科、中国电子、中国航天、华为、中兴、阿里、腾讯、三大运营商等"深度协同，成立战略联盟、设立企业基金、建立联合实验室及学生实习基地"，全校有 <b>68 个校企联合实验室</b>。
+    <br><br>
+    <b>行动：</b>大二进实验室时，优先选有大厂横向项目的组（哪怕老师 title 不是最大）。横向项目意味着：(1) 你简历上有真实工业界项目；(2) 项目甲方就是你的雇主；(3) 导师一句话顶你海投 100 份简历。
+  </div>
+  <div class="src">来源：2025 报告第 3 页。抓取 2026-09-28。</div>
+
+  <h3>5.5 本校开源战队与竞赛资源（2026-09 新增）</h3>
+  <p class="lead">本校学生在机器人竞赛和电赛领域有深厚积累，部分团队已将代码/技术报告开源，是电学生了解工程实践和嵌入式/AI结合的一手资料。</p>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:20%"><col style="width:25%"><col style="width:55%"></colgroup>
+      <thead><tr><th>资源</th><th>链接</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>IRobot 战队 GitHub</b></td>
+          <td><a href="https://github.com/IRobot-Algorithm" target="_blank">github.com/IRobot-Algorithm</a></td>
+          <td>本校 RoboMaster 战队算法组 GitHub 组织。已开源 <a href="https://github.com/IRobot-Algorithm/sentry_navigation" target="_blank">sentry_navigation</a>（RM2024 哨兵导航算法，采用扩频 FAST-LIO + FAR Planner，ROS 栈）。2026 年 3 月获 RMUC 重庆站冠军（七战全胜）。视觉/导航/嵌入式代码对电学生极有参考价值。</td>
+        </tr>
+        <tr>
+          <td><b>IRobot 技术报告开源</b></td>
+          <td><a href="https://bbs.robomaster.com/article/374512" target="_blank">RoboMaster 社区</a></td>
+          <td>战队在 RoboMaster 官方社区发布技术报告和机械结构开源帖（舵轮步兵机器人、哨兵导航等）。搜"本校 IRobot"可找到历年开源帖。</td>
+        </tr>
+        <tr>
+          <td><b>本校电赛网</b></td>
+          <td>校园网内网系统
+          <td>本校电子设计竞赛官方网站，资料下载页有 2014-2018 历年 TI 杯/电赛赛题。2026 校赛赛题见创新创业学院 校园网内网系统
+        </tr>
+        <tr>
+          <td><b>极创工作室</b></td>
+          <td>本校本科生院报道</td>
+          <td>创新创业学院支持的学生科技创新俱乐部，"拥抱开源、长期主义、创新创业"，专注 AI 技术创新，已发布 SWAN 系列大模型产品，获互联网+全国金奖 3 项、微软创新杯中国区总冠军。是本校最对口 AI 方向的学生技术团队。</td>
+        </tr>
+        <tr>
+          <td><b>OpenHarmony 技术俱乐部</b></td>
+          <td>计科院报道</td>
+          <td>计科院官方学生技术俱乐部，参加第三届 OpenHarmony 技术大会并做分论坛出品。对国产操作系统/嵌入式方向感兴趣可加入。</td>
+        </tr>
+        <tr>
+          <td><b>"宏心"国产基础软件创新俱乐部</b></td>
+          <td>创新创业学院</td>
+          <td>2025 年成立，聚焦国产基础软件（仓颉编程语言/openHiTLS 等）。本校 NSS 团队研发的"玄知"密码大模型获 openHiTLS 社区特别贡献奖。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="src">来源：本校工程实训中心·IRobot 2026 冠军报道 | <a href="https://bbs.robomaster.com/article/374512" target="_blank">RoboMaster 社区·IRobot RM2024 哨兵导航开源</a> | 本校本科生院·极创工作室产品发布会 | 创新创业学院·启智大模型科普课。抓取 2026-09-28。</div>
+
+  <h3>5.6 公司口碑查询（offer 决策前必查）</h3>
+  <div class="callout warn">
+    <b>为什么查：</b>拿到 offer 不等于结束，入职后才发现 996/拖欠工资/试用期裁员就晚了。offer 决策前花 30 分钟查公司口碑，比入职后后悔强 100 倍。
+  </div>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:18%"><col style="width:25%"><col style="width:57%"></colgroup>
+      <thead><tr><th>工具</th><th>链接</th><th>怎么用 / 注意</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>996.ICU（原仓库已转移）</b></td>
+          <td><a href="https://github.com/k8849/996.icu" target="_blank">GitHub 镜像</a></td>
+          <td>原 GitHub 仓库 <code>996icu/996.ICU</code> 已被删除/转移，目前通过镜像仓库可查。信息偏老（2019-2021 数据），仅作参考。<b>替代方案：</b>直接搜索"996公司名单""加班严重的公司"，看近期讨论。</td>
+        </tr>
+        <tr>
+          <td><b>看准网</b></td>
+          <td><a href="https://www.kanzhun.com/" target="_blank">kanzhun.com</a></td>
+          <td>员工匿名点评公司：薪资爆料、加班情况、面试难度、离职原因。搜公司名看"点评"和"工资"板块，重点看近 1 年的评价（老评价可能已过时）。</td>
+        </tr>
+        <tr>
+          <td><b>脉脉</b></td>
+          <td><a href="https://maimai.cn/" target="_blank">maimai.cn</a></td>
+          <td>公司主页看"职言"板块，搜公司名+关键词（裁员/欠薪/加班）。注意：负面评价可能是极端个例，正面可能是 HR 刷的，交叉看。</td>
+        </tr>
+        <tr>
+          <td><b>牛客网面经区</b></td>
+          <td><a href="https://www.nowcoder.com/" target="_blank">nowcoder.com</a></td>
+          <td>搜公司名+"加班"/"劝退"/"离职"，看同届求职者的真实反馈。比看准网更新更快、更贴近校招视角。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <b>判断口诀：</b>① 看准网 + 脉脉 + 牛客三平台交叉看，单平台评价不足为据；② 重点看近 1 年评价，3 年前的参考价值低；③ 如果多家公司都在吐槽同一件事（如"试用期裁员""拖欠工资"），那就是真问题；④ 面试时直接问 HR"团队最近半年离职率多少"，观察回答是否含糊。
+  </div>
+  <div class="src">来源：<a href="https://github.com/k8849/996.icu" target="_blank">996.ICU 镜像仓库</a> | 看准网/脉脉/牛客公开页面。抓取 2026-09-28。</div>
+</section>
+
+<!-- ====================== MODULE 6 ====================== -->
+<section id="m6">
+  <h2><span class="num">6</span>Mentor 关系与人脉长期经营</h2>
+  <p class="lead">找校友不是"求人办事"，是"建立长期互惠关系"。大学四年攒下 5–10 个真联系的校友，比临时抱佛脚强 100 倍。</p>
+
+  <h3>6.1 核心原则：先给价值</h3>
+  <div class="grid grid-3">
+    <div class="card"><h4>在校期间</h4><ul><li>帮校友转发本校招聘信息到你能触达的群</li><li>校友回校做讲座主动当志愿者、拍照写稿</li><li>看到行业信息（论文/开源项目）@相关校友</li></ul></div>
+    <div class="card"><h4>实习/入职后</h4><ul><li>面试通过后给帮过你的校友反馈结果</li><li>把学弟学妹的简历认真转给对口校友</li><li>逢年过节一句不群发的问候</li></ul></div>
+    <div class="card"><h4>长期</h4><ul><li>你也成了学长后，主动回本校做分享</li><li>在本校校友群里回答学弟问题</li><li>人脉是雪球，越滚越大</li></ul></div>
+  </div>
+
+  <h3>6.2 脉脉 / LinkedIn 经营</h3>
+  <div class="steps">
+    <div class="step"><b>档案即简历</b><p>学校、专业、实习、开源项目写全；头像职业但不油。脉脉每周发 1–2 条技术/学习笔记（"这周用 Go 重写了 RAG 服务，踩了 3 个坑"），别只发美食。</p></div>
+    <div class="step"><b>加人有由头</b><p>不要直接"加好友"。先在对方动态下留一条有内容的评论，3 天后再加通过率翻倍。</p></div>
+    <div class="step"><b>LinkedIn 面向外企/海外</b><p>申 DeepSeek 海外岗、微软亚研院、新加坡岗位时，LinkedIn 比脉脉有用；英文档案同步 GitHub。</p></div>
+  </div>
+
+  <h3>6.3 技术社区建立影响力（对你这种工程向尤其重要）</h3>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:18%"><col style="width:42%"><col style="width:40%"></colgroup>
+      <thead><tr><th>平台</th><th>做什么</th><th>对找工作的作用</th></tr></thead>
+      <tbody>
+        <tr><td><b>GitHub</b></td><td>把 RAG/Agent/大模型应用项目开源，写好 README 和 demo</td><td>校友/HR 看你 GitHub 比看简历快；有 star 的项目是硬通货</td></tr>
+        <tr><td><b>掘金 / 知乎</b></td><td>写技术博客：把你踩过的坑写成 1500 字文章</td><td>脉脉/校友搜你名字能看到；面试时拿文章当谈资</td></tr>
+        <tr><td><b>牛客网</b></td><td>面经区写本校/字节/美团面经，内推码区也发你的</td><td>本校人聚集地，互相刷面经；你发了面经别人也会回你内推码</td></tr>
+        <tr><td><b>X / Twitter / 即刻</b></td><td>关注大模型圈从业者，偶尔互动</td><td>AI 创业公司（DeepSeek/智谱等）招人靠圈内推荐，线上影响力直接变现</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>一句话总结：</b>你是本校电院 + Python/Go + 大模型应用方向——这是 2025 报告里涨幅最快的赛道（信息传输/IT 业本科占比从 32.49% 涨到 39.95%）。本校在华为/大厂的校友密度是全国第一档，你要做的只是：把项目做硬，然后礼貌地、持续地、先给价值地去连接他们。
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>校友资源作战指南</b> · 本校泛 AI / 软件方向本科就业参考</div>
+    <div style="margin-top:6px">数据抓取日期 2026-09-28 · 报告源 校园网内网系统 · 本页为单文件离线 HTML，模板话术可直接复制</div>
+  </div>
+</footer>
+
+<script>
+function copyTpl(btn){
+  var pre=btn.parentNode;
+  var text=pre.innerText.replace(/^[\s\S]*?\n/,'').trim();
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent='已复制';setTimeout(function(){btn.textContent='复制'},1500);
+  });
+}
+</script>
+</body>
+</html>

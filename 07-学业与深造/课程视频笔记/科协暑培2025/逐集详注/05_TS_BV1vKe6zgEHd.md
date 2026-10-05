@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · TypeScript 入门（于越洋, BV1vKe6zgEHd）"
+---
+
 # 2025科协暑培 · TypeScript 入门（于越洋, BV1vKe6zgEHd）
 
 ## 定位

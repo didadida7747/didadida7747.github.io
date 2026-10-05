@@ -23,6 +23,6 @@ function killOldPreview() {
 
 killOldPreview()
 console.log('构建中…')
-execSync('npx vitepress build', { stdio: 'inherit' })
+execSync('npm run build', { stdio: 'inherit' })
 console.log('✅ 构建完成，启动预览（按 Ctrl+C 停止）：http://localhost:4173\n')
 execSync('npx vitepress preview --port 4173 --strictPort', { stdio: 'inherit' })

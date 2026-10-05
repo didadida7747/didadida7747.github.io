@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · Python 基础（耿轶泽, BV1TfhbzsEVQ）"
+---
+
 # 2025科协暑培 · Python 基础（耿轶泽, BV1TfhbzsEVQ）
 
 ## 定位

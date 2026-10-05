@@ -1,3 +1,7 @@
+---
+title: "SI100+ 2026夏 · Lec.05 函数（BV1KCgp6BEAd）"
+---
+
 # SI100+ 2026夏 · Lec.05 函数（BV1KCgp6BEAd）
 
 ## 定位

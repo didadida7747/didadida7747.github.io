@@ -1,6 +1,10 @@
+---
+title: "MIT Missing Semester · 计算机教育中缺失的一课"
+---
+
 # MIT Missing Semester · 计算机教育中缺失的一课
 
-> 官方站点：<https://missing.csail.mit.edu/> ｜ 中文翻译版：<https://missing-semester-cn.github.io/>
+> 官方站点：\<https://missing.csail.mit.edu/> ｜ 中文翻译版：\<https://missing-semester-cn.github.io/>
 > 主讲：Anish Athalye、Jon Gjengset、Jose Javier Gonzalez Ortiz（MIT CSAIL），课程源码在 GitHub `missing-semester/missing-semester`，内容以 CC BY-NC-SA 授权。
 
 ## 这门课是什么
@@ -43,7 +47,7 @@ MIT 在每年一月 IAP（独立活动期）开的短期课。官方定位一句
 |---|---|
 | 第 1–2 天 | 第 1 讲 Shell 入门：`pwd`/`ls`/`pipe`/`>` 重定向，把自己每天手动点开的操作命令行化 |
 | 第 3–4 天 | 第 2 讲命令行环境：tmux、`~/.zshrc` 点文件，把常用别名固化下来 |
-| 第 5 天 | 第 5 讲 Git（可先跳读）：`clone/commit/branch/merge/log`，配合本站 [STM32 工作流](/09-课外技能/08_嵌入式与硬件类/STM32工作流/) 里的项目练 |
+| 第 5 天 | 第 5 讲 Git（可先跳读）：`clone/commit/branch/merge/log`，配合本站 [STM32 工作流](#/doc/d285) 里的项目练 |
 | 第 6 天 | 第 4 讲调试与性能分析：学 `pdb` 单步 + `time`/`memory_profiler`，下个 debug 时用上 |
 | 第 7+ 天 | 第 3/6/7 讲按需看：编辑器配置、打包发布、智能体编程 |
 
@@ -51,9 +55,9 @@ MIT 在每年一月 IAP（独立活动期）开的短期课。官方定位一句
 
 ## 相关链接
 
-- 英文官网：<https://missing.csail.mit.edu/>
-- 中文翻译：<https://missing-semester-cn.github.io/>
-- 课程源码（GitHub）：<https://github.com/missing-semester/missing-semester>
+- 英文官网：\<https://missing.csail.mit.edu/>
+- 中文翻译：\<https://missing-semester-cn.github.io/>
+- 课程源码（GitHub）：\<https://github.com/missing-semester/missing-semester>
 - 中文习题解答：社区维护，可从中文站页脚进入
 
 ---

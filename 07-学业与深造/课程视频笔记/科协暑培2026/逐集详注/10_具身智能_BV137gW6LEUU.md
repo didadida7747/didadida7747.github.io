@@ -1,3 +1,7 @@
+---
+title: "2026科协暑培 · 第10讲 具身智能：从 VLA 到 World Action Model（李少轩, BV137gW6LEUU）"
+---
+
 # 2026科协暑培 · 第10讲 具身智能：从 VLA 到 World Action Model（李少轩, BV137gW6LEUU）
 
 ## 定位

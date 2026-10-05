@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html><html lang='zh-CN'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,1000'><title>项目实操指南 · 泛AI软件就业作战</title><style>
+:root{--blue:#2563eb;--blue-d:#1d4ed8;--bg:#f1f5f9;--card:#fff;--txt:#1e293b;--muted:#64748b;--border:#e2e8f0;--warn:#dc2626;--warn-bg:#fef2f2;--warn-bd:#fecaca;--hl:#eff6ff;--hl-bd:#bfdbfe;--gold:#f59e0b;--llm-bg:#fefce8;--llm-bd:#fde047;--green:#16a34a;--green-bg:#f0fdf4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;min-width:1000px;font-size:15px}
+.wrap{max-width:1200px;margin:0 auto;padding:24px}
+header.hero{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;padding:40px 32px;border-radius:16px;margin-bottom:24px;box-shadow:0 4px 20px rgba(37,99,235,.25)}
+header.hero h1{font-size:30px;margin-bottom:8px}
+header.hero p{opacity:.92;font-size:15px}
+.profile{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.profile span{background:rgba(255,255,255,.18);padding:4px 14px;border-radius:20px;font-size:13px}
+nav.toc{background:var(--card);border-radius:12px;padding:16px 24px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+nav.toc a{color:var(--blue);text-decoration:none;padding:6px 14px;border-radius:8px;font-size:14px;transition:.15s}
+nav.toc a:hover{background:var(--hl)}
+section{background:var(--card);border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+h2{font-size:22px;color:var(--blue-d);border-left:4px solid var(--blue);padding-left:12px;margin-bottom:18px}
+h3{font-size:17px;margin:16px 0 10px;color:var(--txt)}
+.stage-card{border:2px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px}
+.stage-card.core{border-color:var(--blue);background:linear-gradient(180deg,#eff6ff 0%,#fff 60%);box-shadow:0 2px 12px rgba(37,99,235,.12)}
+.stage-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.stage-head .name{font-size:18px;font-weight:700;color:var(--blue-d)}
+.stage-head .dur{background:var(--blue);color:#fff;padding:3px 12px;border-radius:14px;font-size:12px}
+.stage-card.core .stage-head .dur{background:var(--gold)}
+.stage-goal{color:var(--muted);font-size:14px;margin-bottom:14px}
+.proj{border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:12px;background:#fff}
+.stage-card.core .proj{border-color:#93c5fd}
+.proj-name{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:6px}
+.proj-desc{color:var(--muted);font-size:14px;margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tag{background:#eff6ff;color:var(--blue-d);padding:2px 10px;border-radius:12px;font-size:12px;border:1px solid #bfdbfe}
+.tag a{color:var(--blue-d);text-decoration:none}
+.tag a:hover{text-decoration:underline}
+.diff{display:inline-block;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:600}
+.diff-入门{background:#dcfce7;color:#166534}
+.diff-中等{background:#fef9c3;color:#854d0e}
+.diff-中等偏上{background:#ffedd5;color:#9a3412}
+.field-label{font-weight:700;color:var(--blue-d);font-size:13px;margin:8px 0 4px}
+ul.flat{padding-left:20px}
+ul.flat li{margin-bottom:3px;font-size:14px}
+.acceptance{background:#f0fdf4;border-left:3px solid #22c55e;padding:8px 12px;border-radius:0 8px 8px 0;font-size:13px;margin:8px 0}
+.resume-val{background:#fffbeb;border-left:3px solid var(--gold);padding:8px 12px;border-radius:0 8px 8px 0;font-size:13px;margin:8px 0}
+/* 跟做路径三步骤框 */
+.follow-path{background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:2px solid #86efac;border-radius:10px;padding:14px 16px;margin:10px 0}
+.follow-path .fp-title{font-weight:700;color:#065f46;font-size:14px;margin-bottom:8px}
+.fp-step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
+.fp-step-num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.fp-step-body{font-size:13px;line-height:1.6;color:#1f2937}
+.fp-step-body b{color:#166534}
+.fp-step-body a{color:#2563eb;text-decoration:none;word-break:break-all}
+.fp-step-body a:hover{text-decoration:underline}
+.fp-arrow{color:#16a34a;font-weight:700;margin:2px 0 2px 32px;font-size:13px}
+.std-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.std-list li{background:#f8fafc;padding:12px 14px;border-radius:8px;border-left:3px solid var(--blue);font-size:14px}
+.std-list li .ic{font-weight:700;color:var(--blue);margin-right:6px}
+.pack-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pack-item{background:#f8fafc;border-radius:10px;padding:16px;border-top:3px solid var(--blue)}
+.pack-item h4{color:var(--blue-d);margin-bottom:8px;font-size:15px}
+.pack-item p{font-size:13.5px;color:#334155}
+.black{border:2px solid var(--warn-bd);background:var(--warn-bg);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.black .bname{color:var(--warn);font-weight:700;font-size:16px}
+.black .bprob{margin:8px 0;font-size:14px;color:#7f1d1d}
+.black .bup{background:#fff;border-left:3px solid var(--warn);padding:8px 12px;border-radius:0 8px 8px 0;font-size:13.5px;color:#334155;margin-bottom:8px}
+.black .bopen{background:#ecfdf5;border-left:3px solid var(--green);padding:8px 12px;border-radius:0 8px 8px 0;font-size:13.5px;color:#1f2937}
+.black .bopen b{color:#065f46}
+.black .bopen a{color:#2563eb;text-decoration:none}
+.codeblock{position:relative;margin:12px 0}
+.codeblock pre{background:#0f172a;color:#e2e8f0;padding:20px;border-radius:10px;overflow-x:auto;font-family:"Cascadia Code",Consolas,Menlo,monospace;font-size:13px;line-height:1.6;white-space:pre;max-height:600px;overflow-y:auto}
+.copybtn{position:absolute;top:10px;right:10px;background:var(--blue);color:#fff;border:none;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px;z-index:2}
+.copybtn:hover{background:var(--blue-d)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+table th{background:var(--blue);color:#fff;padding:10px 12px;text-align:left}
+table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+table tr:nth-child(even) td{background:#f8fafc}
+.src-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.src-card{background:#f8fafc;border-radius:10px;padding:14px 16px;border-left:3px solid var(--blue)}
+.src-card h4{color:var(--blue-d);margin-bottom:6px;font-size:15px}
+.src-card p{font-size:13.5px}
+footer{text-align:center;color:var(--muted);padding:20px;font-size:13px}
+.attribution{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;padding:10px 14px;font-size:12px;color:#64748b;margin-top:16px;line-height:1.6}
+.attribution a{color:#2563eb;text-decoration:none}
+/* 可二开开源项目卡片 */
+.oss-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.oss-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;flex-direction:column;transition:.15s}
+.oss-card:hover{box-shadow:0 4px 14px rgba(37,99,235,.12);border-color:#93c5fd}
+.oss-card.oss-priority{border:2px solid var(--blue);background:linear-gradient(180deg,#eff6ff 0%,#fff 60%)}
+.oss-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.oss-name{font-size:16px;font-weight:700;color:var(--blue-d)}
+.oss-name a{color:var(--blue-d);text-decoration:none}
+.oss-name a:hover{text-decoration:underline}
+.oss-badges{display:flex;gap:6px;flex-wrap:wrap}
+.oss-badge{font-size:11px;padding:2px 8px;border-radius:8px;font-weight:600;white-space:nowrap}
+.oss-stars{background:#fef3c7;color:#92400e}
+.oss-license{background:#e0e7ff;color:#3730a3}
+.oss-direction{background:#f0fdf4;border-left:3px solid #22c55e;padding:6px 10px;border-radius:0 6px 6px 0;font-size:13px;margin:8px 0}
+.oss-direction b{color:#166534}
+.oss-tech{font-size:12.5px;color:var(--muted);margin:6px 0}
+.oss-tech b{color:var(--txt)}
+.oss-path{font-size:12.5px;line-height:1.7;color:#334155;margin:6px 0}
+.oss-path .step{display:flex;gap:6px;margin-bottom:3px}
+.oss-path .step-num{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
+.oss-pkg{background:#fffbeb;border-left:3px solid var(--gold);padding:6px 10px;border-radius:0 6px 6px 0;font-size:12.5px;margin-top:8px}
+.oss-pkg b{color:#92400e}
+</style></head><body><div class='wrap'><header class='hero'>
+<h1>🛠️ 项目实操指南</h1>
+<p>从0到1搭建简历核心项目：跟做开源项目→改造差异化→GitHub包装 · 四阶段路线 · 好项目标准 · 烂项目改造路径 · 简历/README模板</p>
+<div class='profile'>
+<span>🎓 本校 · 电子信息工程 · 大二</span>
+<span>🎯 方向：大模型应用开发</span>
+<span>💻 技术栈：Python / Go</span>
+<span>🎓 毕业：2029届</span>
+</div></header><nav class='toc'>
+<a href='#stages'>四阶段路线</a><a href='#opensource'>🔥 可二开开源项目</a><a href='#sources'>项目来源</a><a href='#standards'>好项目标准</a><a href='#packaging'>包装方法</a><a href='#blacklist'>烂项目改造</a><a href='#resume'>简历模板</a><a href='#readme'>README模板</a></nav><div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-left:4px solid #2563eb;padding:16px 20px;border-radius:8px;margin:0 0 24px 0;">
+  <div style="font-weight:700;color:#1e40af;margin-bottom:8px;font-size:16px;">🎯 核心理念：跟做开源项目 → 改造为差异化项目</div>
+  <div style="color:#1e3a5f;line-height:1.8;font-size:14px;">
+    不要从零空想选题。<strong>先跟做成熟开源项目的对应章节跑通流程，再改造为自己的差异化项目</strong>——这样既保证工程质量，又有自己的特色。每个核心项目都给出三步路径：
+    <ol style="margin:8px 0;padding-left:20px;">
+      <li><b style="color:#166534;">跟做哪个开源项目的哪个部分</b>——保证你做出来的东西工程上是靠谱的</li>
+      <li><b style="color:#166534;">如何改造为自己的差异化项目</b>——加上本校/垂直领域特色，避免撞车</li>
+      <li><b style="color:#166534;">GitHub如何包装</b>——README/架构图/演示视频/量化数据</li>
+    </ol>
+    技术栈标签中的 <a href="大模型应用技术全景图.html" style="color:#1e40af;text-decoration:underline;">🔗</a> 链接指向《大模型应用技术全景图》对应节点，可跳转查阅学习资源。
+  </div>
+</div><section id='stages'><h2>📈 四阶段项目路线图</h2><div class='stage-card'><div class='stage-head'><span class='name'>阶段一：基础后端/全栈项目</span><span class='dur'>⏱ 大二上-大二下，约2-3个月/项目</span></div><div class='stage-goal'>🎯 掌握后端开发核心能力（HTTP协议、数据库设计、缓存、鉴权、部署），做出第一个能跑、能演示、有真实用户的完整Web项目，为后续AI项目打工程基础。</div><div class='proj'><div class='proj-name'>本校校园二手交易平台后端服务</div><div class='proj-desc'>面向本校在校生的二手物品交易RESTful API，支持商品发布/搜索/下单/聊天/收藏，用Go+Gin重写而非照搬瑞吉外卖，重点做工程化和高并发基础。</div><div class='tags'><span class='tag'>Go 1.22 + Gin v1.9</span><span class='tag'>MySQL 8.0（GORM v2 ORM）</span><span class='tag'>Redis 7.0（缓存+分布式锁）</span><span class='tag'>JWT鉴权 + Gin中间件</span><span class='tag'>Docker + Docker Compose部署</span><span class='tag'>WebSocket（即时聊天）</span><span class='diff diff-入门'>难度：入门</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>参考 <a href='https://github.com/golang-standards/project-layout' target='_blank'>golang-standards/project-layout</a> 目录规范搭建项目骨架；Go语法跟做B站<a href='https://search.bilibili.com/video?keyword=2026%E5%B9%B4%E6%96%B0%E7%89%88Go%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B' target='_blank'>IT营大地2026新版Go教程</a>的Gin章节。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造：</b>不要照搬瑞吉外卖CRUD。加Redis分布式锁防超卖、令牌桶限流、WebSocket聊天——这些是AI Infra方向的高并发基础。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>包装：</b>GitHub按project-layout规范组织目录；Swagger接口文档；压测报告（100并发QPS>50）；docker-compose一键启动；至少10个同学真实注册。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>接口文档用Swagger自动生成；压测支持100并发下QPS&gt;50、P99延迟&lt;200ms；GitHub仓库有完整README+架构图+部署脚本；部署到云服务器有公网可访问地址；至少邀请10个同学注册测试。</div><div class='resume-val'>💼 <b>简历价值：</b>证明你能独立完成后端工程闭环：从数据库设计、接口开发、缓存优化到Docker部署。Go语言+高并发基础是AI Infra方向的加分项。</div></div><div class='proj'><div class='proj-name'>智能课程表与任务管理系统（FastAPI版）</div><div class='proj-desc'>面向大学生的课程表+待办任务管理Web后端，用Python FastAPI实现，重点做异步处理和与后续AI项目的衔接。</div><div class='tags'><span class='tag'>Python 3.11 + FastAPI 0.110</span><span class='tag'>SQLAlchemy 2.0 + PostgreSQL</span><span class='tag'>Redis（Celery任务队列）</span><span class='tag'>Pydantic v2数据校验</span><span class='tag'>JWT OAuth2.0</span><span class='tag'>Pytest单元测试</span><span class='diff diff-入门'>难度：入门</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>FastAPI官方Tutorial（fastapi.tiangolo.com）全程过一遍，重点是异步/依赖注入/数据校验章节。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造：</b>加一个"AI生成学习计划"接口——调用LLM API根据课程表+待办生成每日学习建议，为后续RAG项目埋伏笔。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>包装：</b>FastAPI自动生成OpenAPI文档可在线调试；Pytest覆盖率>50%；部署到云服务器公网可访问。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>接口文档自动生成且可在线调试；Pytest测试覆盖核心路由&gt;50%；部署到云服务器公网可访问。</div><div class='resume-val'>💼 <b>简历价值：</b>证明Python后端能力（FastAPI是大模型应用最常用的Web框架），异步编程基础直接复用在AI项目中。</div></div></div><div class='stage-card core'><div class='stage-head'><span class='name'>阶段二：大模型应用项目上线 ⭐ 简历核心</span><span class='dur'>⏱ 大二下-大三上，约2-3个月/项目，建议做1-2个</span></div><div class='stage-goal'>🎯 做出能上线、有真实用户、有工程化深度的大模型应用。每个项目均按"<b>跟做开源项目章节→改造为本校/垂直领域差异化→GitHub包装</b>"三步执行，避免培训班撞车。</div><div class='proj'><div class='proj-name'>本校课程答疑RAG知识库（XDU-CourseQA）⭐核心项目</div><div class='proj-desc'>针对本校电子工程学院核心课程（高数/模电/信号与系统/通信原理）的RAG问答系统。</div><div class='tags'><span class='tag'>Python 3.11 + FastAPI</span><span class='tag'>LangChain 0.2 / LlamaIndex 0.10</span><span class='tag'>向量数据库：Chroma + Milvus</span><span class='tag'>Embedding：BGE-M3</span><span class='tag'>LLM：Qwen2.5-7B（vLLM）或 DeepSeek API</span><span class='tag'>RAGAS评测</span><span class='diff diff-中等'>难度：中等</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径（RAG项目标准范式）</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>①跟做 <a href='https://github.com/datawhalechina/llm-cookbook' target='_blank'>datawhalechina/llm-cookbook 第5章RAG专题</a>（吴恩达LangChain短课中译版），跟着Notebook从0搭一个RAG管线；②用 <a href='https://github.com/labring/FastGPT' target='_blank'>labring/FastGPT</a> Docker部署跑通一个现成知识库平台，理解产品化RAG长什么样；③参考 <a href='https://github.com/chatchat-space/Langchain-Chatchat' target='_blank'>Langchain-Chatchat</a> 的RAG核心模块代码学习工程实现；④<b>新资源推荐：</b>直接Docker部署 <a href='https://github.com/infiniflow/ragflow' target='_blank'>RAGFlow</a>（91k stars, Apache-2.0）跑通深度文档RAG，对比Langchain-Chatchat看文档解析差异；或用 <a href='https://github.com/langgenius/dify' target='_blank'>Dify</a>（157k stars）可视化搭RAG工作流，参考其产品化设计。进阶可加 <a href='https://github.com/microsoft/graphrag' target='_blank'>GraphRAG</a>（微软图谱RAG）模块作为亮点。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造为差异化：</b>不要做"通用文档问答"——那是FastGPT/Chatchat已经做好的事。改造为<b>本校课程垂直领域RAG知识库</b>：爬本校电子工程学院课程PPT/习题集/历年真题，构建垂直领域向量库；加引用溯源（回答标注来自哪份PPT哪一页）；加多轮对话上下文管理；加用户反馈回流。这是只有本校学生能做的差异化。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>GitHub包装：</b>README含架构图（Mermaid）+ RAGAS评测报告截图 + 在线Demo链接；Topics打rag/langchain/fastapi/xdu；发Release；写一篇博客《我是如何把RAG准确率从65%优化到82%的》；Docker Compose一键启动。</div></div></div><div class='field-label'>核心功能</div><ul class='flat'><li>文档解析：PDF/PPTX/Markdown自动切分（按语义块而非固定长度）</li><li>多级检索：BM25关键词 + 向量召回混合检索（RRF融合）</li><li>重排序：bge-reranker-v2-m3对召回结果重排</li><li>引用溯源：回答中标注来自哪份文档哪一页</li><li>多轮对话：对话历史摘要+上下文窗口管理</li><li>用户反馈：点赞/点踩，反馈数据回流优化</li></ul><div class='acceptance'>✅ <b>验收标准：</b>知识库覆盖至少500份课程文档；构建100道标注测试题，RAGAS评测Faithfulness&gt;0.8；首字延迟&lt;2s（流式输出）；部署上线后至少有50+本校同学真实使用；GitHub README含架构图+评测报告截图。</div><div class='resume-val'>💼 <b>简历价值：</b>这是大模型应用方向最硬核的入门项目。展示了你理解RAG全链路，而不是简单调用OpenAI接口。有真实校园用户是巨大加分项。</div></div><div class='proj'><div class='proj-name'>多Agent协作代码审查助手（CodeReview-Agent）</div><div class='proj-desc'>基于LangGraph构建的多Agent系统，自动审查GitHub/GitLab PR。</div><div class='tags'><span class='tag'>Python 3.11 + LangGraph 0.1</span><span class='tag'>GitHub API（拉取PR diff）</span><span class='tag'>LLM：Qwen2.5-Coder / DeepSeek-Coder</span><span class='tag'>FastAPI Webhook接口</span><span class='tag'>Celery异步处理</span><span class='diff diff-中等'>难度：中等</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径（Agent项目标准范式）</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>①跟做 <a href='https://github.com/liguodongiot/llm-action' target='_blank'>liguodongiot/llm-action</a> 的Agent案例章节，理解ReAct/Function Calling/多Agent协作的工程实现；②参考 <a href='https://github.com/chatchat-space/Langchain-Chatchat' target='_blank'>Langchain-Chatchat</a> 的Agent模块代码，看生产级Agent如何组织；③跟做微软<a href='https://github.com/microsoft/generative-ai-for-beginners' target='_blank'>generative-ai-for-beginners</a>第10-12课Agentic Workflow Notebook；④<b>新资源推荐：</b>直接用 <a href='https://github.com/langchain-ai/langgraph' target='_blank'>LangGraph</a>（42k stars, MIT）做状态图编排——这是Agent项目的首选框架，循环/分支/人机交互都支持；入门多Agent可参考 <a href='https://github.com/crewAIInc/crewAI' target='_blank'>CrewAI</a>（59k stars, 角色化Agent，最易上手）；学习多Agent协作模式看 <a href='https://github.com/microsoft/autogen' target='_blank'>AutoGen</a>（微软，61k stars）和 <a href='https://github.com/modelscope/agentscope' target='_blank'>AgentScope</a>（阿里，32k stars, 中文文档）。中文入门跟做 <a href='https://github.com/datawhalechina/hello-agents' target='_blank'>Datawhale hello-agents</a>（81k stars）。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造为差异化：</b>不要做"通用聊天机器人Agent"——那是培训班标配。改造为<b>多Agent代码审查系统</b>：4-Agent分工（代码分析Agent→规范检查Agent→安全扫描Agent→报告汇总Agent），通过GitHub Webhook自动审查PR。场景具体、可演示、面试官容易理解。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>GitHub包装：</b>README含LangGraph状态图（Agent协作流程图）+ 示例审查报告截图；在自己GitHub仓库测试20个PR的审查结果作为证据；Webhook演示视频；写一篇博客《用LangGraph搭多Agent代码审查系统的踩坑记录》。</div></div></div><div class='field-label'>核心功能</div><ul class='flat'><li>PR Webhook触发自动审查</li><li>Agent分工：代码分析Agent→规范检查Agent→安全扫描Agent→报告汇总Agent</li><li>工具调用：Agent可调用git diff、搜索项目规范文档、查询依赖CVE</li><li>审查意见分级：Blocker/Major/Minor/Info</li></ul><div class='acceptance'>✅ <b>验收标准：</b>在自己的GitHub仓库上测试至少20个PR；严重问题检出率&gt;70%；端到端审查一个500行diff的PR&lt;30s；LangGraph状态图清晰可读。</div><div class='resume-val'>💼 <b>简历价值：</b>多Agent是当前大模型应用的热点方向。LangGraph状态机编排比简单对话式Agent更有工程深度。</div></div><div class='proj'><div class='proj-name'>AI论文阅读助手（PaperBuddy）</div><div class='proj-desc'>输入arXiv论文链接，自动生成结构化笔记、提取关键公式和图表、生成中文综述。</div><div class='tags'><span class='tag'>Python 3.11 + FastAPI</span><span class='tag'>LangChain + 自定义Document Loader</span><span class='tag'>PyMuPDF PDF解析</span><span class='tag'>BGE-M3 Embedding</span><span class='tag'>Milvus向量库</span><span class='diff diff-中等'>难度：中等</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>参考 <a href='https://github.com/datawhalechina/llm-cookbook' target='_blank'>llm-cookbook</a> RAG章节的Document Loader实现；参考 <a href='https://github.com/Hannibal046/Awesome-LLM' target='_blank'>Awesome-LLM</a> 的论文分类理解论文结构。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造：</b>面向本校研究生/科研党的真实痛点——读论文慢。加公式LaTeX提取、图表多模态描述、相关论文推荐（embedding相似度）。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>包装：</b>部署上线邀请同学试用；导出Markdown到飞书/Notion的功能作为亮点。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>支持至少50篇arXiv论文测试；处理一篇20页论文&lt;60s；至少30个用户生成过笔记。</div><div class='resume-val'>💼 <b>简历价值：</b>解决真实痛点，多模态处理是加分项，产品化程度高容易演示。</div></div><div class='proj'><div class='proj-name'>RAG+Go微服务架构实践（AI-Platform）</div><div class='proj-desc'>微服务架构的AI问答平台：Python负责AI推理层，Go负责业务层，gRPC内部通信。</div><div class='tags'><span class='tag'>Go 1.22 + Gin（业务网关）</span><span class='tag'>Python FastAPI（AI服务）</span><span class='tag'>gRPC + Protobuf</span><span class='tag'>Redis会话缓存</span><span class='tag'>Docker Compose + K8s</span><span class='diff diff-中等偏上'>难度：中等偏上</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>Go项目结构参考 <a href='https://github.com/golang-standards/project-layout' target='_blank'>project-layout</a> 规范；微服务概念参考 <a href='https://github.com/doocs/advanced-java' target='_blank'>advanced-java</a> 的分布式/微服务章节（虽Java向，架构概念通用）。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造：</b>Go+Python混合架构+gRPC是你的差异化——大多数候选人只会Python调包。展示你理解AI系统如何工程化落地。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>包装：</b>架构图完整画出请求链路（React→Go网关→gRPC→Python AI服务→RAG→LLM）；压测数据；Docker Compose一键启动。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>gRPC接口定义清晰；压测下单服务QPS&gt;200；Docker Compose一键启动所有服务。</div><div class='resume-val'>💼 <b>简历价值：</b>这是区分"调包侠"和"工程师"的关键项目。Go+Python混合架构证明你理解AI系统工程化。</div></div></div><div class='stage-card'><div class='stage-head'><span class='name'>阶段三：有深度的微调/推理优化/AI Infra</span><span class='dur'>⏱ 大三上-大三下，约2-3个月</span></div><div class='stage-goal'>🎯 展示技术深度，从"用模型"进阶到"改模型/优化模型"。选1个方向深入做。</div><div class='proj'><div class='proj-name'>垂直领域LoRA微调实践（XDU-Chat-Model）</div><div class='proj-desc'>在电子工程领域数据上微调Qwen2.5-1.5B，让小模型具备本校课程知识问答能力。</div><div class='tags'><span class='tag'>Python + PyTorch 2.3</span><span class='tag'>Transformers + PEFT（LoRA）</span><span class='tag'>BitsAndBytes 4bit量化（QLoRA）</span><span class='tag'>TRL（SFTTrainer）</span><span class='tag'>vLLM部署微调后模型</span><span class='diff diff-中等偏上'>难度：中等偏上</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径（微调项目标准范式）</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>①跟做 <a href='https://github.com/datawhalechina/self-llm' target='_blank'>datawhalechina/self-llm 第3-4章LoRA微调教程</a>（Apache-2.0）——Qwen/GLM国产开源模型的LoRA微调脚本，环境配置踩坑记录详实，是做微调项目的首选跟做仓库；②跟做 <a href='https://github.com/mlabonne/llm-course' target='_blank'>mlabonne/llm-course</a>（Apache-2.0）的LoRA/量化可视化Notebook理解原理；③<b>新资源推荐：</b>直接用 <a href='https://github.com/hiyouga/LLaMA-Factory' target='_blank'>LLaMA-Factory</a>（75k stars, Apache-2.0）一行命令启动WebUI微调Qwen/GLM，比手写脚本工程化得多；做RLHF/GRPO方向用 <a href='https://github.com/modelscope/ms-swift' target='_blank'>ms-swift</a>（阿里, 15.7k stars, 支持600+模型）。原理书配套代码看 <a href='https://github.com/rasbt/LLMs-from-scratch' target='_blank'>LLMs-from-scratch</a>（105k stars）。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造为差异化：</b>不要做"通用对话微调"——那是self-llm教程自带的示例。改造为<b>本校课程垂直领域微调</b>：从课程资料构造5000条QA对，LoRA微调Qwen2.5-1.5B，对比微调前后在课程问答上的效果。和阶段二的RAG项目形成"RAG vs 微调"的选型对比故事。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>GitHub包装：</b>训练loss曲线（wandb截图）；微调前后效果对比表；模型权重开源到HuggingFace；写技术博客讲清楚每个超参的选择理由。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>在自建500条测试集上，微调后准确率比基线提升&gt;15%；单卡4090可在4小时内完成训练；模型权重开源到HuggingFace。</div><div class='resume-val'>💼 <b>简历价值：</b>证明你懂模型训练全流程（数据构造→PEFT微调→评测→部署），不是只会调API。</div></div><div class='proj'><div class='proj-name'>vLLM推理部署与性能优化（LLM-Serving-Bench）</div><div class='proj-desc'>用vLLM部署开源大模型，系统对比不同部署配置对吞吐量和延迟的影响。</div><div class='tags'><span class='tag'>Python + vLLM 0.5.x</span><span class='tag'>GPU：RTX 3090/4090</span><span class='tag'>AWQ/GPTQ 4bit量化</span><span class='tag'>Locust压测</span><span class='diff diff-中等偏上'>难度：中等偏上</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径（部署项目标准范式）</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>跟做 <a href='https://github.com/liguodongiot/llm-action' target='_blank'>liguodongiot/llm-action</a> 的vLLM部署章节——跟着教程用vLLM起一个Qwen服务，暴露OpenAI兼容接口；参考 <a href='https://github.com/datawhalechina/self-llm' target='_blank'>self-llm</a> 的部署章节环境配置。<b>新资源推荐：</b>部署引擎直接用 <a href='https://github.com/vllm-project/vllm' target='_blank'>vLLM</a>（92.8k stars, PagedAttention）或对比 <a href='https://github.com/InternLM/lmdeploy' target='_blank'>LMDeploy</a>（上海AI Lab, TurboMind引擎）；无GPU环境用 <a href='https://github.com/ggml-org/llama.cpp' target='_blank'>llama.cpp</a>（129k stars, C/C++实现, GGUF量化, 对电子信息专业底层能力有加成）；日常开发调试用 <a href='https://github.com/ollama/ollama' target='_blank'>Ollama</a>（181k stars, 一行命令本地跑模型）+ <a href='https://github.com/open-webui/open-webui' target='_blank'>Open WebUI</a>。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造：</b>不只跑通，要做系统Benchmark——对比FP16 vs AWQ-INT4 vs GPTQ-INT4的速度/显存/质量；连续批处理开关对比；产出调参指南。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>包装：</b>性能对比图（折线图/柱状图）；Benchmark报告；博客讲解vLLM PagedAttention原理。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>单张4090上7B模型AWQ量化后吞吐量&gt;2000 tokens/s；TTFT&lt;500ms；GitHub README含性能对比图。</div><div class='resume-val'>💼 <b>简历价值：</b>AI Infra是高薪方向。推理优化经验在求职时非常稀缺。</div></div></div><div class='stage-card'><div class='stage-head'><span class='name'>阶段四：开源/竞赛产品化</span><span class='dur'>⏱ 大三下-大四，持续进行</span></div><div class='stage-goal'>🎯 获得外部影响力背书：开源star、竞赛获奖、大厂实习。</div><div class='proj'><div class='proj-name'>知名开源项目贡献（PR merged）</div><div class='proj-desc'>给你阶段二/三做的项目相关开源项目提PR并被合并。</div><div class='tags'><span class='tag'>选定目标：LangChain中文文档翻译、LangGraph示例补充、vLLM文档、FastAPI中文教程</span><span class='diff diff-中等'>难度：中等</span></div><div class='follow-path'><div class='fp-title'>🔗 跟做→改造→包装路径</div><div class='fp-step'><div class='fp-step-num'>1</div><div class='fp-step-body'><b>跟做：</b>从 <a href='https://github.com/langchain-ai/langchain' target='_blank'>LangChain</a> / <a href='https://github.com/chatchat-space/Langchain-Chatchat' target='_blank'>Langchain-Chatchat</a> / <a href='https://github.com/labring/FastGPT' target='_blank'>FastGPT</a> 的good first issue开始。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>2</div><div class='fp-step-body'><b>改造：</b>文档类PR最容易入门（修文档/加示例/翻译），代码类PR从bugfix开始。</div></div><div class='fp-arrow'>↓</div><div class='fp-step'><div class='fp-step-num'>3</div><div class='fp-step-body'><b>包装：</b>简历上写出项目名和PR链接；GitHub主页有merged PR记录。</div></div></div><div class='acceptance'>✅ <b>验收标准：</b>至少merged 2-3个PR。</div><div class='resume-val'>💼 <b>简历价值：</b>开源贡献是简历上最硬的背书之一。</div></div><div class='proj'><div class='proj-name'>个人开源项目获Star积累</div><div class='proj-desc'>把阶段二最好的项目（如本校课程RAG）持续运营，做成有GitHub star的开源项目。</div><div class='tags'><span class='tag'>GitHub开源运营</span><span class='tag'>技术博客引流</span><span class='diff diff-中等'>难度：中等</span></div><div class='acceptance'>✅ <b>验收标准：</b>目标100+ GitHub star；有外部用户提issue或PR；项目在线可访问。</div><div class='resume-val'>💼 <b>简历价值：</b>有star的开源项目证明你的项目被外部认可，不是自嗨。</div></div></div></section><section id='opensource'><h2>🔥 可直接二开的开源项目（基于77条新资源精选）</h2><p style='color:var(--muted);font-size:14px;margin-bottom:16px'>与其从零写一个CRUD，不如<b>Fork一个成熟开源项目 → 改垂直领域 → 包装成自己的作品</b>。以下7个项目都是GitHub万star级、工程质量过硬、协议友好可二开的。每张卡片给出：适合二开什么方向 / 技术栈 / 学习二开路径 / 如何包装成自己的项目。</p><div style="background:linear-gradient(135deg,#fefce8,#fef9c3);border-left:4px solid #f59e0b;padding:12px 16px;border-radius:8px;margin-bottom:18px;font-size:13.5px;color:#78350f;">
+  <b>💡 二开黄金法则：</b>不要Fork后只改个logo就说是自己的。正确做法：①Docker跑通原版 → 读懂核心模块 → 加一个垂直领域功能（本校课程/电子工程/校园场景）→ 写一篇改造博客 → 发Release。面试官问起来能讲清"原项目做了什么、我改了什么、为什么这么改"。
+</div><div class='oss-grid'>
+
+<div class='oss-card oss-priority'><div class='oss-head'><div class='oss-name'><a href='https://github.com/langgenius/dify' target='_blank'>Dify</a> ⭐核心推荐</div><div class='oss-badges'><span class='oss-badge oss-stars'>157k stars</span><span class='oss-badge oss-license'>自定义开源</span></div></div><div class='oss-direction'><b>🎯 适合二开什么：</b>垂直领域AI助手 / 企业知识库 / AI工作流SaaS。比如：本校课程答疑Bot、实验室论文助手、电商客服工作流。</div><div class='oss-tech'><b>🛠 技术栈：</b>Python（后端API+编排引擎）+ React（前端）+ PostgreSQL + Redis + Docker</div><div class='oss-path'><b>📚 学习二开路径：</b><div class='step'><span class='step-num'>1</span><span><b>部署：</b>Docker Compose一键起Dify，跟着<a href='https://search.bilibili.com/all?keyword=%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98Dify%E5%85%A5%E9%97%A8Agent%E5%BC%80%E5%8F%91' target='_blank'>黑马Dify 5小时入门(B站,99.7万播放)</a>跑通第一个RAG应用。</span></div><div class='step'><span class='step-num'>2</span><span><b>看workflow编排：</b>在Web UI上拖拽搭一个"知识库检索→LLM生成→引用返回"的工作流，理解节点/变量/条件分支。</span></div><div class='step'><span class='step-num'>3</span><span><b>二开插件：</b>写一个自定义Tool（如"查本校教务系统课表"），Python插件SDK开发，这是你的差异化功能。</span></div><div class='step'><span class='step-num'>4</span><span><b>包装：</b>Fork后改品牌色/加本校logo/接入课程知识库 → 部署到云服务器 → 录3分钟演示视频。</span></div></div><div class='oss-pkg'><b>📦 包装成自己的项目：</b>GitHub Fork仓库改名为XDU-Dify-CourseQA；README写"基于Dify二开的本校课程答疑平台，新增了课程表查询插件和习题解析工作流"；演示视频放首页；博客讲"Dify插件开发踩坑记"。</div></div>
+
+<div class='oss-card'><div class='oss-head'><div class='oss-name'><a href='https://github.com/lobehub/lobe-chat' target='_blank'>Lobe Chat</a></div><div class='oss-badges'><span class='oss-badge oss-stars'>82.9k stars</span><span class='oss-badge oss-license'>自定义</span></div></div><div class='oss-direction'><b>🎯 适合二开什么：</b>多模型聚合桌面端 / 垂直领域聊天客户端 / AI助手门户。比如：本校学生专属AI助手（聚合Qwen/DeepSeek/Claude+课程知识库）。</div><div class='oss-tech'><b>🛠 技术栈：</b>Next.js 14 + TypeScript + Radix UI + Zustand + Vercel AI SDK</div><div class='oss-path'><b>📚 学习二开路径：</b><div class='step'><span class='step-num'>1</span><span><b>部署：</b>Vercel一键部署或Docker起LobeChat，体验多模型切换+插件市场。</span></div><div class='step'><span class='step-num'>2</span><span><b>读前端架构：</b>重点看Next.js App Router组织、消息流式渲染、Agent插件系统——这是前端能力提升的最佳教材。</span></div><div class='step'><span class='step-num'>3</span><span><b>二开方向：</b>加一个"本校课程助手"预设角色（System Prompt+知识库联动），或自定义主题为本校蓝。</span></div></div><div class='oss-pkg'><b>📦 包装成自己的项目：</b>部署到Vercel给个公网链接；README写"LobeChat二开：本校学生AI助手，内置课程答疑Prompt模板"；前端项目适合展示UI能力。</div></div></div>
+
+<div class='oss-card oss-priority'><div class='oss-head'><div class='oss-name'><a href='https://github.com/infiniflow/ragflow' target='_blank'>RAGFlow</a> ⭐核心推荐</div><div class='oss-badges'><span class='oss-badge oss-stars'>91.4k stars</span><span class='oss-badge oss-license'>Apache-2.0</span></div></div><div class='oss-direction'><b>🎯 适合二开什么：</b>深度文档知识库 / 企业RAG产品 / 扫描版PDF问答。Apache-2.0协议最友好，商用无忧。</div><div class='oss-tech'><b>🛠 技术栈：</b>Python（后端+RAG引擎）+ Go（文档解析服务）+ Elasticsearch + MinIO</div><div class='oss-path'><b>📚 学习二开路径：</b><div class='step'><span class='step-num'>1</span><span><b>部署：</b>Docker Compose起RAGFlow，上传一份扫描版PDF看它的OCR+版面分析效果——这是比Langchain-Chatchat强的地方。</span></div><div class='step'><span class='step-num'>2</span><span><b>看文档解析pipeline：</b>重点读DeepDoc模块——版面分析/表格还原/标题层级识别，这是RAG项目的核心难点。</span></div><div class='step'><span class='step-num'>3</span><span><b>二开方向：</b>针对本校课程PDF/习题集优化切片策略；加引用溯源到具体页码；对比RAGFlow vs 自建RAG的准确率。</span></div></div><div class='oss-pkg'><b>📦 包装成自己的项目：</b>README架构图对比"通用RAG vs RAGFlow深度文档解析"；放500份课程文档的评测报告；博客写"用RAGFlow做本校课程知识库，OCR解析踩坑记"。</div></div></div>
+
+<div class='oss-card'><div class='oss-head'><div class='oss-name'><a href='https://github.com/n8n-io/n8n' target='_blank'>n8n</a></div><div class='oss-badges'><span class='oss-badge oss-stars'>206k stars</span><span class='oss-badge oss-license'>fair-code</span></div></div><div class='oss-direction'><b>🎯 适合二开什么：</b>AI工作流集成 / 跨系统自动化Agent / 企业内部自动化平台。比如：自动爬取论文→摘要→发到飞书群的工作流。</div><div class='oss-tech'><b>🛠 技术栈：</b>Node.js/TypeScript（后端+前端）+ 自定义节点可用Python/JS开发</div><div class='oss-path'><b>📚 学习二开路径：</b><div class='step'><span class='step-num'>1</span><span><b>部署：</b>Docker起n8n，在画布上拖一个"Webhook触发→调用LLM→发邮件"的自动化流程。</span></div><div class='step'><span class='step-num'>2</span><span><b>看AI节点：</b>n8n原生支持OpenAI/Anthropic/国产模型节点，理解"工作流+LLM"的编排思路。</span></div><div class='step'><span class='step-num'>3</span><span><b>二开方向：</b>写一个自定义节点（如"本校教务API"），或做一个"每日论文追踪→AI摘要→飞书推送"的自动化工作流。</span></div></div><div class='oss-pkg'><b>📦 包装成自己的项目：</b>截图工作流画布+演示视频；README写"基于n8n二开的学术自动化工作流，含自定义教务查询节点"；和Dify对比（n8n偏跨系统自动化，Dify偏LLM应用）。</div></div></div>
+
+<div class='oss-card'><div class='oss-head'><div class='oss-name'><a href='https://github.com/zeromicro/go-zero' target='_blank'>Go-Zero</a> / <a href='https://github.com/go-kratos/kratos' target='_blank'>Kratos</a></div><div class='oss-badges'><span class='oss-badge oss-stars'>33k / 26k stars</span><span class='oss-badge oss-license'>MIT</span></div></div><div class='oss-direction'><b>🎯 适合二开什么：</b>AI后端微服务 / Go高并发网关 / 带RBAC管理后台的AI平台。go-zero偏工程效率，Kratos偏DDD架构，二选一深入。</div><div class='oss-tech'><b>🛠 技术栈：</b>Go + gRPC + etcd（服务发现）+ Redis + MySQL；配套B站有完整跟做教程</div><div class='oss-path'><b>📚 学习二开路径：</b><div class='step'><span class='step-num'>1</span><span><b>部署：</b>跟做B站go-zero租房网/数字资产交易平台教程，跑通一个完整微服务项目。</span></div><div class='step'><span class='step-num'>2</span><span><b>看项目结构：</b>理解go-zero的api文件→生成Go代码的脚手架模式；Kratos的DDD分层（cmd/internal/pkg）。</span></div><div class='step'><span class='step-num'>3</span><span><b>二开方向：</b>在微服务架构上加一个AI推理网关模块——Go网关接收请求→gRPC转发到Python AI服务→限流/熔断/缓存。这就是阶段二的"RAG+Go微服务"项目。</span></div></div><div class='oss-pkg'><b>📦 包装成自己的项目：</b>架构图画清Go网关→gRPC→Python AI服务链路；压测数据（QPS/P99）；README用project-layout规范组织目录；MIT协议可放心开源。</div></div></div>
+
+<div class='oss-card oss-priority'><div class='oss-head'><div class='oss-name'><a href='https://github.com/cloudwego/eino' target='_blank'>Eino</a> ⭐Python+Go主线关键补充</div><div class='oss-badges'><span class='oss-badge oss-stars'>13.2k stars</span><span class='oss-badge oss-license'>Apache-2.0</span></div></div><div class='oss-direction'><b>🎯 适合二开什么：</b>Go语言LLM应用 / 高并发AI Agent服务 / Go版RAG后端。字节出品，是你"Python+Go双栈"主线的关键锚点。</div><div class='oss-tech'><b>🛠 技术栈：</b>Go（核心框架）+ 对标Python LangChain的Chain/Agent/RAG抽象</div><div class='oss-path'><b>📚 学习二开路径：</b><div class='step'><span class='step-num'>1</span><span><b>入门：</b>读Eino官方文档和examples目录，用Go写第一个"调用Qwen API→简单Chain"的Hello World。</span></div><div class='step'><span class='step-num'>2</span><span><b>对比学习：</b>你已经会Python LangChain，把Eino的Chain/Retriever/Tool抽象和LangChain对应起来——概念一致，语法是Go。</span></div><div class='step'><span class='step-num'>3</span><span><b>二开方向：</b>用Eino写一个Go版RAG后端（比Python高并发性能好），或写一个Go Agent能调用工具查数据库/调API。</span></div></div><div class='oss-pkg'><b>📦 包装成自己的项目：</b>README写"用Go+Eino实现高并发RAG后端，对比Python LangChain版性能提升X倍"；这是你区别于"纯Python调包侠"的核心差异化项目。</div></div></div>
+
+</div><div style="margin-top:16px;padding:12px 16px;background:#f8fafc;border-radius:8px;font-size:13px;color:#475569;line-height:1.7;">
+<b>📌 选型建议：</b>如果只能二开一个，选 <a href='https://github.com/langgenius/dify' target='_blank'>Dify</a>（最快出demo，可视化搭RAG/Agent）；如果想体现Go技术栈，选 <a href='https://github.com/cloudwego/eino' target='_blank'>Eino</a> + <a href='https://github.com/zeromicro/go-zero' target='_blank'>go-zero</a> 组合；如果做深度文档RAG，选 <a href='https://github.com/infiniflow/ragflow' target='_blank'>RAGFlow</a>。更多项目灵感见 <a href='https://github.com/Shubhamsaboo/awesome-llm-apps' target='_blank'>awesome-llm-apps</a>（140k stars，100+开源LLM应用合集）。
+</div></section><section id='sources'><h2>💡 项目的4类来源</h2><div class='src-grid'><div class='src-card'><h4>真实需求</h4><p>从自己/同学/学长的真实痛点出发：本校同学吐槽课程资料分散→做课程答疑RAG；实验室师兄读论文慢→做论文阅读助手。真实需求=有真实用户=可量化成果=简历最硬的素材。</p></div><div class='src-card'><h4>开源跟做改造</h4><p><b>本指南核心方法：</b>先跟做成熟开源项目（llm-cookbook/self-llm/llm-action/FastGPT/Chatchat）的对应章节跑通流程，再改造为本校/垂直领域差异化项目。这样既保证工程质量，又有自己的特色。</p></div><div class='src-card'><h4>竞赛脱敏</h4><p>参加黑客松/算法比赛后，把比赛项目脱敏整理成开源项目，持续维护。</p></div><div class='src-card'><h4>实习脱敏</h4><p>实习期间参与的项目，离职后在不泄露公司机密的前提下，用自己的技术栈重写一个简化版放到GitHub。注意：不要直接上传公司代码。</p></div></div></section><section id='standards'><h2>✅ 好项目的8条标准</h2><ul class='std-list'><li><span class='ic'>1.</span>有真实用户或真实数据：至少10个以上真人用过，有用户反馈数据。</li><li><span class='ic'>2.</span>有工程量：代码量&gt;1000行，包含错误处理、配置管理、测试、日志、Docker部署。</li><li><span class='ic'>3.</span>有技术深度：不是纯调包。RAG要有检索优化/评测，Agent要有状态机设计。</li><li><span class='ic'>4.</span>可演示：有在线demo链接，或至少3分钟演示视频。</li><li><span class='ic'>5.</span>可量化成果：用数字说话——QPS、延迟、准确率、用户数、star数。</li><li><span class='ic'>6.</span>README专业：包含架构图、快速开始、技术栈说明、性能指标。</li><li><span class='ic'>7.</span>有复盘输出：写过技术博客讲解项目中的难点和决策。</li><li><span class='ic'>8.</span>能扛追问：面试官深挖任何一个技术点你都能答上来。</li></ul></section><section id='packaging'><h2>🎁 项目包装四步法</h2><div class='pack-grid'><div class='pack-item'><h4>🐙 GitHub仓库优化</h4><p>仓库描述一句话说清做什么；Topics标签打满（rag/langchain/fastapi/llm）；默认分支main；有Release Tag；LICENSE选MIT；CI badge；Go项目按project-layout规范组织目录。</p></div><div class='pack-item'><h4>📄 README撰写要点</h4><p>顶部banner→一句话简介→Badge→效果演示GIF→技术栈→架构图→快速开始→核心实现亮点→性能指标→致谢。</p></div><div class='pack-item'><h4>🎬 演示视频/在线Demo</h4><p>在线demo优先用云服务器部署；录屏3分钟以内，开头30秒讲清楚做什么，中间演示核心功能，结尾讲技术亮点。</p></div><div class='pack-item'><h4>✍️ 技术博客写作</h4><p>选难点写——不要写"我搭了个RAG系统"，要写"我是如何把RAG检索准确率从60%优化到85%的"。发知乎/掘金。</p></div></div></section><section id='blacklist'><h2>🚫 烂项目黑名单 & 开源改造路径</h2><p style='color:var(--muted);font-size:14px;margin-bottom:14px'>以下项目是培训班标配，原样做等于告诉面试官"我是跟视频敲的"。但<b>不是完全不能做——用开源项目的方法改造后可以变成好项目</b>。每个黑名单都给出具体的开源改造路径。</p><div class='black'><div class='bname'>⚠ 瑞吉外卖</div><div class='bprob'><b>问题：</b>培训班标配CRUD项目，GitHub上有几千个一模一样的仓库，面试官看到直接跳过。</div><div class='bup'><b>🔧 原始改造思路：</b>加AI菜品推荐、高并发优化、微服务拆分、智能客服RAG。</div><div class='bopen'><b>🌐 开源改造路径（具体到仓库）：</b>不要从零改——①先跟做 <a href='https://github.com/liguodongiot/llm-action' target='_blank'>llm-action</a> RAG章节搭一个知识库问答模块，替换掉"商家FAQ客服"；②用 <a href='https://github.com/labring/FastGPT' target='_blank'>FastGPT</a> 快速部署一个菜品推荐Bot（基于用户历史订单embedding召回+LLM生成推荐理由）；③高并发部分参考 <a href='https://github.com/doocs/advanced-java' target='_blank'>advanced-java</a> 的分布式锁/消息队列章节。这样CRUD就变成了"外卖系统+AI推荐+RAG客服+高并发"的复合项目。</div></div><div class='black'><div class='bname'>⚠ 尚硅谷电商/谷粒商城</div><div class='bprob'><b>问题：</b>Spring Boot CRUD堆砌，功能多但每个都浅，典型"培训班大杂烩"。</div><div class='bup'><b>🔧 原始改造思路：</b>选一个模块深挖——搜索升级为向量语义搜索，加推荐两阶段召回。</div><div class='bopen'><b>🌐 开源改造路径：</b>不要用Spring全家桶重写——①用Go/Gin重写核心服务（参考 <a href='https://github.com/golang-standards/project-layout' target='_blank'>project-layout</a> 目录规范）；②搜索模块参考 <a href='https://github.com/datawhalechina/llm-cookbook' target='_blank'>llm-cookbook</a> RAG章节，从普通关键词搜索升级为BM25+向量混合检索；③推荐模块用BGE-M3做用户行为embedding召回。这样"谷粒商城"就变成了"Go后端+向量搜索+LLM推荐"的差异化项目。</div></div><div class='black'><div class='bname'>⚠ 黑马程序员旅游网/租房网</div><div class='bprob'><b>问题：</b>纯前端+简单后端CRUD，页面漂亮但无技术含量。</div><div class='bopen'><b>🌐 开源改造路径：</b>①加智能搜索——自然语言找房"一室一厅带阳台朝南2000以内"，用 <a href='https://github.com/dair-ai/Prompt-Engineering-Guide' target='_blank'>Prompt-Engineering-Guide</a> 的结构化输出模式让LLM解析查询条件；②加AI内容审核——自动检测违规帖子；③做成本校周边租房/旅游攻略版，用 <a href='https://github.com/chatchat-space/Langchain-Chatchat' target='_blank'>Langchain-Chatchat</a> 的RAG实现做房源问答。这样就变成了"自然语言搜索+RAG房源问答+AI审核"的AI应用项目。</div></div><div class='black'><div class='bname'>⚠ 图书管理系统/学生管理系统</div><div class='bprob'><b>问题：</b>大一课程设计水平，MVC CRUD，任何专业都在做。</div><div class='bopen'><b>🌐 开源改造路径：</b>完全不要做。如果非要做管理系统类，直接用阶段二的<b>本校课程RAG知识库</b>替换它——跟做 <a href='https://github.com/datawhalechina/llm-cookbook' target='_blank'>llm-cookbook</a> 第5章RAG专题 + <a href='https://github.com/labring/FastGPT' target='_blank'>FastGPT</a> 部署，改造为本校课程RAG。本质上是用RAG项目把"管理系统"这个烂题目升级成AI项目。</div></div></section><section id='resume'><h2>📄 简历模板（可直接复制）</h2><p style='color:var(--muted);font-size:14px;margin-bottom:10px'>点击右上角按钮复制完整模板，替换为你自己的信息即可。</p><div class="codeblock"><button class="copybtn" onclick="copyCode(this)">复制</button><pre><code># 张三
+
+**电话**：138-XXXX-XXXX | **邮箱**：zhangsan@email.com  
+**GitHub**：github.com/zhangsan | **博客**：zhangsan.github.io | **微信**：zhangsan_wx
+
+---
+
+## 教育背景
+
+**本校** | 电子信息工程 | 本科 | 2025.09 - 2029.06
+
+- **GPA**：3.7/4.0（专业前15%）
+- **主修课程**：信号与系统(95)、模拟电子技术(92)、数据结构(94)、计算机组成原理(90)、Python程序设计(96)
+- **奖学金**：校级二等奖学金（2026）
+
+---
+
+## 专业技能
+
+- **编程语言**：熟练掌握 Python（asyncio/FastAPI/Pytest）；熟练掌握 Go（Gin/GORM/goroutine）；了解 C/C++；了解 TypeScript/React基础
+- **大模型应用**：熟练使用 LangChain/LangGraph 构建RAG和多Agent应用；掌握向量数据库（Milvus/Chroma）；了解PEFT/LoRA微调流程；了解vLLM推理部署
+- **后端技术**：熟悉 MySQL（索引/事务/优化）、Redis（缓存/分布式锁）；熟悉gRPC；了解Docker/K8s基础
+- **工程能力**：熟悉Git协作、Linux常用命令；了解CI/CD（GitHub Actions）
+- **其他**：英语CET-6（550+），可读英文文档和论文
+
+---
+
+## 项目经历
+
+### XDU-CourseQA：本校课程智能问答RAG系统 | 个人项目
+**技术栈**：Python/FastAPI/LangChain/Milvus/BGE-M3/Qwen2.5/Docker  
+**时间**：2027.03 - 2027.06 | **Demo**：xxx.com | **GitHub**：github.com/zhangsan/XDU-CourseQA
+
+- **背景（Situation）**：本校电子工程学院课程资料分散，同学找资料、问问题效率低。
+- **任务（Task）**：独立设计并开发垂直领域RAG问答系统，覆盖5门核心课程。
+- **行动（Action）**：
+  - 跟做 datawhalechina/llm-cookbook 第5章RAG专题后，设计文档解析Pipeline：PyMuPDF解析PDF/PPTX，按语义块切分（512 token，重叠50）
+  - 实现混合检索：BM25 + BGE-M3向量召回，RRF融合后bge-reranker-v2-m3重排序Top-5
+  - 用LangChain构建检索增强生成链，FastAPI+Redis后端，Docker Compose部署
+  - 构建100道标注测试集，用RAGAS评测，迭代优化Chunking策略
+- **结果（Result）**：
+  - 知识库覆盖5门课程、500+份文档，RAGAS Faithfulness从0.65提升到0.82
+  - 首字延迟&lt;1.8s（流式），支持50+同学日常使用
+  - GitHub获得80+ star
+
+### CodeReview-Agent：多Agent代码审查助手 | 个人项目
+**技术栈**：Python/LangGraph/GitHub API/Qwen2.5-Coder/FastAPI  
+**时间**：2027.07 - 2027.09
+
+- 跟做 llm-action Agent章节 + Langchain-Chatchat Agent模块后，基于LangGraph构建4-Agent协作系统
+- Agent分工：代码分析→规范检查→安全扫描→报告汇总，Webhook自动审查PR
+- 20个PR测试集上严重问题检出率75%，端到端审查500行diff&lt;25s
+- GitHub：github.com/zhangsan/CodeReview-Agent
+
+---
+
+## 实习经历
+
+### XX科技有限公司 | AI后端开发实习生 | 2027.07 - 2027.09
+- 参与公司内部知识库问答系统开发，负责检索模块优化，召回率从70%提升到88%
+- 用FastAPI开发内部工具API，支持日均5000次调用，P99延迟&lt;100ms
+
+---
+
+## 竞赛获奖
+
+- 全国大学生数学建模竞赛 **省级一等奖** | 2027.09
+- 百度AI黑客松 **全国12强** | 2027.05
+
+---
+
+## 自我评价
+
+- 对大模型应用开发有强烈兴趣，独立完成多个RAG/Agent项目并上线
+- 工程习惯好：GitHub项目均有完整README和架构图
+- 学习能力强：电子信息工程跨方向自学Python/Go后端
+
+---
+
+> 本简历模板基于 <a href='https://github.com/billryan/resume' target='_blank'>billryan/resume</a> 改编，遵循MIT协议。
+> 原模板：LaTeX简历模板与中文简历写作建议，11.4k stars。
+> 改编内容：项目经历STAR法则写法、技术栈分级、大模型应用方向技能项。</code></pre></div><div class='attribution'>
+  📜 <b>简历模板版权说明：</b>本模板基于 <a href="https://github.com/billryan/resume" target="_blank">billryan/resume</a>（MIT协议，11.4k stars）改编。
+  原仓库提供LaTeX简历模板与中文简历写作建议，本模板在此基础上适配了大模型应用开发方向的项目经历写法与技能项分级。
+  按MIT协议要求，在此保留原作者版权声明。如需LaTeX排版版本，请访问原仓库。
+</div></section><section id='readme'><h2>📘 GitHub README模板（可直接复制）</h2><p style='color:var(--muted);font-size:14px;margin-bottom:10px'>将你的项目信息填入此模板，保存为仓库根目录 README.md。</p><div class="codeblock"><button class="copybtn" onclick="copyCode(this)">复制</button><pre><code># 🚀 XDU-CourseQA：本校课程智能问答系统
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688.svg)](https://fastapi.tiangolo.com/)
+
+&gt; 基于 RAG 技术的本校电子工程课程智能问答系统，覆盖 5 门核心课程、500+ 文档。
+
+**🌐 在线Demo**：[https://your-demo-url.com](https://your-demo-url.com)  
+**📝 技术博客**：[我是如何把RAG准确率从65%优化到82%的](https://blog.xxx.com)
+
+---
+
+## 🎯 项目简介
+
+本校电子工程学院课程资料分散在 PPT、习题集、历年真题中。本项目构建垂直领域 RAG 问答系统：
+
+- 📚 自动解析课程 PDF/PPT，构建语义向量索引
+- 🔍 混合检索（BM25 + 向量）+ 重排序
+- 💬 流式输出，每条结论标注来源
+- 🎓 已覆盖信号与系统、模电、通信原理等 5 门核心课程
+
+---
+
+## 🛠 技术栈
+
+| 层级 | 技术 |
+|------|------|
+| Web框架 | FastAPI 0.110 + Uvicorn |
+| RAG框架 | LangChain 0.2 |
+| 向量数据库 | Milvus 2.4 |
+| Embedding | BGE-M3 |
+| Reranker | bge-reranker-v2-m3 |
+| LLM | Qwen2.5-7B (vLLM部署) |
+| 部署 | Docker Compose |
+
+---
+
+## 🏗 系统架构
+
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   React前端 ─────▶│  FastAPI网关 ─────▶│  RAG引擎层   │
+└─────────────┘     └──────┬───────┘     └──────┬──────┘
+                           │              │ BM25+向量
+                    ┌──────▼───────┐      │ Rerank重排
+                    │   Redis缓存   │      └─────┬──────┘
+                    └──────────────┘      ┌─────▼──────┐
+                                         │   LLM推理   │
+                                         │  (vLLM)    │
+                                         └────────────┘
+```
+
+---
+
+## 🚀 快速开始
+
+```bash
+git clone https://github.com/yourname/XDU-CourseQA.git
+cd XDU-CourseQA
+cp .env.example .env  # 填入LLM API Key
+docker-compose up -d
+python scripts/init_knowledge_base.py
+# 前端：http://localhost:3000  API文档：http://localhost:8000/docs
+```
+
+---
+
+## 📊 性能指标
+
+| 指标 | 数值 |
+|------|------|
+| 知识库文档数 | 500+ 份 |
+| RAGAS Faithfulness | 0.82 |
+| 首字延迟 (TTFT) | &lt; 1.8s |
+
+---
+
+## 📄 License
+
+[MIT](LICENSE)
+
+## 🙏 致谢
+
+感谢 [LangChain](https://github.com/langchain-ai/langchain)、[Milvus](https://github.com/milvus-io/milvus)、[BGE](https://huggingface.co/BAAI/bge-m3)、[llm-cookbook](https://github.com/datawhalechina/llm-cookbook)、[self-llm](https://github.com/datawhalechina/self-llm) 开源项目。</code></pre></div></section><footer>泛AI软件就业作战资料包 · 项目实操指南<br>标杆参考：datawhalechina/llm-cookbook · datawhalechina/self-llm(Apache-2.0) · liguodongiot/llm-action(Apache-2.0) · labring/FastGPT · chatchat-space/Langchain-Chatchat(Apache-2.0) · billryan/resume(MIT)<br>新增二开项目：langgenius/dify · lobehub/lobe-chat · infiniflow/ragflow(Apache-2.0) · n8n-io/n8n · zeromicro/go-zero(MIT) · go-kratos/kratos(MIT) · cloudwego/eino(Apache-2.0) · hiyouga/LLaMA-Factory(Apache-2.0) · vllm-project/vllm(Apache-2.0) · ggml-org/llama.cpp(MIT)<br>生成日期 2026-09-28（本轮新增77条资源引用）</footer><script>
+function copyCode(btn){
+  var pre=btn.parentElement.querySelector('pre');
+  var t=pre.innerText;
+  navigator.clipboard.writeText(t).then(function(){
+    var o=btn.innerText;btn.innerText='已复制 ✓';
+    setTimeout(function(){btn.innerText=o;},1500);
+  });
+}
+</script></div></body></html>

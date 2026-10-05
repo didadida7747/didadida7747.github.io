@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · NLP与主流LLM架构（陈子陶, BV1jDbCzuE3c）"
+---
+
 # 2025科协暑培 · NLP与主流LLM架构（陈子陶, BV1jDbCzuE3c）
 
 ## 定位

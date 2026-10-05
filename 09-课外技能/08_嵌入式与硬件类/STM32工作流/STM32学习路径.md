@@ -1,3 +1,7 @@
+---
+title: "STM32 Learning Path"
+---
+
 # STM32 Learning Path
 
 ## 推荐顺序

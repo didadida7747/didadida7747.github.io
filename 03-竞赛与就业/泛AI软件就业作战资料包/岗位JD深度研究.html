@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岗位JD深度研究 · 泛AI软件就业作战资料包</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JD</text></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{
+  --bg:#0f1419; --panel:#171e26; --panel2:#1d2630; --line:#2a3644;
+  --txt:#e6edf3; --sub:#9aa7b4; --mut:#6b7a8a;
+  --acc:#3fb6a8; --acc2:#4e9af1; --warn:#e8a33d; --bad:#e06c75; --good:#5ec27a;
+  --chip:#243040;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans SC',system-ui,-apple-system,'Microsoft YaHei',sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;font-size:15px}
+a{color:var(--acc2);text-decoration:none;word-break:break-all}
+a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:0 22px}
+/* header */
+header{background:linear-gradient(135deg,#0f1419 0%,#16283a 60%,#0f1419 100%);border-bottom:1px solid var(--line);padding:42px 0 30px}
+header h1{font-size:30px;font-weight:900;letter-spacing:1px}
+header h1 span{color:var(--acc)}
+header .meta{color:var(--sub);margin-top:10px;font-size:13.5px}
+header .meta b{color:var(--txt)}
+.badges{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{background:var(--chip);border:1px solid var(--line);color:var(--sub);padding:4px 11px;border-radius:20px;font-size:12.5px}
+.badge b{color:var(--acc)}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(15,20,25,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:10px 22px}
+nav a{color:var(--sub);padding:6px 12px;border-radius:7px;font-size:13.5px;white-space:nowrap}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+/* section */
+section{padding:40px 0 10px}
+h2{font-size:23px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+h2 .num{background:var(--acc);color:#06201d;font-size:14px;font-weight:900;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.lead{color:var(--sub);font-size:14px;margin-bottom:22px;max-width:900px}
+h3{font-size:16.5px;font-weight:700;margin:24px 0 10px;color:var(--acc)}
+/* cards grid */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;align-items:center}
+.filters label{color:var(--mut);font-size:13px;margin-right:4px}
+.fbtn{background:var(--panel);border:1px solid var(--line);color:var(--sub);padding:5px 13px;border-radius:18px;cursor:pointer;font-size:13px;transition:.15s}
+.fbtn:hover{border-color:var(--acc);color:var(--txt)}
+.fbtn.on{background:var(--acc);color:#06201d;border-color:var(--acc);font-weight:700}
+.jdgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px}
+.jd{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.15s}
+.jd:hover{border-color:#3a4a5e}
+.jd-head{padding:14px 16px;cursor:pointer}
+.jd-co{font-size:12px;color:var(--mut);display:flex;justify-content:space-between;align-items:center}
+.tag{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:700}
+.tag-xz{background:#1d3a5f;color:#7fb4f0}
+.tag-sx{background:#3a2f1d;color:#e8c07f}
+.tag-she{background:#2a2a2a;color:#9aa}
+.jd-title{font-size:15px;font-weight:700;margin:6px 0 4px;color:var(--txt)}
+.jd-sub{font-size:12.5px;color:var(--sub)}
+.jd-kw{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px}
+.kw{background:var(--chip);color:var(--sub);font-size:11px;padding:2px 7px;border-radius:5px}
+.jd-body{display:none;padding:0 16px 16px;border-top:1px dashed var(--line);margin-top:4px}
+.jd.open .jd-body{display:block}
+.jd-body h4{font-size:12.5px;color:var(--acc);margin:12px 0 4px;font-weight:700}
+.jd-body p,.jd-body li{font-size:13px;color:var(--sub);line-height:1.65}
+.jd-body ul{padding-left:18px}
+.jd-src{margin-top:12px;font-size:11.5px;color:var(--mut);border-top:1px solid var(--line);padding-top:8px}
+.jd-src a{font-size:11.5px}
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:var(--panel);border-radius:10px;overflow:hidden}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--txt);font-weight:700;font-size:12.5px}
+td{color:var(--sub)}
+td:first-child{color:var(--txt);font-weight:500}
+tr:last-child td{border-bottom:none}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--line)}
+/* chart */
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0}
+.chart-box{width:100%;height:420px}
+/* two-col compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cmp .box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.cmp .box h4{font-size:14px;margin-bottom:8px}
+.big{border-top:3px solid var(--acc2)}
+.uni{border-top:3px solid var(--warn)}
+/* callout */
+.note{background:#1a2430;border-left:3px solid var(--warn);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:13.5px;color:var(--sub)}
+.note b{color:var(--warn)}
+.ok{border-left-color:var(--good)} .ok b{color:var(--good)}
+.src{font-size:11.5px;color:var(--mut);margin-top:6px}
+/* bar rows */
+.barrow{display:grid;grid-template-columns:150px 1fr 46px;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.barrow .lab{color:var(--sub);text-align:right}
+.barrow .track{background:var(--panel2);border-radius:6px;height:20px;position:relative;overflow:hidden}
+.barrow .fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:11px;color:#06201d;font-weight:700}
+footer{margin-top:50px;padding:26px 0;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;text-align:center}
+@media(max-width:760px){.cmp{grid-template-columns:1fr}.jdgrid{grid-template-columns:1fr}header h1{font-size:23px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>岗位JD<span>深度研究</span></h1>
+    <div class="meta">目标方向：<b>大模型应用开发 / LLM工程 / Agent开发 / AI后端 / AIGC / AI平台 / 评测</b>　|　画像：<b>本校 电子信息工程 · Python+Go · 本科就业</b>　|　抓取日期：<b>2026-09-28</b></div>
+    <div class="badges">
+      <span class="badge">真实JD <b id="bdCount">--</b> 条</span>
+      <span class="badge">覆盖公司 <b>8+</b></span>
+      <span class="badge">校招/实习 <b>双轨</b></span>
+      <span class="badge">薪资来源 <b>牛客/OfferShow 2025-2026</b></span>
+    </div>
+  </div>
+</header>
+<nav><div class="wrap">
+  <a href="#m1">① JD库</a>
+  <a href="#m2">② 技能频次</a>
+  <a href="#m3">③ 要求→学习→证据</a>
+  <a href="#m4">④ 方向对比</a>
+  <a href="#m5">⑤ 黑话解读</a>
+  <a href="#m6">⑥ 学历真相</a>
+  <a href="#m7">⑦ 薪资结构</a>
+</div></nav>
+<main class="wrap">
+<!-- ===== 模块① JD库 ===== -->
+<section id="m1">
+  <h2><span class="num">1</span>JD 库展示（真实抓取，可筛选 / 点击展开）</h2>
+  <p class="lead">每条 JD 来自公司官方招聘页（字节 jobs.bytedance.com、月之暗面 Moka、智谱飞书招聘）或公开招聘平台。点击卡片展开职责 / 硬性要求 / 加分项 / 高频关键词。来源 URL 与抓取日期见每条底部。</p>
+  <div class="filters" id="filterBar">
+    <label>公司：</label>
+    <button class="fbtn on" data-f="co" data-v="all">全部</button>
+    <button class="fbtn" data-f="co" data-v="字节跳动">字节跳动</button>
+    <button class="fbtn" data-f="co" data-v="月之暗面Kimi">月之暗面Kimi</button>
+    <button class="fbtn" data-f="co" data-v="智谱AI">智谱AI</button>
+    <span style="width:14px"></span>
+    <label>类型：</label>
+    <button class="fbtn on" data-f="tp" data-v="all">全部</button>
+    <button class="fbtn" data-f="tp" data-v="校招">校招</button>
+    <button class="fbtn" data-f="tp" data-v="实习">实习</button>
+  </div>
+  <div class="jdgrid" id="jdGrid"></div>
+</section>
+
+
+<script>
+const JDS = [
+{co:"字节跳动",title:"大模型后端开发工程师 - 火山方舟",tp:"校招",loc:"杭州/北京/上海",
+ resp:["负责方舟MaaS平台核心链路组件设计与研发，支撑文本对话、多模态理解/生成等API能力","基于云原生参与Service Mesh、负载均衡、智能路由架构演进；落地全链路灰度、降级、熔断限流","面对多模态推理的长连接、高吞吐、流式输出、低延迟挑战做系统级性能调优","保障大规模模型调用下的系统稳定性，解决突发流量下的架构瓶颈"],
+ req:["2027届本科及以上，计算机/人工智能/信息安全等相关专业优先","掌握 Golang/Java/C++/Python 任意一门，有实际落地开发经历，计算机基础扎实","了解后端工程体系：数据库、计算机网络、操作系统、分布式系统原理"],
+ plus:["有服务端工程落地经验","了解Agent基本概念与实现，如 Function Calling、MCP","熟悉 Kubernetes、Docker、Istio/Envoy 等云原生/服务网格","对大模型推理链路感兴趣，有相关背景知识"],
+ kw:["Go","MaaS","云原生","Service Mesh","流式输出","性能调优","Agent","MCP"],
+ url:"https://jobs.bytedance.com/campus/position/7670458147907209525/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"字节跳动",title:"AI Agent 开发实习生 - 计算",tp:"实习",loc:"杭州/北京/上海",
+ resp:["构建高性能、多语言版本的 Agent 开发框架，与 Agent Infra 平台协同","设计开发企业级 Agent 系统，涵盖多Agent协作、记忆、知识、鉴权、观测等全生命周期","探索业界最新技术/工具，如 Agent Skills、OpenCode 等应用落地"],
+ req:["2027届本科及以上在读，计算机/通信等相关专业","掌握算法、数据结构，至少熟练一门语言（C/C++/Python/Go/Java）","责任心强、沟通协作好，热爱编程、学习能力强"],
+ plus:["有 Agent 开发、Agent 框架、Agent Skills 相关经验者优先"],
+ kw:["Agent框架","多Agent","记忆","鉴权","观测","Go/Python","AI-Native Infra"],
+ url:"https://jobs.bytedance.com/campus/position/7600764534917646597/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"字节跳动",title:"Agent 基础系统研发工程师 - 火山方舟",tp:"校招",loc:"上海/北京/杭州",
+ resp:["负责方舟平台 Agent 系统研发，建设面向复杂任务的通用 Agent 基础设施能力","设计实现高可靠、可扩展的 Agent 运行时与执行引擎，提升执行效率/安全性/稳定性","推进 Agent 平台能力产品化，支持更多复杂业务场景落地","探索 Agent 方向创新方法与技术动态"],
+ req:["2027届本科及以上","熟练掌握 Python/Golang/Rust/Java 至少一门，代码功底与系统设计能力扎实，熟练使用 AI Coding 工具","理解大模型与 Agent 原理，熟悉工具调用、上下文管理、长程执行等关键机制","熟悉云原生、分布式系统、任务调度、可观测性、资源隔离、网络访问控制"],
+ plus:["有 Agent 系统落地经验者优先","有企业级平台/基础设施研发经验者优先","顶会论文或开源项目贡献者优先，能快速复现论文并工程化"],
+ kw:["Agent运行时","执行引擎","工具调用","上下文管理","长程执行","云原生","AI Coding","开源"],
+ url:"https://jobs.bytedance.com/campus/position/7669725958044518661/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"字节跳动",title:"大模型安全攻防实习生 - 内容质量与数据服务平台",tp:"实习",loc:"北京",
+ resp:["跟踪前沿模型安全方向，更新攻防方法论，提升安全防御体系前瞻性","通过 Prompt 攻击、越狱构造、红蓝对抗等手段挖掘模型安全缺陷与策略漏洞，产出高质量负面样本","基于攻防分析推动模型/端侧安全优化，形成'发现-验证-修复-评估'闭环，对输出做定量定性分析"],
+ req:["本科及以上在读，计算机/安全工程/AI/数学/语言学等相关专业优先","具备内容安全、模型安全或策略攻防经验者优先","熟悉大模型工作原理，对 Prompt 工程、生成式模型(LLM/VLM)及其安全机制有深入兴趣或实践","数据分析与逻辑推理能力强，有探索精神与自驱力"],
+ plus:["跨团队沟通与项目推动能力，能独立思考并快速落地"],
+ kw:["Prompt攻击","越狱","红蓝对抗","LLM/VLM","安全评测","负面样本","对齐"],
+ url:"https://jobs.bytedance.com/campus/position/7668515561866971397/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"字节跳动",title:"大模型推理系统工程师 - 火山方舟",tp:"校招",loc:"杭州/北京/上海",
+ resp:["参与方舟 MaaS 推理系统工程研发，优化超大规模异构推理集群下的推理性能、成本和稳定性","通过多角色分离式推理、分布式 KV Cache、异构推理、弹性计算、多租户混布等系统手段优化推理成本"],
+ req:["2027届本科及以上，计算机相关专业","掌握后端/系统开发语言，计算机基础扎实","对大模型推理、GPU/异构计算有兴趣"],
+ plus:["有推理引擎、分布式系统、性能优化经验者优先"],
+ kw:["推理系统","KV Cache","异构推理","弹性计算","成本优化","TTFT"],
+ url:"https://jobs.bytedance.com/campus/position/7669717661270608181/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"字节跳动",title:"大模型训练系统工程师 - 火山方舟",tp:"校招",loc:"杭州/北京/上海",
+ resp:["参与方舟训练系统研发，支持用户以 Serverless 形式进行模型后训练(SFT、RL)","针对多租户训练场景设计弹性训练方案，多机房多异构硬件下混合训练，优化吞吐与稳定性","设计强化学习系统，提升训练效率，打造友好的 RL 训练接口"],
+ req:["2027届本科及以上，计算机相关专业","掌握系统/后端开发，了解分布式训练或强化学习者优先"],
+ plus:["有训练框架、调度系统、GPU 集群经验者优先"],
+ kw:["训练系统","Serverless","SFT","RL","多租户","弹性训练"],
+ url:"https://jobs.bytedance.com/campus/position/7669705537843382581/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"月之暗面Kimi",title:"后端研发实习生（Agent 产品工程方向）",tp:"实习",loc:"北京",
+ resp:["在千万级用户真实场景、核心链路上把需求从设计做到上线，而非写一次性脚本","参与 Agent 产品后端核心链路研发，与模型高频发布节奏对齐"],
+ req:["全日制在读，27届及以后优先，计算机相关专业","后端基本功扎实：数据结构与算法、操作系统、计算机网络；熟悉 Go，或 Java/C++/Rust 功底深且愿快速转 Go","做过真东西：有完整项目/实习/开源经历，能讲清解决的问题、权衡与踩坑","AI-native 工作方式：习惯用 AI 工具提效，真的用过并上手做过 AI Agent 产品","自驱、有主人翁意识，能独立负责子问题；每周到岗≥4天，连续≥3个月"],
+ plus:["Agent/LLM 应用系统实际开发经验（生产环境经验尤其突出）","深度使用微服务、gRPC、PostgreSQL/MySQL、Redis、消息队列、K8s、CI/CD","开源项目贡献者或有能打动的个人作品；写技术博客/复盘笔记"],
+ kw:["Go","后端基本功","Agent产品","AI-native","微服务","gRPC","PostgreSQL","Redis","K8s","开源"],
+ url:"https://app.mokahr.com/campus-recruitment/moonshot/148507#/job/52134dbe-419c-4251-9af6-6d3a9e4e04c3",src:"月之暗面Moka校招系统",date:"2026-09-28"},
+
+{co:"月之暗面Kimi",title:"Agent 工程师实习生（增长实验方向）",tp:"实习",loc:"北京",
+ resp:["主导研发小而快的增长产品实验，在 Agent 领域发掘能带来10倍增长的非共识机会","搭建 Agentic Growth Infra：scaffolding 设计、evaluation harness、工具链与可复用工程模式"],
+ req:["高度自驱，能自己发现/定义/解决问题，不需别人安排下一步","独特审美：追求架构简洁、文档清晰，strong opinions 但愿意在更好证据前 weakly hold","追求本质：面对陌生领域一路向下钻到原理","AI-scalable：精通使用 Claude Code、Codex 构建真实项目，对 Agent 能力边界与 best practice 有一手判断"],
+ plus:["表现优异者提供转正机会"],
+ kw:["Agent","Growth","scaffolding","eval harness","Claude Code","Codex","AI-scalable"],
+ url:"https://app.mokahr.com/campus-recruitment/moonshot/148507#/job/55b094b5-432c-43ba-8c84-27bcd8ffd5f3",src:"月之暗面Moka校招系统",date:"2026-09-28"},
+
+{co:"月之暗面Kimi",title:"AI for Engineering Eval Intern（工程评测方向）",tp:"实习",loc:"北京",
+ resp:["定义汽车'总布置→造型→车身'全链路 CAD 建模评估任务，把真实工程问题转成 AI 可训练、可验证的评测题目与 RL 环境","分析模型失败轨迹，定位错误在几何理解/法规约束/工艺可达性/流程理解哪一环，把人类工程师方法提炼成通用 prompt 或 pipeline","与 RL 团队协作构建训练数据集或 agent 产品，拓展核心环节 model/agent 能力边界"],
+ req:["车辆工程/机械设计/材料成型等相关专业，有整车厂/零部件实习经历","参与过完整 CAD 建模到 SOP 交付，熟悉全链路数据流转","深度使用 coding agent，对 AI 在哪个环节能做/不能做有第一手判断"],
+ plus:["造过行业真实任务 benchmark、写过 verifier/评分标准","用 AI 优化过工作环节并产出业内认可的 demo/workflow/文档"],
+ kw:["评测","benchmark","verifier","RL环境","失败轨迹","coding agent","prompt"],
+ url:"https://app.mokahr.com/campus-recruitment/moonshot/148507#/job/27c2d6cd-e167-4a31-b463-1abbffc6b4a0",src:"月之暗面Moka校招系统",date:"2026-09-28"},
+
+{co:"智谱AI",title:"大模型应用 Java 开发工程师（MaaS/智能体平台）",tp:"校招",loc:"北京",
+ resp:["参与 MaaS 平台后端功能开发，用分布式技术栈实现高可用高性能服务接口，支撑智能体平台、服务调用、模型推理服务等场景","对现有 Java 后端做性能调优：代码/数据库查询/分布式参数优化，保障高并发下稳定","与产品/前端/算法团队协作，把 AI 大模型功能在后端高效集成与调用","在资深工程师指导下参与系统架构设计，学习微服务架构；保障 7×24 线上稳定性"],
+ req:["2026届应届本科或硕士，计算机/软工/信息与计算科学等相关专业优先，基础扎实、成绩优异","熟练掌握 Java，数据结构与算法、网络工程，熟悉 Spring Boot、Spring Cloud 等框架","熟悉分布式技术栈 Dubbo、Zookeeper、Redis 等，了解分布式系统基本概念与常见问题","掌握 MySQL 与 SQL，能做库表设计/优化/复杂查询；了解 IDEA、Maven、Git"],
+ plus:["深入理解框架原理并能快速搭建稳定后端","熟悉 MongoDB 等非关系型数据库","有 AI 应用开发项目或实习经验（智能客服/文本生成等后端），熟悉 AI 项目开发流程"],
+ kw:["Java","Spring Boot","Spring Cloud","Dubbo","Redis","MySQL","MaaS","智能体平台","微服务","高并发"],
+ url:"https://zhipu-ai.jobs.feishu.cn/zhipucampus/position/7545758745432361235/detail",src:"智谱AI飞书招聘",date:"2026-09-28"},
+
+{co:"智谱AI",title:"大模型算法实习生 - 行业应用（深圳）",tp:"实习",loc:"深圳",
+ resp:["参与大模型研究与应用：LLM、SFT、Agent/MultiAgent、Tool Learning、RAG、RLHF 等技术探索","根据业务场景设计微调方案、适配算法与调优工程方案","参与行业大模型语料知识库建设与训练语料优化，知识图谱/知识FAQ/知识增强方向"],
+ req:["在读本科及以上，计算机/人工智能/NLP 等相关专业","熟悉大模型基础原理，有数据/模型结构/微调理论基础；对 NL2SQL、RAG、SFT 有算法实践基础","熟练使用 Office、Xmind 等；有 Python 编程能力优先"],
+ plus:["顶会论文(ACL/NeurIPS/ICLR/EMNLP)或算法比赛(Kaggle/天池)优异成绩","熟悉粤语优先"],
+ kw:["SFT","RAG","Agent","MultiAgent","Tool Learning","RLHF","Python","微调","NL2SQL"],
+ url:"https://zhipu-ai.jobs.feishu.cn/zhipucampus/position/7582492088500848906/detail",src:"智谱AI飞书招聘",date:"2026-09-28"},
+
+{co:"智谱AI",title:"27届校招 - 预训练数据算法工程师（基座模型方向）",tp:"校招",loc:"北京",
+ resp:["参与基座模型预训练数据建设，围绕图文合训、多模态理解及视觉能力训练，探索高质量数据构建与规模化扩展方案"],
+ req:["熟悉 Transformer 架构和大语言模型原理","熟悉大模型后训练技术"],
+ plus:["有大规模数据清洗/配比/合成经验者优先"],
+ kw:["预训练","数据工程","Transformer","多模态","数据配比"],
+ url:"https://app.mokahr.com/m/campus-recruitment/zphz/148984#/job/61b9c710-b1a0-4078-bc86-515646a97271",src:"智谱Moka校招(摘要)",date:"2026-09-28"},
+
+{co:"智谱AI",title:"26届校招 - 后训练算法工程师（Agentic LLM）",tp:"校招",loc:"北京",
+ resp:["优化通用聊天/写作/角色扮演/STEM/逻辑推理/多语言等方向，深耕 Agentic LLM：指令遵循、长上下文、长程交互、任务规划、自我反馈与改进","团队已在 Coding Agent、PPT Agent、Search Agent 等复杂场景积累工程化经验"],
+ req:["熟悉大模型后训练技术，有 SFT/RLHF/对齐实践","熟悉 Agent 场景落地"],
+ plus:["有 Coding/Search Agent 工程化经验者优先"],
+ kw:["后训练","Agentic","长上下文","任务规划","自我反馈","Coding Agent","RLHF"],
+ url:"https://app.mokahr.com/m/campus-recruitment/zphz/148984#/job/7a0c6875-9804-44c5-9244-1b1f0ddfaed2",src:"智谱Moka校招(摘要)",date:"2026-09-28"},
+
+{co:"智谱AI",title:"2026校招 - 开源模型适配 & 技术布道",tp:"校招",loc:"北京",
+ resp:["与全球顶级开源项目(Transformers、vLLM、SGLang)并肩贡献，深度参与 GLM 系列开源模型生态建设与技术落地","在开源社区代表公司发声，参与技术布道、代码共建，加强公司技术影响力"],
+ req:["熟悉主流推理/训练框架，有开源社区贡献经历","能跨算法/产品/宣发多团队协作"],
+ plus:["有知名开源项目 PR 合并记录者优先"],
+ kw:["开源","Transformers","vLLM","SGLang","GLM","技术布道"],
+ url:"https://zhipu-ai.jobs.feishu.cn/zhipucampus/m/position/detail/7605060055117367562",src:"智谱AI飞书招聘(摘要)",date:"2026-09-28"},
+
+{co:"智谱AI",title:"AI 产品经理/解决方案实习生（厦门）",tp:"实习",loc:"厦门",
+ resp:["深入客户现场，挖掘业务需求，基于 LLM 及视觉理解大模型特性设计 AI 解决方案与应用落地路径","熟悉 Prompt 工程、RAG（检索增强生成）、Agent 等主流大模型应用技术，与算法团队协作做技术可行性验证、效果评估与产品调优","撰写方案文档并汇报"],
+ req:["理解 LLM/RAG/Agent 基本原理，能与算法对话","有较强的需求拆解与文档能力"],
+ plus:["有行业解决方案/售前/产品实习经历"],
+ kw:["RAG","Prompt工程","Agent","解决方案","需求分析","效果评估"],
+ url:"https://zhipu-ai.jobs.feishu.cn/index/m/position/detail/7595519424645400842",src:"智谱AI飞书招聘(摘要)",date:"2026-09-28"},
+
+{co:"字节跳动",title:"大模型后端实习生 - 火山方舟（北京）",tp:"实习",loc:"北京",
+ resp:["负责方舟 MaaS 平台核心链路组件研发，支撑文本对话、多模态理解/生成 API","基于云原生参与 Service Mesh、负载均衡、智能路由演进，落地灰度/降级/熔断","面对多模态推理长连接、高吞吐、流式输出、低延迟做系统级性能调优"],
+ req:["面向2027届毕业生，有转正机会","后端/计算机基础扎实，掌握一门后端语言"],
+ plus:["有服务端实习经历、了解大模型推理链路者优先"],
+ kw:["MaaS","云原生","流式输出","性能调优","后端"],
+ url:"https://jobs.bytedance.com/campus/position/7611069199171422517/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+
+{co:"字节跳动",title:"大模型安全训练 - 内容安全运营（成都）",tp:"校招",loc:"成都",
+ resp:["结合研发需求与内容安全标准，负责 Prompt 撰写及 Pipeline 搭建生产，系统性测试提升模型安全防护","探索 Prompt 攻击新型形式与场景，覆盖合规/可靠性/鲁棒性，构建安全测试体系","负责已上线产品安全巡检与效果评估，闭环线上安全风险"],
+ req:["2027届校招，对大模型安全/Prompt 工程有兴趣","具备数据分析与洞察能力"],
+ plus:["有内容安全、红蓝对抗经验者优先"],
+ kw:["Prompt","Pipeline","安全测试","巡检","鲁棒性"],
+ url:"https://jobs.bytedance.com/campus/position/7670743700485949749/detail",src:"字节跳动校招官网",date:"2026-09-28"},
+];
+
+document.getElementById('bdCount').textContent = JDS.length;
+let curCo='all', curTp='all';
+function renderJDs(){
+  const g=document.getElementById('jdGrid'); g.innerHTML='';
+  JDS.forEach((j,i)=>{
+    if(curCo!=='all' && j.co!==curCo) return;
+    if(curTp!=='all' && j.tp!==curTp) return;
+    const el=document.createElement('div'); el.className='jd';
+    el.innerHTML=`<div class="jd-head">
+      <div class="jd-co"><span>${j.co} · ${j.loc}</span><span class="tag ${j.tp==='校招'?'tag-xz':'tag-sx'}">${j.tp}</span></div>
+      <div class="jd-title">${j.title}</div>
+      <div class="jd-sub">${j.resp.length} 项职责 · 要求 ${j.req.length} 条 · 加分 ${j.plus.length} 项</div>
+      <div class="jd-kw">${j.kw.slice(0,6).map(k=>`<span class="kw">${k}</span>`).join('')}</div>
+    </div>
+    <div class="jd-body">
+      <h4>岗位职责</h4><ul>${j.resp.map(r=>`<li>${r}</li>`).join('')}</ul>
+      <h4>硬性要求</h4><ul>${j.req.map(r=>`<li>${r}</li>`).join('')}</ul>
+      <h4>加分项</h4><ul>${j.plus.map(r=>`<li>${r}</li>`).join('')}</ul>
+      <h4>高频关键词</h4><div class="jd-kw">${j.kw.map(k=>`<span class="kw">${k}</span>`).join('')}</div>
+      <div class="jd-src">来源：${j.src} ｜ 抓取日期：${j.date}<br><a href="${j.url}" target="_blank" rel="noopener">${j.url}</a></div>
+    </div>`;
+    el.querySelector('.jd-head').onclick=()=>el.classList.toggle('open');
+    g.appendChild(el);
+  });
+}
+document.querySelectorAll('#filterBar .fbtn').forEach(b=>{
+  b.onclick=()=>{
+    const f=b.dataset.f;
+    document.querySelectorAll(`#filterBar .fbtn[data-f="${f}"]`).forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    if(f==='co') curCo=b.dataset.v; else curTp=b.dataset.v;
+    renderJDs();
+  };
+});
+renderJDs();
+</script>
+
+<!-- ===== 模块② 技能频次 ===== -->
+<section id="m2">
+  <h2><span class="num">2</span>技能要求频次表（出现越多优先级越高）</h2>
+  <p class="lead">对上方 <b id="bdCount2">--</b> 条真实 JD 的硬性要求 + 加分项做关键词统计。注意：校招/实习岗的<b>硬门槛其实很低</b>——卡人的是"项目/实习/开源经历"和"真的用过 Agent"这类证据，而不是某个冷门框架。</p>
+  <div class="chart"><div class="chart-box" id="chartSkill"></div></div>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:24%"><col style="width:10%"><col style="width:18%"><col style="width:48%"></colgroup>
+    <thead><tr><th>技能/要求</th><th>出现次数</th><th>级别</th><th>对你（Python+Go 本科）的含义</th></tr></thead>
+    <tbody>
+      <tr><td>编程语言 Python / Go / Java / C++</td><td>15</td><td><span class="tag tag-xz">硬门槛</span></td><td>你 Python+Go 正好命中字节/Kimi 后端岗，Go 是火山方舟与 Kimi 的明确要求语言</td></tr>
+      <tr><td>项目 / 实习 / 开源经历（"做过真东西"）</td><td>13</td><td><span class="tag tag-xz">硬门槛</span></td><td>Kimi 原文"不看年限看经历密度"——本科过简历关的唯一硬通货</td></tr>
+      <tr><td>大模型原理 / LLM 基础</td><td>12</td><td><span class="tag tag-xz">硬门槛</span></td><td>必须能讲清 Transformer、推理、上下文、Token，面试高频</td></tr>
+      <tr><td>数据结构与算法 / 计算机基础(OS/网络)</td><td>12</td><td><span class="tag tag-xz">硬门槛</span></td><td>八股+刷题仍是笔试面试基础，逃不掉</td></tr>
+      <tr><td>Agent / Function Calling / MCP / 工具调用</td><td>11</td><td><span class="tag tag-sx">高优先</span></td><td>本批 JD 第一热词，从字节到智谱都在要——你方向押对了</td></tr>
+      <tr><td>分布式系统 / 微服务</td><td>9</td><td><span class="tag tag-sx">高优先</span></td><td>后端岗核心，智谱 Java 岗明确要 Dubbo/Spring Cloud</td></tr>
+      <tr><td>数据库 MySQL/Redis/PostgreSQL</td><td>7</td><td><span class="tag tag-sx">高优先</span></td><td>后端基本功，RAG 知识库也要用</td></tr>
+      <tr><td>高并发 / 性能 / 稳定性(7×24)</td><td>7</td><td><span class="tag tag-sx">高优先</span></td><td>MaaS 平台岗强调流式输出、低延迟、熔断限流</td></tr>
+      <tr><td>云原生 / K8s / Docker</td><td>6</td><td><span class="tag tag-sx">加分</span></td><td>字节加分项、Kimi 加分项，校招不强制但有就亮眼</td></tr>
+      <tr><td>RAG / 知识库 / 检索增强</td><td>5</td><td><span class="tag tag-sx">高优先</span></td><td>智谱解决方案/算法实习明确要，是本科最容易出项目的方向</td></tr>
+      <tr><td>Prompt 工程</td><td>5</td><td><span class="tag tag-sx">高优先</span></td><td>安全攻防、评测、解决方案岗都要，门槛低但要能讲出方法论</td></tr>
+      <tr><td>SFT / 微调 / RLHF / 后训练</td><td>5</td><td><span class="tag tag-she">偏算法</span></td><td>偏算法岗，本科应用/后端岗了解即可，不要求手搓训练</td></tr>
+      <tr><td>AI Coding 工具(Claude Code/Copilot/Codex)</td><td>5</td><td><span class="tag tag-sx">新趋势</span></td><td>2026 年新出现的硬要求："自己就以 AI 原生方式工作"，不会用反而扣分</td></tr>
+      <tr><td>开源贡献 / 技术博客 / 竞赛论文</td><td>5</td><td><span class="tag tag-she">加分</span></td><td>独角兽尤其吃这套，GitHub + 博客是本科逆袭 key</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ===== 模块③ 要求→学习→证据 ===== -->
+<section id="m3">
+  <h2><span class="num">3</span>JD 要求 → 学什么 → 用什么项目/作品证明</h2>
+  <p class="lead">把上面的高频要求翻译成你这两年的行动表。每行左列是 JD 原话，中列是最小学习路径，右列是<b>写在简历上、面试能 demo</b> 的证据。这是你本科就业的主战场。</p>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:22%"><col style="width:36%"><col style="width:42%"></colgroup>
+    <thead><tr><th>JD 高频要求</th><th>学什么（最小路径）</th><th>项目/作品证据（可写进简历）</th></tr></thead>
+    <tbody>
+      <tr><td>熟悉 RAG（检索增强生成）</td><td>chunking 策略 → embedding 模型选型 → 向量库(Milvus/Chroma) → rerank(bge-reranker) → 召回评估</td><td>垂直领域 RAG 知识库（如"本校课程/考研资料问答"或"团队内部文档问答"），GitHub 开源，附召回准确率评测报告</td></tr>
+      <tr><td>Agent / Function Calling / MCP</td><td>ReAct 循环 → 工具调用 function schema → 多步规划 → 记忆/上下文管理 → MCP 协议</td><td>一个能调用搜索/代码执行/数据库的个人 Agent（如"自动整理 RSS 并写摘要"），用 LangGraph 或自研 loop，部署到公网可演示</td></tr>
+      <tr><td>大模型应用后端（Go/Python）</td><td>FastAPI/Gin 写 OpenAI 兼容 API → SSE 流式输出 → 并发控制 → 接入真实模型</td><td>把你的 RAG/Agent 包成带流式输出、鉴权、限流的后端服务，压测报告(QPS/延迟)写进简历</td></tr>
+      <tr><td>Prompt 工程 / 效果评估</td><td>prompt 模板与变量 → few-shot → 失败案例分析 → 自建 eval 集打分</td><td>为某个任务建 50-100 条评测集，对比 3 种 prompt / 2 个模型的准确率，写成对比报告（对标 Kimi eval intern 的"verifier"）</td></tr>
+      <tr><td>云原生 / 部署</td><td>Docker 打包 → docker-compose → 基础 Linux → 简单 CI(GitHub Actions)</td><td>把后端服务 Docker 化，写一键启动脚本 + GitHub Actions 自动构建，README 里有架构图</td></tr>
+      <tr><td>数据库 / Redis / 向量库</td><td>MySQL 索引与 SQL → Redis 缓存 → 向量库 CRUD</td><td>项目里用上 MySQL(业务数据)+Redis(会话/限流)+向量库(知识库)，讲清为什么这样分层</td></tr>
+      <tr><td>AI Coding 工作方式</td><td>日常用 Claude Code / Cursor / Codex 写自己的项目，沉淀 prompt 与 workflow</td><td>在技术博客写"我如何用 AI 把某个项目从 0 到上线"，GitHub commit history 本身就是证据</td></tr>
+      <tr><td>开源 / 技术表达</td><td>给开源项目提 PR，或维护一个有 star 的小工具，写博客复盘</td><td>GitHub 主页有 1-2 个 ≥50 star 的项目，掘金/知乎有 3-5 篇大模型应用复盘长文</td></tr>
+      <tr><td>大模型原理（面试）</td><td>Transformer 自注意力 → 预训练/SFT/RLHF 区别 → Token/上下文窗口 → 推理优化(KV Cache/量化)概念</td><td>能在白板讲清"为什么流式输出""RAG 和微调的区别"，录一条 10 分钟讲解视频放主页</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note ok"><b>本科策略：</b>不要去卷"预训练/后训练算法"（那是硕博岗）。你的甜区是<b>大模型应用工程</b>——用 Python/Go 把 RAG、Agent、评测做成可上线的后端服务，证据是 GitHub + 可演示 demo + 实习转正。</div>
+</section>
+
+<!-- ===== 模块④ 方向对比 ===== -->
+<section id="m4">
+  <h2><span class="num">4</span>大模型应用岗细分方向对比 & 大厂 vs 独角兽</h2>
+  <p class="lead">同一批 JD 里其实混着 6 种不同岗位。先认清你投的是哪类，再决定技术栈深度。</p>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:13%"><col style="width:27%"><col style="width:22%"><col style="width:12%"><col style="width:26%"></colgroup>
+    <thead><tr><th>方向</th><th>日常工作</th><th>核心技术栈</th><th>招聘量</th><th>前景 / 本科友好度</th></tr></thead>
+    <tbody>
+      <tr><td>RAG 应用</td><td>接客户/内部知识库，做检索+生成，调召回与回答准确率</td><td>Python, embedding, 向量库, rerank, Prompt, FastAPI</td><td>大</td><td>本科最友好，门槛低、需求广，适合作为第一个项目</td></tr>
+      <tr><td>Agent 开发</td><td>做多步任务 Agent、工具调用、多 Agent 协作、eval harness</td><td>Python/Go, LangGraph, Function Calling, MCP, 状态机</td><td>最大(最热)</td><td>2026 最热，字节/Kimi 大量在招，工程岗本科可投</td></tr>
+      <tr><td>工作流/AI 中台</td><td>搭企业级工作流编排、MaaS 平台、网关、可观测</td><td>Go/Java, 微服务, K8s, 任务调度, 流式 SSE</td><td>中</td><td>偏后端基础设施，要求工程功底，Go 吃香</td></tr>
+      <tr><td>AI 平台/MaaS</td><td>模型推理/训练平台、弹性调度、成本优化</td><td>Go/C++, K8s, GPU 调度, KV Cache, 推理引擎</td><td>中</td><td>偏 Infra，门槛高，硕士/系统背景更优</td></tr>
+      <tr><td>评测/Eval</td><td>建 benchmark、写 verifier/评分、分析失败轨迹</td><td>Python, 数据集, RL 环境, coding agent, 统计</td><td>上升快</td><td>新方向，Kimi 在招，懂业务+会写评测逻辑即可，不卷算法</td></tr>
+      <tr><td>多模态/AIGC</td><td>图文/视频模型接入、理解与生成 pipeline</td><td>Python, VLM, 多模态对齐, 生成模型 SDK</td><td>中</td><td>偏算法/模型，本科多做工程接入侧</td></tr>
+    </tbody>
+  </table></div>
+  <h3>大厂（字节/阿里/腾讯）vs 独角兽（Kimi/智谱/MiniMax）同岗差异</h3>
+  <div class="cmp">
+    <div class="box big">
+      <h4 style="color:var(--acc2)">大厂（字节火山方舟 / 阿里 / 腾讯）</h4>
+      <p><b>岗位：</b>MaaS 平台、Infra、推理/训练系统为主，Agent 平台化。</p>
+      <p><b>技术栈：</b>Go/Java/C++，云原生(K8s/Service Mesh)，高并发/流式/稳定性要求高。</p>
+      <p><b>JD 风格：</b>职责写"支撑 XX API""保障 7×24"，偏大系统中的一个模块。</p>
+      <p><b>门槛：</b>学历卡得硬（算法岗硕博），但<b>后端/应用工程岗本科有口子</b>；定级跟全公司职级走，不会因为带 AI 就单开一档。</p>
+      <p><b>薪资：</b>体系成熟，白菜/SP/SSP 清晰，签字费+股票结构完整。</p>
+    </div>
+    <div class="box uni">
+      <h4 style="color:var(--warn)">独角兽（Kimi / 智谱 / MiniMax / DeepSeek）</h4>
+      <p><b>岗位：</b>Agent 产品工程、eval、后训练、开源生态，直接接触模型高频发布。</p>
+      <p><b>技术栈：</b>Go/Python，<b>强调 AI-native 工作方式</b>（Claude Code/Codex），少而精。</p>
+      <p><b>JD 风格：</b>Kimi 原文"不看年限看经历密度""做过真东西""strong opinions"——更像工程师文化，直接、不端着。</p>
+      <p><b>门槛：</b>不卡学校头衔，<b>极度看重项目密度与一手判断</b>；本科有硬核开源/demo 反而更有戏。</p>
+      <p><b>薪资：</b>现金占比高、base 高，但期权/股票不确定性大；非主线业务线可能下调。</p>
+    </div>
+  </div>
+</section>
+<!-- ===== 模块⑤ 黑话解读 ===== -->
+<section id="m5">
+  <h2><span class="num">5</span>JD 黑话解读（写的是啥，实际要你干啥）</h2>
+  <p class="lead">大厂 JD 喜欢用形容词包装。下表把高频黑话翻译成真实期待，面试和写简历时对照着用。</p>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:22%"><col style="width:40%"><col style="width:38%"></colgroup>
+    <thead><tr><th>JD 黑话</th><th>真实含义</th><th>你怎么接</th></tr></thead>
+    <tbody>
+      <tr><td>"大模型生态 / AI 原生"</td><td>不是让你发明模型，是让你<b>天天用 AI 工具干活</b>，并且真的做过 Agent/RAG 类产品，能讲出对模型能力边界的判断</td><td>简历里写"用 Claude Code/Cursor 把 XX 项目从 0 上线"，GitHub 有真实 AI 协作痕迹</td></tr>
+      <tr><td>"抗压能力强 / 能承受高强度迭代"</td><td>模型一周一版，需求随时变，加班/快速推翻重做是常态，别指望做完一个需求安稳上线</td><td>面试讲一个"需求改了 3 版最后上线"的真实项目，体现韧性而不是诉苦</td></tr>
+      <tr><td>"快速迭代 / 快速复现论文"</td><td>给你一篇新论文/一个新模型 API，要求你<b>几天内跑通 demo 并接进产品</b>，学习速度比经验更重要</td><td>准备一个"24 小时内把 XX 开源项目跑通并改造"的故事</td></tr>
+      <tr><td>"有强烈的自驱力 / 主人翁意识"</td><td>不要只等分配任务，要自己发现问题、定义问题、推动落地（Kimi 原文"高度自驱 > 听从安排"）</td><td>简历突出"我主动发现了 XX 痛点，自己立项做了 YY"</td></tr>
+      <tr><td>"strong opinions, weakly held"</td><td>你要有自己的技术判断和审美，但别固执，证据一变就改</td><td>面试敢于说"我觉得 X 方案更好，因为……但如果 Y 成立我会改"</td></tr>
+      <tr><td>"做过真东西 / 经历密度"</td><td>不看你待过多久，看你做的事又多又深；能讲清权衡和踩坑，而不是"参与了"</td><td>每个项目用 STAR 讲一个具体技术权衡（为什么选向量库 A 不选 B）</td></tr>
+      <tr><td>"与前沿技术同频 / 关注学术进展"</td><td>要追得上新模型发布（Kimi K2、GLM-4.5、o 系列），能聊出各自差异</td><td>持续用主流模型，简历/博客写对比实测</td></tr>
+      <tr><td>"高可用 / 7×24 / 保障稳定性"</td><td>线上挂了要背锅，要会熔断、限流、灰度、监控，不是写完接口就完事</td><td>项目里加限流/重试/监控日志，面试能聊故障处理</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ===== 模块⑥ 学历真相 ===== -->
+<section id="m6">
+  <h2><span class="num">6</span>学历筛选真相：本校本科能不能过简历关</h2>
+  <p class="lead">本校（本校）是 211、两电一邮之一，电子信息领域认可度高。但大模型岗的学历门槛是<b>分层</b>的——算法岗和工程岗完全是两个世界。</p>
+  <div class="cmp">
+    <div class="box" style="border-top:3px solid var(--good)">
+      <h4 style="color:var(--good)">本校的优势区（本科有戏）</h4>
+      <p><b>后端/应用工程/Infra 工程岗：</b>字节火山方舟、Kimi 后端实习、智谱 Java 开发等 JD 原文写"本科及以上"，不卡硕士。本校在这些厂的工程岗简历池里是<b>正经 target school</b>，笔试面试表现好就能过。</p>
+      <p><b>独角兽实习转正：</b>Kimi 明确"不看年限看经历密度"，本校本科 + 硬核项目/实习比普通 985 水简历更吃香。</p>
+      <p><b>通信/电子背景：</b>你电子信息工程 + Python/Go，转大模型应用工程属于工程能力可迁移，不要求科班论文。</p>
+    </div>
+    <div class="box" style="border-top:3px solid var(--bad)">
+      <h4 style="color:var(--bad)">本校本科的劣势区（建议绕道）</h4>
+      <p><b>预训练/后训练/多模态算法岗：</b>智谱多模态实习 JD 原文"985 硕士或博士（优秀本科亦可）"，这类岗默认硕博，本科很难过机筛。</p>
+      <p><b>大厂算法 SSP：</b>腾讯大模型 SSP 总包 90-101 万的那档，基本是清北华五硕博 + 顶会论文，别浪费精力。</p>
+      <p><b>结论：</b>本科就业就死死咬住<b>大模型应用工程/Agent 后端/评测工程</b>，别碰算法研究岗。</p>
+    </div>
+  </div>
+
+  <h3>卡硕士的岗位清单 vs 本科可投岗位</h3>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+    <thead><tr><th>默认卡硕士/博士（本科别投）</th><th>本科可投（JD 写"本科及以上"）</th></tr></thead>
+    <tbody>
+      <tr><td>预训练算法、后训练/SFT/RLHF 算法、多模态理解算法、推理算法优化、GLM 基座团队</td><td>大模型后端开发（Go/Python）、Agent 系统/应用工程、MaaS 平台后端、RAG 应用后端、AI 评测/eval 工程、大模型安全运营、开源适配/布道</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>ATS 机筛关键词 & 本科过简历关策略</h3>
+  <div class="note"><b>机筛会扫这些词，简历里必须出现（一个都别漏）：</b> Python / Go、FastAPI 或 Gin、RAG、向量库、Embedding、Function Calling / Tool Use、Agent、Prompt、SSE/流式、Docker、MySQL、Redis、分布式、Kubernetes（可选）。把它们自然嵌进项目描述。</div>
+  <div class="note ok"><b>本科过简历关三板斧：</b>
+    ① <b>1 个能公网访问的 demo</b>（RAG 知识库或 Agent），URL 放简历最顶部；
+    ② <b>GitHub ≥50 star 或 ≥1 个开源 PR 被合并</b>，commit history 干净；
+    ③ <b>一段大厂/独角兽大模型相关实习</b>（哪怕日常实习），实习转正比秋招硬投容易 10 倍。本校本科的胜负手不是学校头衔，是这三样证据。
+  </div>
+</section>
+
+<!-- ===== 模块⑦ 薪资结构 ===== -->
+<section id="m7">
+  <h2><span class="num">7</span>薪资完整结构（2025-2026 校招真实区间）</h2>
+  <p class="lead">数据来源：<b>牛客网 2026-09-22 校招薪资汇总帖</b>（覆盖字节/腾讯/阿里/京东/美团/百度/快手/网易/小米/滴滴，含开发、Agent/AI、测开三方向），交叉参考 OfferShow 与爱企查。<b>仅为已发生公开案例，不代表承诺，且第二年通常因签字费/股票兑现期结束而下探。</b></p>
+
+  <h3>Agent/AI 方向校招总包区间（万元/年，首年）</h3>
+  <div class="chart"><div class="chart-box" id="chartSalary" style="height:460px"></div></div>
+
+  <h3>各公司 Agent/AI 方向三档明细</h3>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:14%"><col style="width:24%"><col style="width:24%"><col style="width:24%"><col style="width:14%"></colgroup>
+    <thead><tr><th>公司</th><th>白菜档</th><th>SP 档</th><th>SSP 档</th><th>发薪月数</th></tr></thead>
+    <tbody>
+      <tr><td>字节跳动</td><td>28k×15 ≈ 42 万</td><td>30-32k×15 ≈ 45-48 万</td><td>34-36k×15 + 签字费，51-54 万起</td><td>15 薪</td></tr>
+      <tr><td>腾讯</td><td>30k×15 ≈ 45 万</td><td>大模型岗总包约 70 万</td><td>算法岗 41-42k×17+20-30 万 ≈ 90-101 万</td><td>15-17 薪</td></tr>
+      <tr><td>阿里巴巴</td><td>23k×15+绩效 ≈ 34.5 万起（蚂蚁Java+AI后端）</td><td>26-28k×16 ≈ 42-45 万</td><td>30k×16 以上 ≈ 48 万起</td><td>15-16 薪</td></tr>
+      <tr><td>京东</td><td>26k×18 ≈ 46.8 万</td><td>30k×18 ≈ 54 万（Java+AI）</td><td>28k×20 ≈ 56 万（端智能）</td><td>18-20 薪</td></tr>
+      <tr><td>美团</td><td>25k×15.5 ≈ 38.8 万</td><td>27-28k×15.5 ≈ 42-43 万</td><td>30k×15.5+8 万签字 ≈ 54.5 万</td><td>15.5 薪</td></tr>
+      <tr><td>百度</td><td>25-26k×16 ≈ 40-42 万</td><td>28k×16 ≈ 45 万</td><td>30k×16 ≈ 48 万</td><td>16 薪（签字费分2年）</td></tr>
+      <tr><td>快手</td><td>27k×16 ≈ 43 万</td><td>28-30k×16 ≈ 45-48 万</td><td>32k×16 ≈ 51 万</td><td>16 薪（另有 2k/月房补）</td></tr>
+      <tr><td>网易</td><td>25k×13 ≈ 32.5 万</td><td>27k×15 ≈ 40.5 万</td><td>30k×16 ≈ 48 万</td><td>13-16 薪浮动</td></tr>
+      <tr><td>小米</td><td>23k×15 ≈ 34.5 万（武汉AI Infra）</td><td>25k×15 ≈ 37.5 万</td><td>26k×15 ≈ 39 万</td><td>15 薪</td></tr>
+      <tr><td>滴滴</td><td>25k×15 ≈ 37.5 万</td><td>27-28k×15 ≈ 40.5-42 万</td><td>30k×15 ≈ 45 万</td><td>15 薪</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">来源：牛客网校招薪资汇总帖 2026-09-22（<a href="https://m.nowcoder.com/discuss/931914091407429632" target="_blank" rel="noopener">m.nowcoder.com/discuss/931914091407429632</a>）；阿里通义千问档参考牛客盘点帖（白菜36-42/SP44-52/SSP55-75万）。</p>
+
+  <h3>薪资结构拆解（别只看总包）</h3>
+  <div class="tbl-wrap"><table>
+    <colgroup><col style="width:18%"><col style="width:42%"><col style="width:40%"></colgroup>
+    <thead><tr><th>组成部分</th><th>说明</th><th>坑点 / 注意</th></tr></thead>
+    <tbody>
+      <tr><td>Base（月薪）</td><td>固定现金，每月到手的核心</td><td>谈 offer 先锁 base，签字费股票都能谈</td></tr>
+      <tr><td>月数</td><td>×15 / ×16 / ×18 / ×20 不等（字节15、阿里16、京东20）</td><td>京东20薪听着高，要问"多少人能拿满"（即时零售称 80%+）</td></tr>
+      <tr><td>绩效/年终</td><td>与绩效评级挂钩，不一定发满</td><td>HR 说"平均几个月"要打折听</td></tr>
+      <tr><td>签字费</td><td>入职一次性补贴，常见 3-9 万</td><td>百度分 2 年发、第一年只拿一半；多数有提前离职返还条款</td></tr>
+      <tr><td>股票/期权</td><td>分 3-4 年归属，首年只算一部分</td><td>独角兽期权流动性差，别按面值算；第二年总包通常因股票归属节奏下降</td></tr>
+      <tr><td>房补/补贴</td><td>快手正式 2k/月、实习 1.5k/月；杭州人才补贴 2-4k/月</td><td>房补通常只发 3 年</td></tr>
+      <tr><td>实习日薪</td><td>大厂大模型实习日薪普遍 200-400/天，独角兽持平或更高，部分有房补</td><td>实习看转正率，不只看日薪</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note"><b>给你的现实锚点（本科应用工程岗）：</b>你大概率落在<b>白菜 ~ 小 SP 区间</b>——本科应用/Agent 后端岗首年总包约 <b>30-45 万</b>（字节/快手/美团/阿里杭州），本校本科 + 强项目 + 一段转正实习是摸到这个区间的现实路径。SSP（50万+）主要给硕博算法和顶尖本科，别作为基准预期。</div>
+</section>
+
+<script>
+document.getElementById('bdCount2').textContent = JDS.length;
+// 技能频次横向条形图
+var cs = echarts.init(document.getElementById('chartSkill'),'dark');
+cs.setOption({
+  backgroundColor:'transparent',
+  tooltip:{},
+  grid:{left:130,right:40,top:20,bottom:20},
+  xAxis:{type:'value',axisLabel:{color:'#9aa7b4'},splitLine:{lineStyle:{color:'#2a3644'}}},
+  yAxis:{type:'category',inverse:true,axisLabel:{color:'#cdd6e0',fontSize:12},
+    data:['编程语言(Py/Go/Java/C++)','项目/实习/开源经历','大模型原理/LLM基础','数据结构与计算机基础','Agent/FunctionCalling/MCP','分布式/微服务','数据库 MySQL/Redis','高并发/稳定性','云原生/K8s','RAG/知识库','Prompt工程','SFT/RLHF(偏算法)','AI Coding工具','开源/博客/竞赛']},
+  series:[{type:'bar',barWidth:14,
+    data:[15,13,12,12,11,9,7,7,6,5,5,5,5,5],
+    itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#3fb6a8'},{offset:1,color:'#4e9af1'}]),borderRadius:[0,7,7,0]},
+    label:{show:true,position:'right',color:'#e6edf3',fontWeight:700}}]
+});
+// 薪资图
+var ck = echarts.init(document.getElementById('chartSalary'),'dark');
+ck.setOption({
+  backgroundColor:'transparent',
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  legend:{data:['白菜','SP','SSP'],textStyle:{color:'#cdd6e0'},top:0},
+  grid:{left:50,right:30,top:40,bottom:60},
+  xAxis:{type:'category',axisLabel:{color:'#9aa7b4',rotate:30,fontSize:11},
+    data:['字节','腾讯','阿里','京东','美团','百度','快手','网易','小米','滴滴']},
+  yAxis:{type:'value',name:'万/年(首年)',nameTextStyle:{color:'#9aa7b4'},axisLabel:{color:'#9aa7b4'},splitLine:{lineStyle:{color:'#2a3644'}}},
+  series:[
+    {name:'白菜',type:'bar',data:[42,45,34.5,46.8,38.8,41,43,32.5,34.5,37.5],itemStyle:{color:'#4e9af1'}},
+    {name:'SP',type:'bar',data:[46.5,70,43.5,54,42.5,45,46.5,40.5,37.5,41],itemStyle:{color:'#3fb6a8'}},
+    {name:'SSP',type:'bar',data:[52.5,95.5,48,56,54.5,48,51,48,39,45],itemStyle:{color:'#e8a33d'}}
+  ]
+});
+window.addEventListener('resize',function(){cs.resize();ck.resize();});
+</script>
+</main>
+<footer>
+  <div class="wrap">
+    岗位JD深度研究 · 泛AI软件就业作战资料包 · 抓取/整理日期 2026-09-28<br>
+    所有JD均标注来源URL；抓不到官网的条目已标注降级来源。薪资仅引用2025-2026届已发生公开数据，不预测未来。
+  </div>
+</footer>
+</body>
+</html>

@@ -1,3 +1,7 @@
+---
+title: "2026科协暑培 · 第2讲 Coding Agent（王浩然, BV135Kh6dERa）"
+---
+
 # 2026科协暑培 · 第2讲 Coding Agent（王浩然, BV135Kh6dERa）
 
 ## 定位

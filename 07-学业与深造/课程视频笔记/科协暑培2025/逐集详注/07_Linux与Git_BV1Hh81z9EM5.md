@@ -1,3 +1,7 @@
+---
+title: "2025科协暑培 · Linux & Git（陈毓椿, BV1Hh81z9EM5）"
+---
+
 # 2025科协暑培 · Linux & Git（陈毓椿, BV1Hh81z9EM5）
 
 ## 定位

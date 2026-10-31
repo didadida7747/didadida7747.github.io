@@ -608,10 +608,10 @@ Another Claude session sent a message:
   **目录结构**（来自 git trees API，已读取的文件已标注）
   - `cookiecutter.json`：项目名、system_prompt、默认模型 `openai:gpt-4o-mini`、网关端口 18088
   - `README.md`（模板说明，未读取正文）
-  - `&#123;&#123;cookiecutter.project_slug&#125;&#125;/`
+  - `{{cookiecutter.project_slug}}/`
     - `.agentseek/lifecycle.toml`：声明 `[tools] required=["uv"]`、必需路径、环境变量（BUB_MODEL、BUB_API_KEY、BUB_LANGCHAIN_SPEC、BUB_AG_UI_PORT）以及 `[services.gateway]`（AG-UI 网关）
     - `.env.example`、`Dockerfile`（未读取）、`README.md`（未读取）、`pyproject.toml`、`requirements.txt`（未读取）、`uv.lock`（未读取）
-    - `src/&#123;&#123;slug&#125;&#125;/__init__.py`、`demo_binding.py`（工具与 agent 入口）、`settings.py`（模型配置）
+    - `src/{{slug}}/__init__.py`、`demo_binding.py`（工具与 agent 入口）、`settings.py`（模型配置）
     - `tests/`：`scripted_model.py`、`test_demo_binding.py`、`test_planning.py`（未读取）
   
   **agent 入口**（`demo_binding.py`，关键部分）

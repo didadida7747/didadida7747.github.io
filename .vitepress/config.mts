@@ -94,7 +94,32 @@ const config = defineConfig({
   lastUpdated: true,
 
   markdown: {
-    lineNumbers: true
+    lineNumbers: true,
+    config(md) {
+      // VitePress 只给围栏代码块（fence）自动加 v-pre；行内 <code> 与 4 空格缩进代码块
+      // （code_block）都没有 v-pre，其中的 {{ }} 会被 Vue 当插值编译。这里统一处理。
+
+      // 1) 行内 code：加 v-pre，原样保留
+      const defaultInline = md.renderer.rules.code_inline
+      md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+        const html = defaultInline
+          ? defaultInline(tokens, idx, options, env, self)
+          : self.renderToken(tokens, idx, options)
+        return html.replace('<code>', '<code v-pre>')
+      }
+
+      // 2) 缩进代码块：sync 脚本的 FENCE_RE 不识别缩进块，会把其中的 {{ }} 实体化成
+      // &#123;&#123;。这里先还原为字面 {{，再给 <pre> 加 v-pre，使其正确、原样显示。
+      const defaultCodeBlock = md.renderer.rules.code_block
+      md.renderer.rules.code_block = (tokens, idx, options, env, self) => {
+        const token = tokens[idx]
+        token.content = token.content
+          .replace(/&#123;&#123;/g, '{{')
+          .replace(/&#125;&#125;/g, '}}')
+        const html = defaultCodeBlock(tokens, idx, options, env, self)
+        return html.replace('<pre>', '<pre v-pre>')
+      }
+    }
   },
 
   themeConfig: {

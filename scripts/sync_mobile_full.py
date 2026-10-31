@@ -76,14 +76,13 @@ def neutralize_html(t):
     return "".join(parts)
 
 # ---------------- Vue mustache 中和 ----------------
-# 只有围栏代码块（```）会被 VitePress 自动加 v-pre；行内反引号 code 无 v-pre，不能跳过
-BLOCK_FENCE_RE = re.compile(r"(```.*?```)", re.S)
-
+# 围栏代码块（```）由 VitePress 自动加 v-pre；行内反引号 code 由 config.mts 的 code_inline
+# 规则加 v-pre。两者都原样保留，只对普通文本段（偶数段）做实体化。
 def neutralize_mustache(t):
-    """{{ ... }} 会被 Vue 当作插值表达式编译（HANDOFF 硬规则 2）。
-    围栏代码块有 v-pre 保护保持原样（奇数段）；其余文本——含行内反引号 code——统一用
-    HTML 数字实体编码花括号：markdown 原样保留、Vue 看不到字面 {{、浏览器最终仍显示 {{。"""
-    parts = BLOCK_FENCE_RE.split(t)
+    """普通文本中的 {{ ... }} 会被 Vue 当作插值表达式编译（HANDOFF 硬规则 2），
+    用 HTML 数字实体编码：markdown 原样保留、Vue 看不到字面 {{、浏览器最终仍显示 {{。
+    围栏代码块与行内代码（FENCE_RE 奇数段，均有 v-pre）保持字面、原样显示。"""
+    parts = FENCE_RE.split(t)
     for i in range(0, len(parts), 2):
         parts[i] = (parts[i].replace("{{", "&#123;&#123;")
                             .replace("}}", "&#125;&#125;"))

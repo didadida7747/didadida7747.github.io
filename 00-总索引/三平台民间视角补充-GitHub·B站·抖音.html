@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三平台民间视角补充：GitHub · B站 · 抖音</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2320302E'/%3E%3Cpath d='M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z' fill='%23C94F36'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F5F1E6; --paper-deep:#ECE5D3; --ink:#20302E; --soft:#4F5A56;
+  --line:#D8D0BD; --bronze:#8A5A2B; --teal:#2F6E63; --vermilion:#C94F36;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+sup{font-size:.72em}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,241,230,.95);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1020px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:16px;height:56px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:17px;white-space:nowrap}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:13px;color:var(--soft);padding:6px 9px;white-space:nowrap;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--bronze)}
+@media (max-width:767px){.topbar-inner{gap:8px;height:52px}.brand{font-size:14px}.nav a{font-size:12px;padding:6px 6px}}
+
+.hero{position:relative;padding:70px 0 50px;border-bottom:1px solid var(--line);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;opacity:.25;pointer-events:none}
+.hero>*{position:relative}
+.kicker{font-size:12.5px;color:var(--bronze);letter-spacing:.24em;font-weight:500}
+.hero h1{font-family:var(--serif);font-size:42px;font-weight:700;line-height:1.25;margin:14px 0 18px;letter-spacing:.02em}
+.hero .sub{font-family:var(--serif);font-size:18px;color:var(--soft);max-width:700px;border-left:3px solid var(--bronze);padding-left:16px}
+.hero p.lead{max-width:740px;margin-top:18px;font-size:15px;color:var(--soft)}
+@media (max-width:767px){.hero{padding:46px 0 36px}.hero h1{font-size:28px}.hero .sub{font-size:15.5px}.hero p.lead{font-size:14px}}
+
+section.chapter{padding:48px 0 8px}
+.ch-no{font-size:12.5px;color:var(--bronze);letter-spacing:.2em;font-weight:500}
+h2.c-title{font-family:var(--serif);font-size:27px;font-weight:700;margin:6px 0 4px}
+.c-sub{color:var(--soft);font-size:14.5px;margin-bottom:26px;max-width:780px}
+h3.s-title{font-family:var(--serif);font-size:19px;margin:30px 0 10px;padding-left:10px;border-left:3px solid var(--teal)}
+h4{font-size:15.5px;margin:16px 0 6px}
+p{font-size:15px;color:var(--ink);margin-bottom:10px}
+p.note,li{font-size:14.5px;color:var(--soft)}
+ul,ol{padding-left:22px}
+li{margin-bottom:6px}
+strong{color:var(--ink)}
+
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:2px;border:1px solid;vertical-align:1px;margin-right:4px;white-space:nowrap}
+.tag-fact{color:var(--teal);border-color:var(--teal);background:rgba(47,110,99,.08)}
+.tag-report{color:var(--bronze);border-color:var(--bronze);background:rgba(138,90,43,.08)}
+.tag-infer{color:var(--vermilion);border-color:var(--vermilion);background:rgba(201,79,54,.08)}
+.tag-warn{color:var(--vermilion);border-color:var(--vermilion);background:rgba(201,79,54,.12)}
+.cite{display:inline-block;font-size:10.5px;color:var(--bronze);border:1px solid var(--line);border-radius:2px;padding:0 4px;margin:0 1px;white-space:nowrap;vertical-align:1px}
+.cite:hover{background:var(--paper-deep)}
+
+.vb{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:.05em}
+.v-yes{color:#fff;background:var(--teal)}
+.v-part{color:#fff;background:var(--bronze)}
+.v-no{color:#fff;background:var(--vermilion)}
+
+.twwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0 18px;border:1px solid var(--line);border-radius:2px}
+table.dt{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+table.dt th{background:var(--paper-deep);text-align:left;padding:8px 10px;border:1px solid var(--line);font-weight:700;font-size:13px;white-space:nowrap}
+table.dt td{padding:8px 10px;border:1px solid var(--line);vertical-align:top}
+table.dt tr:nth-child(even) td{background:rgba(236,229,211,.35)}
+table.dt a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:767px){table.dt{font-size:12.5px;min-width:560px}table.dt th,table.dt td{padding:6px}}
+
+.callout{border:1px solid var(--line);border-left:3px solid var(--bronze);background:var(--paper-deep);padding:14px 16px;margin:14px 0;border-radius:2px}
+.callout.warn{border-left-color:var(--vermilion);background:rgba(201,79,54,.05)}
+.callout.ok{border-left-color:var(--teal);background:rgba(47,110,99,.06)}
+.callout p{font-size:14px;margin-bottom:6px}
+.callout p:last-child{margin-bottom:0}
+
+.toc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 8px}
+.toc-grid a{border:1px solid var(--line);padding:11px 14px;font-size:13.5px;border-radius:2px;background:var(--paper)}
+.toc-grid a:hover{border-color:var(--bronze)}
+.toc-grid .n{color:var(--bronze);font-family:var(--serif);margin-right:8px}
+@media (max-width:640px){.toc-grid{grid-template-columns:1fr}}
+
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.pcard{border:1px solid var(--line);border-radius:3px;background:var(--paper);padding:14px 16px}
+.pcard .plat{font-size:11px;letter-spacing:.18em;font-weight:700;color:var(--bronze)}
+.pcard h4{font-family:var(--serif);font-size:16.5px;margin:4px 0 8px}
+.pcard p{font-size:13.6px;margin-bottom:6px;color:var(--soft)}
+.pcard p:last-child{margin-bottom:0}
+@media (max-width:767px){.pgrid{grid-template-columns:1fr}}
+
+.trap{border:1px solid var(--line);border-left:3px solid var(--vermilion);padding:13px 16px;margin:12px 0;border-radius:2px;background:rgba(201,79,54,.04)}
+.trap h4{color:var(--vermilion);margin-top:0}
+.trap p{font-size:14px}
+
+ol.srcs{padding-left:0;list-style:none;counter-reset:s}
+ol.srcs li{counter-increment:s;font-size:13px;color:var(--soft);padding:7px 0 7px 52px;position:relative;border-bottom:1px dashed var(--line);word-break:break-all}
+ol.srcs li::before{content:"S"counter(s,decimal);position:absolute;left:0;top:7px;font-family:var(--serif);color:var(--bronze);font-weight:700;font-size:12.5px}
+ol.srcs a{color:var(--teal)}
+footer.site-foot{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 46px;font-size:12.5px;color:var(--soft)}
+.backtop{display:inline-block;margin-top:10px;font-size:13px;color:var(--teal);border:1px solid var(--line);padding:4px 12px;border-radius:2px}
+.backtop:hover{background:var(--paper-deep)}
+</style>
+</head>
+<body id="top">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#20302E" rx="2"/><path d="M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z" fill="#C94F36"/></svg>
+      三平台民间视角补充
+    </a>
+    <nav class="nav">
+      <a href="#ov">总览</a>
+      <a href="#g">GitHub</a>
+      <a href="#b">B站</a>
+      <a href="#d">抖音</a>
+      <a href="#syn">综合</a>
+      <a href="#src">来源</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">《考公热与 AI 机会研判》姊妹篇 · 为本校电子信息大二 · 本科就业 · 泛 AI 软件方向而作</div>
+    <h1>三平台民间视角补充<br>GitHub · B站 · 抖音</h1>
+    <div class="sub">上一份报告用宏观硬数据下判断；这份报告钻进技术社区、视频口述与岗位切片里，回答一个问题：那些硬数字，在真实的人、真实的仓库、真实的流量里，长什么样？</div>
+    <p class="lead">采集时点 2026 年 10 月 31 日。GitHub star 均为约数（±5% 浮动）；视频点赞评论为快照值；平台内容不构成事实背书。<span class="tag tag-fact">事实</span><span class="tag tag-report">报道</span><span class="tag tag-infer">推断</span>三类标签显式区分证据等级。</p>
+    <div class="toc-grid">
+      <a href="#ov"><span class="n">00</span>总览：三平台定位与可信度筛选总原则</a>
+      <a href="#g"><span class="n">01</span>GitHub：开源生态的真实技术风向</a>
+      <a href="#b"><span class="n">02</span>B站：第一手经历与营销矩阵的去伪</a>
+      <a href="#d"><span class="n">03</span>抖音：岗位切片、工资条与卖课话术</a>
+      <a href="#syn"><span class="n">04</span>综合：跨平台共同信号与行动清单</a>
+      <a href="#src"><span class="n">05</span>完整来源清单与免责</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="ov">
+  <div class="wrap">
+    <div class="ch-no">OVERVIEW</div>
+    <h2 class="c-title">总览：三个平台，三种「民间视角」</h2>
+    <p class="c-sub">宏观报告回答「世界是什么样」；三平台民间视角回答「入行的人、干活的仓库、发视频的人，实际在过什么样的日子」。三者的可信度风险完全不同，筛选原则也完全不同。</p>
+
+    <div class="pgrid">
+      <div class="pcard">
+        <div class="plat">GITHUB · 技术气象站</div>
+        <h4>看维护方与活跃度，不看总 star</h4>
+        <p>它是工程栈选择的底层证据：哪些框架在生产环境被真实使用、哪些仓库名义火爆实则停更。</p>
+        <p><strong>筛选总原则：</strong>看最后提交时间、release 频率、是否 archived、contributor 数量与 star 增长曲线；star 绝对值是最不可靠的单一指标。</p>
+      </div>
+      <div class="pcard">
+        <div class="plat">BILIBILI · 口述史</div>
+        <h4>看身份与长期内容一致性</h4>
+        <p>它沉淀了「大厂一天」「基层工资条」这类第一人称记录，但已被批量营销矩阵渗透。</p>
+        <p><strong>筛选总原则：</strong>真实 vlog 是编号流水账；模板标题、推荐栏互推、结尾钩子（领资料/备考/课程）= 引流。先去伪，再取数。</p>
+      </div>
+      <div class="pcard">
+        <div class="plat">DOUYIN · 岗位切片</div>
+        <h4>警惕卖课 / 内推 / 加盟引流</h4>
+        <p>它有最密集的工资条与日常切片，也有最成熟的灰产：培训贷、付费内推、AI 副业卖课。</p>
+        <p><strong>筛选总原则：</strong>三秒自检——敢说具体公司名吗？主页有橱窗/私信引流吗？展示过程还是只给结论？只取数字，不取情绪。</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>一条贯穿三平台的元规律：</strong>「体量数字」最容易被操纵。GitHub 上 18 万 star 的仓库可以不再维护<span class="cite">S10</span>，B站上播放量十万的「入职大厂」可以是同模板互推矩阵<span class="cite">S45</span>，抖音上「半年 6 份 offer」可以是评论只有 12 个的卖课软广<span class="cite">S60</span>。读任何平台内容时，先问「这个数字是谁、为了什么目的、什么时候造出来的」。</p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="g">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 01</div>
+    <h2 class="c-title">GitHub：开源生态里的真实技术风向</h2>
+    <p class="c-sub">泛 AI 软件方向七个细分赛道的代表项目。star 为 2026-10-31 采集约数（±5% 浮动）；重点不是「谁最火」，而是「谁还在活着、谁在被谁收购、谁在悄悄死亡」。</p>
+
+    <h3 class="s-title">1.1 七方向代表项目</h3>
+    <p class="note">表格可横向滑动。「活跃度信号」一栏是本章的灵魂：它告诉你这个项目值不值得你把时间押上去。</p>
+
+    <h4>方向一：LLM 应用框架</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/langchain-ai/langchain">LangChain</a></td><td>LLM 应用事实标准框架</td><td>14.8 万</td><td>Python+TS</td><td>LangChain 公司；约 1.7 万 commits，仍日更<span class="cite">S01</span></td><td>文档 / integration / 中文翻译</td></tr>
+        <tr><td><a href="https://github.com/langgenius/dify">Dify</a></td><td>可视化 LLM 应用开发平台</td><td>15.9 万（周增约 500）</td><td>Python+Vue</td><td>LangGenius（中国深圳）；高速增长<span class="cite">S02</span></td><td>中文文档全、插件市场；注意 license 限制转售</td></tr>
+        <tr><td><a href="https://github.com/run-llama/llama_index">LlamaIndex</a></td><td>数据框架 / RAG 数据层</td><td>5.3 万</td><td>Python</td><td>LlamaIndex 公司；434 个 release、约 2000 贡献者<span class="cite">S03</span></td><td>connector / loader 类贡献</td></tr>
+        <tr><td><a href="https://github.com/langflow-ai/langflow">LangFlow</a></td><td>可视化 Agent 编排流</td><td>15.6 万</td><td>Python</td><td>DataStax；稳居月度榜前列<span class="cite">S04</span></td><td>节点组件 / 示例 flow</td></tr>
+        <tr><td><a href="https://github.com/microsoft/semantic-kernel">Semantic Kernel</a></td><td>微软企业级 SDK</td><td>2.9 万</td><td>C#/Python</td><td>微软；已转向 Microsoft Agent Framework<span class="cite">S05</span></td><td>.NET 向，Python 优先级低，了解即可</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>方向二：Agent / 工作流</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td><td>有状态 Agent 编排，生产首选</td><td>4.4 万</td><td>Python/JS</td><td>LangChain；周 npm 下载约 370 万<span class="cite">S06</span></td><td>教程齐全，good first issue 多</td></tr>
+        <tr><td><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></td><td>多角色协作框架</td><td>5.6 万</td><td>Python</td><td>CrewAI 公司；半年 115+ release<span class="cite">S07</span></td><td>示例 / 文档</td></tr>
+        <tr><td><a href="https://github.com/microsoft/autogen">AutoGen</a></td><td>微软多 Agent 框架</td><td>4.8 万</td><td>Python/.NET</td><td>微软；继任者 MAF 1.0，Azure 优先<span class="cite">S08</span></td><td>学概念即可，勿押注旧仓</td></tr>
+        <tr><td><a href="https://github.com/FoundationAgents/MetaGPT">MetaGPT</a></td><td>「软件公司」多 Agent 模拟</td><td>7 万</td><td>Python</td><td><span class="tag tag-warn">反面</span>已迁组织；最后提交停在 2026-01，约 9 个月未更新，转商业产品<span class="cite">S09</span></td><td>高 star ≠ 活跃的标本</td></tr>
+        <tr><td><a href="https://github.com/Significant-Gravitas/AutoGPT">AutoGPT</a></td><td>第一代自主 Agent 鼻祖</td><td>18.7 万</td><td>Python/TS</td><td><span class="tag tag-warn">反面</span>Classic 自述不再维护，改 Polyform Shield 许可<span class="cite">S10</span></td><td>star 泡沫 + 许可变质的标本</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>方向三：RAG 检索增强</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/infiniflow/ragflow">RAGFlow</a></td><td>深度文档理解 RAG 引擎</td><td>9.3 万</td><td>Python+Vue</td><td>InfiniFlow（中国团队）；提交仅 1 天前，Apache-2.0<span class="cite">S11</span></td><td>中文社区、deepdoc 解析方向、Docker 一键起</td></tr>
+        <tr><td><a href="https://github.com/deepset-ai/haystack">Haystack</a></td><td>模块化检索管线</td><td>2.6 万（在涨）</td><td>Python</td><td>deepset（柏林）；提交 2026-09<span class="cite">S12</span></td><td>检索 / ranking 实验</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>方向四：LLMOps / 网关 / 可观测</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/langfuse/langfuse">Langfuse</a></td><td>LLM tracing / 评估</td><td>3.7 万</td><td>TypeScript</td><td>2026-01 被 ClickHouse 收购；日发版、月 6500 万 SDK 安装<span class="cite">S13</span></td><td>自部署学 tracing；evals 是热点</td></tr>
+        <tr><td><a href="https://github.com/BerriAI/litellm">LiteLLM</a></td><td>统一模型调用网关</td><td>6.2 万</td><td>Python</td><td>LiteLLM 公司；1400+ release、5.11 亿 Docker 拉取<span class="cite">S14</span></td><td>加 provider adapter 是经典 good first issue</td></tr>
+        <tr><td><a href="https://github.com/songquanpeng/one-api">One-API</a></td><td>多渠道密钥管理</td><td>3.5 万</td><td>Go/JS</td><td>个人开发者；维护平缓<span class="cite">S15</span></td><td>Go 入门练手</td></tr>
+        <tr><td><a href="https://github.com/QuantumNous/new-api">NewAPI</a></td><td>One-API 衍生分发网关</td><td>3.9 万</td><td>Go</td><td>QuantumNous 中文社区；活跃，AGPL-3.0<span class="cite">S16</span></td><td>搭中转站实战；注意 AGPL 传染性</td></tr>
+        <tr><td><a href="https://github.com/Helicone/helicone">Helicone</a></td><td>LLM 可观测中间层</td><td>6 千</td><td>TypeScript</td><td><span class="tag tag-warn">反面</span>被 Mintlify 收购，仅安全更新的维护模式<span class="cite">S17</span></td><td>并购潮标本，勿深押</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>方向五：向量数据库</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/milvus-io/milvus">Milvus</a></td><td>企业级分布式向量库</td><td>4.65 万</td><td>Go</td><td>Zilliz（中国 origin），LF AI 基金会；企业级活跃<span class="cite">S18</span></td><td>学分布式；入门用 milvus-lite</td></tr>
+        <tr><td><a href="https://github.com/qdrant/qdrant">Qdrant</a></td><td>Rust 高性能向量库</td><td>3.52 万</td><td>Rust</td><td>Qdrant（5000 万美元 B 轮）；2.5 亿下载<span class="cite">S19</span></td><td>Rust 向，文档完善</td></tr>
+        <tr><td><a href="https://github.com/chroma-core/chroma">Chroma</a></td><td>新手 RAG 默认向量库</td><td>2.96 万</td><td>Python，内核重写 Rust</td><td>2026-10 加入 Replit；月 600 万下载<span class="cite">S20</span></td><td>RAG demo 首选</td></tr>
+        <tr><td><a href="https://github.com/pgvector/pgvector">pgvector</a></td><td>PostgreSQL 向量插件</td><td>2.35 万</td><td>C</td><td>社区；提交 2026-08<span class="cite">S21</span></td><td>有 PG 基础最易切入</td></tr>
+        <tr><td><a href="https://github.com/weaviate/weaviate">Weaviate</a></td><td>模块化向量库</td><td>1.69 万</td><td>Go</td><td>Weaviate；低调<span class="cite">S22</span></td><td>了解即可</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>方向六：推理部署</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/vllm-project/vllm">vLLM</a></td><td>生产级高吞吐推理引擎</td><td>9.6 万</td><td>Python/CUDA</td><td>伯克利起源、基金会化、NVIDIA 共建；220 release、约 5.6 天一发、2000+ 贡献者<span class="cite">S23</span></td><td>门槛高；docs / issue triage / 新模型适配本科可做；国产模型部署标配</td></tr>
+        <tr><td><a href="https://github.com/ollama/ollama">Ollama</a></td><td>本机跑大模型</td><td>18.5 万</td><td>Go</td><td>Ollama 公司；5200 万下载<span class="cite">S24</span></td><td>本机开发默认工具</td></tr>
+        <tr><td><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></td><td>CPU/端侧推理量化</td><td>13 万</td><td>C/C++</td><td>ggml-org 社区；高频提交<span class="cite">S25</span></td><td>量化 / 端侧，代码硬核</td></tr>
+        <tr><td><a href="https://github.com/sgl-project/sglang">SGLang</a></td><td>结构化生成推理引擎</td><td>3.6 万（半年前 2.7 万）</td><td>Python/CUDA</td><td>LMSYS + RadixArk（上海交大背景）；单版本 950 PR / 245 贡献者<span class="cite">S26</span></td><td>与 vLLM 双雄，中文社区活跃</td></tr>
+        <tr><td><a href="https://github.com/huggingface/text-generation-inference">TGI</a></td><td>HF 推理服务器</td><td>—</td><td>Rust/Python</td><td>HuggingFace；<span class="tag tag-report">报道</span>称停止主动开发、转向 vLLM（未逐页核实，保留未核实标注）<span class="cite">S27</span></td><td>不再推荐新学</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>方向七：AI 编程工具</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>项目</th><th>定位与用途</th><th>star 约</th><th>语言</th><th>维护方 · 活跃度信号</th><th>你的切入点</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://github.com/cline/cline">Cline</a></td><td>终端/IDE 内自主编码 Agent</td><td>7.1 万</td><td>TypeScript</td><td>Cline 公司；CLI+Desktop+SDK 三线发版、1100 万开发者<span class="cite">S28</span></td><td>读其 prompt/tool 定义，学 Agent 最快</td></tr>
+        <tr><td><a href="https://github.com/All-Hands-AI/OpenHands">OpenHands</a></td><td>开源软件工程师 Agent</td><td>9 万</td><td>Python</td><td>All-Hands AI；MIT、Docker 沙箱<span class="cite">S29</span></td><td>SWE-bench 实验、毕设 demo 富矿</td></tr>
+        <tr><td><a href="https://github.com/Aider-AI/aider">Aider</a></td><td>终端结对编程工具</td><td>4.9 万</td><td>Python</td><td><span class="tag tag-warn">反面</span>个人作者；停更约 5 个月、积压 531 PR<span class="cite">S30</span></td><td>个人项目风险标本</td></tr>
+        <tr><td><a href="https://github.com/RooCodeInc/Roo-Code">Roo Code</a></td><td>VS Code 编码 Agent</td><td>2.4 万</td><td>TypeScript</td><td><span class="tag tag-warn">反面</span>商业公司；2026-05 归档，社区 fork 为 ZooCode<span class="cite">S31</span></td><td>高 star 会突然死亡的标本</td></tr>
+        <tr><td><a href="https://github.com/block/goose">Goose</a></td><td>可扩展本地 Agent</td><td>5.4 万</td><td>Rust</td><td>Block（大厂）；背书活跃<span class="cite">S32</span></td><td>MCP 生态样本</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="trap">
+      <h4>五个「反面教材」合在一起，讲清一件事</h4>
+      <p>MetaGPT（7 万 star，停更 9 个月）<span class="cite">S09</span>、AutoGPT（18.7 万 star，不再维护且改限制性许可）<span class="cite">S10</span>、Aider（4.9 万 star，个人作者停更 5 个月）<span class="cite">S30</span>、Roo Code（2.4 万 star，公司直接归档）<span class="cite">S31</span>、Helicone（被收购后仅安全更新）<span class="cite">S17</span>。<strong>star 是历史流量的纪念碑，不是未来活跃度的保证书。</strong>选项目永远先看：最后提交日期、最近 release、是否 archived、contributor 数量。</p>
+    </div>
+
+    <h3 class="s-title">1.2 2026 真实技术栈风向</h3>
+    <ul>
+      <li><span class="tag tag-fact">事实</span>应用层 Python 主导；TypeScript 占据网关/可观测层；Rust 在基础设施（Qdrant、Chroma 内核、Goose）崛起<span class="cite">S19</span><span class="cite">S20</span><span class="cite">S32</span>。</li>
+      <li><span class="tag tag-fact">事实</span>生产推理已是 vLLM + SGLang 双雄格局；网关用 LiteLLM；监控用 Langfuse；本机开发默认 Ollama + Chroma/pgvector<span class="cite">S23</span><span class="cite">S26</span><span class="cite">S14</span><span class="cite">S13</span>。</li>
+      <li><span class="tag tag-fact">事实</span>中国团队在头部占据真实位置：Dify、RAGFlow、Milvus、NewAPI/One-API、SGLang——中文文档与中文社区是真实存在的，不是营销话术<span class="cite">S02</span><span class="cite">S11</span><span class="cite">S18</span><span class="cite">S16</span>。</li>
+      <li><span class="tag tag-report">报道</span>降温与替代链：AutoGen/Semantic Kernel → Microsoft Agent Framework；TGI → vLLM；MetaGPT/Aider 停更；Roo Code 归档；AutoGPT 不维护<span class="cite">S08</span><span class="cite">S05</span><span class="cite">S27</span>。</li>
+      <li><span class="tag tag-report">报道</span>并购潮：Langfuse → ClickHouse（2026-01）；Helicone → Mintlify；Chroma → Replit（2026-10）<span class="cite">S13</span><span class="cite">S17</span><span class="cite">S20</span>。独立小工具公司的独立窗口在收窄。</li>
+      <li><span class="tag tag-infer">推断</span>给你的本科组合栈：<strong>Python 应用 + LangGraph/CrewAI 编排 + RAGFlow 或自研 RAG + pgvector/Chroma + LiteLLM + Langfuse + Ollama/vLLM</strong>——这一整条链上每一环都有「本科可做的切入点」，且环环相接。</li>
+    </ul>
+
+    <h3 class="s-title">1.3 长期跟踪源与新手开源切入步骤</h3>
+    <h4>跟踪源</h4>
+    <ul>
+      <li><strong>趋势面板：</strong>GitHub Trending（Python 月榜）<span class="cite">S33</span>。</li>
+      <li><strong>清单索引：</strong>vinta/awesome-python、Hannibal046/Awesome-LLM、e2b-dev/awesome-ai-agents、microsoft/ai-agents-for-beginners、microsoft/generative-ai-for-beginners<span class="cite">S34</span>。</li>
+      <li><strong>二手数据：</strong>ossinsight.io、star-history.com——看 star 曲线斜率而不是绝对值<span class="cite">S35</span>。</li>
+      <li><strong>直接盯组织：</strong>langchain-ai、langgenius、infiniflow、vllm-project、sgl-project、BerriAI、langfuse、All-Hands-AI、cline、milvus-io、qdrant。</li>
+    </ul>
+    <h4>新手切入五步</h4>
+    <ol>
+      <li>从你正在用的项目起步（Dify/RAGFlow）：本机 docker compose 跑通，改造一个小应用。</li>
+      <li>搜索 <code>label:"good first issue" label:"documentation" is:open</code>——文档类贡献胜率最高，不需要先读穿源码。</li>
+      <li>fork → 分支 → 小改 → PR 关联 issue；Apache/基金会项目记得 <code>git commit -s</code>（DCO 签名）。</li>
+      <li>不写代码也能贡献：issue triage、复现 bug、Discussions 答疑、PR 中文翻译。</li>
+      <li>防坑：认准新组织名（ggml-org、FoundationAgents）；commit/release/archived 三信号先行；刷 star 看曲线与 contributor 数；license 风险（Dify 转售限制、NewAPI AGPL 传染、AutoGPT Polyform 限制）。</li>
+    </ol>
+
+    <h3 class="s-title">1.4 交叉验证小结：印证 / 修正 / 新信号</h3>
+    <div class="callout">
+      <p><strong>印证：</strong>应用层与 Agent 方向高增长——Dify 周增约 500 star、LangGraph 周 npm 下载约 370 万，与上份报告「AI 应用开发岗占招聘约六成」的判断同向<span class="cite">S02</span><span class="cite">S06</span>。</p>
+      <p><strong>印证并补充：</strong>算法岗硕博化是真的，但应用层工程岗本科可切入——这是两个难度梯队，不要把「算法要双 9」误读成「AI 整条路本科没戏」。</p>
+      <p><strong>修正：</strong>「传统开发收缩」不是岗位消失，而是技能组合上移到 agent 基础设施——会部署运维整条栈（LiteLLM + Langfuse + vLLM）的工程岗在扩张，收缩的是只会写 CRUD 的那一段<span class="cite">S14</span><span class="cite">S13</span><span class="cite">S23</span>。</p>
+      <p><strong>修正：</strong>「独立开发低成功率」在 2026 年更加严峻——个人明星项目集中死亡或公司化（Aider、Roo Code、AutoGPT），单打独斗窗口更窄；现实路径是进入国产头部开源社区攒贡献，把「个人作品」换成「被仓库记录在案的 PR」<span class="cite">S30</span><span class="cite">S31</span><span class="cite">S10</span>。</p>
+    </div>
+    <div class="callout ok">
+      <p><strong>可执行动作（本周可做）：</strong>① 本机用 docker compose 跑通 RAGFlow 或 Dify；② 给其中一个仓库搜 good first issue，挑一个文档类 issue 开第一个 PR；③ 在 star-history 上看 3 个你关注项目的 star 曲线，建立「曲线斜率比绝对值重要」的手感。</p>
+    </div>
+  </div>
+</section>
+<section class="chapter" id="b">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 02</div>
+    <h2 class="c-title">B站：第一手经历，与淹没它的营销矩阵</h2>
+    <p class="c-sub">核心发现：「大厂入职 / 体制内上岸」类内容存在批量营销矩阵，真实亲历被淹没。本章先列高可信样本，再拆反面样本，最后给筛选方法。采集于 2026-10-31。</p>
+
+    <h3 class="s-title">2.1 视频样本表（亲历 / 高可信）</h3>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>UP / 标题</th><th>时间</th><th>要点</th><th>判定</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>BoomLee-《华为工作记录第 29 周》</td><td>2024-10-20</td><td>复旦→华为，周更到 36 周；早 8:20 晚 8:30、周三周五 5:30 走；无引流</td><td><span class="vb v-yes">亲历</span> 最干净的大厂一天样本</td><td><a href="https://www.bilibili.com/video/BV1Y7yeYvEqx/">BV1Y7yeYvEqx</a><span class="cite">S36</span></td></tr>
+        <tr><td>《JAVA 实习第一次面试小厂上当受骗经历》</td><td>2025-09-15</td><td>4 人小厂、若依系统、实习 2k、老板不懂 git</td><td><span class="vb v-yes">亲历</span> 找第一份实习的直接警示</td><td><a href="https://www.bilibili.com/video/BV1zQpMzFEAp/">BV1zQpMzFEAp</a><span class="cite">S37</span></td></tr>
+        <tr><td>《25 届双非本科字节跳动北京四年总结》（图文）</td><td>更新至 2026-09</td><td>秋招 8 月启动、字节四轮面试；真实双非面经</td><td><span class="vb v-yes">亲历</span> 与你处境最近的样本</td><td><a href="https://m.bilibili.com/opus/1015170856770338825">opus 链接</a><span class="cite">S38</span></td></tr>
+        <tr><td>蒋晖尊者《终于，我也被暴力裁员了——30 岁》</td><td>2020-08</td><td>第一人称裁员原始文本</td><td><span class="vb v-yes">亲历</span> 裁员风险第一手记录</td><td><a href="https://m.bilibili.com/opus/471207738293184775">opus 链接</a><span class="cite">S39</span></td></tr>
+        <tr><td>《中北大学考上山西运城临猗县乡镇一级科员，到手不足 6 万》</td><td>2024-07</td><td>月到手 4500（车补 550+乡镇补贴 790）、取暖补贴 3360、13 薪 2160，无精神文明奖</td><td><span class="vb v-yes">亲历</span> 基层收入最硬样本</td><td><a href="https://www.bilibili.com/video/BV1dx4y147Fc/">BV1dx4y147Fc</a><span class="cite">S40</span></td></tr>
+        <tr><td>《河南省考 2025 招录 1.1 万、报名 60 万+、录取率 1.6%》</td><td>2025-08</td><td>郑州市直破 100:1、三不限 1000:1</td><td><span class="vb v-part">数据</span> 看数字不看情绪</td><td><a href="https://www.bilibili.com/video/BV1L4tozuEh1/">BV1L4tozuEh1</a><span class="cite">S41</span></td></tr>
+        <tr><td>《秋招应聘南航全体验，央国企技术岗前面基本走过场》</td><td>2025-09</td><td>双非本+211 硕拿南航/航港 3 个国企 offer</td><td><span class="vb v-part">经历</span> 央国企兜底路径参考</td><td><a href="https://www.bilibili.com/video/BV13wYNzAEuX/">BV13wYNzAEuX</a><span class="cite">S42</span></td></tr>
+        <tr><td>《大厂校招前端岗比后端岗好进？》</td><td>2025-06</td><td>前端无实习即落后 90%</td><td><span class="vb v-part">经历</span> 实习权重的直接证据</td><td><a href="https://www.bilibili.com/video/BV1K3TkzhEPZ/">BV1K3TkzhEPZ</a><span class="cite">S43</span></td></tr>
+        <tr><td>《双非研究生校招算法岗挑战》</td><td>2025-05</td><td>头部算法要「双 9」；双非需顶会/Kaggle 银牌/早鸟实习</td><td><span class="vb v-part">经历</span> 算法门槛第一手</td><td><a href="https://www.bilibili.com/video/BV1cA5VzfEC1/">BV1cA5VzfEC1</a><span class="cite">S44</span></td></tr>
+      </tbody>
+    </div></div>
+
+    <h3 class="s-title">2.2 反面样本：营销矩阵与极端个例</h3>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>样本</th><th>时间</th><th>为什么不能当亲历</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>「985 硕入职腾讯/京东/阿里/大疆/字节」模板视频 ×5</td><td>2025-07~10</td><td>标题句式统一、推荐栏互推同源账号；数字当坊间传闻，不可当亲历</td><td><a href="https://www.bilibili.com/video/BV1yDs4z8Eik/">样本 BV1yDs4z8Eik</a><span class="cite">S45</span></td></tr>
+        <tr><td>《被大厂裁员后拿下软考高项进国企》</td><td>2025-01</td><td>结尾引导备考软考——培训机构获客广告（同模板 BV1pucneHEwP）</td><td><a href="https://www.bilibili.com/video/BV1ZZcRe1EmS/">BV1ZZcRe1EmS</a><span class="cite">S46</span></td></tr>
+        <tr><td>《35 岁程序员转行摆摊卖肉蛋堡月入 5 万》</td><td>2026-04</td><td>媒体搬运、极端个例，严禁外推</td><td><a href="https://www.bilibili.com/video/BV1YyDnB6ESM/">BV1YyDnB6ESM</a><span class="cite">S47</span></td></tr>
+        <tr><td>《35 岁金融牛马转型日记》</td><td>2025-07</td><td>样本极端，不能外推</td><td><a href="https://www.bilibili.com/video/BV1FN3Bz9E98/">BV1FN3Bz9E98</a><span class="cite">S48</span></td></tr>
+        <tr><td>喵一奥喵《河北公务员干一年心得》</td><td>2025-10</td><td>推荐栏全情绪化标题，矩阵号嫌疑；数字可参考，情绪别代入</td><td><a href="https://www.bilibili.com/video/BV1hYxyzfEs9/">BV1hYxyzfEs9</a><span class="cite">S49</span></td></tr>
+        <tr><td>降薪资讯三条（波及 3 省 / 福建基层绩效发 4 成 / 南京海关年约 21 万）</td><td>2025-10 ~ 2026-08</td><td>媒体汇总，方向多源互证；数字按区间看，不当单地事实</td><td><a href="https://www.bilibili.com/video/BV1mCsSzYEBy/">S50</a> · <a href="https://www.bilibili.com/video/BV1y34X6fEoN/">S51</a> · <a href="https://www.bilibili.com/av453942013">S52</a></td></tr>
+      </tbody>
+    </div></div>
+
+    <h3 class="s-title">2.3 交叉验证：逐条对应上份报告的硬数据</h3>
+    <ul>
+      <li><span class="vb v-yes">印证</span><strong>考公难：</strong>河南录取率 1.6%、三不限 1000:1，与国考约 98:1 的宏观数据同向<span class="cite">S41</span>。</li>
+      <li><span class="vb v-part">修正</span><strong>「稳定性溢价」的内涵：</strong>临猗乡镇科员年入不足 6 万照样加班——溢价是「不裁员」，不是高薪。上份报告把溢价摆在报考端是对的，但待遇端必须打这个补丁<span class="cite">S40</span>。</li>
+      <li><span class="vb v-part">部分印证</span><strong>互联网薪资：</strong>高薪是清华/985 硕头部小样本，分化比报告里写的更极端；双非本科字节四年总结这类样本才是普通本科的参照系<span class="cite">S38</span>。</li>
+      <li><span class="vb v-yes">印证</span><strong>传统开发收缩：</strong>小厂实习 2k、老板不懂 git 的样本，与「普通开发岗需求 -52%」的宏观数据互为印证<span class="cite">S37</span>。</li>
+      <li><span class="vb v-yes">多源印证</span><strong>体制内降薪、过紧日子：</strong>3 省降薪、福建绩效发 4 成，方向成立，幅度因地区而异<span class="cite">S50</span><span class="cite">S51</span>。</li>
+      <li><span class="vb v-yes">强烈印证</span><strong>AI 门槛提高：</strong>双非研究生冲算法岗需要顶会/Kaggle 银牌/早鸟实习——本科直接冲算法基本没戏，这与 GitHub 侧「应用层工程岗本科可入」合起来看，方向就完整了<span class="cite">S44</span>。</li>
+    </ul>
+    <div class="callout warn">
+      <p><strong>个体偏差警示：</strong>「一天 7 小时」「强制 9 点下班」「月入 5 万」均为单一个例，发生在特定的人、特定的城市、特定的年份。B站口述史的正确用法是取<strong>结构</strong>（秋招几月启动、面试几轮、实习是否必需、基层工资条由哪几项构成），不是取<strong>结论</strong>（我去那里就会过成那样）。</p>
+    </div>
+
+    <h3 class="s-title">2.4 UP 主分类清单</h3>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>类别</th><th>账号</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>技术学习</td><td>黑马程序员</td><td><span class="tag tag-report">机构号</span>体系化免费课，终点导向付费班；白嫖体系结构可以，报课要三思<span class="cite">S53</span></td></tr>
+        <tr><td>技术学习</td><td>程序员晚枫</td><td>Python 自动化 / Coze 方向，有付费课<span class="cite">S54</span></td></tr>
+        <tr><td>行业观察</td><td>BoomLee-</td><td>首推：大厂真实状态，编号周更流水账，无引流<span class="cite">S36</span></td></tr>
+        <tr><td>职业经历</td><td>蒋晖尊者 / 双非字节面经作者</td><td>裁员风险与双非校招第一手文本<span class="cite">S39</span><span class="cite">S38</span></td></tr>
+        <tr><td>考公真相</td><td>临猗薪资盘点 / 河南数据盘点类</td><td>只取数字，不代入情绪<span class="cite">S40</span><span class="cite">S41</span></td></tr>
+        <tr><td>避坑名单</td><td>喵一奥类 / 软考救命类</td><td>矩阵号与培训引流，关注即被算法投喂同类<span class="cite">S49</span><span class="cite">S46</span></td></tr>
+      </tbody>
+    </div></div>
+
+    <h3 class="s-title">2.5 筛选方法与可执行动作</h3>
+    <ol>
+      <li>标题模板检测：「看到薪资释怀」「一眼看到退休」「被裁后 XX 救了我」——九成是矩阵号；真实 vlog 是编号流水账。</li>
+      <li>翻主页：看有无连续时间线；同模板账号互相出现在推荐栏，即同源矩阵。</li>
+      <li>结尾钩子：「备考 / 领资料 / 课程」= 引流，内容再好也降级为广告。</li>
+      <li>叙事三段式：入职被笑 → 发工资 → 亲戚有面子——批量剧本结构。</li>
+      <li>机构认证号内容免费，但定位是转化漏斗前端；学体系可以，别把「老师推荐的班」当客观建议。</li>
+    </ol>
+    <div class="callout ok">
+      <p><strong>可执行动作：</strong>① 把 BoomLee- 的华为周更挑 3 期连续看完，建立「真实大厂一周」的具象感；② 把临猗工资条逐项抄进自己的「体制内收入结构」笔记；③ 把模板号全部点「不感兴趣」，让推荐栏先去伪，再谈吸收。</p>
+    </div>
+  </div>
+</section>
+<section class="chapter" id="d">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 03</div>
+    <h2 class="c-title">抖音：岗位切片、工资条，与最密集的卖课话术</h2>
+    <p class="c-sub">抖音搜索接口只返回视频标题与分享链接，未返回账号昵称——账号名需 App 内核实，本章一律保留「未逐一核实」标注。点赞评论为 2026-10-31 快照值。</p>
+
+    <h3 class="s-title">3.1 样本与营销识别</h3>
+    <h4>岗位日常类（A1–A12）</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>编号 / 标题</th><th>要点</th><th>判定与依据</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>A1《985 硕士 25 岁大厂程序员真实的一天》</td><td>工作 11.5 小时</td><td><span class="vb v-part">偏真实</span> 有具体时长，但存在人设经营</td><td><a href="https://www.iesdouyin.com/share/video/7484257343778114843">S55</a></td></tr>
+        <tr><td>A2《985 硕入职阿里一个月 VS 一年》</td><td>绩效 B+、面试难度升高</td><td><span class="vb v-part">偏真实反思</span> 有具体绩效等级</td><td><a href="https://www.iesdouyin.com/share/video/7641428559224364785">S56</a></td></tr>
+        <tr><td>A3《Google 码农真实的一天》</td><td>硅谷准点下班</td><td><span class="vb v-yes">记录类</span> 跨国样本，不可平移到国内</td><td><a href="https://www.iesdouyin.com/share/video/7691931358671481787">S57</a></td></tr>
+        <tr><td>A4《0 经验普通二本找 AI 工作的真实感悟》</td><td>应用/Agent 核心是工程落地、不推导公式</td><td><span class="vb v-part">偏真实</span> 与你处境最接近；但未给公司名薪资，「友好」略乐观</td><td><a href="https://www.iesdouyin.com/share/video/7679006838800518406">S58</a></td></tr>
+        <tr><td>A5《35 岁程序员勇闯大模型岗五步稳稳拿 offer》</td><td>—</td><td><span class="vb v-no">营销</span>「稳稳」「五步」课程话术，小号引流</td><td><a href="https://www.iesdouyin.com/share/video/7653490385909475819">S59</a></td></tr>
+        <tr><td>A6《半年内拿到 6 份大模型开发 offer》</td><td>自述报班</td><td><span class="vb v-no">卖课软广</span> 戳双非焦虑；评论仅 12，互动异常</td><td><a href="https://www.iesdouyin.com/share/video/7665267391555022499">S60</a></td></tr>
+        <tr><td>A7《大模型岗红利盛世不再（清华硕 26 届）》</td><td>高学历视角降温</td><td><span class="vb v-part">视角偏狭</span> 清华硕样本，不能外推到普通本科</td><td><a href="https://www.iesdouyin.com/share/video/7690222336788459003">S61</a></td></tr>
+        <tr><td>A8《上交硕士基座算法工程师揭秘》</td><td>称优秀硕士后训练 150–200 万</td><td><span class="vb v-no">营销扭曲风险</span> 顶尖极少数 offer 数字，切勿当普通薪资</td><td><a href="https://www.iesdouyin.com/share/video/7628636102349327662">S62</a></td></tr>
+        <tr><td>A9《2026 测试岗薪资 12k vs 35k》</td><td>测试开发 > 手工测试</td><td><span class="vb v-part">半营销 IP</span> 方向判断合理，包装成 IP</td><td><a href="https://www.iesdouyin.com/share/video/7657047568380231417">S63</a></td></tr>
+        <tr><td>A10《软件测试还有搞头吗》</td><td>手工测试被淘汰</td><td><span class="vb v-part">行业观点</span> 与 A9 方向一致</td><td><a href="https://www.iesdouyin.com/share/video/7629302010881281343">S64</a></td></tr>
+        <tr><td>A11《校招产品经理一定要慎重》</td><td>产品校招卡 985/硕</td><td><span class="vb v-yes">真实劝退</span> 「二本友好」不覆盖产品岗</td><td><a href="https://www.iesdouyin.com/share/video/7631847401133851045">S65</a></td></tr>
+        <tr><td>A12《03 二本产品经理 8.5k 下班学 vibe coding》</td><td>薪资透明</td><td><span class="vb v-yes">真实记录</span> 恰好对照 A8 的天价话术</td><td><a href="https://www.iesdouyin.com/share/video/7634166199287446890">S66</a></td></tr>
+      </tbody>
+    </div></div>
+
+    <h4>体制内类（B1–B6）</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>编号 / 标题</th><th>要点</th><th>判定与依据</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>B1《小县城体制内月薪 5000 够花吗》</td><td>实发 5027、支出 7134 入不敷出；3.6 万赞</td><td><span class="vb v-yes">工资条样本</span> 稳定 ≠ 富裕的直接证据</td><td><a href="https://www.iesdouyin.com/share/video/7578146808418493062">S67</a></td></tr>
+        <tr><td>B2《研究生入职省直体制内半年心里话》</td><td>事业单位行政、双休</td><td><span class="vb v-part">经历分享</span> 量级参考</td><td><a href="https://www.iesdouyin.com/share/video/7640846100915871823">S68</a></td></tr>
+        <tr><td>B3《河南教师工资（商丘/驻马店/安阳）》</td><td>市直高中年约 10 万、乡镇 7.8 万</td><td><span class="vb v-part">聚合号</span> 大概率引流，量级可参考</td><td><a href="https://www.iesdouyin.com/share/video/7615962257872276771">S69</a></td></tr>
+        <tr><td>B4《广西乡村小学教师工资条》</td><td>应发 4500 扣 1200 到手 3300</td><td><span class="vb v-yes">工资条样本</span> 扣除项明细</td><td><a href="https://www.iesdouyin.com/share/video/7686124093788223067">S70</a></td></tr>
+        <tr><td>B5《2027 国考 345 万过审招 3.57 万》</td><td>—</td><td><span class="vb v-yes">可核实事实</span> 印证考公热持续</td><td><a href="https://www.iesdouyin.com/share/video/7701249139350228267">S71</a></td></tr>
+        <tr><td>B6《多地烟草局直系三代不得应聘》</td><td>招聘公告回避条款；8.1 万赞</td><td><span class="vb v-part">公告话题</span> 垄断国企关系户讨论高热</td><td><a href="https://www.iesdouyin.com/share/video/7255875323886193939">S72</a></td></tr>
+      </tbody>
+    </div></div>
+
+    <h4>营销剧本类（C1–C5、C7）——全部标记为引流</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>编号 / 标题</th><th>话术识别</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>C1《3 个月用 AI 写小说赚 7900》</td><td>收益承诺 +「你也可以」，卖课引流</td><td><a href="https://www.iesdouyin.com/share/video/7666786556874706228">S73</a></td></tr>
+        <tr><td>C2《月入 2k 到一年 200 万 AI 副业复盘》</td><td>夸张倍数，卖社群/课程</td><td><a href="https://www.iesdouyin.com/share/video/7688801135104199978">S74</a></td></tr>
+        <tr><td>C3《师范生靠 AI 智能体定制赚 7k》</td><td>「免费资源分享」引流私域</td><td><a href="https://www.iesdouyin.com/share/video/7649328578093485321">S75</a></td></tr>
+        <tr><td>C4《2027 女生 AI 副业 3 方向》</td><td>卖社群收 99 元/人</td><td><a href="https://www.iesdouyin.com/share/video/769821207215225759">S76</a></td></tr>
+        <tr><td>C5《普通人靠 AI 赚钱绝对落地方案》</td><td>绝对化用语，焦虑+解药结构</td><td><a href="https://www.iesdouyin.com/share/video/7659039752931100025">S77</a></td></tr>
+        <tr><td>C7《阿里一面短链接：评论区留 PDF》</td><td>免费 PDF 换关注，再导课</td><td><a href="https://www.iesdouyin.com/share/video/7694517124936617216">S78</a></td></tr>
+      </tbody>
+    </div></div>
+
+    <h4>揭露类（D1–D6）——有用，但要看穿第二层</h4>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>编号 / 标题</th><th>要点</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>D1《培训贷招转培骗局 AIGC 新版》</td><td>「包就业」口头 vs「帮助就业」合同；7.4 万赞</td><td><a href="https://www.iesdouyin.com/share/video/7682385985463733554">S79</a></td></tr>
+        <tr><td>D2《副业避雷：数据标注 99% 杀猪盘》</td><td>标注副业骗局</td><td><a href="https://www.iesdouyin.com/share/video/7652192318837614501">S80</a></td></tr>
+        <tr><td>D3《标注：交学费保订单不断》</td><td>交学费话术</td><td><a href="https://www.iesdouyin.com/share/video/7618242275667768922">S81</a></td></tr>
+        <tr><td>D4《贵阳标注 4-8k 是假，底薪 1800》</td><td>薪资虚构</td><td><a href="https://www.iesdouyin.com/share/video/7668682087146229044">S82</a></td></tr>
+        <tr><td>D5《付费内推全是割韭菜（徐老师聊就业）》</td><td>揭露行业黑产，但博主本人带 IP，可能卖自己的服务</td><td><a href="https://www.iesdouyin.com/share/video/7697540006382092773">S83</a></td></tr>
+        <tr><td>D6《收钱的内推都是骗局（刑辩律师）》</td><td>法律视角背书</td><td><a href="https://www.iesdouyin.com/share/video/7699679996490583322">S84</a></td></tr>
+      </tbody>
+    </div></div>
+
+    <h3 class="s-title">3.2 真实从业者的可信特征</h3>
+    <ul>
+      <li><span class="tag tag-fact">事实</span>具体可验证：晒得出工资条、写得出绩效等级（如 B+）、报得出扣除项明细。</li>
+      <li><span class="tag tag-fact">事实</span>长期内容一致：同一类主题连续更新，不跳品类。</li>
+      <li><span class="tag tag-fact">事实</span>不带货、不置顶私信引流。</li>
+      <li><span class="tag tag-fact">事实</span>敢讲负面：讲自己踩过的坑，而不是只讲辉煌。</li>
+      <li><span class="tag tag-fact">事实</span>数字有量级感：二本产品 8.5k、县城体制内实发 5027，与 A8 的「后训练 150–200 万」放在一起，真伪立判<span class="cite">S66</span><span class="cite">S67</span><span class="cite">S62</span>。</li>
+    </ul>
+    <div class="callout">
+      <p><strong>两条权威事实背书：</strong>五部门 2026-05 发布招转培联合提示；已有虚假离职博主因引流卖 7880 元 Python 课被法院判决——「装大厂员工卖课」不是推测，是已被判决的灰产。</p>
+    </div>
+
+    <h3 class="s-title">3.3 筛选方法与应避开类别</h3>
+    <div class="trap">
+      <h4>三秒自检（刷到任何一条职业内容，先过这三问）</h4>
+      <p>① 敢说具体公司名吗？② 主页有橱窗/置顶评论引导私信或粉丝群吗？③ 展示过程还是只给结论？三问里有两问答不上来，直接划走。</p>
+    </div>
+    <p><strong>话术识别清单：</strong>收益承诺、稀缺紧迫（「内部名额」）、身份伪装（「上岸后才敢说」）、焦虑解药、免费钩子（评论区留 PDF）。<strong>行为识别清单：</strong>橱窗小店、置顶评论引导私信、矩阵号头像统一话术雷同、信息含糊不给公司名、内容跳品类。</p>
+    <p><strong>应避开类别：</strong>AI 副业月入过万、0 经验 3 个月转行、评论区留 PDF、「再见大厂」离职叙事、预测类内容、任何先交钱的内推/标注。</p>
+
+    <h3 class="s-title">3.4 交叉验证小结：印证 / 修正 / 新信号</h3>
+    <div class="callout">
+      <p><strong>印证：</strong>考公热（B5 国考数据）、标注骗局产业化（D2–D4）、培训贷马甲升级到 AIGC 版（D1）、付费内推全行业公认骗局（D5/D6）——与上份报告「求职黑产随 AI 叙事扩容」的判断同向。</p>
+      <p><strong>修正：</strong>① 笼统说「AI 高薪」要改成「算法天价、应用普通」——A8 的 150–200 万是顶尖极少数，A12 的二本产品 8.5k 才是普通样本；②「体制内稳定 = 过得好」被滤镜扭曲，县城 5027 入不敷出；③「二本友好」仅指应用工程岗，产品校招路更窄（A11）；④ 测试不是避风港，手工测试在淘汰（A9/A10）。</p>
+      <p><strong>新信号：</strong>① 虚假离职大厂员工灰产已有法院判决；② 卖课升级为卖社群 / SaaS 陪跑（99 元入群）；③「揭露骗局」本身成为流量品类——骂骗子的人可能正在卖自己的辅导，D5 即如此；④ 垄断国企「关系户」话题高热（B6）。</p>
+    </div>
+    <div class="callout ok">
+      <p><strong>可执行动作：</strong>① 只关注四类：同背景前进者、讲具体项目的工程师、工资条类（只取数字）、人社/法律普法号；② 把 C 类剧本全部点不感兴趣，让算法先清净；③ 建立个人「数字笔记」：每条可信工资只记数字与地区，不收藏情绪。</p>
+    </div>
+  </div>
+</section>
+<section class="chapter" id="syn">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 04</div>
+    <h2 class="c-title">综合：跨平台共同信号，与对上份报告的总校验</h2>
+    <p class="c-sub">GitHub 看代码生态、B站看人生口述、抖音看流量切片——三个完全不同的信息环境，合在一起才能去伪。</p>
+
+    <h3 class="s-title">4.1 跨平台共同信号</h3>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>共同信号</th><th>GitHub 侧证据</th><th>B站侧证据</th><th>抖音侧证据</th></tr></thead>
+      <tbody>
+        <tr><td><strong>算法天价 vs 应用普通</strong>：硕博化的头部与本科可入的应用层是两条路</td><td>应用/编排/部署工具链完整且活跃（LangGraph、Dify、RAGFlow）<span class="cite">S06</span><span class="cite">S02</span><span class="cite">S11</span></td><td>双非研究生冲算法需顶会/银牌/早鸟实习<span class="cite">S44</span></td><td>上交硕后训练 150–200 万是极少数；二本产品 8.5k 是普通样本<span class="cite">S62</span><span class="cite">S66</span></td></tr>
+        <tr><td><strong>稳定溢价重定价</strong>：溢价 = 不裁员，不是高薪</td><td>（平台无此维度）</td><td>临猗乡镇科员年入不足 6 万<span class="cite">S40</span></td><td>县城体制内实发 5027 入不敷出；广西乡村教师到手 3300<span class="cite">S67</span><span class="cite">S70</span></td></tr>
+        <tr><td><strong>体量数字会骗人</strong>：star、播放、点赞都可与质量脱钩</td><td>18.7 万 star 的 AutoGPT 不再维护；7 万 star 的 MetaGPT 停更 9 个月<span class="cite">S10</span><span class="cite">S09</span></td><td>同模板「985 硕入职大厂」互推矩阵<span class="cite">S45</span></td><td>「半年 6 份 offer」评论仅 12 的卖课号<span class="cite">S60</span></td></tr>
+        <tr><td><strong>国产开源社区是本科真入口</strong></td><td>Dify/RAGFlow/Milvus/SGLang/One-API 均中国 origin，中文社区真实活跃<span class="cite">S02</span><span class="cite">S11</span><span class="cite">S18</span><span class="cite">S26</span></td><td>—</td><td>—</td></tr>
+      </tbody>
+    </div></div>
+
+    <h3 class="s-title">4.2 对上份《考公热与 AI 机会研判》的总校验</h3>
+    <div class="callout ok">
+      <p><strong>总印证（四条）：</strong>① 考公热与录取率恶化持续（国考 345 万过审招 3.57 万；河南 1.6%）；② AI 应用层窗口真实（LangGraph 周下载 370 万、Dify 周增 500 star）；③ AI 门槛在提高（双非算法岗门槛第一手印证）；④ 传统开发收缩（小厂实习 2k、手工测试淘汰）。</p>
+    </div>
+    <div class="callout">
+      <p><strong>总修正（四条）：</strong>① 稳定性溢价的兑现方式是「不裁员」而非高薪，基层 5–6 万是真实坐标；② 「独立开发」窗口在 2026 年急剧收窄，个人明星项目集中死亡或公司化，路径应改为「国产头部开源社区攒 PR」；③ 「二本友好」仅限应用工程岗，产品校招与算法岗都不友好；④ 测试不是避风港，测试开发才是方向。</p>
+    </div>
+    <div class="callout warn">
+      <p><strong>新信号（上份报告没有的）：</strong>① 开源并购潮（Langfuse→ClickHouse、Helicone→Mintlify、Chroma→Replit）；② 个人明星开源项目 2026 集中停更/归档（Aider、Roo Code、MetaGPT、AutoGPT）；③ 虚假离职大厂员工灰产已有法院判决，卖课升级为卖社群/SaaS 陪跑；④「揭露骗局」本身成为流量品类；⑤ 体制内讨论从「考不考」转向「降薪与关系户」。</p>
+    </div>
+
+    <h3 class="s-title">4.3 分平台行动清单</h3>
+    <div class="twwrap"><table class="dt">
+      <thead><tr><th>平台</th><th>做什么</th><th>不做什么</th></tr></thead>
+      <tbody>
+        <tr><td><strong>GitHub</strong></td><td>本机 docker 跑通 RAGFlow/Dify；搜 good first issue 提第一个文档 PR；盯组织：langchain-ai、infiniflow、vllm-project、sgl-project；用 star-history 看曲线</td><td>不追高 star 新仓库；不在未确认维护状态前深押；不碰 AGPL/Polyform 许可的商业项目</td></tr>
+        <tr><td><strong>B站</strong></td><td>连续看 BoomLee- 周更；抄临猗工资条结构；收藏双非字节面经当校招剧本</td><td>不点模板号；不被结尾钩子带走；不把极端个例（月入 5 万摆摊）当方向</td></tr>
+        <tr><td><strong>抖音</strong></td><td>三秒自检后再吸收；只取工资条数字；关注同背景前进者与法律普法号</td><td>不交任何内推/标注费；不信评论区 PDF；不买「稳稳拿 offer」「AI 副业」课</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+<section class="chapter" id="src">
+  <div class="wrap">
+    <div class="ch-no">SOURCES</div>
+    <h2 class="c-title">完整来源清单</h2>
+    <p class="c-sub">全部采集于 2026-10-31。GitHub star 为当日约数；视频点赞评论为当日快照；平台账号昵称未逐一人工复核。</p>
+
+    <h3 class="s-title">GitHub 开源项目（S01–S32）</h3>
+    <ol class="srcs">
+      <li>LangChain · github · <a href="https://github.com/langchain-ai/langchain">github.com/langchain-ai/langchain</a> · 2026-10-31</li>
+      <li>Dify · github · <a href="https://github.com/langgenius/dify">github.com/langgenius/dify</a> · 2026-10-31</li>
+      <li>LlamaIndex · github · <a href="https://github.com/run-llama/llama_index">github.com/run-llama/llama_index</a> · 2026-10-31</li>
+      <li>LangFlow · github · <a href="https://github.com/langflow-ai/langflow">github.com/langflow-ai/langflow</a> · 2026-10-31</li>
+      <li>Semantic Kernel · github · <a href="https://github.com/microsoft/semantic-kernel">github.com/microsoft/semantic-kernel</a> · 2026-10-31</li>
+      <li>LangGraph · github · <a href="https://github.com/langchain-ai/langgraph">github.com/langchain-ai/langgraph</a> · 2026-10-31</li>
+      <li>CrewAI · github · <a href="https://github.com/crewAIInc/crewAI">github.com/crewAIInc/crewAI</a> · 2026-10-31</li>
+      <li>AutoGen · github · <a href="https://github.com/microsoft/autogen">github.com/microsoft/autogen</a> · 2026-10-31</li>
+      <li>MetaGPT · github · <a href="https://github.com/FoundationAgents/MetaGPT">github.com/FoundationAgents/MetaGPT</a> · 2026-10-31</li>
+      <li>AutoGPT · github · <a href="https://github.com/Significant-Gravitas/AutoGPT">github.com/Significant-Gravitas/AutoGPT</a> · 2026-10-31</li>
+      <li>RAGFlow · github · <a href="https://github.com/infiniflow/ragflow">github.com/infiniflow/ragflow</a> · 2026-10-31</li>
+      <li>Haystack · github · <a href="https://github.com/deepset-ai/haystack">github.com/deepset-ai/haystack</a> · 2026-10-31</li>
+      <li>Langfuse · github · <a href="https://github.com/langfuse/langfuse">github.com/langfuse/langfuse</a> · 2026-10-31</li>
+      <li>LiteLLM · github · <a href="https://github.com/BerriAI/litellm">github.com/BerriAI/litellm</a> · 2026-10-31</li>
+      <li>One-API · github · <a href="https://github.com/songquanpeng/one-api">github.com/songquanpeng/one-api</a> · 2026-10-31</li>
+      <li>NewAPI · github · <a href="https://github.com/QuantumNous/new-api">github.com/QuantumNous/new-api</a> · 2026-10-31</li>
+      <li>Helicone · github · <a href="https://github.com/Helicone/helicone">github.com/Helicone/helicone</a> · 2026-10-31</li>
+      <li>Milvus · github · <a href="https://github.com/milvus-io/milvus">github.com/milvus-io/milvus</a> · 2026-10-31</li>
+      <li>Qdrant · github · <a href="https://github.com/qdrant/qdrant">github.com/qdrant/qdrant</a> · 2026-10-31</li>
+      <li>Chroma · github · <a href="https://github.com/chroma-core/chroma">github.com/chroma-core/chroma</a> · 2026-10-31</li>
+      <li>pgvector · github · <a href="https://github.com/pgvector/pgvector">github.com/pgvector/pgvector</a> · 2026-10-31</li>
+      <li>Weaviate · github · <a href="https://github.com/weaviate/weaviate">github.com/weaviate/weaviate</a> · 2026-10-31</li>
+      <li>vLLM · github · <a href="https://github.com/vllm-project/vllm">github.com/vllm-project/vllm</a> · 2026-10-31</li>
+      <li>Ollama · github · <a href="https://github.com/ollama/ollama">github.com/ollama/ollama</a> · 2026-10-31</li>
+      <li>llama.cpp · github · <a href="https://github.com/ggml-org/llama.cpp">github.com/ggml-org/llama.cpp</a> · 2026-10-31</li>
+      <li>SGLang · github · <a href="https://github.com/sgl-project/sglang">github.com/sgl-project/sglang</a> · 2026-10-31</li>
+      <li>TGI · github · <a href="https://github.com/huggingface/text-generation-inference">github.com/huggingface/text-generation-inference</a> · 2026-10-31（停止主动开发为报道，未逐页核实）</li>
+      <li>Cline · github · <a href="https://github.com/cline/cline">github.com/cline/cline</a> · 2026-10-31</li>
+      <li>OpenHands · github · <a href="https://github.com/All-Hands-AI/OpenHands">github.com/All-Hands-AI/OpenHands</a> · 2026-10-31</li>
+      <li>Aider · github · <a href="https://github.com/Aider-AI/aider">github.com/Aider-AI/aider</a> · 2026-10-31</li>
+      <li>Roo Code · github · <a href="https://github.com/RooCodeInc/Roo-Code">github.com/RooCodeInc/Roo-Code</a> · 2026-10-31</li>
+      <li>Goose · github · <a href="https://github.com/block/goose">github.com/block/goose</a> · 2026-10-31</li>
+    </ol>
+
+    <h3 class="s-title">GitHub 跟踪源（S33–S35）</h3>
+    <ol class="srcs" style="counter-reset:s 32">
+      <li>GitHub Trending · <a href="https://github.com/trending">github.com/trending</a> · 2026-10-31</li>
+      <li>awesome 清单组：vinta/awesome-python · Hannibal046/Awesome-LLM · e2b-dev/awesome-ai-agents · microsoft/ai-agents-for-beginners · microsoft/generative-ai-for-beginners · <a href="https://github.com/vinta/awesome-python">github.com/vinta/awesome-python</a> · 2026-10-31</li>
+      <li>二手追踪：ossinsight.io · star-history.com · <a href="https://ossinsight.io">ossinsight.io</a> · 2026-10-31</li>
+    </ol>
+
+    <h3 class="s-title">B站视频与账号（S36–S54）</h3>
+    <ol class="srcs" style="counter-reset:s 35">
+      <li>BoomLee-《华为工作记录第 29 周》 · bilibili · <a href="https://www.bilibili.com/video/BV1Y7yeYvEqx/">BV1Y7yeYvEqx</a> · 2026-10-31</li>
+      <li>《JAVA 实习第一次面试小厂上当受骗经历》 · bilibili · <a href="https://www.bilibili.com/video/BV1zQpMzFEAp/">BV1zQpMzFEAp</a> · 2026-10-31</li>
+      <li>《25 届双非本科字节跳动北京四年总结》（图文） · bilibili · <a href="https://m.bilibili.com/opus/1015170856770338825">opus 1015170856770338825</a> · 2026-10-31</li>
+      <li>蒋晖尊者《终于，我也被暴力裁员了——30 岁》 · bilibili · <a href="https://m.bilibili.com/opus/471207738293184775">opus 471207738293184775</a> · 2026-10-31</li>
+      <li>《中北大学考上山西运城临猗县乡镇一级科员，到手不足 6 万》 · bilibili · <a href="https://www.bilibili.com/video/BV1dx4y147Fc/">BV1dx4y147Fc</a> · 2026-10-31</li>
+      <li>《河南省考 2025 招录 1.1 万、报名 60 万+》 · bilibili · <a href="https://www.bilibili.com/video/BV1L4tozuEh1/">BV1L4tozuEh1</a> · 2026-10-31</li>
+      <li>《秋招应聘南航全体验》 · bilibili · <a href="https://www.bilibili.com/video/BV13wYNzAEuX/">BV13wYNzAEuX</a> · 2026-10-31</li>
+      <li>《大厂校招前端岗比后端岗好进？》 · bilibili · <a href="https://www.bilibili.com/video/BV1K3TkzhEPZ/">BV1K3TkzhEPZ</a> · 2026-10-31</li>
+      <li>《双非研究生校招算法岗挑战》 · bilibili · <a href="https://www.bilibili.com/video/BV1cA5VzfEC1/">BV1cA5VzfEC1</a> · 2026-10-31</li>
+      <li>「985 硕入职大厂」模板矩阵样本（同源互推 ×5） · bilibili · <a href="https://www.bilibili.com/video/BV1yDs4z8Eik/">BV1yDs4z8Eik</a> · 2026-10-31</li>
+      <li>《被大厂裁员后拿下软考高项进国企》（培训引流） · bilibili · <a href="https://www.bilibili.com/video/BV1ZZcRe1EmS/">BV1ZZcRe1EmS</a> · 2026-10-31</li>
+      <li>《35 岁程序员转行摆摊卖肉蛋堡月入 5 万》（极端个例） · bilibili · <a href="https://www.bilibili.com/video/BV1YyDnB6ESM/">BV1YyDnB6ESM</a> · 2026-10-31</li>
+      <li>《35 岁金融牛马转型日记》（极端个例） · bilibili · <a href="https://www.bilibili.com/video/BV1FN3Bz9E98/">BV1FN3Bz9E98</a> · 2026-10-31</li>
+      <li>喵一奥喵《河北公务员干一年心得》（矩阵号嫌疑） · bilibili · <a href="https://www.bilibili.com/video/BV1hYxyzfEs9/">BV1hYxyzfEs9</a> · 2026-10-31</li>
+      <li>《公务员降薪潮波及 3 省》 · bilibili · <a href="https://www.bilibili.com/video/BV1mCsSzYEBy/">BV1mCsSzYEBy</a> · 2026-10-31</li>
+      <li>《福建基层绩效仅发 4 成》 · bilibili · <a href="https://www.bilibili.com/video/BV1y34X6fEoN/">BV1y34X6fEoN</a> · 2026-10-31</li>
+      <li>南京海关年约 21 万 · bilibili · <a href="https://www.bilibili.com/av453942013">av453942013</a> · 2026-10-31</li>
+      <li>黑马程序员（机构号） · bilibili · <a href="https://space.bilibili.com/37974444">space.bilibili.com/37974444</a> · 2026-10-31</li>
+      <li>程序员晚枫 · bilibili · <a href="https://space.bilibili.com/1989702333">space.bilibili.com/1989702333</a> · 2026-10-31</li>
+    </ol>
+
+    <h3 class="s-title">抖音视频样本（S55–S84）</h3>
+    <ol class="srcs" style="counter-reset:s 54">
+      <li>A1《985 硕士 25 岁大厂程序员真实的一天》 · douyin · <a href="https://www.iesdouyin.com/share/video/7484257343778114843">share 链接</a> · 2026-10-31</li>
+      <li>A2《985 硕入职阿里一个月 VS 一年》 · douyin · <a href="https://www.iesdouyin.com/share/video/7641428559224364785">share 链接</a> · 2026-10-31</li>
+      <li>A3《Google 码农真实的一天》 · douyin · <a href="https://www.iesdouyin.com/share/video/7691931358671481787">share 链接</a> · 2026-10-31</li>
+      <li>A4《0 经验普通二本找 AI 工作的真实感悟》 · douyin · <a href="https://www.iesdouyin.com/share/video/7679006838800518406">share 链接</a> · 2026-10-31</li>
+      <li>A5《35 岁程序员勇闯大模型岗五步稳稳拿 offer》（营销） · douyin · <a href="https://www.iesdouyin.com/share/video/7653490385909475819">share 链接</a> · 2026-10-31</li>
+      <li>A6《半年内拿到 6 份大模型开发 offer》（卖课软广） · douyin · <a href="https://www.iesdouyin.com/share/video/7665267391555022499">share 链接</a> · 2026-10-31</li>
+      <li>A7《大模型岗红利盛世不再（清华硕 26 届）》 · douyin · <a href="https://www.iesdouyin.com/share/video/7690222336788459003">share 链接</a> · 2026-10-31</li>
+      <li>A8《上交硕士基座算法工程师揭秘》（营销扭曲风险） · douyin · <a href="https://www.iesdouyin.com/share/video/7628636102349327662">share 链接</a> · 2026-10-31</li>
+      <li>A9《2026 测试岗薪资 12k vs 35k》 · douyin · <a href="https://www.iesdouyin.com/share/video/7657047568380231417">share 链接</a> · 2026-10-31</li>
+      <li>A10《软件测试还有搞头吗》 · douyin · <a href="https://www.iesdouyin.com/share/video/7629302010881281343">share 链接</a> · 2026-10-31</li>
+      <li>A11《校招产品经理一定要慎重》 · douyin · <a href="https://www.iesdouyin.com/share/video/7631847401133851045">share 链接</a> · 2026-10-31</li>
+      <li>A12《03 二本产品经理 8.5k 下班学 vibe coding》 · douyin · <a href="https://www.iesdouyin.com/share/video/7634166199287446890">share 链接</a> · 2026-10-31</li>
+      <li>B1《小县城体制内月薪 5000 够花吗》 · douyin · <a href="https://www.iesdouyin.com/share/video/7578146808418493062">share 链接</a> · 2026-10-31</li>
+      <li>B2《研究生入职省直体制内半年心里话》 · douyin · <a href="https://www.iesdouyin.com/share/video/7640846100915871823">share 链接</a> · 2026-10-31</li>
+      <li>B3《河南教师工资（商丘/驻马店/安阳）》（聚合号） · douyin · <a href="https://www.iesdouyin.com/share/video/7615962257872276771">share 链接</a> · 2026-10-31</li>
+      <li>B4《广西乡村小学教师工资条》 · douyin · <a href="https://www.iesdouyin.com/share/video/7686124093788223067">share 链接</a> · 2026-10-31</li>
+      <li>B5《2027 国考 345 万过审招 3.57 万》 · douyin · <a href="https://www.iesdouyin.com/share/video/7701249139350228267">share 链接</a> · 2026-10-31</li>
+      <li>B6《多地烟草局直系三代不得应聘》 · douyin · <a href="https://www.iesdouyin.com/share/video/7255875323886193939">share 链接</a> · 2026-10-31</li>
+      <li>C1《3 个月用 AI 写小说赚 7900》（卖课引流） · douyin · <a href="https://www.iesdouyin.com/share/video/7666786556874706228">share 链接</a> · 2026-10-31</li>
+      <li>C2《月入 2k 到一年 200 万 AI 副业复盘》（卖社群） · douyin · <a href="https://www.iesdouyin.com/share/video/7688801135104199978">share 链接</a> · 2026-10-31</li>
+      <li>C3《师范生靠 AI 智能体定制赚 7k》（引流私域） · douyin · <a href="https://www.iesdouyin.com/share/video/7649328578093485321">share 链接</a> · 2026-10-31</li>
+      <li>C4《2027 女生 AI 副业 3 方向》（99 元入群） · douyin · <a href="https://www.iesdouyin.com/share/video/769821207215225759">share 链接</a> · 2026-10-31</li>
+      <li>C5《普通人靠 AI 赚钱绝对落地方案》（绝对化话术） · douyin · <a href="https://www.iesdouyin.com/share/video/7659039752931100025">share 链接</a> · 2026-10-31</li>
+      <li>C7《阿里一面短链接：评论区留 PDF》（免费钩子） · douyin · <a href="https://www.iesdouyin.com/share/video/7694517124936617216">share 链接</a> · 2026-10-31</li>
+      <li>D1《培训贷招转培骗局 AIGC 新版》 · douyin · <a href="https://www.iesdouyin.com/share/video/7682385985463733554">share 链接</a> · 2026-10-31</li>
+      <li>D2《副业避雷：数据标注 99% 杀猪盘》 · douyin · <a href="https://www.iesdouyin.com/share/video/7652192318837614501">share 链接</a> · 2026-10-31</li>
+      <li>D3《标注：交学费保订单不断》 · douyin · <a href="https://www.iesdouyin.com/share/video/7618242275667768922">share 链接</a> · 2026-10-31</li>
+      <li>D4《贵阳标注 4-8k 是假，底薪 1800》 · douyin · <a href="https://www.iesdouyin.com/share/video/7668682087146229044">share 链接</a> · 2026-10-31</li>
+      <li>D5《付费内推全是割韭菜（徐老师聊就业）》 · douyin · <a href="https://www.iesdouyin.com/share/video/7697540006382092773">share 链接</a> · 2026-10-31</li>
+      <li>D6《收钱的内推都是骗局（刑辩律师）》 · douyin · <a href="https://www.iesdouyin.com/share/video/7699679996490583322">share 链接</a> · 2026-10-31</li>
+    </ol>
+
+    <div class="callout warn">
+      <p><strong>免责声明：</strong>① 全部链接采集于 2026-10-31，平台外链可能随时间失效；② 平台内视频、账号内容与本报告引用不构成对任何岗位、课程、内推服务、副业项目的事实背书；③ 抖音侧账号昵称未经 App 内逐一核实；B站营销矩阵、抖音卖课账号均按证据文件标注为引流/营销，仅作识别样本；④ 文中薪资、star、下载量均为约数或区间，随时间波动；⑤ 本文为信息整理与筛选方法分享，不构成个案职业建议。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot" id="foot">
+  <div class="wrap">
+    <p>姊妹篇《考公热与 AI 机会研判》：宏观硬数据研判；本篇：GitHub / B站 / 抖音 民间视角补充。全部证据采集于 2026 年 10 月 31 日，平台内容与账号昵称未逐一人工复核，外链可能随时间失效；本文不构成对任何具体岗位、课程、内推服务的事实背书，亦不构成个案职业建议。</p>
+    <a class="backtop" href="#top">回到顶部</a>
+  </div>
+</footer>
+</body>
+</html>

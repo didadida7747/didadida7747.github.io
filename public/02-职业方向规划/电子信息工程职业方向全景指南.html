@@ -311,7 +311,7 @@ tr:hover td{background:#eff6ff}
 <li><a href="https://www.eet-china.com/mp/a463208.html" target="_blank">电子工程专辑-嵌入式工程师薪资真相</a></li>
 <li><a href="https://www.zhipin.com/zhaopin/b2be2dad6d724ce71H193NS6Eg~~/" target="_blank">BOSS-海康威视26届嵌入式16-22K</a></li>
 <li><a href="https://m.eefocus.com/article/2046089.html" target="_blank">与非网-芯片公司嵌入式软件的一天</a></li>
-<li><a href="https://agirobot.jobs.feishu.cn/socialrecruitment/m/position/detail/7649692371315722505" target="_blank">智元机器人-BSP工程师JD</a></li>
+<li><a href="https://agirobot.jobs.feishu.cn/socialrecruitment/m/position/detail/7649692371315722505" target="_blank">智元机器人-BSP工程师JD（链接已过期）</a></li>
 <li><a href="https://m.nowcoder.com/feed/main/detail/17a82cd4541c4346b0efc0a167d06f01" target="_blank">牛客-经纬恒润嵌入式武汉</a></li>
 <li>本校就业网-汇川26届宣讲</li>
 </ul>
@@ -687,7 +687,7 @@ tr:hover td{background:#eff6ff}
 <h4>参考来源</h4>
 <ul class="ref-list">
 <li><a href="https://m.jobui.com/salary/quanguo-FPGAgongchengshi/edu2/" target="_blank">职友集-FPGA本科薪资</a></li>
-<li><a href="https://rigolportal.jobs.feishu.cn/campus/m/position/detail/7647748405393967402" target="_blank">普源精电2027届FPGA校招</a></li>
+<li><a href="https://rigolportal.jobs.feishu.cn/campus/m/position/detail/7647748405393967402" target="_blank">普源精电2027届FPGA校招（链接已过期）</a></li>
 <li>本校曾志斌老师团队就业去向</li>
 <li><a href="https://ask.zol.com.cn/x/33880503.html" target="_blank">ZOL-FPGA中年危机讨论</a></li>
 </ul>
@@ -2168,6 +2168,12 @@ tr:hover td{background:#eff6ff}
 // Sidebar active highlight
 const sections = document.querySelectorAll('.dir-section');
 const navLinks = document.querySelectorAll('.sidebar a');
+// 锚点必须用JS滚动：本页在资料库手机版.html里经srcdoc iframe打开时，原生锚点导航会以宿主页为基准URL，
+// 把整个资料库加载进阅读窗口而非滚动到章节
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', (e) => {
+  const target = document.getElementById(a.getAttribute('href').slice(1));
+  if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+}));
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {

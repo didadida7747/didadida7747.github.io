@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code × Codex 双工具高阶手册（学生实战版）</title>
+<style>
+:root{
+  --cc:#d97757; --cx:#10a37f; --rad:10px;
+}
+html[data-theme="dark"]{
+  --bg:#0f1115; --panel:#161a22; --panel2:#1c212c; --text:#e7eaf0; --muted:#98a2b3;
+  --border:#272e3b; --code-bg:#11141a; --hl:#242b38; --shadow:0 2px 12px rgba(0,0,0,.35);
+}
+html[data-theme="light"]{
+  --bg:#f6f7f9; --panel:#ffffff; --panel2:#f0f2f5; --text:#1a2030; --muted:#5b6575;
+  --border:#dfe3ea; --code-bg:#f2f4f7; --hl:#e8edf5; --shadow:0 2px 10px rgba(20,30,50,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.75 "Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif}
+a{color:var(--cc);text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd{background:var(--code-bg);border:1px solid var(--border);border-radius:5px;padding:1px 6px;font:13px/1.5 Consolas,"JetBrains Mono",monospace}
+kbd{border-bottom-width:2px}
+pre{background:var(--code-bg);border:1px solid var(--border);border-radius:var(--rad);padding:12px 14px;overflow-x:auto;font:13px/1.6 Consolas,monospace}
+pre code{border:none;padding:0;background:none}
+
+/* ===== 顶栏 ===== */
+#topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 18px;background:var(--panel);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+#topbar .brand{font-weight:700;font-size:16px;white-space:nowrap}
+#topbar .brand .x{color:var(--cc)} #topbar .brand .y{color:var(--cx)}
+#topbar .ver{color:var(--muted);font-size:12px;font-weight:400;margin-left:6px}
+#search{flex:1;min-width:180px;max-width:340px;padding:7px 12px;border-radius:8px;border:1px solid var(--border);
+  background:var(--panel2);color:var(--text);outline:none}
+#search:focus{border-color:var(--cc)}
+.lens{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.lens button{border:none;background:var(--panel2);color:var(--muted);padding:6px 12px;cursor:pointer;font-size:13px}
+.lens button.active{background:var(--hl);color:var(--text);font-weight:600}
+.lens button:first-child.active{color:var(--text)}
+.tbtn{border:1px solid var(--border);background:var(--panel2);color:var(--text);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:13px}
+.tbtn:hover{border-color:var(--cc)}
+
+/* ===== 布局 ===== */
+.layout{display:flex;max-width:1400px;margin:0 auto}
+#sidebar{width:230px;flex-shrink:0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;
+  padding:16px 10px;border-right:1px solid var(--border)}
+#sidebar a{display:block;padding:6px 10px;margin:2px 0;border-radius:7px;color:var(--muted);font-size:13.5px}
+#sidebar a:hover{background:var(--panel2);text-decoration:none;color:var(--text)}
+#sidebar a.active{background:var(--hl);color:var(--text);font-weight:600}
+#sidebar .grp{margin:12px 0 4px;font-size:11px;color:var(--muted);letter-spacing:1px;padding-left:10px}
+#content{flex:1;min-width:0;padding:22px 28px 80px}
+section{margin-bottom:56px}
+section h2{font-size:22px;border-bottom:2px solid var(--border);padding-bottom:8px;margin-top:0}
+section h3{font-size:17px;margin:26px 0 10px}
+section h4{font-size:15px;margin:18px 0 8px;color:var(--text)}
+.note{color:var(--muted);font-size:13px}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--border);border-radius:20px;padding:1px 9px;color:var(--muted);margin-right:6px;vertical-align:middle}
+.tag.cc{color:var(--cc);border-color:var(--cc)} .tag.cx{color:var(--cx);border-color:var(--cx)}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px}
+th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel2);font-weight:600;white-space:nowrap}
+tr:nth-child(even) td{background:color-mix(in srgb,var(--panel2) 45%,transparent)}
+
+/* ===== 卡片 ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;margin:14px 0}
+details.cmd{background:var(--panel);border:1px solid var(--border);border-radius:var(--rad);overflow:hidden}
+details.cmd summary{cursor:pointer;list-style:none;padding:10px 14px;display:flex;align-items:center;gap:8px;font-weight:600}
+details.cmd summary::-webkit-details-marker{display:none}
+details.cmd summary .chev{margin-left:auto;color:var(--muted);transition:transform .15s}
+details.cmd[open] summary .chev{transform:rotate(90deg)}
+details.cmd .body{padding:0 14px 12px;border-top:1px dashed var(--border);font-size:13.5px}
+details.cmd .body p{margin:8px 0}
+details.cmd .body b{color:var(--text)}
+details.cmd[data-tool="cc"]{border-left:3px solid var(--cc)}
+details.cmd[data-tool="cx"]{border-left:3px solid var(--cx)}
+.hidden{display:none!important}
+
+/* ===== 解剖图 ===== */
+.anatomy{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:16px 0}
+.layer{background:var(--panel);border:1px solid var(--border);border-radius:var(--rad);padding:14px;cursor:pointer;transition:transform .12s,border-color .12s}
+.layer:hover{transform:translateY(-2px);border-color:var(--cc)}
+.layer .no{font-size:11px;color:var(--muted)}
+.layer .t{font-weight:700;margin:2px 0 4px}
+.layer .q{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.layer .chips{display:flex;flex-wrap:wrap;gap:6px;font-size:12px}
+.layer .chips span{background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:1px 7px}
+.layer .chips .c1{border-color:var(--cc);color:var(--cc)} .layer .chips .c2{border-color:var(--cx);color:var(--cx)}
+
+/* 练习勾选 */
+input.pcheck{transform:scale(1.25);margin-right:8px;cursor:pointer}
+tr.done td{color:var(--muted);text-decoration:line-through}
+
+/* ===== 打印 ===== */
+#cheatsheet{display:none}
+@media print{
+  #topbar,#sidebar,#gotoTop,.screen-only{display:none!important}
+  body{background:#fff;color:#000;font-size:12px}
+  #content{padding:0;max-width:100%}
+  section{display:none}
+  section{margin:0}
+  #cheatsheet{display:block!important}
+  #cheatsheet h2{border-color:#000}
+  table{font-size:11px} th,td{border-color:#bbb;padding:4px 7px}
+  .card2{page-break-inside:avoid;border:1px solid #999;border-radius:8px;padding:10px;margin:8px 0}
+  .card2 h3{margin:0 0 6px;font-size:14px}
+}
+#gotoTop{position:fixed;right:22px;bottom:22px;z-index:60;border-radius:50%;width:42px;height:42px;
+  border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;font-size:18px;display:none;box-shadow:var(--shadow)}
+footer{border-top:1px solid var(--border);color:var(--muted);font-size:12.5px;padding:18px;text-align:center}
+@media (max-width:900px){#sidebar{display:none}#content{padding:16px}}
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="brand"><span class="x">Claude Code</span> × <span class="y">Codex</span> 双工具高阶手册<span class="ver">v2.1.310 / 0.164.0 · 基线 2026-10-24</span></div>
+  <input id="search" type="search" placeholder="🔍 搜索命令、场景、概念…（过滤下方全部内容）">
+  <div class="lens" id="lens" title="工具透镜">
+    <button data-lens="both" class="active">双侧对照</button>
+    <button data-lens="cc">只看 CC</button>
+    <button data-lens="cx">只看 Codex</button>
+  </div>
+  <button class="tbtn" id="themeBtn" title="明暗切换">☀ 浅色</button>
+  <button class="tbtn screen-only" id="printBtn" title="打印 A4 速查卡">🖨 速查卡</button>
+</header>
+
+<div class="layout">
+<nav id="sidebar">
+  <div class="grp">总览</div>
+  <a href="#home">🏠 解剖图 · 能力矩阵</a>
+  <a href="#ch01">01 框架总纲与全景</a>
+  <div class="grp">能力域（命令详解）</div>
+  <a href="#ch02">02 上下文 · 会话 · 记忆</a>
+  <a href="#ch03">03 权限 · 安全 · 沙箱 · Hooks</a>
+  <a href="#ch04">04 技能 · 扩展 · MCP</a>
+  <a href="#ch05">05 多代理 · 并行 · 云端</a>
+  <a href="#ch06">06 审查 · 验证 · 自动化 · CI</a>
+  <div class="grp">速查与应用</div>
+  <a href="#ch07">07 命令速查总表</a>
+  <a href="#ch08">08 场景速查</a>
+  <a href="#ch09">09 学生实战手册</a>
+  <a href="#ch10">10 练习（12 个）</a>
+  <a href="#ch11">11 ZCF 与本机配置</a>
+  <a href="#ref">reference 来源</a>
+</nav>
+
+<main id="content">
+
+<!-- ============ HOME ============ -->
+<section id="home">
+  <h2>🏠 一张解剖图，看懂两个 Agent 框架</h2>
+  <p>Claude Code 和 Codex 是<b>同一物种（终端 Agent 框架）的两个优秀实现</b>。全书按 8 个能力域展开，每个域两工具对照；命令详解在各域章内（配套 MD），本页是可搜索的可视化版。<span class="note">点任意层进入对应章节。</span></p>
+  <div class="anatomy" id="anatomy"></div>
+  <h3>三种读法</h3>
+  <table>
+    <tr><th>读法</th><th>路线</th><th>适合时候</th></tr>
+    <tr><td><b>查阅</b></td><td>直接搜 / 进 07 总表</td><td>干活中"这条命令咋用来着"</td></tr>
+    <tr><td><b>通读</b></td><td>01 → 02 → … → 11</td><td>假期整块时间建体系</td></tr>
+    <tr><td><b>练习</b>（推荐）</td><td>以 10 章 12 个练习为线索</td><td>每周 1-2 个，一个半月毕业</td></tr>
+  </table>
+  <p class="note">已知失效命令（/pr-comments、/vim、/todos、#记忆、/approvals、prompts 弃用…）见 §07.4，别让旧教程带你走弯路。</p>
+</section>
+
+<!-- ============ CH01 ============ -->
+<section id="ch01">
+  <h2>01 · 框架总纲与全景</h2>
+  <h3>设计哲学对比</h3>
+  <table>
+    <tr><th>维度</th><th>Claude Code（Anthropic）</th><th>Codex（OpenAI）</th></tr>
+    <tr><td>控制粒度</td><td>细：120 条命令、参数级权限规则</td><td>粗：审批×沙箱档位矩阵 + profiles 一键切</td></tr>
+    <tr><td>强保证</td><td>hooks 成熟（33 事件）："CLAUDE.md 管建议、hooks 管纪律"</td><td>hooks 实验期，靠沙箱+审批兜底</td></tr>
+    <tr><td>多代理</td><td>subagents + teams（本地优先）</td><td>spawn_agent + Cloud 农场（云端优先）</td></tr>
+    <tr><td>人格化</td><td>output styles（含 Learning 教学模式）</td><td>/personality</td></tr>
+  </table>
+  <h3>正在趋同的范式（学共性，记差异）</h3>
+  <p><span class="tag">Skills 双方收敛</span><span class="tag">worktree 双方都有</span><span class="tag">双向 /import 投奔通道</span><span class="tag">@ 引用</span><span class="tag">/compact 基础设施化</span> —— 核心概念两边都有对应物，先学概念再记名字。</p>
+  <h3>2026 三梯队全景</h3>
+  <table>
+    <tr><th>梯队</th><th>代表</th><th>定位</th></tr>
+    <tr><td>终端 Agent</td><td><b>Claude Code、Codex</b>、Gemini CLI、ZCode/GLM、OpenCode、Aider</td><td>驻扎终端读写真实仓库，可编排自动化（本手册主角）</td></tr>
+    <tr><td>IDE Agent</td><td>Cursor、Windsurf、Copilot、Trae</td><td>编辑器内嵌，上手快，编排弱</td></tr>
+    <tr><td>云端 Agent</td><td>Codex Cloud、Claude 云会话、Devin、Jules</td><td>托管容器并行开任务，产 PR（§05 衔接）</td></tr>
+  </table>
+  <h3>冷思考（电子信息学生版）</h3>
+  <div class="grid">
+    <details class="cmd" data-tool="cc"><summary>不被替代的能力<span class="chev">▸</span></summary><div class="body">
+      <p><b>硬件最后一公里</b>：示波器、焊接、电磁调试——Agent 只能陪你推理；<b>系统级判断</b>与<b>领域直觉</b>（通信原理、信号处理的物理意义）决定你能否判断仿真结果对不对。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary>学生专属风险<span class="chev">▸</span></summary><div class="body">
+      <p><b>拐杖化</b>（作业先手写）、<b>能力错觉</b>（能跑通≠会写）、<b>错觉 API</b>（Context7 查证+验证闭环）、<b>代码外流</b>（实验室未公开代码不进云端 API）。</p></div></details>
+  </div>
+  <p class="note">详见 01-框架总纲与全景.md（六趋势、复利论证）。</p>
+</section>
+
+<!-- ============ CH02 ============ -->
+<section id="ch02">
+  <h2>02 · 上下文 · 会话 · 记忆 <span class="tag cc">CC 17 卡</span><span class="tag cx">Codex 14 卡</span></h2>
+  <p>上下文窗口经济学：<b>该出现的时候让该在的东西出现</b>。会话是资产，记忆是长期规则。<span class="note">此处收高频卡，全量见 02 章 MD。</span></p>
+  <h3>Claude Code 高频卡</h3>
+  <div class="grid">
+    <details class="cmd" data-tool="cc"><summary><code>/compact [指示]</code> 压缩上下文<span class="chev">▸</span></summary><div class="body">
+      <p><b>场景</b>：上下文告急但不想丢连续性；里程碑后主动压。</p><p><b>示例</b>：<code>/compact 保留滤波器参数修改思路和测试结果</code></p>
+      <p><b>坑</b>：压缩必失真——关键结论先写进文件；共识是 60-70% 就压。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/context</code> 上下文体检<span class="chev">▸</span></summary><div class="body">
+      <p><b>场景</b>：变笨/变贵时先体检；装 ZCF/MCP 后查谁偷吃 token。<b>坑</b>：MCP 工具定义是大户，不常用的摘掉。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/rewind</code> 回退检查点<span class="chev">▸</span></summary><div class="body">
+      <p><b>作用</b>：对话和/或代码回退到某次提问前（空输入双击 Esc 同效）。</p>
+      <p><b>坑</b>：Bash 产物、手工编辑、子代理编辑<b>不在快照</b>；约 30 天清理；不能替代 git。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/branch</code> / <code>/fork</code> 分支与后台副本<span class="chev">▸</span></summary><div class="body">
+      <p><b>branch</b>：分叉会话试激进方案，原会话还在；<b>fork</b>：副本丢后台跑任务，当前继续。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/resume</code> / `/clear` / `/recap` / `/export`<span class="chev">▸</span></summary><div class="body">
+      <p>一课一会话：clear 时顺手命名 → resume 找回 → recap 热身 → export 把方案讨论变成报告素材。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/goal</code> 长期目标<span class="chev">▸</span></summary><div class="body">
+      <p><b>示例</b>：<code>/goal 所有单元测试通过且覆盖率≥80%</code>。长实验防跑偏。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/memory</code> / `/init` / `/import codex` 记忆三件套<span class="chev">▸</span></summary><div class="body">
+      <p>init 生成 CLAUDE.md；memory 编辑各级+看 auto memory；import 可直接吃 Codex 配置。</p>
+      <p><b>坑</b>：CLAUDE.md 是软约束，红线用 hooks（§03）。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary><code>/model</code> `/effort` `/fast` `/advisor`<span class="chev">▸</span></summary><div class="body">
+      <p>省钱双旋钮：杂活降模型+降 effort；advisor 让第二个模型当顾问找茬。</p></div></details>
+  </div>
+  <h3>Codex 高频卡</h3>
+  <div class="grid">
+    <details class="cmd" data-tool="cx"><summary><code>/new</code> / `/resume` / `/title`<span class="chev">▸</span></summary><div class="body">
+      <p>new 可命名并置顶（0.146.0）；resume 选择器可按时间排序、归档（0.148.0）。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary><code>/undo</code> 撤销文件改动<span class="chev">▸</span></summary><div class="body">
+      <p><b>与 CC /rewind 差异</b>：undo 只回滚文件不回滚对话——保留它对任务的理解，换个说法重做。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary><code>/fork</code> / `/side` / `/goal`<span class="chev">▸</span></summary><div class="body">
+      <p>fork 分叉试错；side 侧聊问小问题不污染主上下文（对应 CC 的 /btw）；goal 长期目标。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary><code>/init</code> / `/import` / `/export` / `/archive`<span class="chev">▸</span></summary><div class="body">
+      <p>init 生成 AGENTS.md；import（0.145.0+）可迁入 Claude Code/Cursor 的设置、MCP、插件、会话与记忆；export 出 Markdown；delete 前先 export。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary><code>/model</code> + reasoning effort<span class="chev">▸</span></summary><div class="body">
+      <p>0.164.0 支持内联参数（模型+力度+速度）；TUI <kbd>Alt</kbd>+<kbd>,</kbd>/<kbd>.</kbd> 快调力度。默认模型 GPT-6.1 Sol。</p></div></details>
+  </div>
+  <h3>记忆体系对照</h3>
+  <table>
+    <tr><th></th><th>Claude Code</th><th>Codex</th></tr>
+    <tr><td>项目记忆</td><td>CLAUDE.md（读不到时<b>回退读 AGENTS.md</b>）</td><td>AGENTS.md（向上逐级发现）</td></tr>
+    <tr><td>层级</td><td>企业→用户→项目→local→auto memory</td><td>全局→仓库根→子目录（<b>就近覆盖</b>，天然适配 monorepo）</td></tr>
+    <tr><td>条件加载</td><td>.claude/rules/ + paths frontmatter</td><td>靠目录拆分</td></tr>
+    <tr><td>实践红线</td><td colspan="2">单文件 &lt;200 行；写具体可验证的；反复&gt;2 次的纠正必入记忆</td></tr>
+  </table>
+  <p><b>零成本联动</b>：项目里只写一份 <code>AGENTS.md</code>，两边通吃。</p>
+</section>
+
+<!-- ============ CH03 ============ -->
+<section id="ch03">
+  <h2>03 · 权限 · 安全 · 沙箱 · Hooks</h2>
+  <p>一句话：<b>CLAUDE.md 管建议，Hooks 管纪律</b>。自主权是刻度盘，按任务给权限。</p>
+  <h3>Claude Code：7 种权限模式</h3>
+  <table>
+    <tr><th>模式</th><th>行为</th><th>场景</th></tr>
+    <tr><td><code>default</code></td><td>逐工具首次询问</td><td>陌生仓库</td></tr>
+    <tr><td><code>acceptEdits</code></td><td>自动接受编辑</td><td>自己课设日常</td></tr>
+    <tr><td><code>plan</code></td><td>只读规划</td><td>先方案后动手</td></tr>
+    <tr><td><code>auto</code></td><td>分类器审核，常规免问</td><td>无人值守留底线</td></tr>
+    <tr><td><code>dontAsk</code></td><td>会弹的一律拒</td><td>CI</td></tr>
+    <tr><td><code>bypassPermissions</code></td><td>全跳过</td><td><b>仅限容器/VM</b></td></tr>
+  </table>
+  <p>规则求值：<b>deny → ask → allow</b>，deny 永远最优先。语法示例：<code>Bash(npm run *)</code>、<code>WebFetch(domain:github.com)</code>、<code>mcp__github__*</code>、<code>Agent(model:opus)</code>。</p>
+  <h3>防误删 hook（可直接抄）</h3>
+  <pre>{
+  "hooks": { "PreToolUse": [{
+    "matcher": "Bash", "if": "Bash(rm *)",
+    "hooks": [{ "type": "command",
+      "command": "jq -r '.tool_input.command' | grep -qE 'rm +(-[a-z]+ +)*-[rf]{1,2}' &amp;&amp; echo '{\"permissionDecision\":\"deny\",\"reason\":\"禁止递归/强制删除\"}' || exit 0"
+  }]}]}}</pre>
+  <p class="note">exit 0 放行、exit 2 阻断；也可输出 permissionDecision JSON。CC 33 个 hook 事件速查见 03 章 MD。<b>注意：CC 沙箱原生 Windows 不支持，需要走 WSL2。</b></p>
+  <h3>Codex：审批 × 沙箱矩阵</h3>
+  <table>
+    <tr><th>sandbox \ approval</th><th>untrusted</th><th>on-request</th><th>on-failure</th><th>never</th></tr>
+    <tr><td><code>read-only</code>（默认）</td><td>最保守</td><td>只读少问</td><td>只读几乎不问</td><td>只读自动</td></tr>
+    <tr><td><code>workspace-write</code></td><td>可写多问</td><td>—</td><td><b>--full-auto</b></td><td>自动跑工作区</td></tr>
+    <tr><td><code>danger-full-access</code></td><td colspan="4">全权限（+never = 旧 --yolo，仅限容器）</td></tr>
+  </table>
+  <p><code>/permissions</code>（0.89.0 取代 /approvals）可存 profiles：作业模式 / 课设模式 / 脚本模式一键切；0.147.0 <code>--approve-for-me</code> 自动批准"对我安全"的操作。</p>
+  <h3>同一安全目标两边怎么配</h3>
+  <table>
+    <tr><th>目标</th><th>CC</th><th>Codex</th></tr>
+    <tr><td>只读出方案</td><td><code>--permission-mode plan</code></td><td>read-only + untrusted</td></tr>
+    <tr><td>日常写自己项目</td><td>acceptEdits + deny 危险命令</td><td><code>--full-auto</code></td></tr>
+    <tr><td>无人值守</td><td><code>auto + --permission-prompts none</code></td><td><code>workspace-write + never</code></td></tr>
+    <tr><td>禁联网</td><td>沙箱 allowedDomains 留空</td><td><code>network_access=false</code></td></tr>
+  </table>
+</section>
+
+<!-- ============ CH04 ============ -->
+<section id="ch04">
+  <h2>04 · 技能 · 扩展 · MCP</h2>
+  <p>把重复流程固化成资产（skills），把外部世界接进来（MCP），打包分发（plugins）。<b>自定义命令→技能是两个框架共同的收敛方向</b>（Codex 的 ~/.codex/prompts 已弃用）。</p>
+  <h3>SKILL.md 一个例子覆盖 90% 语法</h3>
+  <pre>---
+name: lab-report
+description: 把实验数据目录变成图表齐全的报告初稿
+argument-hint: "[数据目录]"
+allowed-tools: Bash(python *), Read, Write
+context: fork            # 隔离子代理执行，不污染主对话
+---
+把 $ARGUMENTS 下的数据出图（先 !`ls $ARGUMENTS` 看清单），按学校模板生成报告。</pre>
+  <p class="note">关键：<code>$ARGUMENTS</code>/<code>$1</code> 参数占位；<code>!`cmd`</code> 动态注入 shell 输出；<code>disable-model-invocation: true</code> 让危险技能只能人手动调；<code>paths</code> 限定自动触发范围。</p>
+  <h3>MCP：两边都是 client，Codex 兼做 server</h3>
+  <table>
+    <tr><th>操作</th><th>Claude Code</th><th>Codex</th></tr>
+    <tr><td>加 HTTP server</td><td><code>claude mcp add --transport http 名 URL --header ...</code></td><td><code>[mcp_servers.名]</code> + HTTP/OAuth（0.77+）</td></tr>
+    <tr><td>加 stdio server</td><td><code>claude mcp add 名 -- 命令 参数</code></td><td><code>codex mcp add</code></td></tr>
+    <tr><td>作用域</td><td>local（默认）&gt; project（.mcp.json 入 git）&gt; user</td><td>用户/项目 config.toml 分层</td></tr>
+  </table>
+  <div class="grid">
+    <details class="cmd" data-tool="cc"><summary>⭐ 王牌联动：CC 调 Codex<span class="chev">▸</span></summary><div class="body">
+      <pre>claude mcp add codex -- codex mcp-server</pre>
+      <p>Codex 把自己暴露为 MCP server（codex / codex-reply 两个工具）。之后 CC 当总编排，Codex 当第二意见/执行器：<i>"让 codex 工具以 xhigh review 当前 diff"</i>。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary>插件与应用<span class="chev">▸</span></summary><div class="body">
+      <p><code>/plugins</code> 市场分区（Curated/Workspace/Shared）；<code>/presets</code> 10 槽存复用 prompt（0.164.0）；<code>/apps</code> 连接器 <code>$</code> 引用；<code>/experimental</code> 实验面板。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary>output styles<span class="chev">▸</span></summary><div class="body">
+      <p>Proactive（少问快干）/ Concise / <b>Learning（留 TODO(human) 让你动手——防拐杖化官方工具）</b>；自定义放 ~/.claude/output-styles/。</p></div></details>
+  </div>
+  <p class="note">学生组合推荐：Context7（治编造 API）+ Playwright（网页验证）+ GitHub MCP（作品集）。</p>
+</section>
+
+<!-- ============ CH05 ============ -->
+<section id="ch05">
+  <h2>05 · 多代理 · 并行 · 云端</h2>
+  <p>子代理的第一收益是<b>上下文隔离</b>（5000 行日志留在子代理，只回摘要），其次才是并行。独立子任务才并行，强耦合拆开只会打架。</p>
+  <div class="grid">
+    <details class="cmd" data-tool="cc"><summary>CC：subagents + 编排族<span class="chev">▸</span></summary><div class="body">
+      <p>定义：<code>.claude/agents/*.md</code>（frontmatter：description 决定自动委派、tools 限权、model、isolation: worktree）；调度：自动委派 / <code>@agent-名</code> / <code>claude --agent</code>。</p>
+      <p>命令：<code>/agents</code>（自然语言建）、<code>/background</code>、<code>/tasks</code>、<code>/subtask</code>、<code>/batch</code>（5-30 单元 worktree 并行）、<code>/loop</code>、<code>/schedule</code>。</p>
+      <p>上限：嵌套 3 层 / 并发 20 / 每会话 200。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary>Codex：spawn_agent + Cloud<span class="chev">▸</span></summary><div class="body">
+      <p>spawn_agent 上限 6；<code>codex agents</code> 多任务仪表盘；<code>codex queue</code> 给运行中会话投消息；<code>/ps</code> 看后台。</p>
+      <p><b>Codex Cloud</b>：云端容器并行农场 → <code>codex cloud list / apply / push</code> 把产出拉回本地或推 PR。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary>worktree：本地并行的正确姿势<span class="chev">▸</span></summary><div class="body">
+      <p>CC：<code>claude -w 任务A [--tmux]</code>（支持 PR URL）；Codex：<code>/worktree</code> / <code>--worktree</code>。3-5 个树各跑一会话，互不踩脚。</p></div></details>
+  </div>
+  <h3>联动工作流</h3>
+  <table>
+    <tr><th>玩法</th><th>做法</th></tr>
+    <tr><td>CC 规划 + Codex 云执行</td><td>CC plan 出方案 → 丢 Codex Cloud 并行 3 变体 → cloud apply 拉回对比 → CC 定稿</td></tr>
+    <tr><td>同任务对照实验</td><td>同起点两个 worktree，CC/Codex 各做一个任务，git diff 对比产出（§10 L7）</td></tr>
+    <tr><td>跨工具编排</td><td>CC 经 codex mcp-server 把 Codex 当外援（§04）</td></tr>
+  </table>
+  <p class="note">电赛并行分工模板（视觉/控制/上位机三 worktree + 主会话当队长）见 08 章 MD。</p>
+</section>
+
+<!-- ============ CH06 ============ -->
+<section id="ch06">
+  <h2>06 · 审查 · 验证 · 自动化 · CI</h2>
+  <p>Agent 会一本正经地错——<b>产出必须闭环验证</b>；无人值守必须<b>权限收口 + 预算上限</b>。</p>
+  <div class="grid">
+    <details class="cmd" data-tool="cc"><summary><code>/code-review</code> 多级审查<span class="chev">▸</span></summary><div class="body">
+      <p><code>/code-review --max-findings 5</code>；<code>ultra</code>=云端多代理深审（Pro/Max 每月 3 次免费）；<code>--fix</code> 顺手修。<code>/simplify</code> 找过度设计；<code>/verify</code> 真实构建运行观察；<code>/security-review</code> 公开仓库前必扫。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary><code>/review</code> detached 审查面板<span class="chev">▸</span></summary><div class="body">
+      <p>独立面板不打断主对话；模式：未提交改动 / vs base 分支 / 指定 commit / 自定义 prompt；审查规则可用 AGENTS.md 个性化；CLI 侧 <code>codex review</code>。</p></div></details>
+    <details class="cmd" data-tool="cc"><summary>无头：<code>claude -p</code><span class="chev">▸</span></summary><div class="body">
+      <pre>claude -p "..." --permission-mode auto --permission-prompts none --max-budget-usd 2</pre>
+      <p>输出 <code>--output-format json/stream-json</code>；结构化 <code>--json-schema</code>；脚本场景推荐 <code>--bare</code>。管道用法：<code>git diff | claude -p "typo linter"</code>。</p></div></details>
+    <details class="cmd" data-tool="cx"><summary>无头：<code>codex exec</code><span class="chev">▸</span></summary><div class="body">
+      <pre>codex exec --json "..." | jq -c 'select(.type=="item.completed")'</pre>
+      <p><code>--output-schema FILE</code> 结构化输出（0.132.0）；<code>-o FILE</code> 存最后回复；<code>codex exec resume --last</code> 续跑；CI 用官方 <code>openai/codex-action@v1</code>。</p></div></details>
+  </div>
+  <p><b>联动</b>：双工具互审（两模型盲区不同）；无头脚本 fallback：<code>claude -p ... || codex exec ...</code>。<b>学生三连</b>：交付前 code-review → verify → security-review。</p>
+</section>
+
+<!-- ============ CH07 ============ -->
+<section id="ch07">
+  <h2>07 · 命令速查总表 <span class="note">（上方搜索框可实时过滤）</span></h2>
+  <table id="cmdtable">
+    <thead><tr><th>能力</th><th>Claude Code</th><th>Codex</th><th>一句话</th><th>详见</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <p class="note" id="noresult" style="display:none">没有匹配的命令——试试更短的关键词。</p>
+  <h3>已失效 / 更名对照（防旧资料误导）</h3>
+  <table>
+    <tr><th>工具</th><th>旧写法</th><th>现状</th></tr>
+    <tr><td>CC</td><td><code>/pr-comments</code> <code>/vim</code> <code>/ultraplan</code> <code>/todos</code></td><td>均已移除/被取代（Ctrl+T + /tasks；vim 在 /config）</td></tr>
+    <tr><td>CC</td><td><code>#</code> 快速记忆</td><td>已失效（issue #14868），用 auto memory</td></tr>
+    <tr><td>Codex</td><td><code>/approvals</code></td><td>更名 <code>/permissions</code>（兼容保留）</td></tr>
+    <tr><td>Codex</td><td><code>~/.codex/prompts</code></td><td>官方弃用 → skills</td></tr>
+    <tr><td>Codex</td><td><code>--yolo</code> / 顶层 web_search</td><td>更名 --dangerously-bypass-...；改 [features]</td></tr>
+  </table>
+  <h3>快捷键速记</h3>
+  <table>
+    <tr><th>动作</th><th>CC</th><th>Codex</th></tr>
+    <tr><td>检查点菜单</td><td>空输入双击 <kbd>Esc</kbd></td><td><code>/undo</code></td></tr>
+    <tr><td>循环权限模式</td><td><kbd>Shift+Tab</kbd></td><td><code>/permissions</code></td></tr>
+    <tr><td>历史搜索 / 转录</td><td><kbd>Ctrl+R</kbd> / <kbd>Ctrl+O</kbd></td><td><code>/keymap</code> / <code>/tui</code></td></tr>
+    <tr><td>后台化命令</td><td><kbd>Ctrl+B</kbd></td><td><code>/ps</code></td></tr>
+    <tr><td>调推理力度</td><td><code>/effort</code></td><td><kbd>Alt+,</kbd>/<kbd>Alt+.</kbd></td></tr>
+    <tr><td>多行输入</td><td><kbd>\</kbd>+Enter / Shift+Enter</td><td>Shift+Enter / <code>/vim</code></td></tr>
+  </table>
+</section>
+
+<!-- ============ CH08 ============ -->
+<section id="ch08">
+  <h2>08 · 场景速查：我想做 X</h2>
+  <table>
+    <tr><th>场景</th><th>CC 组合</th><th>Codex 组合</th><th>心法</th></tr>
+    <tr><td>上下文快满了</td><td>/context → 落盘 → /compact 指示</td><td>/status → /compact</td><td>60-70% 主动压</td></tr>
+    <tr><td>改砸了</td><td>/rewind（代码+对话）</td><td>/undo（仅文件）</td><td>回退是常态不是事故</td></tr>
+    <tr><td>接手陌生项目</td><td>/init → plan mode</td><td>/init → /plans</td><td>先读后写</td></tr>
+    <tr><td>试激进方案</td><td>/branch</td><td>/fork</td><td>试错不弄脏主线</td></tr>
+    <tr><td>交付前审查</td><td>/code-review → /verify</td><td>/review → 主会话修</td><td>审完真跑才算完</td></tr>
+    <tr><td>并行多任务</td><td>claude -w ×3 + --tmux</td><td>/worktree + codex agents</td><td>独立子任务才并行</td></tr>
+    <tr><td>批量重复操作</td><td>/batch</td><td>codex exec --json 循环</td><td>单元独立才批</td></tr>
+    <tr><td>无人值守</td><td>-p + auto + prompts none + 预算</td><td>exec + workspace-write + never</td><td>必配预算上限</td></tr>
+    <tr><td>省钱</td><td>/model 降档 + /effort low + /usage</td><td>同左（Alt+,）</td><td>两大旋钮：模型+力度</td></tr>
+    <tr><td>它不听话了</td><td>/doctor → --safe-mode</td><td>/debug-config → codex doctor</td><td>先体检再怀疑人生</td></tr>
+    <tr><td>反复犯同一个错</td><td>/memory 写 CLAUDE.md</td><td>写 AGENTS.md</td><td>纠正 2 次必入记忆</td></tr>
+  </table>
+  <div class="grid">
+    <details class="cmd"><summary>⚡ 今晚课设 due（3 小时流程）<span class="chev">▸</span></summary><div class="body">
+      <pre>/clear 课设-DUE今晚 → /init 或贴要求"先只读，出修复计划"
+→ 按 plan 改 → /verify 跑通 → /code-review --max-findings 5
+→ /export 过程.md（报告"设计思路"素材）</pre></div></details>
+    <details class="cmd"><summary>⚡ 电赛赛前两周（2027 可用）<span class="chev">▸</span></summary><div class="body">
+      <p>worktree A 视觉 / B 控制 / C 上位机+报告；主会话每日 /recap 汇总；赛前 48h 冻结新功能、每晚 git tag。</p></div></details>
+    <details class="cmd"><summary>⚡ 期末周 / 大创中期<span class="chev">▸</span></summary><div class="body">
+      <p>期末周：一科一会话，复习资料 low effort 生成，作业先手写再让 Agent review。大创：数据出图会话 + /branch 写报告 + /security-review 查附码 + /export 诚信说明。</p></div></details>
+  </div>
+  <p class="note">心法总纲：<b>CLAUDE.md 管建议、Hooks 管纪律、Skills 管流程、Subagents 管专项；plan 在动手前，审查在交付前，压缩在 70% 前。</b></p>
+</section>
+
+<!-- ============ CH09 ============ -->
+<section id="ch09">
+  <h2>09 · 学生实战手册（本校大二电子信息特化）</h2>
+  <h3>课程对照（以培养方案为准）</h3>
+  <table>
+    <tr><th>课程</th><th>Agent 打开方式</th></tr>
+    <tr><td>数据结构（C/C++）</td><td>课设脚手架 → 贴报错 debug → 对拍找反例 → /code-review 收尾</td></tr>
+    <tr><td>数电 / 数字逻辑</td><td>Verilog 模块 + <b>testbench</b> 生成、时序解释；"先状态图再代码"</td></tr>
+    <tr><td>信号与系统</td><td>MATLAB/scipy 脚本 + 每张图配物理解释（卷积/傅里叶/滤波器）</td></tr>
+    <tr><td>概率统计 / 大物实验</td><td>蒙特卡洛验证、误差传递脚本；实验报告图表做成 skill</td></tr>
+    <tr><td>电路 / 模电</td><td>sympy 列方程校验、LTspice 网表注释与参数扫描</td></tr>
+    <tr><td>（大三）嵌入式/FPGA</td><td>HAL 驱动脚手架、寄存器配置、上位机；<b>烧录调试永远你自己来</b></td></tr>
+  </table>
+  <h3>竞赛与时间线</h3>
+  <div class="grid">
+    <details class="cmd"><summary>🏆 全国电赛（主战场）<span class="chev">▸</span></summary><div class="body">
+      <p>单数年国赛，<b>2027 年是国赛年</b>（9 月前后、四天三夜，以当年通知为准）——你正值<b>大二升大三黄金窗口</b>。多校 2026 年 9 月已启动 2027 届选拔，<b>现在就盯本校校赛通知</b>（本校=陕西赛区官网所在地）。</p>
+      <p>AI 工作流：驱动脚手架 / PID 调参 / OpenCV 视觉 / 上位机 / 报告模板——<b>赛前固化成 skill，赛场只管调用</b>；赛场受限，依赖提前打包离线。</p></div></details>
+    <details class="cmd"><summary>🏆 数模 · 蓝桥杯 · 集创赛 · 大创<span class="chev">▸</span></summary><div class="body">
+      <p>数模：/batch 参数扫描 + 图表自动化 + 论文润色（内容原创自己负责）。蓝桥杯/ICPC：对拍脚本是找错神器。集创赛：Verilog+testbench+答辩 PPT（/slides）。大创：论文代码四步复现法（只读侦察→跑通→验证图表→换数据，详见 09 章 MD）。</p></div></details>
+    <details class="cmd"><summary>📅 成长时间线（复利）<span class="chev">▸</span></summary><div class="body">
+      <p>现在：练完 12 练习 + GitHub 学生包认证 → 大二下：蓝桥杯+大创+<b>第一个开源 PR</b> → 2027：电赛国赛+数模 → 大三：作品集+实习冲刺 → 大四面试：<b>harness 精读 + context engineering + 竞赛 + 开源</b>=同龄人没有的叙事。</p></div></details>
+    <details class="cmd"><summary>💰 成本与账号（2026-10 核查）<span class="chev">▸</span></summary><div class="body">
+      <p><b>第一步：GitHub 学生包认证</b> → Copilot Student（2026-03 起：无限补全+约 200 AI credits/月+有限高级聊天）。主力用国产通道（你已在用 GLM/ZCode）；海外订阅需求驱动再买；每周 /usage 看用量建体感。红线：不碰拼车号、不为尝鲜大额充值。</p></div></details>
+    <details class="cmd"><summary>⚖️ 学术诚信与保密（红线）<span class="chev">▸</span></summary><div class="body">
+      <p>四原则：先自己想 15 分钟；每行代码能讲清；按要求声明 AI 使用；禁止场合零使用。自查：教务处/大纲/问老师（手册不代读校规）。保密：实验室未公开代码/竞赛方案不发云端 API；API key 永不进 git；公开仓库前 /security-review。</p></div></details>
+  </div>
+</section>
+
+<!-- ============ CH10 ============ -->
+<section id="ch10">
+  <h2>10 · 练习：12 个阶梯任务 <span class="note">（勾选自动保存）</span></h2>
+  <table id="ptable">
+    <thead><tr><th></th><th>#</th><th>练习</th><th>难度</th><th>对应章</th><th>用时</th></tr></thead>
+    <tbody>
+      <tr data-p="P1"><td><input type="checkbox" class="pcheck"></td><td>P1</td><td>会话管理三件套（clear/resume/recap/export）</td><td>★</td><td>02</td><td>30min</td></tr>
+      <tr data-p="P2"><td><input type="checkbox" class="pcheck"></td><td>P2</td><td>上下文手术（/context 体检 + 指示压缩）</td><td>★</td><td>02</td><td>30min</td></tr>
+      <tr data-p="P3"><td><input type="checkbox" class="pcheck"></td><td>P3</td><td>回退与分支（/rewind、/undo、/branch、/fork）</td><td>★★</td><td>02</td><td>30min</td></tr>
+      <tr data-p="P4"><td><input type="checkbox" class="pcheck"></td><td>P4</td><td>防误删 hook（PreToolUse 实测拦截）</td><td>★★</td><td>03</td><td>45min</td></tr>
+      <tr data-p="P5"><td><input type="checkbox" class="pcheck"></td><td>P5</td><td>第一个双平台 skill（$ARGUMENTS）</td><td>★★</td><td>04</td><td>45min</td></tr>
+      <tr data-p="P6"><td><input type="checkbox" class="pcheck"></td><td>P6</td><td>MCP 接入（Context7 + 真实调用）</td><td>★★</td><td>04</td><td>30min</td></tr>
+      <tr data-p="L7"><td><input type="checkbox" class="pcheck"></td><td>L7</td><td>同任务双工具对照实验（双 worktree）</td><td>★★★</td><td>05</td><td>2h</td></tr>
+      <tr data-p="L8"><td><input type="checkbox" class="pcheck"></td><td>L8</td><td>CC 编排 Codex（mcp-server 联动）</td><td>★★★</td><td>04/06</td><td>45min</td></tr>
+      <tr data-p="L9"><td><input type="checkbox" class="pcheck"></td><td>L9</td><td>双向迁移演习（/import ×2 + AGENTS.md 共享）</td><td>★★</td><td>02</td><td>30min</td></tr>
+      <tr data-p="S10"><td><input type="checkbox" class="pcheck"></td><td>S10</td><td>课设急救全流程（真实作业走一遍）</td><td>★★</td><td>08</td><td>1.5h</td></tr>
+      <tr data-p="S11"><td><input type="checkbox" class="pcheck"></td><td>S11</td><td>论文代码复现（四步法）</td><td>★★★</td><td>09</td><td>2h</td></tr>
+      <tr data-p="S12"><td><input type="checkbox" class="pcheck"></td><td>S12</td><td>电赛/数模脚手架 + 赛场化清单</td><td>★★★</td><td>05/09</td><td>2h</td></tr>
+    </tbody>
+  </table>
+  <p class="note">规则：每个练习先自己做 10 分钟再看步骤提示（防拐杖化）。完整步骤与验收标准见 10-练习.md。12 个全勾 = 毕业。</p>
+</section>
+
+<!-- ============ CH11 ============ -->
+<section id="ch11">
+  <h2>11 · ZCF 与本机配置</h2>
+  <p>ZCF（UfoMiao/zcf）= 你两个工具的"预装操作系统"：<code>npx zcf</code> 菜单 / <code>zcf i</code> 初始化 / <code>zcf u</code> 更新。装了：API 接入（预置 GLM/Kimi/MiniMax/302.AI）、6 个 MCP（Context7、Playwright、Serena…）、工作流技能、记忆模板、状态栏与 ccusage。</p>
+  <div class="grid">
+    <details class="cmd"><summary>/workflow 六阶段是什么<span class="chev">▸</span></summary><div class="body">
+      <p>需求分析→方案设计→任务拆解→逐步实现→测试验收→总结沉淀。适合多天大课设；<b>三行小改动别用（仪式感过重）</b>。/feat 是轻量版，/git-commit 规范提交。</p></div></details>
+    <details class="cmd"><summary>⚠ 已知坑<span class="chev">▸</span></summary><div class="body">
+      <p>更新可能覆盖手写 CLAUDE.md → 记忆文件入 git + 更新前备份；预装 MCP 全开吃上下文 → /context 体检后做减法；权限模板偏宽松 → §03 三档覆盖。</p></div></details>
+    <details class="cmd"><summary>🔧 本机五条优化（按优先级）<span class="chev">▸</span></summary><div class="body">
+      <p>① <b>把空的 ~/.codex/AGENTS.md 填上</b>（241 个会话的纠正别每次重教）；② 记忆文件入 git；③ MCP 做减法；④ 统一双工具会话命名（课设-课程-子任务）；⑤ output-styles 6 留 3。</p></div></details>
+    <details class="cmd"><summary>🚑 排障速查<span class="chev">▸</span></summary><div class="body">
+      <p>CC 异常：<code>claude doctor</code>（+prompt-audit）→ <code>--safe-mode</code>；Codex：<code>/debug-config</code> → <code>codex doctor</code>；MCP：/mcp reconnect all ↔ /mcp verbose。</p></div></details>
+  </div>
+</section>
+
+<!-- ============ REF ============ -->
+<section id="ref">
+  <h2>reference · 来源与时效</h2>
+  <p>基线：CC v2.1.310 / Codex 0.164.0，调研截止 <b>2026-10-24</b>。全部来源 URL、存疑项汇总、更新方法见 <a href="./reference-来源索引.md">reference-来源索引.md</a>；各章详解见同目录 00-11 号 MD 文件（本页是可视化伴读版）。</p>
+  <p class="note">发现手册与官方文档冲突时：以官方为准，并回 MD 更新。学生章价格/赛程每次引用前重查官方页。</p>
+</section>
+
+<!-- ============ 打印速查卡 ============ -->
+<section id="cheatsheet">
+  <h2>🖨 速查卡 1：双工具高频命令（A4）</h2>
+  <table>
+    <tr><th>能力</th><th>CC</th><th>Codex</th><th>能力</th><th>CC</th><th>Codex</th></tr>
+    <tr><td>新会话</td><td>/clear 名</td><td>/new 名</td><td>压缩</td><td>/compact 指示</td><td>/compact</td></tr>
+    <tr><td>恢复</td><td>/resume</td><td>/resume</td><td>体检</td><td>/context</td><td>/status</td></tr>
+    <tr><td>回退</td><td>/rewind</td><td>/undo</td><td>分支</td><td>/branch</td><td>/fork</td></tr>
+    <tr><td>侧聊</td><td>/btw</td><td>/side</td><td>导出</td><td>/export</td><td>/export</td></tr>
+    <tr><td>目标</td><td>/goal</td><td>/goal</td><td>记忆</td><td>/memory /init</td><td>/init</td></tr>
+    <tr><td>模型</td><td>/model /effort</td><td>/model</td><td>权限</td><td>/permissions</td><td>/permissions</td></tr>
+    <tr><td>规划</td><td>/plan</td><td>/plans</td><td>技能</td><td>/skills</td><td>/skills</td></tr>
+    <tr><td>插件</td><td>/plugin</td><td>/plugins /presets</td><td>MCP</td><td>/mcp</td><td>/mcp</td></tr>
+    <tr><td>子代理</td><td>/agents /batch</td><td>/agents (≤6)</td><td>工作树</td><td>claude -w</td><td>/worktree</td></tr>
+    <tr><td>云端</td><td>--cloud /schedule</td><td>codex cloud</td><td>审查</td><td>/code-review</td><td>/review</td></tr>
+    <tr><td>验证</td><td>/verify /run</td><td>exec+测试</td><td>安全</td><td>/security-review</td><td>AGENTS.md 规则</td></tr>
+    <tr><td>无头</td><td>claude -p</td><td>codex exec</td><td>用量</td><td>/usage</td><td>/usage</td></tr>
+  </table>
+  <p><b>心法</b>：CLAUDE.md/AGENTS.md 管建议 · Hooks 管纪律 · Skills 管流程 · Subagents 管专项；plan 在动手前，审查在交付前，压缩在 70% 前。</p>
+  <h2>🖨 速查卡 2：学生版</h2>
+  <div class="card2"><h3>课设 due 五步</h3><p>/clear 命名 → plan 先行 → 改完 /verify → /code-review → /export 当报告素材</p></div>
+  <div class="card2"><h3>电赛 2027（大二升大三窗口）</h3><p>盯校赛选拔 → 赛前固化 skill → 三 worktree 分工（视觉/控制/上位机）→ 48h 冻结 + 每晚 tag</p></div>
+  <div class="card2"><h3>本周三事</h3><p>① GitHub 学生包认证（Copilot Student）② ~/.codex/AGENTS.md 填上 ③ 练 P1+P2</p></div>
+  <div class="card2"><h3>红线</h3><p>先手写再 AI review · 每行能讲清 · 按要求声明 · 禁止场合零使用 · 实验室代码不出校门 · key 不进 git</p></div>
+</section>
+
+</main>
+</div>
+
+<button id="gotoTop" title="回顶部">↑</button>
+<footer>Claude Code × Codex 双工具高阶手册（学生实战版）· 配套 13 份 MD 同目录 · 基线 2026-10-24 · 离线可用，无外部依赖</footer>
+
+<script>
+/* ---------- 数据：统一映射表 ---------- */
+const CMDS=[
+["开新会话","/clear 名","/new 名","清上下文重启；可命名","02"],
+["恢复会话","/resume","/resume","选择器找回历史","02"],
+["压缩上下文","/compact 指示","/compact","60-70% 主动压","02"],
+["上下文体检","/context","/status（部分）","CC 彩色占用网格","02"],
+["回退","/rewind","/undo","CC 退代码+对话；Codex 只退文件","02"],
+["分支试错","/branch","/fork","复制会话试激进方案","02"],
+["后台副本","/fork 提示","/fork","前台继续副本后台跑","02"],
+["旁支提问","/btw","/side","不入主历史","02"],
+["会话摘要","/recap","（auto recap）","一行式进度","02"],
+["导出对话","/export 文件","/export","Markdown 落盘","02"],
+["长期目标","/goal","/goal","跨轮次不跑偏","02"],
+["会话命名","/rename","/title /rename","多课并行不串台","02"],
+["归档删除","—","/archive /delete","Codex 显式归档","02"],
+["编辑记忆","/memory","（编辑 AGENTS.md）","CLAUDE.md 各级","02"],
+["生成记忆","/init","/init","扫仓库生成","02"],
+["迁移配置","/import codex","/import","双向投奔通道","02"],
+["切模型","/model","/model","重活大模轻活小模","02"],
+["推理力度","/effort","Alt+,/.","省钱旋钮","02"],
+["快速模式","/fast","—","Opus fast 即时","02"],
+["第二模型","/advisor","—","顾问找茬","02"],
+["权限面板","/permissions","/permissions","规则/档案","03"],
+["只读规划","/plan","/plans","先方案后动手","03"],
+["沙箱","/sandbox","审批×沙箱矩阵","CC 细粒度 Codex 档位","03"],
+["钩子","/hooks（33 事件）","hooks 实验","硬保证","03"],
+["体检","/doctor","/debug-config","排查第一步","03"],
+["技能列表","/skills","/skills","按 token 瘦身","04"],
+["插件","/plugin","/plugins","市场安装","04"],
+["预设槽位","—","/presets","10 槽复用 prompt","04"],
+["实验开关","—","/experimental","实验功能","04"],
+["风格人格","/output-style","/personality","Learning 防拐杖","04"],
+["MCP","/mcp","/mcp","外部工具总线","04"],
+["子代理","/agents","/agents（≤6）","上下文隔离委派","05"],
+["后台任务","/tasks","/ps","看后台","05"],
+["转后台","/background","—","会话丢后台","05"],
+["派生子任务","/subtask","线程分叉","带上下文派活","05"],
+["并行批次","/batch","—（用 Cloud）","5-30 单元并行","05"],
+["定时循环","/loop /schedule","云任务 /goal","周期/长目标","05"],
+["云端并行","--cloud","codex cloud","容器农场","05"],
+["工作树","claude -w","/worktree","本地并行","05"],
+["代码审查","/code-review","/review","交付前必做","06"],
+["简化审查","/simplify","—","找过度设计","06"],
+["行为验证","/verify /run","exec+测试","真跑才算过","06"],
+["安全审查","/security-review","AGENTS.md 规则","公开前必扫","06"],
+["无头执行","claude -p","codex exec","自动化接口","06"],
+["查看改动","/diff","/diff","工作区 diff","02"],
+["用量额度","/usage","/usage","省钱必看","02"],
+["引用文件","@","@ /mention","文件/任务引用","02"],
+["bash 直执行","!cmd","—","输出进上下文","02"],
+["IDE 集成","/ide","/ide","编辑器上下文","01"],
+["状态","/status","/status","版本/账号/成本","02"]
+];
+const tb=document.querySelector("#cmdtable tbody");
+CMDS.forEach(r=>{const tr=document.createElement("tr");
+  tr.innerHTML="<td>"+r[0]+"</td><td><code>"+r[1]+"</code></td><td><code>"+r[2]+"</code></td><td>"+r[3]+'</td><td><a href="#ch'+r[4]+'">§0'+r[4]+"</a></td>";
+  tb.appendChild(tr);});
+
+/* ---------- 解剖图 ---------- */
+const LAYERS=[
+["① 交互层","怎么跟它说话","@ ! / : 前缀、双击Esc","@/mention、/vim、/tui","ch02"],
+["② 模型推理层","用哪个脑子、想多深","/model /effort /fast","/model + effort","ch02"],
+["③ 上下文层","存/压/退/分","/compact /rewind /branch","/compact /undo /fork","ch02"],
+["④ 记忆指令层","长期规则放哪","CLAUDE.md 三级+rules","AGENTS.md 就近覆盖","ch02"],
+["⑤ 权限安全层","自主权给多少","7 模式+沙箱+hooks","审批×沙箱矩阵","ch03"],
+["⑥ 扩展层","接外部能力","skills/plugins/MCP","skills/plugins/MCP server","ch04"],
+["⑦ 编排层","并行/多代理/云端","subagents /batch -w","spawn_agent Cloud -w","ch05"],
+["⑧ 验证自动化层","审查/无人值守/CI","/code-review /verify -p","/review codex exec","ch06"]];
+const an=document.getElementById("anatomy");
+LAYERS.forEach(l=>{const d=document.createElement("div");d.className="layer";
+  d.innerHTML='<div class="no">LAYER</div><div class="t">'+l[0]+'</div><div class="q">'+l[1]+'</div><div class="chips"><span class="c1">'+l[2]+'</span><span class="c2">'+l[3]+"</span></div>";
+  d.onclick=()=>{location.hash="#"+l[4]};an.appendChild(d);});
+
+/* ---------- 主题 ---------- */
+const root=document.documentElement,themeBtn=document.getElementById("themeBtn");
+function setTheme(t){root.dataset.theme=t;localStorage.setItem("cxcx-theme",t);
+  themeBtn.textContent=t==="dark"?"☀ 浅色":"🌙 深色";}
+setTheme(localStorage.getItem("cxcx-theme")||"dark");
+themeBtn.onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
+
+/* ---------- 工具透镜 ---------- */
+document.querySelectorAll("#lens button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#lens button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");const lens=b.dataset.lens;
+  document.querySelectorAll("[data-tool]").forEach(el=>{
+    el.classList.toggle("hidden",lens!=="both"&&el.dataset.tool!==lens);});
+});
+
+/* ---------- 搜索过滤 ---------- */
+const search=document.getElementById("search");
+search.addEventListener("input",()=>{
+  const q=search.value.trim().toLowerCase();let hit=0;
+  document.querySelectorAll("#cmdtable tbody tr").forEach(tr=>{
+    const ok=!q||tr.textContent.toLowerCase().includes(q);
+    tr.classList.toggle("hidden",!ok);if(ok)hit++;});
+  document.getElementById("noresult").style.display=(q&&hit===0)?"block":"none";
+  document.querySelectorAll("details.cmd").forEach(d=>{
+    if(!q){d.classList.remove("hidden");return;}
+    const ok=d.textContent.toLowerCase().includes(q);
+    d.classList.toggle("hidden",!ok);d.open=ok;});
+});
+
+/* ---------- 练习勾选持久化 ---------- */
+document.querySelectorAll("#ptable .pcheck").forEach(cb=>{
+  const key="cxcx-p-"+cb.closest("tr").dataset.p;
+  if(localStorage.getItem(key)==="1"){cb.checked=true;cb.closest("tr").classList.add("done");}
+  cb.addEventListener("change",()=>{
+    localStorage.setItem(key,cb.checked?"1":"0");
+    cb.closest("tr").classList.toggle("done",cb.checked);});
+});
+
+/* ---------- 侧栏高亮 & 回顶部 ---------- */
+const links=[...document.querySelectorAll("#sidebar a")];
+const secs=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const io=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(e.isIntersecting){links.forEach(a=>a.classList.remove("active"));
+    const a=links.find(l=>l.getAttribute("href")==="#"+e.target.id);if(a)a.classList.add("active");}});
+},{rootMargin:"-40% 0px -55% 0px"});
+secs.forEach(s=>io.observe(s));
+const gt=document.getElementById("gotoTop");
+addEventListener("scroll",()=>gt.style.display=scrollY>600?"block":"none");
+gt.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+document.getElementById("printBtn").onclick=()=>print();
+</script>
+</body>
+</html>

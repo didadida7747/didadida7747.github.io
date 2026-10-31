@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大学英语六级 · 9周备考看板（2026年12月）</title>
+<style>
+  :root{
+    --teal:#0f766e; --teal-dark:#115e59; --teal-light:#ccfbf1;
+    --base:#0891b2;      /* 基础期 青蓝 */
+    --boost:#ea580c;     /* 强化期 暖橙 */
+    --sprint:#b91c1c;   /* 冲刺期 砖红 */
+    --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+    --bg:#f8fafc; --card:#ffffff;
+    --shadow:0 1px 3px rgba(15,23,42,.06),0 4px 16px rgba(15,23,42,.06);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;font-size:15px;
+  }
+  a{color:var(--teal);text-decoration:none;word-break:break-all}
+  a:hover{text-decoration:underline}
+
+  /* ===== 顶部锚点导航 ===== */
+  nav.topnav{
+    position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:4px;padding:0 16px;
+    overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;
+  }
+  nav.topnav .brand{font-weight:700;color:var(--teal);padding:12px 12px 12px 0;font-size:14px;flex-shrink:0}
+  nav.topnav a.navlink{
+    color:var(--muted);font-size:13px;padding:14px 10px;flex-shrink:0;border-bottom:2px solid transparent;
+  }
+  nav.topnav a.navlink:hover{color:var(--teal);text-decoration:none;border-bottom-color:var(--teal)}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  section{padding:44px 0 8px}
+  .sec-head{margin-bottom:22px}
+  .sec-head h2{font-size:22px;color:var(--teal-dark);display:flex;align-items:center;gap:10px}
+  .sec-head h2::before{content:"";width:6px;height:22px;background:var(--teal);border-radius:3px}
+  .sec-head p{color:var(--muted);font-size:13.5px;margin-top:6px}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg,#0f766e 0%,#115e59 55%,#134e4a 100%);
+    color:#fff;border-radius:0; padding:56px 0 48px;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center}
+  .hero h1{font-size:34px;line-height:1.25;font-weight:800;letter-spacing:.5px}
+  .hero .sub{margin-top:14px;font-size:15px;opacity:.92}
+  .hero .chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+    border-radius:999px;padding:6px 14px;font-size:13px;
+  }
+  .countdown-card{
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    border-radius:var(--radius);padding:22px;text-align:center;
+  }
+  .countdown-card .cd-label{font-size:13px;opacity:.85}
+  .countdown-card .cd-days{font-size:52px;font-weight:800;line-height:1.1;margin:6px 0}
+  .countdown-card .cd-days small{font-size:18px;font-weight:600;margin-left:4px}
+  .countdown-card .cd-rest{font-size:13px;opacity:.9}
+  .countdown-card .cd-date{font-size:12.5px;opacity:.75;margin-top:8px}
+
+  /* ===== 卡片通用 ===== */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+  /* ===== 分数柱状图 ===== */
+  .chart-note{
+    background:#fef3c7;border-left:4px solid #f59e0b;border-radius:8px;
+    padding:10px 14px;font-size:13.5px;margin:14px 0 0;color:#78350f;
+  }
+  .barchart{margin-top:10px}
+  .bc-row{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:12px;margin-bottom:18px}
+  .bc-label{font-size:13px;font-weight:600;color:var(--ink);text-align:right}
+  .bc-bars{display:block;height:190px;border-bottom:1px solid var(--line);position:relative}
+  .bc-group{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:center;gap:5px;height:190px}
+  .bar{
+    width:100%;max-width:38px;border-radius:6px 6px 0 0;position:relative;
+    display:flex;align-items:flex-start;justify-content:center;transition:height .4s;
+  }
+  .bar span{position:absolute;top:-20px;font-size:11.5px;font-weight:700;color:var(--ink);white-space:nowrap}
+  .bar.b-now{background:#94a3b8}
+  .bar.b-500{background:#0891b2}
+  .bar.b-520{background:#ea580c}
+  .bar.b-550{background:#b91c1c}
+  .bc-legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--muted);margin-top:6px;padding-left:76px}
+  .bc-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+  /* ===== 试卷结构 环形图 ===== */
+  .structure-wrap{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center}
+  .donut-box{text-align:center}
+  .donut-legend{margin-top:10px;font-size:13px;color:var(--muted)}
+  .qty-list{font-size:13.5px}
+  .qty-list li{margin-bottom:8px;list-style:none;padding-left:20px;position:relative}
+  .qty-list li::before{content:"▸";position:absolute;left:0;color:var(--teal)}
+  .alert-strip{
+    margin-top:16px;border-radius:10px;padding:12px 16px;font-size:13.5px;font-weight:600;
+  }
+  .alert-red{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+  .alert-amber{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
+
+  /* ===== 9周时间线 ===== */
+  .timeline-scroll{overflow-x:auto;padding-bottom:10px}
+  .tl{display:grid;grid-template-columns:repeat(10,minmax(150px,1fr));gap:10px;min-width:1400px}
+  .tl-week{
+    border-radius:12px;padding:12px;border:1px solid var(--line);background:#fff;
+    display:flex;flex-direction:column;gap:6px;position:relative;
+  }
+  .tl-week .wtag{font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:2px 8px;align-self:flex-start}
+  .tl-base .wtag{background:var(--base)}
+  .tl-boost .wtag{background:var(--boost)}
+  .tl-sprint .wtag{background:var(--sprint)}
+  .tl-exam{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:#fff;border:none}
+  .tl-exam .wtag{background:#fff;color:#7f1d1d}
+  .tl-week .wdate{font-size:11.5px;color:var(--muted)}
+  .tl-exam .wdate{color:rgba(255,255,255,.85)}
+  .tl-week .wtheme{font-size:13px;font-weight:600;line-height:1.4}
+  .tl-week .wmock{font-size:11.5px;background:#fef3c7;color:#92400e;border-radius:5px;padding:2px 6px;align-self:flex-start}
+  .tl-exam .wmock{background:rgba(255,255,255,.2);color:#fff}
+  .tl-week .wword{font-size:11.5px;color:var(--teal-dark)}
+  .stage-key{display:flex;gap:18px;font-size:12.5px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+  .stage-key i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+  /* ===== 每日时间 ===== */
+  .day-stack{display:flex;height:56px;border-radius:10px;overflow:hidden;font-size:12.5px;color:#fff;font-weight:600;margin-top:8px}
+  .day-stack div{display:flex;align-items:center;justify-content:center;text-align:center;padding:4px}
+  .ds-word{background:#0d9488;flex:18}
+  .ds-listen{background:#0f766e;flex:32}
+  .ds-rotate{background:#f59e0b;flex:12.5}
+  .rot-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+  .rot-table th,.rot-table td{border:1px solid var(--line);padding:8px 10px;text-align:center}
+  .rot-table th{background:#f1f5f9;color:var(--ink);font-weight:600}
+  .weekend-note{background:#ecfeff;border:1px solid #a5f3fc;border-radius:10px;padding:12px 16px;font-size:13.5px;color:#155e75;margin-top:14px}
+
+  /* ===== 专项策略卡 ===== */
+  .strat{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .strat-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border-top:4px solid var(--teal)}
+  .strat-card h3{font-size:16px;margin-bottom:4px;color:var(--teal-dark)}
+  .strat-card .src{font-size:11.5px;color:var(--muted);margin-bottom:12px}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0 12px}
+  .step{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:8px 6px;text-align:center;font-size:11.5px;line-height:1.35}
+  .step b{display:block;color:var(--teal-dark);font-size:12.5px;margin-bottom:2px}
+  .strat-card ul{padding-left:18px;font-size:13.5px}
+  .strat-card ul li{margin-bottom:6px}
+  .tag{display:inline-block;font-size:11px;border-radius:999px;padding:1px 8px;margin-left:6px;font-weight:600}
+  .tag-free{background:#dcfce7;color:#166534}
+  .tag-paid{background:#fee2e2;color:#991b1b}
+
+  /* ===== 模考表 ===== */
+  table.mock{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  table.mock th,table.mock td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mock th{background:var(--teal);color:#fff;font-weight:600}
+  table.mock tr:nth-child(even) td{background:#f8fafc}
+  .type-badge{font-size:11.5px;font-weight:700;border-radius:5px;padding:2px 8px;white-space:nowrap}
+  .tb-full{background:#fee2e2;color:#991b1b}
+  .tb-half{background:#fef3c7;color:#92400e}
+  .tb-split{background:#e0e7ff;color:#3730a3}
+
+  /* ===== 资料导航 ===== */
+  .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .res-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .res-card h4{font-size:14.5px;color:var(--teal-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .res-item{font-size:13px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+  .res-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .res-item .ri-name{font-weight:600}
+  .res-item .ri-desc{color:var(--muted);font-size:12.5px;margin-top:2px}
+
+  /* ===== 考前清单 ===== */
+  .checklist{list-style:none}
+  .checklist li{
+    padding:9px 12px 9px 38px;position:relative;font-size:14px;border-radius:8px;margin-bottom:6px;background:#f8fafc;border:1px solid var(--line);
+  }
+  .checklist li::before{
+    content:"";position:absolute;left:12px;top:12px;width:16px;height:16px;border:2px solid var(--teal);border-radius:4px;background:#fff;
+  }
+  .checklist li.danger{background:#fef2f2;border-color:#fecaca}
+  .checklist li.danger::before{border-color:#b91c1c}
+  .checklist b{color:var(--teal-dark)}
+  .day-plan{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+  .day-plan .dp{background:#fff;border:1px solid var(--line);border-left:4px solid var(--sprint);border-radius:8px;padding:10px 12px;font-size:12.5px}
+  .day-plan .dp b{display:block;color:var(--sprint);margin-bottom:3px}
+
+  /* ===== 页脚 ===== */
+  footer{margin-top:48px;background:#134e4a;color:#d1fae5;padding:28px 0;font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:#a7f3d0}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr}
+    .grid2,.grid3,.grid4,.strat,.res-grid{grid-template-columns:1fr}
+    .structure-wrap{grid-template-columns:1fr}
+    .bc-legend{padding-left:0}
+    .day-plan{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .hero h1{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 顶部导航 ============ -->
+<nav class="topnav">
+  <span class="brand">六级 9 周看板</span>
+  <a class="navlink" href="#hero">概览</a>
+  <a class="navlink" href="#goal">分数目标</a>
+  <a class="navlink" href="#struct">试卷结构</a>
+  <a class="navlink" href="#timeline">9周时间线</a>
+  <a class="navlink" href="#daily">每日时间</a>
+  <a class="navlink" href="#strategy">专项策略</a>
+  <a class="navlink" href="#mock">模考日程</a>
+  <a class="navlink" href="#resource">资料导航</a>
+  <a class="navlink" href="#checklist">考前清单</a>
+</nav>
+
+<!-- ============ Hero ============ -->
+<header class="hero" id="hero">
+  <div class="wrap">
+    <div>
+      <h1>大学英语六级 · 9 周备考看板</h1>
+      <div class="sub">2026 年 12 月笔试备考全流程可视化 · 数据与《六级备考规划》Markdown 文档严格一致</div>
+      <div class="chips">
+        <span class="chip">🗓 2026-12-12（周六）15:00–17:25</span>
+        <span class="chip">🎯 目标 500+（冲刺 520–550）</span>
+        <span class="chip">⏱ 每天 1 小时（工作日 60 min）</span>
+        <span class="chip">📈 听力 109 → 150/165/180 是唯一战略提分项</span>
+      </div>
+    </div>
+    <div class="countdown-card">
+      <div class="cd-label">距离 2026-12-12 笔试开考还有</div>
+      <div class="cd-days"><span id="cdDays">--</span><small>天</small></div>
+      <div class="cd-rest" id="cdRest">-- 时 -- 分 -- 秒</div>
+      <div class="cd-date">开考时点：15:00（下午场，上午考四级）</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 分数目标拆解 ============ -->
+<section id="goal">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>分数目标拆解</h2>
+      <p>现状为四级 472（听力 109 / 阅读 217 / 写译 146）；三档六级目标均由"听力涨分"驱动，阅读与写译几乎不动。</p>
+    </div>
+    <div class="card">
+      <div class="barchart">
+        <!-- 听力 -->
+        <div class="bc-row">
+          <div class="bc-label">听力</div>
+          <div class="bc-bars">
+            <div class="bc-group">
+              <div class="bar b-now" style="height:43.6%"><span>109</span></div>
+              <div class="bar b-500" style="height:60%"><span>150</span></div>
+              <div class="bar b-520" style="height:66%"><span>165</span></div>
+              <div class="bar b-550" style="height:72%"><span>180</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 阅读 -->
+        <div class="bc-row">
+          <div class="bc-label">阅读</div>
+          <div class="bc-bars">
+            <div class="bc-group">
+              <div class="bar b-now" style="height:86.8%"><span>217</span></div>
+              <div class="bar b-500" style="height:80%"><span>200</span></div>
+              <div class="bar b-520" style="height:82%"><span>205</span></div>
+              <div class="bar b-550" style="height:86%"><span>215</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 写译 -->
+        <div class="bc-row">
+          <div class="bc-label">写译</div>
+          <div class="bc-bars">
+            <div class="bc-group">
+              <div class="bar b-now" style="height:58.4%"><span>146</span></div>
+              <div class="bar b-500" style="height:60%"><span>150</span></div>
+              <div class="bar b-520" style="height:60%"><span>150</span></div>
+              <div class="bar b-550" style="height:62%"><span>155</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="bc-legend">
+          <span><i style="background:#94a3b8"></i>现状（四级）</span>
+          <span><i style="background:#0891b2"></i>500 = 150+200+150</span>
+          <span><i style="background:#ea580c"></i>520 = 165+205+150</span>
+          <span><i style="background:#b91c1c"></i>550 = 180+215+155</span>
+        </div>
+      </div>
+      <div class="chart-note">
+        💡 <b>听力是唯一战略提分项</b>：500 只需听力从 109 → 150（+41 分），其余两项维持现状即可；520–550 冲刺成立的唯一前提是听力通过 9 周精听上到 165–180 区间。写译三档目标 150/150/155，有意为之——把时间投在听力上的边际收益远大于再抠写译。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 试卷结构与分值 ============ -->
+<section id="struct">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>试卷结构与分值</h2>
+      <p>满分 710，共 57 题，答题 130 分钟；报道分为常模换算，模考估分误差 ±20–30，只看趋势。</p>
+    </div>
+    <div class="card">
+      <div class="structure-wrap">
+        <div class="donut-box">
+          <svg width="220" height="220" viewBox="0 0 42 42">
+            <!-- 圆环：周长约 131.95 -->
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#e5e7eb" stroke-width="6"></circle>
+            <!-- 写作 15% -->
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#0f766e" stroke-width="6"
+                    stroke-dasharray="15 85" stroke-dashoffset="25"></circle>
+            <!-- 听力 35% -->
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#0891b2" stroke-width="6"
+                    stroke-dasharray="35 65" stroke-dashoffset="10"></circle>
+            <!-- 阅读 35% -->
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#ea580c" stroke-width="6"
+                    stroke-dasharray="35 65" stroke-dashoffset="-25"></circle>
+            <!-- 翻译 15% -->
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#b91c1c" stroke-width="6"
+                    stroke-dasharray="15 85" stroke-dashoffset="-60"></circle>
+            <text x="21" y="20" text-anchor="middle" font-size="4.5" font-weight="700" fill="#115e59">710 分</text>
+            <text x="21" y="26" text-anchor="middle" font-size="3" fill="#6b7280">听力+阅读 70%</text>
+          </svg>
+          <div class="donut-legend">
+            <span style="color:#0f766e">■ 写作 15%</span>　
+            <span style="color:#0891b2">■ 听力 35%</span><br>
+            <span style="color:#ea580c">■ 阅读 35%</span>　
+            <span style="color:#b91c1c">■ 翻译 15%</span>
+          </div>
+        </div>
+        <div>
+          <ul class="qty-list">
+            <li><b>写作</b>：短文写作 1 题（150–200 词），报道分约 106.5，30 分钟</li>
+            <li><b>听力 25 题</b>：长对话 8 题 + 听力篇章 7 题 + 讲话/报道/讲座 10 题，合计 248.5 分，约 30 分钟</li>
+            <li><b>阅读 30 题</b>：选词填空 10 题 + 长篇匹配 10 题 + 仔细阅读 10 题（2 篇×5），合计 248.5 分，40 分钟</li>
+            <li><b>翻译</b>：汉译英段落 1 题（约 180–200 汉字），报道分约 106.5，30 分钟</li>
+          </ul>
+          <div class="alert-strip alert-red">
+            ⛔ 听力结束（16:10）立即收答题卡 1，不存在"先写卷子最后统一涂卡"的机会——必须<b>边听边涂</b>（或一个 section 涂一次）。
+          </div>
+          <div class="alert-strip alert-amber">
+            💰 <b>讲座题 ≈ 14.2 分/题、仔细阅读 ≈ 14.2 分/题</b>，是全卷最值钱的两类题；选词填空仅 ≈3.55 分/题，最后做、时间不够可策略性放弃。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9周时间线 ============ -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>9 周路线图</h2>
+      <p>10/12（周一）启动 → 12/12（周六）考试，共 9 周；三阶段：基础期 W1–W3 / 强化期 W4–W7 / 冲刺期 W8–W9。</p>
+    </div>
+    <div class="stage-key">
+      <span><i style="background:#0891b2"></i>基础期（辨音地基）</span>
+      <span><i style="background:#ea580c"></i>强化期（模考校准+错题体系）</span>
+      <span><i style="background:#b91c1c"></i>冲刺期（最新题校准+保温）</span>
+      <span>🟨 黄色标签 = 当周模考</span>
+    </div>
+    <div class="timeline-scroll">
+      <div class="tl">
+        <div class="tl-week tl-base">
+          <span class="wtag">W1 基础</span>
+          <span class="wdate">10/12–10/18</span>
+          <span class="wtheme">辨音地基启动，四级听力过渡</span>
+          <span class="wdate">无整套模考；10/17 诊断半套</span>
+          <span class="wword">新词累计 210</span>
+        </div>
+        <div class="tl-week tl-base">
+          <span class="wtag">W2 基础</span>
+          <span class="wdate">10/19–10/25</span>
+          <span class="wtheme">连读弱读强化</span>
+          <span class="wdate">无</span>
+          <span class="wword">新词累计 420</span>
+        </div>
+        <div class="tl-week tl-base">
+          <span class="wtag">W3 基础</span>
+          <span class="wdate">10/26–11/01</span>
+          <span class="wtheme">切六级真题，阶段自测</span>
+          <span class="wdate">分题型自测（无整套）</span>
+          <span class="wword">新词累计 630（1/3 以上）</span>
+        </div>
+        <div class="tl-week tl-boost">
+          <span class="wtag">W4 强化</span>
+          <span class="wdate">11/02–11/08</span>
+          <span class="wtheme">首次整套模考 + 错题本建立</span>
+          <span class="wmock">11/7 T1 = 2022.12</span>
+          <span class="wword">新词累计 840</span>
+        </div>
+        <div class="tl-week tl-boost">
+          <span class="wtag">W5 强化</span>
+          <span class="wdate">11/09–11/15</span>
+          <span class="wtheme">T1 消化 + 第二次模考</span>
+          <span class="wmock">11/14 T2 = 2023.6</span>
+          <span class="wword">新词累计 1050</span>
+        </div>
+        <div class="tl-week tl-boost">
+          <span class="wtag">W6 强化</span>
+          <span class="wdate">11/16–11/22</span>
+          <span class="wtheme">T2 消化 + 第三次模考</span>
+          <span class="wmock">11/21 T3 = 2023.12</span>
+          <span class="wword">新词累计 1260</span>
+        </div>
+        <div class="tl-week tl-boost">
+          <span class="wtag">W7 强化</span>
+          <span class="wdate">11/23–11/29</span>
+          <span class="wtheme">T3 消化 + 2024.12 拆练 + 第四次模考</span>
+          <span class="wmock">11/28 T4 = 2024.6</span>
+          <span class="wdate">周中 11/25–26 2024.12 分题型拆练</span>
+          <span class="wword">新词累计 1470（新词收尾）</span>
+        </div>
+        <div class="tl-week tl-sprint">
+          <span class="wtag">W8 冲刺</span>
+          <span class="wdate">11/30–12/06</span>
+          <span class="wtheme">T4 消化 + 最新两套背靠背模考</span>
+          <span class="wmock">12/5 T5 = 2025.6</span>
+          <span class="wmock">12/6 T6 = 2025.12（最新题）</span>
+          <span class="wword">零新词：错词重筛 + 真题生词</span>
+        </div>
+        <div class="tl-week tl-sprint">
+          <span class="wtag">W9 收尾</span>
+          <span class="wdate">12/07–12/11</span>
+          <span class="wtheme">不开新整套：复盘 + 模板默写 + 听力保温</span>
+          <span class="wdate">无模考；12/11 22:30 前睡</span>
+          <span class="wword">全词表滚动复习</span>
+        </div>
+        <div class="tl-week tl-exam">
+          <span class="wtag">★ 考试日</span>
+          <span class="wdate">12/12（周六）</span>
+          <span class="wtheme">14:20 入场 · 15:00–17:25 笔试</span>
+          <span class="wmock">写作→听力→阅读+翻译</span>
+          <span class="wdate">听力边听边涂卡</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 每日时间分配 ============ -->
+<section id="daily">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>每日时间分配</h2>
+      <p>工作日 60 分钟 = 单词 15–20 min + 精听 30 min + 轮换任务 10–15 min；模考日（强化期起周六）加量到约 2.5 小时。</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="font-size:15px;color:var(--teal-dark);margin-bottom:6px">工作日 60 分钟构成</h3>
+        <div class="day-stack">
+          <div class="ds-word">单词 15–20′</div>
+          <div class="ds-listen">精听 30′（五步法）</div>
+          <div class="ds-rotate">轮换 10–15′</div>
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:10px">
+          听力精听约占 50%、单词约 25%、写译约 15%、阅读约 10%——80% 的提分赌注压在听力精听上。
+        </div>
+        <div class="weekend-note">
+          <b>周末安排：</b>基础期 W1–W3 约 90–120 分钟（周六精听加量 2 段+单词周复习；周日方法课视频+泛听 30 min+错因整理）；强化期起周六整套模考约 2.5 h，周日为消化 Day1（精听错段）。
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px;color:var(--teal-dark);margin-bottom:6px">周一至周五轮换表</h3>
+        <table class="rot-table">
+          <tr><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th></tr>
+          <tr>
+            <td>仔细阅读 1 篇</td>
+            <td>写作背模板 / 仿写</td>
+            <td>长篇匹配 + 选词</td>
+            <td>翻译 1 段</td>
+            <td>本周错题复盘</td>
+          </tr>
+        </table>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:10px">
+          最低保底线：当天只剩 15 分钟 → 单词 APP 打卡 15 个词 + 盲听 1 段真题音频（不暂停、不看原文），即算当日任务达成。中断 1–3 天不补债，直接接当周计划。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 四大专项策略卡 ============ -->
+<section id="strategy">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>四大专项策略卡</h2>
+      <p>听力 / 阅读 / 写作与翻译 / 单词——每卡 3–5 个要点，详细方法见对应 Markdown 文档。</p>
+    </div>
+    <div class="strat">
+
+      <!-- 听力 -->
+      <div class="strat-card" style="border-top-color:#0891b2">
+        <h3>🎧 听力（唯一战略提分项）</h3>
+        <div class="src">精听五步法 · 一段 3–5 分钟材料约 31–38 分钟 ｜ 详见 03-听力专项突破.md</div>
+        <div class="steps">
+          <div class="step"><b>①盲听做题</b>不暂停不回放，暴露问题</div>
+          <div class="step"><b>②逐句听写</b>同句最多重听 5 遍</div>
+          <div class="step"><b>③对照原文</b>标生词/连读/弱读/失爆</div>
+          <div class="step"><b>④跟读模仿</b>看原文读顺 3–5 遍</div>
+          <div class="step"><b>⑤错因记录</b>写入错题本</div>
+        </div>
+        <ul>
+          <li>W1–W2 四级真题听力 + VOA 慢速辨音；W3 切六级真题；W4–W7 死磕讲座（Section C）；W8–W9 保温不开新题。</li>
+          <li>信号词后必出考点：but / however / above all / according to / because / for example；讲座开头 30 秒必出主旨题。</li>
+          <li>某题没听清立刻蒙一个、放弃、跟下一题——一道讲座题 14.2 分，不值得赔上后面三道。</li>
+        </ul>
+      </div>
+
+      <!-- 阅读 -->
+      <div class="strat-card" style="border-top-color:#ea580c">
+        <h3>📖 阅读（优势项，不加练只控正确率）</h3>
+        <div class="src">目标：仔细阅读 ≥7/10、选词对 5–6 题 ｜ 详见 04-阅读专项.md</div>
+        <ul>
+          <li><b>做题顺序：仔细阅读 → 长篇匹配 → 选词填空</b>（保高性价比题）。</li>
+          <li><b>40 分钟时间红线：</b>12 min 收第一篇仔细阅读 → 25 min 两篇结束切匹配 → 37 min 匹配结束留 8 min 选词 → 40 min 到点立刻转翻译。</li>
+          <li>仔细阅读：先读题干划定位词 → 题文同序回原文 → 找同义替换（正确答案很少原词复现）。</li>
+          <li>复盘只精读错题所在段，不全文翻译；建"原文 / 正确选项 / 日期"三栏同义替换本。</li>
+          <li>常见陷阱：偷换概念 / 无中生有 / 过度推断 / 张冠李戴 / 绝对化选项（only、never、all 九成是干扰项）。</li>
+        </ul>
+      </div>
+
+      <!-- 写作 -->
+      <div class="strat-card" style="border-top-color:#b91c1c">
+        <h3>✍️ 写作（3 套模板兜底，目标 10–12 分档）</h3>
+        <div class="src">150–200 词，30 分钟，三段式 ｜ 详见 05-写作与翻译专项.md</div>
+        <ul>
+          <li><b>模板一：观点对比 / 利弊讨论型</b>（如"全球化下还要不要文化自信"）。</li>
+          <li><b>模板二：现象解释 / 问题解决型</b>（如"年轻人越来越脱离自然"）。</li>
+          <li><b>模板三：名言 / 观点评论型</b>（含给定开头句续写，2025.12 第三套、2026.6 第三套均为此型）。</li>
+          <li>训练节奏：W1–W3 背骨架+功能句输入 → W4–W7 周二仿写真题（写完用 AI 批改，只写不改等于白写）→ W8–W9 默写模板、跟"我是瑞斯拜"考前预测。</li>
+        </ul>
+      </div>
+
+      <!-- 翻译 -->
+      <div class="strat-card" style="border-top-color:#0f766e">
+        <h3>🌐 翻译（四步法 + 四类话题词 145 条）</h3>
+        <div class="src">约 180–200 汉字汉译英，建议 30 分钟 ｜ 详见 05-写作与翻译专项.md</div>
+        <ul>
+          <li><b>四步法：</b>①通读断句（切 3–5 个意群）→ ②找主干（谁+做什么先译出）→ ③处理修饰（定语后置从句/with 短语，无主句补 we/被动）→ ④回读检查时态/单复数/冠词。</li>
+          <li><b>四类话题词表（共 145 条）：</b>文化遗产类 40 + 科技工程类 35 + 社会经济类 35 + 传统美德类 35。</li>
+          <li>趋势：2026.6 三套翻译全部为科技/经济/社会发展类（无人机、农村电商、科技医疗）——对电子/计算机方向是重大利好，<b>科技工程类重点押</b>。</li>
+          <li>不会的词不许空着：用解释性翻译绕译（如 telemedicine 不会就写 "medical care provided through the Internet"）。</li>
+        </ul>
+      </div>
+
+      <!-- 单词 -->
+      <div class="strat-card" style="border-top-color:#0d9488;grid-column:1/-1">
+        <h3>📚 单词（每天 30 新词 × 49 天 ≈ 1470 + 间隔复习）</h3>
+        <div class="src">W1–W7 背新词、W8–W9 只复习；复习永远优先于新词 ｜ 详见 06-单词计划.md</div>
+        <ul>
+          <li><b>测算：</b>六级相对四级净增约 1000–1500 词，按 30 个/天 × 49 天 = 1470 个落在中间值；一天塞 50 个会让复习队列在第 4–5 天雪崩到 150+，宁可慢不可断。</li>
+          <li><b>听觉化是硬指标：</b>每个词先听发音跟读 2 遍（先不看拼写、再看着拼写各一遍）——把"视觉词汇"批量转成"听觉词汇"，与精听辨音同频。</li>
+          <li>APP 首选<b>不背单词</b>（免费额度高、原声例句服务听觉化）；备选<b>墨墨背单词</b>（抗遗忘算法最强，六级词书「六级词汇乱序版」4262 词，单词上限需付费 ¥8–88）。</li>
+          <li>精听精读遇到的生词收进欧路词典生词本，每周日清理一次；真题生词池预计 300–500 个，是 W8–W9 的主力复习材料。</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模考日程表 ============ -->
+<section id="mock">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>模考日程表</h2>
+      <p>6 套整套限时模考 + 1 次诊断半套 + 1 次分题型拆练；严格按 15:10 写作 → 15:40 听力 → 16:10 收答题卡 1 → 16:15 阅读翻译 → 17:25 节奏，听力不回放。</p>
+    </div>
+    <table class="mock">
+      <tr><th>日期</th><th>套卷</th><th>类型</th><th>说明</th></tr>
+      <tr><td>10/17（周六）</td><td>2020–2021 任选一套</td><td><span class="type-badge tb-half">诊断半套</span></td><td>只做听力+阅读约 70 min，严格不回放，记录基线分数（不评判）</td></tr>
+      <tr><td>11/07（周六）</td><td>T1 = 2022 年 12 月</td><td><span class="type-badge tb-full">整套</span></td><td>首次整套限时模考，走通流程 + 演练"边听边涂卡"，约 2.5 h</td></tr>
+      <tr><td>11/14（周六）</td><td>T2 = 2023 年 6 月</td><td><span class="type-badge tb-full">整套</span></td><td>估分 ≥ T1；讲座题正确率 ≥ 50%</td></tr>
+      <tr><td>11/21（周六）</td><td>T3 = 2023 年 12 月</td><td><span class="type-badge tb-full">整套</span></td><td>估分趋势 ≥ 480；写作 30 min 内能套模板写完 150–200 词</td></tr>
+      <tr><td>11/25–11/26（周中）</td><td>2024 年 12 月</td><td><span class="type-badge tb-split">分题型拆练</span></td><td>不整套模考：只做听力 section + 仔细阅读 2 篇（约 70 min），写译只对答案</td></tr>
+      <tr><td>11/28（周六）</td><td>T4 = 2024 年 6 月</td><td><span class="type-badge tb-full">整套</span></td><td>强化期收官；4 次模考估分趋势 ≥ 480、听力估分 ≥ 150</td></tr>
+      <tr><td>12/05（周六）</td><td>T5 = 2025 年 6 月</td><td><span class="type-badge tb-full">整套</span></td><td>15:00–17:30 按考试日作息，当作正式考试全流程演练</td></tr>
+      <tr><td>12/06（周日）</td><td>T6 = 2025 年 12 月（最新题）</td><td><span class="type-badge tb-full">整套</span></td><td>与 T5 背靠背训练耐力；最后一套，考后只对答案+标记错题</td></tr>
+    </table>
+    <div class="chart-note">
+      📝 一套 3 天消化法：Day1 精听错题段逐句听写 → Day2 精读阅读错题（定位句+同义替换）→ Day3 写译整理（范文句式摘抄+话题词归档）。时间不足可拆成"周六听力+阅读、周日写作+翻译"，宁可拆分走完，不要跳过整套。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 资料导航 ============ -->
+<section id="resource">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>资料导航</h2>
+      <p>调研日期 2026-10-12；有 URL 的照抄 07 文档真实地址，付费/免费已加标签；小红书等未核实项仅提示"APP 内搜索（见 07 文档）"。</p>
+    </div>
+    <div class="res-grid">
+
+      <div class="res-card">
+        <h4>📕 真题书（唯一刚性支出）</h4>
+        <div class="res-item">
+          <div class="ri-name">华研外语《六级真题》八书合一 <span class="tag tag-paid">约 ¥35–45</span></div>
+          <div class="ri-desc">本方案首推：基础薄弱（四级 500 以下）、解析详细；约 10 套含 2025.12 新题+2 预测。京东华研外语官方旗舰店/当当。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">《闪过六级真题》（原巨微逐句精解） <span class="tag tag-paid">约 ¥40–60</span></div>
+          <div class="ri-desc">若读长难句明显吃力、想要逐词逐句图解长难句选它；18 套（2023.12–2026.6）。真题书买一本即可，不要多套齐开。</div>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <h4>📱 背词 / 听力 / 词典 APP</h4>
+        <div class="res-item">
+          <div class="ri-name">不背单词 <span class="tag tag-free">基础免费</span></div>
+          <div class="ri-desc">主推背词 APP：真题语境原声例句直接服务"听觉化"。词书路径：APP 内「词书→考试→大学英语六级」（确切词书名请自行核实）。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">墨墨背单词 <span class="tag tag-free">核心免费</span><span class="tag tag-paid">上限 ¥8–88</span></div>
+          <div class="ri-desc">备选：抗遗忘算法最强；词书「六级词汇乱序版」4262 词已核实。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">每日英语听力 <span class="tag tag-free">部分免费</span><span class="tag tag-paid">VIP 终身 ¥298 非必需</span></div>
+          <div class="ri-desc">精听素材库：APP 内「英语考试→四级/六级」含真题/词汇/时文听写；泛听有 VOA 慢速/BBC 新闻。支持单句循环、8 档调速。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">欧路词典 <span class="tag tag-free">基础查词免费</span></div>
+          <div class="ri-desc">查词 + 生词本多端同步；精听精读生词点"收藏"即入生词本。</div>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <h4>📺 B 站 UP 主（免费视频为主力）</h4>
+        <div class="res-item">
+          <div class="ri-name">烤鸭TV（Zoey）</div>
+          <div class="ri-desc">听力短板首选：免费系列《简单粗暴能提分》。<a href="https://space.bilibili.com/491240131" target="_blank" rel="noopener">空间链接</a>。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">我是瑞斯拜</div>
+          <div class="ri-desc">写译模板+考前预测。<a href="https://space.bilibili.com/11021614" target="_blank" rel="noopener">空间链接</a>；代表作《26 我是瑞斯拜 六级作文预测》<a href="https://www.bilibili.com/video/BV1UsVG6DEjQ/" target="_blank" rel="noopener">BV1UsVG6DEjQ</a>。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">Roy大表哥</div>
+          <div class="ri-desc">六级大纲核心词、阅读同义替换；空间合集《半小时刷完真·六级核心高频词》作词书补充。<a href="https://space.bilibili.com/526367883" target="_blank" rel="noopener">空间链接</a>。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">小红书搜索策略 <span class="tag tag-free">APP 内搜索（见 07 文档）</span></div>
+          <div class="ri-desc">反爬严格、未核实具体笔记：在小红书 APP 内按"最热"搜「六级备考/六级听力/六级作文/六级翻译/闪过六级」等关键词。</div>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <h4>💻 GitHub 重点开源仓库（3 个）</h4>
+        <div class="res-item">
+          <div class="ri-name">Drhm1224/cet6-all-in-one ⭐</div>
+          <div class="ri-desc">单 HTML 离线：18 套真题（2023–2025）+交互答题+4000 词闪卡；<b>书没到时 W1 先用它顶替</b>。<a href="https://github.com/Drhm1224/cet6-all-in-one" target="_blank" rel="noopener">github.com/Drhm1224/cet6-all-in-one</a></div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">KyleBing/english-vocabulary ⭐</div>
+          <div class="ri-desc">四六级/考研/SAT 词库 txt/json（约 2054 star）；可导入 Anki 或打印词表。<a href="https://github.com/KyleBing/english-vocabulary" target="_blank" rel="noopener">github.com/KyleBing/english-vocabulary</a></div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">0609x/CET46-Resources ⭐</div>
+          <div class="ri-desc">2013–2026 历年真题文本（版权归教育部考试院，仅个人学习）。<a href="https://github.com/0609x/CET46-Resources" target="_blank" rel="noopener">github.com/0609x/CET46-Resources</a></div>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <h4>🎙 播客 / 泛听素材</h4>
+        <div class="res-item">
+          <div class="ri-name">BBC 6 Minute English <span class="tag tag-free">免费配文本</span></div>
+          <div class="ri-desc">约 6 分钟、A2–B1；W3 起每周 1 次精听（先盲听→看文本划生词连读→再听→跟读）。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">VOA Learning English（慢速）</div>
+          <div class="ri-desc">W1–W2 辨音伴餐；之后降为偶尔听。注意：原"60-Second Science"已于 2022 年 12 月停播，继任节目为 <b>Science Quickly</b>（W5 起泛听，科学话题贴近讲座题）。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">理工科兴趣素材（课余伴餐，不替代真题精听）</div>
+          <div class="ri-desc">
+            <a href="https://spectrum.ieee.org" target="_blank" rel="noopener">IEEE Spectrum</a> ·
+            <a href="https://www.technologyreview.com" target="_blank" rel="noopener">MIT Technology Review</a> ·
+            <a href="https://news.ycombinator.com" target="_blank" rel="noopener">Hacker News</a> ·
+            <a href="https://www.youtube.com/@Veritasium" target="_blank" rel="noopener">Veritasium</a> ·
+            <a href="https://www.youtube.com/@Kurzgesagt" target="_blank" rel="noopener">Kurzgesagt</a> ·
+            <a href="https://www.youtube.com/user/Computerphile" target="_blank" rel="noopener">Computerphile</a>（最贴专业，冲刺期再碰）
+          </div>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <h4>📰 公众号与官方渠道</h4>
+        <div class="res-item">
+          <div class="ri-name">公众号（微信内搜索）</div>
+          <div class="ri-desc">星火英语四六级 / 沪江英语四六级（hujiangcet）/ 中国日报双语新闻 / 21世纪英文报 / 新东方四六级；华研外语·巨微英语活跃度请自行核实。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">CET 考试主站</div>
+          <div class="ri-desc"><a href="https://cet.neea.edu.cn" target="_blank" rel="noopener">cet.neea.edu.cn</a>：考试介绍、大纲、样卷、公告（不提供历年真题下载）。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">报名 / 准考证打印</div>
+          <div class="ri-desc"><a href="http://cet-bm.neea.edu.cn" target="_blank" rel="noopener">cet-bm.neea.edu.cn</a>：<b>12 月 1 日起打印准考证</b>。</div>
+        </div>
+        <div class="res-item">
+          <div class="ri-name">本校教务处（考场须知）</div>
+          <div class="ri-desc">校园网内网系统 <b>FM 86.6MHz</b>；12 月须知以 11 月底最新通知为准。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 考前一周清单 ============ -->
+<section id="checklist">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>考前一周清单（12/01 起 → 12/12 考试）</h2>
+      <p>以下为纯视觉勾选样式，逐项核对；逐日要点已排入 W9 计划表。</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="font-size:15px;color:var(--teal-dark);margin-bottom:12px">🎒 12/11 晚装备袋（逐项打勾）</h3>
+        <ul class="checklist">
+          <li><b>准考证（2 份）</b>：12/1 起 cet-bm.neea.edu.cn 打印，W8 周二（12/01）已打，W9 再检查一次，多打 1 份放书包。</li>
+          <li><b>身份证 + 学生证</b>。</li>
+          <li><b>头戴式调频一体式耳机</b>（不可用收音机，频率 <b>FM 86.6MHz</b>）+ 新备用电池；12/04 已试搜过 FM 86.6。</li>
+          <li><b>2B 铅笔 2 支</b>（提前削好/涂卡笔）+ 黑色签字笔 2 支 + 橡皮。</li>
+          <li><b>机械手表</b>（无存储/通讯功能）。</li>
+          <li class="danger">🚫 严禁带入：手机、智能手表、平板电脑；考试结束前不得离场。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px;color:var(--teal-dark);margin-bottom:12px">📅 12/07–12/12 每日要点</h3>
+        <div class="day-plan">
+          <div class="dp"><b>12/07 周一</b>T5 听力错段精听（保温量减半）；单词滚动复习；模板默写 1 套。</div>
+          <div class="dp"><b>12/08 周二</b>T6 听力错段精听保温；T5 阅读精读错题。</div>
+          <div class="dp"><b>12/09 周三</b>T5/T6 写译整理收尾（范文+四类话题词最后一遍）。</div>
+          <div class="dp"><b>12/10 周四</b>错题本总复盘；模板默写 2 遍；翻译长句拆分练习 1 段。</div>
+          <div class="dp"><b>12/11 周五</b>盲听 2 段保温+过一遍模板；清点装备袋；<b>22:30 前睡觉</b>，不再碰新题。</div>
+          <div class="dp"><b>12/12 周六</b>14:20 入场；15:00–17:25 笔试；沉着答题，听力边听边涂；出考场不对答案。</div>
+        </div>
+        <div class="weekend-note" style="margin-top:14px">
+          <b>作息与饮食：</b>W9 起 23:30 前睡，每天下午 15:00–17:30 保持清醒兴奋；早餐午餐吃平时常吃的清淡食物、七分饱；考前两天不吃生冷/陌生食物。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div style="font-weight:700;margin-bottom:6px">大学英语六级 · 9 周备考看板</div>
+      <div>数据核实日期：2026-10-12 ｜ 资源均经多平台实际核查 ｜ 待核实项见 07-资料与工具清单.md 第十三节。</div>
+    </div>
+    <div style="max-width:420px">
+      详细内容见同文件夹 Markdown 文档，从 <b>README.md</b> 开始阅读：01 考情分析 → 02 总体规划 → 03–06 各专项 → 07 资料清单 → 08 打卡复盘。
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // 倒计时：目标 2026-12-12 15:00（北京时间，本地时区按浏览器解析）
+  var target = new Date(2026, 11, 12, 15, 0, 0); // 月份 0-based: 12 月 = 11
+  var dEl = document.getElementById('cdDays');
+  var rEl = document.getElementById('cdRest');
+  function pad(n){return n<10 ? '0'+n : ''+n;}
+  function tick(){
+    var now = new Date();
+    var diff = target - now;
+    if (diff <= 0) {
+      dEl.textContent = '0';
+      rEl.textContent = '考试已开始 / 已结束，祝顺利！';
+      return;
+    }
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins = Math.floor((diff % 3600000) / 60000);
+    var secs = Math.floor((diff % 60000) / 1000);
+    dEl.textContent = days;
+    rEl.textContent = '剩余 ' + pad(hours) + ' 时 ' + pad(mins) + ' 分 ' + pad(secs) + ' 秒';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>

@@ -40,6 +40,15 @@ DIRMAP = {
     "17_跨学科学习资源库": "17-跨学科学习资源库",
     "99_课程作业与临时": "99-课程作业与临时",
     "三设备联动指南": "三设备联动指南",
+    # 2026-10-31 新增：手机版构建器中的特殊顶层板块
+    "Linux学习指南": "18-Linux学习指南",
+    "六级备考规划（2026年12月）": "19-六级备考",
+    "闲暇时光精神食粮指南": "20-闲暇时光精神食粮",
+    "AI交互能力提升指南": "21-AI交互能力提升",
+    "hermes-agent-guide": "22-Hermes-Agent指南",
+    "个人智能体使用指南-Today与GrokBot": "23-个人智能体指南",
+    "精华层": "24-精华层",
+    "看见世界-活法与通识地图": "25-看见世界",
 }
 SECTION_DIRS = sorted(set(DIRMAP.values()) | {"00-总索引"})
 OLD_SECTION_DIRS = ["01-电脑与工具链", "02-职业方向规划", "03-竞赛与就业", "04-视野简报",
@@ -64,6 +73,20 @@ def neutralize_html(t):
         p = re.sub(r"\\</([a-zA-Z])", r"</\1", p)      # 先归一化已转义的闭合标签
         p = re.sub(r"<(/?[a-zA-Z][^<>]*)>", lambda m: "\\<" + m.group(1) + ">", p, flags=re.S)
         parts[i] = p
+    return "".join(parts)
+
+# ---------------- Vue mustache 中和 ----------------
+# 只有围栏代码块（```）会被 VitePress 自动加 v-pre；行内反引号 code 无 v-pre，不能跳过
+BLOCK_FENCE_RE = re.compile(r"(```.*?```)", re.S)
+
+def neutralize_mustache(t):
+    """{{ ... }} 会被 Vue 当作插值表达式编译（HANDOFF 硬规则 2）。
+    围栏代码块有 v-pre 保护保持原样（奇数段）；其余文本——含行内反引号 code——统一用
+    HTML 数字实体编码花括号：markdown 原样保留、Vue 看不到字面 {{、浏览器最终仍显示 {{。"""
+    parts = BLOCK_FENCE_RE.split(t)
+    for i in range(0, len(parts), 2):
+        parts[i] = (parts[i].replace("{{", "&#123;&#123;")
+                            .replace("}}", "&#125;&#125;"))
     return "".join(parts)
 
 # ---------------- 脱敏 ----------------
@@ -93,6 +116,9 @@ def doc_target(src, ext=None):
     top = src.split("/")[0]
     if top == "README.md":
         return "00-总索引/index.md"
+    if "/" not in src and top.lower().endswith((".html", ".htm")):
+        # 根目录散页（考公热、三平台补充等）归入总索引
+        return "00-总索引/" + (top[:-4] + ".html" if top.lower().endswith(".htm") else top)
     if top not in DIRMAP:
         return None
     rest = src[len(top) + 1:]
@@ -195,7 +221,7 @@ def rewrite_routes(t):
 def cell_escape(v):
     s = "" if v is None else str(v)
     s = desensitize(s).replace("|", "\\|").replace("\r", " ").replace("\n", " ")
-    return neutralize_html(s)
+    return neutralize_mustache(neutralize_html(s))
 
 def md_table(rows):
     rows = [r for r in rows if r]
@@ -228,6 +254,7 @@ def render_md(x):
         t = t[m.end():]
     t = rewrite_routes(desensitize(t))
     t = neutralize_html(t)
+    t = neutralize_mustache(t)
     if not re.match(r"\s*#\s", t):              # 手机版删过与标题重复的 H1，这里补回
         t = "# " + sanitize_name(x["title"]) + "\n\n" + t.lstrip("\n")
     return fm_block(x["title"]) + t.strip() + "\n"
@@ -273,6 +300,8 @@ for rel, x in targets.items():
         m = FM_RE.match(body)
         if m:
             body = body[m.end():]
+        body = neutralize_html(body)
+        body = neutralize_mustache(body)
         content = fm_block(title) + body.strip() + "\n"
     else:
         typ = x["type"]

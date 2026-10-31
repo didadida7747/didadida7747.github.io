@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闲暇时光精神食粮指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Search */
+        .search-container {
+            max-width: 600px;
+            margin: -30px auto 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 24px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--text-light);
+        }
+
+        /* Tabs */
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: none;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: white;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Content */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .card-badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .badge-free {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-paid {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-tech {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            background: var(--bg);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Category section */
+        .category-section {
+            display: none;
+        }
+
+        .category-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .no-results .emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 0.95rem;
+            }
+            .stats {
+                gap: 20px;
+            }
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎧 闲暇时光精神食粮指南</h1>
+        <p>一份为大学生精心整理的闲暇时间优质内容推荐，覆盖播客、B站、TED、有声书、纪录片、学习平台、开源资源等多个领域</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">大分类</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">精选推荐</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">平台覆盖</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-box">
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input type="text" id="searchInput" placeholder="搜索推荐内容，如：播客、Python、纪录片...">
+        </div>
+    </div>
+
+    <div class="tabs-container">
+        <div class="tabs" id="tabs">
+            <div class="tab active" data-category="all">📚 全部</div>
+            <div class="tab" data-category="podcast">🎧 播客</div>
+            <div class="tab" data-category="bilibili">📺 B站UP主</div>
+            <div class="tab" data-category="ted">🎤 TED演讲</div>
+            <div class="tab" data-category="audiobook">📖 有声书</div>
+            <div class="tab" data-category="documentary">🎬 纪录片</div>
+            <div class="tab" data-category="learning">💻 学习平台</div>
+            <div class="tab" data-category="github">🐙 GitHub资源</div>
+            <div class="tab" data-category="activities">✨ 其他活动</div>
+        </div>
+    </div>
+
+    <div class="content" id="content">
+        <!-- 内容由JS动态生成 -->
+    </div>
+
+    <footer class="footer">
+        <p>闲暇时光精神食粮指南 | 整理时间：2026年10月</p>
+        <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.7;">基于多平台公开资料整理，内容可能随时间变化</p>
+    </footer>
+
+    <script>
+        const data = {
+            podcast: [
+                { title: '硅谷早知道', desc: '聚焦硅谷科技动态、创业趋势和行业洞察，主播徐涛深度访谈', tags: ['科技商业', '小宇宙'], badge: 'free', badgeText: '免费' },
+                { title: '忽左忽右', desc: '程衍樑主持，涉猎科技、历史、人文、社会等广泛话题，嘉宾质量高', tags: ['人文深度', '小宇宙'], badge: 'free', badgeText: '免费' },
+                { title: '故事FM', desc: '讲述真实人生故事，每期一个主人公的亲身经历，感人至深', tags: ['人文故事', '小宇宙'], badge: 'free', badgeText: '免费' },
+                { title: '随机波动', desc: '三位女性媒体人主持，讨论文化、社会、性别、政治等话题，观点犀利', tags: ['女性成长', '小宇宙'], badge: 'free', badgeText: '免费' },
+                { title: '岩中花述', desc: '鲁豫主持的女性深度专访，无说教，真诚分享过往经历', tags: ['女性成长', '小宇宙'], badge: 'free', badgeText: '免费' },
+                { title: '知行小酒馆', desc: '投资与生活话题，有知有行出品，单集入选2025小宇宙年度特别推荐', tags: ['财经投资', '小宇宙'], badge: 'free', badgeText: '免费' },
+                { title: 'Hidden Brain', desc: 'NPR出品，用行为科学解释日常生活背后的复杂心理，生活化易懂', tags: ['心理学', '英文', 'NPR'], badge: 'free', badgeText: '免费' },
+                { title: 'Radiolab', desc: '科学故事的黄金标准，将复杂概念变成广播艺术，声音设计极佳', tags: ['科学故事', '英文', 'NPR'], badge: 'free', badgeText: '免费' },
+                { title: 'Planet Money', desc: 'NPR出品，用生动有趣的方式解释全球经济，把复杂经济概念讲得通俗易懂', tags: ['经济科普', '英文', 'NPR'], badge: 'free', badgeText: '免费' },
+                { title: 'TED Radio Hour', desc: 'TED官方播客，每期围绕一个主题整合多个TED演讲，适合没时间看视频时听', tags: ['综合', '英文', 'TED'], badge: 'free', badgeText: '免费' },
+                { title: 'Deep Questions with Cal Newport', desc: '《深度工作》作者探讨在数字干扰时代如何保持专注、做有意义的工作', tags: ['科技/深度工作', '英文'], badge: 'free', badgeText: '免费' },
+                { title: '无尽藏', desc: '聚焦生活哲学，探讨人性、文化、艺术，达成心性成长', tags: ['生活哲学', '喜马拉雅'], badge: 'free', badgeText: '免费' },
+            ],
+            bilibili: [
+                { title: '罗翔说刑法', desc: '中国政法大学刑法学教授，连续6年百大UP主，3200万粉丝，通俗幽默解析刑法', tags: ['法律', '3200万粉'], badge: 'free', badgeText: '免费' },
+                { title: '老师好我叫何同学', desc: '数码科技领域顶流，2025百大UP主，代表作《5G到底有多快》，曾对话库克', tags: ['科技数码', '千万粉'], badge: 'free', badgeText: '免费' },
+                { title: '无穷小亮的科普日常', desc: '《中国国家地理》融媒体中心主任，科普界顶流，标志性"藏狐"表情包', tags: ['自然科普', '1000万+粉'], badge: 'free', badgeText: '免费' },
+                { title: '3Blue1Brown', desc: '数学可视化大神，用动画直观解释线性代数、微积分、神经网络等数学概念', tags: ['数学/计算机', '百万粉'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '稚晖君', desc: '电子科技大学本硕，华为天才少年，AI架构师，热爱硬件开发，B站硬核UP主', tags: ['硬件/嵌入式', '百万粉'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '翁恺（浙江大学）', desc: '浙大计算机教授，C语言入门首选，讲得清晰透彻', tags: ['C语言', '编程入门'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '侯捷', desc: '台湾资深专家，《STL源码剖析》作者，"左手程序右手诗"，C++领域泰斗', tags: ['C++', '编程进阶'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '跟着李沐学AI', desc: '拆解AI论文并复刻代码，用中文把复杂模型讲得通透易懂', tags: ['AI/深度学习', '机器学习'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '五道口纳什', desc: '把Transformer、微调、推理优化讲得明明白白，带代码小demo实操', tags: ['AI/LLM', '大模型'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '历史调研室', desc: '从历史发展出发讲解标志性人物波澜壮阔的一生，文案和画面都很精彩', tags: ['历史', '人物传记'], badge: 'free', badgeText: '免费' },
+                { title: '浪花姜', desc: '华夏历史"说书人"，300多万粉丝，253分钟视频介绍195件文物', tags: ['历史', '文物科普'], badge: 'free', badgeText: '免费' },
+                { title: '风雪夜灯', desc: '95后工科男，9小时《战国史》视频观看破亿，超长"脱口秀"比电视剧还精彩', tags: ['历史', '春秋战国'], badge: 'free', badgeText: '免费' },
+                { title: '刘擎教授', desc: '华东师范大学教授，代表作《刘擎西方现代思想讲义》，西方哲学入门', tags: ['哲学', '西方思想'], badge: 'free', badgeText: '免费' },
+                { title: '木鱼水心', desc: '影视解说，1450万粉丝，连续8年百大UP主，深度影视解读/文学', tags: ['影视/人文', '1450万粉'], badge: 'free', badgeText: '免费' },
+                { title: '巫师财经', desc: '财经分析，B站知识区早期头部UP主，商业分析深度', tags: ['财经', '商业分析'], badge: 'free', badgeText: '免费' },
+                { title: '硬核的半佛仙人', desc: '用幽默方式讲财经、商业、互联网，"风控大师"，轻松涨知识', tags: ['财经/互联网', '幽默'], badge: 'free', badgeText: '免费' },
+            ],
+            ted: [
+                { title: 'Inside the mind of the master procrastinator', desc: 'Tim Urban，1.17亿+播放，用幽默方式剖析拖延症，"即时满足猴子"和"理性决策者"', tags: ['拖延症', '经典必看'], badge: 'free', badgeText: '免费' },
+                { title: 'Do schools kill creativity?', desc: 'Sir Ken Robinson，9700万+播放，TED史上最受欢迎，现代教育体系在扼杀创造力', tags: ['教育/创造力', '经典必看'], badge: 'free', badgeText: '免费' },
+                { title: 'How great leaders inspire action', desc: 'Simon Sinek，8800万+播放，黄金圈理论：Why → How → What', tags: ['领导力', '经典必看'], badge: 'free', badgeText: '免费' },
+                { title: 'The power of vulnerability', desc: 'Brené Brown，6000万+播放，脆弱不是软弱，而是勇气的源泉', tags: ['心理学', '经典必看'], badge: 'free', badgeText: '免费' },
+                { title: 'Grit: The power of passion and perseverance', desc: 'Angela Duckworth，成功的关键不是天赋，而是"坚毅"——对长期目标的热情和坚持', tags: ['心理学/成功', '自我提升'], badge: 'free', badgeText: '免费' },
+                { title: 'The power of introverts', desc: 'Susan Cain，内向不是缺陷，而是一种优势，世界需要内向者的深度思考', tags: ['心理学', '内向者'], badge: 'free', badgeText: '免费' },
+                { title: 'The rise of AI through deep learning', desc: 'Yoshua Bengio，图灵奖得主，解释机器如何从数据中学习表征，深度学习的崛起', tags: ['AI/深度学习', '科技'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'What if AI just works?', desc: 'Juergen Schmidhuber，AI先驱，预测2042年AI可能达到超人水平', tags: ['AI/未来', '科技'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'Try something new for 30 days', desc: 'Matt Cutts，用30天尝试新事物，小改变能积累大成果', tags: ['习惯/改变', '自我提升'], badge: 'free', badgeText: '免费' },
+                { title: 'What makes a good life?', desc: 'Robert Waldinger，哈佛75年研究结论：好的人际关系让我们更快乐、更健康', tags: ['幸福/人生', '经典必看'], badge: 'free', badgeText: '免费' },
+            ],
+            audiobook: [
+                { title: '明朝那些事儿', desc: '当年明月著，王更新播讲，15.46亿播放，用幽默风趣的笔法讲述明朝三百年历史', tags: ['历史', '15.46亿播放'], badge: 'partial', badgeText: '部分免费' },
+                { title: '平凡的世界', desc: '路遥代表作，杨晨、张震双播，茅盾文学奖获奖作品，改革开放时代的奋斗故事', tags: ['文学经典', '双播'], badge: 'partial', badgeText: '部分免费' },
+                { title: '哈利·波特1-7部全集', desc: 'J.K.罗琳原著，光合积木专业配音团队制作，魔法世界的听觉盛宴', tags: ['文学/奇幻', '多人有声剧'], badge: 'partial', badgeText: '部分免费' },
+                { title: '诡秘之主', desc: '爱潜水的乌贼著，8082演播把群像感完全塑造出来，"打开了新世界的大门"', tags: ['小说/网文', '多人有声剧'], badge: 'partial', badgeText: '部分免费' },
+                { title: '神秘复苏', desc: '佛前献花著，北冥有声，3.1亿播放，现代灵异小说天花板，三条铁律构筑恐怖世界观', tags: ['小说/灵异', '3.1亿播放'], badge: 'partial', badgeText: '部分免费' },
+                { title: '一听就上瘾的中国通史', desc: '茂桐笙花文化，2.26亿播放，历史脉络大梳理，中华五千年全方位梳理', tags: ['历史', '2.26亿播放'], badge: 'partial', badgeText: '部分免费' },
+                { title: '红楼梦精品有声剧', desc: '上海电影译制片厂制作，全球首部《红楼梦》精品有声剧，上线收听量达1.1亿次', tags: ['文学经典', '上译厂'], badge: 'paid', badgeText: '付费' },
+                { title: '长安小饭馆', desc: '穿成罪臣之女，开饭馆做美食，又香又甜，人间烟火，听的代入感十足，超治愈下饭', tags: ['治愈/美食', '言情'], badge: 'partial', badgeText: '部分免费' },
+            ],
+            documentary: [
+                { title: 'Our Planet（我们的星球）', desc: 'David Attenborough解说，历时4年拍摄横跨50国，震撼摄影+气候危机，自然纪录片天花板', tags: ['自然生态', 'Netflix'], badge: 'paid', badgeText: '付费' },
+                { title: '第三极', desc: '首部全面反映青藏高原人与自然和谐相处的纪录片，近40个故事讲述青藏之美', tags: ['自然/人文', '央视/B站'], badge: 'free', badgeText: '免费' },
+                { title: 'AI中国（第一季）', desc: '2025年大型系列纪录片，人形机器人跑马拉松、脑机接口、AI为偏远海岛老人送温暖', tags: ['科技/AI', '新华社'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '如何找到图灵', desc: '2025年央视出品，普及信息学与AI，以ACG视觉体系（动画、漫画、游戏）解构科学硬核知识', tags: ['科技/AI', '央视'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '思考之弈（The Thinking Game）', desc: '豆瓣8.7分，讲述一群"计算机科学疯子"如何破解AI，YouTube免费发布', tags: ['科技/AI', 'YouTube免费'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'AlphaGo', desc: '讲述DeepMind的AlphaGo如何战胜李世石，AI里程碑事件的幕后故事', tags: ['科技/AI', 'YouTube/Prime'], badge: 'tech', badgeText: '本校推荐' },
+                { title: '互联网时代', desc: '央视大型纪录片，"互联网之父"首度齐聚荧屏，讲述互联网从诞生到连接所有人的历程', tags: ['科技/互联网', '央视'], badge: 'free', badgeText: '免费' },
+                { title: 'The Social Dilemma', desc: '前科技公司员工揭露社交媒体如何设计来操纵用户注意力，算法如何影响社会', tags: ['科技/社会', 'Netflix'], badge: 'paid', badgeText: '付费' },
+                { title: '克拉克森的农场', desc: '开着兰博基尼拖拉机种地的亿万富豪，经营农场过程中的各种搞笑遭遇，打工人必看', tags: ['生活/趣味', 'Amazon Prime'], badge: 'paid', badgeText: '付费' },
+                { title: '人生果实', desc: '日本一对老年夫妇的田园生活，"孜孜不倦，不紧不慢"，治愈神作', tags: ['生活/治愈', 'B站'], badge: 'free', badgeText: '免费' },
+                { title: '看见皮洛', desc: '阿来担任文学顾问，聚焦青藏高原史前考古的科普纪录片，考古科普良心制作', tags: ['人文历史', '央视'], badge: 'free', badgeText: '免费' },
+                { title: '河西走廊', desc: '丝绸之路的黄金通道，历史+风景+音乐，雅尼配乐，B站经典', tags: ['人文历史', 'B站/央视'], badge: 'free', badgeText: '免费' },
+            ],
+            learning: [
+                { title: '国家高等教育智慧教育平台', desc: '教育部官方，上万本985/211教授课程免费，Python、C语言、AI等硬核技术系统课', tags: ['MOOC', '官方免费'], badge: 'free', badgeText: '免费' },
+                { title: '中国大学MOOC', desc: '国内最大MOOC平台，北大、清华、浙大等高校课程，有认证证书', tags: ['MOOC', '高校课程'], badge: 'partial', badgeText: '部分免费' },
+                { title: 'Coursera', desc: '与325+顶尖大学和公司合作（耶鲁、斯坦福、Google、IBM），课程质量最高', tags: ['国际MOOC', '证书'], badge: 'partial', badgeText: '部分免费' },
+                { title: 'Khan Academy（可汗学院）', desc: '完全免费，数学、科学、经济等基础学科，讲解清晰，适合打基础', tags: ['国际MOOC', '免费'], badge: 'free', badgeText: '免费' },
+                { title: '多邻国（Duolingo）', desc: '游戏化学习，支持几十种语言，每天几分钟，轻松坚持，免费版够用', tags: ['语言学习', 'APP'], badge: 'free', badgeText: '免费' },
+                { title: 'Brilliant', desc: '互动式STEM学习，数学、科学、计算机科学，用解题代替看视频，培养直觉', tags: ['STEM/思维', 'APP'], badge: 'partial', badgeText: '部分免费' },
+                { title: 'Codecademy', desc: '交互式编程学习，边写代码边学，适合编程入门', tags: ['编程入门', 'APP'], badge: 'partial', badgeText: '部分免费' },
+                { title: '得到', desc: '知识付费平台，精选好书解读、课程，罗振宇出品，商业/认知类为主', tags: ['知识付费', 'APP'], badge: 'paid', badgeText: '付费' },
+                { title: '微信读书', desc: '电子书+有声书，书库丰富，阅读时长可换书币，性价比高', tags: ['阅读/听书', 'APP'], badge: 'partial', badgeText: '部分免费' },
+                { title: 'B站（学习区）', desc: '免费课程最全，大学课程、技能教程应有尽有，搜索"大学+课程名"即可', tags: ['免费学习', '视频'], badge: 'free', badgeText: '免费' },
+            ],
+            github: [
+                { title: 'freeCodeCamp', desc: '380k+ Star，免费编程课程，从Web基础到全栈开发，通过项目学习，非盈利组织', tags: ['编程学习', '380k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'roadmap.sh', desc: '280k+ Star，开发者学习路线图，前端、后端、DevOps、AI等，交互式路线', tags: ['学习路线', '280k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'Hello 算法', desc: '126k+ Star，动画图解算法书，500多幅SVG动画，14章知识点，支持14种编程语言', tags: ['算法', '126k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'CS自学指南（北大）', desc: '150k+ Star，北京大学学生整理的计算机自学指南，从入门到进阶，涵盖CS核心课程，中文', tags: ['计算机自学', '150k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'free-programming-books', desc: '350k+ Star，免费编程书籍索引，支持几十种语言，涵盖所有编程语言和技术领域', tags: ['免费书籍', '350k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'build-your-own-x', desc: '280k+ Star，从零构建你自己的X：编辑器、操作系统、数据库、区块链等', tags: ['项目实战', '280k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'project-based-learning', desc: '180k+ Star，项目驱动学习列表，按编程语言分类，每个项目都有详细教程', tags: ['项目实战', '180k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'the-book-of-secret-knowledge', desc: '200k+ Star，灵感清单/手册，包含安全、网络、编程、Linux等各种知识和工具', tags: ['知识合集', '200k+ Star'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'hacker-roadmap', desc: '社区驱动的网络安全和道德黑客学习路线，按顺序组织复杂的安全概念模块', tags: ['网络安全', '学习路线'], badge: 'tech', badgeText: '本校推荐' },
+                { title: 'HelloGitHub', desc: '发现和分享有趣、入门级开源项目的平台，每月更新月刊，让你找到编程的快乐', tags: ['有趣项目', '月刊'], badge: 'free', badgeText: '免费' },
+            ],
+            activities: [
+                { title: '散步+播客组合', desc: '最推荐的组合，锻炼身体+涨知识，不占额外时间。通勤听科技，散步听故事', tags: ['生活方式', '最推荐'], badge: 'free', badgeText: '免费' },
+                { title: '水彩绘画入门', desc: 'B站/抖音：wrr阿绕（新手避坑）、柴崎爷爷（日式治愈），从基础技法开始', tags: ['兴趣技能', '绘画'], badge: 'free', badgeText: '免费' },
+                { title: '数字绘画/Procreate', desc: 'iPad+Procreate，B站看荒谬诗行（插画欣赏）、伊吹五月（古风插画）提升审美', tags: ['兴趣技能', '绘画'], badge: 'partial', badgeText: '部分付费' },
+                { title: '钢琴/吉他入门', desc: 'B站搜索"钢琴入门"、"吉他入门"，从基础开始，每天15分钟坚持', tags: ['兴趣技能', '音乐'], badge: 'free', badgeText: '免费' },
+                { title: '视频剪辑学习', desc: 'B站：欧鹰李老师（PR系统教程）、百万剪辑师（剪辑思路），从剪映入门', tags: ['技能学习', '剪辑'], badge: 'free', badgeText: '免费' },
+                { title: '拼乐高/拼图', desc: '专注解压，成品有成就感，1000片拼图适合周末静心，完成后可装裱', tags: ['手工/DIY', '解压'], badge: 'partial', badgeText: '部分付费' },
+                { title: '宿舍拉伸/瑜伽', desc: 'B站搜索"宿舍瑜伽"、"睡前拉伸"，不需要场地，睡前15分钟放松', tags: ['运动/健康', '宿舍党'], badge: 'free', badgeText: '免费' },
+                { title: '西安博物馆探索', desc: '陕西历史博物馆、西安博物院、碑林博物馆，很多免费，提前预约，周末好去处', tags: ['本地活动', '西安'], badge: 'free', badgeText: '免费' },
+                { title: '秦岭徒步爬山', desc: '秦岭七十二峪，周末徒步爬山，锻炼身体，亲近自然，西安周边好去处', tags: ['本地活动', '西安'], badge: 'free', badgeText: '免费' },
+                { title: '手冲咖啡/烘焙', desc: 'B站搜索"手冲咖啡"、"烘焙入门"，从基础开始，享受慢生活', tags: ['美食/生活', '治愈'], badge: 'partial', badgeText: '部分付费' },
+            ]
+        };
+
+        const categoryNames = {
+            all: '📚 全部推荐',
+            podcast: '🎧 播客推荐',
+            bilibili: '📺 B站知识区UP主',
+            ted: '🎤 TED演讲推荐',
+            audiobook: '📖 有声书推荐',
+            documentary: '🎬 纪录片推荐',
+            learning: '💻 学习平台与APP',
+            github: '🐙 GitHub开源资源',
+            activities: '✨ 其他闲暇活动'
+        };
+
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        function renderCards(items) {
+            if (items.length === 0) {
+                return `<div class="no-results">
+                    <div class="emoji">🔍</div>
+                    <h3>没有找到相关内容</h3>
+                    <p>试试其他关键词吧</p>
+                </div>`;
+            }
+            return `<div class="cards-grid">` + items.map(item => `
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">${item.title}</div>
+                        <span class="card-badge badge-${item.badge}">${item.badgeText}</span>
+                    </div>
+                    <div class="card-desc">${item.desc}</div>
+                    <div class="card-meta">
+                        ${item.tags.map(tag => `<span class="meta-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('') + `</div>`;
+        }
+
+        function render() {
+            const content = document.getElementById('content');
+            let items = [];
+
+            if (currentCategory === 'all') {
+                Object.keys(data).forEach(key => {
+                    items = items.concat(data[key].map(item => ({...item, category: key})));
+                });
+            } else {
+                items = data[currentCategory] || [];
+            }
+
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                items = items.filter(item =>
+                    item.title.toLowerCase().includes(query) ||
+                    item.desc.toLowerCase().includes(query) ||
+                    item.tags.some(tag => tag.toLowerCase().includes(query))
+                );
+            }
+
+            if (currentCategory === 'all' && !searchQuery) {
+                let html = '';
+                Object.keys(data).forEach(key => {
+                    html += `<div class="section-title"><span class="icon">${categoryNames[key].split(' ')[0]}</span> ${categoryNames[key].split(' ').slice(1).join(' ')}</div>`;
+                    html += renderCards(data[key]);
+                });
+                content.innerHTML = html;
+            } else {
+                content.innerHTML = `<div class="section-title"><span class="icon">${categoryNames[currentCategory].split(' ')[0]}</span> ${categoryNames[currentCategory].split(' ').slice(1).join(' ')} ${searchQuery ? `- 搜索"${searchQuery}"` : ''}</div>` + renderCards(items);
+            }
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentCategory = tab.dataset.category;
+                render();
+            });
+        });
+
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim();
+            render();
+        });
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>

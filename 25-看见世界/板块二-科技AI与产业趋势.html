@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>板块二 科技、AI 与产业趋势 — 看见世界</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2320302E'/%3E%3Cpath d='M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z' fill='%238A5A2B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F5F1E6; --paper-deep:#ECE5D3; --ink:#20302E; --soft:#4F5A56;
+  --line:#D8D0BD; --bronze:#8A5A2B; --teal:#2F6E63; --vermilion:#C94F36;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ===== 顶部导航 ===== */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,241,230,.94);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:18px;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:18px;white-space:nowrap}
+.brand svg{flex:none}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto}
+.nav a{font-size:13.5px;color:var(--soft);padding:7px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink)}
+.nav a.active{color:var(--bronze);border-bottom-color:var(--bronze)}
+@media (max-width:767px){
+  .topbar-inner{gap:10px;height:54px}
+  .brand{font-size:16px}
+  .nav a{font-size:12.5px;padding:7px 7px}
+}
+
+/* ===== 板块头 ===== */
+.section-head{padding:54px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;color:var(--bronze);letter-spacing:.18em;font-weight:500}
+.section-head h1{font-family:var(--serif);font-size:34px;font-weight:700;margin:12px 0 14px;line-height:1.3}
+.section-head p{max-width:680px;color:var(--soft);font-size:15.5px}
+.section-meta{margin-top:18px;font-size:13px;color:var(--soft)}
+.section-meta b{color:var(--bronze);font-weight:700}
+
+/* ===== 主体布局 ===== */
+.layout{display:grid;grid-template-columns:1fr;gap:0;padding:30px 0 60px}
+@media (min-width:900px){
+  .layout{grid-template-columns:220px minmax(0,1fr);gap:46px}
+}
+.toc{font-size:13.5px}
+.toc-box{position:static}
+@media (min-width:900px){.toc-box{position:sticky;top:80px;max-height:calc(100vh - 100px);overflow:auto}}
+.toc-title{font-family:var(--serif);font-weight:700;font-size:14px;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:6px}
+.toc ol{list-style:none}
+.toc li a{display:block;padding:6px 0;color:var(--soft);border-bottom:1px solid rgba(216,208,189,.55);line-height:1.45}
+.toc li a:hover{color:var(--bronze)}
+.toc li i{font-style:normal;color:var(--bronze);margin-right:7px;font-family:var(--serif)}
+details.toc-mobile{margin:22px 0 0;border:1px solid var(--line);border-radius:3px;background:var(--paper-deep)}
+details.toc-mobile summary{padding:12px 16px;font-weight:500;cursor:pointer;list-style:none}
+details.toc-mobile summary::-webkit-details-marker{display:none}
+details.toc-mobile ol{padding:4px 16px 14px}
+@media (min-width:900px){details.toc-mobile{display:none}}
+@media (max-width:899px){.toc{display:none}}
+
+/* ===== 主题文章 ===== */
+.topic{padding:38px 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
+.topic:last-child{border-bottom:none}
+.topic-no{font-family:var(--serif);color:var(--bronze);font-size:14px;letter-spacing:.12em}
+.topic h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:7px 0 18px;line-height:1.4}
+.block-label{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--bronze);margin:24px 0 10px}
+.block-label::after{content:"";height:1px;background:var(--line);flex:1}
+.topic p{margin-bottom:10px}
+.topic p:last-child{margin-bottom:0}
+.person{background:var(--paper-deep);padding:16px 18px;margin:12px 0;border-radius:3px}
+.person-tag{font-size:12px;color:var(--teal);font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.person p{font-size:14.5px}
+.person .trade{display:block;margin-top:7px;font-size:13.5px;color:var(--soft)}
+.person .trade b{color:var(--vermilion);font-weight:700}
+.cognition{list-style:none}
+.cognition li{position:relative;padding:7px 0 7px 22px;border-bottom:1px solid rgba(216,208,189,.5);font-size:15px}
+.cognition li:last-child{border-bottom:none}
+.cognition li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;background:var(--bronze);transform:rotate(45deg)}
+.extend{list-style:none}
+.extend li{padding:8px 0;border-bottom:1px solid rgba(216,208,189,.5);font-size:14.5px;display:flex;gap:10px;align-items:baseline}
+.extend li:last-child{border-bottom:none}
+.tag{flex:none;font-size:11.5px;background:var(--ink);color:var(--paper);padding:2px 8px;border-radius:2px;letter-spacing:.05em}
+.tag.book{background:var(--bronze)} .tag.film{background:var(--teal)} .tag.web{background:#5C6B66} .tag.man{background:var(--vermilion)}
+
+/* ===== 底部翻页 ===== */
+.pager{display:grid;grid-template-columns:1fr;gap:12px;padding:34px 0 10px;border-top:1px solid var(--line);margin-top:10px}
+@media (min-width:640px){.pager{grid-template-columns:1fr 1fr}}
+.pager a{border:1px solid var(--line);padding:14px 16px;border-radius:3px;font-size:14px}
+.pager a:hover{border-color:var(--bronze)}
+.pager .dir{display:block;font-size:12px;color:var(--bronze);margin-bottom:3px}
+.pager .next{text-align:right}
+footer.site-foot{border-top:1px solid var(--line);padding:24px 0 40px;font-size:12.5px;color:var(--soft)}
+.back-top{position:fixed;right:18px;bottom:20px;width:42px;height:42px;border:1px solid var(--line);background:var(--paper-deep);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:40}
+.back-top:hover{border-color:var(--bronze)}
+</style>
+</head>
+<body>
+<span id="top"></span>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="首页.html">
+      <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#20302E" rx="2"/><path d="M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z" fill="#8A5A2B"/></svg>
+      看见世界
+    </a>
+    <nav class="nav">
+      <a href="首页.html">首页</a>
+      <a href="板块一-职业阶层与财富.html">职业与财富</a>
+      <a class="active" href="板块二-科技AI与产业趋势.html">科技与AI</a>
+      <a href="板块三-社会运行与商业规则.html">社会与规则</a>
+      <a href="板块四-人文心理与全球视野.html">人文与全球</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- ===== 板块头 ===== -->
+  <section class="section-head">
+    <div class="eyebrow">板块二 · BOARD 02</div>
+    <h1>科技、AI 与产业趋势</h1>
+    <p>你在本校读电子信息，却不想走雷达、FPGA、射频那条硬件老路，目标很清楚：本科毕业直接进泛 AI 软件方向——Python/Go、大模型应用、AI Agent、Web 全栈。这个板块为你画一张科技与 AI 的产业地图：全球格局、岗位全景、算力-模型-应用三层产业链、大模型工程师的一天、Agent 就业窗口，再到远程工作、期权、职业阶梯与副业。只回答三件事：钱在哪、岗位要什么、不读博、非计算机研究生的你能不能进、怎么进。</p>
+    <div class="section-meta">共 <b>15</b> 个主题 · 广度优先 · 每篇附延伸入口</div>
+  </section>
+
+  <!-- 窄屏目录 -->
+  <details class="toc-mobile">
+    <summary>本板块主题目录（点击展开）</summary>
+    <ol>
+      <li><a href="#t01"><i>01</i>全球科技产业地图</a></li>
+      <li><a href="#t02"><i>02</i>软件互联网岗位全景</a></li>
+      <li><a href="#t03"><i>03</i>AI 产业链：算力、模型、应用三层</a></li>
+      <li><a href="#t04"><i>04</i>大模型应用开发</a></li>
+      <li><a href="#t05"><i>05</i>AI Agent 与多智能体</a></li>
+      <li><a href="#t06"><i>06</i>云计算、基础设施与 SaaS</a></li>
+      <li><a href="#t07"><i>07</i>半导体与硬件产业链</a></li>
+      <li><a href="#t08"><i>08</i>新能源、智能汽车与硬科技</a></li>
+      <li><a href="#t09"><i>09</i>开源生态与开发者社区</a></li>
+      <li><a href="#t10"><i>10</i>远程工作与数字游民</a></li>
+      <li><a href="#t11"><i>11</i>创业公司、期权与股权</a></li>
+      <li><a href="#t12"><i>12</i>技术人的职业阶梯</a></li>
+      <li><a href="#t13"><i>13</i>AI 冲击下的职业地图</a></li>
+      <li><a href="#t14"><i>14</i>全球科技高地</a></li>
+      <li><a href="#t15"><i>15</i>副业、个人品牌与独立产品</a></li>
+    </ol>
+  </details>
+
+  <div class="layout">
+    <!-- ===== 宽屏侧栏目录 ===== -->
+    <aside class="toc">
+      <div class="toc-box">
+        <div class="toc-title">主题目录</div>
+        <ol>
+          <li><a href="#t01"><i>01</i>全球科技产业地图</a></li>
+          <li><a href="#t02"><i>02</i>软件互联网岗位全景</a></li>
+          <li><a href="#t03"><i>03</i>AI 产业链：算力、模型、应用三层</a></li>
+          <li><a href="#t04"><i>04</i>大模型应用开发</a></li>
+          <li><a href="#t05"><i>05</i>AI Agent 与多智能体</a></li>
+          <li><a href="#t06"><i>06</i>云计算、基础设施与 SaaS</a></li>
+          <li><a href="#t07"><i>07</i>半导体与硬件产业链</a></li>
+          <li><a href="#t08"><i>08</i>新能源、智能汽车与硬科技</a></li>
+          <li><a href="#t09"><i>09</i>开源生态与开发者社区</a></li>
+          <li><a href="#t10"><i>10</i>远程工作与数字游民</a></li>
+          <li><a href="#t11"><i>11</i>创业公司、期权与股权</a></li>
+          <li><a href="#t12"><i>12</i>技术人的职业阶梯</a></li>
+          <li><a href="#t13"><i>13</i>AI 冲击下的职业地图</a></li>
+          <li><a href="#t14"><i>14</i>全球科技高地</a></li>
+          <li><a href="#t15"><i>15</i>副业、个人品牌与独立产品</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <!-- ===== 主题文章区 ===== -->
+    <main>
+      <article class="topic" id="t01">
+        <div class="topic-no">主题 01</div>
+        <h2>全球科技产业地图：美国、中国、欧洲与新兴梯队</h2>
+
+        <div class="block-label">是什么</div>
+        <p>全球科技产业大致分四个梯队。第一梯队是美国：基础研究、操作系统、芯片设计、云与大模型几乎全链条领先，代表公司谷歌、Meta、微软、英伟达、苹果与 OpenAI，优势在底层标准和利润最厚的环节。第二梯队是中国：拥有全球最大的互联网应用市场、最完整的制造供应链和快速追赶的大模型能力，代表公司字节、阿里、腾讯、华为、百度与 DeepSeek，强在落地速度、工程效率与海量场景。第三梯队是欧洲与日本：荷兰 ASML 的半导体设备、英国 Arm 的指令集与 DeepMind、德国的工业软件与汽车电子、日韩的存储与材料，单项极强但缺统一的应用市场。新兴梯队是印度（班加罗尔的软件外包与人口红利）、以色列（网络安全与硬核技术）、东南亚（消费互联网）。看懂这张梯队图，就知道岗位机会、薪资天花板和技术话语权分别落在哪一层。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 美国大厂华人资深工程师（32 岁，硅谷）</div>
+          <p>老李，国内硕士毕业赴美，先在一家中型云厂商做后端，几年后跳到一线大厂。他的日常是和印度裔、欧美同事一起排期写代码，技术栈新、基础设施强，周末不打卡，年假二十多天。</p>
+          <span class="trade"><b>回报：</b>资深工程师总包折合人民币 150 万–300 万区间（2025 年前后，含股票与奖金，视职级而定），医疗与技术环境顶级，子女教育资源好。<b>代价：</b>H-1B 抽签与绿卡排队动辄五到八年，失业即限期离境，裁员时绿卡身份反成枷锁，文化天花板明显，父母在国内无法就近照顾，一次往返就是一两天时差。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 国内 AI 应用方向研发（27 岁，杭州）</div>
+          <p>阿瑶，普通 211 本科毕业进了大厂做 AI 应用后端，负责企业知识库与客服 Agent 链路。生活在国内大城市，离河南老家高铁三四个小时，跳槽时手里总有几个 offer。</p>
+          <span class="trade"><b>回报：</b>一线城市年包 30 万–55 万（2025 年市场水平），技术成长快、方向热、选择多，生活成本与离家距离可控。<b>代价：</b>加班与大小周是常态，35 岁焦虑真实存在，房价高企，行业波动时优化名单最先到，股票与年终奖随绩效大幅浮动。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>利润最厚的环节在底层：美国公司赚走全球科技利润的大头，因为操作系统、芯片、模型和标准归它们；中国公司大多在应用与制造层拼效率。</li>
+          <li>农村出身的信息差：很多人以为"科技 = 进大厂写代码"，其实科技是一张分层地图，越靠近底层门槛与回报越高，越靠近应用层越容易进——应用层正是你本科能切的入口。</li>
+          <li>判断产业地位别用"国产/进口"的情绪，要看谁掌握不可替代的卡点：ASML 的 EUV 光刻机、英伟达的 GPU、Arm 的指令集，绕不开。</li>
+          <li>欧洲与日本不是落后，而是走"专精"路线，单环节公司小而美，可作为差异化求职目的地了解。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>吴军《浪潮之巅》，看清 AT&amp;T、苹果、谷歌等科技巨头兴衰的经典读物。</li>
+          <li><span class="tag web">报告</span>中国信息通信研究院（CAICT）历年《人工智能白皮书》，国内官方产业数据。</li>
+          <li><span class="tag web">网站</span>CB Insights 与 a16z（Andreessen Horowitz）年度科技报告，看全球投资与赛道风向。</li>
+          <li><span class="tag man">人物</span>黄仁勋（Jensen Huang）每年 COMPUTEX 主题演讲，理解算力与 AI 产业走向。</li>
+          <li><span class="tag film">纪录片</span>《Something Ventured》（2011），硅谷风险投资起源的口述史纪录片。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t02">
+        <div class="topic-no">主题 02</div>
+        <h2>软件互联网岗位全景：研发、算法、产品、数据、运维</h2>
+
+        <div class="block-label">是什么</div>
+        <p>软件互联网公司的岗位可以粗分为五类。研发（工程师）是地基：后端写服务与接口、前端做界面与交互、客户端做 App、测试保障质量、SRE/运维保障系统稳定上线。算法是大脑：机器学习、计算机视觉、推荐、NLP，通常要求硕士以上、数学与论文功底。产品经理是翻译器：把业务需求翻译成功能，不写代码但决定做什么。数据是仪表盘：数据工程师搭数仓、数据分析师用数据做决策。此外还有设计、项目经理、运营等支撑岗。对本科直接就业的你，最现实的入口是研发（后端/前端/全栈）与数据，算法岗学历门槛最高，产品岗竞争最激烈但不限制专业。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 后端工程师（25 岁，工作 2 年，深圳）</div>
+          <p>小秦，双非计算机本科，自学 Java 后进了一家中型互联网公司。日常写接口、查线上 bug、参加需求评审，技术栈是 Spring 全家桶加 MySQL、Redis、消息队列。</p>
+          <span class="trade"><b>回报：</b>深圳年包 25 万–40 万（2025 年市场水平），岗位多、好跳槽，能力可迁移到任何行业。<b>代价：</b>需求期连续加班，技术迭代快要持续学，业务被砍时团队整体优化，天花板靠晋升或转架构。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 数据分析师（26 岁，上海）</div>
+          <p>小苏，统计学本科，先做报表后转分析，用 SQL、Python、BI 工具给业务部门出数和结论。不写复杂算法，重点是把问题问对、把数讲清楚。</p>
+          <span class="trade"><b>回报：</b>年包 20 万–35 万（2025 年），工作强度相对研发略低，文科转码友好，懂业务的分析师越老越值钱。<b>代价：</b>初级报表岗最容易被 BI 工具和 AI 自动取数替代，必须向业务决策或数据科学升级，否则三年后被新人平替。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>选岗位先看"进入门槛 × 可替代性 × 天花板"：研发门槛中等、可替代性中等、天花板高，是性价比最高的本科入口。</li>
+          <li>农村出身的信息差：很多同学默认算法岗最高贵、研发只是"码农"，其实算法岗硕士起步且岗少，研发岗数量是算法的数倍，本科先进研发再叠 AI 组件才是稳妥路线。</li>
+          <li>产品经理不写代码，但要懂技术边界和用户，适合表达强、不爱死磕代码的人，切忌把它当"逃避写代码"的退路。</li>
+          <li>运维/SRE 正在被云与自动化吞噬，传统运维岗收缩，应往 DevOps、云原生、平台工程方向走。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>牛客网与 1point3acres（一亩三分地），看真实校招岗位、薪资与面经。</li>
+          <li><span class="tag book">书籍</span>《软件工程：实践者的研究方法》（Roger Pressman），建立完整工程观。</li>
+          <li><span class="tag web">报告</span>猎聘与 BOSS 直聘每年发布的人才报告，看岗位供需与薪资分布。</li>
+          <li><span class="tag man">人物</span>王慧文（美团联合创始人）的产品课公开笔记，理解产品与业务。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t03">
+        <div class="topic-no">主题 03</div>
+        <h2>AI 产业链：算力、模型、应用三层的公司与岗位</h2>
+
+        <div class="block-label">是什么</div>
+        <p>AI 产业链可以拆成三层。底层是算力：芯片（英伟达、华为昇腾）、服务器、数据中心、云计算，卖的是"电与算力"，资本密集、技术壁垒极高。中层是模型：训练通用大模型，代表公司 OpenAI、Anthropic、字节豆包、阿里通义、DeepSeek、智谱、月之暗面，算法与算力密集，岗位少、学历要求高。上层是应用：把模型接进产品，客服、办公、编程、教育、医疗、垂直行业，公司数量最多、岗位最杂。据 iiMedia Research 数据，2025 年中国 AI 大模型市场规模约 495 亿元、同比增长约 68%；IDC 数据显示 2026 年上半年火山引擎以约 45% 份额居中国大模型 MaaS 市场第一。对你而言，应用层是岗位密度最高、本科最够得着的一层。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 大模型公司算法/ infra 工程师（28 岁，杭州）</div>
+          <p>老吴，硕士出身，进了一家头部大模型创业公司做模型部署与推理优化，每天和 CUDA、张量并行、显存打交道。DeepSeek 2025 年 2 月校招中核心系统研发岗月薪开到 6 万–9 万元（新华网 2025 年 7 月报道）。</p>
+          <span class="trade"><b>回报：</b>现金年包 50 万–100 万+（2025 年，含期权），站在技术最前沿，行业话语权高。<b>代价：</b>学历（硕博）与论文门槛极高，加班剧烈，公司生死与模型成败绑定，一旦路线押错全员失业。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · AI 应用层创业公司工程师（24 岁，成都）</div>
+          <p>小冯，本科毕业进了一家 20 人的垂直 AI 应用公司，做法律合同审查工具，一个人包揽后端、RAG 链路和客户部署。</p>
+          <span class="trade"><b>回报：</b>现金年包 18 万–30 万（2025 年），成长全面、直接接触真实付费客户，有少量期权。<b>代价：</b>没有大厂背书、社保按低基数缴，公司倒闭概率高，期权大概率归零，技术难题没人带。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>三层岗位密度和门槛恰好相反：算力层公司少但要硬件背景，模型层岗少但要硕博，应用层公司最多、本科可进——你的主战场在应用层。</li>
+          <li>农村出身的信息差：很多人以为做 AI 必须读博、必须会训练模型，实际上应用层岗位占招聘数量的大头，核心是工程能力而非算法研究。</li>
+          <li>算力层是"卖铲子"的生意，英伟达、华为昇腾即使不训练模型也赚钱；但它需要微电子、计算机体系结构背景，不是你的方向，知道逻辑即可。</li>
+          <li>应用层机会在"垂直行业 + 模型"：法律、医疗、教育、跨境电商，谁懂行业谁值钱，纯通用聊天产品已被大厂免费碾压。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>量子位与机器之心，跟踪大模型公司与产业动态的中文媒体。</li>
+          <li><span class="tag web">报告</span>IDC、Gartner、中国信通院的 AI 市场与产业链报告，看真实份额数据。</li>
+          <li><span class="tag book">书籍</span>《AI 3.0》（梅拉妮·米歇尔），理解能力边界而非吹捧。</li>
+          <li><span class="tag man">人物</span>DeepSeek 创始人梁文锋的公开访谈，看低成本技术路线如何打巨头。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t04">
+        <div class="topic-no">主题 04</div>
+        <h2>大模型应用开发：岗位要求、技能栈与工程师的一天</h2>
+
+        <div class="block-label">是什么</div>
+        <p>大模型应用开发，指的是在不训练底层大模型的前提下，调用 GPT、豆包、DeepSeek、通义、Llama 等模型的能力，结合检索增强（RAG）、工具调用（Function Calling）、智能体（Agent）框架，把自然语言能力嵌进真实产品：客服机器人、代码助手、企业知识库、营销文案系统、AI 办公工具等。它处在 AI 产业链的「应用层」，是目前岗位数量最多、与普通软件工程师距离最近的一层——你不需要会训练千亿参数模型，更需要的是把模型、数据、业务流程缝合成可靠产品的工程能力。</p>
+        <p>这个岗位通常以「AI 应用工程师 / 大模型工程师 / LLM 应用开发」名义招聘，技术栈以 Python 或 TypeScript 为主，核心组件包括：模型 API 与开源模型部署、向量数据库（Milvus、pgvector 等）、编排框架（LangChain、LlamaIndex、LangGraph）、评测与可观测性，以及传统 Web 全栈能力。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 大厂 AI 应用工程师（26 岁，工作 3 年）</div>
+          <p>阿哲，普通 211 计算机本科，先做了两年后端，2024 年内部转岗到 AI 应用团队，负责企业知识库和客服 Agent。日常是和产品经理对齐业务场景、搭 RAG 链路、写评测集、调 prompt 与召回策略，再用 Go 把服务接进公司原有系统。他的一天大约七成时间写代码和做实验，两成开会，一成读论文和新框架文档。</p>
+          <span class="trade"><b>回报：</b>一线城市年包 35 万–60 万区间（含奖金，2025 年市场水平，视公司与个人而定），方向热、跳槽选择多，技术成长快。<b>代价：</b>大小周或常态加班、技术半年一迭代导致持续学习压力大、线上模型效果不稳定时要背锅，35 岁前必须向专家或管理转型。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · AI 创业公司全栈工程师（24 岁，工作 1 年）</div>
+          <p>小周，本校同层次院校电子信息本科，本科期间自学 Python 全栈并做过两个 RAG Demo，毕业进了一家 30 人的 AI 创业公司。一个人同时干前端、后端、模型接入和客户对接，产品是给律所做的合同审查助手。公司给的现金不高，但有期权。</p>
+          <span class="trade"><b>回报：</b>现金年包 20 万–30 万，能力锻炼极全面，若公司跑通期权可能翻倍；远程灵活、直接面对客户和收入。<b>代价：</b>公司倒闭概率高、期权可能归零，没有大厂背书，社保公积金按低基数交，工作与生活边界模糊，遇到技术难题没人带。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>应用层的护城河不是「会调 API」，而是工程化：评测体系、成本控制、延迟优化、数据闭环，以及对业务的理解。</li>
+          <li>学校里的电子信息课程不会教这些，这条赛道主要靠自学和项目作品集——你的 GitHub 上两个能跑通的 RAG/Agent 项目，比一张证书更能换 offer。</li>
+          <li>农村出身的信息差在于：很多同学不知道「不读博、不搞算法研究也能进 AI 行业」，应用层岗位本科即可进，且不排斥非计算机专业。</li>
+          <li>先有扎实的后端/全栈基本功，再叠大模型组件；反过来只会写 prompt 的人最容易被替代。</li>
+          <li>关注国产模型生态（豆包、DeepSeek、通义、智谱），国内岗位大量基于国产 API 与私有化部署，不要只学 OpenAI 一套。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>黄佳《大模型应用开发极简入门：基于 LangChain 和 LLM》（人民邮电出版社），零基础应用层入门。</li>
+          <li><span class="tag web">网站</span>OpenAI Cookbook 与 LangChain、LlamaIndex 官方文档，应用层最权威的一手资料。</li>
+          <li><span class="tag web">课程</span>DeepLearning.AI 的 Short Courses（吴恩达团队，含 LangChain、RAG、Agent 系列短课，免费）。</li>
+          <li><span class="tag web">社区</span>Hugging Face 免费课程与 GitHub 上的高星开源 Agent 项目，读源码学真实架构。</li>
+          <li><span class="tag man">人物</span>关注 LangChain 创始人 Harrison Chase 的公开访谈，理解应用层技术走向。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t05">
+        <div class="topic-no">主题 05</div>
+        <h2>AI Agent 与多智能体：前沿方向与就业窗口</h2>
+
+        <div class="block-label">是什么</div>
+        <p>AI Agent（智能体）是让大模型不只是"一问一答"，而是能自主拆解任务、调用工具、执行多步动作，甚至由多个 Agent 分工协作完成复杂流程——比如自动查资料、写代码、改 bug、提交工单。多智能体（Multi-Agent）则是把一个大任务拆给几个角色化的 Agent（规划者、执行者、审核者）协同完成。2024 年以来，LangGraph、CrewAI、AutoGen、OpenAI Agents SDK 等框架快速成熟，招聘网站上"智能体开发工程师"的岗位从无到有。它处在大模型应用开发的下一站，但本质仍是工程岗：状态管理、工具接入、错误重试、可观测性，比"会调模型"重要得多。对本科生，这是离前沿最近、又不要求算法博士的窗口。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 智能体平台工程师（27 岁，上海）</div>
+          <p>小葛，后端出身，2024 年起用 LangGraph 给公司搭内部研发提效 Agent：自动读日志、定位报错、生成修复建议。招聘启事里这类岗普遍要求本科及以上、熟练 Python/Go、有 RAG 与工具调用落地经验（智联、埃森哲 2025–2026 年 JD 可查）。</p>
+          <span class="trade"><b>回报：</b>年包 30 万–50 万（2025 年），踩在风口上、简历溢价高，远程岗位也多。<b>代价：</b>框架半年一换，今天学的 API 明年可能废弃；Agent 成功率不稳，线上"幻觉操作"要背锅；方向热但泡沫也大，落地价值待验证。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 独立开发者做 Agent 产品（26 岁，远程）</div>
+          <p>老郑，离职后一个人用开源框架做跨境电商的自动选品与客服 Agent，靠订阅制卖给海外小卖家，月收入一两万美元，收入波动大。</p>
+          <span class="trade"><b>回报：</b>上不封顶、完全远程、生活在低成本城市也能赚美元，产品做成后是睡后收入。<b>代价：</b>没有社保与稳定现金流，获客全靠自己，AI 能力提升让纯套壳产品快速贬值，90% 的尝试没有收入。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>Agent 的核心难点不是"让模型变聪明"，而是工程可靠性：失败重试、权限边界、人工确认、可观测，谁能做出稳定跑通的 Agent 谁值钱。</li>
+          <li>农村出身的信息差：前沿框架、论文、英文教程都在网上免费开放，缺的不是资源而是"没人告诉你该学哪个"——认准 LangGraph 官方文档加两个开源项目源码即可起步。</li>
+          <li>不要为了 Agent 而 Agent：能 RAG 或脚本解决的问题，上多智能体只会更贵更不稳。</li>
+          <li>这是"窗口期"岗位：2025–2027 年需求爆发、门槛尚未固化，晚三年再进可能已经被标准化和内卷掉。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>LangGraph 与 OpenAI Agents SDK 官方文档，多智能体编排一手资料。</li>
+          <li><span class="tag web">课程</span>DeepLearning.AI 的 AI Agents / Multi-Agent 短课（吴恩达与 Harrison Chase 合讲，免费）。</li>
+          <li><span class="tag web">开源</span>GitHub 上的 AutoGen（微软）、CrewAI、Dify（开源 Agent 平台），读源码学架构。</li>
+          <li><span class="tag man">人物</span>OpenAI 联合创始人 Andrej Karpathy 的 YouTube 技术讲座，理解 Agent 与 LLM 工程实践。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t06">
+        <div class="topic-no">主题 06</div>
+        <h2>云计算、基础设施与 SaaS</h2>
+
+        <div class="block-label">是什么</div>
+        <p>云计算是把服务器、存储、网络、数据库像水电一样按用量出租：亚马逊 AWS 是全球老大，国内阿里云市场份额第一、约为第二名两倍以上，腾讯云、华为云、火山引擎紧随其后（新浪财经 2025 年 12 月报道）。云之上是 SaaS——直接出租现成软件，海外代表 Salesforce、Slack、Notion，国内代表钉钉、飞书、企业微信、有赞。对开发者而言，云是"卖铲子"的基础设施岗（云开发、SRE、解决方案架构师），SaaS 是"在别人铲子上盖房子"的应用岗。你做的任何 Web 全栈、AI 应用，最终都要部署在云上，所以 Docker、Linux、云服务器、数据库，是绕不开的基本功。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 云厂商解决方案/研发工程师（27 岁，北京）</div>
+          <p>小胡，计算机本科进了头部云厂商，一开始做内部平台开发，后来转售前解决方案，帮客户把系统迁到云上。技术广、出差多、客户对接重。</p>
+          <span class="trade"><b>回报：</b>年包 30 万–55 万（2025 年），行业稳健不追风口，认证与经验越老越值钱。<b>代价：</b>售前要频繁出差和写方案，技术不如纯研发深，业绩压力随云收入指标走。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · SaaS 公司全栈工程师（26 岁，远程/西安）</div>
+          <p>小马，进了一家做小微企业财务 SaaS 的公司，技术栈是 Node 加 PostgreSQL 加云服务器，产品按年订阅收费，客户稳定、加班相对少。</p>
+          <span class="trade"><b>回报：</b>年包 22 万–38 万（2025 年），业务节奏健康、不靠烧钱，可在新一线或远程。<b>代价：</b>单公司天花板不如大厂，订阅制增长慢，需要长期在一个垂直领域深耕，跳槽选择相对窄。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>云是所有互联网岗位的"地基课"：无论你做后端还是 AI 应用，会用一台云服务器、Docker、Nginx、数据库，是毕业前必须过的关。</li>
+          <li>农村出身的信息差：很多同学到毕业都没自己部署过一个网站，而"把项目部署上线、有域名能访问"正是简历上和大厂 HR 对话的硬通货。</li>
+          <li>SaaS 的本质是续费：产品好不好看客户第二年续不续，这和一次性卖断的逻辑完全不同，懂续费模型的人在创业公司很抢手。</li>
+          <li>认准主流云一家深入（国内选阿里云或火山引擎），认证（如阿里云 ACP/AWS 证书）成本低、对求职有帮助。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>阿里云、腾讯云、AWS 官方免费培训与认证文档，边学边考。</li>
+          <li><span class="tag book">书籍</span>《凤凰架构》（周志明，开源免费书），讲云原生与分布式架构。</li>
+          <li><span class="tag web">报告</span>中国信通院《云计算白皮书》与 Gartner 云市场份额报告。</li>
+          <li><span class="tag man">人物</span>张小龙、叶军（飞书/钉钉负责人）的公开演讲，看 SaaS 产品哲学。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t07">
+        <div class="topic-no">主题 07</div>
+        <h2>半导体与硬件产业链：不选它也要懂的原因</h2>
+
+        <div class="block-label">是什么</div>
+        <p>半导体产业链分三段：设计（英伟达、苹果、高通、华为海思画图纸）、制造/代工（台积电把图纸做成实物，2025 年营收约 1225 亿美元、先进制程份额约七成；中芯国际是大陆代工龙头）、设备材料（荷兰 ASML 的 EUV 光刻机是先进制程绕不开的唯一设备，应用材料、泛林、东京电子配套）。2022 年美国出口管制后，全球芯片链实际分裂为"美西方体系"和"中国自主体系"两条。你排斥 FPGA/射频/雷达这类硬件岗位，完全合理——但你做 AI 软件必须懂这条链，因为算力成本、GPU 供货、国产芯片替代，直接决定你所在应用层公司的商业模式和薪资水位。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 芯片设计验证工程师（27 岁，上海）</div>
+          <p>小邓，微电子硕士出身，在一家国产芯片公司做数字设计验证，用 SystemVerilog 和 UVM，工位常年对着示波器与仿真工具。</p>
+          <span class="trade"><b>回报：</b>年包 35 万–70 万（2025 年，硕士起步），国产替代风口上人才稀缺、稳定。<b>代价：</b>普遍要求硕士以上、岗位集中在少数城市（上海/无锡/成都/深圳），流片一次失败损失百万，工作严谨到枯燥，转行软件成本高。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · AI 软件工程师（你未来的同类）（25 岁，杭州）</div>
+          <p>小凯，本科做应用层开发，日常要判断任务该用云端 API 还是国产开源模型、要不要等某款国产卡降价，懂一点芯片常识让他和 infra 团队沟通时不被忽悠。</p>
+          <span class="trade"><b>回报：</b>不必深入硬件就能吃到"国产算力替代"带来的应用红利，岗位多、选择广。<b>代价：</b>只懂软件不懂成本结构，容易在报价和架构上犯错，被懂行的同事拉开差距。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>不做硬件，但要知道"算力贵不贵、谁在供货"：这决定你写的 Agent 是赚钱还是烧钱。</li>
+          <li>农村出身的信息差：很多本校同学被"硬件是本校传统强项"的惯性裹挟进 FPGA/嵌入式，却不知道软件应用层岗位数量、薪资上限和城市自由度都更高，不必为了"对口"困住自己。</li>
+          <li>设备与制造是"卡脖子"环节，国产替代是十年尺度的政策主线，相关岗位长期有需求，但那是另一套专业体系。</li>
+          <li>判断一家 AI 公司，先看它算力从哪来、成本占比多少——没有算力议价权的应用公司很难赚钱。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>《芯片战争》（Chris Miller），一部讲透半导体地缘与产业的通俗读物。</li>
+          <li><span class="tag web">网站</span>半导体行业观察、集微网，中文半导体产业媒体。</li>
+          <li><span class="tag film">纪录片</span>《美国工厂》之外，可看 PBS 纪录片《The Commanding Heights》中关于产业政策的部分。</li>
+          <li><span class="tag man">人物</span>台积电创始人张忠谋的传记与演讲，理解代工模式与全球化分工。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t08">
+        <div class="topic-no">主题 08</div>
+        <h2>新能源、智能汽车与硬科技制造</h2>
+
+        <div class="block-label">是什么</div>
+        <p>过去十年中国最确定的产业增量之一是新能源与智能汽车：比亚迪、宁德时代、小鹏、理想、蔚来、华为系（问界/智界）把电动车和智能化做成了全球领先的赛道。它分三层——三电（电池、电机、电控，宁德时代、比亚迪）、整车制造（比亚迪、特斯拉上海工厂）、智能座舱与自动驾驶（激光雷达、车载芯片、大模型上车）。对你这个软件方向的人，最相关的不是造电池，而是智能座舱、车机 App、自动驾驶数据平台、云端后端这些软件岗位。硬科技制造则泛指机器人、无人机、高端装备，宇树科技等公司 2025 年开出百万年薪抢算法人才（新华网 2025 年 7 月报道）。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 车企智能座舱后端工程师（26 岁，上海）</div>
+          <p>小吕，计算机本科进了新势力车企，做车机后台与 OTA 升级服务，技术栈仍是 Java/Go 加云，只是场景换成了"跑在车里的软件"。</p>
+          <span class="trade"><b>回报：</b>年包 25 万–45 万（2025 年），行业处于增量期、股票激励多，上海/合肥/深圳岗位集中。<b>代价：</b>车企利润薄、价格战激烈，裁员随销量波动；车规级软件上线流程慢、改需求麻烦，不如互联网敏捷。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 新能源制造企业 IT/数字化工程师（25 岁，郑州/合肥）</div>
+          <p>小常，进了一家动力电池厂做内部系统与数据中台开发，工作地点不在一线城市，离家近、房价低。</p>
+          <span class="trade"><b>回报：</b>年包 15 万–28 万（2025 年），生活成本低、离家近，制造业数字化缺软件人才、稳定性好。<b>代价：</b>技术氛围不如互联网、资深同事少，成长慢，想回互联网需要额外补课。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>智能汽车的软件含量越来越高，"软件定义汽车"意味着你的 Web/后端技能可以直接平移过去，不必碰硬件。</li>
+          <li>农村出身的信息差：很多人不知道新能源车企在郑州、合肥、西安都有大量软件岗，离家近、房价低，是比挤深圳更务实的就业选项。</li>
+          <li>价格战下车企本身利润不稳，选公司要看销量与现金流，别只看招聘时开的高价。</li>
+          <li>自动驾驶算法岗要硕博且竞争白热化，本科切座舱、车机、数据平台更现实。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>第一性原理、42 号车库，智能汽车深度媒体。</li>
+          <li><span class="tag book">书籍</span>《精益创业》（Eric Ries），理解硬件与产品如何快速迭代。</li>
+          <li><span class="tag web">报告</span>乘联会与中汽协月度销量报告，看真实市场冷暖。</li>
+          <li><span class="tag man">人物</span>王传福（比亚迪）、何小鹏的公开演讲，看整车与智能化路线之争。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t09">
+        <div class="topic-no">主题 09</div>
+        <h2>开源生态与全球开发者社区</h2>
+
+        <div class="block-label">是什么</div>
+        <p>开源是当代软件的地基：Linux、Python、React、PostgreSQL、LangChain、DeepSeek 模型权重全是开源的。全球开发者通过 GitHub 协作，通过 Hacker News、Stack Overflow、掘金、V2EX、电鸭社区交流。对求职而言，开源经历是最高效的背书——一个被合并过 PR 的真实项目、一段被人 star 的工具，比培训班证书管用十倍。它同时是农村出身最公平的通道：不看你学校、不看你家境，只看你写的代码摆不摆得上 GitHub。很多大厂工程师、独立开发者、远程工作者，都是靠在开源社区露出，被公司或客户主动找上门。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 靠开源进大厂的后端工程师（25 岁，远程）</div>
+          <p>小游，普通本科，课余给一个热门开源库修 bug、写文档，累计被合并几十次，简历上挂着该项目贡献者身份，毕业直接拿到两家远程岗 offer。</p>
+          <span class="trade"><b>回报：</b>年包 25 万–45 万（2025 年），不看学历看作品，可远程、可接海外单，技术名声随贡献累积。<b>代价：</b>前期没有收入、全靠兴趣，开源贡献被看见周期长，遇到大型项目规则复杂、沟通成本高。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 开源项目维护者/独立开发者（29 岁，成都）</div>
+          <p>老麦，自己写了一个小工具开源，靠赞助、Pro 版付费和咨询月入一两万元，不用坐班。</p>
+          <span class="trade"><b>回报：</b>生活自由、收入绑定真实技能，全球用户为你的作品付费。<b>代价：</b>收入极不稳定、维护开源是"用爱发电"，版本兼容与 issue 回复长期消耗精力，没有团队兜底。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>开源是农村出身最公平的逆袭通道：代码摆在 GitHub 上，学校和家世全部不作数。</li>
+          <li>不必一上来就给顶级项目提 PR，先从修文档、改 typo、写示例开始，这是所有贡献者的起点。</li>
+          <li>农村出身的信息差：很多同学以为开源是"大神的事"，其实你用过的每个库都在招新手帮忙，关键是迈出第一步并坚持。</li>
+          <li>技术名声会复利：一个被人记住的 GitHub 主页，三年后可能替你决定下一份工作和客户。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>GitHub、Hacker News、Stack Overflow，全球开发者主战场。</li>
+          <li><span class="tag web">社区</span>掘金、V2EX、电鸭社区、Linux 中国，中文开发者交流圈。</li>
+          <li><span class="tag book">书籍</span>《大教堂与集市》（Eric Raymond），开源哲学的开山短文集。</li>
+          <li><span class="tag man">人物</span>Linus Torvalds（Linux 与 Git 创始人）的访谈与公开言论，理解开源协作。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t10">
+        <div class="topic-no">主题 10</div>
+        <h2>远程工作与数字游民：跨越国界接单的真实生活</h2>
+
+        <div class="block-label">是什么</div>
+        <p>远程工作指不坐班、靠网络完成工作；数字游民指一边在国内低成本城市甚至东南亚旅居，一边赚美元或远程工资。海外接单平台 Upwork、Fiverr、Toptal 是主要渠道，成熟程序员时薪常见 50–100 美元（多个 2025 年接单指南）；国内则有电鸭、甜薪工场等平台。但要清醒：Upwork 在 2026 年一季度财报电话会上承认，AI 正在冲击 500 美元以下的小额合同，写作、设计、开发等多数类目项目发布量在下降。远程不是"躺赚"，它要求自驱、英语沟通、可被验证的作品集，以及稳定的收款与合规能力。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 远程全栈工程师（28 岁，常驻清迈/大理）</div>
+          <p>老晋，先在国内公司攒了两年作品集，再投中一家接受全远程的海外小公司，拿美元工资、按美国时区开会，生活在房租每月一千多元的城市。</p>
+          <span class="trade"><b>回报：</b>折合年入 40 万–80 万元（2025 年，视英语与技术），地理自由、生活成本极低、赚美元花人民币。<b>代价：</b>时区颠倒、社交孤立、没有同事帮你兜底，签证与收款合规要自己搞定，失业即断粮。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · Upwork 兼职接单的在校/在职开发者（23 岁，西安）</div>
+          <p>小贺，大三开始在 Upwork 接小型网站与自动化脚本单，从时薪 15 美元做起，半年积累评分后涨到 40 美元。</p>
+          <span class="trade"><b>回报：</b>学生阶段就能有美元收入、练英语和提案能力，优秀者可转全职。<b>代价：</b>前期投几十份提案才中一单，小额单正被 AI 挤压，平台抽成与 Connect 消耗真实存在，时差与回款周期磨人。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>远程的门槛不是"会远程"，而是英语书面沟通 + 可被展示的作品集 + 自驱力，三者缺一个都难拿到单。</li>
+          <li>农村出身的信息差：很多同学不知道"赚美元花人民币"这条路真实存在，大学练英语和做项目，毕业即可能比留在家乡的同学收入高出数倍。</li>
+          <li>别裸辞做数字游民，先在职远程兼职跑通半年、有稳定客户再辞职。</li>
+          <li>AI 在压缩低端外包价格，只有高端、复杂、需要沟通的项目才保值，要往"能独立交付完整产品"走。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>电鸭社区（eleduck.com）、Upwork、Toptal，远程工作与接单入口。</li>
+          <li><span class="tag book">书籍</span>《远程工作：不限地点的团队如何工作》（《Remote》，Jason Fried &amp; David Heinemeier Hansson）。</li>
+          <li><span class="tag web">网站</span>Nomad List，数字游民城市生活成本与社区数据。</li>
+          <li><span class="tag man">人物</span>Basecamp/37signals 的 Jason Fried，远程工作与独立产品的长期倡导者。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t11">
+        <div class="topic-no">主题 11</div>
+        <h2>创业公司、期权与股权：风险回报怎么算</h2>
+
+        <div class="block-label">是什么</div>
+        <p>创业公司给的不全是现金，还有期权（Option）：在约定价格买入公司股票的权利。它的价值高度不确定——公司上市被收购可能翻几十倍，倒闭则一张废纸。计算回报要问四件事：期权数量是总股本的百分之几、行权价多少、多久成熟（通常四年、一年悬崖）、最近一轮估值多少，以及"稀释"后你还剩多少。硅谷和中国一线的惯例大致如此，但中国大量早期创业公司最终倒闭率极高。对你这种需要现金流、没有家庭兜底的农村出身学生，期权应被当成"彩票"而不是收入，现金、履历背书和真实成长才是主菜。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 早期创业公司工程师（27 岁，杭州）</div>
+          <p>老梁，放弃大厂 40 万年包，加入一家 A 轮 30 人 AI 公司拿 25 万现金加 0.3% 期权，赌公司三年后被收购。</p>
+          <span class="trade"><b>回报：</b>若公司跑通，期权可能值一两百万；能力全面、晋升快、离决策近。<b>代价：</b>大概率期权归零、现金低于市场价，公司倒闭要重新找工作，没有大厂背书时简历反而掉价。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 上市公司/大厂股票持有者（28 岁，深圳）</div>
+          <p>小沈，在大厂的包里有 40% 是股票（RSU），每年归属、随股价波动，遇到股价腰斩时账面缩水严重。</p>
+          <span class="trade"><b>回报：</b>股票随公司增长稳健升值，流动性好、可随时变现。<b>代价：</b>收入与股价强绑定，绩效和裁员都会影响归属，实际拿到的远不如 offer 数字好看。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>农村出身的信息差：没人教过你"期权不是工资"，很多同学被创业公司一句"期权未来值大钱"压掉现金，要先算清生活能不能靠现金过下去。</li>
+          <li>判断创业公司看现金流：账上还能烧几个月、有没有付费客户，比 PPT 估值重要一百倍。</li>
+          <li>优先选已经被验证的成长公司（B 轮后、有收入），别赌 0 到 1 的天使轮，那是投资人的游戏不是你的。</li>
+          <li>合同里的 vesting、悬崖、行权价、离职后行权窗口，签之前必须逐条看，必要时找懂行的人。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>PitchBook、IT 桔子，看公司融资轮次与真实估值。</li>
+          <li><span class="tag book">书籍</span>《创业维艰》（Ben Horowitz），硅谷一线创业者的真实账本。</li>
+          <li><span class="tag web">网站</span>Cooley GO 期权指南（Cooley 律所免费资料），把期权条款讲透。</li>
+          <li><span class="tag man">人物</span>Paul Graham（Y Combinator 创始人）的 Essays，理解创业与早期回报。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t12">
+        <div class="topic-no">主题 12</div>
+        <h2>技术人的职业阶梯：架构师、管理、独立开发者三条路</h2>
+
+        <div class="block-label">是什么</div>
+        <p>工作五到十年后，工程师通常面临三条岔路。技术专家线：工程师→高级→资深→技术专家/架构师，靠深度拿溢价，不带人。管理线：工程师→小组长→技术经理→总监，靠团队和项目结果拿回报，但要放弃大量写代码时间。独立开发者线：离开组织，一个人或小团队做产品、接远程单、做 SaaS，收入上不封顶但波动剧烈。多数人在三十五岁前要选好主线，因为"又写代码又带人又想自由"的中间态最容易被两头挤压。对你而言，前五年别急着选，先把技术深度做扎实，再用副业和开源试探自己喜欢哪条路。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 技术专家/架构师（35 岁，北京）</div>
+          <p>老顾，没做管理，一路做到资深架构师，负责公司核心系统选型与稳定性，年薪 80 万–150 万（2025 年大厂水平）。</p>
+          <span class="trade"><b>回报：</b>不用搞人际政治、靠技术说话，收入高且越老越吃香。<b>代价：</b>对深度要求极高、技术决策责任重，岗位少、竞争顶尖，公司裁人时专家线不一定比管理线安全。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 独立开发者/小团队（31 岁，远程）</div>
+          <p>老麦，离职后两人小团队做垂直 SaaS，年净利润几十万到一百多万波动，时间自由但要自己找客户。</p>
+          <span class="trade"><b>回报：</b>完全自主、收入绑定自己的产品、可全球旅居。<b>代价：</b>没有稳定工资、医保社保自理，获客和销售是最大短板，前几年可能入不敷出。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>前三条路没有高下，但要主动选：走管理却讨厌带人，或走专家却浅尝辄止，是最惨的中间态。</li>
+          <li>农村出身的信息差：家里和学校不会告诉你"技术专家也是一条正经出路"，很多人默认不当领导就没前途，其实深度专家收入与安全感都很高。</li>
+          <li>独立开发不要裸辞，先在职做副业跑通付费再决定，用最小成本验证。</li>
+          <li>无论哪条路，"能讲清楚自己做过什么、带来什么结果"的表达能力，都是晋升和接单的硬通货。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>《原则》（Ray Dalio）与《格鲁夫给经理人的第一课》（Andy Grove），理解管理。</li>
+          <li><span class="tag web">网站</span>独立开发者社区 Indie Hackers，看独立产品真实收入。</li>
+          <li><span class="tag web">网站</span>知名技术博客（如 Martin Fowler、阮一峰），学专家如何持续输出。</li>
+          <li><span class="tag man">人物</span>DHH（David Heinemeier Hansson），从 Rails 作者到 Basecamp 创始人的样本。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t13">
+        <div class="topic-no">主题 13</div>
+        <h2>AI 冲击下的职业地图：哪些工作在消失、哪些在生长</h2>
+
+        <div class="block-label">是什么</div>
+        <p>AI 不是简单"取代人"，而是重塑岗位：重复性、有明确文本/代码模板的初级岗位受冲击最大——初级客服、基础文案、低级前端切图、简单数据报表、标准化翻译；同时它在生长新岗位——AI 应用工程师、提示词与评测工程师、Agent 运维、AI 产品经理、数据标注管理、垂直行业+AI 的复合岗。规律是：越靠近"给 AI 下指令、判断结果、对接业务"越安全，越靠近"重复执行模板"越危险。对你这种正在入行的人，策略不是恐惧 AI，而是把自己定位成"能驾驭 AI 的工程师"，而不是"被 AI 替代的初级执行员"。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 被压缩的初级文案/设计（26 岁，广州）</div>
+          <p>小婷，原本在 MCN 写短视频脚本，2025 年起公司一半选题交给 AI 生成，她的岗位从 5 人缩到 2 人，被迫转做 AI 素材审核与创意把控。</p>
+          <span class="trade"><b>回报：</b>转型后勉强留在行业，但薪资不升反降。<b>代价：</b>初级执行岗议价权骤降，不会用 AI 的同行直接被裁，行业整体用人需求收缩。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 驾驭 AI 的全栈工程师（25 岁，远程）</div>
+          <p>小凯，写代码时大量使用 Copilot 和 Claude Code，一个人顶过去两个人的产出，接单报价反而提高。</p>
+          <span class="trade"><b>回报：</b>效率翻倍、时薪与产出同步提升，成为团队里"会用 AI 的人"。<b>代价：</b>必须持续跟进新工具，一旦停下学习就可能被同样年轻的人用 AI 超过。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>判断一个岗位会不会被冲击，看它"是否有明确模板可被 AI 直接生成"，初级执行岗首当其冲。</li>
+          <li>农村出身的信息差：没人会提前告诉你"毕业时的初级岗正在消失"，所以从大二起就要把目标定在"能指挥 AI、判断结果"的复合岗，而不是切图、搬数这种活。</li>
+          <li>会用 AI 的初级工程师，收入已经超过不会用 AI 的高级工程师——工具差距正在替代经验差距。</li>
+          <li>别和 AI 比重复劳动，要比业务理解、跨团队沟通、对结果负责，这些 AI 短期替代不了。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag report">报告</span>世界经济论坛《未来就业报告》（Future of Jobs Report），看岗位增减趋势。</li>
+          <li><span class="tag web">网站</span>OpenAI、Anthropic 官方研究博客，看模型能力边界的一手判断。</li>
+          <li><span class="tag book">书籍</span>《AI 未来进行式》（李开复），通俗讨论 AI 对各职业的影响。</li>
+          <li><span class="tag man">人物</span>吴恩达（Andrew Ng）关于"AI 如何重塑工作"的公开讲座与博客。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t14">
+        <div class="topic-no">主题 14</div>
+        <h2>全球科技高地：硅谷、深圳、北京、杭州、班加罗尔、特拉维夫</h2>
+
+        <div class="block-label">是什么</div>
+        <p>全球科技就业不是均匀分布，而是高度集中在几个高地。硅谷（旧金山湾区）：全球 AI 与创业中心，英伟达、谷歌、Meta、OpenAI 在此，薪资最高但生活成本与签证门槛也最高。北京：大国企、大模型与互联网总部集中，政策与资源最密。深圳：硬件+互联网+新能源，腾讯、华为、比亚迪，工程师文化务实、房价高。杭州：阿里系与电商/AI，生活宜居、数字经济活跃。班加罗尔：印度软件外包与全球研发中心，英语环境、薪资低但在快速升级。特拉维夫：以色列网络安全与硬核技术，创业密度全球最高。对你而言，毕业先在国内城市（深圳/杭州/北京/成都/西安）站稳，再决定是否看向硅谷或远程海外。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 深圳互联网工程师（27 岁，南山）</div>
+          <p>小周，毕业进腾讯系，住南山合租单间，通勤半小时，工资高但房价每平十万级，短期内买房无望。</p>
+          <span class="trade"><b>回报：</b>年包 35 万–60 万（2025 年），行业密度高、跳槽选择多、城市年轻有活力。<b>代价：</b>房价高企、定居难，节奏快、加班多，离河南老家远。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 杭州/成都 AI 应用工程师（26 岁）</div>
+          <p>小沈，选择杭州阿里系或成都的 AI 创业公司，房价约为深圳一半，离家更近，生活质量更高。</p>
+          <span class="trade"><b>回报：</b>年包 25 万–45 万（2025 年），定居压力小、城市宜居，AI 岗位增长快。<b>代价：</b>顶级岗位密度不如深圳/北京，跳槽时外地机会略少，圈层资源相对窄。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>选城市本质是选"行业密度 × 定居成本 × 离家距离"的组合，不必迷信一线。</li>
+          <li>农村出身的信息差：很多人默认必须去北上广深，但杭州、成都、武汉、合肥、西安都在快速聚集 AI 与软件岗位，离家近、房价低，实际幸福感更高。</li>
+          <li>硅谷不是必选项：签证、文化、家庭距离的代价极大，远程或先在国内成长再出去更稳。</li>
+          <li>城市选择可以分阶段：毕业先去高密度城市攒履历，三五年后再用脚投票到宜居城市。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>脉脉、Levels.fyi，看各城市各厂真实薪资与生活反馈。</li>
+          <li><span class="tag book">书籍</span>《硅谷生态圈》（《The Startup Community Way》），理解创业城市如何形成。</li>
+          <li><span class="tag web">网站</span>Nomad List 与 Numbeo，比较全球城市生活成本与薪资购买力。</li>
+          <li><span class="tag film">纪录片</span>《开始创业》（《StartUp》系列纪录片，PBS），看不同城市的创业生态。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t15">
+        <div class="topic-no">主题 15</div>
+        <h2>技术人的副业、个人品牌与独立产品</h2>
+
+        <div class="block-label">是什么</div>
+        <p>技术人的副业不是简单跑滴滴，而是用代码和内容复利：写技术博客/公众号、做开源项目、卖小工具、做课程、接远程单、做独立 SaaS。个人品牌的本质是"让别人知道你能解决什么问题"——它直接提高你找工作、接单、被挖的议价权。独立产品（Indie Hacker）指一个人或极小团队做出能收费的小软件，靠订阅或买断获得睡后收入。对农村出身的你，这是最公平的"第二曲线"：不看资源、不靠关系，只靠持续输出和真实作品，三五年后可能比工资更重要。大学生起步的最低成本，就是从这周开始，把每天学过的东西写成一篇公开笔记，持续半年就会看到复利。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 在职技术博主+小工具作者（28 岁，远程）</div>
+          <p>老游，工作之余持续写 Python 与 AI 教程，运营公众号与 YouTube，同时卖一个几十美元的小工具，副业月收入一两万元，超过部分工资。</p>
+          <span class="trade"><b>回报：</b>副业收入+个人品牌带来更好的工作机会，长期复利、不影响主业。<b>代价：</b>前一年几乎没有收入，要抵御"写了没人看"的孤独，内容与工具要持续维护，占用全部业余时间。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 独立开发者（30 岁，成都）</div>
+          <p>小郑，离职后做面向海外的小 SaaS，月 recurring 收入三千到五千美元，生活在低成本城市，时间自由。</p>
+          <span class="trade"><b>回报：</b>产品即资产、睡后收入、地理自由。<b>代价：</b>获客是最大难关，90% 的小产品没人用，收入波动大，社保与现金流全靠自己。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>副业的第一目标不是赚钱，而是"可被看见的作品"——它既是简历，也是接单入口。</li>
+          <li>农村出身的信息差：没人教过你"个人品牌是穷人的杠杆"，你没有关系和资源，但持续输出能让陌生人主动找到你。</li>
+          <li>从现在（大二）开始写，哪怕每周一篇，三年后你会有别人没有的复利，别等"准备好了"再开始。</li>
+          <li>独立产品优先选"自己也用得到"的小痛点，别一上来做平台或大而全。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>Indie Hackers、X（Twitter）技术圈、少数派，看独立产品与个人品牌样本。</li>
+          <li><span class="tag book">书籍</span>《每周工作四小时》（Tim Ferriss），理解被动收入与杠杆思维。</li>
+          <li><span class="tag web">网站</span>张小琥、阮一峰等中文技术博客，看长期写作如何积累影响力。</li>
+          <li><span class="tag man">人物</span>Pieter Levels（@levelsio），一人公司与独立开发者的标志性样本。</li>
+        </ul>
+      </article>
+    </main>
+  </div>
+
+  <!-- ===== 板块间翻页 ===== -->
+  <nav class="pager">
+    <a class="prev" href="板块一-职业阶层与财富.html"><span class="dir">上一板块</span>板块一 · 职业、阶层与财富</a>
+    <a class="next" href="板块三-社会运行与商业规则.html"><span class="dir">下一板块</span>板块三 · 社会运行与商业规则</a>
+  </nav>
+
+  <footer class="site-foot">
+    看见世界 · 活法为主线，通识打底 · 所有事实性内容尽量标注来源，延伸入口均为真实资源
+  </footer>
+</div>
+
+<a class="back-top" href="#top" aria-label="回到顶部">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A5A2B" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</a>
+</body>
+</html>

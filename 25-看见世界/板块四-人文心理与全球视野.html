@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>板块四 人文、心理与全球视野 — 看见世界</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2320302E'/%3E%3Cpath d='M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z' fill='%238A5A2B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F5F1E6; --paper-deep:#ECE5D3; --ink:#20302E; --soft:#4F5A56;
+  --line:#D8D0BD; --bronze:#8A5A2B; --teal:#2F6E63; --vermilion:#C94F36;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ===== 顶部导航 ===== */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,241,230,.94);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:18px;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:18px;white-space:nowrap}
+.brand svg{flex:none}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto}
+.nav a{font-size:13.5px;color:var(--soft);padding:7px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink)}
+.nav a.active{color:var(--bronze);border-bottom-color:var(--bronze)}
+@media (max-width:767px){
+  .topbar-inner{gap:10px;height:54px}
+  .brand{font-size:16px}
+  .nav a{font-size:12.5px;padding:7px 7px}
+}
+
+/* ===== 板块头 ===== */
+.section-head{padding:54px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;color:var(--bronze);letter-spacing:.18em;font-weight:500}
+.section-head h1{font-family:var(--serif);font-size:34px;font-weight:700;margin:12px 0 14px;line-height:1.3}
+.section-head p{max-width:680px;color:var(--soft);font-size:15.5px}
+.section-meta{margin-top:18px;font-size:13px;color:var(--soft)}
+.section-meta b{color:var(--bronze);font-weight:700}
+
+/* ===== 主体布局 ===== */
+.layout{display:grid;grid-template-columns:1fr;gap:0;padding:30px 0 60px}
+@media (min-width:900px){
+  .layout{grid-template-columns:220px minmax(0,1fr);gap:46px}
+}
+.toc{font-size:13.5px}
+.toc-box{position:static}
+@media (min-width:900px){.toc-box{position:sticky;top:80px;max-height:calc(100vh - 100px);overflow:auto}}
+.toc-title{font-family:var(--serif);font-weight:700;font-size:14px;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:6px}
+.toc ol{list-style:none}
+.toc li a{display:block;padding:6px 0;color:var(--soft);border-bottom:1px solid rgba(216,208,189,.55);line-height:1.45}
+.toc li a:hover{color:var(--bronze)}
+.toc li i{font-style:normal;color:var(--bronze);margin-right:7px;font-family:var(--serif)}
+details.toc-mobile{margin:22px 0 0;border:1px solid var(--line);border-radius:3px;background:var(--paper-deep)}
+details.toc-mobile summary{padding:12px 16px;font-weight:500;cursor:pointer;list-style:none}
+details.toc-mobile summary::-webkit-details-marker{display:none}
+details.toc-mobile ol{padding:4px 16px 14px}
+@media (min-width:900px){details.toc-mobile{display:none}}
+@media (max-width:899px){.toc{display:none}}
+
+/* ===== 主题文章 ===== */
+.topic{padding:38px 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
+.topic:last-child{border-bottom:none}
+.topic-no{font-family:var(--serif);color:var(--bronze);font-size:14px;letter-spacing:.12em}
+.topic h2{font-family:var(--serif);font-size:25px;font-weight:700;margin:7px 0 18px;line-height:1.4}
+.block-label{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--bronze);margin:24px 0 10px}
+.block-label::after{content:"";height:1px;background:var(--line);flex:1}
+.topic p{margin-bottom:10px}
+.topic p:last-child{margin-bottom:0}
+.person{background:var(--paper-deep);padding:16px 18px;margin:12px 0;border-radius:3px}
+.person-tag{font-size:12px;color:var(--teal);font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.person p{font-size:14.5px}
+.person .trade{display:block;margin-top:7px;font-size:13.5px;color:var(--soft)}
+.person .trade b{color:var(--vermilion);font-weight:700}
+.cognition{list-style:none}
+.cognition li{position:relative;padding:7px 0 7px 22px;border-bottom:1px solid rgba(216,208,189,.5);font-size:15px}
+.cognition li:last-child{border-bottom:none}
+.cognition li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;background:var(--bronze);transform:rotate(45deg)}
+.extend{list-style:none}
+.extend li{padding:8px 0;border-bottom:1px solid rgba(216,208,189,.5);font-size:14.5px;display:flex;gap:10px;align-items:baseline}
+.extend li:last-child{border-bottom:none}
+.tag{flex:none;font-size:11.5px;background:var(--ink);color:var(--paper);padding:2px 8px;border-radius:2px;letter-spacing:.05em}
+.tag.book{background:var(--bronze)} .tag.film{background:var(--teal)} .tag.web{background:#5C6B66} .tag.man{background:var(--vermilion)}
+
+/* ===== 底部翻页 ===== */
+.pager{display:grid;grid-template-columns:1fr;gap:12px;padding:34px 0 10px;border-top:1px solid var(--line);margin-top:10px}
+@media (min-width:640px){.pager{grid-template-columns:1fr 1fr}}
+.pager a{border:1px solid var(--line);padding:14px 16px;border-radius:3px;font-size:14px}
+.pager a:hover{border-color:var(--bronze)}
+.pager .dir{display:block;font-size:12px;color:var(--bronze);margin-bottom:3px}
+.pager .next{text-align:right}
+footer.site-foot{border-top:1px solid var(--line);padding:24px 0 40px;font-size:12.5px;color:var(--soft)}
+.back-top{position:fixed;right:18px;bottom:20px;width:42px;height:42px;border:1px solid var(--line);background:var(--paper-deep);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:40}
+.back-top:hover{border-color:var(--bronze)}
+</style>
+</head>
+<body>
+<span id="top"></span>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="首页.html">
+      <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#20302E" rx="2"/><path d="M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z" fill="#8A5A2B"/></svg>
+      看见世界
+    </a>
+    <nav class="nav">
+      <a href="首页.html">首页</a>
+      <a href="板块一-职业阶层与财富.html">职业与财富</a>
+      <a href="板块二-科技AI与产业趋势.html">科技与AI</a>
+      <a href="板块三-社会运行与商业规则.html">社会与规则</a>
+      <a class="active" href="板块四-人文心理与全球视野.html">人文与全球</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- ===== 板块头 ===== -->
+  <section class="section-head">
+    <div class="eyebrow">板块四 · BOARD 04</div>
+    <h1>人文、心理与全球视野</h1>
+    <p>前面三个板块讲的是怎么找工作、怎么读懂社会；这个板块把"人能怎么活"拉到全球尺度：日本人、美国人、德国人、东南亚普通人过什么日子，留学和技术移民的真实账本是多少，原生家庭和内心焦虑如何安放，以及文学、哲学、审美这些"没用的东西"为什么决定你成为什么样的人。你在备战六级、心里揣着出国看看的念头，又从河南农村走到本校——这个板块就是帮你把人生的样本库从县城放大到全世界，同时给你一套照顾自己内心的工具箱。</p>
+    <div class="section-meta">共 <b>16</b> 个主题 · 广度优先 · 每篇附延伸入口</div>
+  </section>
+
+  <!-- 窄屏目录 -->
+  <details class="toc-mobile">
+    <summary>本板块主题目录（点击展开）</summary>
+    <ol>
+      <li><a href="#t01"><i>01</i>历史的用处：用长时段视角看自己的人生</a></li>
+      <li><a href="#t02"><i>02</i>中国近现代史基本脉络</a></li>
+      <li><a href="#t03"><i>03</i>世界格局：地缘政治、国家类型与全球化</a></li>
+      <li><a href="#t04"><i>04</i>各国民生：日本、美国、德国、东南亚普通人怎么活</a></li>
+      <li><a href="#t05"><i>05</i>留学路径全解：费用、申请、回报与适配人群</a></li>
+      <li><a href="#t06"><i>06</i>海外工作与技术移民：工签、绿卡与真实账本</a></li>
+      <li><a href="#t07"><i>07</i>心理学入门：认知偏差、行为决策与大脑机制</a></li>
+      <li><a href="#t08"><i>08</i>原生家庭：理解出身而不被出身定义</a></li>
+      <li><a href="#t09"><i>09</i>自我认知：性格、价值观与人生选择方法</a></li>
+      <li><a href="#t10"><i>10</i>情绪与心理健康：焦虑、抑郁与求助通道</a></li>
+      <li><a href="#t11"><i>11</i>审美入门：音乐、美术、建筑与电影怎么看</a></li>
+      <li><a href="#t12"><i>12</i>文学的力量：在小说里过一千种人生</a></li>
+      <li><a href="#t13"><i>13</i>哲学基本问题：自由、死亡、意义与道德</a></li>
+      <li><a href="#t14"><i>14</i>宗教与信仰：人们靠什么安顿心灵</a></li>
+      <li><a href="#t15"><i>15</i>信息素养：高质量信息源、媒介辨别与知识管理</a></li>
+      <li><a href="#t16"><i>16</i>幸福科学：什么真正决定生活满意度</a></li>
+    </ol>
+  </details>
+
+  <div class="layout">
+    <!-- ===== 宽屏侧栏目录 ===== -->
+    <aside class="toc">
+      <div class="toc-box">
+        <div class="toc-title">主题目录</div>
+        <ol>
+          <li><a href="#t01"><i>01</i>历史的用处：用长时段视角看自己的人生</a></li>
+          <li><a href="#t02"><i>02</i>中国近现代史基本脉络</a></li>
+          <li><a href="#t03"><i>03</i>世界格局：地缘政治、国家类型与全球化</a></li>
+          <li><a href="#t04"><i>04</i>各国民生：日本、美国、德国、东南亚普通人怎么活</a></li>
+          <li><a href="#t05"><i>05</i>留学路径全解：费用、申请、回报与适配人群</a></li>
+          <li><a href="#t06"><i>06</i>海外工作与技术移民：工签、绿卡与真实账本</a></li>
+          <li><a href="#t07"><i>07</i>心理学入门：认知偏差、行为决策与大脑机制</a></li>
+          <li><a href="#t08"><i>08</i>原生家庭：理解出身而不被出身定义</a></li>
+          <li><a href="#t09"><i>09</i>自我认知：性格、价值观与人生选择方法</a></li>
+          <li><a href="#t10"><i>10</i>情绪与心理健康：焦虑、抑郁与求助通道</a></li>
+          <li><a href="#t11"><i>11</i>审美入门：音乐、美术、建筑与电影怎么看</a></li>
+          <li><a href="#t12"><i>12</i>文学的力量：在小说里过一千种人生</a></li>
+          <li><a href="#t13"><i>13</i>哲学基本问题：自由、死亡、意义与道德</a></li>
+          <li><a href="#t14"><i>14</i>宗教与信仰：人们靠什么安顿心灵</a></li>
+          <li><a href="#t15"><i>15</i>信息素养：高质量信息源、媒介辨别与知识管理</a></li>
+          <li><a href="#t16"><i>16</i>幸福科学：什么真正决定生活满意度</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <!-- ===== 主题文章区 ===== -->
+    <main>
+      <article class="topic" id="t01">
+        <div class="topic-no">主题 01</div>
+        <h2>历史的用处：用长时段视角看自己的人生</h2>
+
+        <div class="block-label">是什么</div>
+        <p>历史不是年份和朝代的背诵表，而是人类在不确定性里做选择的案例库。所谓长时段视角，就是把自己此刻的烦恼放进几十年、几百年甚至几千年的尺度里看：你纠结的实习、薪资、考研还是就业，在时间长河里是什么位置；你今天觉得天经地义的一切——高考、买房、退休、国家形态——都是过去具体的人一步步做出来的。</p>
+        <p>懂历史的人通常得到两样东西：一是祛魅，原来现在奉为铁律的规则曾经很荒唐，未来也一定会变；二是耐心，个人命运的转折往往以十年为单位，眼前的不顺不等于终局。对农村出身的年轻人来说，读史还能补一样便宜的东西：你知道自己不是第一个从土地里走出来的人，过去一百年里有无数和你起点相似的人走过类似的路，他们的成败就是你的免费样本。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 县城历史系毕业生（26 岁）</div>
+          <p>阿远，河南县城出身，普通二本历史系，毕业时差点失业，后来进了一家做城市展馆和企业展厅的内容公司，写策展文案和史料脚本。他的日常是泡档案馆、把枯燥的史料改成普通人看得懂的叙事，偶尔跟着团队去外地布展。</p>
+          <span class="trade"><b>回报：</b>郑州/武汉这类二线城市月薪 6–9 千元（2025 年行情），不算高，但历史训练让他读材料快、写长文不发怵，公司里没人跟他抢这口饭；<b>代价：</b>行业窄、天花板低，想涨薪只能往大平台或转行考编走。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 业余读史的销售老兵（38 岁）</div>
+          <p>老周，制造业销售，学历不高，但十年间业余通读了多卷本中国通史和世界史，饭局上聊任何政策、行业变迁都能讲出前因后果。客户谈着谈着就从生意聊到了大势。</p>
+          <span class="trade"><b>回报：</b>客户愿意跟他聊、信任他的判断，拿单概率明显高于同事，年综合收入 40 万上下（2025 年华东制造业水平）；<b>代价：</b>十年读书全靠挤业余时间，前几年被家人骂"不务正业"，而且读史本身不会直接换钱，它是复利型投资。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>历史给你的不是答案，而是"可能性清单"：每一代人都以为自己面对的是全新问题，其实换层皮都演过。</li>
+          <li>读史先抓大脉络，再钻细节；不要一上来就沉迷某个皇帝的宫斗，那是爽文不是史。</li>
+          <li>农村出身的信息差：家里长辈的经验只覆盖过去四十年，而历史能让你一次拿到几百年的人生样本，这是寒门子弟最便宜的"人生咨询"。</li>
+          <li>警惕两种读法：成王败寇的爽文读法让你蠢，"一切都是命"的虚无读法让你瘫。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>尤瓦尔·赫拉利《人类简史：从动物到上帝》，把人类七万年压成一本，长时段视角的最佳入门。</li>
+          <li><span class="tag book">书籍</span>黄仁宇《万历十五年》，用一年切面看懂大帝国的运行逻辑，写法像小说。</li>
+          <li><span class="tag book">书籍</span>钱穆《中国历代政治得失》，薄册子，讲透制度怎么一步步变成今天的样子。</li>
+          <li><span class="tag film">纪录片</span>央视《大国崛起》，九集看近代九个强国的兴衰路径。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t02">
+        <div class="topic-no">主题 02</div>
+        <h2>中国近现代史基本脉络</h2>
+
+        <div class="block-label">是什么</div>
+        <p>从 1840 年鸦片战争到今天，一百八十多年的主线其实只有一条：一个古老农业大国被强行拖进现代世界，几代人在"救亡"与"求富"之间寻找位置。可以拎成五段：挨打与开国（鸦片战争—甲午战争，1840–1895）；变法与革命（戊戌变法—辛亥革命，两千年帝制崩塌）；战争与建国（军阀混战—抗战—1949 年建国）；计划经济与动荡（1949–1978，土改、工业化、文革）；改革开放至今（1978 年后市场化、2001 年入世、成为世界工厂、2015 年后产业转型）。</p>
+        <p>你今天享受的高考扩招、互联网产业、移动支付，全部是这条线的下游产物；你焦虑的房价、内卷、35 岁危机，也全部是这条线的结构性后果。看懂这条线，你才知道自己站在哪、风往哪吹，而不是被风吹着走。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 你外公这一代（1955 年生，河南农村）</div>
+          <p>老栓（化名），十六岁在生产队挣工分，二十四岁那年赶上包产到户，家里第一次吃饱饭；三十八岁南下东莞鞋厂打工，五十岁回乡盖房。他的人生三次转折——吃饱、打工、盖房——全由国家政策改写，自己几乎没做过"选择"。</p>
+          <span class="trade"><b>回报：</b>这一代人完成了从饿肚子到盖起小楼的跨越；<b>代价：</b>命运被时代单向安排，个人在政策面前几乎没有议价权，也因此他们那代人对"稳定"有一种后辈难以理解的执念。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 你的堂哥这一代（1995 年生）</div>
+          <p>堂哥，普通二本 2017 年毕业，赶上移动互联网尾声，在郑州做电商运营，月薪 8 千元上下（2025 年）。他的人生剧本由"大学扩招+电商下乡"写成：比上一代多了选择，但选择的代价是必须自己对结果负责。</p>
+          <span class="trade"><b>回报：</b>命运的方向盘第一次交到个人手里；<b>代价：</b>没有了"国家安排"的兜底，行业下行时（比如电商内卷）只能自己扛，这也是当代年轻人焦虑的来源。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>1978、1992、2001（入世）、2015（移动互联网爆发）、2023（AI 元年）是五个关键分叉口，每一代年轻人的命运都被它重新洗牌。</li>
+          <li>"世界工厂"红利正在外移到东南亚、墨西哥，这是你选行业、看出海机会时的大背景。</li>
+          <li>农村出身的信息差：很多人只从家里听过"读书改变命运"，却不知道这句话本身是 1977 年恢复高考之后才成立的时代命题——时代命题都有保质期，要自己判断下一张票是什么。</li>
+          <li>读近现代史要对照着看：官方叙事和民间史料一起读，两边对照才看得清。入门可以先读一本脉络书建立坐标，再挑一个你感兴趣的年份往深挖。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>蒋廷黻《中国近代史》，薄薄一册，脉络最清晰的入门书。</li>
+          <li><span class="tag book">书籍</span>茅海建《天朝的崩溃：鸦片战争再研究》，看清一场战争如何决定后面两百年。</li>
+          <li><span class="tag book">书籍</span>黄仁宇《中国大历史》，用"大历史"视角把两千年串成一条线。</li>
+          <li><span class="tag film">纪录片</span>央视《复兴之路》，官方视角的近现代史脉络片，配合上面的书对照着看。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t03">
+        <div class="topic-no">主题 03</div>
+        <h2>世界格局：地缘政治、国家类型与全球化</h2>
+
+        <div class="block-label">是什么</div>
+        <p>今天的世界大致是"一超多强+多极板块"的结构：美国仍是综合实力第一（军事、科技、美元、话语权），中国是最大制造业国和第二大经济体，欧盟是最大经济体板块但内部分裂，日本、英国是美国盟友体系内的重要节点，俄罗斯靠能源和军事维持大国地位，印度、东南亚、非洲是正在崛起的新板块。</p>
+        <p>国家可以粗分几类：资源国（中东、澳大利亚）、制造国（中国、越南、德国）、消费与金融国（美国、英国）、转口枢纽国（新加坡、荷兰）。过去四十年的全球化让中国成为最大受益者之一，但 2018 年以后，"脱钩""小院高墙""友岸外包"成了高频词——技术人员会直接感受到：签证变难、关税变多、供应链重组。你以后找工作、出海、移民，本质上都是在这张棋盘上挑一个对自己最有利的格子。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 被派驻东南亚的硬件工程师（29 岁）</div>
+          <p>阿杰，深圳某硬件公司工程师，2023 年公司把组装环节搬到越南，他被派驻河内两年，负责产线技术对接。生活从福田城中村换成了河内还剑湖边的公寓，同事一半是本地工程师、一半是中国外派。</p>
+          <span class="trade"><b>回报：</b>驻外补贴让薪资上浮约 40%，两年攒下人生第一桶金（2024–2025 年华南硬件行业水平），还顺手拿了越南长期居留；<b>代价：</b>远离总部晋升慢、语言不通、社交圈封闭，回国后要重新接轨道。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 受出口管制影响的芯片验证工程师（35 岁）</div>
+          <p>老林，在美国某芯片公司做验证工程师，绿卡排期已排了六年。2022 年出口管制升级后，他所在的项目被拆分、部分团队回国，他两年内内部转岗两次，技术栈一半用不上了。</p>
+          <span class="trade"><b>回报：</b>待遇仍在 20 万美元以上年包区间（2024 年美国科技业水平）；<b>代价：</b>政策一句话，几年积累可能要换赛道——"卡脖子"不只卡国家，也卡普通人的简历和人生规划。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>国家之间的竞争最后都落到具体的工程师、岗位和签证上；看国际新闻不是看热闹，是看自己行业的天气预报。</li>
+          <li>"全球化退潮"不等于不能出海，而是出海方向变了：从"只去美国"变成"东南亚、中东、拉美都在招人"。</li>
+          <li>农村出身的信息差：很多同学以为"出国=去欧美"，其实今天中国工程师最缺人的海外岗位大量在东南亚、中东和非洲的中资项目里，门槛更低、上升更快，只是家乡亲戚听不懂你在干什么。</li>
+          <li>签 offer 前查一眼公司业务的地缘风险：收入高不高要看，业务会不会因为一纸文件被停，更要看。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>保罗·肯尼迪《大国的兴衰》，五百年大国兴衰的大账本。</li>
+          <li><span class="tag book">书籍</span>蒂姆·马歇尔《地理的囚徒》，用十一幅地图讲清国家行为的底层逻辑。</li>
+          <li><span class="tag web">媒体</span>路透社、BBC 中文网和《经济学人》简报，每天十分钟，跟踪真实世界的天气变化。</li>
+          <li><span class="tag book">书籍</span>约瑟夫·斯蒂格利茨《全球化及其不满》，听一位诺奖经济学家讲全球化为什么有人赢有人输。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t04">
+        <div class="topic-no">主题 04</div>
+        <h2>各国民生：日本、美国、德国、东南亚普通人怎么活</h2>
+
+        <div class="block-label">是什么</div>
+        <p>"民生"就是一个普通人在那个国家上班、租房、看病、养娃之后，一年实际剩下什么。几组官方数字先打底：按 OECD 2024 年数据，日本从业人员平均年工资约 500 万日元（约合人民币 24 万元），美国约 8.3 万美元；德国联邦统计局 2024 年数据显示，全职雇员年薪中位数约 5.2 万欧元（税前），平均值 6.2 万欧元；东南亚的科技业则便宜得多——按 Asia Tech Salary Index（2026 年），胡志明市初级程序员年薪约 3.2 万美元、资深约 7.4 万美元。</p>
+        <p>但光看数字会误判：日本税不高但物价贵、加班文化长；美国名义工资高但医保和学费能吃掉一半；德国税后打折狠，但假期多、医保托底；东南亚工资低但生活成本也低。同一个人，带着同一套技能去不同国家，过的是完全不同的日子。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 东京普通程序员（28 岁，在日五年）</div>
+          <p>小陈，国内本科毕业赴日读语言学校+专门学校，后进日本一家 SaaS 公司做后端。月收约 45 万日元（年收约 550 万日元，2025 年东京 IT 行业中层水平），扣完税和社保到手约 32 万日元。他租 6 帖小公寓，月租金 9 万日元，通勤靠地铁。</p>
+          <span class="trade"><b>回报：</b>物价稳定、社会秩序好、不内卷到猝死、公司几乎不裁员；<b>代价：</b>上升空间窄、外国人很难进核心层、职场礼仪磨人，年收十年可能只涨一两百万日元。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 慕尼黑汽车业工程师（32 岁，在德四年）</div>
+          <p>老王，国内硕士毕业，走德国蓝卡入职某车企，年薪 7.2 万欧元（2025 年南德工程师常见区间）。扣完税和保险到手约 4.1 万欧元/年，夫妻俩租三居室，月租金 1800 欧元，每年法定带薪假 30 天。</p>
+          <span class="trade"><b>回报：</b>假期多、下班不回消息、医疗和养老保险托底，21 个月后可申请永居；<b>代价：</b>税很重（高收入者综合税率近五成）、德语门槛卡死晋升、收入增速慢、慕尼黑房价不便宜。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>比"平均工资"更重要的是税后到手和生活成本：美国 8 万美元听起来多，在纽约扣完税、交完医保和房租，和德国 5 万欧元的实际宽裕度差不多。</li>
+          <li>日本适合"安稳过日子"，美国适合"冲一把高回报"，德国适合"平衡"，东南亚适合"低成本攒经验再跳"——没有天堂，只有匹配。</li>
+          <li>农村出身的信息差：很多人以为出国就是"去当人上人"，其实任何国家的普通工薪族都是上班还贷、周末逛超市；你要选的是"哪种辛苦"，而不是"要不要辛苦"。</li>
+          <li>看各国真实物价和房租，可以上 Numbeo 这类全球生活成本网站自己比价，比听中介讲故事靠谱。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>OECD Better Life Index（OECD 更好生活指数），二十多个国家在收入、住房、健康、满意度上的官方对比。</li>
+          <li><span class="tag web">网站</span>Numbeo，全球城市物价、房租、治安的用户众包数据库，自己动手算一笔账。</li>
+          <li><span class="tag film">纪录片</span>《人生七年》（Up Series），从七岁开始跟踪英国不同阶层的孩子五十六年，看阶层如何展开。</li>
+          <li><span class="tag book">书籍</span>阿摩司·奥兹《故事还能继续》之外，推荐阅人即阅世：日本吉本芭娜娜、德国伯尔，用小说补各国人的内心。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t05">
+        <div class="topic-no">主题 05</div>
+        <h2>留学路径全解：费用、申请、回报与适配人群</h2>
+
+        <div class="block-label">是什么</div>
+        <p>留学本质是一笔"教育投资+身份期权"的交易：你掏出真金白银和两三年时间，买三样东西——文凭信号、外语能力、一段海外生活经历和人脉。主流目的地账差很多：美国读 CS 硕士最贵，公立大学一年总费用约 35–55 万人民币、私立约 45–70 万人民币，一个两年项目下来总投入 60–130 万人民币（新东方前途出国 2026 年行情估算）；德国公立大学绝大部分免学费（仅巴登-符腾堡州对非欧盟生收每学期 1500 欧元），每学期只交 200–350 欧元注册费，生活费按 DAAD 官方数据约每月 900–1200 欧元，一年约 8–10 万人民币就能读完。</p>
+        <p>申请上，美国看 GPA、托福/雅思、GRE（部分项目可选）、推荐信和科研/实习；德国很多英文授课硕士只要 GPA 达标+雅思 6.5，不看 GRE。英国、澳洲是一年制硕士，费用居中但留当地工作的窗口在收窄。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 美硕 CS 毕业留美工程师（26 岁）</div>
+          <p>小林，本校同层次院校本科，GPA 3.6，托福 100，申上美国中部一所公立大学 CS 硕士，两年花掉家里约 70 万人民币（含学费生活费，2023–2025 年）。毕业抽中 H-1B，进了一家中型科技公司做后端，年包约 13–16 万美元（2025 年美国非大厂常见水平）。</p>
+          <span class="trade"><b>回报：</b>按现在汇率两三年就能回本，技术环境和薪资天花板高；<b>代价：</b>70 万是真金白银砸进去的，H-1B 抽不中就得回国，绿卡还要再排好几年，这几年里不敢辞职不敢创业。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 德国英授硕士毕业留欧（25 岁）</div>
+          <p>小赵，双非本科自动化，APS 审核+德语 B1，申上慕尼黑一所大学的英授计算机硕士，两年学费几乎为零，靠每年约 10 万人民币生活费（含打工补贴）读完，2025 年毕业进了一家软件公司拿蓝卡。</p>
+          <span class="trade"><b>回报：</b>总花费不到美硕的五分之一，毕业即拿蓝卡、21 个月后可永居；<b>代价：</b>学校排名不如美国名校好听，德语不好晋升受限，起薪比美国低一半，适合"求稳"不适合"搏高薪"。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>留学回报 = （毕业后当地起薪 × 留下概率）− 总投入；先算这笔账，再谈"开眼界"。</li>
+          <li>CS 方向留学，性价比排序大致是：德/欧陆（便宜+能留）＞ 新加坡/香港（近+短）＞ 英国/澳洲（一年但难留）＞ 美国（最贵但天花板最高）。</li>
+          <li>农村出身的信息差：很多家庭以为"留学=有钱人家的事"，不知道德国、北欧公立大学几乎免学费，也不知道 CS 硕士有 RA/TA 奖学金能抵学费——信息差本身就是钱。</li>
+          <li>六级、托福雅思是硬门槛：你现在备战六级，顺便把托福考了，等于给自己留了一扇还没关上的门。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>DAAD（德意志学术交流中心）官网留学德国板块，费用与项目的一手官方信息。</li>
+          <li><span class="tag web">网站</span>College Scorecard（美国教育部），用官方数据查每所美国大学的学费和毕业生收入。</li>
+          <li><span class="tag web">社区</span>一亩三分地、寄托天下，留学申请与北美就业的真实经验帖，比中介真诚。</li>
+          <li><span class="tag web">课程</span>ETS 官方托福备考资料与各国使领馆签证页，政策以官方为准。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t06">
+        <div class="topic-no">主题 06</div>
+        <h2>海外工作与技术移民：工签、绿卡与真实账本</h2>
+
+        <div class="block-label">是什么</div>
+        <p>技术移民对程序员相对友好，但每个国家的"门票"不一样。美国路径最长也最贵：先 H-1B 工作签证（每年抽签，中签率常年不足三成），再由雇主排绿卡，中国大陆出生的申请人在 EB-2/EB-3 类别排队常需数年（USCIS 官方已明确中印申请人需等候）。德国最省事：欧盟蓝卡只要学历受认可+达到薪资门槛——2025 年普通岗位年薪约 4.83 万欧元、IT 等紧缺职业约 4.38 万欧元，无学位但七年里有三年 IT 经验也可申请；缴满社保、德语 B1 约 21 个月可申永居。新加坡 EP 准证 2025 年起最低月薪 5600 新元，2027 年 1 月起涨到 6000 新元。加拿大、澳大利亚走打分制技术移民，年龄、学历、语言、工作经验凑分。</p>
+        <p>记住一句话：所有签证政策都会变，申请前必须查官方最新页面，这里的数字只是 2025–2026 年的快照。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 美国大厂工程师（31 岁，绿卡排期中）</div>
+          <p>大刘，国内硕士毕业，美硕转码后进大厂做后端，总年包约 25 万美元（2025 年 levels.fyi 公布的大厂中级区间）。H-1B 抽了两次才中，绿卡已排四年。他的日常是：不敢裸辞、不敢跳槽去小公司（新雇主要重新排绿卡）、每隔几天查一次排期公告。</p>
+          <span class="trade"><b>回报：</b>收入是国内同岗的三到五倍，技术环境顶级，孩子出生直接拿身份；<b>代价：</b>七八年的"签证人质期"，职业选择被绿卡锁死，父母年事已高却不敢轻易回国。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 德国蓝卡程序员（29 岁，已拿永居）</div>
+          <p>小孙，本校本科毕业，国内工作三年后直接投德国岗位，拿到年薪 5.8 万欧元 offer 走蓝卡，2025 年满 21 个月、德语 B1 后顺利拿永居。他现在一年休 30 天假，回国看父母两周毫无心理负担。</p>
+          <span class="trade"><b>回报：</b>没有抽签、没有排期，两年拿到永久居留，生活工作边界清晰；<b>代价：</b>起薪不到美国一半，不读书德语一辈子只能在华人圈，想回国时发现国内技术栈已经换了一代。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>移民是"拿自由换收入"或"拿收入换自由"的选择题：美国买收入天花板，德国买确定性，新加坡买距离家近，没有白拿的选项。</li>
+          <li>工签时代你不是自由人：雇主握着你的签证，这几年加班、背锅、被 PUA 的议价能力会变弱——心里要有数。</li>
+          <li>农村出身的信息差：很多同学以为移民必须先花一百万留学，其实"国内工作几年→直接投海外岗→拿工签"这条路被严重低估，德国、新加坡、东南亚都吃这套。</li>
+          <li>政策会变：H-1B 规则、蓝卡薪资线、EP 门槛每隔一两年调整，出发前一定查官网（USCIS、德国使领馆、新加坡 MOM）。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">网站</span>USCIS 官网职业移民板块与每月签证公告牌（Visa Bulletin），美国排期一手信息。</li>
+          <li><span class="tag web">网站</span>德国驻华使领馆签证页与 GTAI（德国联邦外贸与投资署），蓝卡规则的官方中文说明。</li>
+          <li><span class="tag web">社区</span>一亩三分地"移民版"、小红书"德国蓝卡""新加坡 EP"真实经验帖，交叉验证着看。</li>
+          <li><span class="tag book">书籍</span>《出境签证：程序员的海外生存手记》类一线经验帖合集（多为社区连载，搜"程序员移民"即可找到）。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t07">
+        <div class="topic-no">主题 07</div>
+        <h2>心理学入门：认知偏差、行为决策与大脑机制</h2>
+
+        <div class="block-label">是什么</div>
+        <p>主流心理学过去五十年最颠覆常识的结论是：人不是理性动物，而是"先有感觉、再编理由"的动物。大脑有两套系统——系统一快而直觉、系统二慢而费力，我们绝大多数日常决定其实是系统一偷偷做的，它顺手留下了一堆 bug，就是"认知偏差"：锚定效应（被第一个数字带跑）、损失厌恶（亏 100 块的痛是赚 100 块快乐的两倍）、确认偏误（只看支持自己观点的证据）、幸存者偏差（只看见活下来的人）、达克效应（越菜越自信）。</p>
+        <p>学心理学不是为了"分析别人"，而是为了给你自己装一个 debug 工具：下次做职业选择、报班、买课、投简历被 HR 拒了的时候，你能分辨"这是事实判断"还是"我的大脑在骗我"。对要在信息爆炸里做技术选型和职业判断的工程师，这是一项底层职业素养。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 被锚定效应坑过的应届生（23 岁）</div>
+          <p>小杨，秋招时第一个 offer 是 18 万年薪，他拿这个当锚，后面 16 万的 offer 全拒了，结果年底没等来更好的，只能春招降薪入职 14 万。后来读了卡尼曼才明白：自己是被第一个数字锚住，把"合理"误判成了"亏"。</p>
+          <span class="trade"><b>回报：</b>踩过一次坑之后，他做任何薪资谈判都先查行业中位数再开口，不再拿第一份 offer 当参照；<b>代价：</b>那半年多跑的路和错过的机会，是认知偏差实打实的学费。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 把行为心理学用在工作上的产品经理（29 岁）</div>
+          <p>老郑，做增长产品，熟练运用《影响力》里的 reciprocity（互惠）、社会认同、稀缺等原理设计新手引导和活动。他不把这些当套路害人，而是用来让产品真正帮用户养成好习惯。</p>
+          <span class="trade"><b>回报：</b>同样做产品，他比同事多一层"用户为什么会点"的解释框架，年包 40 万+（2025 年一线互联网水平）；<b>代价：</b>看清套路之后，自己刷手机时也更容易识破，少了很多无脑爽。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>偏差不可消除，只能"察觉"：每次重大决策前，把"我的直觉结论"和"数据支持的结论"写下来对比。</li>
+          <li>互联网产品的按钮、红点、倒计时，全是利用你系统一的陷阱；识破一次，余生少被收割一次。</li>
+          <li>农村出身的信息差：家里没人教过你"人脑会系统性犯错"，而城市中产家庭的孩子从小被鼓励复盘决策——现在补上完全来得及。</li>
+          <li>心理学是科学不是玄学：看实验证据充分的经典研究，远离"读心术"和性格占卜类伪心理学；凡是宣称一次咨询包治百病的，都是骗子。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>丹尼尔·卡尼曼《思考，快与慢》，诺奖得主亲笔，认知偏差的圣经。</li>
+          <li><span class="tag book">书籍</span>罗伯特·西奥迪尼《影响力》，六种让人说"是"的原理，销售和产品必读。</li>
+          <li><span class="tag book">书籍</span>丹·艾瑞里《怪诞行为学》，用一个个好玩的实验讲人为什么不理性。</li>
+          <li><span class="tag web">课程</span>耶鲁大学公开课《心理学导论》（Paul Bloom），公开课视频全网上有中文字幕。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t08">
+        <div class="topic-no">主题 08</div>
+        <h2>原生家庭：理解出身而不被出身定义</h2>
+
+        <div class="block-label">是什么</div>
+        <p>原生家庭，指的是你从小长大的那个家如何塑造了你的习惯、情绪反应和看待世界的默认设置。它决定了你：被夸奖时是坦然还是尴尬，被批评时是解释还是崩溃，面对权威时是反抗还是讨好，谈钱时是大方还是羞耻。这些模式大多在你六岁前就写进了大脑，自己通常看不见。</p>
+        <p>这门学问的目的不是"追责父母"——你的父母大概率也是被他们的原生家庭和贫困年代塑造的，他们已经给了你他们能给的最好版本。它的目的是"拆盲盒"：把那些自动运行的旧模式一条条拿出来看，然后自己决定哪些留下、哪些改写。理解出身，是为了从出身手里把人生方向盘拿回来，而不是把方向盘摔碎在父母身上。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 从讨好型人格里慢慢长出来的男生（25 岁）</div>
+          <p>小峰，河南农村出来的大学生，从小听最多的话是"家里供你不容易"。工作后他习惯性接下同事的锅、拒绝饭局就愧疚，谈女朋友总怕"配不上"。读了苏珊·福沃德的书、做了一年学校心理咨询之后，他开始练习一件小事：别人提要求时，先停十秒再回答。</p>
+          <span class="trade"><b>回报：</b>三年后他敢跟 leader 谈涨薪、敢拒绝不合理加班，亲密关系里不再习惯性道歉；<b>代价：</b>这个过程很慢，中间好几次和家里通电话后崩溃，且至今偶尔还会旧模式发作。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 和农村父母"重新处关系"的工程师（28 岁）</div>
+          <p>老韩，父母种了一辈子地，坚信"考公才叫工作"，他在互联网公司写代码，每次回家都要吵。后来他不再试图说服父母，而是每个月给家里打固定金额的钱、逢年过节带父母出来旅游一次——用他们能懂的方式证明"我过得好"，而不是争输赢。</p>
+          <span class="trade"><b>回报：</b>争吵基本消失，父母开始跟村里人大声夸儿子；<b>代价：</b>他承认自己永远等不到父母"理解他的职业选择"，学会了在不被完全理解的情况下依然好好爱他们。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>原生家庭决定你的"出厂设置"，但不决定你的"后续版本"——大脑终身可塑，二十多岁正是改写的黄金期。</li>
+          <li>分清"感受"和"事实"：父母一句话让你难受，难受是真的，但那句话的内容不一定是事实。</li>
+          <li>农村出身的信息差：你父母那代人缺的是"情绪教育"这门课，不是故意害你；把他们当"没上过这门课的学生"而不是"仇人"，你会轻松很多。</li>
+          <li>改变不需要家里配合：你自己先变，关系模式往往会跟着变；不变，也不影响你把自己的日子过好。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>苏珊·福沃德《原生家庭：如何修补自己的性格缺陷》，经典入门，写得温柔而有边界。</li>
+          <li><span class="tag book">书籍</span>岸见一郎、古贺史健《被讨厌的勇气》，阿德勒心理学对话体，讲"课题分离"——谁的事谁负责。</li>
+          <li><span class="tag book">书籍</span>琳赛·吉布森《不成熟的父母》，识别那些情感上没有长大的父母。</li>
+          <li><span class="tag web">资源</span>高校心理咨询中心（本校大学生心理健康教育中心即对本校学生免费开放），面对面谈比看书更直接。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t09">
+        <div class="topic-no">主题 09</div>
+        <h2>自我认知：性格、价值观与人生选择方法</h2>
+
+        <div class="block-label">是什么</div>
+        <p>自我认知回答三个问题：我是谁（性格）、我要什么（价值观）、我怎么选（决策方法）。性格上，MBTI 这类测试当娱乐就好，心理学界更认可大五人格模型（开放性、尽责性、外向性、宜人性、情绪稳定性）——它能帮你理解自己更适合独处深度工作还是高频社交，但不决定你的命运。</p>
+        <p>价值观则是排序题：自由、稳定、收入、影响力、家庭、冒险，哪三个排前三？排序不同，同样一个 offer 的含义完全不同。最后是决策方法：人生重大选择不要问"哪个更好"，而要问"十年后回头看，我更后悔没做哪个"——行为经济学里这叫"后悔最小化框架"。对农村出来的年轻人，自我认知尤其珍贵：没人给你托底，你必须比别人更早搞清楚自己要什么，否则很容易被亲戚的眼光和同龄人的节奏带着跑。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 从大厂逃回小厂的工程师（27 岁）</div>
+          <p>阿哲，毕业进了大厂，年薪 35 万，但天天被 OKR 追着跑，一年胖了 15 斤。他花了一个周末认真列了自己的价值观：排第一的是"生活节奏可控"，第二是"技术成长"，钱只排第三。想清楚后他跳槽去了一家不卷的小公司，年薪降到 22 万。</p>
+          <span class="trade"><b>回报：</b>重新有时间健身、做自己的开源项目，三年后技术反而比同期大厂同学扎实；<b>代价：</b>过年回家要听半年"谁谁谁在大厂年薪多少"的比较，他得自己消化。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 用"十年后悔法"选方向的女生（24 岁）</div>
+          <p>小敏，秋招纠结体制内还是互联网。她写了两张卡片：选体制内，十年后可能后悔"年轻时没拼过"；选互联网，十年后可能后悔"太累没生活"。发现前者的后悔她受不了、后者可以调节，于是去了互联网。</p>
+          <span class="trade"><b>回报：</b>做完决定后几乎不再内耗，因为自己签过字；<b>代价：</b>方法不能预测未来好坏，只能保证你"不后悔选了这条路"，苦还是要吃的。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>性格没有好坏，只有匹配：内向的人做深度技术是优势，外向的人做客户/产品是优势，别拿短板跟别人长板比。</li>
+          <li>价值观不是想出来的，是试出来的：大一大二多实习、多换赛道试错，比在宿舍空想"我是谁"有用十倍。</li>
+          <li>农村出身的信息差：很多家庭给孩子的唯一价值观是"稳定+赚钱"，你要警惕这是不是你自己真的想要的——这是你必须自己完成的一课。</li>
+          <li>没有完美选择，只有为自己的选择负责；怕选错的人，往往最后选错了"一直在选"。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>比尔·伯内特《斯坦福大学人生设计课》，用设计思维做人生规划，有大量可动手的练习。</li>
+          <li><span class="tag book">书籍</span>克莱顿·克里斯坦森《你要如何衡量你的人生》，哈佛教授临终前写的，把职业与人生一本账算清。</li>
+          <li><span class="tag web">测试</span>大五人格免费测试（IPIP-NEO，网上有中文版），比 MBTI 更接近心理学界共识，结果仅作参考。</li>
+          <li><span class="tag book">书籍</span>阿兰·德波顿《身份的焦虑》，帮你分清"我想要的"和"别人让我觉得我该想要的"。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t10">
+        <div class="topic-no">主题 10</div>
+        <h2>情绪与心理健康：焦虑、抑郁与求助通道</h2>
+
+        <div class="block-label">是什么</div>
+        <p>先把话说在前面：焦虑和抑郁不是"想不开"、不是"软弱"，而是像感冒发烧一样的健康问题。焦虑是身体的警报系统过于灵敏，把一般的紧张信号拉成了灾难；抑郁则是大脑的"动力系统"低电量，不是你懒，是生理和心理一起把你按在了床上。大学生是高发群体——学业、就业、经济、人际几座山同时压过来，难受是正常的，不代表你出了问题。</p>
+        <p>你能做的事分三层：第一层是自我照护——规律睡眠、每周三次出汗运动、减少深夜刷手机、和真人说话；第二层是自助读物和正念练习；第三层是专业帮助——心理咨询师、精神科医生，以及免费热线。求助不是认输，是和感冒去看医生一样平常的事。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 研三焦虑到失眠的男生（26 岁）</div>
+          <p>阿凯，秋招+论文双重压力，连续一个月凌晨三点睡不着，早上不想见人。他先去校医院转诊，学校心理咨询中心给他约了每周一次的免费咨询，又按医生建议开始每天慢跑三公里。两个月后睡眠恢复，offer 也在手了。他后来说，最难的是拨出第一个电话那一步。</p>
+          <span class="trade"><b>回报：</b>把一次危机变成了"学会照顾自己"的契机；<b>代价：</b>中间有两周自我怀疑特别严重，需要靠朋友每天陪吃饭硬撑过来。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 把心理咨询当成"年度体检"的程序员（30 岁）</div>
+          <p>老梁，工作五年，每年固定做十次心理咨询，像健身一样维护心理状态。他不觉得这是病，而是"找个专业的人帮我理一理最近卡在哪"。他说最贵的一次收获，是发现自己持续加班的根源是不敢拒绝父母的期待。</p>
+          <span class="trade"><b>回报：</b>情绪很少再积压成大病，职业选择更果断；<b>代价：</b>商业咨询每次 400–800 元（2025 年一线城市行情），是一笔固定开支。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>几个可以马上用的求助通道：拨打全国统一心理援助热线 <b>12356</b>（国家卫健委主导，2025 年 5 月 1 日起全国 31 个省份开通，多地提供 24 小时服务）；学校心理咨询中心对本校学生免费，本校学生可预约大学生心理健康教育中心；北京心理危机研究与干预中心热线 010-82951332 长期开通。</li>
+          <li>如果出现连续两周以上失眠、食欲剧变、对一切失去兴趣、有伤害自己的念头——别等，直接去医院精神心理科或打 12356，这不是矫情。</li>
+          <li>农村出身的信息差：很多家庭把"去看心理医生"当成丢人的事，你要知道这恰恰是城市中产最普通的健康消费之一；你比父母更早知道这一点，是你的优势。</li>
+          <li>别独自硬扛：告诉一个信任的朋友或老师"我最近不太好"，这句话本身就能降低一半风险。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag web">热线</span>全国统一心理援助热线 12356（国家卫健委，2025 年开通），有困扰随时打，免费、保密。</li>
+          <li><span class="tag web">机构</span>本校学生心理健康教育中心预约通道，本校在校学生可免费面对面咨询。</li>
+          <li><span class="tag book">书籍</span>戴维·伯恩斯《伯恩斯新情绪疗法》，认知自助经典，有大量可操作的练习表。</li>
+          <li><span class="tag web">课程</span>哈佛大学《积极心理学》公开课（Tal Ben-Shahar），网上有完整中文字幕版。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t11">
+        <div class="topic-no">主题 11</div>
+        <h2>审美入门：音乐、美术、建筑与电影怎么看</h2>
+
+        <div class="block-label">是什么</div>
+        <p>审美不是"天赋"，而是"见过足够多好东西之后长出来的判断力"。它和写代码一样是技能：先大量看、先记住几个坐标系，再慢慢形成自己的口味。音乐上，从你已经喜欢的流行乐出发，顺着编曲去听乐队、再摸到古典；美术上，记住一条主线——从古典写实到印象派、再到现代抽象，每一步都是画家在反对上一代；建筑上，看三个东西：屋顶、结构、材料；电影上，别只盯剧情，留意镜头怎么动、音乐什么时候进。</p>
+        <p>这件事对工程师的用处很实在：你做的 AI 产品 UI 好不好看、PPT 排得舒不舒服、将来带团队做品牌，底层都是审美。农村出身常见的遗憾是：从小没人带你看过画展、听过音乐会，大学前以为"艺术是城里人的事"——其实一部纪录片、一副耳机，今天就够你入门。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 从程序员变成乐队吉他手的工程师（28 岁）</div>
+          <p>小张，大二才第一次摸吉他，大学时组了个校园乐队，毕业后白天写代码、周末排练、一年演两场 livehouse。他说学琴最直接的收获不是上台，而是听歌时能听出贝斯线和鼓的律动，整个世界多了一个声道。</p>
+          <span class="trade"><b>回报：</b>工作累了有个能完全沉浸的出口，乐队朋友成了最铁的圈子；<b>代价：</b>前两年手指疼、弹得难听，且演出不赚钱，纯粹用爱发电。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 用看电影解压的产品经理（27 岁）</div>
+          <p>小周，从大三开始按豆瓣 Top250 一部部看，五年看了四百部。她说自己说不清审美怎么提高的，但现在做产品评审，一眼就能看出哪个页面"不对"，说不出理论但能感觉到。</p>
+          <span class="trade"><b>回报：</b>审美判断力直接转化为工作里的 UI 评审能力，比同岗同事少踩很多设计坑；<b>代价：</b>阅片量大之后，很多烂片直接看不下去，能看的反而少了。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>入门顺序：先大量看/听让自己舒服的，再去接触"看不懂"的——不要一上来硬啃交响乐和抽象画，会劝退。</li>
+          <li>审美有高低但没有标准答案：你喜欢什么不丢人，重要的是能说出"为什么喜欢"。</li>
+          <li>农村出身的信息差：小时候没去过美术馆不代表没天赋，只代表起步晚；大学四年免费资源（博物馆免费日、网易云、B 站纪录片）足够补。</li>
+          <li>对工程师：审美不是副业装饰，AI 时代做产品的人最后拼的就是"品位"——模型人人能调，审美才是壁垒。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>贡布里希《艺术的故事》，全世界最流行的艺术史入门，像讲故事一样。</li>
+          <li><span class="tag book">书籍</span>路易斯·贾内梯《认识电影》，把电影的镜头、剪辑、光影讲成普通人听得懂的话。</li>
+          <li><span class="tag film">纪录片</span>西蒙·沙玛《艺术的力量》，BBC 出品，讲八位大师的人生与代表作。</li>
+          <li><span class="tag web">网站</span>豆瓣电影 Top250 与 B 站古典音乐频道，零成本的入门片单和曲目库。</li>
+          <li><span class="tag web">应用</span>网易云音乐私人 FM 配合豆瓣音乐，顺着你已经喜欢的歌往上游找，比任何推荐歌单都准。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t12">
+        <div class="topic-no">主题 12</div>
+        <h2>文学的力量：在小说里过一千种人生</h2>
+
+        <div class="block-label">是什么</div>
+        <p>小说是最便宜的"平行宇宙旅行"：你用一个月的睡前时间，在书里当一次皇帝、当一次难民、当一次失恋的高中生、当一次临终的老人。心理学研究把这叫做"体验式取样"——读小说时大脑的激活区域和你真的经历那件事时高度重合，等于在低成本地预演人生。</p>
+        <p>对一个还没正式进入社会的大二学生，文学尤其值回票价：你无法在毕业前真正体会被裁员、结婚、赡养父母、送走亲人的滋味，但余华和路遥已经替你把这些滋味写好了。读小说不是逃避现实，而是在不动用你自己人生的前提下，先看看一千种活法分别长什么样——然后再决定自己要过哪一种。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 大学靠图书馆借书改变口味的程序员（25 岁）</div>
+          <p>小陈，村里长大，高二才第一次读完整的长篇小说。大学四年在图书馆借了两百多本，从金庸读到余华、再加西亚·马尔克斯。他说自己写代码逻辑再硬，下班后能坐下来安静读一小时书，是大学练出来的最值钱的"业余肌肉"。</p>
+          <span class="trade"><b>回报：</b>表达能力明显超过同岗技术同事，年终述职和写技术文档从不怵；<b>代价：</b>刚开始读外国小说时人名都记不住，前半年经常读到一半放弃，坚持过这个门槛才打开。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 把小说当人生预案的职场人（32 岁）</div>
+          <p>老吴，做投资的，每年保持读二十本小说。他说自己评估创始人时，除了看报表，还会不自觉想起《大宅门》《教父》里的人物——商业世界里的人性，小说早就写透了。</p>
+          <span class="trade"><b>回报：</b>看人比同行多一层"他小说里像谁"的直觉，做判断更快；<b>代价：</b>读得越杂，越难被鸡汤和成功学忽悠，这在某种意义上也少了很多"容易快乐的时候"。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>读小说不功利，但回报是复利：十年后你读过的每本书都在悄悄组成你理解人的方式。</li>
+          <li>入门别从"名著榜单"硬啃，从你能一口气读完的开始——读得进去比读得正确重要。</li>
+          <li>农村出身的信息差：很多人以为"读闲书没用、不如刷题"，但表达力、共情力、判断力恰恰是课本不教、职场极缺的东西。</li>
+          <li>不要在小说里找标准答案，小说给的是"看看别人怎么活的"，答案永远你自己写。</li>
+          <li>带着自己的问题选书：焦虑前途就先看《平凡的世界》，纠结关系就看《霍乱时期的爱情》，书是去找答案时才最好读。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>路遥《平凡的世界》——写给从农村走出来的年轻人，几乎是为你这种读者准备的。</li>
+          <li><span class="tag book">书籍</span>余华《活着》、马尔克斯《百年孤独》，先各读一本，你会立刻明白文学是什么。</li>
+          <li><span class="tag film">纪录片</span>BBC《文学的回忆》/ 优酷《一千零一夜》（梁文道），听人讲书比自己啃书容易入门。</li>
+          <li><span class="tag web">网站</span>微信读书，免费海量书库，手机上随时读一章；配合作家茅盾文学奖获奖名单按图索骥。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t13">
+        <div class="topic-no">主题 13</div>
+        <h2>哲学基本问题：自由、死亡、意义与道德</h2>
+
+        <div class="block-label">是什么</div>
+        <p>哲学不教你成功，它只教你把所有人都会偷偷想、但不好意思说出口的问题想清楚：我真的有自由意志吗？人终有一死，现在拼这些有什么意义？我凭什么认为"我的对错"就是对的？人生的意义是被找到的还是被造出来的？两千多年里，柏拉图、休谟、康德、尼采、萨特留下了无数答案，没有标准答案，但每一种都值得你想一遍。</p>
+        <p>对即将进入社会的你，哲学最实际的用处是：当你被裁员、被催婚、被房价捶打的那一天，你不会轻易垮掉——因为你早就提前想过"这些外在标签到底有多重"。哲学是给你的内心提前搭一个抗震框架。它不能帮你把工资从八千变成一万八，但能帮你在工资八千的时候不觉得自己是个失败者——这是两回事。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 大三开始读哲学的工科生（23 岁）</div>
+          <p>阿哲，本校工科男，大三失恋+考研失败，躺宿舍一周后翻完了《苏菲的世界》，从此入坑。他不搞学术，就是睡前读两章，把西方哲学史当"人类脑洞史"看。毕业找工作时，他说自己最受益的是想通了"工作只是人生的一部分，不是判决书"。</p>
+          <span class="trade"><b>回报：</b>面试被问"职业规划"时比别人多一层从容，不卑不亢；<b>代价：</b>想太多偶尔会行动变慢，朋友聚餐聊琐事他忍不住追问"这有什么意义"，偶尔被嫌弃。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 用斯多葛哲学应对职场的程序员（29 岁）</div>
+          <p>老孟，每天早上读几页《沉思录》，用斯多葛学派的方法：把事情分成"我能控制的"和"我不能控制的"，只在能控制的部分用力。需求被产品改了十版、被线上事故追着跑，他下班就能把电脑合上。</p>
+          <span class="trade"><b>回报：</b>情绪稳定性远超同龄人，三年没被裁，还升了技术组长；<b>代价：</b>这种"冷静"偶尔被同事误解为冷漠，需要刻意多表达关心。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>哲学不产出标准答案，它产出"思考能力"——你以后会遇到无数没有标准答案的人生问题，这就是预演。</li>
+          <li>入门顺序：故事性的《苏菲的世界》→ 对话体《被讨厌的勇气》→ 再挑感兴趣的哲学家原著。</li>
+          <li>农村出身的信息差：家里能教你"怎么活下来"，但很少有人教你"为什么活"——这一课只能自己补，而且越早补越省钱。</li>
+          <li>警惕把哲学当人生答案：想清楚是为了更好地行动，不是为了躺着想。</li>
+          <li>读哲学最忌端着：哲学家也是人，也失恋、也缺钱、也怕死；看他们怎么跟自己和解，比背结论有用得多。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>乔斯坦·贾德《苏菲的世界》，以小说形式讲完整个西方哲学史，入门第一本。</li>
+          <li><span class="tag book">书籍</span>马可·奥勒留《沉思录》，一个罗马皇帝写给他自己的笔记，斯多葛哲学源头。</li>
+          <li><span class="tag web">课程</span>哈佛大学公开课《公正：该如何做是好？》（Michael Sandel），网易公开课有全集，哲学最好看的入门视频。</li>
+          <li><span class="tag book">书籍</span>罗素《西方哲学史》，经典中的经典，当字典翻，感兴趣的章节再细读。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t14">
+        <div class="topic-no">主题 14</div>
+        <h2>宗教与信仰：人们靠什么安顿心灵</h2>
+
+        <div class="block-label">是什么</div>
+        <p>人类历史上几乎每个文明都发展出了宗教或类信仰体系：基督教、伊斯兰教、佛教、印度教、道教，以及现代社会里的"成功学""金钱拜物教""技术乐观主义"——后者其实也是一种信仰：相信只要努力+技术进步，一切都会好。信仰的本质功能是回答三个问题：人从哪来、死了去哪、活着为什么，并且给苦难一个解释。</p>
+        <p>你不一定需要信教，但需要理解信仰：你未来会遇到信教的同事、清真寺旁的迪拜客户、寺庙里祈福的父母；更重要的是，你自己一定会在某个深夜问出那些问题。了解世界主要宗教，等于了解人类心灵史的底层代码，也让你对不同文化的人多一份尊重——以后去迪拜出差、和印度同事共事、在国外餐馆点餐，这些常识能帮你避免无数无心的冒犯。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 在寺庙做义工后找到平静的程序员（27 岁）</div>
+          <p>小林，996 三年后 burnout，被朋友拉去寺院住了一周，跟着晨钟暮鼓吃斋饭、抄写经文。他没有皈依，但说那一周的"不看手机、不想 KPI"让他第一次睡了整觉。</p>
+          <span class="trade"><b>回报：</b>回去后学会了每天静坐二十分钟，焦虑明显减轻；<b>代价：</b>不看手机的第一晚极度难受，且这种平静只能维持几个月，需要反复练习。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 家里信佛、自己用心理学的工程师（26 岁）</div>
+          <p>小周，父母在河南老家信佛，逢年过节烧香。他自己不烧香，但保留了两个从家庭信仰里继承下来的习惯：初一十五吃素、每周给家里打电话。他说这不是迷信，是把"对他人的善意"仪式化了。</p>
+          <span class="trade"><b>回报：</b>和父母有了共同语言，自己心里也有个稳定的锚；<b>代价：</b>同事聚餐偶尔要解释为什么不吃肉，以及要时刻提醒自己别滑向迷信。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>信仰的反面不是科学，是虚无；科学回答"怎么运作"，信仰回答"为什么活"，两者其实分工不同。</li>
+          <li>读宗教经典当文学和人类学读：《圣经》《论语》《金刚经》《道德经》都是两千年来最聪明的人对人生的回答。</li>
+          <li>农村出身的信息差：村里的寺庙、庙会、红白喜事里其实藏着一整套民间信仰体系，读懂它，你就读懂了一半家乡人情。</li>
+          <li>警惕披着"信仰"外衣的传销、邪教和成功学——凡是要求你断绝亲友、掏钱、脱离现实的，都是假信仰。</li>
+          <li>了解一个宗教最好的入口往往不是经书，而是它的节日和饮食禁忌：清明、斋月、圣诞节背后，都是一整套看世界的方式。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>休斯顿·史密斯《人的宗教》，世界七大宗教最通俗的入门书。</li>
+          <li><span class="tag book">书籍</span>费孝通《乡土中国》之外，可配《中国宗教与信仰》类通识，理解中国人的实用信仰。</li>
+          <li><span class="tag film">纪录片</span>《河西走廊》，看佛教如何沿着丝绸之路进入中国，历史与信仰合一。</li>
+          <li><span class="tag web">网站</span>维基百科各宗教条目与豆瓣《世界宗教》公开课，中立、系统、免费。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t15">
+        <div class="topic-no">主题 15</div>
+        <h2>信息素养：高质量信息源、媒介辨别与知识管理</h2>
+
+        <div class="block-label">是什么</div>
+        <p>信息素养 = 找得到高质量信息 + 分得清真假 + 存得下、用得出。这个时代最大的不公平不是没钱，而是"信息食谱"的不公平：有人吃的是论文、行业报告、经典书籍；有人吃的是算法推荐的短视频和情绪爽文。算法不是中立的，它只推让你停留的东西——你刷得越久，它越喂你情绪，三年下来两个人的认知差距比工资差距还大。</p>
+        <p>具体三步：第一，给信息源分等级——官方统计（国家统计局、BLS、OECD）> 权威媒体深度报道 > 学术论文 > 行业报告 > 大 V 观点 > 群聊截图。第二，养成溯源习惯：看到惊人数字，先点出处，没出处的当段子看。第三，建自己的知识库：收藏不如记笔记，笔记不如动手写一篇总结。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 靠 RSS 和周刊自学的转行程序员（26 岁）</div>
+          <p>阿杰，非科班，每天花 40 分钟读阮一峰科技周刊、Hacker News 和几个高质量技术博客，两年下来对整个行业动态的了解超过很多科班同学。他说自己求职时面试聊技术趋势，全靠这两年攒下来的信息食谱。</p>
+          <span class="trade"><b>回报：</b>永远比同事早半步知道新工具、新机会，转码两年就拿到 offer；<b>代价：</b>每天 40 分钟坚持两年，中间无数次想放弃，且信息太多偶尔焦虑。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 被标题党坑过后建立"慢阅读"习惯的男生（24 岁）</div>
+          <p>小杨，大三时被一条"某行业三年内消失"的短视频吓得转了方向，三个月后发现那是博主博流量的夸张。从那以后，他规定自己：凡是让他立刻产生强烈情绪的消息，先搁置 24 小时再决定信不信。</p>
+          <span class="trade"><b>回报：</b>再也没被带节奏乱花过钱、乱转过专业；<b>代价：</b>反应慢半拍，朋友群里热传的瓜他永远最后一个知道，少了很多社交谈资。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>凡是让你愤怒/焦虑/狂喜的内容，先警惕：算法就是靠你的情绪赚钱的。</li>
+          <li>建立"一手信息源清单"：你所在行业的官方统计、两本经典书、三个长期作者，够你用四年。</li>
+          <li>农村出身的信息差：很多同学的全部信息来自短视频和家长群，而你的同龄人已经在用 RSS、论文库和 newsletter——把信息源升级，比报任何培训班都管用。</li>
+          <li>知识管理的核心不是工具，是"输出倒逼输入"：写笔记、写博客，哪怕只给自己看。</li>
+          <li>手机是你最容易被收割的入口：把推荐通知全关掉、首页只留你主动订阅的东西，信息食谱立刻干净一半。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>尼尔·波兹曼《娱乐至死》、尼古拉斯·卡尔《浅薄》，看清媒介如何改变你的大脑。</li>
+          <li><span class="tag web">网站</span>阮一峰的网络日志（每周科技周刊）、Hacker News，高质量技术信息食谱入口。</li>
+          <li><span class="tag web">工具</span>Obsidian / 飞书文档做个人知识库，配合 RSS 阅读器（如 Inoreader）订阅严肃内容。</li>
+          <li><span class="tag web">课程</span>高校《信息检索与利用》公开课，教你用学术数据库查真东西。</li>
+        </ul>
+      </article>
+
+      <article class="topic" id="t16">
+        <div class="topic-no">主题 16</div>
+        <h2>幸福科学：什么真正决定生活满意度</h2>
+
+        <div class="block-label">是什么</div>
+        <p>过去三十年，心理学和经济学终于用大样本数据回答了一个老问题：人到底什么情况下会满意？结论出乎意料地稳定：钱能买到幸福，但边际递减很厉害——收入跨过当地中位数之后，每多一万块带来的幸福感增加迅速变小（《世界幸福报告》与诺贝尔得主卡尼曼等人的多项研究结论）。真正持续影响幸福感的是这五样：健康的身体、稳定的亲密关系、能投入的事情（工作或爱好）、对生活的掌控感、以及一个比自己更大的连接感（家庭、社群、意义）。</p>
+        <p>换句话说：追钱没错，但把钱当唯一目标，是最容易失败的策略。对二十多岁的你，现在最该做的不是立刻幸福，而是别把人生搭在注定后悔的地基上——选错城市、熬坏身体、疏远关系，都是中年后幸福的大敌。</p>
+
+        <div class="block-label">真实的人怎么活</div>
+        <div class="person">
+          <div class="person-tag">人物样本 A · 从大厂离职回到新二线的工程师（32 岁）</div>
+          <p>老王，在深圳大厂八年，年包 70 万，体检报告一年比一年差，和未婚妻约会永远在回消息。31 岁那年他跳槽回成都，年包降到 35 万，但每天六点下班、周末爬山、两年内生了孩子。他说自己不是不奋斗了，是按幸福科学重新排了优先级。</p>
+          <span class="trade"><b>回报：</b>睡眠和亲密关系回来了，体检指标转好；<b>代价：</b>收入腰斩，前几年被老同事"混得好不好"的话题刺痛过，需要自己跟自己和解。</span>
+        </div>
+        <div class="person">
+          <div class="person-tag">人物样本 B · 在小县城把日子过出滋味的专科同学（28 岁）</div>
+          <p>小赵，专科毕业回县城做老师，月薪四千多，但和父母同城、骑车十分钟上班、有时间弹琴钓鱼。同学聚会上他不耀眼，可每次体检全绿，提到生活就笑。</p>
+          <span class="trade"><b>回报：</b>低物欲+高掌控感，他的生活满意度实测不低于大厂同学；<b>代价：</b>上升天花板低、小镇人情复杂、孩子未来教育资源有限——他说这是他认了的代价。</span>
+        </div>
+
+        <div class="block-label">关键认知</div>
+        <ul class="cognition">
+          <li>幸福不是目标，是副产品：好好工作、好好爱人、好好锻炼，幸福自己会来；直接追幸福反而追不到。</li>
+          <li>健康是所有幸福的本金：二十岁糟蹋身体，三十岁后全部连本带利还。</li>
+          <li>农村出身的信息差：家里把"考上大学、找个好工作"当成幸福的终点，但那只是门票——后面的关系、健康、意义课，没人替你安排。</li>
+          <li>比较是幸福的小偷：和同学群比工资，你永远不满足；和去年的自己比进度，你常常有惊喜。可以做个小实验：把朋友圈收起一周，焦虑感的下降几乎是立竿见影的。</li>
+        </ul>
+
+        <div class="block-label">延伸入口</div>
+        <ul class="extend">
+          <li><span class="tag book">书籍</span>米哈里·契克森米哈赖《心流》，讲人在专注做事时最幸福的状态。</li>
+          <li><span class="tag book">书籍</span>泰勒·本-沙哈尔《幸福的方法》，哈佛最受欢迎公开课的配套书。</li>
+          <li><span class="tag web">报告</span>联合国《世界幸福报告》（World Happiness Report），每年更新，看各国幸福指数及背后的因素。</li>
+          <li><span class="tag web">研究</span>哈佛成人发展研究（Harvard Study of Adult Development），跟踪人七十多年的结论：好关系让人幸福健康。</li>
+        </ul>
+      </article>
+    </main>
+  </div>
+
+  <!-- ===== 板块间翻页 ===== -->
+  <nav class="pager">
+    <a class="prev" href="板块三-社会运行与商业规则.html"><span class="dir">上一板块</span>板块三 · 社会运行与商业规则</a>
+    <a class="next" href="首页.html"><span class="dir">下一板块</span>回到首页</a>
+  </nav>
+
+  <footer class="site-foot">
+    看见世界 · 活法为主线，通识打底 · 所有事实性内容尽量标注来源，延伸入口均为真实资源；签证、学费、薪资等政策与数字随年份变化，均以官方最新公布为准
+  </footer>
+</div>
+
+<a class="back-top" href="#top" aria-label="回到顶部">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A5A2B" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</a>
+</body>
+</html>

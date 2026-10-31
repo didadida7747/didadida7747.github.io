@@ -25,7 +25,7 @@ title: "B 站「AI 日报 / 科技早报 / 信息聚合」视频与开源仓库�
 | UP 主 | AI摸鱼的梁师傅 【精读】 |
 | 播放量 | 页面未渲染出播放量数字，未抓取到（视频发布于 2026-09-17，较新） |
 | 视频地址 | https://www.bilibili.com/video/BV1LYer6hEYw/ |
-| 开源仓库 | **https://github.com/RCliang/ai-radar** 【精读】 |
+| 开源仓库 | **https://github.com/RCliang/ai-radar**（⚠️ 已失效，2026-10-25 核查）【精读】 |
 | 信息源层级 | 【精读】 |
 
 **方案核心设计：**
@@ -54,7 +54,7 @@ title: "B 站「AI 日报 / 科技早报 / 信息聚合」视频与开源仓库�
 | UP 主 | 柯南-科技 【精读】 |
 | 播放量 | 83（小 UP 主新作，页面标题下数字） |
 | 视频地址 | https://www.bilibili.com/video/BV19p8WzSEds/ |
-| 开源仓库 | 上游：**https://github.com/sansan0/TrendRadar** ；UP 主自分叉：https://github.com/hxsyzl/TrendRadar ；Webhook 接收端：https://github.com/hxsyzl/WebHook-Notifier 【精读】 |
+| 开源仓库 | 上游：**https://github.com/sansan0/TrendRadar** ；UP 主自分叉：https://github.com/hxsyzl/TrendRadar（⚠️ 已失效，2026-10-25 核查）；Webhook 接收端：https://github.com/hxsyzl/WebHook-Notifier（⚠️ 已失效，2026-10-25 核查）【精读】 |
 | 信息源层级 | 【精读】 |
 
 **方案核心设计：**

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看见世界 · 活法与通识地图</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2320302E'/%3E%3Cpath d='M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z' fill='%238A5A2B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F5F1E6; --paper-deep:#ECE5D3; --ink:#20302E; --soft:#4F5A56;
+  --line:#D8D0BD; --bronze:#8A5A2B; --teal:#2F6E63; --vermilion:#C94F36;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,241,230,.94);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:18px;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:18px;white-space:nowrap}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto}
+.nav a{font-size:13.5px;color:var(--soft);padding:7px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--bronze)}
+@media (max-width:767px){.topbar-inner{gap:10px;height:54px}.brand{font-size:16px}.nav a{font-size:12.5px;padding:7px 7px}}
+
+/* hero */
+.hero{position:relative;padding:78px 0 56px;border-bottom:1px solid var(--line);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;opacity:.28;pointer-events:none}
+.hero>*{position:relative}
+.hero .kicker{font-size:13px;color:var(--bronze);letter-spacing:.22em;font-weight:500}
+.hero h1{font-family:var(--serif);font-size:46px;font-weight:700;line-height:1.25;margin:16px 0 20px;letter-spacing:.02em}
+.hero .quote{font-family:var(--serif);font-size:19px;color:var(--soft);max-width:640px;border-left:3px solid var(--bronze);padding-left:16px}
+.hero p.lead{max-width:700px;margin-top:20px;font-size:15.5px;color:var(--soft)}
+@media (max-width:767px){.hero{padding:52px 0 40px}.hero h1{font-size:32px}.hero .quote{font-size:16px}}
+
+/* 板块卡片 */
+.boards{padding:56px 0 30px}
+.section-title{font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:6px}
+.section-sub{color:var(--soft);font-size:14.5px;margin-bottom:30px}
+.board-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:720px){.board-grid{grid-template-columns:1fr 1fr}}
+.board-card{display:block;border:1px solid var(--line);padding:26px 24px;background:var(--paper);border-radius:3px;transition:border-color .15s}
+.board-card:hover{border-color:var(--bronze)}
+.board-card .no{font-family:var(--serif);font-size:15px;color:var(--bronze);letter-spacing:.12em}
+.board-card h3{font-family:var(--serif);font-size:22px;margin:8px 0 10px}
+.board-card p{font-size:14px;color:var(--soft);margin-bottom:14px}
+.board-card .topics{font-size:12.5px;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
+.board-card .topics b{color:var(--ink)}
+.board-card .enter{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:500;color:var(--bronze)}
+
+/* 用法与路径 */
+.guide{padding:40px 0 60px;display:grid;grid-template-columns:1fr;gap:26px}
+@media (min-width:820px){.guide{grid-template-columns:1fr 1.3fr;gap:40px}}
+.guide-box{border-top:2px solid var(--ink);padding-top:18px}
+.guide-box h3{font-family:var(--serif);font-size:19px;margin-bottom:12px}
+.guide-box p,.guide-box li{font-size:14.5px;color:var(--soft)}
+.guide-box ol,.guide-box ul{padding-left:20px}
+.guide-box li{margin-bottom:8px}
+.guide-box li b{color:var(--ink);font-weight:700}
+.path{list-style:none;padding-left:0}
+.path li{border-bottom:1px solid var(--line);padding:12px 0}
+.path .pname{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:15px;display:block;margin-bottom:4px}
+.path .pname span{color:var(--bronze);margin-right:8px}
+.path code{font-family:var(--serif);font-size:13px;background:var(--paper-deep);padding:1px 6px;border-radius:2px;color:var(--teal)}
+
+footer.site-foot{border-top:1px solid var(--line);padding:26px 0 44px;font-size:12.5px;color:var(--soft)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="首页.html">
+      <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#20302E" rx="2"/><path d="M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z" fill="#8A5A2B"/></svg>
+      看见世界
+    </a>
+    <nav class="nav">
+      <a href="首页.html">首页</a>
+      <a href="板块一-职业阶层与财富.html">职业与财富</a>
+      <a href="板块二-科技AI与产业趋势.html">科技与AI</a>
+      <a href="板块三-社会运行与商业规则.html">社会与规则</a>
+      <a href="板块四-人文心理与全球视野.html">人文与全球</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">活法为主线 · 通识打底</div>
+    <h1>看见世界，<br>才知道自己能成为谁</h1>
+    <div class="quote">人无法成为自己没有见过的人，<br>也无法拥有没有见过的生活。</div>
+    <p class="lead">这是一座为你绘制的「世界地图册」：62 个主题，覆盖职业与阶层、科技与 AI、社会运行规则、人文与全球视野。每个主题都不讲干巴巴的概念，而是带你看真实的人做什么工作、过什么日子、付出什么代价、拿到什么回报，并附上可以继续深挖的书籍、纪录片与网站。先解决「知道世界上有什么」，再决定「我要去哪」。</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="boards">
+    <h2 class="section-title">四大板块</h2>
+    <p class="section-sub">四个板块合成一张完整地图，建议先广泛浏览，再沿每篇末尾的延伸入口深挖。</p>
+    <div class="board-grid">
+      <a class="board-card" href="板块一-职业阶层与财富.html">
+        <div class="no">BOARD 01</div>
+        <h3>职业、阶层与财富</h3>
+        <p>行业全景、体制内外的真实价格、阶层如何流动、工资与资产的区别。先看世上有哪些活法，再看财富游戏的规则。</p>
+        <div class="topics"><b>15 个主题</b> · 公务员 / 大厂 / 金融 / 蓝领 / 县城 / 创业 / 阶层流动 / 复利与房产</div>
+        <span class="enter">进入板块</span>
+      </a>
+      <a class="board-card" href="板块二-科技AI与产业趋势.html">
+        <div class="no">BOARD 02</div>
+        <h3>科技、AI 与产业趋势</h3>
+        <p>AI 产业链与岗位地图、大模型应用开发、数字游民、技术人的三条出路。为你的泛 AI 软件就业方向直接服务。</p>
+        <div class="topics"><b>15 个主题</b> · AI 产业链 / 大模型应用 / Agent / 远程工作 / 期权 / 全球科技高地</div>
+        <span class="enter">进入板块</span>
+      </a>
+      <a class="board-card" href="板块三-社会运行与商业规则.html">
+        <div class="no">BOARD 03</div>
+        <h3>社会运行与商业规则</h3>
+        <p>公司怎么赚钱、组织里的权力、劳动法与仲裁、户口医保房贷、人情社会潜规则。重点补农村出身容易缺失的社会常识。</p>
+        <div class="topics"><b>16 个主题</b> · 劳动合同 / 仲裁 / 征信 / 户籍 / 饭局规则 / 防骗识别</div>
+        <span class="enter">进入板块</span>
+      </a>
+      <a class="board-card" href="板块四-人文心理与全球视野.html">
+        <div class="no">BOARD 04</div>
+        <h3>人文、心理与全球视野</h3>
+        <p>各国民生、留学与移民路径、原生家庭与自我认知、审美与哲学、高质量信息渠道。把「人能怎么活」的视野拉到全球。</p>
+        <div class="topics"><b>16 个主题</b> · 各国民生 / 留学移民 / 心理学 / 原生家庭 / 审美入门 / 信息素养</div>
+        <span class="enter">进入板块</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="guide">
+    <div class="guide-box">
+      <h3>怎么使用这个小站</h3>
+      <ul>
+        <li><b>广度优先：</b>先快速翻完四个板块，知道世界上有什么，不必一次读懂。</li>
+        <li><b>每篇都有地图：</b>主题末尾的延伸入口是真实的书、纪录片和网站，感兴趣就沿入口深挖。</li>
+        <li><b>随时可查：</b>每个板块页有目录锚点，手机、电脑浏览器均可阅读，双击本文件即可打开。</li>
+        <li><b>事实可追溯：</b>关键数字标注来源与年份；没有可靠来源的内容不写。</li>
+      </ul>
+    </div>
+    <div class="guide-box">
+      <h3>为你定制的三条阅读路径</h3>
+      <ul class="path">
+        <li>
+          <span class="pname"><span>路径一</span>泛 AI 软件就业主线</span>
+          <code>板块二 t02 → t04 → t05 → t12 → t15</code>，再读 <code>板块一 t03、t11</code> 与 <code>板块三 t03、t04</code>，把岗位、技能栈、职业阶梯和职场规则一次看清。
+        </li>
+        <li>
+          <span class="pname"><span>路径二</span>农村出身社会常识补课</span>
+          <code>板块三 t04 → t06 → t08 → t14 → t16</code>，再读 <code>板块一 t12、t13、t14</code>，补上合同、仲裁、征信、人情与防骗的信息差。
+        </li>
+        <li>
+          <span class="pname"><span>路径三</span>扩大活法样本与全球视野</span>
+          <code>板块四 t04 → t05 → t06 → t15</code>，再回到 <code>板块一</code> 各职业主题，看不同国家、不同阶层的人真实怎么活。
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    看见世界 · 活法为主线，通识打底 · 共 62 个主题，全部页面位于同一文件夹内，离线可浏览（字体加载需联网，失败时自动回退系统字体）
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux 从零到实战 · 学习路线图</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c1210'/%3E%3Cpath d='M7 9l8 7-8 7' stroke='%23f08a3c' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='17' y='22' width='8' height='2.6' fill='%236fcf97'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0c1210;
+  --bg2:#101814;
+  --surface:#142019;
+  --surface2:#1a2920;
+  --line:#25362c;
+  --line2:#33493c;
+  --text:#dde9e0;
+  --muted:#84988c;
+  --faint:#5d7166;
+  --accent:#f08a3c;
+  --green:#6fcf97;
+  --cyan:#5ac8bf;
+  --p1:#6fcf97;
+  --p2:#5ac8bf;
+  --p3:#f08a3c;
+  --mono:ui-monospace,"Cascadia Code","JetBrains Mono",Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ===== Hero ===== */
+.hero{padding:48px 0 28px;border-bottom:1px solid var(--line)}
+.term{
+  background:var(--bg2);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.45);
+}
+.term-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;
+  background:#0a0f0d;
+  border-bottom:1px solid var(--line);
+}
+.tdot{width:11px;height:11px;border-radius:50%}
+.tdot.r{background:#e0635f}.tdot.y{background:#e0b64f}.tdot.g{background:#6fcf97}
+.term-title{margin-left:8px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+.term-body{padding:26px 26px 24px}
+.prompt-line{font-family:var(--mono);font-size:13.5px;color:var(--faint);margin-bottom:14px}
+.prompt-line .u{color:var(--green)}
+.prompt-line .p{color:var(--accent)}
+h1{font-size:clamp(24px,4.5vw,38px);line-height:1.25;font-weight:800;letter-spacing:.5px}
+h1 .hl{color:var(--accent)}
+.sub{margin-top:12px;color:var(--muted);font-size:15px;max-width:680px}
+.rel{
+  margin-top:18px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-left:3px solid var(--accent);
+  border-radius:6px;
+  padding:12px 16px;
+  font-size:14px;color:var(--text);
+}
+.rel b{color:var(--accent);font-weight:600}
+
+/* ===== Section titles ===== */
+.sec{padding:40px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.sec-no{font-family:var(--mono);color:var(--accent);font-size:14px}
+.sec-head h2{font-size:22px;font-weight:700}
+.sec-desc{color:var(--muted);font-size:14px;margin-bottom:22px;max-width:720px}
+
+/* ===== Filter tabs ===== */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 26px}
+.tab{
+  font-family:var(--mono);
+  font-size:13.5px;
+  padding:8px 16px;
+  background:var(--surface);
+  border:1px solid var(--line2);
+  border-radius:6px;
+  color:var(--muted);
+  cursor:pointer;
+  transition:all .15s;
+}
+.tab:hover{border-color:var(--faint);color:var(--text)}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#1a1208;font-weight:700}
+
+/* ===== Timeline ===== */
+.tl{position:relative;--axis:26px;--half:13px;--label:64px}
+.phase-block{margin-bottom:14px}
+.phase-row{
+  display:grid;
+  grid-template-columns:var(--label) var(--axis) 1fr;
+  align-items:stretch;
+}
+.phase-tag{
+  justify-self:end;align-self:center;
+  font-family:var(--mono);font-size:12px;color:var(--faint);
+  text-align:right;padding-right:10px;white-space:nowrap;
+}
+.phase-axis{position:relative}
+.phase-axis::before{
+  content:"";position:absolute;left:calc(var(--half) - 1px);top:0;bottom:0;width:2px;
+  background:var(--line2);
+}
+.phase-node{
+  position:absolute;left:calc(var(--half) - 9px);top:50%;transform:translateY(-50%);
+  width:18px;height:18px;border-radius:50%;
+  border:3px solid var(--bg);
+  box-shadow:0 0 0 2px currentColor;
+}
+.phase-body{padding:2px 0 18px}
+.phase-badge{
+  display:inline-block;font-family:var(--mono);font-size:12px;
+  padding:3px 10px;border-radius:4px;margin-bottom:8px;letter-spacing:.5px;
+}
+.phase-body h3{font-size:18px;font-weight:700}
+.phase-body .weeks{font-family:var(--mono);color:var(--faint);font-size:12.5px;margin-left:8px}
+
+/* chapter row */
+.ch-row{
+  display:grid;
+  grid-template-columns:var(--label) var(--axis) 1fr;
+}
+.ch-num{
+  justify-self:end;align-self:center;
+  font-family:var(--mono);font-size:14px;color:var(--faint);
+  padding-right:10px;
+}
+.ch-axis{position:relative}
+.ch-axis::before{
+  content:"";position:absolute;left:calc(var(--half) - 1px);top:0;bottom:0;width:2px;
+  background:var(--line);
+}
+.ch-dot{
+  position:absolute;left:calc(var(--half) - 5px);top:22px;
+  width:10px;height:10px;border-radius:50%;
+  border:2px solid var(--bg);
+}
+.ch-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  margin:0 0 12px 0;
+  overflow:hidden;
+  transition:border-color .15s;
+}
+.ch-card:hover{border-color:var(--line2)}
+.ch-head{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;cursor:pointer;user-select:none;
+}
+.ch-head:hover{background:var(--surface2)}
+.ch-title{font-size:15.5px;font-weight:600;flex:1;min-width:0}
+.ch-chev{
+  flex-shrink:0;width:16px;height:16px;color:var(--faint);
+  transition:transform .2s;
+}
+.ch-card.open .ch-chev{transform:rotate(180deg);color:var(--accent)}
+.ch-tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px}
+.tag{
+  font-family:var(--mono);font-size:11.5px;
+  color:var(--muted);
+  background:var(--bg2);
+  border:1px solid var(--line);
+  padding:2px 8px;border-radius:4px;
+}
+.ch-file{
+  display:flex;align-items:center;gap:7px;
+  padding:0 16px 13px;
+  font-family:var(--mono);font-size:12px;color:var(--faint);
+}
+.ch-file svg{width:13px;height:13px;flex-shrink:0;color:var(--faint)}
+.ch-detail{
+  display:none;
+  border-top:1px dashed var(--line2);
+  padding:12px 16px 14px;
+  font-size:13.5px;color:var(--muted);
+  background:var(--bg2);
+}
+.ch-card.open .ch-detail{display:block}
+.ch-detail ul{margin:6px 0 0 18px}
+.ch-detail li{margin-bottom:3px}
+.accept{
+  grid-column:3;
+  margin:2px 0 22px 0;
+  background:var(--surface2);
+  border:1px dashed var(--line2);
+  border-radius:8px;
+  padding:11px 16px;
+  font-size:13.5px;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.accept svg{width:16px;height:16px;flex-shrink:0;margin-top:3px}
+.accept b{color:var(--green);font-weight:600}
+
+/* ===== Week plan ===== */
+.week-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+.week{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px 14px;
+}
+.week-n{
+  font-family:var(--mono);font-size:12px;color:var(--accent);
+  margin-bottom:4px;
+}
+.week-c{font-size:13.5px;color:var(--text)}
+.week-c .mono{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+/* ===== Resources ===== */
+.res-group{margin-bottom:22px}
+.res-gtitle{
+  font-size:15px;font-weight:700;margin-bottom:10px;
+  display:flex;align-items:center;gap:9px;
+}
+.res-gtitle .bar{width:4px;height:16px;border-radius:2px;background:var(--accent)}
+.res-list{display:flex;flex-wrap:wrap;gap:8px}
+.res-item{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:7px 12px;
+  font-size:13.5px;
+  transition:border-color .15s;
+}
+.res-item:hover{border-color:var(--cyan)}
+.res-item a{color:var(--text)}
+.res-item:hover a{color:var(--cyan);text-decoration:none}
+.res-item .plat{
+  font-family:var(--mono);font-size:11px;color:var(--faint);
+  border-left:1px solid var(--line2);padding-left:7px;
+}
+.res-note{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:13px 16px;
+  font-size:13.5px;color:var(--muted);
+}
+.res-note b{color:var(--text)}
+
+/* 推荐路径提示条 */
+.rec-path{
+  background:var(--surface);
+  border:1px solid var(--line2);
+  border-left:3px solid var(--green);
+  border-radius:6px;
+  padding:13px 16px;
+  font-size:14px;
+  margin-bottom:24px;
+}
+.rec-path b{color:var(--green)}
+
+/* 视频折叠面板 */
+details.videos{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  margin-top:6px;
+}
+details.videos summary{
+  cursor:pointer;
+  padding:14px 16px;
+  font-size:14.5px;
+  font-weight:600;
+  color:var(--muted);
+  list-style:none;
+  display:flex;align-items:center;gap:10px;
+  user-select:none;
+}
+details.videos summary::-webkit-details-marker{display:none}
+details.videos summary:hover{color:var(--text)}
+details.videos summary .chev{width:15px;height:15px;color:var(--faint);transition:transform .2s;flex-shrink:0}
+details.videos[open] summary .chev{transform:rotate(90deg);color:var(--accent)}
+details.videos .vbody{padding:4px 16px 16px;border-top:1px dashed var(--line2)}
+details.videos .res-group{margin-bottom:16px}
+details.videos .res-gtitle{margin-top:14px}
+
+/* ===== Footer ===== */
+footer{
+  margin-top:48px;
+  border-top:1px solid var(--line);
+  padding:24px 0 40px;
+  color:var(--faint);
+  font-size:13px;
+}
+.foot-tips{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+.foot-tips span{display:inline-flex;align-items:center;gap:6px}
+.foot-tips svg{width:13px;height:13px;color:var(--green)}
+
+.hidden{display:none !important}
+
+/* ===== Desktop ===== */
+@media (min-width:768px){
+  .week-grid{grid-template-columns:repeat(3,1fr)}
+  .term-body{padding:34px 36px 30px}
+}
+@media (min-width:1024px){
+  .week-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:480px){
+  .tl{--axis:20px;--half:10px;--label:40px}
+  .phase-tag{font-size:10px;padding-right:6px}
+  .ch-num{font-size:11px;padding-right:6px}
+  .ch-head{flex-wrap:wrap}
+  .ch-title{font-size:14.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="term">
+      <div class="term-bar">
+        <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+        <span class="term-title">user@wsl2: ~/linux-roadmap</span>
+      </div>
+      <div class="term-body">
+        <div class="prompt-line"><span class="u">user@wsl2</span>:<span class="p">~</span>$ cat README-roadmap.txt</div>
+        <h1>Linux 从零到实战<br><span class="hl">学习路线图</span></h1>
+        <p class="sub">面向后端 / 运维方向 · Windows 11 + WSL2 + Ubuntu 24.04 · 准零基础 12 周</p>
+        <div class="rel">本页是整套教程的<b>可视化导航</b>：每一章对应同目录下的一个 <b>.md 文件</b>（如 04-文件与目录操作命令.md）。先在本页看路线与技能点，再打开对应 Markdown 章节做精读和练习。</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TIMELINE ================= -->
+<main class="wrap">
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">01</span><h2>三阶段学习时间轴</h2></div>
+    <p class="sec-desc">共 15 章，从认识终端到独立部署 Web 应用。点击任意章节卡片展开「本章你将学会」；用下面的筛选按钮按阶段查看。</p>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-f="all">全部阶段</button>
+      <button class="tab" data-f="1">阶段一 · 1-4 周</button>
+      <button class="tab" data-f="2">阶段二 · 5-8 周</button>
+      <button class="tab" data-f="3">阶段三 · 9-12 周</button>
+    </div>
+
+    <div class="tl" id="tl">
+
+      <!-- ===== 阶段一 ===== -->
+      <div class="phase-block" data-phase="1">
+        <div class="phase-row">
+          <div class="phase-tag">WEEK<br>1-4</div>
+          <div class="phase-axis" style="color:var(--p1)"><div class="phase-node"></div></div>
+          <div class="phase-body">
+            <span class="phase-badge" style="background:rgba(111,207,151,.12);color:var(--p1)">阶段一 · 入门</span>
+            <h3>和终端成为朋友<span class="weeks">5 章</span></h3>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="1">
+          <div class="ch-num">01</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p1)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">认识 Linux 与发行版</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">发行版选型</span><span class="tag">终端 / Shell / Bash</span><span class="tag">命令格式</span><span class="tag">man 求助</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                01-Linux是什么与发行版.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>Linux 是什么、和 Windows 的区别，Ubuntu / Debian / CentOS 等发行版怎么选；</li>
+                  <li>终端、Shell、Bash 三者的关系，一条命令由「命令 + 选项 + 参数」怎样构成；</li>
+                  <li>遇到陌生命令如何用 man 手册和 --help 自助求助，建立不依赖搜索的第一反应。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="1">
+          <div class="ch-num">02</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p1)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">WSL2 安装配置</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">wsl --install</span><span class="tag">Ubuntu 初始化</span><span class="tag">换源</span><span class="tag">Windows Terminal</span><span class="tag">VS Code Remote</span><span class="tag">文件互访</span><span class="tag">网络代理</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                02-WSL2安装配置指南.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>用 wsl --install 一键装好 Ubuntu 24.04，完成账号与密码初始化；</li>
+                  <li>把 apt 源换成国内镜像、配置 Windows Terminal 与 VS Code Remote，打通 Win/Linux 文件互访；</li>
+                  <li>让 WSL 走 Windows 的网络代理，解决换源慢、GitHub 连不上等第一个拦路虎。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="1">
+          <div class="ch-num">03</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p1)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">文件系统与目录结构</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">FHS 目录树</span><span class="tag">绝对 / 相对路径</span><span class="tag">Tab 补全</span><span class="tag">inode</span><span class="tag">挂载概念</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                03-文件系统与目录结构.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>读懂 FHS 目录树：/etc、/var、/home、/usr 各放什么，不再在系统里「迷路」；</li>
+                  <li>区分绝对路径与相对路径，熟练用 Tab 补全敲命令；</li>
+                  <li>理解 inode 与挂载的概念，为后面学磁盘和权限打地基。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="1">
+          <div class="ch-num">04</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p1)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">文件与目录操作</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">ls / cp / mv / rm / find</span><span class="tag">通配符</span><span class="tag">软硬链接</span><span class="tag">tar 打包</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                04-文件与目录操作命令.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>熟练使用 ls / cp / mv / rm / find 完成目录与文件的日常增删改查；</li>
+                  <li>用通配符批量操作文件，理解硬链接与软链接的区别；</li>
+                  <li>用 tar 做打包压缩与解包，为备份和部署准备基本功。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="1">
+          <div class="ch-num">05</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p1)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">查看与编辑文件</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">cat / less / tail</span><span class="tag">管道与重定向</span><span class="tag">grep</span><span class="tag">nano</span><span class="tag">Vim 入门</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                05-查看与编辑文件.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>用 cat / less / tail 高效查看日志和配置文件；</li>
+                  <li>掌握管道 | 与重定向 &gt; &gt;&gt; &lt;，并用 grep 做文本搜索——这是运维排错的核心动作；</li>
+                  <li>会用 nano 应急改配置，同时迈过 Vim 入门这道坎（保存 / 退出 / 移动）。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accept">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              <span><b>阶段验收：</b>不看资料独立完成「建目录树 → 写文件 → 查找 → 打包 → 备份」全流程。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 阶段二 ===== -->
+      <div class="phase-block" data-phase="2">
+        <div class="phase-row">
+          <div class="phase-tag">WEEK<br>5-8</div>
+          <div class="phase-axis" style="color:var(--p2)"><div class="phase-node"></div></div>
+          <div class="phase-body">
+            <span class="phase-badge" style="background:rgba(90,200,191,.12);color:var(--p2)">阶段二 · 进阶</span>
+            <h3>独立管理系统<span class="weeks">6 章</span></h3>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="2">
+          <div class="ch-num">06</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p2)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">用户与权限</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">用户组</span><span class="tag">sudo</span><span class="tag">rwx</span><span class="tag">chmod / chown</span><span class="tag">/etc/passwd</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                06-用户与权限.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>理解用户 / 用户组 / sudo 的安全模型，不再无脑 root 狂奔；</li>
+                  <li>读懂 rwx 权限位，用 chmod / chown 精确控制文件归属；</li>
+                  <li>认识 /etc/passwd、/etc/group 等关键配置文件，排权限报错有据可依。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="2">
+          <div class="ch-num">07</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p2)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">进程与任务管理</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">ps / top / htop</span><span class="tag">kill 信号</span><span class="tag">jobs 前后台</span><span class="tag">nohup</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                07-进程与任务管理.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>用 ps / top / htop 看清系统里每个进程在吃多少 CPU 和内存；</li>
+                  <li>理解 kill 信号（9 / 15 的区别），优雅停掉一个失控程序；</li>
+                  <li>用 jobs、前后台切换和 nohup 让任务在关掉终端后继续跑。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="2">
+          <div class="ch-num">08</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p2)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">软件包管理 apt</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">update / upgrade</span><span class="tag">装删软件</span><span class="tag">dpkg</span><span class="tag">snap</span><span class="tag">编译安装</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                08-软件包管理.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>分清 apt update 与 apt upgrade，规范地安装、升级、卸载软件；</li>
+                  <li>认识 dpkg、snap 与源码编译安装各自的适用场景；</li>
+                  <li>解决「依赖损坏 / 装不上 / 卸载不干净」这一类高频问题。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="2">
+          <div class="ch-num">09</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p2)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">磁盘与挂载</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">lsblk / df / du</span><span class="tag">mount / fstab</span><span class="tag">swap</span><span class="tag">WSL 磁盘压缩</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                09-磁盘与挂载.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>用 lsblk / df / du 看清磁盘分区与空间占用，回答「磁盘满了是谁吃的」；</li>
+                  <li>理解 mount 与 /etc/fstab 开机自动挂载，了解 swap 的作用；</li>
+                  <li>掌握 WSL2 虚拟磁盘只增不减的压缩方法，回收 C 盘空间。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="2">
+          <div class="ch-num">10</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p2)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">网络命令与 SSH</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">ip / ss / curl</span><span class="tag">SSH 登录与密钥</span><span class="tag">GitHub 免密</span><span class="tag">rsync</span><span class="tag">ufw</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                10-网络命令与SSH.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>用 ip / ss / curl 诊断网络连通性、端口监听与 HTTP 请求；</li>
+                  <li>配置 SSH 密钥登录、给 GitHub 配置免密推送；</li>
+                  <li>用 rsync 做增量文件同步，用 ufw 管理防火墙规则。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="2">
+          <div class="ch-num">11</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p2)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">Shell 脚本编程</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">变量 / 引号</span><span class="tag">条件循环</span><span class="tag">函数</span><span class="tag">set 安全选项</span><span class="tag">crontab</span><span class="tag">3 个实战脚本</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                11-Shell脚本编程.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>写变量、条件判断、循环和函数，理解引号的坑；</li>
+                  <li>用 set -euo pipefail 让脚本出错即停，养成安全脚本习惯；</li>
+                  <li>用 crontab 做定时任务，并完成备份、批量处理等 3 个实战脚本。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accept">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              <span><b>阶段验收：</b>写出带判断 / 循环的定时脚本；完成 SSH 免密登录并能用 rsync 传文件。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 阶段三 ===== -->
+      <div class="phase-block" data-phase="3">
+        <div class="phase-row">
+          <div class="phase-tag">WEEK<br>9-12</div>
+          <div class="phase-axis" style="color:var(--p3)"><div class="phase-node"></div></div>
+          <div class="phase-body">
+            <span class="phase-badge" style="background:rgba(240,138,60,.13);color:var(--p3)">阶段三 · 实战</span>
+            <h3>开发与部署<span class="weeks">4 章</span></h3>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="3">
+          <div class="ch-num">12</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p3)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">环境变量与开发环境</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">PATH</span><span class="tag">Git</span><span class="tag">Python venv</span><span class="tag">Node nvm</span><span class="tag">编译工具链</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                12-环境变量与开发环境.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>彻底搞懂 PATH 与 /etc/profile、~/.bashrc 的加载顺序；</li>
+                  <li>搭好 Git、Python venv、Node nvm 等后端常用开发环境；</li>
+                  <li>装上 gcc / make 编译工具链，能从源码装软件。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="3">
+          <div class="ch-num">13</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p3)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">服务与部署入门</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">systemd</span><span class="tag">journalctl</span><span class="tag">Nginx 反代</span><span class="tag">Docker</span><span class="tag">docker compose</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                13-服务与部署入门.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>用 systemctl 管理服务、用 journalctl 查日志，掌握开机自启；</li>
+                  <li>配置 Nginx 反向代理，把后端应用暴露到 80 / 443 端口；</li>
+                  <li>用 Docker 和 docker compose 一条命令把 Web 应用整体跑起来。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="3">
+          <div class="ch-num">14</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p3)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">Vim 与提效工具</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">Vim 全套</span><span class="tag">tmux</span><span class="tag">rg / fzf / bat</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                14-Vim与提效工具.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>系统掌握 Vim 的移动、编辑、寄存器与插件配置，实现「不碰鼠标改文件」；</li>
+                  <li>用 tmux 分屏和会话保持，远程断线不丢工作；</li>
+                  <li>把 rg / fzf / bat 等现代命令行工具接入日常流，显著提速。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-row" data-phase="3">
+          <div class="ch-num">15</div>
+          <div class="ch-axis"><span class="ch-dot" style="background:var(--p3)"></span></div>
+          <div>
+            <div class="ch-card">
+              <div class="ch-head">
+                <span class="ch-title">常见问题排查手册</span>
+                <svg class="ch-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+              <div class="ch-tags">
+                <span class="tag">排错方法论</span><span class="tag">6 类故障速查</span><span class="tag">WSL 专题</span><span class="tag">50 条命令速查表</span>
+              </div>
+              <div class="ch-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                15-常见问题排查手册.md
+              </div>
+              <div class="ch-detail">
+                本章你将学会：
+                <ul>
+                  <li>建立「先看报错 → 看日志 → 缩小范围」的通用排错方法论；</li>
+                  <li>磁盘满、权限拒绝、连不上、服务起不来等 6 类故障的速查路径；</li>
+                  <li>掌握 WSL 专属问题（关机 / 磁盘 / 代理）处理法，并背熟 50 条常用命令速查表。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accept">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              <span><b>阶段验收：</b>docker compose up -d 一键起 Web 应用并用 Nginx 反向代理访问；能独立排查常见故障。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 周计划 ================= -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">02</span><h2>12 周节奏安排</h2></div>
+    <p class="sec-desc">按周推进，每周都有明确产出；复习周穿插实战游戏与练习，避免「看完就忘」。</p>
+    <div class="week-grid">
+      <div class="week"><div class="week-n">第 1 周</div><div class="week-c">01 认识 Linux 与发行版 · 02 WSL2 安装配置 <span class="mono">→ 环境跑通</span></div></div>
+      <div class="week"><div class="week-n">第 2 周</div><div class="week-c">03 文件系统与目录结构 · 04 文件与目录操作 <span class="mono">→ 命令手感</span></div></div>
+      <div class="week"><div class="week-n">第 3 周</div><div class="week-c">05 查看与编辑文件 <span class="mono">→ 管道 / grep / Vim 入门</span></div></div>
+      <div class="week"><div class="week-n">第 4 周</div><div class="week-c">阶段一复习 + OverTheWire Bandit 入门 <span class="mono">→ 验收一</span></div></div>
+      <div class="week"><div class="week-n">第 5 周</div><div class="week-c">06 用户与权限 <span class="mono">→ 不再乱开 root</span></div></div>
+      <div class="week"><div class="week-n">第 6 周</div><div class="week-c">07 进程与任务管理 · 08 软件包管理 apt <span class="mono">→ 会管进程</span></div></div>
+      <div class="week"><div class="week-n">第 7 周</div><div class="week-c">09 磁盘与挂载 · 10 网络命令与 SSH <span class="mono">→ 远程连得上</span></div></div>
+      <div class="week"><div class="week-n">第 8 周</div><div class="week-c">11 Shell 脚本编程 + 大量练习 <span class="mono">→ 验收二</span></div></div>
+      <div class="week"><div class="week-n">第 9 周</div><div class="week-c">12 环境变量与开发环境 <span class="mono">→ Git / venv / nvm</span></div></div>
+      <div class="week"><div class="week-n">第 10 周</div><div class="week-c">13 前半：systemd + Nginx 反向代理 <span class="mono">→ 服务跑起来</span></div></div>
+      <div class="week"><div class="week-n">第 11 周</div><div class="week-c">13 后半：Docker + docker compose <span class="mono">→ 容器化部署</span></div></div>
+      <div class="week"><div class="week-n">第 12 周</div><div class="week-c">14 Vim 与提效 · 15 排错手册 + 综合项目 <span class="mono">→ 毕业</span></div></div>
+    </div>
+  </section>
+
+  <!-- ================= 精选资料 ================= -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">03</span><h2>精选学习资料</h2></div>
+    <p class="sec-desc">本路线以文字文档为主线：先读同目录 01–15 章教程，遇到概念再查官方文档与手册，最后到练习站动手。视频全部收拢到最后折叠面板——某章实在卡住时再选看，不要按视频顺序学。</p>
+
+    <div class="rec-path">
+      <b>推荐顺序：</b>先读 01–15 章文档 → 查官方文档 / 手册 → 练习站动手；视频只在某章卡住时选看。
+    </div>
+
+    <div class="res-group">
+      <div class="res-gtitle"><span class="bar"></span>官方文档（最权威，遇问题先查这里）</div>
+      <div class="res-list">
+        <span class="res-item"><a href="https://learn.microsoft.com/zh-cn/windows/wsl/" target="_blank" rel="noopener">WSL 官方中文文档</a><span class="plat">微软 · 阶段一</span></span>
+        <span class="res-item"><a href="https://www.gnu.org/software/bash/manual/" target="_blank" rel="noopener">GNU Bash 手册</a><span class="plat">GNU · 阶段一二</span></span>
+        <span class="res-item"><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker 官方入门</a><span class="plat">Docker · 阶段三</span></span>
+        <span class="res-item"><a href="https://docs.nginx.com/nginx/admin-guide/" target="_blank" rel="noopener">Nginx 官方指南</a><span class="plat">Nginx · 阶段三</span></span>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-gtitle"><span class="bar"></span>开源文字教程（GitHub）</div>
+      <div class="res-list">
+        <span class="res-item"><a href="https://missing-semester-cn.github.io/" target="_blank" rel="noopener">MIT 缺失的一课（中文）</a><span class="plat">GitHub · 全阶段</span></span>
+        <span class="res-item"><a href="https://github.com/jlevy/the-art-of-command-line" target="_blank" rel="noopener">命令行的艺术</a><span class="plat">GitHub · 阶段一二</span></span>
+        <span class="res-item"><a href="https://github.com/jaywcjlove/linux-command" target="_blank" rel="noopener">linux-command 命令大全</a><span class="plat">GitHub · 速查</span></span>
+        <span class="res-item"><a href="https://github.com/tldr-pages/tldr" target="_blank" rel="noopener">tldr 简化手册</a><span class="plat">GitHub · 速查</span></span>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-gtitle"><span class="bar"></span>经典书籍（系统打基础）</div>
+      <div class="res-list">
+        <span class="res-item"><a href="https://linux.vbird.org/" target="_blank" rel="noopener">鸟哥的 Linux 私房菜</a><span class="plat">网站 · 阶段一二</span></span>
+        <span class="res-item"><a href="https://www.linuxcommand.org/tlcl.php" target="_blank" rel="noopener">The Linux Command Line</a><span class="plat">网站 · 阶段一</span></span>
+        <span class="res-item"><a href="https://www.linuxprobe.com/chapter-00.html" target="_blank" rel="noopener">Linux 就该这么学</a><span class="plat">网站 · 阶段一二</span></span>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-gtitle"><span class="bar"></span>中文教程与博客（部署 / 协作专题）</div>
+      <div class="res-list">
+        <span class="res-item"><a href="https://liaoxuefeng.com/books/git/introduction/index.html" target="_blank" rel="noopener">廖雪峰 Git 教程</a><span class="plat">网站 · 阶段三</span></span>
+        <span class="res-item"><a href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener">Pro Git 中文</a><span class="plat">官网 · 阶段三</span></span>
+        <span class="res-item"><a href="https://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">阮一峰 SSH 原理</a><span class="plat">博客 · 阶段二</span></span>
+        <span class="res-item"><a href="https://www.ruanyifeng.com/blog/2020/08/rsync.html" target="_blank" rel="noopener">阮一峰 rsync 教程</a><span class="plat">博客 · 阶段二</span></span>
+        <span class="res-item"><a href="https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">阮一峰 systemd 入门</a><span class="plat">博客 · 阶段三</span></span>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-gtitle"><span class="bar"></span>在线练习（动手！别只看）</div>
+      <div class="res-list">
+        <span class="res-item"><a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire Bandit</a><span class="plat">在线 · 阶段一</span></span>
+        <span class="res-item"><a href="https://labex.io/zh/linuxjourney" target="_blank" rel="noopener">Linux Journey</a><span class="plat">在线 · 阶段一</span></span>
+        <span class="res-item"><a href="https://linuxsurvival.com/" target="_blank" rel="noopener">Linux Survival</a><span class="plat">在线 · 入门</span></span>
+        <span class="res-item"><a href="https://killercoda.com/" target="_blank" rel="noopener">Killercoda</a><span class="plat">在线 · 全阶段</span></span>
+        <span class="res-item"><a href="https://www.hackerrank.com/domains/shell" target="_blank" rel="noopener">HackerRank Shell</a><span class="plat">在线 · 阶段二</span></span>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-gtitle"><span class="bar"></span>云学生机（部署实战用）</div>
+      <div class="res-list">
+        <span class="res-item"><a href="https://www.aliyun.com/activity/ecs/student-benefits" target="_blank" rel="noopener">阿里云学生权益</a><span class="plat">云厂商 · 阶段三</span></span>
+        <span class="res-item"><a href="https://cloud.tencent.com/act/campus" target="_blank" rel="noopener">腾讯云云 + 校园</a><span class="plat">云厂商 · 阶段三</span></span>
+      </div>
+    </div>
+
+    <div class="res-note">
+      <b>关于小红书（图文速查）：</b>小红书以图文笔记为主，公开网页无法直接链接，建议在小红书 App 内搜索「Linux 学习路线」「WSL2 安装」「Linux 命令速查」，适合查踩坑速查图；它是图文检索，不能替代上面的系统文档。
+    </div>
+
+    <details class="videos">
+      <summary>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        补充：卡住时再看的视频（可选）
+      </summary>
+      <div class="vbody">
+        <div class="res-group">
+          <div class="res-gtitle"><span class="bar"></span>B 站系统课（跟课用，建议 1.25 倍速）</div>
+          <div class="res-list">
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1Sv411r7vd" target="_blank" rel="noopener">韩顺平一周学会 Linux</a><span class="plat">B站 · 阶段一</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1n84y1i7td/" target="_blank" rel="noopener">黑马 Linux 零基础到精通（含 WSL）</a><span class="plat">B站 · 全阶段</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1WY4y1H7d3/" target="_blank" rel="noopener">尚硅谷 3 天 Linux + Shell</a><span class="plat">B站 · 阶段一二</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1qbQGYPEg7/" target="_blank" rel="noopener">Win11 安装 Ubuntu 24.04（Reaper_6）</a><span class="plat">B站 · 阶段一</span></span>
+          </div>
+        </div>
+        <div class="res-group">
+          <div class="res-gtitle"><span class="bar"></span>B 站专题（按需补）</div>
+          <div class="res-list">
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1Xh4y1h7kL" target="_blank" rel="noopener">老男孩 Shell 8 小时</a><span class="plat">B站 · 阶段二</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1FE411P7B3" target="_blank" rel="noopener">狂神说 Git</a><span class="plat">B站 · 阶段三</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1FJ411r7kB" target="_blank" rel="noopener">尚硅谷 Docker</a><span class="plat">B站 · 阶段三</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1cCRgBKEMM/" target="_blank" rel="noopener">Vim 保姆级（临轩）</a><span class="plat">B站 · 阶段三</span></span>
+            <span class="res-item"><a href="https://www.bilibili.com/video/BV1UY7C6nErp/" target="_blank" rel="noopener">老男孩 Nginx</a><span class="plat">B站 · 阶段三</span></span>
+          </div>
+        </div>
+        <div class="res-group">
+          <div class="res-gtitle"><span class="bar"></span>YouTube（英文好可看）</div>
+          <div class="res-list">
+            <span class="res-item"><a href="https://www.youtube.com/watch?v=sWbUDq4S6Y8" target="_blank" rel="noopener">freeCodeCamp Linux 入门 6 小时</a><span class="plat">YouTube · 阶段一</span></span>
+            <span class="res-item"><a href="https://www.youtube.com/watch?v=ZtqBQ68cfJc" target="_blank" rel="noopener">50 个最常用命令</a><span class="plat">YouTube · 阶段一</span></span>
+            <span class="res-item"><a href="https://www.youtube.com/watch?v=3c-iBn73dDE" target="_blank" rel="noopener">Nana Docker 3 小时</a><span class="plat">YouTube · 阶段三</span></span>
+            <span class="res-item"><a href="https://www.youtube.com/@LearnLinuxTV" target="_blank" rel="noopener">LearnLinuxTV 频道</a><span class="plat">YouTube · 全阶段</span></span>
+            <span class="res-item"><a href="https://www.youtube.com/@TechWorldwithNana" target="_blank" rel="noopener">TechWorld with Nana 频道</a><span class="plat">YouTube · 阶段三</span></span>
+          </div>
+        </div>
+        <div class="res-group">
+          <div class="res-gtitle"><span class="bar"></span>抖音短视频（碎片化补充）</div>
+          <div class="res-list">
+            <span class="res-item"><a href="https://www.iesdouyin.com/share/video/7691160366809713920" target="_blank" rel="noopener">抖音 · 猫小申 17 分钟命令串讲</a><span class="plat">抖音 · 阶段一</span></span>
+            <span class="res-item"><a href="https://www.iesdouyin.com/share/video/7638269213223832872" target="_blank" rel="noopener">抖音 · WSL2 最短路径</a><span class="plat">抖音 · 阶段一</span></span>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div>资料调研日期：2026-10-13 · 上方链接均经过实际检索核实</div>
+    <div class="foot-tips">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>边看边敲，不要只看不练</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>每章完成验收练习再往下走</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>拒绝复制粘贴式学习，手敲命令才有肌肉记忆</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 阶段筛选
+var tabs = document.querySelectorAll('#tabs .tab');
+var blocks = document.querySelectorAll('.phase-block');
+function applyFilter(f){
+  blocks.forEach(function(b){
+    var show = (f === 'all') || (b.getAttribute('data-phase') === f);
+    b.classList.toggle('hidden', !show);
+  });
+}
+tabs.forEach(function(t){
+  t.addEventListener('click', function(){
+    tabs.forEach(function(x){ x.classList.remove('active'); });
+    t.classList.add('active');
+    applyFilter(t.getAttribute('data-f'));
+  });
+});
+
+// 章节卡片展开 / 收起
+document.querySelectorAll('.ch-card').forEach(function(card){
+  var head = card.querySelector('.ch-head');
+  head.addEventListener('click', function(){
+    card.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

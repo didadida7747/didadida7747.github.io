@@ -64,7 +64,7 @@ npm run wx:sync -- --backfill  # 新加订阅时：把历史文章目录一次�
 
 ## 历史文章一次性回填（可选）
 
-[wecom 精选导出](https://github.com/jooooock/wechat-article-exporter)（wechat-article-exporter）：在线批量下载公众号全部历史文章，原理是登录你注册的公众号平台账号借官方接口。适合把「学校通知号」的历史通知一次性搬进 `articles/`：
+[wecom 精选导出](https://github.com/wechat-article/wechat-article-exporter)（wechat-article-exporter）：在线批量下载公众号全部历史文章，原理是登录你注册的公众号平台账号借官方接口。适合把「学校通知号」的历史通知一次性搬进 `articles/`：
 
 ```powershell
 npx wechat-article-exporter   # 或访问其在线版，导出后把 md 丢进 articles/<号名>/

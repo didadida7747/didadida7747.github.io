@@ -21,7 +21,7 @@ Moonlight 客户端:iPad(MFi手柄)/ 一加 / 其他电脑(硬解码)
 
 ## 上手步骤(Windows 端)
 
-1. 拯救者下载安装 Sunshine([官网](https://lizardbyte.dev) 或 GitHub Releases);
+1. 拯救者下载安装 Sunshine([GitHub 主页](https://github.com/LizardByte/Sunshine));
 2. 浏览器打开 `https://localhost:47990`,设置用户名密码(管理界面);
 3. Applications 里添加要串流的目标:`Steam 大屏幕模式`(推荐,一进就是手柄界面)或任意 exe;
 4. 按管理界面 Troubleshooting 提示安装**虚拟手柄驱动**(ViGEmBus / 新版输入后端),否则手柄没反应;

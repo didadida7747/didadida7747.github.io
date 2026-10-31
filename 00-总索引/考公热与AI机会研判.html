@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>考公热与 AI 机会研判</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2320302E'/%3E%3Cpath d='M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z' fill='%23C94F36'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F5F1E6; --paper-deep:#ECE5D3; --ink:#20302E; --soft:#4F5A56;
+  --line:#D8D0BD; --bronze:#8A5A2B; --teal:#2F6E63; --vermilion:#C94F36;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+sup{font-size:.72em}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,241,230,.95);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1020px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:16px;height:56px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:17px;white-space:nowrap}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:13px;color:var(--soft);padding:6px 9px;white-space:nowrap;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--bronze)}
+@media (max-width:767px){.topbar-inner{gap:8px;height:52px}.brand{font-size:15px}.nav a{font-size:12px;padding:6px 6px}}
+
+/* hero */
+.hero{position:relative;padding:70px 0 50px;border-bottom:1px solid var(--line);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;opacity:.25;pointer-events:none}
+.hero>*{position:relative}
+.kicker{font-size:12.5px;color:var(--bronze);letter-spacing:.24em;font-weight:500}
+.hero h1{font-family:var(--serif);font-size:44px;font-weight:700;line-height:1.25;margin:14px 0 18px;letter-spacing:.02em}
+.hero .sub{font-family:var(--serif);font-size:18px;color:var(--soft);max-width:680px;border-left:3px solid var(--bronze);padding-left:16px}
+.hero p.lead{max-width:720px;margin-top:18px;font-size:15px;color:var(--soft)}
+@media (max-width:767px){.hero{padding:46px 0 36px}.hero h1{font-size:30px}.hero .sub{font-size:15.5px}.hero p.lead{font-size:14px}}
+
+/* sections */
+section.chapter{padding:48px 0 8px}
+.ch-no{font-size:12.5px;color:var(--bronze);letter-spacing:.2em;font-weight:500}
+h2.c-title{font-family:var(--serif);font-size:27px;font-weight:700;margin:6px 0 4px}
+.c-sub{color:var(--soft);font-size:14.5px;margin-bottom:26px;max-width:760px}
+h3.s-title{font-family:var(--serif);font-size:19px;margin:30px 0 10px;padding-left:10px;border-left:3px solid var(--teal)}
+h4{font-size:15.5px;margin:16px 0 6px}
+p{font-size:15px;color:var(--ink);margin-bottom:10px}
+p.note,li{font-size:14.5px;color:var(--soft)}
+ul,ol{padding-left:22px}
+li{margin-bottom:6px}
+strong{color:var(--ink)}
+
+/* tags */
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:2px;border:1px solid;vertical-align:1px;margin-right:4px;white-space:nowrap}
+.tag-fact{color:var(--teal);border-color:var(--teal);background:rgba(47,110,99,.08)}
+.tag-report{color:var(--bronze);border-color:var(--bronze);background:rgba(138,90,43,.08)}
+.tag-infer{color:var(--vermilion);border-color:var(--vermilion);background:rgba(201,79,54,.08)}
+.cite{display:inline-block;font-size:10.5px;color:var(--bronze);border:1px solid var(--line);border-radius:2px;padding:0 4px;margin:0 1px;white-space:nowrap;vertical-align:1px}
+.cite:hover{background:var(--paper-deep)}
+
+/* verdict badges */
+.vb{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:.05em}
+.v-yes{color:#fff;background:var(--teal)}
+.v-part{color:#fff;background:var(--bronze)}
+.v-no{color:#fff;background:var(--vermilion)}
+
+/* tables */
+table.dt{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:13.8px}
+table.dt th{background:var(--paper-deep);text-align:left;padding:8px 10px;border:1px solid var(--line);font-weight:700;font-size:13.5px}
+table.dt td{padding:8px 10px;border:1px solid var(--line);vertical-align:top}
+table.dt tr:nth-child(even) td{background:rgba(236,229,211,.35)}
+@media (max-width:767px){table.dt{font-size:12.5px}table.dt th,table.dt td{padding:6px}}
+
+/* callout */
+.callout{border:1px solid var(--line);border-left:3px solid var(--bronze);background:var(--paper-deep);padding:14px 16px;margin:14px 0;border-radius:2px}
+.callout.warn{border-left-color:var(--vermilion)}
+.callout p{font-size:14px;margin-bottom:6px}
+.callout p:last-child{margin-bottom:0}
+
+/* TOC */
+.toc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 8px}
+.toc-grid a{border:1px solid var(--line);padding:11px 14px;font-size:13.5px;border-radius:2px;background:var(--paper)}
+.toc-grid a:hover{border-color:var(--bronze)}
+.toc-grid .n{color:var(--bronze);font-family:var(--serif);margin-right:8px}
+@media (max-width:640px){.toc-grid{grid-template-columns:1fr}}
+
+/* opportunity cards */
+.opp{border:1px solid var(--line);border-radius:3px;margin:18px 0;background:var(--paper);overflow:hidden}
+.opp-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--paper-deep)}
+.opp-head .no{font-family:var(--serif);color:var(--bronze);font-size:13px;letter-spacing:.1em}
+.opp-head h3{font-family:var(--serif);font-size:18.5px}
+.opp-head .pay{margin-left:auto;font-size:12.5px;color:var(--teal);font-weight:500}
+.six{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.six .cell{padding:12px 18px;border-bottom:1px solid var(--line)}
+.six .cell:nth-child(odd){border-right:1px solid var(--line)}
+.six .cell h5{font-size:12px;letter-spacing:.08em;color:var(--bronze);margin-bottom:4px;font-weight:700}
+.six .cell p{font-size:13.6px;margin:0;color:var(--soft)}
+.gap{padding:12px 18px;background:rgba(47,110,99,.06);border-top:1px solid var(--line)}
+.gap h5{font-size:12px;letter-spacing:.08em;color:var(--teal);margin-bottom:6px}
+.gap p{font-size:13.6px;margin-bottom:4px;color:var(--soft)}
+@media (max-width:640px){.six{grid-template-columns:1fr}.six .cell:nth-child(odd){border-right:none}.opp-head .pay{margin-left:0}}
+
+/* timeline */
+.tl{position:relative;margin:18px 0;padding-left:22px;border-left:2px solid var(--line)}
+.tl .stage{position:relative;margin-bottom:22px}
+.tl .stage::before{content:"";position:absolute;left:-28px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--bronze);border:2px solid var(--paper)}
+.tl .stage h4{font-family:var(--serif);font-size:17px;margin-bottom:2px}
+.tl .stage .when{font-size:12.5px;color:var(--bronze);margin-bottom:8px;display:block}
+.tl .stage ul{margin-top:4px}
+
+/* trap list */
+.trap{border:1px solid var(--line);border-left:3px solid var(--vermilion);padding:13px 16px;margin:12px 0;border-radius:2px;background:rgba(201,79,54,.04)}
+.trap h4{color:var(--vermilion);margin-top:0}
+.trap p{font-size:14px}
+
+/* sources */
+ol.srcs{padding-left:0;list-style:none;counter-reset:s}
+ol.srcs li{counter-increment:s;font-size:13px;color:var(--soft);padding:7px 0 7px 52px;position:relative;border-bottom:1px dashed var(--line);word-break:break-all}
+ol.srcs li::before{content:"S"counter(s,decimal);position:absolute;left:0;top:7px;font-family:var(--serif);color:var(--bronze);font-weight:700;font-size:12.5px}
+ol.srcs a{color:var(--teal)}
+footer.site-foot{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 46px;font-size:12.5px;color:var(--soft)}
+</style>
+</head>
+<body id="top">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#20302E" rx="2"/><path d="M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z" fill="#C94F36"/></svg>
+      考公热与 AI 机会研判
+    </a>
+    <nav class="nav">
+      <a href="#s1">结论</a>
+      <a href="#s2">事实底座</a>
+      <a href="#s3">研判</a>
+      <a href="#s4">显性机会</a>
+      <a href="#s5">隐性机会</a>
+      <a href="#s6">陷阱</a>
+      <a href="#s7">风险</a>
+      <a href="#s8">路线图</a>
+      <a href="#s9">来源</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">为本校电子信息大二 · 本科直接就业 · 泛 AI 软件方向而作</div>
+    <h1>考公热与 AI 机会研判</h1>
+    <div class="sub">「考公热是用确定性对抗不确定性，产生稳定性溢价；人才涌向考公，市场化赛道竞争骤降、机会丛生。」——这份报告逐条检验这句话，不迎合，给边界。</div>
+    <p class="lead">检索时点 2026 年 10 月 31 日。全文数字均标注年份与来源；<span class="tag tag-fact">事实</span><span class="tag tag-report">报道</span><span class="tag tag-infer">推断</span>三类标签显式区分证据等级。</p>
+    <div class="toc-grid">
+      <a href="#s1"><span class="n">01</span>先给结论：三句话总判断</a>
+      <a href="#s2"><span class="n">02</span>事实底座：宏观与岗位数据</a>
+      <a href="#s3"><span class="n">03</span>逐条研判：三档定性</a>
+      <a href="#s4"><span class="n">04</span>显性机会八条（六格+能力差距）</a>
+      <a href="#s5"><span class="n">05</span>隐性机会四组</a>
+      <a href="#s6"><span class="n">06</span>看似机会实为陷阱</a>
+      <a href="#s7"><span class="n">07</span>风险与反面</a>
+      <a href="#s8"><span class="n">08</span>四年行动路线图</a>
+      <a href="#s9"><span class="n">09</span>完整来源清单与免责</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="s1">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 01</div>
+    <h2 class="c-title">先给结论：三句话总判断</h2>
+    <p class="c-sub">以下结论基于下文第 2、3 章数据；本章只做压缩，不引入新证据。</p>
+
+    <div class="callout">
+      <p><strong>判断一：</strong>「用确定性对抗不确定性」<span class="vb v-part">部分成立</span>。考公热是真实的确定性抢购——2026 国考过审 371.8 万、约 98:1，创历史新高；但「确定性」的价格正在变贵：招录从 3.97 万（2025）缩到 3.81 万（2026）再缩到 3.57 万（2027）<span class="cite">S02</span><span class="cite">S05</span>。</p>
+      <p><strong>判断二：</strong>「产生稳定性溢价」<span class="vb v-part">部分成立</span>。溢价真实存在于报考端（求稳比例 25.1%、十年新高），但待遇端没有全国公务员普涨的证据，反而可见土地出让收入 -14.7%、31 省全部强调过紧日子、医务人员降薪个案<span class="cite">S26</span><span class="cite">S20</span><span class="cite">S21</span>。溢价的兑现方式是「考上」，而 2026 实际考录比约 74:1，大多数人付了成本兑不到现<span class="cite">S03</span>。</p>
+      <p><strong>判断三：</strong>「人才涌向考公使市场化赛道竞争骤降、机会丛生」<span class="vb v-no">幻觉</span>。考公吸纳的主力是文科/通用专业，与 AI 技术岗求职者并非同一批人；AI 行业求职人数 +39% 而岗位仅 +3%，供需比从 1.02 升至 1.23，普通开发岗需求 -52%<span class="cite">S29</span><span class="cite">S35</span><span class="cite">S15</span>。机会是真的，但不自动流向「别人去考公」的方向。</p>
+    </div>
+
+    <h3 class="s-title">成立的三点（你说对的部分）</h3>
+    <ul>
+      <li><span class="tag tag-fact">事实</span>求稳是真实的宏观情绪：2026 届计划报考体制内比例 25.1%（2025 届为 22.5%），国考报名人数 371.8 万首次超过考研 343 万<span class="cite">S26</span><span class="cite">S27</span>。</li>
+      <li><span class="tag tag-fact">事实</span>AI 应用层的窗口真实存在：AI 应用开发岗占 AI 招聘约 60.97%，大模型应用和 Agent 岗接近三年前 18 倍，本科有明确校招薪资档（杭州校招本科 12–20k/月）<span class="cite">S34</span><span class="cite">S33</span><span class="cite">S37</span>。</li>
+      <li><span class="tag tag-infer">推断</span>你的栈（Python/大模型应用/Agent/Web 全栈）正好落在增长最陡的那一段，而非收缩的传统开发段。</li>
+    </ul>
+
+    <h3 class="s-title">是幻觉的三点（需要修正的部分）</h3>
+    <ul>
+      <li><span class="tag tag-infer">推断</span>「别人去考公 → 我的赛道变空」不成立：考公与 AI 技术岗的人群、考试内容、能力门槛完全不重叠；AI 岗内部求职人数 +39%，竞争是在加剧而非骤降<span class="cite">S29</span>。</li>
+      <li><span class="tag tag-fact">事实</span>「机会丛生」对只看见不行动的人不成立：算法岗 46% 要求硕博，普通开发岗要求 3 年以上经验的占比超七成——门槛在提高，不是降低<span class="cite">S30</span><span class="cite">S15</span>。</li>
+      <li><span class="tag tag-report">报道</span>体制内的「稳定」也在重定价：事业单位撤并整合、公立医院备案制替代事业编、高校竞聘上岗，编制本身正在改革<span class="cite">S25</span>。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter" id="s2">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 02</div>
+    <h2 class="c-title">事实底座</h2>
+    <p class="c-sub">全部数字带来源与年份。<span class="tag tag-fact">事实</span>＝官方统计/公告；<span class="tag tag-report">报道</span>＝媒体报道或平台报告；<span class="tag tag-infer">推断</span>＝基于上述材料的分析判断。数据冲突时并列呈现。</p>
+
+    <h3 class="s-title">2.1 考公热：招录见顶回落，报考剪刀差拉大</h3>
+    <table class="dt">
+      <tr><th>年度国考</th><th>招录计划</th><th>过审/报名</th><th>报录比</th><th>备注</th></tr>
+      <tr><td>2024 年度</td><td>约 3.96 万</td><td>303.3 万（首超 300 万）</td><td>约 77:1</td><td>新华社报道</td></tr>
+      <tr><td>2025 年度</td><td>3.97 万</td><td>341.6 万</td><td>86:1</td><td>实际参考 258.6 万<span class="cite">S04</span></td></tr>
+      <tr><td>2026 年度</td><td>3.81 万</td><td>371.8 万（历史新高）</td><td>约 98:1</td><td>实际笔试 283.1 万、参考率 87.4%、考录比约 74:1<span class="cite">S02</span><span class="cite">S03</span></td></tr>
+      <tr><td>2027 年度</td><td>3.57 万（继续缩减）</td><td>报名中（2026-10-14 起）</td><td>—</td><td>较 2026 再减约 0.24 万<span class="cite">S05</span></td></tr>
+    </table>
+    <p><span class="tag tag-fact">事实</span>政策动向：2026 国考首次打破 35 岁门槛（一般上限 38 岁、应届硕博 43 岁）；2025 国考近七成计划面向应届。省考侧：2025 二十余省联考合计招录 165241 人、同比 +8.4%；河南 2025 招 10993 人首破万；2026 联考湖南 33.5 万人报考、青海约 63:1 创新高，普遍放宽年龄、向应届与基层倾斜<span class="cite">S06</span><span class="cite">S07</span><span class="cite">S08</span><span class="cite">S09</span>。</p>
+
+    <h3 class="s-title">2.2 毕业生规模与青年失业率</h3>
+    <p><span class="tag tag-fact">事实</span>高校毕业生（教育部预计届别）：2024 届 1179 万 → 2025 届 1222 万 → 2026 届 1270 万（+48 万）<span class="cite">S10</span>。口径提示：2025 年本专科实际毕业生 1105.10 万人（《2025 年全国教育事业发展统计公报》），与「预计届别规模」口径不同，两数并列使用时不可混用。</p>
+    <p><span class="tag tag-fact">事实</span>青年失业率（国家统计局新口径：不含在校生的 16–24 岁，2023-12 起发布）：2024 年 8 月峰值 18.8%；2025 年 8 月峰值 18.9%（略超 2024 同期）；2025 全国城镇调查失业率年均 5.2%（2024 为 5.1%）<span class="cite">S11</span>。</p>
+
+    <h3 class="s-title">2.3 考研报名拐点</h3>
+    <p><span class="tag tag-fact">事实</span>考研报名三连降：2023 峰值 474 万 → 2024 438 万 → 2025 388 万 → 2026 343 万（单年 -45 万）<span class="cite">S12</span>。<span class="tag tag-report">报道</span>2026 国考报名 371.8 万首次超过考研 343 万，被媒体解读为「考研降温、考公接棒」<span class="cite">S27</span>。</p>
+
+    <h3 class="s-title">2.4 互联网/科技招聘：总量与结构剧烈分化</h3>
+    <table class="dt">
+      <tr><th>指标</th><th>数值（年份）</th><th>来源标签</th></tr>
+      <tr><td>AI 新发岗位同比</td><td>2025 年 1–7 月增超 10 倍，平均月薪约 61475 元（脉脉）<span class="cite">S13</span></td><td><span class="tag tag-report">报道</span></td></tr>
+      <tr><td>AI 岗位薪资下限均值</td><td>2026 截至 7 月 4.7 万/月（较 2024 初 +14.16%），上限约 7.8 万（脉脉）<span class="cite">S14</span></td><td><span class="tag tag-report">报道</span></td></tr>
+      <tr><td>普通后端/前端需求</td><td>2026Q1 同比 -52%；要求 3 年以上经验岗位占比超七成（智联/脉脉）<span class="cite">S15</span></td><td><span class="tag tag-report">报道</span></td></tr>
+      <tr><td>2026 届秋招</td><td>后端校招 -52%、前端 -48%、教培 -60.1%（应届生就业白皮书）<span class="cite">S16</span></td><td><span class="tag tag-report">报道</span></td></tr>
+      <tr><td>结构性暴涨岗</td><td>2026 春：现场部署工程师招聘量 +1523%、Agent 开发 +436%<span class="cite">S17</span></td><td><span class="tag tag-report">报道</span></td></tr>
+      <tr><td>技术研发起薪</td><td>2025 届技术研发类起薪中位约 8357 元/月；大模型架构师月薪中位超 4.2 万（国家大学生就业服务平台）<span class="cite">S18</span></td><td><span class="tag tag-fact">事实</span></td></tr>
+    </table>
+    <p><span class="tag tag-report">报道</span>AI 行业大盘（智联《2025 人工智能产业人才发展报告》）：2025 年前三季招聘职位同比 +3%（Q3 +11%），求职人数 +39%——岗位微增、求职激增，供需比从 1.02 升至 1.23；核心算法岗占 AI 岗位比例从 2024H1 的 68% 降至 2026H1 的 45%，应用+关联岗合计约 55%；2026 校招 1–7 月新发 AI 岗 +789.47%、平均月薪约 63160 元，AI 应用开发岗占 AI 招聘 60.97%；Agent 开发人才 2026 上半年 +244%<span class="cite">S29</span><span class="cite">S33</span><span class="cite">S34</span><span class="cite">S35</span>。</p>
+    <p><span class="tag tag-report">报道</span>2025 春招算法岗 +44.3%、平均月薪约 23055 元，46% 要求硕博、45% 要求 3 年以上经验；薪酬分层：人工智能工程师平均月薪约 21439 元、AI 产品经理约 19459 元、数据标注/AI 训练师约 6479 元；掌握 AI 技能职位平均年薪近 30 万，AI 技术岗 50 万+ 占比 31.38%（全行业仅 6.47%）<span class="cite">S30</span><span class="cite">S31</span><span class="cite">S32</span>。</p>
+
+    <h3 class="s-title">2.5 地方财政与体制内待遇：压力是普遍的，普降没有证据</h3>
+    <p><span class="tag tag-fact">事实</span>2025 全国一般公共预算收入 216045 亿、同比 -1.7%，非税收入 -11.3%；2025 土地出让收入 41518 亿、同比 -14.7%；预算报告原文出现「一些地方财政困难」，31 省份全部强调党政机关过紧日子<span class="cite">S19</span><span class="cite">S20</span><span class="cite">S21</span>。</p>
+    <p><span class="tag tag-report">报道</span>医务人员降薪报道（澎湃 2025-11）与县级医院绩效砍半个案（羊城晚报 2025-12）<span class="cite">S22</span><span class="cite">S23</span>。<strong>边界：</strong>截至检索时点，未找到全国性公务员普降工资的权威统计或官方文件；可确认的普遍事实是财政承压+过紧日子+绩效缓发/公积金调整零星可见，<strong>不能推断为全国公务员普降</strong>。</p>
+    <p><span class="tag tag-report">报道</span>编制侧：事业单位撤并整合、公立医院备案制替代事业编、高校竞聘上岗（中国机构编制网）；2025 三支一扶中央财政支持招募 34430 人<span class="cite">S25</span><span class="cite">S24</span>。</p>
+    <p><span class="tag tag-report">报道</span>关键画像：前程无忧调查 2026 届计划报考体制内比例 25.1%（2025 届 22.5%），计划进企业比例回落；2025「计算机科学与技术」首次跌出高考志愿专业月收入前十<span class="cite">S26</span><span class="cite">S28</span>。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s3">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 03</div>
+    <h2 class="c-title">逐条研判：不迎合，给边界</h2>
+    <p class="c-sub">原判断拆成三个子命题，分别定性：<span class="vb v-yes">成立</span> / <span class="vb v-part">部分成立</span> / <span class="vb v-no">幻觉</span>。</p>
+
+    <h3 class="s-title">3.1 「用确定性对抗不确定性」——<span class="vb v-part">部分成立</span></h3>
+    <p><span class="tag tag-fact">事实</span>成立的一面：青年失业率 2025 年 8 月峰值 18.9% 未回落、毕业生 2026 届 1270 万再创新高，25.1% 的 2026 届毕业生计划报考体制内——在不确定性放大的环境里，抢购确定性是理性反应<span class="cite">S11</span><span class="cite">S10</span><span class="cite">S26</span>。</p>
+    <p><span class="tag tag-infer">推断</span>边界一：确定性本身正在缩量。招录曲线 3.96→3.97→3.81→3.57 万见顶回落，而报考 303→341→371 万一路向上——你买到的「确定性」份额在变小，价格在变贵。2026 实际考录比约 74:1，意味着 98% 的人完成了「对抗」动作却兑不到结果<span class="cite">S03</span>。</p>
+    <p><span class="tag tag-infer">推断</span>边界二：用「确定性对抗不确定性」是个体理性，但它没有消除不确定性，只是把风险从「市场化就业」换成了「考不上的机会成本」。对一个 Python/大模型应用栈的学生，这个机会成本显著高于文科同学——你的备选赛道恰好在涨。</p>
+
+    <h3 class="s-title">3.2 「产生稳定性溢价」——<span class="vb v-part">部分成立（溢价在报考端，不在待遇端）</span></h3>
+    <p><span class="tag tag-fact">事实</span>溢价真实的部分：体制内岗位仍是 25.1% 毕业生的第一选择，说明市场愿意为稳定性支付「千军万马过独木桥」的代价；2025 国考近七成计划面向应届、省考向基层倾斜——应届身份进体制的通道客观存在<span class="cite">S26</span>。</p>
+    <p><span class="tag tag-fact">事实</span>溢价没有兑现的部分：土地出让收入 -14.7%、非税 -11.3%、31 省全部强调过紧日子；医务人员降薪、县级医院绩效砍半是已报道个案；<strong>截至检索时点没有全国公务员普降工资的权威证据，但也没有普涨证据</strong>——绩效缓发、公积金调整零星可见<span class="cite">S20</span><span class="cite">S19</span><span class="cite">S22</span><span class="cite">S23</span>。</p>
+    <p><span class="tag tag-report">报道</span>编制本身在改革：事业单位撤并整合、公立医院备案制替代事业编、高校竞聘上岗。「编制＝终身稳定」的旧叙事在松动<span class="cite">S25</span>。</p>
+    <div class="callout warn">
+      <p><strong>一句话：</strong>稳定性溢价是真的，但它主要体现在「抢着要」（报考端 98:1），而不是「给得多」（待遇端承压）。把溢价当成待遇改善来预期，是误判。</p>
+    </div>
+
+    <h3 class="s-title">3.3 「人才涌向考公 → 市场化赛道竞争骤降、机会丛生」——<span class="vb v-no">幻觉（有真实成分，但机制不成立）</span></h3>
+    <p><span class="tag tag-infer">推断</span>核心边界：考公群体与 AI 技术岗求职者<strong>不是同一批人</strong>。考公主力是文科、通用专业与求稳型综合岗；AI 技术岗的入场券是 Python/工程能力——会为考公放弃技术栈的人，本来就不是 AI 岗的竞争者；反过来，你身边真正和你抢 AI 应用开发岗的同学，并不会因为考公热消失。</p>
+    <p><span class="tag tag-report">报道</span>数据不支持「竞争骤降」：AI 行业求职人数 +39%，而招聘职位仅 +3%，供需比从 1.02 恶化到 1.23；通用算法岗竞争比约 100:1<span class="cite">S29</span><span class="cite">S35</span>。</p>
+    <p><span class="tag tag-report">报道</span>门槛在提高而非降低：算法岗 46% 要求硕博、45% 要求 3 年以上经验；普通后端/前端需求 -52%，且要求 3 年以上经验的岗位占比超七成——初级岗在消失，「会调 API」的供给已经过剩<span class="cite">S30</span><span class="cite">S15</span>。</p>
+    <p><span class="tag tag-infer">推断</span>哪些岗位反而更卷：通用算法、纯前端、纯后端初级岗——这些恰好不是你的目标赛道。你的目标赛道（AI 应用开发/Agent/Web 全栈）真实在增长（应用开发占 AI 招聘 60.97%），但竞争者是「也在做项目、也在攒实习」的同栈同学，不是考公的人<span class="cite">S34</span>。</p>
+    <div class="callout warn">
+      <p><strong>不迎合的结论：</strong>「机会丛生」只对两类人成立——已经做出端到端项目的人，和已经拿到实习的人。对只「看见」趋势、还没开始交付的人，机会不会因为别人去考公而自动出现在你面前。</p>
+    </div>
+
+    <h3 class="s-title">3.4 总评表</h3>
+    <table class="dt">
+      <tr><th>判断条目</th><th>定性</th><th>依据（均见第 2 章来源）</th></tr>
+      <tr><td>用确定性对抗不确定性</td><td><span class="vb v-part">部分成立</span></td><td>求稳比例 25.1% 真实；但招录缩量至 3.57 万、74:1 的兑现概率极低</td></tr>
+      <tr><td>产生稳定性溢价</td><td><span class="vb v-part">部分成立</span></td><td>溢价在报考端（98:1）真实；待遇端承压（土地出让 -14.7%、过紧日子），无普涨证据，编制在改革</td></tr>
+      <tr><td>考公使市场化赛道竞争骤降</td><td><span class="vb v-no">幻觉</span></td><td>人群不重叠；AI 求职人数 +39% vs 岗位 +3%；门槛在提高（算法 46% 要硕博、初级岗消失）</td></tr>
+      <tr><td>机会丛生</td><td><span class="vb v-no">幻觉（对不行动者）</span></td><td>应用/Agent 窗口真实（占 60.97%），但只流向有作品、有实习的人</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="chapter" id="s4">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 04</div>
+    <h2 class="c-title">显性机会八条</h2>
+    <p class="c-sub">每条统一六格：是什么 / 为何现在是窗口 / 竞争格局 / 所需能力 / 进入路径 / 风险陷阱；末尾附与你现有栈（Python·大模型应用·Agent·Web 全栈）的能力差距。</p>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 01</span><h3>大模型应用层开发（RAG / 知识库 / 工作流）</h3><span class="pay">校招本科约 1.5–3 万/月</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>基于大模型 API + 向量库做企业知识库、智能客服、文档问答与审批工作流。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>应用+关联岗占 AI 招聘约 55%，AI 应用开发岗占 60.97%；大模型应用和 Agent 岗接近三年前 18 倍<span class="cite">S33</span><span class="cite">S34</span>。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>真实 JD 要求 Python/LangChain/RAG/向量库/FastAPI，本科可；但头部 RAG 岗常要硕士+3 年经验<span class="cite">S36</span><span class="cite">S40</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>Python、FastAPI、LangChain、向量库（Milvus/PGVector）、Embedding 选型、效果评估。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>校内课程项目 → 1–2 个带评估报告的 GitHub 知识库产品 → 实习内推。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>「会调 API」已供给过剩（供需比 1.23）；纯 demo、无评估、无部署的项目无区分度<span class="cite">S35</span>。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>Python、大模型应用调用、Web 全栈。<strong>缺口：</strong>向量库实战、召回/排序评估方法、云部署。<strong>怎么补：</strong>大三前完成 1 个 RAG 项目，必须含「准确率/召回率测试集」与 Docker 部署。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 02</span><h3>AI Agent / 智能体工程师</h3><span class="pay">杭州校招本科 12–20k/月</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>设计多步工具调用、多 Agent 协作与业务自动化工作流（LangGraph/AutoGen/Function Calling）。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>Agent 开发人才 2026 上半年 +244%；2026 春 Agent 开发招聘 +436%；字节首设 AI Agent 岗、快手 80% 秋招岗与 AI 相关<span class="cite">S34</span><span class="cite">S17</span>。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>2026 杭州校招本科 12–20k、硕士 18–30k、大厂 SP 40k+；要求 LangGraph/AutoGen/Function Calling<span class="cite">S37</span><span class="cite">S38</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>LangGraph 状态机、工具封装、失败重试与评测、长任务编排。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>复刻并改造一个开源 Agent 项目 → 给在用库提小 PR → 输出技术博客。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>概念过热、真实生产岗有限；不少挂「Agent」名的岗实为外包部署/现场调试。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>Agent 基础、Function Calling。<strong>缺口：</strong>多 Agent 协同的工程化、生产级评测。<strong>怎么补：</strong>跟一个开源 Agent 仓库（如 LangGraph 生态）提文档/小 PR，GitHub 可被搜到。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 03</span><h3>大模型工程 / LLMOps（部署·评测·可观测）</h3><span class="pay">本科可，强后端功底</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>模型服务部署、GPU/推理资源调度、线上效果监控与版本管理。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>模型从 demo 走向生产，现场部署工程师 2026 春招聘量 +1523%，落地缺人<span class="cite">S17</span>。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>真实 JD：Go/Java/Python + K8s/Docker/微服务/Prometheus；本科可，但要求扎实后端功底<span class="cite">S39</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>Docker/K8s、Linux、可观测三件套、一门系统后端语言（Go 优先）。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>Web 全栈打底 → 补云原生 → 后端/部署岗实习。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>它本质是后端工程岗，「AI」只是修饰；别幻想跳过传统后端直接做模型架构。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>Python、Web 服务。<strong>缺口：</strong>Go、K8s、Linux 运维。<strong>怎么补：</strong>把每个练习项目都用 Docker 部署到云服务器；大三上完一遍 K8s 基础课。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 04</span><h3>数据工程（数据管线，不是标注员）</h3><span class="pay">工程师岗约 1–2 万/月区间</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>训练数据管线、清洗与质量体系建设——做「造数据的工程师」，而非「标数据的人」。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>截至 2025-09 中国 AI 企业超 5300 家，数据质量是模型落地的普遍瓶颈。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>注意区分：数据标注岗 78.6% 月薪 3–6K、应届约 3.8K——那是陷阱不是机会<span class="cite">S41</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>SQL、Python 数据处理、端到端数据管道、基本的标注规范设计。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>SQL 打牢 → 一个端到端数据管道项目（采集→清洗→入向量库）→ 数据/算法工程实习。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>最常见的误判：把「AI 训练师/标注」招聘标题当成数据工程岗入行。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>Python。<strong>缺口：</strong>SQL 熟练度、数据管道工具链。<strong>怎么补：</strong>在 RAG 项目里顺带把数据清洗管线写完整，GitHub 上即为作品。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 05</span><h3>AI 基础设施 / 后端（推理服务方向）</h3><span class="pay">参考：Java 1.81 万、运维 0.99 万/月</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>面向大模型的后端服务：推理 API 网关、并发与成本控制、部署自动化。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>现场部署工程师招聘量 2026 春 +1523%，是全表涨幅最高的岗位之一<span class="cite">S17</span>。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>人社部 2026Q1 薪酬基准：算法 2.14–2.19 万、Java 1.81 万、运维 0.99 万、硬件 1.69 万/月<span class="cite">S70</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>FastAPI/Go、Linux、Docker、云服务器实操。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>买一台学生云服务器，把项目真实部署上线并挂域名，写运维笔记。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>与你排斥硬件不冲突（不碰芯片、只碰服务）；但薪资天花板低于算法与应用产品岗。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>Python、Web 全栈。<strong>缺口：</strong>Linux 实操、云部署经验。<strong>怎么补：</strong>大二下完成一次「本地项目 → 公网可访问」的完整部署闭环。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 06</span><h3>传统行业 +AI 改造（金融科技 / 政企软件 / 医疗信息化）</h3><span class="pay">本科首年约 10–15 万</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>在非互联网行业做「懂业务的大模型应用开发」：内部知识库、智能客服、流程自动化。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>65% 央企与百度智能云合作；AI 产品岗外溢通信/医药/教育行业；西安 AI 训练师职位占比 9.7% 居全国第 2<span class="cite">S43</span>。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>安徽 AI 专场本科首年转正 10–15 万；合肥 AI 工程师 58.2% 岗位在 20–50K 区间；二线比一线低 20–40%<span class="cite">S67</span><span class="cite">S68</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>应用开发栈 + 一门行业业务理解（可入职后补）。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>西安本地政企软件/金融科技公司实习与校招——留陕性价比最高的一档。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>薪资天花板低、技术栈偏陈旧；适合当跳板或留陕首选，不宜当终局。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>应用开发栈全部对口。<strong>缺口：</strong>行业业务认知。<strong>怎么补：</strong>大三暑期优先在西安本地找一段相关实习，哪怕公司不大。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 07</span><h3>AI 产品出海（中国模型公司的海外岗）</h3><span class="pay">本科可投，英语是硬门槛</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>中国大模型/应用公司的海外产品、本地化与海外技术支持岗。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>Coze 海外 2023-12 先于国内（2025-02）上线；字节 Seed 在新加坡/美国设岗；MiniMax 全球招聘；Shopee AI Star、传音校招 AI 方向开放<span class="cite">S45</span><span class="cite">S46</span><span class="cite">S47</span>。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>出海岗普遍要求英语读写工作文档——对四级 472 的你，这是性价比最高的能力投资。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>英语技术文档读写、跨时区协作、海外产品体感。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>把 GitHub 项目做成英文 README + 英文 Demo 页 → 投递出海公司校招。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>岗位多在深圳/杭州/新加坡；需要接受城市与外派成本；西方远程收入数字不直接套国内。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>全栈交付能力。<strong>缺口：</strong>英语（尤其技术写作）、海外产品认知。<strong>怎么补：</strong>每天读官方英文 docs，六级冲分；项目 README 双语化。</p>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="opp-head"><span class="no">OPPORTUNITY 08</span><h3>独立开发者 / 微型 SaaS（当副业验证，不当校车主路径）</h3><span class="pay">约 70% 月收入低于 500 美元</span></div>
+      <div class="six">
+        <div class="cell"><h5>是什么</h5><p>一个人用 AI 工具链做小型收费产品（浏览器插件、垂直小工具）。</p></div>
+        <div class="cell"><h5>为何现在是窗口</h5><p>AI 把单人做产品的门槛拉低了；一个人完成设计+开发+上架成为可能。</p></div>
+        <div class="cell"><h5>竞争格局</h5><p>极端小概率：1000+ 创始人统计约 70% 月收入低于 500 美元、仅 18% 超 1000 美元；92% 微型 SaaS 18 个月内失败；Indie Hackers 17000 会员仅 12 人达 1 万美元 MRR（约 0.07%）；国内个案 300 天投入 2 万美元、0 用户 0 收入<span class="cite">S51</span><span class="cite">S52</span><span class="cite">S54</span>。</p></div>
+        <div class="cell"><h5>所需能力</h5><p>全栈之外，还要补获客、定价、付费投放认知。</p></div>
+        <div class="cell"><h5>进入路径</h5><p>周末副业：做一个收费小工具，目标不是赚钱，是跑通「做—发—收钱」闭环；先正规公司攒 2–3 年再谈全职独立<span class="cite">S53</span>。</p></div>
+        <div class="cell"><h5>风险陷阱</h5><p>幸存者偏差极强：你刷到的都是 Pieter Levels 式故事（发 70+ 产品仅 4 个成功）；大四秋招主路径押在这上面＝放弃应届身份。</p></div>
+      </div>
+      <div class="gap"><h5>与你的栈对比</h5>
+        <p><strong>已会：</strong>全栈足以做出产品。<strong>缺口：</strong>付费获客与定价。<strong>怎么补：</strong>用一个学期时间做一件小事并挂上付费墙，哪怕只收到几十元。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--S5-->
+<section class="chapter" id="s5">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 05</div>
+    <h2 class="c-title">隐性机会四组</h2>
+    <p class="c-sub">不是贴在招聘网站首页的机会，而是需要顺着结构缝隙找到的入口。</p>
+
+    <h3 class="s-title">5.1 挤出效应里真实可用的部分</h3>
+    <ul>
+      <li><span class="tag tag-fact">事实</span>应届身份倾斜：2025 国考近七成计划面向应届，省考向应届与基层倾斜——考公赛道把岗位向应届生集中，侧面说明<strong>应届身份在体制内外都是稀缺资源，一生只有一次</strong>，别浪费在「边玩边想」上<span class="cite">S06</span>。</li>
+      <li><span class="tag tag-infer">推断</span>理工科技术岗的真实「挤出来」的部分不是考公人群，而是考研降温：考研三连降（474→343 万）意味着同栈同学中二战/读研分流减少，<strong>本科直接就业的同届竞争者是近四年相对最少的一届</strong>——这才是你该用的窗口，而不是「别人去考公」<span class="cite">S12</span>。</li>
+      <li><span class="tag tag-report">报道</span>地区差：二线城市 AI 岗竞争小于一线（二线比一线薪酬低 20–40%，竞争烈度同序递减）；合肥 58.2% 的 AI 工程师岗位在 20–50K<span class="cite">S68</span>。</li>
+    </ul>
+
+    <h3 class="s-title">5.2 国企市场化技术岗、二线城市、出海企业（别只盯「外企」标签）</h3>
+    <ul>
+      <li><span class="tag tag-report">报道</span>中国移动技术岗：七险二金 + 安家补贴约 3000/月；华为数字能源应届约 18K×14——央企/大厂校招通道是应届生最稳的入口，且不要求你「考公」<span class="cite">S69</span>。</li>
+      <li><span class="tag tag-infer">推断</span>欧美外企在华技术岗无权威报告，其角色正被出海企业替代——与其投「外企」，不如投字节 Seed、MiniMax、传音、Shopee 这类出海公司校招<span class="cite">S46</span><span class="cite">S47</span>。</li>
+      <li><span class="tag tag-report">报道</span>被低估的西安：本地 AI 训练师职位占比 9.7% 居全国第 2，留陕+AI 的组合真实存在。</li>
+    </ul>
+
+    <h3 class="s-title">5.3 远程工作、海外岗位、开源社区、技术个人品牌</h3>
+    <ul>
+      <li><span class="tag tag-report">报道</span>远程入门台阶正在被拆掉：Upwork 2026Q1 入门级项目从 106485 降至 75268（-29.3%）；12 类项目中 11 类发布下降（写作 -32%、翻译 -20%、IT -27%）；AI 类 IT 项目仅 4% 标注入门级、47% 要专家级——<strong>应届生指望远程小单养活自己的路正在关闭</strong>，AI 专家时薪溢价 40%+ 是远期目标<span class="cite">S48</span>。</li>
+      <li><span class="tag tag-report">报道</span>典型远程 Python 岗年薪约 27–35 万（电鸭）；德国机会卡：本科可先拿一年签证找工作再转蓝卡——这是 3 年后的可选项，不是现在的主业依赖<span class="cite">S49</span><span class="cite">S50</span>。</li>
+      <li><span class="tag tag-report">报道</span>开源与个人品牌：招聘方访问有公开 repo 候选人的比例 +32%；核心 AI 部门 20–30% HC 走内推——给 LangChain/Dify 等在用库提文档/小 PR、项目整理成带 README/demo 的 GitHub 仓库，比刷奖项更有区分度<span class="cite">S55</span>。</li>
+    </ul>
+
+    <h3 class="s-title">5.4 逆周期选择</h3>
+    <ul>
+      <li><span class="tag tag-fact">事实</span>校招时间差：2026Q1 普通后端/前端需求 -52%，但现场部署工程师 +1523%、Agent 开发 +436%——秋招主投方向决定结果，海投普通开发岗是逆水行舟<span class="cite">S15</span><span class="cite">S17</span>。</li>
+      <li><span class="tag tag-infer">推断</span>考研降温年（343 万历史低位）正是「不考研直接就业」的红利窗口：同栈少了一批二战卷王，你的竞争对手相对变少。</li>
+      <li><span class="tag tag-report">报道</span>冷门但在涨的行业外溢：AI 产品岗外溢通信/医药/教育；金融科技/政企软件/医疗信息化招「懂业务的大模型应用开发」，竞争比大厂小、薪资低一档——作为保底赛道。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter" id="s6">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 06</div>
+    <h2 class="c-title">看似机会实为陷阱</h2>
+    <p class="c-sub">以下每一条都有官方/媒体曝光记录，按「标题党识别」给出。</p>
+
+    <div class="trap">
+      <h4>陷阱一：低质数据标注 / 「AI 训练师」兼职</h4>
+      <p><span class="tag tag-report">报道</span>真相：78.6% 数据标注岗位月薪 3–6K、应届约 3.8K；底层兼职月入约 1000–2000 元，全职「冠军」约 4000/月；大厂 AI 训练师 2–4 万/月是极少数资深岗<span class="cite">S41</span><span class="cite">S59</span><span class="cite">S60</span>。识别：以「在家兼职、日结、AI 相关」为话术拉人的标注单，不是职业起点，是时薪苦力。</p>
+    </div>
+    <div class="trap">
+      <h4>陷阱二：AI 培训贷 / 招转培</h4>
+      <p><span class="tag tag-report">报道</span>官方曝光：四川消委 2025 年「AI+」培训投诉 3739 件；北京「招转培」诱骗 1200 余人、涉案 1950 余万元，2026-01 公安立案；央视 2025-09 曝光「免费培训+兼职保底」实为培训贷<span class="cite">S56</span><span class="cite">S57</span><span class="cite">S58</span>。识别：面试即劝退、以「先培训后入职」「助学贷」为话术的，一律不去。</p>
+    </div>
+    <div class="trap">
+      <h4>陷阱三：伪新职业证书 / 标注押金骗局</h4>
+      <p><span class="tag tag-report">报道</span>武汉政府 2026-05 普法曝光：以「AI 训练师证书」「数据标注师认证」收费、或要求交押金再派单的骗局<span class="cite">S63</span>。识别：任何要求你先交钱拿证/交押金上岗的，都不是正规雇主。</p>
+    </div>
+    <div class="trap">
+      <h4>陷阱四：付费内推</h4>
+      <p><span class="tag tag-report">报道</span>五部门 2026-10 明确提示：凡「央国企内推」收费均为诈骗；上海人社部门曝光虚假内推个案收费高达 20 万元<span class="cite">S61</span><span class="cite">S62</span>。识别：正规内推走企业员工/校招群，永远免费；内推费＝智商税。</p>
+    </div>
+    <div class="trap">
+      <h4>陷阱五：AI 加盟 / 伪创业（四级裂变、数字人直播、AI 自动带货）</h4>
+      <p><span class="tag tag-report">报道</span>贝壳财经 2026-03 曝光「AI 代理」四级裂变拉人头；钛媒体报道数字人直播加盟后被批量封播；环球网调查「AI 自动带货」培训学员实得约千元<span class="cite">S64</span><span class="cite">S65</span><span class="cite">S66</span>。识别：以「加盟、躺赚、睡后收入」为话术的 AI 创业项目，赚的是加盟商的钱，不是市场的钱。</p>
+    </div>
+  </div>
+</section>
+
+<!--S7-->
+<section class="chapter" id="s7">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 07</div>
+    <h2 class="c-title">风险与反面</h2>
+    <p class="c-sub">这章泼冷水：即使方向判断全对，仍有四个坑会让你白忙。</p>
+
+    <h3 class="s-title">7.1 确定性幻觉：体制内也在重定价</h3>
+    <p><span class="tag tag-fact">事实</span>国考招录 3.81→3.57 万见顶回落；事业单位撤并整合、公立医院备案制替代事业编、高校竞聘上岗——「考上即终身」的旧确定性正在被重写。把「考公」当唯一安全网的同龄人，赌的也是一个正在缩水的池子<span class="cite">S05</span><span class="cite">S25</span>。</p>
+
+    <h3 class="s-title">7.2 机会不自动流向只「看见」的人</h3>
+    <p><span class="tag tag-report">报道</span>AI 行业求职人数 +39% 而岗位仅 +3%：看见趋势的人远比岗位多。你的相对优势不来自「知道 AI 火」，而来自到秋招时你有 2–3 个可跑的项目、一段实习、一份被 HR 点开过的 GitHub<span class="cite">S29</span>。</p>
+
+    <h3 class="s-title">7.3 AI 门槛在提高，不是降低</h3>
+    <p><span class="tag tag-report">报道</span>算法岗 46% 要硕博、45% 要 3 年经验；普通开发岗 -52% 且七成要求 3 年经验——「会调 API」的初级供给过剩，「端到端交付+云原生」的中级才是缺口。补栈方向是把自己从中级门槛往上垒，而不是再报一个训练营<span class="cite">S30</span><span class="cite">S15</span>。</p>
+
+    <h3 class="s-title">7.4 薪资分化与幸存者偏差</h3>
+    <p><span class="tag tag-report">报道</span>同一行业内：AI 工程师月薪约 21439 元 vs 数据标注约 6479 元；远程小单 -29.3% vs 专家时薪溢价 40%+；微型 SaaS 成功率约 0.07%——你刷到的「AI 暴富」帖全是幸存者。基准策略：先进正规公司攒 2–3 年，再谈独立、远程、出海<span class="cite">S31</span><span class="cite">S48</span><span class="cite">S52</span>。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s8">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 08</div>
+    <h2 class="c-title">行动路线图（大二下 → 大四秋招）</h2>
+    <p class="c-sub">对齐真实学年：2027 春（大二下）→ 2027 秋（大三上）→ 2028 春夏（大三下+暑期）→ 2028 秋（大四秋招）→ 2029 毕业。每阶段给可量化目标与信息渠道。</p>
+
+    <div class="tl">
+      <div class="stage">
+        <h4>阶段一 · 大二下（2027 春）</h4>
+        <span class="when">打地基：把「会用」变成「可演示」</span>
+        <ul>
+          <li><strong>能力栈：</strong>Python 进阶 + FastAPI + 向量库（PGVector/Milvus）入门；Linux 基础命令。</li>
+          <li><strong>作品：</strong>完成 1 个 GitHub 项目——企业知识库 RAG，含测试集准确率报告 + Docker 部署，README 双语。</li>
+          <li><strong>英语：</strong>每天读官方英文 docs 30 分钟，六级按目标分备考（你听力 109 是短板，优先补）。</li>
+          <li><strong>信息渠道：</strong>脉脉高聘报告、智联《人工智能产业人才发展报告》、牛客网校招区、GitHub Trending。</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h4>阶段二 · 大三上（2027 秋）</h4>
+        <span class="when">第二作品 + 第一次实习投递</span>
+        <ul>
+          <li><strong>能力栈：</strong>LangGraph 多步编排、Function Calling、给 LangChain/Dify 生态提 1–2 个小 PR；Docker 部署闭环跑通。</li>
+          <li><strong>作品：</strong>第 2 个 GitHub 项目——一个真实可用的 Agent 工作流（如自动整理论文/报销流），附失败重试与评测说明。</li>
+          <li><strong>实习：</strong>2027 暑期实习提前批（通常大三上 9–11 月开放）开始投，方向：AI 应用开发/后端。</li>
+          <li><strong>组件清单目标：</strong>FastAPI、LangChain、LangGraph、PGVector、Docker、Git 协作全熟。</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h4>阶段三 · 大三下 + 暑期（2028 春 → 2028 夏）</h4>
+        <span class="when">一段真实习，是这一年的核心 KPI</span>
+        <ul>
+          <li><strong>实习：</strong>拿到并做完一段 ≥3 个月的实习（AI 应用开发方向；西安本地政企软件/金融科技为保底，一线公司为冲刺）。</li>
+          <li><strong>作品：</strong>GitHub 累计 2–3 个项目，其中 1 个挂在公网可访问域名上。</li>
+          <li><strong>内推：</strong>通过实习 mentor/牛客/学长建立内推通道（核心 AI 部门 20–30% HC 走内推）。</li>
+          <li><strong>信息渠道：</strong>国家大学生就业服务平台、人社部季度薪酬基准报告、目标公司官网校招页、电鸭社区（远期视野）。</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h4>阶段四 · 大四秋招（2028 秋）→ 2029 毕业</h4>
+        <span class="when">主投方向决定结果</span>
+        <ul>
+          <li><strong>主投：</strong>AI 应用开发 / Agent / LLMOps 校招岗（本科档参考：一线 12–20k/月，二线首年 10–15 万）；<strong>不要海投普通后端/前端</strong>（-52% 且七成要 3 年经验）。</li>
+          <li><strong>组合：</strong>冲刺出海公司（字节 Seed/MiniMax/传音/Shopee，英语是差异化）＋ 保底西安本地 AI 岗/央企技术岗（中国移动等）。</li>
+          <li><strong>纪律：</strong>拒绝一切收费内推、培训贷、加盟招商；offer 比较时看薪资带宽、组方向、转正率。</li>
+          <li><strong>远期：</strong>入职后攒 2–3 年再谈独立开发/远程/海外（德国机会卡等）。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="s9">
+  <div class="wrap">
+    <div class="ch-no">CHAPTER 09</div>
+    <h2 class="c-title">完整来源清单与免责</h2>
+    <p class="c-sub">正文引用编号 S01–S70 对应如下。检索时点 2026-10-31。</p>
+    <ol class="srcs">
+      <li>人民网：2026 年度国考招录公告（2025-10-14）<br><a href="http://politics.people.com.cn/n1/2025/1014/c1001-40581905.html">http://politics.people.com.cn/n1/2025/1014/c1001-40581905.html</a></li>
+      <li>中国政府网：2026 国考过审 371.8 万、约 98:1（2025-10-26）<br><a href="https://www.gov.cn/lianbo/bumen/202510/content_7045734.htm">https://www.gov.cn/lianbo/bumen/202510/content_7045734.htm</a></li>
+      <li>中国网：2026 国考笔试 283.1 万人、考录比约 74:1（2026-01-15）<br><a href="http://www.china.com.cn/txt/2026-01/15/content_118281550.shtml">http://www.china.com.cn/txt/2026-01/15/content_118281550.shtml</a></li>
+      <li>中国政府网：2025 国考 341.6 万人过审、86:1（2024-10-26）<br><a href="https://www.gov.cn/lianbo/bumen/202410/content_6983155.htm">https://www.gov.cn/lianbo/bumen/202410/content_6983155.htm</a></li>
+      <li>光明网：2027 年度国考拟招 3.57 万人（2026-10-14）<br><a href="https://politics.gmw.cn/2026-10/14/content_39044674.htm">https://politics.gmw.cn/2026-10/14/content_39044674.htm</a></li>
+      <li>央视网：2025 二十余省联考招录 165241 人（2025-03-16）<br><a href="https://news.cctv.cn/2025/03/16/ARTICTXm6CE6bbGlgoHME07i250316.shtml">https://news.cctv.cn/2025/03/16/ARTICTXm6CE6bbGlgoHME07i250316.shtml</a></li>
+      <li>河南省政府：2025 河南公务员招录 10993 人（2025）<br><a href="https://www.henan.gov.cn/2025/01-07/3109027.html">https://www.henan.gov.cn/2025/01-07/3109027.html</a></li>
+      <li>红星网：2026 湖南 33.5 万人报考省考（2026）<br><a href="http://www.hxw.gov.cn/content/2026/03/16/14873268.html">http://www.hxw.gov.cn/content/2026/03/16/14873268.html</a></li>
+      <li>青海省政府：2026 青海省考 12.1 万人报考、约 63:1（2026）<br><a href="http://www.qinghai.gov.cn/zwgk/system/2026/03/15/030094725.shtml">http://www.qinghai.gov.cn/zwgk/system/2026/03/15/030094725.shtml</a></li>
+      <li>教育部：2026 届高校毕业生 1270 万（2026-06）<br><a href="http://www.moe.gov.cn/jyb_xwfb/s5147/202606/t20260615_1440719.html">http://www.moe.gov.cn/jyb_xwfb/s5147/202606/t20260615_1440719.html</a></li>
+      <li>国家统计局：2026 民生统计（青年失业率新口径）（2026-10）<br><a href="https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261030_1965711.html">https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261030_1965711.html</a></li>
+      <li>研招网：2026 考研报名 343 万（2025-12）<br><a href="https://yz.chsi.com.cn/kyzx/kydt/202512/20251220/2293443380.html">https://yz.chsi.com.cn/kyzx/kydt/202512/20251220/2293443380.html</a></li>
+      <li>南方+（转脉脉）：2025 AI 新发岗位增超 10 倍、平均月薪 61475 元（2025）<br><a href="https://www.nfnews.com/content/p3ZvaQzA3l.html">https://www.nfnews.com/content/p3ZvaQzA3l.html</a></li>
+      <li>脉脉高聘（转 woshipm）：2026 AI 岗位薪资下限均值 4.7 万/月（2026）<br><a href="https://www.woshipm.com/it/6264367.html">https://www.woshipm.com/it/6264367.html</a></li>
+      <li>新浪科技（转智联/脉脉）：2026Q1 普通后端/前端需求 -52%（2026-07-06）<br><a href="https://finance.sina.com.cn/tech/roll/2026-07-06/doc-inifvqsc8827875.shtml">https://finance.sina.com.cn/tech/roll/2026-07-06/doc-inifvqsc8827875.shtml</a></li>
+      <li>《2026 届应届生就业白皮书》（2026）<br><a href="https://www.ihr360.com/yanjiubaogao/10.html">https://www.ihr360.com/yanjiubaogao/10.html</a></li>
+      <li>中华网：2026 春现场部署工程师 +1523%、Agent 开发 +436%（2026-10）<br><a href="https://news.china.com/socialgd/10000169/20261015/49796414_all.html">https://news.china.com/socialgd/10000169/20261015/49796414_all.html</a></li>
+      <li>国家大学生就业服务平台：2025 届技术研发起薪中位 8357 元（2025-07-17）<br><a href="https://www.ncss.cn/ncss/jydt/jy/202507/20250717/2293394350.html">https://www.ncss.cn/ncss/jydt/jy/202507/20250717/2293394350.html</a></li>
+      <li>财政部国库司：2025 年财政收支情况（2026-01-30）<br><a href="https://gks.mof.gov.cn/tongjishuju/202601/t20260130_3982923.htm">https://gks.mof.gov.cn/tongjishuju/202601/t20260130_3982923.htm</a></li>
+      <li>财政部：2025 年土地出让收入 41518 亿、-14.7%（2026-01-30）<br><a href="https://m.mof.gov.cn/czxw/202601/t20260130_3982923.htm">https://m.mof.gov.cn/czxw/202601/t20260130_3982923.htm</a></li>
+      <li>财政部/第一财经：31 省份全部强调过紧日子（2026-03-16）<br><a href="http://www.mof.gov.cn/zhengwuxinxi/caizhengxinwen/202603/t20260316_3985331.htm">http://www.mof.gov.cn/zhengwuxinxi/caizhengxinwen/202603/t20260316_3985331.htm</a></li>
+      <li>澎湃新闻：医务人员降薪报道（2025-11）<br><a href="https://m.thepaper.cn/newsDetail_forward_31942748">https://m.thepaper.cn/newsDetail_forward_31942748</a></li>
+      <li>羊城晚报：县级医院绩效砍半个案（2025-12）<br><a href="https://wap.ycwb.com/ikinvjitkh/content_53829608.htm">https://wap.ycwb.com/ikinvjitkh/content_53829608.htm</a></li>
+      <li>中国政府网：2025 三支一扶招募 34430 人（2025-05）<br><a href="https://www.gov.cn/lianbo/bumen/202505/content_7025867.htm">https://www.gov.cn/lianbo/bumen/202505/content_7025867.htm</a></li>
+      <li>中国机构编制网：事业单位撤并整合与编制改革（2025-05）<br><a href="http://www.scopsr.gov.cn/cxgl/jgbzgl/202505/t20250515_390943.html">http://www.scopsr.gov.cn/cxgl/jgbzgl/202505/t20250515_390943.html</a></li>
+      <li>北京日报（前程无忧调查）：2026 届 25.1% 计划报考体制内（2026-04-07）<br><a href="https://news.bjd.com.cn/2026/04/07/11673975.shtml">https://news.bjd.com.cn/2026/04/07/11673975.shtml</a></li>
+      <li>新浪财经：2026 国考报名 371.8 万首超考研（2026-05-23）<br><a href="https://finance.sina.com.cn/stock/stockzmt/2026-05-23/doc-inhyvanc7423622.shtml">https://finance.sina.com.cn/stock/stockzmt/2026-05-23/doc-inhyvanc7423622.shtml</a></li>
+      <li>每日经济新闻：计算机专业首次跌出月收入前十（2025-06-20）<br><a href="https://www.nbd.com.cn/articles/2025-06-20/3916486.html">https://www.nbd.com.cn/articles/2025-06-20/3916486.html</a></li>
+      <li>21 财经（智联《2025 人工智能产业人才发展报告》）（2025-10-24）<br><a href="https://m.21jingji.com/article/20251024/herald/99f5deac46722328dfb525ee4660e.html">https://m.21jingji.com/article/20251024/herald/99f5deac46722328dfb525ee4660e.html</a></li>
+      <li>腾讯新闻：2025 春招算法岗 +44.3%、46% 要求硕博（2025-03-21）<br><a href="https://view.inews.qq.com/a/20250321A06S8200">https://view.inews.qq.com/a/20250321A06S8200</a></li>
+      <li>金羊网（智联）：AI 岗位薪酬三档（2025）<br><a href="http://news.ycwb.com/ikinvjktin/content_53752794.htm">http://news.ycwb.com/ikinvjktin/content_53752794.htm</a></li>
+      <li>财新（猎聘）：掌握 AI 技能职位平均年薪近 30 万（2026-01-15）<br><a href="https://www.caixin.com/2026-01-15/102403805.html">https://www.caixin.com/2026-01-15/102403805.html</a></li>
+      <li>搜狐（科锐国际）：核心算法岗占比 68%→45%（2026-09）<br><a href="https://m.sohu.com/a/1091890184_123029158/">https://m.sohu.com/a/1091890184_123029158/</a></li>
+      <li>新浪财经（脉脉）：2026 校招 AI 岗 +789.47%、应用开发占 60.97%（2026）<br><a href="https://cj.sina.com.cn/articles/view/1644119190/61ff449602002ohim">https://cj.sina.com.cn/articles/view/1644119190/61ff449602002ohim</a></li>
+      <li>36氪（脉脉）：AI 人才供需比 1.02→1.23（2026）<br><a href="https://36kr.com/p/4025027072577414">https://36kr.com/p/4025027072577414</a></li>
+      <li>智联招聘 JD：润建股份大模型应用开发岗（本科，1.5–3 万/月）<br><a href="https://m.zhaopin.com/jobs/CC202740210J40966029404.htm">https://m.zhaopin.com/jobs/CC202740210J40966029404.htm</a></li>
+      <li>猎聘：Agent 工程师校招薪资（合肥，本科 12–20k）<br><a href="https://www.liepin.com/a/79142663.shtml">https://www.liepin.com/a/79142663.shtml</a></li>
+      <li>猎聘：Agent 工程师 JD（上海）<br><a href="https://www.liepin.com/a/79237479.shtml">https://www.liepin.com/a/79237479.shtml</a></li>
+      <li>猎聘：LLMOps 工程师 JD（上海，Go/K8s/Prometheus）<br><a href="https://www.liepin.com/a/80191873.shtml">https://www.liepin.com/a/80191873.shtml</a></li>
+      <li>职友集：AI 产品经理薪资与要求（77% 本科、竞争指数 68.1）<br><a href="https://www.jobui.com/salary/quanguo-aichanpinjingli">https://www.jobui.com/salary/quanguo-aichanpinjingli</a></li>
+      <li>职友集：数据标注员薪资（78.6% 岗位 3–6K）<br><a href="https://m.jobui.com/salary/quanguo-shujubiaozhuyuan/">https://m.jobui.com/salary/quanguo-shujubiaozhuyuan/</a></li>
+      <li>牛客网：2026 校招薪资讨论帖<br><a href="https://m.nowcoder.com/discuss/881822427485958144">https://m.nowcoder.com/discuss/881822427485958144</a></li>
+      <li>新华网：65% 央企与百度智能云合作（2025-06-06）<br><a href="http://www.xinhuanet.com/tech/20250606/840da419e2104d6d901dfb525ee4660e/c.html">http://www.xinhuanet.com/tech/20250606/840da419e2104d6d901dfb525ee4660e/c.html</a></li>
+      <li>新浪财经：营销 Agent 个案报道（2026-10-30）<br><a href="http://finance.sina.cn/2026-10-30/detail-iniwzprp8088556.d.html">http://finance.sina.cn/2026-10-30/detail-iniwzprp8088556.d.html</a></li>
+      <li>36氪出海：Coze 海外 2023-12、国内 2025-02 上线节奏<br><a href="https://letschuhai.com/ce6bb041">https://letschuhai.com/ce6bb041</a></li>
+      <li>MiniMax 全球招聘页<br><a href="https://www.minimaxi.com/careers">https://www.minimaxi.com/careers</a></li>
+      <li>传音控股校招（软件应用研发 AI 方向）<br><a href="https://transsion.zhiye.com/campus/jobs">https://transsion.zhiye.com/campus/jobs</a></li>
+      <li>虎嗅：Upwork 2026Q1 入门级项目 -29.3%（2026）<br><a href="https://www.huxiu.com/article/4897193.html">https://www.huxiu.com/article/4897193.html</a></li>
+      <li>电鸭社区：典型远程 Python 岗年薪 27–35 万<br><a href="https://eleduck.com/tposts/z1fD4b">https://eleduck.com/tposts/z1fD4b</a></li>
+      <li>电鸭社区：德国机会卡亲历（一年签证转蓝卡）<br><a href="https://eleduck.com/posts/98fyw3">https://eleduck.com/posts/98fyw3</a></li>
+      <li>SaaSRanger：Micro SaaS Revenue Reality（1000+ 创始人统计）<br><a href="https://saasranger.com/blog/micro-saas-revenue-reality-what-1000-founders-actually-earn/">https://saasranger.com/blog/micro-saas-revenue-reality-what-1000-founders-actually-earn/</a></li>
+      <li>Hashnode：Why Most Micro SaaS Projects Fail（92% 失败率）<br><a href="https://saasapp.hashnode.dev/why-most-micro-saas-projects-fail-lessons-from-the-other-90">https://saasapp.hashnode.dev/why-most-micro-saas-projects-fail-lessons-from-the-other-90</a></li>
+      <li>GREY Journal：How Much Indie Hackers Make（2026）<br><a href="https://greyjournal.net/hustle/grow/how-much-indie-hackers-make-2026/">https://greyjournal.net/hustle/grow/how-much-indie-hackers-make-2026/</a></li>
+      <li>36氪：国内 AI 工具 300 天 0 用户 0 收入个案<br><a href="https://www.36kr.com/p/3351170233133696">https://www.36kr.com/p/3351170233133696</a></li>
+      <li>Resumly（转 LinkedIn Talent Insights）：公开 repo 对招聘访问率影响 +32%<br><a href="https://www.resumly.ai/blog/how-to-leverage-open-source-contributions-for-hiring">https://www.resumly.ai/blog/how-to-leverage-open-source-contributions-for-hiring</a></li>
+      <li>中国经济网（四川消委）：2025「AI+」培训投诉 3739 件（2026-03-17）<br><a href="http://www.ce.cn/xwzx/gnsz/gdxw/202603/t20260317_2833550.shtml">http://www.ce.cn/xwzx/gnsz/gdxw/202603/t20260317_2833550.shtml</a></li>
+      <li>中国就业网（人社部）：北京「招转培」案诱骗 1200 余人、涉案 1950 万（2026-05-18）<br><a href="https://chinajob.mohrss.gov.cn/h5/c/2026-05-18/543035.shtml">https://chinajob.mohrss.gov.cn/h5/c/2026-05-18/543035.shtml</a></li>
+      <li>央视网：免费培训+兼职保底变培训贷曝光（2025-09-14）<br><a href="http://big5.cctv.com/gate/big5/news.cctv.com/2025/09/14/ARTIwommEDH9Tfe45rLKzotA250914.shtml">http://big5.cctv.com/gate/big5/news.cctv.com/2025/09/14/ARTIwommEDH9Tfe45rLKzotA250914.shtml</a></li>
+      <li>36氪：数据标注兼职月入 1000–2000 元调查<br><a href="https://www.36kr.com/p/3581070113528196">https://www.36kr.com/p/3581070113528196</a></li>
+      <li>中国经济网：数据标注全职收入约 4000/月（2025-07-02）<br><a href="http://www.ce.cn/xwzx/gnsz/gdxw/202507/t20250702_2347293.shtml">http://www.ce.cn/xwzx/gnsz/gdxw/202507/t20250702_2347293.shtml</a></li>
+      <li>央视新闻：五部门提示「央国企内推」收费均为诈骗（2026-10）<br><a href="https://ysxw.cctv.cn/article.html?item_id=2209896756929128507">https://ysxw.cctv.cn/article.html?item_id=2209896756929128507</a></li>
+      <li>上海市人社局：虚假内推收费 20 万个案（2025-12-18）<br><a href="https://rsj.sh.gov.cn/dzb/rsj/2025-12-18/aid/01-02.html">https://rsj.sh.gov.cn/dzb/rsj/2025-12-18/aid/01-02.html</a></li>
+      <li>武汉东湖新技术开发区政府普法：伪证书与标注押金骗局（2026-05-02）<br><a href="https://www.dxh.gov.cn/XWZX/XWYS/202605/t20260502_2760149.shtml">https://www.dxh.gov.cn/XWZX/XWYS/202605/t20260502_2760149.shtml</a></li>
+      <li>贝壳财经：「AI 代理」四级裂变曝光（2026-03）<br><a href="http://m.toutiao.com/group/7617782277690376713/">http://m.toutiao.com/group/7617782277690376713/</a></li>
+      <li>钛媒体：数字人直播加盟被批量封播<br><a href="https://www.tmtpost.com/7534738.html">https://www.tmtpost.com/7534738.html</a></li>
+      <li>环球网：「AI 自动带货」培训学员实得约千元<br><a href="https://quality.huanqiu.com/article/4QlcB0Rhake">https://quality.huanqiu.com/article/4QlcB0Rhake</a></li>
+      <li>安徽公共招聘网：安徽 AI 专场本科首年转正 10–15 万<br><a href="https://wx.ahggzp.gov.cn/cms/web/n2g5iiy7/ff8080819a09ce25019a908a32a459e2.html">https://wx.ahggzp.gov.cn/cms/web/n2g5iiy7/ff8080819a09ce25019a908a32a459e2.html</a></li>
+      <li>每日经济新闻：算法岗城市薪酬差异（二线低 20–40%）（2025-10-23）<br><a href="http://www.nbd.com.cn/articles/2025-10-23/4103898.html">http://www.nbd.com.cn/articles/2025-10-23/4103898.html</a></li>
+      <li>中国移动招聘：技术岗七险二金与安家补贴<br><a href="https://job.10086.cn/touch/personal/job/detail.html?id=35655e7e-0217-4754-adae-0033af1d6568">https://job.10086.cn/touch/personal/job/detail.html?id=35655e7e-0217-4754-adae-0033af1d6568</a></li>
+      <li>人社部：2026Q1 职业薪酬基准（算法/Java/运维/硬件）（2026-07-08）<br><a href="https://www.mohrss.gov.cn/SYrlzyhshbzb/laodongguanxi_/fwyd/202607/t20260708_579828.html">https://www.mohrss.gov.cn/SYrlzyhshbzb/laodongguanxi_/fwyd/202607/t20260708_579828.html</a></li>
+    </ol>
+
+    <h3 class="s-title">免责说明</h3>
+    <ul>
+      <li><strong>政策时效：</strong>所有政策与数据均截至 2026-10-31 检索时点；招考、财政、薪酬政策此后可能变化，行动前请以官方最新公告为准。</li>
+      <li><strong>证据分层：</strong>正文用「事实」（官方统计/公告）、「报道」（媒体或平台报告）、「推断」（基于上述材料的分析）三类标签显式区分；平台报告数据（脉脉/智联/猎聘）为样本估计，非普查口径。</li>
+      <li><strong>非个案建议：</strong>本文为结构性研究，不构成对你个人的报考、选岗、签约或法律意见；涉及劳动纠纷、培训贷追损时，请咨询学校就业中心或当地人社/法律援助渠道。</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    考公热与 AI 机会研判 · 单文件离线版 · 数据检索时点 2026-10-31 · 仅供个人决策参考，不构成法律、报考或就业建议。
+  </div>
+</footer>
+</body>
+</html>

@@ -121,7 +121,12 @@ const config = defineConfig({
           { text: '🧩 学习方法与效率', link: '/14-学习方法与效率体系/' },
           { text: '🤖 课外技能', link: '/09-课外技能/' },
           { text: '💡 AI源码与AI交互', link: '/16-AI源码与AI交互研习库/' },
-          { text: '🌐 跨学科学习资源库', link: '/17-跨学科学习资源库/' }
+          { text: '🌐 跨学科学习资源库', link: '/17-跨学科学习资源库/' },
+          { text: '🐧 Linux学习指南', link: '/18-Linux学习指南/' },
+          { text: '🎧 六级备考', link: '/19-六级备考/' },
+          { text: '🗣️ AI交互能力提升', link: '/21-AI交互能力提升/' },
+          { text: '🤖 Hermes Agent指南', link: '/22-Hermes-Agent指南/' },
+          { text: '🤖 个人智能体指南', link: '/23-个人智能体指南/' }
         ]
       },
       {
@@ -136,6 +141,9 @@ const config = defineConfig({
           { text: '⚖️ 法律与权益', link: '/13-法律与权益常识库/' },
           { text: '🎲 娱乐活动全攻略', link: '/15-娱乐活动全攻略/' },
           { text: '📱 三设备联动指南', link: '/三设备联动指南/' },
+          { text: '🎬 闲暇时光精神食粮', link: '/20-闲暇时光精神食粮/' },
+          { text: '✨ 精华层', link: '/24-精华层/' },
+          { text: '👀 看见世界', link: '/25-看见世界/' },
           { text: '📝 课程作业与临时', link: '/99-课程作业与临时/' }
         ]
       },
@@ -194,6 +202,14 @@ const config = defineConfig({
         { text: '📱 三设备联动指南', collapsed: true, items: scanDir('三设备联动指南') },
         { text: '💡 AI源码与AI交互', collapsed: true, items: scanDir('16-AI源码与AI交互研习库') },
         { text: '🌐 跨学科学习资源库', collapsed: true, items: scanDir('17-跨学科学习资源库') },
+        { text: '🐧 Linux学习指南', collapsed: true, items: scanDir('18-Linux学习指南') },
+        { text: '🎧 六级备考', collapsed: true, items: scanDir('19-六级备考') },
+        { text: '🎬 闲暇时光精神食粮', collapsed: true, items: scanDir('20-闲暇时光精神食粮') },
+        { text: '🗣️ AI交互能力提升', collapsed: true, items: scanDir('21-AI交互能力提升') },
+        { text: '🤖 Hermes Agent指南', collapsed: true, items: scanDir('22-Hermes-Agent指南') },
+        { text: '🤖 个人智能体指南', collapsed: true, items: scanDir('23-个人智能体指南') },
+        { text: '✨ 精华层', collapsed: true, items: scanDir('24-精华层') },
+        { text: '👀 看见世界', collapsed: true, items: scanDir('25-看见世界') },
         { text: '📝 课程作业与临时', collapsed: true, items: scanDir('99-课程作业与临时') },
         {
           text: '🛠️ 站点工程',

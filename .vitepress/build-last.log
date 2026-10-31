@@ -1,25 +1,44 @@
-
+﻿
 > daily-knowledge-site@0.1.0 build
 > vitepress build
 
 
   [32m[1mvitepress[22m v1.6.4[39m
 
-- building client + server bundles...
+node.exe : - building client + server bundles...
+所在位置 行:1 字符: 1
++ & "C:\Users\fjbsllc\AppData\Local\Doubao\User Data\sandbox_runtime\ba ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (- building client + server bundles...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
 [33m
 The language 'gitignore' is not loaded, falling back to 'txt' for syntax highlighting.[39m
 [33m
+The language 'deb822' is not loaded, falling back to 'txt' for syntax highlighting.[39m
+[33m
+The language 'list' is not loaded, falling back to 'txt' for syntax highlighting.[39m
+[33m
 The language 'gitignore' is not loaded, falling back to 'txt' for syntax highlighting.[39m
+[33m
+The language 'deb822' is not loaded, falling back to 'txt' for syntax highlighting.[39m
+[33m
+The language 'list' is not loaded, falling back to 'txt' for syntax highlighting.[39m
 [33m
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
-- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-m
+anualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
 [33m
 The language 'gitignore' is not loaded, falling back to 'txt' for syntax highlighting.[39m
+[33m
+The language 'deb822' is not loaded, falling back to 'txt' for syntax highlighting.[39m
+[33m
+The language 'list' is not loaded, falling back to 'txt' for syntax highlighting.[39m
 [32m✓[0m building client + server bundles...
 - rendering pages...
 [32m✓[0m rendering pages...
 - generating sitemap...
 [32m✓[0m generating sitemap...
-build complete in 68.37s.
+build complete in 215.62s.
